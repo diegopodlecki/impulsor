@@ -5,6 +5,10 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // GitHub Pages serves this repo at `/impulsor/`:
+  // https://diegopodlecki.github.io/impulsor/
+  // The workflow sets `GITHUB_PAGES=true` during build.
+  base: process.env.GITHUB_PAGES === "true" ? "/impulsor/" : "/",
   server: {
     host: "::",
     port: 8080,
