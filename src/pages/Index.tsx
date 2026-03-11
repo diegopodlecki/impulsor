@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 const BRAND = {
   name: "Impulsor Web",
   domain: "webappimpulsor.com",
-  tagline: "Webs inteligentes y automatización digital para hacer crecer tu negocio.",
+  tagline: "Webs inteligentes y automatización digital para impulsar tu negocio.",
 };
 
 const DEFAULT_WA_MESSAGE =
@@ -76,6 +76,7 @@ function SectionHeader({
         </div>
       ) : null}
       <h2 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h2>
+      <div className="mx-auto mt-4 h-px w-28 bg-gradient-primary gradient-animate opacity-80" />
       {description ? <p className="mt-3 text-pretty text-muted-foreground">{description}</p> : null}
     </div>
   );
@@ -94,7 +95,7 @@ function FeatureCard({
     <div
       data-reveal
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-border/70 bg-gradient-card p-5 text-left shadow-card",
+        "card-neon group relative overflow-hidden rounded-2xl border border-border/70 bg-gradient-card p-5 text-left shadow-card",
         "transition-transform duration-300 hover:-translate-y-1",
       )}
     >
@@ -127,13 +128,13 @@ function ServiceCard({
     <div
       data-reveal
       className={cn(
-        "group relative rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card",
+        "card-neon group relative rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card",
         "transition-transform duration-300 hover:-translate-y-1",
       )}
     >
       <div className="flex items-center gap-3">
         <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-border/60 bg-background/35">
-          <div className="text-[hsl(var(--neon-fuchsia))]">{icon}</div>
+        <div className="text-[hsl(var(--neon-purple))]">{icon}</div>
         </div>
         <div className="text-lg font-semibold tracking-tight">{title}</div>
       </div>
@@ -154,7 +155,7 @@ function ExampleCard({ title, subtitle }: { title: string; subtitle: string }) {
     <div
       data-reveal
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card",
+        "card-neon group relative overflow-hidden rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card",
         "transition-transform duration-300 hover:-translate-y-1",
       )}
     >
@@ -239,9 +240,10 @@ export default function Index() {
     <div className="min-h-screen bg-background text-foreground">
       <div className="pointer-events-none fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-hero" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(34,211,238,0.14),transparent_50%),radial-gradient(circle_at_80%_30%,rgba(168,85,247,0.14),transparent_50%),radial-gradient(circle_at_60%_90%,rgba(99,102,241,0.12),transparent_45%)]" />
-        <div className="absolute inset-0 opacity-60 [background-image:linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_80%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_12%,rgba(34,211,238,0.18),transparent_52%),radial-gradient(circle_at_82%_24%,rgba(168,85,247,0.18),transparent_50%),radial-gradient(circle_at_58%_92%,rgba(99,102,241,0.16),transparent_48%)]" />
+        <div className="absolute inset-0 opacity-80 bg-tech-lines" />
         <div className="absolute inset-0 [background-image:var(--gradient-glow)]" />
+        <div className="absolute -inset-[20%] opacity-45 blur-2xl bg-gradient-primary gradient-animate [mask-image:radial-gradient(circle_at_center,black_18%,transparent_60%)]" />
       </div>
 
       <header className="sticky top-0 z-30 border-b border-border/40 bg-background/35 backdrop-blur">
@@ -252,6 +254,9 @@ export default function Index() {
           <div className="hidden items-center gap-6 md:flex">
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#servicios">
               Servicios
+            </a>
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#como-funciona">
+              Cómo funciona
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#ejemplos">
               Ejemplos
@@ -286,12 +291,13 @@ export default function Index() {
                 Micro-agencia para negocios reales
               </Badge>
               <Badge className="border-border/80 bg-background/40 text-foreground/90">
-                <Zap className="mr-1 h-3.5 w-3.5 text-[hsl(var(--neon-fuchsia))]" />
+                <Zap className="mr-1 h-3.5 w-3.5 text-[hsl(var(--neon-purple))]" />
                 Entrega express
               </Badge>
             </div>
             <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-              Convierte tu presencia digital en una <span className="text-gradient">máquina de conseguir clientes</span>.
+              Convierte tu presencia digital en una{" "}
+              <span className="text-gradient gradient-animate">máquina de conseguir clientes</span>.
             </h1>
             <p className="mt-5 text-pretty text-muted-foreground sm:text-lg">
               Desarrollo webs modernas y automatizo procesos con inteligencia artificial para profesionales, gimnasios y
@@ -312,21 +318,57 @@ export default function Index() {
             <p className="mt-6 text-sm text-muted-foreground">
               {BRAND.tagline} <span className="text-foreground/70">Sin compromiso.</span>
             </p>
+
+            <div className="mt-10 grid gap-3 sm:grid-cols-3">
+              {[
+                {
+                  icon: <Rocket className="h-5 w-5" />,
+                  t: "Entrega 3 a 5 días",
+                  d: "Web express lista para vender.",
+                },
+                {
+                  icon: <MessageCircle className="h-5 w-5" />,
+                  t: "WhatsApp integrado",
+                  d: "Menos fricción, más consultas.",
+                },
+                {
+                  icon: <Bot className="h-5 w-5" />,
+                  t: "Automatización con IA",
+                  d: "Ahorra tiempo en lo repetitivo.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.t}
+                  data-reveal
+                  className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-4 text-left shadow-card"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-background/40">
+                      <span className="text-[hsl(var(--neon-blue))]">{item.icon}</span>
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold tracking-tight">{item.t}</div>
+                      <div className="mt-1 text-xs text-muted-foreground">{item.d}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
         <section className="container py-16 sm:py-20">
           <SectionHeader
             eyebrow="Problema"
-            title="La mayoria de los negocios pierde clientes en internet."
-            description="Muchos profesionales y negocios tienen presencia digital debil o inexistente. Una web lenta, desactualizada o inexistente puede estar haciendo que potenciales clientes elijan a tu competencia."
+            title="La mayoría de los negocios pierde clientes en internet."
+            description="Muchos profesionales y pequeños negocios tienen presencia digital débil o inexistente. Una web lenta, desactualizada o inexistente puede hacer que potenciales clientes elijan a tu competencia."
           />
 
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             <FeatureCard
               icon={<Zap className="h-5 w-5" />}
               title="Consultas que se pierden"
-              description="Si no respondes rapido o no inspiras confianza, el cliente se va con otro."
+              description="Si no respondés rápido o no inspirás confianza, el cliente se va con otro."
             />
             <FeatureCard
               icon={<Globe className="h-5 w-5" />}
@@ -355,23 +397,23 @@ export default function Index() {
             />
             <FeatureCard
               icon={<Bot className="h-5 w-5" />}
-              title="Automatizacion de tareas"
-              description="Respuestas automaticas, formularios a WhatsApp y flujos simples con IA."
+              title="Automatización de tareas repetitivas"
+              description="Respuestas automáticas, formularios a WhatsApp y flujos simples con IA."
             />
             <FeatureCard
               icon={<Rocket className="h-5 w-5" />}
-              title="Captacion de clientes"
+              title="Captación de clientes desde internet"
               description="Estructura pensada para generar consultas: menos rebote, más contactos."
             />
             <FeatureCard
               icon={<MessageCircle className="h-5 w-5" />}
-              title="Integracion con WhatsApp"
+              title="Integración con WhatsApp"
               description="Botón flotante, mensajes pre-escritos y atajos para responder más rápido."
             />
             <FeatureCard
               icon={<Smartphone className="h-5 w-5" />}
-              title="Optimizacion mobile"
-              description="La mayoria llega desde el celular. La experiencia es mobile-first."
+              title="Optimización total para móviles"
+              description="La mayoría llega desde el celular. La experiencia es mobile-first."
             />
           </div>
         </section>
@@ -385,15 +427,15 @@ export default function Index() {
               bullets={[
                 "Entrega rápida (3 a 5 días)",
                 "Diseño moderno optimizado para móviles",
-                "Integracion con WhatsApp",
+                "Integración con WhatsApp",
               ]}
             />
             <ServiceCard
               icon={<Bot className="h-5 w-5" />}
-              title="Automatizacion con IA"
+              title="Automatización con IA"
               bullets={[
-                "Automatizacion de procesos simples",
-                "Respuestas automaticas",
+                "Automatización de tareas",
+                "Respuestas automáticas",
                 "Flujos inteligentes y seguimiento",
               ]}
             />
@@ -409,11 +451,50 @@ export default function Index() {
           </div>
         </section>
 
+        <section id="como-funciona" className="container py-16 sm:py-20">
+          <SectionHeader eyebrow="Cómo funciona" title="En 3 pasos, listo para convertir." />
+          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+            {[
+              {
+                n: "1",
+                t: "Cuéntame tu negocio",
+                d: "Objetivo, rubro y qué te preguntan por WhatsApp hoy.",
+              },
+              {
+                n: "2",
+                t: "Diseño tu solución digital",
+                d: "Web moderna + automatizaciones simples para ahorrar tiempo.",
+              },
+              {
+                n: "3",
+                t: "Empiezas a atraer clientes online",
+                d: "CTA claros, experiencia móvil perfecta y seguimiento por WhatsApp.",
+              },
+            ].map((step) => (
+              <div
+                key={step.n}
+                data-reveal
+                className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card transition-transform duration-300 hover:-translate-y-1"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-primary gradient-animate text-[hsl(var(--primary-foreground))] font-semibold shadow-glow">
+                    {step.n}
+                  </div>
+                  <div>
+                    <div className="text-lg font-semibold tracking-tight">{step.t}</div>
+                    <p className="mt-1 text-sm text-muted-foreground">{step.d}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section id="ejemplos" className="container py-16 sm:py-20">
           <SectionHeader
             eyebrow="Ejemplos"
             title="Ejemplos de proyectos posibles."
-            description="Ideas tipicas para profesionales y negocios locales. Adaptable a tu rubro."
+            description="Ideas típicas para profesionales y negocios locales. Adaptable a tu rubro."
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <ExampleCard title="Web para entrenador personal" subtitle="Plan, pricing y turnos" />
@@ -429,7 +510,7 @@ export default function Index() {
           <div className="mt-10 grid gap-4 lg:grid-cols-12">
             <div
               data-reveal
-              className="lg:col-span-7 rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
+              className="card-neon lg:col-span-7 rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
             >
               <div className="text-lg font-semibold tracking-tight">Soluciones simples, resultado real</div>
               <p className="mt-2 text-sm text-muted-foreground">
@@ -439,10 +520,10 @@ export default function Index() {
               <div className="mt-5 grid gap-2 sm:grid-cols-2">
                 {[
                   "Soluciones simples y efectivas",
-                  "Desarrollo rapido",
+                  "Desarrollo rápido y directo",
                   "Pensado para pequeños negocios",
-                  "Comunicacion directa",
-                  "Tecnologia moderna",
+                  "Comunicación directa",
+                  "Tecnología moderna",
                 ].map((line) => (
                   <div
                     key={line}
@@ -457,26 +538,31 @@ export default function Index() {
 
             <div
               data-reveal
-              className="lg:col-span-5 rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
+              className="card-neon lg:col-span-5 rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
             >
-              <div className="text-lg font-semibold tracking-tight">¿Cómo es el proceso?</div>
-              <div className="mt-4 space-y-3 text-sm text-muted-foreground">
+              <div className="text-lg font-semibold tracking-tight">Enfoque CRO (conversión)</div>
+              <p className="mt-2 text-sm text-muted-foreground">
+                No es solo diseño: la página guía al visitante para que te escriba.
+              </p>
+              <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
                 {[
-                  { n: "1", t: "Diagnóstico gratuito", d: "Veo tu caso y te recomiendo la mejor ruta." },
-                  { n: "2", t: "Propuesta clara", d: "Alcance, tiempos y que incluye, sin vueltas." },
-                  { n: "3", t: "Implementación", d: "Diseño, desarrollo y puesta online." },
-                  { n: "4", t: "Automatizaciones", d: "WhatsApp, formularios y flujos basicos con IA." },
-                ].map((step) => (
-                  <div key={step.n} className="flex gap-3 rounded-xl border border-border/60 bg-background/25 p-3">
-                    <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-primary font-semibold text-[hsl(var(--primary-foreground))]">
-                      {step.n}
-                    </div>
-                    <div>
-                      <div className="font-medium text-foreground/90">{step.t}</div>
-                      <div className="text-sm">{step.d}</div>
-                    </div>
-                  </div>
+                  "CTA visibles en hero y secciones clave",
+                  "Estructura por intención (problema → solución → servicios → contacto)",
+                  "WhatsApp con mensaje pre-escrito para bajar fricción",
+                  "Performance y mobile-first para ganar consultas",
+                ].map((line) => (
+                  <li key={line} className="flex gap-2">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-[hsl(var(--neon-indigo))]" />
+                    <span>{line}</span>
+                  </li>
                 ))}
+              </ul>
+              <div className="mt-6">
+                <Button asChild variant="hero" className="w-full justify-center">
+                  <a href="#diagnostico">
+                    Pedir diagnóstico gratis <ArrowRight />
+                  </a>
+                </Button>
               </div>
             </div>
           </div>
@@ -486,7 +572,7 @@ export default function Index() {
           <div
             data-reveal
             className={cn(
-              "relative overflow-hidden rounded-3xl border border-border/70 bg-gradient-card p-8 text-left shadow-card",
+              "card-neon glow-soft relative overflow-hidden rounded-3xl border border-border/70 bg-gradient-card p-8 text-left shadow-card",
               "sm:p-10",
             )}
           >
@@ -522,7 +608,7 @@ export default function Index() {
           <div className="mt-10 grid gap-6 lg:grid-cols-12">
             <form
               onSubmit={submitToWhatsApp}
-              className="lg:col-span-7 rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
+              className="card-neon glow-soft lg:col-span-7 rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
             >
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="space-y-2">
@@ -579,11 +665,11 @@ export default function Index() {
             </form>
 
             <div className="space-y-4 lg:col-span-5">
-              <div data-reveal className="rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card">
+              <div data-reveal className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card">
                 <div className="text-lg font-semibold tracking-tight">¿Qué incluye el diagnóstico?</div>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                   {[
-                    "Recomendacion de estructura y copy",
+                    "Recomendación de estructura y copy",
                     "Sugerencias de automatización rápida",
                     "Estimación de tiempos",
                     "Siguiente paso claro",
@@ -596,7 +682,7 @@ export default function Index() {
                 </ul>
               </div>
 
-              <div data-reveal className="rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card">
+              <div data-reveal className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card">
                 <div className="text-lg font-semibold tracking-tight">Tip</div>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Si ya tenes web, pasame el link. Si no, te pregunto 3 cosas y la armamos desde cero.

@@ -15,8 +15,9 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-gradient-primary text-primary-foreground font-semibold shadow-glow hover:opacity-90 transition-all duration-300 hover:scale-105",
-        whatsapp: "bg-[hsl(142,70%,45%)] text-[hsl(0,0%,100%)] font-semibold hover:bg-[hsl(142,70%,40%)] transition-all duration-300 hover:scale-105",
+        hero: "btn-neon bg-gradient-primary gradient-animate text-primary-foreground font-semibold shadow-glow hover:opacity-95 transition-all duration-300 hover:scale-[1.03]",
+        whatsapp:
+          "btn-neon bg-[hsl(142,70%,45%)] text-[hsl(0,0%,100%)] font-semibold hover:bg-[hsl(142,70%,40%)] transition-all duration-300 hover:scale-[1.03] shadow-[0_18px_50px_-22px_rgba(34,211,238,0.35)]",
       },
       size: {
         default: "h-10 px-4 py-2",
