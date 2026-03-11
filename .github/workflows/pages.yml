@@ -33,6 +33,7 @@ jobs:
       - name: Build
         env:
           GITHUB_PAGES: "true"
+          VITE_LEADS_WEBHOOK_URL: ${{ secrets.VITE_LEADS_WEBHOOK_URL }}
         run: npm run build
 
       - name: Configure Pages
@@ -53,4 +54,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
