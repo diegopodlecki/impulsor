@@ -10,6 +10,7 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react";
+import { toast } from "sonner";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -25,10 +26,11 @@ const DEFAULT_WA_MESSAGE =
   "Hola, vi tu página web y quiero información sobre desarrollo web o automatización para mi negocio.";
 
 function buildWhatsAppUrl(message: string) {
-  const phone = (import.meta.env.VITE_WHATSAPP_PHONE as string | undefined) ?? "";
-  const base = phone.trim() ? `https://wa.me/${phone.trim()}` : "https://wa.me/";
+  // WhatsApp click-to-chat expects international format without +, spaces, or leading 0/15.
+  // User requested: 01166448389 (AR) -> 541166448389
+  const phone = "541166448389";
   const text = encodeURIComponent(message);
-  return `${base}?text=${text}`;
+  return `https://wa.me/${phone}?text=${text}`;
 }
 
 function LogoMark({ className }: { className?: string }) {
@@ -219,7 +221,36 @@ export default function Index() {
   const [businessType, setBusinessType] = React.useState("");
   const [message, setMessage] = React.useState("");
 
-  const submitToWhatsApp = (e: React.FormEvent) => {
+  const webhookUrl = ((import.meta.env.VITE_LEADS_WEBHOOK_URL as string | undefined) ?? "").trim();
+
+  const sendLead = React.useCallback(
+    (payload: Record<string, unknown>) => {
+      if (!webhookUrl) return;
+
+      try {
+        if (navigator.sendBeacon) {
+          const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
+          navigator.sendBeacon(webhookUrl, blob);
+          return;
+        }
+      } catch {
+        // Fall through to fetch.
+      }
+
+      void fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        mode: "cors",
+        keepalive: true,
+      }).catch(() => {
+        // Silent: we still open WhatsApp even if the webhook fails (CORS, network, etc.).
+      });
+    },
+    [webhookUrl],
+  );
+
+  const submitToWhatsApp = React.useCallback((e: React.FormEvent) => {
     e.preventDefault();
     const fullMessage = [
       DEFAULT_WA_MESSAGE,
@@ -231,8 +262,22 @@ export default function Index() {
       .filter(Boolean)
       .join("\n");
 
+    // Open WhatsApp immediately (popup blockers dislike async).
     window.open(buildWhatsAppUrl(fullMessage), "_blank", "noopener,noreferrer");
-  };
+
+    sendLead({
+      name: name.trim(),
+      businessType: businessType.trim(),
+      message: message.trim(),
+      source: "landing",
+      ts: new Date().toISOString(),
+      path: window.location.pathname,
+      referrer: document.referrer || null,
+      userAgent: navigator.userAgent,
+    });
+
+    toast.success("Listo: se abrió WhatsApp con el mensaje preparado.");
+  }, [businessType, message, name, sendLead]);
 
   const floatingUrl = buildWhatsAppUrl(DEFAULT_WA_MESSAGE);
 
@@ -571,6 +616,38 @@ export default function Index() {
         <section className="container py-16 sm:py-20">
           <div
             data-reveal
+            className="card-neon glow-soft mx-auto max-w-4xl rounded-3xl border border-border/70 bg-gradient-card p-8 text-left shadow-card sm:p-10"
+          >
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <div className="text-sm text-muted-foreground">Confianza</div>
+                <h3 className="mt-2 text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
+                  Soluciones digitales simples para negocios reales.
+                </h3>
+                <p className="mt-3 text-muted-foreground">
+                  Trabajo con profesionales y pequeños negocios que necesitan presencia digital moderna y efectiva para
+                  generar consultas por WhatsApp.
+                </p>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+                <Button asChild variant="hero" className="justify-center">
+                  <a href="#diagnostico">
+                    Solicitar diagnóstico <ArrowRight />
+                  </a>
+                </Button>
+                <Button asChild variant="whatsapp" className="justify-center">
+                  <a href={floatingUrl} target="_blank" rel="noreferrer">
+                    Hablar por WhatsApp <MessageCircle />
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="container py-16 sm:py-20">
+          <div
+            data-reveal
             className={cn(
               "card-neon glow-soft relative overflow-hidden rounded-3xl border border-border/70 bg-gradient-card p-8 text-left shadow-card",
               "sm:p-10",
@@ -660,7 +737,7 @@ export default function Index() {
                 <div className="text-xs text-muted-foreground">Se abre una nueva pestaña con el mensaje listo.</div>
               </div>
               <div className="mt-4 text-xs text-muted-foreground">
-                Podés configurar el número en <code className="text-foreground/80">VITE_WHATSAPP_PHONE</code>.
+                Al enviar, se abre WhatsApp con el mensaje listo para enviar.
               </div>
             </form>
 
