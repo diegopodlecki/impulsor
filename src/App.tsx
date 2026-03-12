@@ -8,12 +8,16 @@ import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
 
+const baseUrl = (import.meta.env.BASE_URL ?? "/") + "";
+// React Router basename should not end with "/" (except root). GitHub Pages can serve `/impulsor` and `/impulsor/`.
+const routerBaseName = baseUrl === "/" ? "/" : baseUrl.replace(/\/+$/, "");
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <BrowserRouter basename={routerBaseName}>
         <Routes>
           <Route path="/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
