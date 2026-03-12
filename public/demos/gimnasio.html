@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es" data-wa-phone="541166448389">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo | Gimnasio — Impulsor Web</title>
+    <meta
+      name="description"
+      content="Demo de página web para Gimnasio creada por Impulsor Web. Planes, clases, galería y contacto por WhatsApp."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./demo.css" />
+    <script src="./demo.js" defer></script>
+  </head>
+  <body>
+    <div class="bg" aria-hidden="true"></div>
+
+    <div class="demo-bar">
+      <div class="container demo-bar__inner">
+        <div class="badge">
+          <i></i>
+          Esta es una página de demostración creada por Impulsor Web. Podemos crear una similar para tu negocio.
+        </div>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end;">
+          <a class="btn btn--ghost" data-back-to-landing data-base-url="../" href="../">Volver a Impulsor Web</a>
+          <a class="btn btn--wa" href="#" data-wa-message="Hola, vi la demo de Gimnasio y quiero una web así para mi gym. ¿Podemos hablar?">Quiero una web así</a>
+        </div>
+      </div>
+    </div>
+
+    <main class="container" id="top">
+      <section class="hero">
+        <div class="hero__top">
+          <span class="badge"><i></i> Gimnasio</span>
+          <span class="badge"><i></i> Planes + Clases</span>
+          <span class="badge"><i></i> WhatsApp</span>
+        </div>
+
+        <h1>Tu mejor versión empieza <span class="grad">hoy</span>.</h1>
+        <p class="lead">Demo con estructura de venta: oferta, planes, clases, galería y un CTA a consulta/inscripción.</p>
+
+        <div class="hero__cta">
+          <a class="btn btn--wa" href="#" data-wa-message="Hola, quiero info de planes y promos para inscribirme.">Consultar por WhatsApp</a>
+          <a class="btn btn--ghost" href="#planes">Ver planes</a>
+        </div>
+
+        <div class="media" role="region" aria-label="Hero gimnasio">
+          <div class="media__inner">
+            <div class="media__copy">
+              <h2 style="margin:0 0 8px 0;">Impulso Gym</h2>
+              <p class="sub">Entrena fuerza, cardio y clases funcionales. Instalaciones modernas + entrenadores que te acompañan.</p>
+              <div class="kpis">
+                <div class="kpi"><strong>06–23</strong><span>Horarios</span></div>
+                <div class="kpi"><strong>+15</strong><span>Clases</span></div>
+                <div class="kpi"><strong>Promo</strong><span>Primera semana</span></div>
+              </div>
+            </div>
+            <div class="media__img" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="planes" class="section">
+        <h2>Planes mensuales</h2>
+        <p class="sub">Bloques simples que convierten: nombre del plan + beneficio + CTA.</p>
+        <div class="grid" style="grid-template-columns:repeat(3, minmax(0,1fr)); margin-top:16px;">
+          <div class="card"><div class="card__inner"><h3>Starter</h3><p>Acceso libre + rutina inicial.</p><p style="margin-top:12px;"><a class="btn btn--wa" href="#" data-wa-message="Hola, quiero el plan Starter. ¿Precio y requisitos?">Quiero este plan</a></p></div></div>
+          <div class="card"><div class="card__inner"><h3>Pro</h3><p>Acceso + 2 clases por semana.</p><p style="margin-top:12px;"><a class="btn btn--wa" href="#" data-wa-message="Hola, quiero el plan Pro. ¿Hay promo del mes?">Quiero este plan</a></p></div></div>
+          <div class="card"><div class="card__inner"><h3>Elite</h3><p>Acceso + clases ilimitadas.</p><p style="margin-top:12px;"><a class="btn btn--wa" href="#" data-wa-message="Hola, quiero el plan Elite. ¿Podés contarme beneficios?">Quiero este plan</a></p></div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Clases disponibles</h2>
+        <p class="sub">En una web real, se puede sumar calendario/turnos. En la demo, mostramos la lista.</p>
+        <div class="list">
+          <div class="item"><b>Funcional</b><small>Alta intensidad, 45 min.</small></div>
+          <div class="item"><b>Spinning</b><small>Cardio guiado, 50 min.</small></div>
+          <div class="item"><b>Cross Training</b><small>Fuerza + potencia.</small></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Galería</h2>
+        <p class="sub">Mock visual (tarjetas). En un proyecto real, serían fotos reales del gym.</p>
+        <div class="grid" style="grid-template-columns:repeat(3, minmax(0,1fr));">
+          <div class="card"><div class="card__inner"><h3>Sala de fuerza</h3><p>Máquinas + peso libre.</p></div></div>
+          <div class="card"><div class="card__inner"><h3>Zona funcional</h3><p>Espacio para clases.</p></div></div>
+          <div class="card"><div class="card__inner"><h3>Vestuarios</h3><p>Comodidad y seguridad.</p></div></div>
+        </div>
+      </section>
+
+      <section id="form" class="section">
+        <h2>Contacto</h2>
+        <p class="sub">Formulario demo (abre WhatsApp).</p>
+        <div class="card">
+          <div class="card__inner">
+            <form class="form" data-wa-form>
+              <div class="grid" style="grid-template-columns:1fr 1fr;">
+                <div class="field">
+                  <label>Nombre</label>
+                  <input name="nombre" placeholder="Tu nombre" required />
+                </div>
+                <div class="field">
+                  <label>Interés</label>
+                  <input name="negocio" placeholder="Ej: Pro, Elite, clases..." />
+                </div>
+              </div>
+              <div class="field">
+                <label>Mensaje</label>
+                <textarea name="mensaje" placeholder="¿Qué horarios te quedan mejor?"></textarea>
+              </div>
+              <button class="btn btn--wa" type="submit">Enviar por WhatsApp</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-final">
+        <div class="card">
+          <div class="card__inner">
+            <h3>¿Te gustaría una página como esta para tu negocio?</h3>
+            <p>Con tus fotos, tus planes y un flujo optimizado para que la gente consulte e ingrese.</p>
+            <div class="actions">
+              <a class="btn" href="#" data-wa-message="Hola, vi la demo de Gimnasio y quiero solicitar mi página web. Busco una web que convierta en inscripciones.">Solicitar mi página web</a>
+              <a class="btn btn--ghost" href="#top">Ver arriba</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <a class="float-wa" href="#" data-wa-message="Hola, vi la demo de Gimnasio y quiero información sobre tus servicios.">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path fill="currentColor" d="M19.11 17.46c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.46-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.48.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
+        <path fill="currentColor" d="M16.02 3.2c-7.06 0-12.8 5.65-12.8 12.6 0 2.22.59 4.38 1.72 6.28L3.2 28.8l6.9-1.7a12.9 12.9 0 0 0 5.92 1.43c7.06 0 12.8-5.65 12.8-12.6 0-6.95-5.74-12.73-12.8-12.73Zm7.52 18.13c-.32.9-1.6 1.73-2.23 1.82-.58.08-1.31.12-2.12-.13-.49-.15-1.12-.36-1.93-.7-3.39-1.44-5.6-4.96-5.77-5.18-.17-.22-1.38-1.82-1.38-3.48 0-1.66.88-2.48 1.2-2.82.32-.35.7-.43.93-.43h.67c.22 0 .52-.08.82.63.32.74 1.08 2.56 1.18 2.75.1.2.17.43.05.7-.12.27-.17.43-.35.66-.17.22-.37.49-.52.66-.17.2-.35.4-.15.78.2.39.9 1.48 1.93 2.4 1.33 1.17 2.45 1.54 2.82 1.72.37.17.59.15.82-.1.22-.25.95-1.1 1.2-1.48.25-.39.49-.32.82-.2.32.12 2.08.97 2.43 1.14.35.17.57.25.65.39.08.13.08.78-.24 1.68Z"/>
+      </svg>
+      WhatsApp
+    </a>
+  </body>
+</html>

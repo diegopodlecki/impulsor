@@ -23,12 +23,38 @@ const BRAND = {
 };
 
 const DEFAULT_WA_MESSAGE =
-  "Hola, vi tu página web y quiero información sobre desarrollo web o automatización para mi negocio.";
+  "Hola, vi tu página web y quiero información sobre tus servicios.";
+
+// Plantilla del mensaje post-formulario (incluye los datos del lead).
+function buildFormWhatsAppMessage(params: {
+  name: string;
+  businessType: string;
+  email: string;
+  message: string;
+}) {
+  const safeName = params.name.trim();
+  const safeBusiness = params.businessType.trim();
+  const safeEmail = params.email.trim();
+  const safeMessage = params.message.trim();
+
+  return [
+    safeName ? `Hola, soy ${safeName}.` : "Hola,",
+    safeBusiness ? `Tengo un negocio de ${safeBusiness}.` : null,
+    "",
+    "Acabo de enviar un formulario desde tu página web y quiero información sobre desarrollo web o automatización para mi negocio.",
+    safeEmail ? "" : null,
+    safeEmail ? `Mi email: ${safeEmail}` : null,
+    safeMessage ? "" : null,
+    safeMessage ? `Mensaje: ${safeMessage}` : null,
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
 
 function buildWhatsAppUrl(message: string) {
   // WhatsApp click-to-chat expects international format without +, spaces, or leading 0/15.
   // User requested: 01166448389 (AR) -> 541166448389
-  const phone = "541166448389";
+  const phone = (((import.meta.env.VITE_WA_PHONE as string | undefined) ?? "541166448389") + "").replace(/\D/g, "");
   const text = encodeURIComponent(message);
   return `https://wa.me/${phone}?text=${text}`;
 }
@@ -152,14 +178,25 @@ function ServiceCard({
   );
 }
 
-function ExampleCard({ title, subtitle }: { title: string; subtitle: string }) {
+function ExampleCard({ title, subtitle, href }: { title: string; subtitle: string; href: string }) {
+  // Nota: usamos BASE_URL para que funcione bien en GitHub Pages o subcarpetas.
+  const withBase = (path: string) => {
+    const base = (import.meta.env.BASE_URL ?? "/") + "";
+    const normalizedBase = base.endsWith("/") ? base : `${base}/`;
+    const normalizedPath = (path ?? "").replace(/^\//, "");
+    return `${normalizedBase}${normalizedPath}`;
+  };
+  const resolvedHref = withBase(href);
+
   return (
-    <div
+    <a
+      href={resolvedHref}
       data-reveal
       className={cn(
-        "card-neon group relative overflow-hidden rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card",
-        "transition-transform duration-300 hover:-translate-y-1",
+        "card-neon group relative block overflow-hidden rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card",
+        "cursor-pointer transition-transform duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring",
       )}
+      aria-label={`Abrir demo: ${title}`}
     >
       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
         <div className="absolute -inset-20 bg-[radial-gradient(circle_at_20%_30%,rgba(99,102,241,0.18),transparent_55%),radial-gradient(circle_at_90%_60%,rgba(34,211,238,0.12),transparent_55%)]" />
@@ -168,10 +205,10 @@ function ExampleCard({ title, subtitle }: { title: string; subtitle: string }) {
         <div className="text-sm text-muted-foreground">{subtitle}</div>
         <div className="mt-2 text-lg font-semibold tracking-tight">{title}</div>
         <div className="mt-4 inline-flex items-center gap-2 text-sm text-foreground/90">
-          Ver idea de estructura <ArrowRight className="h-4 w-4" />
+          Ver demo real <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 
@@ -218,13 +255,32 @@ export default function Index() {
   }, []);
 
   const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
   const [businessType, setBusinessType] = React.useState("");
   const [message, setMessage] = React.useState("");
 
+  const [leadStage, setLeadStage] = React.useState<"idle" | "sending" | "sent">("idle");
+  const [preparedWhatsAppUrl, setPreparedWhatsAppUrl] = React.useState<string>("");
+
   const webhookUrl = ((import.meta.env.VITE_LEADS_WEBHOOK_URL as string | undefined) ?? "").trim();
+
+  const persistLeadLocally = React.useCallback((lead: Record<string, unknown>) => {
+    // Demo real: guardamos el lead localmente para que se vea el "registro" aunque el webhook no esté configurado
+    // o falle por CORS.
+    try {
+      const key = "impulsorweb_leads";
+      const current = JSON.parse(localStorage.getItem(key) ?? "[]");
+      const next = Array.isArray(current) ? current : [];
+      next.unshift(lead);
+      localStorage.setItem(key, JSON.stringify(next.slice(0, 50)));
+    } catch {
+      // Optional: localStorage puede fallar en modo privado o por políticas del navegador.
+    }
+  }, []);
 
   const sendLead = React.useCallback(
     (payload: Record<string, unknown>) => {
+      persistLeadLocally(payload);
       if (!webhookUrl) return;
 
       try {
@@ -239,45 +295,56 @@ export default function Index() {
 
       void fetch(webhookUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-        mode: "cors",
+        // Para compatibilidad (GAS/PHP) evitamos preflight/CORS usando no-cors y sin headers custom.
+        // El webhook puede leer el body como texto y parsear JSON.
+        mode: "no-cors",
         keepalive: true,
       }).catch(() => {
-        // Silent: we still open WhatsApp even if the webhook fails (CORS, network, etc.).
+        // Silent: la demo debe seguir (el visitante igual puede continuar por WhatsApp).
       });
     },
-    [webhookUrl],
+    [persistLeadLocally, webhookUrl],
   );
 
-  const submitToWhatsApp = React.useCallback((e: React.FormEvent) => {
+  const submitLead = React.useCallback((e: React.FormEvent) => {
     e.preventDefault();
-    const fullMessage = [
-      DEFAULT_WA_MESSAGE,
-      "",
-      name.trim() ? `Nombre: ${name.trim()}` : null,
-      businessType.trim() ? `Tipo de negocio: ${businessType.trim()}` : null,
-      message.trim() ? `Mensaje: ${message.trim()}` : null,
-    ]
-      .filter(Boolean)
-      .join("\n");
+    if (leadStage !== "idle") return;
+    setLeadStage("sending");
 
-    // Open WhatsApp immediately (popup blockers dislike async).
-    window.open(buildWhatsAppUrl(fullMessage), "_blank", "noopener,noreferrer");
+    const leadId = (crypto?.randomUUID?.() ?? `lead_${Math.random().toString(16).slice(2)}`).slice(0, 40);
+    const fecha = new Date().toISOString();
+
+    const waMessage = buildFormWhatsAppMessage({
+      name,
+      businessType,
+      email,
+      message,
+    });
+    setPreparedWhatsAppUrl(buildWhatsAppUrl(waMessage));
 
     sendLead({
-      name: name.trim(),
-      businessType: businessType.trim(),
-      message: message.trim(),
+      id: leadId,
+      nombre: name.trim(),
+      email: email.trim(),
+      negocio: businessType.trim(),
+      mensaje: message.trim(),
+      fecha,
       source: "landing",
-      ts: new Date().toISOString(),
       path: window.location.pathname,
       referrer: document.referrer || null,
       userAgent: navigator.userAgent,
     });
 
+    setLeadStage("sent");
+    toast.success("Gracias. Tu consulta quedó registrada. Continuá por WhatsApp para terminar de enviarla.");
+  }, [businessType, email, leadStage, message, name, sendLead]);
+
+  const openPreparedWhatsApp = React.useCallback(() => {
+    if (!preparedWhatsAppUrl) return;
+    window.open(preparedWhatsAppUrl, "_blank", "noopener,noreferrer");
     toast.success("Listo: se abrió WhatsApp con el mensaje preparado.");
-  }, [businessType, message, name, sendLead]);
+  }, [preparedWhatsAppUrl]);
 
   const floatingUrl = buildWhatsAppUrl(DEFAULT_WA_MESSAGE);
 
@@ -302,6 +369,9 @@ export default function Index() {
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#como-funciona">
               Cómo funciona
+            </a>
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#automatizacion">
+              Automatización
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#ejemplos">
               Ejemplos
@@ -535,6 +605,75 @@ export default function Index() {
           </div>
         </section>
 
+        <section id="automatizacion" className="container py-16 sm:py-20">
+          <SectionHeader
+            eyebrow="Demostración"
+            title="Así funciona una captación moderna (en vivo)."
+            description="Este sitio muestra el flujo completo: formulario → lead registrado → WhatsApp listo para enviar."
+          />
+
+          <div className="mt-10 grid gap-4 lg:grid-cols-12">
+            <div className="lg:col-span-8">
+              <div className="grid gap-4 sm:grid-cols-2">
+                {[
+                  {
+                    icon: <Globe className="h-5 w-5" />,
+                    title: "1) Visitante entra a la web",
+                    description: "Llega desde redes/Google y ve CTAs claros (hero + botón flotante).",
+                  },
+                  {
+                    icon: <Smartphone className="h-5 w-5" />,
+                    title: "2) Completa el formulario",
+                    description: "Nombre, email, tipo de negocio y mensaje. Sin fricción, mobile-first.",
+                  },
+                  {
+                    icon: <Zap className="h-5 w-5" />,
+                    title: "3) Lead se registra automáticamente",
+                    description: "Se envía por fetch() a un webhook (Google Apps Script o PHP) con fecha incluida.",
+                  },
+                  {
+                    icon: <MessageCircle className="h-5 w-5" />,
+                    title: "4) Se abre WhatsApp con mensaje listo",
+                    description: "Confirmación visual + botón grande para continuar con texto prellenado.",
+                  },
+                ].map((step) => (
+                  <FeatureCard key={step.title} icon={step.icon} title={step.title} description={step.description} />
+                ))}
+              </div>
+            </div>
+
+            <div className="lg:col-span-4 space-y-4">
+              <div data-reveal className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card">
+                <div className="text-lg font-semibold tracking-tight">Estado del webhook</div>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {webhookUrl
+                    ? "Webhook configurado: los leads se envían automáticamente al endpoint."
+                    : "Webhook no configurado: el flujo funciona igual, pero debes setear VITE_LEADS_WEBHOOK_URL para guardar en Sheets/PHP."}
+                </p>
+                <div className="mt-4 rounded-xl border border-border/60 bg-background/25 px-3 py-2 text-xs text-muted-foreground">
+                  Tip: agrega <span className="text-foreground/90">VITE_LEADS_WEBHOOK_URL</span> y{" "}
+                  <span className="text-foreground/90">VITE_WA_PHONE</span> en tu entorno para adaptar la demo a tu negocio.
+                </div>
+              </div>
+
+              <div data-reveal className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card">
+                <div className="text-lg font-semibold tracking-tight">¿Para qué sirve?</div>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Este mismo flujo se puede aplicar a reservas, presupuestos, turnos, onboarding o soporte: captás el lead,
+                  lo registrás y lo llevás a conversación con 1 click.
+                </p>
+                <div className="mt-4">
+                  <Button asChild variant="hero" className="w-full justify-center">
+                    <a href="#diagnostico">
+                      Quiero esta automatización <ArrowRight />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="ejemplos" className="container py-16 sm:py-20">
           <SectionHeader
             eyebrow="Ejemplos"
@@ -542,10 +681,10 @@ export default function Index() {
             description="Ideas típicas para profesionales y negocios locales. Adaptable a tu rubro."
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <ExampleCard title="Web para entrenador personal" subtitle="Plan, pricing y turnos" />
-            <ExampleCard title="Web para psicólogo" subtitle="Confianza, agenda y contacto" />
-            <ExampleCard title="Web para gimnasio" subtitle="Servicios, promos y WhatsApp" />
-            <ExampleCard title="Web para nutricionista" subtitle="Programas, testimonios y reservas" />
+            <ExampleCard title="Web para entrenador personal" subtitle="Plan, pricing y turnos" href="/demos/personal-trainer.html" />
+            <ExampleCard title="Web para psicólogo" subtitle="Confianza, agenda y contacto" href="/demos/psicologo.html" />
+            <ExampleCard title="Web para gimnasio" subtitle="Servicios, promos y WhatsApp" href="/demos/gimnasio.html" />
+            <ExampleCard title="Web para nutricionista" subtitle="Programas, testimonios y reservas" href="/demos/nutricionista.html" />
           </div>
         </section>
 
@@ -679,18 +818,55 @@ export default function Index() {
           <SectionHeader
             eyebrow="Contacto"
             title="Solicita tu diagnóstico gratuito"
-            description="Completa el formulario y abrimos WhatsApp con un mensaje listo para enviar."
+            description="Completa el formulario: registramos tu lead automáticamente y luego continúas por WhatsApp."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-12">
             <form
-              onSubmit={submitToWhatsApp}
+              onSubmit={submitLead}
               className="card-neon glow-soft lg:col-span-7 rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
             >
+              {leadStage === "sent" ? (
+                <div className="mb-5 rounded-2xl border border-border/70 bg-background/30 p-4">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 text-[hsl(var(--neon-cyan))]" />
+                    <div>
+                      <div className="font-semibold tracking-tight">
+                        Gracias por tu mensaje. En breve me pondré en contacto contigo.
+                      </div>
+                      <div className="mt-1 text-sm text-muted-foreground">
+                        Si querés acelerar, continuá por WhatsApp con el mensaje ya prellenado.
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                    <Button
+                      type="button"
+                      variant="whatsapp"
+                      size="lg"
+                      className="w-full justify-center"
+                      onClick={openPreparedWhatsApp}
+                    >
+                      Continuar por WhatsApp <MessageCircle />
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      size="lg"
+                      className="w-full justify-center"
+                      onClick={() => setLeadStage("idle")}
+                    >
+                      Editar formulario <ArrowRight />
+                    </Button>
+                  </div>
+                </div>
+              ) : null}
+
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="space-y-2">
                   <span className="text-sm font-medium text-foreground/90">Nombre</span>
                   <input
+                    name="nombre"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Tu nombre"
@@ -699,26 +875,46 @@ export default function Index() {
                       "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
                     )}
                     autoComplete="name"
+                    required
                   />
                 </label>
                 <label className="space-y-2">
-                  <span className="text-sm font-medium text-foreground/90">Tipo de negocio</span>
+                  <span className="text-sm font-medium text-foreground/90">Email</span>
                   <input
-                    value={businessType}
-                    onChange={(e) => setBusinessType(e.target.value)}
-                    placeholder="Ej: gimnasio, psicologia, nutricion..."
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="tu@email.com"
+                    type="email"
                     className={cn(
                       "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
                       "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
                     )}
-                    autoComplete="organization"
+                    autoComplete="email"
+                    required
                   />
                 </label>
               </div>
 
               <label className="mt-4 block space-y-2">
+                <span className="text-sm font-medium text-foreground/90">Tipo de negocio</span>
+                <input
+                  name="negocio"
+                  value={businessType}
+                  onChange={(e) => setBusinessType(e.target.value)}
+                  placeholder="Ej: gimnasio, psicología, nutrición..."
+                  className={cn(
+                    "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
+                    "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
+                  )}
+                  autoComplete="organization"
+                />
+              </label>
+
+              <label className="mt-4 block space-y-2">
                 <span className="text-sm font-medium text-foreground/90">Mensaje</span>
                 <textarea
+                  name="mensaje"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Contame qué necesitás (web, automatización, turnos, presupuestos...)"
@@ -731,13 +927,15 @@ export default function Index() {
               </label>
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <Button type="submit" variant="hero" size="lg" className="justify-center">
-                  Enviar por WhatsApp <MessageCircle />
+                <Button type="submit" variant="hero" size="lg" className="justify-center" disabled={leadStage !== "idle"}>
+                  {leadStage === "sending" ? "Enviando..." : "Enviar y registrar lead"} <MessageCircle />
                 </Button>
-                <div className="text-xs text-muted-foreground">Se abre una nueva pestaña con el mensaje listo.</div>
+                <div className="text-xs text-muted-foreground">
+                  Se registra el lead y luego continúas por WhatsApp con un mensaje listo.
+                </div>
               </div>
               <div className="mt-4 text-xs text-muted-foreground">
-                Al enviar, se abre WhatsApp con el mensaje listo para enviar.
+                Este formulario envía tus datos a un webhook (Google Apps Script o PHP) y guarda un registro local para la demo.
               </div>
             </form>
 
@@ -789,6 +987,9 @@ export default function Index() {
               <a className="transition-colors hover:text-foreground" href="#servicios">
                 Servicios
               </a>
+              <a className="transition-colors hover:text-foreground" href="#automatizacion">
+                Automatización
+              </a>
               <a className="transition-colors hover:text-foreground" href="#diagnostico">
                 Contacto
               </a>
@@ -812,7 +1013,7 @@ export default function Index() {
         className={cn(
           "fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full px-4 py-3 text-sm font-semibold",
           "bg-[hsl(142,70%,45%)] text-white shadow-[0_18px_50px_-18px_rgba(34,211,238,0.35)]",
-          "transition-transform duration-300 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+          "transition-transform duration-300 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring animate-wa-pulse",
         )}
         aria-label="Abrir WhatsApp con mensaje pre-escrito"
       >
