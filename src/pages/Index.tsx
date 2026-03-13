@@ -9,6 +9,20 @@ import {
   Smartphone,
   Sparkles,
   Zap,
+  Users,
+  Brain,
+  Dumbbell,
+  Heart,
+  Building2,
+  Stethoscope,
+  Calendar,
+  Clock,
+  Star,
+  Send,
+  Eye,
+  Target,
+  Award,
+  ChevronRight,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -191,12 +205,14 @@ function ExampleCard({ title, subtitle, href }: { title: string; subtitle: strin
   return (
     <a
       href={resolvedHref}
+      target="_blank"
+      rel="noopener noreferrer"
       data-reveal
       className={cn(
         "card-neon group relative block overflow-hidden rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card",
         "cursor-pointer transition-transform duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring",
       )}
-      aria-label={`Abrir demo: ${title}`}
+      aria-label={`Ver demo: ${title} (se abre en nueva pestaña)`}
     >
       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
         <div className="absolute -inset-20 bg-[radial-gradient(circle_at_20%_30%,rgba(99,102,241,0.18),transparent_55%),radial-gradient(circle_at_90%_60%,rgba(34,211,238,0.12),transparent_55%)]" />
@@ -205,7 +221,7 @@ function ExampleCard({ title, subtitle, href }: { title: string; subtitle: strin
         <div className="text-sm text-muted-foreground">{subtitle}</div>
         <div className="mt-2 text-lg font-semibold tracking-tight">{title}</div>
         <div className="mt-4 inline-flex items-center gap-2 text-sm text-foreground/90">
-          Ver demo real <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+          Ver demo real <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
         </div>
       </div>
     </a>
@@ -370,14 +386,14 @@ export default function Index() {
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#como-funciona">
               Cómo funciona
             </a>
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#automatizacion">
-              Automatización
-            </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#ejemplos">
               Ejemplos
             </a>
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#diagnostico">
-              Diagnóstico
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#para-quien">
+              Para quién
+            </a>
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#precios">
+              Precios
             </a>
             <Button asChild variant="whatsapp" size="sm">
               <a href={floatingUrl} target="_blank" rel="noreferrer">
@@ -403,30 +419,28 @@ export default function Index() {
             <div className="flex flex-wrap justify-center gap-2">
               <Badge className="border-border/80 bg-background/40 text-foreground/90">
                 <Sparkles className="mr-1 h-3.5 w-3.5 text-[hsl(var(--neon-cyan))]" />
-                Micro-agencia para negocios reales
+                Webs profesionales para profesionales
               </Badge>
               <Badge className="border-border/80 bg-background/40 text-foreground/90">
                 <Zap className="mr-1 h-3.5 w-3.5 text-[hsl(var(--neon-purple))]" />
-                Entrega express
+                Entrega en 72 horas
               </Badge>
             </div>
             <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-              Convierte tu presencia digital en una{" "}
-              <span className="text-gradient gradient-animate">máquina de conseguir clientes</span>.
+              Tu página web profesional <span className="text-gradient gradient-animate">en 72 horas</span>
             </h1>
             <p className="mt-5 text-pretty text-muted-foreground sm:text-lg">
-              Desarrollo webs modernas y automatizo procesos con inteligencia artificial para profesionales, gimnasios y
-              pequeños negocios.
+              Diseñada para que tus clientes te encuentren y te escriban directamente por WhatsApp.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-              <Button asChild variant="hero" size="lg" className="justify-center">
+              <Button asChild variant="hero" size="lg" className="justify-center glow-neon">
                 <a href="#diagnostico">
-                  Solicitar diagnóstico gratuito <ArrowRight />
+                  Quiero mi página web <Send className="h-4 w-4" />
                 </a>
               </Button>
-              <Button asChild variant="whatsapp" size="lg" className="justify-center">
-                <a href={floatingUrl} target="_blank" rel="noreferrer">
-                  Hablar por WhatsApp <MessageCircle />
+              <Button asChild variant="outline" size="lg" className="justify-center border-border/60 hover:bg-background/40">
+                <a href="#ejemplos">
+                  Ver cómo sería tu página <Eye className="h-4 w-4" />
                 </a>
               </Button>
             </div>
@@ -437,19 +451,19 @@ export default function Index() {
             <div className="mt-10 grid gap-3 sm:grid-cols-3">
               {[
                 {
-                  icon: <Rocket className="h-5 w-5" />,
-                  t: "Entrega 3 a 5 días",
-                  d: "Web express lista para vender.",
+                  icon: <Clock className="h-5 w-5" />,
+                  t: "Entrega en 72 horas",
+                  d: "Web lista rápido para empezar a recibir clientes.",
                 },
                 {
                   icon: <MessageCircle className="h-5 w-5" />,
                   t: "WhatsApp integrado",
-                  d: "Menos fricción, más consultas.",
+                  d: "Tus clientes te contactan sin fricción.",
                 },
                 {
-                  icon: <Bot className="h-5 w-5" />,
-                  t: "Automatización con IA",
-                  d: "Ahorra tiempo en lo repetitivo.",
+                  icon: <Target className="h-5 w-5" />,
+                  t: "Enfocado en conversión",
+                  d: "Diseño que genera clientes reales.",
                 },
               ].map((item) => (
                 <div
@@ -571,29 +585,35 @@ export default function Index() {
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
             {[
               {
+                icon: <Users className="h-6 w-6" />,
                 n: "1",
-                t: "Cuéntame tu negocio",
-                d: "Objetivo, rubro y qué te preguntan por WhatsApp hoy.",
+                t: "Nos cuentas sobre tu negocio",
+                d: "Objetivo, rubro y qué servicios ofrecés. Sin complicación.",
               },
               {
+                icon: <Brain className="h-6 w-6" />,
                 n: "2",
-                t: "Diseño tu solución digital",
-                d: "Web moderna + automatizaciones simples para ahorrar tiempo.",
+                t: "Diseñamos tu página profesional",
+                d: "Web moderna, optimizada para móviles y enfocada en convertir.",
               },
               {
+                icon: <MessageCircle className="h-6 w-6" />,
                 n: "3",
-                t: "Empiezas a atraer clientes online",
-                d: "CTA claros, experiencia móvil perfecta y seguimiento por WhatsApp.",
+                t: "Empiezas a recibir consultas",
+                d: "Con WhatsApp integrado, tus clientes te escriben directamente.",
               },
             ].map((step) => (
               <div
                 key={step.n}
                 data-reveal
-                className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card transition-transform duration-300 hover:-translate-y-1"
+                className="card-neon group relative rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card transition-transform duration-300 hover:-translate-y-2"
               >
-                <div className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-primary gradient-animate text-[hsl(var(--primary-foreground))] font-semibold shadow-glow">
-                    {step.n}
+                <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="absolute -inset-24 bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,0.16),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(168,85,247,0.14),transparent_55%)]" />
+                </div>
+                <div className="relative flex flex-col items-start gap-4">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-primary gradient-animate text-[hsl(var(--primary-foreground))] font-semibold shadow-glow">
+                    {step.icon}
                   </div>
                   <div>
                     <div className="text-lg font-semibold tracking-tight">{step.t}</div>
@@ -677,14 +697,97 @@ export default function Index() {
         <section id="ejemplos" className="container py-16 sm:py-20">
           <SectionHeader
             eyebrow="Ejemplos"
-            title="Ejemplos de proyectos posibles."
-            description="Ideas típicas para profesionales y negocios locales. Adaptable a tu rubro."
+            title="Ejemplos de proyectos reales."
+            description="Cada web está diseñada para tu tipo de negocio. Hacé click para ver la demo completa."
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <ExampleCard title="Web para entrenador personal" subtitle="Plan, pricing y turnos" href="/demos/personal-trainer.html" />
-            <ExampleCard title="Web para psicólogo" subtitle="Confianza, agenda y contacto" href="/demos/psicologo.html" />
-            <ExampleCard title="Web para gimnasio" subtitle="Servicios, promos y WhatsApp" href="/demos/gimnasio.html" />
-            <ExampleCard title="Web para nutricionista" subtitle="Programas, testimonios y reservas" href="/demos/nutricionista.html" />
+            <ExampleCard title="Web para Entrenador Personal" subtitle="Plan, pricing y turnos" href="/demos/personal-trainer.html" />
+            <ExampleCard title="Web para Psicólogo" subtitle="Confianza, agenda y contacto" href="/demos/psicologo.html" />
+            <ExampleCard title="Web para Gimnasio" subtitle="Servicios, promos y WhatsApp" href="/demos/gimnasio.html" />
+            <ExampleCard title="Web para Nutricionista" subtitle="Programas, testimonios y reservas" href="/demos/nutricionista.html" />
+          </div>
+        </section>
+
+        <section id="para-quien" className="container py-16 sm:py-20">
+          <SectionHeader
+            eyebrow="¿Para quién?"
+            title="Ideal para profesionales que quieren más clientes"
+            description="Diseñado específicamente para independientes y negocios locales que necesitan presencia profesional online."
+          />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {[
+              { icon: <Dumbbell className="h-8 w-8" />, title: "Entrenadores Personales", desc: "Planes, precios y turnos" },
+              { icon: <Brain className="h-8 w-8" />, title: "Psicólogos", desc: "Confianza y agenda" },
+              { icon: <Heart className="h-8 w-8" />, title: "Nutricionistas", desc: "Programas y resultados" },
+              { icon: <Building2 className="h-8 w-8" />, title: "Gimnasios", desc: "Servicios y promos" },
+              { icon: <Stethoscope className="h-8 w-8" />, title: "Otros Profesionales", desc: "Médicos, therapists" },
+            ].map((item) => (
+              <div
+                key={item.title}
+                data-reveal
+                className="card-neon group relative rounded-2xl border border-border/70 bg-gradient-card p-5 text-center shadow-card transition-transform duration-300 hover:-translate-y-1"
+              >
+                <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="absolute -inset-24 bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,0.16),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(168,85,247,0.14),transparent_55%)]" />
+                </div>
+                <div className="relative flex flex-col items-center gap-3">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-border/60 bg-background/40 text-[hsl(var(--neon-cyan))]">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <div className="font-semibold tracking-tight">{item.title}</div>
+                    <p className="mt-1 text-xs text-muted-foreground">{item.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="precios" className="container py-16 sm:py-20">
+          <SectionHeader
+            eyebrow="Inversión"
+            title="Planes simples"
+            description="Sin sorpresas. Todo lo que necesitás para tener tu web profesional y empezar a recibir clientes."
+          />
+          <div className="mt-10 flex justify-center">
+            <div
+              data-reveal
+              className="card-neon group relative max-w-md rounded-2xl border border-border/70 bg-gradient-card p-8 text-center shadow-card transition-transform duration-300 hover:-translate-y-2"
+            >
+              <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <div className="absolute -inset-24 bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,0.2),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(168,85,247,0.18),transparent_55%)]" />
+              </div>
+              <div className="relative">
+                <div className="text-lg font-semibold tracking-tight text-muted-foreground">Landing Profesional</div>
+                <div className="mt-2 flex items-baseline justify-center gap-1">
+                  <span className="text-4xl font-bold tracking-tight text-gradient gradient-animate">$180</span>
+                  <span className="text-muted-foreground">USD</span>
+                </div>
+                <div className="mt-6 space-y-3 text-left">
+                  {[
+                    "Diseño moderno y profesional",
+                    "Optimización completa para móviles",
+                    "Botón de WhatsApp integrado",
+                    "Formulario de contacto",
+                    "Publicación online incluída",
+                    "Entrega en 72 horas",
+                  ].map((item) => (
+                    <div key={item} className="flex items-start gap-2">
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 text-[hsl(var(--neon-cyan))]" />
+                      <span className="text-sm text-muted-foreground">{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-8">
+                  <Button asChild variant="hero" size="lg" className="w-full justify-center glow-neon">
+                    <a href="#diagnostico">
+                      Solicitar mi página web <Send className="h-4 w-4" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -814,11 +917,41 @@ export default function Index() {
           </div>
         </section>
 
+        <section id="cta-final" className="container py-16 sm:py-20">
+          <div className="mx-auto max-w-3xl text-center">
+            <div data-reveal className="card-neon group relative rounded-2xl border border-border/70 bg-gradient-card p-8 text-center shadow-card">
+              <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <div className="absolute -inset-24 bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,0.2),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(168,85,247,0.18),transparent_55%)]" />
+              </div>
+              <div className="relative">
+                <h2 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
+                  Empieza hoy a tener presencia profesional online
+                </h2>
+                <p className="mt-3 text-pretty text-muted-foreground">
+                  Tu página web lista en pocos días y preparada para recibir clientes.
+                </p>
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
+                  <Button asChild variant="whatsapp" size="lg" className="justify-center">
+                    <a href={floatingUrl} target="_blank" rel="noreferrer">
+                      Hablar por WhatsApp <MessageCircle />
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="justify-center border-border/60 hover:bg-background/40">
+                    <a href="#precios">
+                      Ver precios <ChevronRight className="h-4 w-4" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="diagnostico" className="container py-16 sm:py-20">
           <SectionHeader
             eyebrow="Contacto"
-            title="Solicita tu diagnóstico gratuito"
-            description="Completa el formulario: registramos tu lead automáticamente y luego continúas por WhatsApp."
+            title="¿Listo para empezar?"
+            description="Escríbenos y te respondemos rápidamente. Tu web profesional está a un mensaje de distancia."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-12">
