@@ -3,9 +3,16 @@
 <html lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Dra. Laura Fernández | Psicología Clínica</title>
+<title>Demo | Dra. Laura Fernández - Psicología Clínica</title>
+<meta name="description" content="Demo de landing page para psicóloga: agenda, especialidades y contacto. Ejemplo para clientes de Impulsor Web."/>
+<meta name="robots" content="noindex,follow"/>
+<meta name="theme-color" content="#0b1220"/>
+<link rel="canonical" href="https://diegopodlecki.github.io/impulsor/demos/psicologo.html"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Source+Sans+3:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
@@ -14,12 +21,13 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#195de6",
-                        "background-light": "#f6f6f8",
-                        "background-dark": "#111621",
+                        "primary": "#0f766e",
+                        "background-light": "#faf7f2",
+                        "background-dark": "#0b1220",
                     },
                     fontFamily: {
-                        "display": ["Inter", "sans-serif"]
+                        "heading": ["Playfair Display", "serif"],
+                        "body": ["Source Sans 3", "sans-serif"]
                     },
                     borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
                 },
@@ -27,14 +35,15 @@
         }
     </script>
 <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Source Sans 3', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
         .material-symbols-outlined { font-size: 24px; }
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
 <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
 <div class="layout-container flex h-full grow flex-col">
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 md:px-20 lg:px-40 py-4 bg-white dark:bg-background-dark sticky top-0 z-50">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 md:px-20 lg:px-40 py-4 bg-background-light/90 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
 <div class="flex items-center gap-3 text-primary">
 <span class="material-symbols-outlined text-3xl">psychology</span>
 <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Dra. Laura Fernández</h2>
@@ -52,7 +61,7 @@
 </div>
 </header>
 <main class="flex flex-col">
-<section class="px-6 md:px-20 lg:px-40 py-12 md:py-20 bg-white dark:bg-background-dark" id="inicio">
+<section class="px-6 md:px-20 lg:px-40 py-12 md:py-20 bg-background-light dark:bg-background-dark" id="inicio">
 <div class="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-center gap-12">
 <div class="flex flex-col gap-6 lg:w-1/2">
 <div class="flex flex-col gap-4">
@@ -76,7 +85,7 @@
 <div class="w-full lg:w-1/2">
 <div class="relative aspect-square md:aspect-video lg:aspect-square w-full rounded-2xl overflow-hidden shadow-2xl">
 <div class="absolute inset-0 bg-primary/10"></div>
-<img alt="Dra. Laura Fernández en su consultorio" class="w-full h-full object-cover" data-alt="Dra. Laura Fernández profesional sonriendo en consultorio acogedor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbZ5Yuz8CX9jnnGP6gF2TO7mG-7E3VoOBZ4uDvMJnatHkysFXLXMum3IKnni3X3GCRQodSKwnxmoHffY2MXX84s-_uNc2ENO4PyMw-4_yn0lW8o-PtnfgreuEL1KrTe8tRmNogajAa5Rjby_v8nwtQWQj4-EEHpZoARXg-TbxK_MmTdOh4M--muI1uIoNtHenbo9eAuPKRKYHKzfmMc2th0FjXW35Uau-0trLcMQ-fkBHTdXiMMYvirJgXyov02t8t5i4_s08MiOio"/>
+<img alt="Psicóloga atendiendo en consultorio" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"/>
 </div>
 </div>
 </div>
@@ -183,7 +192,7 @@
 <div class="lg:w-1/2 w-full">
 <div class="rounded-2xl overflow-hidden shadow-xl aspect-video relative">
 <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-<img alt="Ambiente de consultorio" class="w-full h-full object-cover" data-alt="Interior de un consultorio psicológico moderno y minimalista con luz suave" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV5sf7iFgtkc8gqyr2Hjak4CmMkNr_DVC6a66C7hCl3IZKc2b7kiPqQyyL9XYqSngLz4LKLdoizecHgpgt9BpNlHJN0DymR87IsYgl0tChPPohQhLPgd0MY0gMmnDnnoox9M6fohk_EPfZYh5mjqutvSN9Go9E8C5tpvAH58B78s4B5o4URaaiV_V9sOaCE6R0yEC38CJ83GrNUzSYbhCAZiZbQ-AKqYIhxgfUjk77xzeR7umhT4b51-xFZB9wGqfrjapus5r2jje4"/>
+<img alt="Ambiente de consultorio" class="w-full h-full object-cover" data-alt="Interior de un consultorio moderno con luz suave" src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"/>
 </div>
 </div>
 </div>
@@ -251,7 +260,7 @@
 </a>
 </div>
 <div class="w-full h-48 rounded-xl overflow-hidden grayscale">
-<img alt="Mapa ubicación" class="w-full h-full object-cover" data-location="Mexico City" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmI3yYpZqZhC5GTDxSlLWowNpqhTxOkW9FJfeEUmTNLnoSxNBvHsha5EZ5yhYtn72CKariOQhhd2Bs_5L10lZyOvD8rbAv2qtx31TpkI6nsEwHhHm3TqnVOXUHxLSvk-YYi6_vjUYmL2E1MdJCt46l8_qfOGS2EM0sWs3DIhsNhgC3oEbVIJLpK64k_SmUjGSBf-EAaUz2eXj474PFXlpexq4YE8CpaAoRRQmwqxStUnIdWpfc3whmLfHuxLIa2XTrX7gjDii0yrEF"/>
+<img alt="Mapa ilustrativo de ubicación" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?auto=format&amp;fit=crop&amp;w=1600&amp;q=75"/>
 </div>
 </div>
 <div class="lg:w-2/3 bg-white dark:bg-slate-900 p-8 md:p-12 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">

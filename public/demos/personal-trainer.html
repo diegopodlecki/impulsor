@@ -3,13 +3,18 @@
 <html lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Lucas Moreno | Personal Trainer Profesional</title>
+<title>Demo | Lucas Moreno - Personal Trainer</title>
+<meta name="description" content="Demo de landing page para personal trainer: servicios, testimonios, galería y contacto. Ejemplo para clientes de Impulsor Web."/>
+<meta name="robots" content="noindex,follow"/>
+<meta name="theme-color" content="#121212"/>
+<link rel="canonical" href="https://diegopodlecki.github.io/impulsor/demos/personal-trainer.html"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
 <!-- Tailwind CSS with Plugins -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Google Fonts: Bebas Neue for headings, Montserrat for body -->
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Montserrat:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Manrope:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
 <script>
     tailwind.config = {
       theme: {
@@ -20,8 +25,8 @@
             'brand-gray': '#1E1E1E',
           },
           fontFamily: {
-            heading: ['"Bebas Neue"', 'sans-serif'],
-            body: ['Montserrat', 'sans-serif'],
+            heading: ['Anton', 'sans-serif'],
+            body: ['Manrope', 'sans-serif'],
           }
         }
       }
@@ -29,11 +34,11 @@
   </script>
 <style data-purpose="custom-typography">
     h1, h2, h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      letter-spacing: 0.05em;
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 0.04em;
     }
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Manrope', sans-serif;
       background-color: #121212;
       color: #ffffff;
     }
@@ -44,14 +49,28 @@
   </style>
 <style data-purpose="ui-elements">
     .btn-primary {
-      @apply bg-brand-orange hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-none transition duration-300 uppercase tracking-widest inline-block;
+      background: #FF8C00;
+      color: #ffffff;
+      font-weight: 800;
+      padding: 1rem 2rem;
+      border-radius: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      display: inline-block;
+      transition: transform 200ms ease, background-color 200ms ease;
     }
+    .btn-primary:hover { background: #fb7c00; transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0px); }
     .section-padding {
-      @apply py-20 px-6 max-w-7xl mx-auto;
+      padding: 5rem 1.5rem;
+      max-width: 80rem;
+      margin: 0 auto;
     }
+    @media (min-width: 768px) { .section-padding { padding-top: 6rem; padding-bottom: 6rem; } }
     .card-hover {
-      @apply transition-transform duration-300 hover:-translate-y-2;
+      transition: transform 300ms ease;
     }
+    .card-hover:hover { transform: translateY(-0.5rem); }
   </style>
 </head>
 <body class="bg-brand-dark text-white">
@@ -73,7 +92,7 @@
 <section class="relative h-screen flex items-center overflow-hidden" data-purpose="hero-banner" id="hero">
 <!-- Background Image with Overlay -->
 <div class="absolute inset-0 z-0">
-<img alt="Fondo de Gimnasio" class="w-full h-full object-cover grayscale opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSflCdDOpDkEZth7GIDSwKvYi0ymh4wUVx6zF9s55wrj6y9wHRDpTM3K6yrkr_ocYlB76HVf-xjxtwXA-rPplCn01sXEsSt_Ui-t-nKl_c6O0SNTndzA89sTkaWpEJBaL-NnSYWiRU0F6Ixm4R2MnLZKaecRj5q_rT_dnKFysqiOQ3ljF9pV5zq9DsID1x5q-JMWNkowc1H_auXvDYwZscrlTP9jetAzP-vda_KtY9Rl9azTgHNX91OS3ndVkYm-0AKXcqNV4OBePO"/>
+<img alt="Fondo de gimnasio" class="w-full h-full object-cover grayscale opacity-40" src="https://images.unsplash.com/photo-1550345332-09e3ac987658?auto=format&amp;fit=crop&amp;w=1920&amp;q=80"/>
 <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/60 to-transparent"></div>
 </div>
 <div class="relative z-10 section-padding w-full">
@@ -98,7 +117,7 @@
 <div class="section-padding grid md:grid-cols-2 gap-12 items-center">
 <div class="relative group">
 <div class="absolute -top-4 -left-4 w-full h-full border-2 border-brand-orange z-0"></div>
-<img alt="Lucas Moreno Entrenador" class="relative z-10 w-full object-cover grayscale group-hover:grayscale-0 transition duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRa_3AyIa9C1oADtbEmOxvvl_pvGIg9ej94VZtwbyee2L9kb-uxrtMIqHI5tkwte3a-P-X9NRoowXo2R3EoLIT75NyyVqNjnttbxEMsdFJ7NidkSRSS6B1yw6VsQFSkeLkPNAv8gOHlvwOeAelqop6VvB8exPw0q6y4__dr7NeNJFBZ2XYk9Ywp0R-4mPZfHHyn6bG7xs08AOJpT0GJrNz2ietxjQIi46URawEW983dZBTR-7epBCTpj_un77l-niKcKrkK-edTpJa"/>
+<img alt="Entrenador personal" class="relative z-10 w-full object-cover grayscale group-hover:grayscale-0 transition duration-700" src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/>
 </div>
 <div>
 <h2 class="text-5xl mb-6 flex items-center">
@@ -189,7 +208,7 @@
 </div>
 <p class="italic text-gray-300 mb-6 font-light">"Entrenar con Lucas cambió toda mi mentalidad. He bajado 15kg y me siento más fuerte que nunca a mis 20s. Su atención al detalle no tiene igual."</p>
 <div class="flex items-center">
-<img alt="Usuario" class="w-12 h-12 rounded-full object-cover mr-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLXvcAaf69itJ3Rsz90pehx-MGmacJmmEofBuCSswEpa2TiB9GH_ZdJnvNyjXdizCocQ5SvI9jt2u51cww0nD4JktdSW5h37vpOY9vesvTPOgNQiQA8R6-CjKBVpYw64HRKTxXOmrJaWs9CiQ4D_yzBzTBVZfNqjc4jCRWb5Mav_q3WR55AnsJXH_QjS1W1coNDTw8f8hvRMjpkLJhGA2oComuiwARvucRnjbc9bAWG1pJ81KEK4YXGp8A25oN98fYAzggLItt6cYo"/>
+<img alt="Cliente" class="w-12 h-12 rounded-full object-cover mr-4" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&amp;fit=crop&amp;w=200&amp;q=80"/>
 <div>
 <p class="font-bold">Mark Stevenson</p>
 <p class="text-xs text-gray-500">Ejecutivo de Negocios</p>
@@ -203,7 +222,7 @@
 </div>
 <p class="italic text-gray-300 mb-6 font-light">"El programa de coaching online es increíble. Incluso con una agenda de viajes apretada, el plan que Lucas construyó me mantiene en marcha. Muy recomendable para profesionales ocupados."</p>
 <div class="flex items-center">
-<img alt="Usuario" class="w-12 h-12 rounded-full object-cover mr-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTLHB6_f75SzTJULV3YCPinsfWX_vdB_YfB7haLTrpZR42SUdxEJMJ62ifH31LkyKVXQpRKCVRdCjxpgbGrkYsN2sDxZ_4CKJaf-fAqR9rKEToyyEmbwREor5D8L9SeZ3x5WB2zvaIfBOtnVDcTzsVTiSDSs8qDuhfiI80VRAs7syBKLv_iwQ6-QzZbIDj7ac1TUWcEGcgzjMxBLCoLYXraNtK8_8bud__BhPXEIDKi9VORoPU4O0LchWQrU3C-n3TdVmXFRdkNiL-"/>
+<img alt="Cliente" class="w-12 h-12 rounded-full object-cover mr-4" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&amp;fit=crop&amp;w=200&amp;q=80"/>
 <div>
 <p class="font-bold">Sarah Chen</p>
 <p class="text-xs text-gray-500">Nómada Digital</p>
@@ -217,7 +236,7 @@
 </div>
 <p class="italic text-gray-300 mb-6 font-light">"Quería competir en mi primer evento de powerlifting y no sabía por dónde empezar. Lucas me guio en todo el proceso. ¡Logré récords personales en cada levantamiento!"</p>
 <div class="flex items-center">
-<img alt="Usuario" class="w-12 h-12 rounded-full object-cover mr-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDayadD8I0XfYakzJweR6nmba3Cp8wq1-A3r9LMKGiZqrGM2VtbOMYg_A3fOigtT_wQVkjo8s9lv8aDBhAka3rUaE27fomdiDEIvTg4Wnuxi4lEYFkFbPrY0D2m8x0hrBDRX215BaMjTpSg3RlT_IpUC8IZ1MCSbbwDs6OiWm5JKIvMzqo2L2SoBSv23R0m0rxUSthuKNo2IskIIi5a9uxcKTt_FKnUGohlq9h6raQ3iQqDYbJJkExeZ6Eh_hsIom8o0GUhj7E_Fdu"/>
+<img alt="Cliente" class="w-12 h-12 rounded-full object-cover mr-4" src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&amp;fit=crop&amp;w=200&amp;q=80"/>
 <div>
 <p class="font-bold">David Miller</p>
 <p class="text-xs text-gray-500">Powerlifter</p>
@@ -234,16 +253,16 @@
 <h2 class="text-5xl mb-12 text-center md:text-left">En el Gimnasio</h2>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
 <div class="aspect-square overflow-hidden bg-brand-gray">
-<img alt="Gimnasio" class="w-full h-full object-cover hover:scale-110 transition duration-500 grayscale hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUky8NKDXynKQ8RPguZNxGE5w6AmxZbDhBQ_ckPgEK5c2wTm_hDupuZnFfFSesB4mrwPR2Rkm52bLoMM_LOJ0Nn4ocrsgLMWqtpI4vE_pfUNZWYQk70GXk0aX5Jt_9TkWmeBHMsiYrDjgFZTrMUyXhPJe7GnWkeR-A-BKyirrx88NMcs1yd47wS7k_dQmVYQ9GuD18qTrNvqjicDT0Cn3qF3wcNuH5NwX-C1c62uybBSxoZxIbrvXVKlb6kd_J2Kwxsl41fl2OAKzX"/>
+<img alt="Gimnasio" class="w-full h-full object-cover hover:scale-110 transition duration-500 grayscale hover:grayscale-0" src="https://images.unsplash.com/photo-1534367610401-9f5ed68180aa?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/>
 </div>
 <div class="aspect-square overflow-hidden bg-brand-gray">
-<img alt="Entrenamiento" class="w-full h-full object-cover hover:scale-110 transition duration-500 grayscale hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2ZMeLZSCPj7VH5JeKzsZFU93RZNIwRt9xdtokl8MOufGyS3AqV7iHx2u6iMvdSea1Cliv6JpUOiSzy3Pt5kDkjtl1REMTnb-ueL2ny2lG6S4uEePKi-OjUul7djFtzMoSTh-VV76GpgsWJ5df8ed7I3FOrnyl4sSn1vkpfM9x7nkMa6fPb8SyzUyLb5-V70TnGUN14UHWAr6Ka6k1gtsK56MMderssIfxnLdALvL9HXGts2AjB3BwGMMKhAQr959-BsMyjysxEc_p"/>
+<img alt="Entrenamiento funcional" class="w-full h-full object-cover hover:scale-110 transition duration-500 grayscale hover:grayscale-0" src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/>
 </div>
 <div class="aspect-square overflow-hidden bg-brand-gray">
-<img alt="Sesión de entrenamiento" class="w-full h-full object-cover hover:scale-110 transition duration-500 grayscale hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVlGGGExNqQIHldS-Cuqj5MY6rGymVFTxUkwbTQRCvpVw89jMcBJ6ul8F-TJ7K59gRfSWLUC6cRlI3TaFFZPs-04g7VxE7wAeCYR8hoR_8XXanzbcDZFeNR0QW3Sjh50ZRsCUbr8SJWXLeC6RcMJUS5WFDWtsLsa-uA5QDrw1dg-Kuu2IKpNieIDGmeU050iSK67rCWZU2fzmconzNQb-Tghkni2wYCFi1K4xq76vetsibxanNPSTP_uJtILEsXHDaJ4vOx8eUk0li"/>
+<img alt="Sesión de entrenamiento" class="w-full h-full object-cover hover:scale-110 transition duration-500 grayscale hover:grayscale-0" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/>
 </div>
 <div class="aspect-square overflow-hidden bg-brand-gray">
-<img alt="Pesas" class="w-full h-full object-cover hover:scale-110 transition duration-500 grayscale hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTlq819a3ppFM6f0t1x3WskGoTplqmqCIA3mXiT8TO4mHyaJGbgBdGCvCH1jVJzqCnUz_4asySe2nhBprTQSNJYs6z9g0PFBwaJqfcHxP6zUf3j1tz-Y2g3RXjepmGy3WovDWgn1pZJ9nLFEkCaFhPm0Zw6qZ3HQkWQkfTNlftn-fxPuh24M8-uZSKcgKlSCeer0OUAcdMTQ6ZIxyCr834fqChCZe1jmMEVJXYVI7aasZ2MnxEuXsA_UUt7umd8goyZy9DtsgSoeHq"/>
+<img alt="Pesas" class="w-full h-full object-cover hover:scale-110 transition duration-500 grayscale hover:grayscale-0" src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/>
 </div>
 </div>
 </div>
