@@ -700,7 +700,7 @@ export default function Index() {
             title="Ejemplos de proyectos reales."
             description="Cada web está diseñada para tu tipo de negocio. Hacé click para ver la demo completa."
           />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <ExampleCard
               title="Web para Entrenador Personal"
               subtitle="Plan, pricing y turnos"
@@ -709,6 +709,12 @@ export default function Index() {
             <ExampleCard title="Web para Psicólogo" subtitle="Confianza, agenda y contacto" href="/demos/psicologo.html" />
             <ExampleCard title="Web para Gimnasio" subtitle="Servicios, promos y WhatsApp" href="/demos/gimnasio.html" />
             <ExampleCard title="Web para Nutricionista" subtitle="Programas, testimonios y reservas" href="/demos/nutricionista.html" />
+            <ExampleCard title="Web para Casa de Comidas" subtitle="Menú, reservas y delivery" href="/demos/casas-de-comidas.html" />
+            <ExampleCard
+              title="Web para Estética Corporal"
+              subtitle="Tratamientos, turnos y promos"
+              href="/demos/estetica-corporal.html"
+            />
           </div>
         </section>
 

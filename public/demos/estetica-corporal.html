@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo | Estética Corporal - Turnos y Tratamientos</title>
+    <meta
+      name="description"
+      content="Demo de landing page para estética corporal femenina: tratamientos, resultados, packs y turnos por WhatsApp. Ejemplo para clientes de Impulsor Web."
+    />
+    <meta name="robots" content="noindex,follow" />
+    <meta name="theme-color" content="#150d12" />
+    <link rel="canonical" href="https://diegopodlecki.github.io/impulsor/demos/estetica-corporal.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              plum: "#150d12",
+              blush: "#fdf2f8",
+              rose: "#db2777",
+              roseDark: "#9d174d",
+              gold: "#f59e0b",
+              stone: "#0f0f12",
+            },
+            fontFamily: {
+              heading: ['"Cormorant Garamond"', "serif"],
+              body: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 20px 60px -25px rgba(219,39,119,0.35)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Cormorant Garamond", serif;
+      }
+    </style>
+  </head>
+
+  <body class="bg-plum text-white">
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-plum/80 backdrop-blur-md">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <div class="flex items-center gap-3">
+          <div class="grid h-10 w-10 place-items-center rounded-xl bg-rose text-white shadow-soft">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M12 21s7-4.6 7-11a7 7 0 1 0-14 0c0 6.4 7 11 7 11Z"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M9.5 11.5c1.1 1.1 3.9 1.1 5 0"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <div class="leading-tight">
+            <div class="text-sm font-semibold tracking-wide">ESTÉTICA CORPORAL</div>
+            <div class="text-xs text-white/70">Tratamientos • packs • turnos</div>
+          </div>
+        </div>
+
+        <nav class="hidden items-center gap-7 text-sm text-white/80 md:flex">
+          <a class="hover:text-white" href="#tratamientos">Tratamientos</a>
+          <a class="hover:text-white" href="#packs">Packs</a>
+          <a class="hover:text-white" href="#turnos">Turnos</a>
+        </nav>
+
+        <a
+          class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm font-bold text-plum transition hover:brightness-105"
+          href="https://wa.me/541166448389?text=Hola%2C%20quiero%20reservar%20un%20turno%20de%20est%C3%A9tica"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Reservar
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h12m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="relative overflow-hidden">
+        <div class="absolute inset-0">
+          <img
+            class="h-full w-full object-cover opacity-30"
+            alt="Estética y bienestar"
+            src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=2400&q=80"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-plum via-plum/85 to-transparent"></div>
+        </div>
+
+        <div class="relative mx-auto max-w-6xl px-6 py-16 md:py-24">
+          <div class="max-w-2xl">
+            <p class="text-sm font-semibold tracking-[0.3em] text-gold">NUEVO</p>
+            <h1 class="mt-4 text-4xl leading-[1.05] md:text-6xl">
+              Resultados visibles, un proceso <span class="text-rose">cuidado</span> y profesional
+            </h1>
+            <p class="mt-5 text-lg text-white/75">
+              Demo de estética corporal femenina: tratamientos, packs y turnos. El diseño se adapta al estilo de tu
+              centro y a tu ciudad.
+            </p>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                class="inline-flex items-center justify-center rounded-xl bg-rose px-6 py-4 font-bold text-white shadow-soft transition hover:bg-roseDark"
+                href="#tratamientos"
+              >
+                Ver tratamientos
+              </a>
+              <a
+                class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-4 font-semibold text-white transition hover:bg-white/10"
+                href="#turnos"
+              >
+                Consultar por WhatsApp
+              </a>
+            </div>
+
+            <div class="mt-10 grid grid-cols-3 gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 text-center">
+              <div>
+                <div class="text-xl font-extrabold text-white">45</div>
+                <div class="text-xs tracking-wide text-white/70">min sesión</div>
+              </div>
+              <div>
+                <div class="text-xl font-extrabold text-white">+120</div>
+                <div class="text-xs tracking-wide text-white/70">clientes</div>
+              </div>
+              <div>
+                <div class="text-xl font-extrabold text-white">4.9</div>
+                <div class="text-xs tracking-wide text-white/70">reseñas</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tratamientos" class="mx-auto max-w-6xl px-6 py-14">
+        <div class="max-w-2xl">
+          <h2 class="text-3xl md:text-4xl">Tratamientos</h2>
+          <p class="mt-3 text-white/70">
+            Mostrá lo que hacés con claridad: beneficios, duración, y para quién es. Esto convierte consultas en turnos.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 md:grid-cols-3">
+          <article class="rounded-2xl border border-white/10 bg-stone p-6">
+            <h3 class="text-2xl">Drenaje linfático</h3>
+            <p class="mt-2 text-sm text-white/70">Ideal para piernas livianas, recuperación y bienestar.</p>
+            <ul class="mt-4 space-y-2 text-sm text-white/80">
+              <li class="flex gap-2">
+                <span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose"></span>
+                Duración: 45 min
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose"></span>
+                Frecuencia sugerida: 1–2/sem
+              </li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-stone p-6">
+            <h3 class="text-2xl">Masajes reductores</h3>
+            <p class="mt-2 text-sm text-white/70">Enfoque por zonas. Seguimiento y recomendaciones.</p>
+            <ul class="mt-4 space-y-2 text-sm text-white/80">
+              <li class="flex gap-2">
+                <span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose"></span>
+                Planes por sesión o pack
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose"></span>
+                Resultados acumulativos
+              </li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-stone p-6">
+            <h3 class="text-2xl">Radiofrecuencia</h3>
+            <p class="mt-2 text-sm text-white/70">Tratamiento firmeza y textura con enfoque estético.</p>
+            <ul class="mt-4 space-y-2 text-sm text-white/80">
+              <li class="flex gap-2">
+                <span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose"></span>
+                Consultá contraindicaciones
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose"></span>
+                Duración: 40–60 min
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="packs" class="border-t border-white/10 bg-stone">
+        <div class="mx-auto max-w-6xl px-6 py-14">
+          <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+            <div class="max-w-2xl">
+              <h2 class="text-3xl md:text-4xl">Packs que venden</h2>
+              <p class="mt-3 text-white/70">Tres opciones simples para ayudar a decidir rápido.</p>
+            </div>
+            <div class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80">
+              Promo de temporada
+            </div>
+          </div>
+
+          <div class="mt-10 grid gap-4 lg:grid-cols-3">
+            <article class="rounded-2xl border border-white/10 bg-plum p-7">
+              <div class="text-sm font-semibold text-white/70">Inicio</div>
+              <div class="mt-1 text-3xl">Pack Glow</div>
+              <div class="mt-4 text-4xl font-extrabold">$24.900</div>
+              <div class="mt-1 text-sm text-white/70">4 sesiones</div>
+              <ul class="mt-6 space-y-2 text-sm text-white/80">
+                <li>• Evaluación + plan</li>
+                <li>• Drenaje + masaje</li>
+                <li>• Recomendaciones post</li>
+              </ul>
+              <a
+                class="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-white px-6 py-3 font-bold text-plum transition hover:brightness-105"
+                href="https://wa.me/541166448389?text=Hola%2C%20quiero%20el%20Pack%20Glow"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Consultar
+              </a>
+            </article>
+
+            <article class="rounded-2xl border border-rose/40 bg-plum p-7 shadow-soft">
+              <div class="inline-flex w-fit rounded-full bg-rose px-3 py-1 text-xs font-bold">Más elegido</div>
+              <div class="mt-3 text-3xl">Pack Shape</div>
+              <div class="mt-4 text-4xl font-extrabold">$39.900</div>
+              <div class="mt-1 text-sm text-white/70">8 sesiones</div>
+              <ul class="mt-6 space-y-2 text-sm text-white/80">
+                <li>• Reductores por zona</li>
+                <li>• Drenaje incluido</li>
+                <li>• Seguimiento semanal</li>
+              </ul>
+              <a
+                class="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-rose px-6 py-3 font-bold text-white transition hover:bg-roseDark"
+                href="https://wa.me/541166448389?text=Hola%2C%20quiero%20el%20Pack%20Shape"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Reservar
+              </a>
+            </article>
+
+            <article class="rounded-2xl border border-white/10 bg-plum p-7">
+              <div class="text-sm font-semibold text-white/70">Full</div>
+              <div class="mt-1 text-3xl">Pack Premium</div>
+              <div class="mt-4 text-4xl font-extrabold">$59.900</div>
+              <div class="mt-1 text-sm text-white/70">12 sesiones</div>
+              <ul class="mt-6 space-y-2 text-sm text-white/80">
+                <li>• Mix de tratamientos</li>
+                <li>• Horarios preferentes</li>
+                <li>• Re-evaluación mensual</li>
+              </ul>
+              <a
+                class="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-white/10 px-6 py-3 font-bold text-white transition hover:bg-white/15"
+                href="https://wa.me/541166448389?text=Hola%2C%20quiero%20el%20Pack%20Premium"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Consultar
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="turnos" class="mx-auto max-w-6xl px-6 py-14">
+        <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <h2 class="text-3xl md:text-4xl">Turnos con respuesta rápida</h2>
+            <p class="mt-3 text-white/70">
+              Un CTA fijo y un formulario corto. Podés sumar automatizaciones: recordatorio, agenda y seguimiento.
+            </p>
+            <div class="mt-8 rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-white/80">
+              <div class="font-semibold text-white">Ubicación</div>
+              <div class="mt-2">Atención presencial + online • CABA / GBA</div>
+              <div class="mt-4 font-semibold text-white">Horario</div>
+              <div class="mt-2">Lun a Vie: 9:00 a 19:00 • Sáb: 10:00 a 14:00</div>
+            </div>
+          </div>
+
+          <div class="rounded-3xl border border-white/10 bg-stone p-6 md:p-8">
+            <form class="grid gap-4">
+              <label class="grid gap-2 text-sm">
+                <span class="text-white/80">Nombre</span>
+                <input
+                  class="rounded-xl border border-white/10 bg-plum/50 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-rose/40"
+                  placeholder="Ej. Valentina"
+                  type="text"
+                />
+              </label>
+              <label class="grid gap-2 text-sm">
+                <span class="text-white/80">Tratamiento</span>
+                <select
+                  class="rounded-xl border border-white/10 bg-plum/50 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-rose/40"
+                >
+                  <option>Drenaje linfático</option>
+                  <option>Reductores</option>
+                  <option>Radiofrecuencia</option>
+                  <option>Quiero asesoramiento</option>
+                </select>
+              </label>
+              <button
+                class="mt-2 inline-flex items-center justify-center rounded-xl bg-rose px-6 py-4 font-bold text-white shadow-soft transition hover:bg-roseDark"
+                type="button"
+                onclick="window.open('https://wa.me/541166448389?text=Hola%2C%20quiero%20reservar%20un%20turno%20de%20est%C3%A9tica', '_blank', 'noopener,noreferrer')"
+              >
+                Enviar por WhatsApp
+              </button>
+              <p class="text-xs text-white/55">Demo: los textos y el número se reemplazan por los tuyos.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-plum">
+      <div
+        class="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-10 text-sm text-white/70 md:flex-row md:items-center md:justify-between"
+      >
+        <div>© 2026 Demo • Estética Corporal</div>
+        <a class="hover:text-white" href="/">Volver a Impulsor Web</a>
+      </div>
+    </footer>
+
+    <a
+      href="https://wa.me/541166448389?text=Hola%2C%20quiero%20reservar%20un%20turno%20de%20est%C3%A9tica"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-rose px-5 py-3 text-sm font-bold text-white shadow-soft transition hover:scale-[1.02]"
+      aria-label="Abrir WhatsApp para reservar turno (se abre en nueva pestaña)"
+    >
+      <span class="h-2.5 w-2.5 rounded-full bg-white"></span>
+      WhatsApp
+    </a>
+  </body>
+</html>
