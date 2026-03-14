@@ -701,10 +701,10 @@ export default function Index() {
             description="Cada web está diseñada para tu tipo de negocio. Hacé click para ver la demo completa."
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <ExampleCard title="Web para Entrenador Personal" subtitle="Plan, pricing y turnos" href="/demos/personal-trainer.html" />
-            <ExampleCard title="Web para Psicólogo" subtitle="Confianza, agenda y contacto" href="/demos/psicologo.html" />
+            <ExampleCard title="Web para Entrenador Personal" subtitle="Plan, pricing y turnos" href="/demos/code1.html" />
+            <ExampleCard title="Web para Psicólogo" subtitle="Confianza, agenda y contacto" href="/demos/code2.html" />
             <ExampleCard title="Web para Gimnasio" subtitle="Servicios, promos y WhatsApp" href="/demos/gimnasio.html" />
-            <ExampleCard title="Web para Nutricionista" subtitle="Programas, testimonios y reservas" href="/demos/nutricionista.html" />
+            <ExampleCard title="Web para Nutricionista" subtitle="Programas, testimonios y reservas" href="/demos/code.html" />
           </div>
         </section>
 
