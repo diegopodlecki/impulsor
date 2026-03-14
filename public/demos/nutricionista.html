@@ -4,230 +4,311 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        "nature": "#2d6a4f",
-        "nature-light": "#40916c",
-        "leaf": "#52b788",
-        "cream": "#faf9f6",
-        "sage": "#d8f3dc",
-      },
-      fontFamily: {
-        "heading": ["Outfit"],
-        "body": ["Plus Jakarta Sans", "sans-serif"],
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#8fb996",
+              "background-light": "#f8faf8",
+              "background-dark": "#0f1a10",
+            },
+            fontFamily: {
+              "display": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
       }
-    }
-  }
-}
-</script>
+    </script>
 <title>Martina Gómez | Nutricionista Personalizada</title>
-<meta name="description" content="Nutricionista especializada en alimentación consciente y sostenible. Transforma tu relación con la comida."/>
 </head>
-<body class="bg-cream text-slate-800 font-body">
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-solid border-primary/10 px-4 md:px-20 lg:px-40 py-4">
+<div class="max-w-[1200px] mx-auto flex items-center justify-between whitespace-nowrap">
+<div class="flex items-center gap-3 text-slate-900 dark:text-slate-100">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white">nutrition</span>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight">Martina Gómez</h2>
+</div>
+<nav class="hidden md:flex flex-1 justify-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#inicio">Inicio</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#sobre-mi">Sobre mí</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#servicios">Servicios</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#tips">Tips</a>
+<button class="flex min-w-[100px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-5 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+<span>WhatsApp</span>
+</button>
+</nav>
+</div>
+</header>
+<main class="flex flex-col">
 <!-- Hero Section -->
-<section class="relative min-h-[90vh] flex items-center overflow-hidden">
-  <div class="absolute inset-0 z-0">
-    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1920&q=80" alt="Healthy food" class="w-full h-full object-cover"/>
-    <div class="absolute inset-0 bg-gradient-to-r from-cream/95 via-cream/80 to-cream/30"></div>
-  </div>
-  
-  <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center">
-    <div class="space-y-6">
-      <div class="inline-flex items-center gap-2 bg-nature/10 text-nature px-4 py-2 rounded-full text-sm font-medium">
-        <span class="w-2 h-2 bg-nature rounded-full animate-pulse"></span>
-        +500 clientes transformados
-      </div>
-      <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-tight">
-        Come bien, <br/>
-        <span class="text-nature">siente mejor</span>
-      </h1>
-      <p class="text-lg text-slate-600 max-w-lg">
-        Aprende a nutrirte de forma consciente sin dietas restrictivas. Mi enfoque: alimentos reales, sin obsesiones.
-      </p>
-      <div class="flex flex-wrap gap-4">
-        <a href="#contacto" class="bg-nature text-white px-8 py-4 rounded-full font-semibold hover:bg-nature-light transition-all hover:scale-105 shadow-lg shadow-nature/30">
-          Agendar consulta
-        </a>
-        <a href="#servicios" class="border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-full font-semibold hover:border-nature hover:text-nature transition-all">
-          Ver servicios
-        </a>
-      </div>
-    </div>
-    <div class="relative hidden lg:block">
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80" alt="Nutricionista" class="rounded-3xl shadow-2xl"/>
-        <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl">
-          <div class="flex items-center gap-3">
-            <div class="text-3xl font-bold text-nature">98%</div>
-            <div class="text-sm text-slate-500">clientes<br/>satisfechos</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="px-4 md:px-20 lg:px-40 py-12 md:py-20" id="inicio">
+<div class="max-w-[1200px] mx-auto">
+<div class="flex flex-col gap-10 lg:flex-row items-center">
+<div class="flex flex-col gap-8 flex-1">
+<div class="flex flex-col gap-4">
+<span class="inline-block px-3 py-1 bg-primary/20 text-primary text-xs font-bold uppercase tracking-widest rounded-full w-fit">Nutrición Consciente</span>
+<h1 class="text-slate-900 dark:text-slate-50 text-4xl md:text-6xl font-black leading-tight tracking-tight">
+                                        Planes de nutrición diseñados para tu estilo de vida
+                                    </h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg md:text-xl font-normal leading-relaxed max-w-xl">
+                                        Mejora tu salud con asesoramiento personalizado. No se trata de dietas, se trata de nutrir tu cuerpo con amor.
+                                    </p>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-base font-bold shadow-xl shadow-primary/30 hover:opacity-90 transition-all">
+                                        Comienza tu plan nutricional
+                                    </button>
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 border-2 border-primary/20 hover:border-primary text-slate-900 dark:text-slate-100 text-base font-bold transition-all">
+                                        Saber más
+                                    </button>
+</div>
+</div>
+<div class="flex-1 w-full relative">
+<div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
+<img class="w-full aspect-square md:aspect-[4/3] object-cover rounded-3xl shadow-2xl border-8 border-white dark:border-slate-800" data-alt="Una nutricionista profesional sonriendo en una cocina luminosa con vegetales frescos" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHBILj6pILSnPjD383sgdz1LJmy05IzW9nArAjUjnptUfz8vWKgsUMODO1gM3hSCUoL_xp-8-ZFb-E90mI_UvrwQAuBwaEMJ1OC3z-3MgU97xromKrNZmO8ibm5ubppI5Q9ETyMa6NbVXO0jgAKt0_mIzOYQBhF8Ws_cmLxZ6S84_xzfOUFLhLt4T3Mriyq5xss9ILGCAIm98Aye8QoV71KIANDzZDR7ygpSVFMmWCLLrXRFQW_pv-QIasFopjD74jI_q6R5r0y8MY"/>
+</div>
+</div>
+</div>
 </section>
-
-<!-- About Section -->
-<section id="sobre-mi" class="py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80" alt="Nutrition consultation" class="rounded-3xl shadow-xl"/>
-        <div class="absolute top-6 left-6 bg-nature text-white px-6 py-3 rounded-xl font-semibold">
-          +8 años de experiencia
-        </div>
-      </div>
-      <div class="space-y-6">
-        <h2 class="font-heading text-4xl font-bold text-slate-900">
-         Hola, soy <span class="text-nature">Martina Gómez</span>
-        </h2>
-        <p class="text-slate-600 leading-relaxed">
-          Como nutricionista, mi misión es ayudarte a reconstruir una relación saludable con la comida. No creerás en dietas miracle ni restricciones extremas.
-        </p>
-        <p class="text-slate-600 leading-relaxed">
-          Trabajo con un enfoque integrativo que considera tu estilo de vida, preferencias alimentarias y objetivos reales. Mi meta es que cada cambio sea sostenible en el tiempo.
-        </p>
-        <div class="grid grid-cols-3 gap-6 pt-4">
-          <div class="text-center">
-            <div class="text-3xl font-bold text-nature">500+</div>
-            <div class="text-sm text-slate-500">Clientes</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-nature">98%</div>
-            <div class="text-sm text-slate-500">Satisfacción</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-nature">8+</div>
-            <div class="text-sm text-slate-500">Años</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- Sobre Mí -->
+<section class="px-4 md:px-20 lg:px-40 py-20 bg-primary/5" id="sobre-mi">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row gap-16 items-center">
+<div class="w-full md:w-1/3">
+<img class="rounded-2xl grayscale hover:grayscale-0 transition-all duration-500 shadow-xl" data-alt="Retrato profesional de Martina Gómez, nutricionista" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIFqn_0AcPqPl3xToNsTNLoUKNkdqGpmP-DDypj6M46MiCN57YfPkzwf8qewRajYd1-7X3mkHUNsGHac2zNUla9vt-8iTMu6VbXCbZVtdtBL9zx92OV49oPIDsyvR00YUgiQfwW5bv5Lr6v6IWXoZiIyxOn5cfHQbIWnLhn_xeLRqqtd0wUKHtwFkSBZfjIB0jfu6g1DQTdAFfc3X8ukflKQV4xFZysBl09Z-4hcmf5y7Zm4zWuK1wyJoRIIHM7RsIe0NW8BB0l25b"/>
+</div>
+<div class="w-full md:w-2/3 flex flex-col gap-6">
+<h2 class="text-3xl font-bold text-slate-900 dark:text-slate-50">Hola, soy Martina Gómez</h2>
+<div class="h-1 w-20 bg-primary rounded-full"></div>
+<p class="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+                                Mi filosofía se basa en que la alimentación saludable no debe ser restrictiva, sino una forma de potenciar tu bienestar y energía diaria. Como nutricionista certificada, me dedico a guiarte en el descubrimiento de una relación positiva con la comida.
+                            </p>
+<p class="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+                                Creo en los cambios sostenibles a largo plazo, no en las soluciones rápidas. Juntos crearemos un camino que se adapte a tus gustos, horarios y metas personales.
+                            </p>
+</div>
+</div>
 </section>
-
-<!-- Services Section -->
-<section id="servicios" class="py-24 bg-sage/30">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-16">
-      <h2 class="font-heading text-4xl font-bold text-slate-900 mb-4">¿Cómo puedo ayudarte?</h2>
-      <p class="text-slate-600 max-w-2xl mx-auto">Programas personalizados diseñados para tu estilo de vida y objetivos.</p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-8">
-      <!-- Service 1 -->
-      <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-        <div class="w-14 h-14 bg-leaf/20 text-nature rounded-2xl flex items-center justify-center mb-6">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-        </div>
-        <h3 class="font-heading text-xl font-bold mb-3">Consulta Online</h3>
-        <p class="text-slate-600 mb-4">Sesiones vía videollamada desde cualquier lugar. Incluye plan alimentario personalizado.</p>
-        <div class="text-2xl font-bold text-nature mb-4">$85<span class="text-sm font-normal text-slate-500">/sesión</span></div>
-        <a href="#contacto" class="block text-center bg-nature text-white py-3 rounded-xl font-semibold hover:bg-nature-light transition">Reservar</a>
-      </div>
-      
-      <!-- Service 2 -->
-      <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-shadow border-2 border-nature">
-        <div class="absolute top-0 right-0 bg-nature text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl">POPULAR</div>
-        <div class="w-14 h-14 bg-leaf/20 text-nature rounded-2xl flex items-center justify-center mb-6">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-        </div>
-        <h3 class="font-heading text-xl font-bold mb-3">Programa Integral</h3>
-        <p class="text-slate-600 mb-4">4 semanas de acompañamiento + plan alimentario + recetas + grupo de WhatsApp.</p>
-        <div class="text-2xl font-bold text-nature mb-4">$290<span class="text-sm font-normal text-slate-500">/mes</span></div>
-        <a href="#contacto" class="block text-center bg-nature text-white py-3 rounded-xl font-semibold hover:bg-nature-light transition">Reservar</a>
-      </div>
-      
-      <!-- Service 3 -->
-      <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-        <div class="w-14 h-14 bg-leaf/20 text-nature rounded-2xl flex items-center justify-center mb-6">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-        </div>
-        <h3 class="font-heading text-xl font-bold mb-3">Corporativo</h3>
-        <p class="text-slate-600 mb-4">Charlas y talleres para empresas. Mejoramos la alimentación de tu equipo.</p>
-        <div class="text-2xl font-bold text-nature mb-4">Desde $500</div>
-        <a href="#contacto" class="block text-center bg-nature text-white py-3 rounded-xl font-semibold hover:bg-nature-light transition">Consultar</a>
-      </div>
-    </div>
-  </div>
+<!-- Servicios -->
+<section class="px-4 md:px-20 lg:px-40 py-24" id="servicios">
+<div class="max-w-[1200px] mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Mis Servicios Especializados</h2>
+<p class="text-slate-500">Soluciones integrales para cada etapa de tu vida</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-primary/5 flex flex-col items-center text-center">
+<div class="size-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-4xl">assignment_ind</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Planes Personalizados</h3>
+<p class="text-slate-500 text-sm">Dietas adaptadas 100% a tus necesidades biológicas y metas.</p>
+</div>
+<div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-primary/5 flex flex-col items-center text-center">
+<div class="size-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-4xl">monitor_weight</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Control de Peso</h3>
+<p class="text-slate-500 text-sm">Acompañamiento profesional para alcanzar tu peso ideal de forma sana.</p>
+</div>
+<div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-primary/5 flex flex-col items-center text-center">
+<div class="size-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-4xl">fitness_center</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Nutrición Deportiva</h3>
+<p class="text-slate-500 text-sm">Optimiza tu rendimiento físico y recuperación a través de la comida.</p>
+</div>
+<div class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-primary/5 flex flex-col items-center text-center">
+<div class="size-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-4xl">psychology_alt</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Habitos Saludables</h3>
+<p class="text-slate-500 text-sm">Coaching para transformar tu mentalidad y crear rutinas positivas.</p>
+</div>
+</div>
+</div>
 </section>
-
-<!-- Testimonials -->
-<section class="py-24 bg-nature text-white">
-  <div class="max-w-7xl mx-auto px-6">
-    <h2 class="font-heading text-4xl font-bold text-center mb-16">Lo que dicen mis clientes</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-white/10 backdrop-blur rounded-3xl p-8">
-        <div class="flex gap-1 text-leaf mb-4">★★★★★</div>
-        <p class="mb-6 text-lg">"Martina me ayudó a terminar con años de restricciones. Ahora como de todo sin culpa."</p>
-        <div class="font-semibold">- Carolina R.</div>
-      </div>
-      <div class="bg-white/10 backdrop-blur rounded-3xl p-8">
-        <div class="flex gap-1 text-leaf mb-4">★★★★★</div>
-        <p class="mb-6 text-lg">"El programa integral cambió completamente mi relación con la comida. ¡Recomendado!"</p>
-        <div class="font-semibold">- Miguel T.</div>
-      </div>
-      <div class="bg-white/10 backdrop-blur rounded-3xl p-8">
-        <div class="flex gap-1 text-leaf mb-4">★★★★★</div>
-        <p class="mb-6 text-lg">"Después de probar mil dietas, encontré en Martina lo que necesitaba. Sustainable y sin estrés."</p>
-        <div class="font-semibold">- Ana L.</div>
-      </div>
-    </div>
-  </div>
+<!-- Tips Saludables -->
+<section class="px-4 md:px-20 lg:px-40 py-24 bg-background-light dark:bg-background-dark/50" id="tips">
+<div class="max-w-[1200px] mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-3xl font-bold mb-2">Tips Saludables</h2>
+<p class="text-slate-500">Pequeños cambios, grandes resultados</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="group overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-md">
+<img class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Vaso de agua refrescante con rodajas de limón" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC93pg66sXc0VH7lldsb2jgwpco8IiHQOwpvQqeKvgqx_thH1K-Ig8DvIJzmtq-ayEwGm80YOXkWcviwJTs9Z0V3B5zl2OcEHYn4o01nzrVhl9ZIuR1XW0iYFW_Bl3teV4eaPu0_nEdAIE7irQLtIQKaGLnR24AItDAbnZTYTm3A5uSWdECNrdR6uczABvQhL89GFaKr2R8lu5hE2pkp6zZ6XwhazIaCVXzQNvTIAkECyKuB-yfUou5qWpt4AEUkGgVoDhRXlTAHFl0"/>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-3">Hidratación Inteligente</h3>
+<p class="text-slate-500 mb-4">Beber agua es clave, pero añadirle limón o menta puede ayudar a desintoxicar tu cuerpo naturalmente.</p>
+<a class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all" href="#">Leer más <span class="material-symbols-outlined">arrow_forward</span></a>
+</div>
+</div>
+<div class="group overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-md">
+<img class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Ensalada colorida con diversos vegetales" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJb1sKzB0Gm7AEl7MVXtSG8-noGdRKAzJgC-xPswaBRI4LzsbHkc-ptbpTvf77Oj5gzjEQ9dXMONxCAgO-QcMM2KJZRi6aBBQ-7-imgGaZd7P9-TlDLq1qv7XRwaJE3Vp0Tff4GQqea74TcaQNFr50dS5_znMRknoOUJyiEmbgZs7O7M-87wDWJjtF7-GfOzgEkbZV0z0DTmIie4I9f7oO-fJG8r7DdVsavR0jJIejJqXell04fU-mruvZ2nzmzbES9rSSvHarWTAv"/>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-3">El Arcoíris en tu Plato</h3>
+<p class="text-slate-500 mb-4">Cada color representa diferentes vitaminas y minerales. Asegúrate de tener al menos 3 colores en cada comida.</p>
+<a class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all" href="#">Leer más <span class="material-symbols-outlined">arrow_forward</span></a>
+</div>
+</div>
+<div class="group overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-md">
+<img class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Persona comiendo conscientemente y disfrutando su plato" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRkV3JzV838XfUV4FFuwkICEE19NgZZe7F1edcSp9qwZx4dau1BS_snW9J9dcFRKXuOjbX6OY4L5ZS24dVlfxPRzhWk404hWch27TATRjigT6AvBoXx4lemdRS3_Rc-gWwk-RZUJQ7NoffzuIz_BdlROETZfcEqn6Xbz1cRKEWYTWBxj4FzVqHzqwhQG_dpza7Vs3qDnK3unBc_pLkqHvOIGVUhyDNNXRB2b4st1RCAVSoiW7RhQEcfhIZxQJYy6REtTO8kwGs2tqf"/>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-3">Mindful Eating</h3>
+<p class="text-slate-500 mb-4">Comer sin distracciones te ayuda a reconocer las señales de saciedad y disfrutar realmente los sabores.</p>
+<a class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all" href="#">Leer más <span class="material-symbols-outlined">arrow_forward</span></a>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- Contact Section -->
-<section id="contacto" class="py-24 bg-white">
-  <div class="max-w-3xl mx-auto px-6">
-    <div class="text-center mb-12">
-      <h2 class="font-heading text-4xl font-bold text-slate-900 mb-4">¿Lista para comenzar?</h2>
-      <p class="text-slate-600">Escríbeme por WhatsApp y agendemos tu primera consulta.</p>
-    </div>
-    <div class="bg-sage/30 rounded-3xl p-8 md:p-12 text-center">
-      <div class="w-20 h-20 bg-nature/10 rounded-full flex items-center justify-center mx-auto mb-6">
-        <svg class="w-10 h-10 text-nature" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      </div>
-      <a href="https://wa.me/541166448389?text=Hola%20Martina%2C%20quiero%20info%20sobre%20tus%20servicios%20de%20nutrici%C3%B3n" target="_blank" class="inline-flex items-center gap-3 bg-nature text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-nature-light transition-all hover:scale-105 shadow-lg">
-        <span>Escribirme por WhatsApp</span>
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-      </a>
-    </div>
-  </div>
+<!-- Testimonios -->
+<section class="px-4 md:px-20 lg:px-40 py-24 bg-primary text-white">
+<div class="max-w-[1200px] mx-auto">
+<h2 class="text-3xl font-black text-center mb-16">Casos de Éxito</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="flex flex-col gap-6">
+<span class="material-symbols-outlined text-5xl opacity-40">format_quote</span>
+<p class="italic text-lg font-medium leading-relaxed">
+                                    "Gracias a Martina logré bajar 10kg sin pasar hambre y aprendí a cocinar de forma creativa. ¡Mi energía es otra!"
+                                </p>
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full bg-black/10 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Retrato de cliente satisfecha" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXCKtJ8Gz3BXtihLpWDZjeJQethbbcQmW1zhpBPLsAZLQP0tKueDF9M0D03Y-sgGmSADZtWLZG6gR6LkTCRX__w9LxtgN2vkWDDsAvmdlNDXZPGG2r_n0B4qOH40ZZ7iHIhIbgZjFi-b3C51arcuyDhAPLBw2_eBFpr6tuQ-SQ7ruF-Bus-WqE-Aq_F4UD8ADk-CqlZpDNnGwTb9VI-L7CFBkAjUEYI6vq6qlovBLJ_BS1IZiDA_VQhG8qg9EaOD3v6jDKJYtuBo9E"/>
+</div>
+<div>
+<p class="font-bold">Laura S.</p>
+<p class="text-xs opacity-80">Bajó 10kg en 6 meses</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<span class="material-symbols-outlined text-5xl opacity-40">format_quote</span>
+<p class="italic text-lg font-medium leading-relaxed">
+                                    "El plan deportivo cambió mi rendimiento. Ahora entreno mejor y mi recuperación es mucho más rápida."
+                                </p>
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full bg-black/10 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Retrato de cliente satisfecho" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmhGxfI-eciuMsOB5EZyoLwazSO9GLSWnorta2VY8-aoJAdNLZ0DJULmgG2Asw3o9i36jCsjHf90xnwAahiJBIy6wEmT87pc20zwRi4VJ0RZQ3YE3r87dgAI695zGeQgdNXomPSgQ501IfABg3qQfnOgPpv0G0tl3f88uoJxt3hFaCvjMyhTpWg4C0o857sx7RxBiTL6urJ-Fu2sGEk2uzfaJTJVGlKvbLsUJpvHguSjq9ZtwJ3WjWdNOUCEyxEVrPlDmElMVOcQnj"/>
+</div>
+<div>
+<p class="font-bold">Marcos R.</p>
+<p class="text-xs opacity-80">Atleta Amateur</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<span class="material-symbols-outlined text-5xl opacity-40">format_quote</span>
+<p class="italic text-lg font-medium leading-relaxed">
+                                    "Aprendí a relacionarme con la comida desde el placer y no desde la culpa. Martina es una excelente profesional."
+                                </p>
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full bg-black/10 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Retrato de cliente satisfecha" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsHgA_MrSlya8CT_lv8oPw84RrzfUDeBmnoKBUr-_edW-tOIB45k51Ay_H3WFwNsEnRhh0Zx9qJJ2lLiECvt-35QJe9rkkn1Rw7VAhknnv7CSXVoSaK_j5S7YJ7vmjnWAAozInBblrUTeA9EwnYQjKK2HJKz2-fekmdaekiMfILkz6Prq33ryDRVLs5EV8-VpcQw5nLspxMFq-byVXctcGzuhUluEE9vgQ6FlFBy4-Ut9WZr6fvxrkJ-nL6pwjv8PHoxDwmeHiJaaz"/>
+</div>
+<div>
+<p class="font-bold">Elena V.</p>
+<p class="text-xs opacity-80">Cambio de Hábitos</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- Footer -->
-<footer class="bg-slate-900 text-white py-12">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
-    <div>
-      <div class="font-heading text-2xl font-bold mb-4">Martina Gómez</div>
-      <p class="text-slate-400">Nutricionista integrativa especializada en alimentación consciente.</p>
-    </div>
-    <div>
-      <div class="font-semibold mb-4">Enlaces</div>
-      <ul class="space-y-2 text-slate-400">
-        <li><a href="#sobre-mi" class="hover:text-white">Sobre mí</a></li>
-        <li><a href="#servicios" class="hover:text-white">Servicios</a></li>
-        <li><a href="#contacto" class="hover:text-white">Contacto</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="font-semibold mb-4">Contacto</div>
-      <ul class="space-y-2 text-slate-400">
-        <li>WhatsApp: +54 11 6644-8389</li>
-        <li>Email: hola@martinagomez.nutricion</li>
-      </ul>
-    </div>
-    <div>
-      <div class="font-semibold mb-4">Redes</div>
-      <div class="flex gap-4">
-        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-nature transition">IG</a>
-        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-nature transition">LI</a>
-      </div>
-    </div>
-  </div>
+<!-- Contacto -->
+<section class="px-4 md:px-20 lg:px-40 py-24" id="contacto">
+<div class="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-16">
+<div class="flex-1">
+<h2 class="text-4xl font-bold mb-6">¿Hablamos?</h2>
+<p class="text-slate-600 dark:text-slate-400 text-lg mb-8">
+                                Estoy lista para acompañarte en tu transformación. Completa el formulario o escríbeme directamente por WhatsApp para agendar tu primera consulta.
+                            </p>
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Email</p>
+<p class="font-medium">hola@martinagomez.com</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Ubicación</p>
+<p class="font-medium">Consulta presencial y Online</p>
+</div>
+</div>
+<div class="mt-4">
+<button class="flex w-full md:w-fit min-w-[240px] cursor-pointer items-center justify-center gap-3 overflow-hidden rounded-xl h-14 px-6 bg-[#25D366] text-white text-lg font-bold shadow-lg hover:brightness-110 transition-all">
+<svg class="size-6 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
+                                        Escríbeme por WhatsApp
+                                    </button>
+</div>
+</div>
+</div>
+<div class="flex-1 bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-xl border border-primary/10">
+<form class="flex flex-col gap-5">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300">Nombre Completo</label>
+<input class="rounded-lg border-primary/20 bg-background-light dark:bg-slate-700 focus:border-primary focus:ring-primary transition-all p-3" placeholder="Ej. Ana García" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300">Correo Electrónico</label>
+<input class="rounded-lg border-primary/20 bg-background-light dark:bg-slate-700 focus:border-primary focus:ring-primary transition-all p-3" placeholder="ana@ejemplo.com" type="email"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300">Interés</label>
+<select class="rounded-lg border-primary/20 bg-background-light dark:bg-slate-700 focus:border-primary focus:ring-primary transition-all p-3">
+<option>Pérdida de peso</option>
+<option>Rendimiento deportivo</option>
+<option>Hábitos saludables</option>
+<option>Otro</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300">Mensaje</label>
+<textarea class="rounded-lg border-primary/20 bg-background-light dark:bg-slate-700 focus:border-primary focus:ring-primary transition-all p-3" placeholder="Cuéntame brevemente tu objetivo..." rows="4"></textarea>
+</div>
+<button class="bg-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform" type="submit">
+                                    Enviar solicitud
+                                </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-slate-900 text-white px-4 md:px-20 lg:px-40 py-12">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white font-bold">nutrition</span>
+</div>
+<h2 class="text-xl font-bold leading-tight">Martina Gómez</h2>
+</div>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Instagram</a>
+<a class="hover:text-primary transition-colors" href="#">Facebook</a>
+<a class="hover:text-primary transition-colors" href="#">LinkedIn</a>
+</div>
+<p class="text-slate-500 text-sm">© 2024 Martina Gómez. Todos los derechos reservados.</p>
+</div>
 </footer>
-</body>
-</html>
+</div>
+</div>
+</body></html>

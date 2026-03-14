@@ -3,245 +3,306 @@
 <html lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        "calm": "#3b82f6",
-        "calm-light": "#60a5fa",
-        "calm-dark": "#1d4ed8",
-        "cream": "#fefefe",
-        "soft-gray": "#f8fafc",
-      },
-      fontFamily: {
-        "serif": ["Playfair Display", "serif"],
-        "body": ["Inter", "sans-serif"],
-      }
-    }
-  }
-}
-</script>
 <title>Dra. Laura Fernández | Psicología Clínica</title>
-<meta name="description" content="Psicóloga clínica especializada en ansiedad, depresión y terapia online. Espacios seguros para tu bienestar emocional."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#195de6",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-size: 24px; }
+    </style>
 </head>
-<body class="bg-soft-gray text-slate-700 font-body">
-<!-- Hero -->
-<section class="relative min-h-[85vh] flex items-center">
-  <div class="absolute inset-0 z-0">
-    <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1920&q=80" alt="Peaceful nature" class="w-full h-full object-cover"/>
-    <div class="absolute inset-0 bg-gradient-to-br from-calm/10 via-transparent to-calm/5"></div>
-  </div>
-  
-  <div class="relative z-10 max-w-7xl mx-auto px-6 py-24">
-    <div class="max-w-2xl">
-      <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-calm mb-6 shadow-sm">
-        <span class="w-2 h-2 bg-calm rounded-full"></span>
-        +800 sesiones realizadas
-      </div>
-      <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold text-slate-800 leading-tight mb-6">
-        Tu bienestar <br/>
-        <span class="text-calm">es mi prioridad</span>
-      </h1>
-      <p class="text-lg text-slate-600 mb-8 max-w-lg">
-        Espacios seguros y confidenciales para acompañarte en tu proceso. Terapia online y presencial.
-      </p>
-      <div class="flex flex-wrap gap-4">
-        <a href="#contacto" class="bg-calm text-white px-8 py-4 rounded-full font-semibold hover:bg-calm-dark transition-all hover:scale-105 shadow-lg shadow-calm/20">
-          Agendar primera sesión
-        </a>
-        <a href="#acerca" class="bg-white text-slate-700 px-8 py-4 rounded-full font-semibold hover:bg-gray-50 transition-all border border-gray-200">
-          Conocerme
-        </a>
-      </div>
-    </div>
-  </div>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 md:px-20 lg:px-40 py-4 bg-white dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Dra. Laura Fernández</h2>
+</div>
+<div class="hidden lg:flex flex-1 justify-end gap-8 items-center">
+<nav class="flex items-center gap-8">
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#inicio">Inicio</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#sobre-mi">Sobre mí</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#especialidades">Especialidades</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#metodologia">Metodología</a>
+</nav>
+<button class="flex min-w-[120px] cursor-pointer items-center justify-center rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold transition-transform hover:scale-105 active:scale-95">
+                        Agendar Cita
+                    </button>
+</div>
+</header>
+<main class="flex flex-col">
+<section class="px-6 md:px-20 lg:px-40 py-12 md:py-20 bg-white dark:bg-background-dark" id="inicio">
+<div class="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-center gap-12">
+<div class="flex flex-col gap-6 lg:w-1/2">
+<div class="flex flex-col gap-4">
+<span class="text-primary font-semibold tracking-wider uppercase text-xs">Atención Profesional Especializada</span>
+<h1 class="text-slate-900 dark:text-slate-100 text-4xl md:text-6xl font-black leading-tight tracking-tight">
+                                    Apoyo psicológico profesional para tu bienestar
+                                </h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg md:text-xl leading-relaxed">
+                                    Un espacio seguro y confidencial diseñado para acompañarte en tu proceso de sanación y equilibrio emocional.
+                                </p>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-14 px-6 bg-primary text-white text-base font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+                                    Solicitar consulta
+                                </button>
+<button class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-14 px-6 border-2 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-base font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
+                                    Saber más
+                                </button>
+</div>
+</div>
+<div class="w-full lg:w-1/2">
+<div class="relative aspect-square md:aspect-video lg:aspect-square w-full rounded-2xl overflow-hidden shadow-2xl">
+<div class="absolute inset-0 bg-primary/10"></div>
+<img alt="Dra. Laura Fernández en su consultorio" class="w-full h-full object-cover" data-alt="Dra. Laura Fernández profesional sonriendo en consultorio acogedor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbZ5Yuz8CX9jnnGP6gF2TO7mG-7E3VoOBZ4uDvMJnatHkysFXLXMum3IKnni3X3GCRQodSKwnxmoHffY2MXX84s-_uNc2ENO4PyMw-4_yn0lW8o-PtnfgreuEL1KrTe8tRmNogajAa5Rjby_v8nwtQWQj4-EEHpZoARXg-TbxK_MmTdOh4M--muI1uIoNtHenbo9eAuPKRKYHKzfmMc2th0FjXW35Uau-0trLcMQ-fkBHTdXiMMYvirJgXyov02t8t5i4_s08MiOio"/>
+</div>
+</div>
+</div>
 </section>
-
-<!-- About -->
-<section id="acerca" class="py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80" alt="Dra. Laura Fernández" class="rounded-3xl shadow-xl"/>
-        <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-lg max-w-xs">
-          <div class="font-serif text-xl font-semibold text-slate-800 mb-2">Dra. Laura Fernández</div>
-          <div class="text-slate-500 text-sm">Lic. Psicología UBA</div>
-          <div class="text-slate-500 text-sm">MN: 45678 - MP: 234567</div>
-        </div>
-      </div>
-      <div class="space-y-6">
-        <h2 class="font-serif text-4xl font-semibold text-slate-800">
-          Acompañarte es <span class="text-calm">mi vocación</span>
-        </h2>
-        <p class="text-slate-600 leading-relaxed">
-          Como psicóloga clínica, mi enfoque se basa en la evidencia científica combinada con empatía genuina. Creo que cada persona tiene la capacidad de transformarse, solo necesita un espacio seguro para hacerlo.
-        </p>
-        <p class="text-slate-600 leading-relaxed">
-          Trabajo con enfoque cognitivo-conductual y técnicas de mindfulness, adaptadas a las necesidades únicas de cada persona. Mi objetivo es ayudarte a desarrollar herramientas que puedas usar toda tu vida.
-        </p>
-        <div class="grid grid-cols-2 gap-4 pt-4">
-          <div class="bg-soft-gray p-4 rounded-xl">
-            <div class="text-3xl font-semibold text-calm">800+</div>
-            <div class="text-sm text-slate-500">Pacientes</div>
-          </div>
-          <div class="bg-soft-gray p-4 rounded-xl">
-            <div class="text-3xl font-semibold text-calm">8+</div>
-            <div class="text-sm text-slate-500">Años de experiencia</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="px-6 md:px-20 lg:px-40 py-20 bg-background-light dark:bg-slate-900/50" id="sobre-mi">
+<div class="max-w-[1200px] mx-auto">
+<div class="flex flex-col gap-12">
+<div class="max-w-3xl">
+<h2 class="text-primary font-bold mb-2 uppercase tracking-widest text-sm">Perfil Profesional</h2>
+<h3 class="text-slate-900 dark:text-slate-100 text-3xl md:text-4xl font-bold mb-6">Sobre la Dra. Laura Fernández</h3>
+<p class="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-4">
+                                    Psicóloga Clínica con un enfoque empático y profesional, dedicada a acompañarte en tu proceso de sanación y crecimiento personal. Mi compromiso es brindar un acompañamiento basado en la evidencia científica y la calidez humana.
+                                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-background-dark p-8 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col gap-4">
+<span class="material-symbols-outlined text-primary text-4xl">school</span>
+<h4 class="text-slate-900 dark:text-slate-100 text-xl font-bold">Formación Académica</h4>
+<p class="text-slate-600 dark:text-slate-400">Especialista en Psicología Clínica con Maestría en Terapia Cognitivo-Conductual por la Universidad Nacional.</p>
+</div>
+<div class="bg-white dark:bg-background-dark p-8 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col gap-4">
+<span class="material-symbols-outlined text-primary text-4xl">clinical_notes</span>
+<h4 class="text-slate-900 dark:text-slate-100 text-xl font-bold">Experiencia Clínica</h4>
+<p class="text-slate-600 dark:text-slate-400">Más de 12 años acompañando procesos individuales, brindando herramientas prácticas para la vida diaria.</p>
+</div>
+<div class="bg-white dark:bg-background-dark p-8 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col gap-4">
+<span class="material-symbols-outlined text-primary text-4xl">favorite</span>
+<h4 class="text-slate-900 dark:text-slate-100 text-xl font-bold">Enfoque Humano</h4>
+<p class="text-slate-600 dark:text-slate-400">Un espacio basado en la escucha activa, la validación emocional y la más estricta confidencialidad.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- Services -->
-<section id="servicios" class="py-24 bg-soft-gray">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-16">
-      <h2 class="font-serif text-4xl font-semibold text-slate-800 mb-4">¿En qué puedo ayudarte?</h2>
-      <p class="text-slate-600 max-w-2xl mx-auto">Ofrezco diferentes modalidades de atención adaptadas a tus necesidades y preferencias.</p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-8">
-      <!-- Service 1 -->
-      <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg transition-shadow">
-        <div class="w-14 h-14 bg-calm/10 rounded-2xl flex items-center justify-center mb-6">
-          <svg class="w-7 h-7 text-calm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-        </div>
-        <h3 class="font-serif text-xl font-semibold mb-3">Ansiedad</h3>
-        <p class="text-slate-600 mb-4">Técnicas para manejar la ansiedad, ataques de pánico y preocupaciones excesivas.</p>
-        <div class="text-calm font-semibold">$120/sesión</div>
-      </div>
-      
-      <!-- Service 2 -->
-      <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg transition-shadow">
-        <div class="w-14 h-14 bg-calm/10 rounded-2xl flex items-center justify-center mb-6">
-          <svg class="w-7 h-7 text-calm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        </div>
-        <h3 class="font-serif text-xl font-semibold mb-3">Depresión</h3>
-        <p class="text-slate-600 mb-4">Acompañamiento para salir de estados depresivos y recuperar motivación.</p>
-        <div class="text-calm font-semibold">$120/sesión</div>
-      </div>
-      
-      <!-- Service 3 -->
-      <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg transition-shadow">
-        <div class="w-14 h-14 bg-calm/10 rounded-2xl flex items-center justify-center mb-6">
-          <svg class="w-7 h-7 text-calm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-        </div>
-        <h3 class="font-serif text-xl font-semibold mb-3">Terapia de Pareja</h3>
-        <p class="text-slate-600 mb-4">Mejora la comunicación y resuelve conflictos en pareja.</p>
-        <div class="text-calm font-semibold">$180/sesión</div>
-      </div>
-    </div>
-    
-    <div class="mt-12 bg-white rounded-3xl p-8 md:p-12 text-center">
-      <h3 class="font-serif text-2xl font-semibold mb-4">Modalidad Online</h3>
-        <p class="text-slate-600 mb-6">Sesiones por videollamada desde la comodidad de tu hogar. Misma efectividad que las presenciales.</p>
-        <a href="#contacto" class="inline-flex items-center gap-2 bg-calm text-white px-8 py-4 rounded-full font-semibold hover:bg-calm-dark transition-all">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-          Solicitar terapia online
-        </a>
-    </div>
-  </div>
+<section class="px-6 md:px-20 lg:px-40 py-20 bg-white dark:bg-background-dark" id="especialidades">
+<div class="max-w-[1200px] mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-slate-900 dark:text-slate-100 text-3xl md:text-4xl font-black mb-4">Especialidades Terapéuticas</h2>
+<p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Ofrezco diversas áreas de especialización para abordar tus necesidades específicas de manera integral.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="p-6 rounded-xl bg-background-light dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-primary transition-colors group">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined">air</span>
+</div>
+<h4 class="text-slate-900 dark:text-slate-100 font-bold mb-2">Ansiedad y Estrés</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Técnicas efectivas para recuperar la calma y gestionar las presiones del día a día.</p>
+</div>
+<div class="p-6 rounded-xl bg-background-light dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-primary transition-colors group">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<h4 class="text-slate-900 dark:text-slate-100 font-bold mb-2">Desarrollo Personal</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Fortalecimiento de la autoestima y acompañamiento en la definición de metas vitales.</p>
+</div>
+<div class="p-6 rounded-xl bg-background-light dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-primary transition-colors group">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined">psychology_alt</span>
+</div>
+<h4 class="text-slate-900 dark:text-slate-100 font-bold mb-2">Gestión Emocional</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Aprende a identificar, comprender y canalizar tus emociones de forma saludable.</p>
+</div>
+<div class="p-6 rounded-xl bg-background-light dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-primary transition-colors group">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined">person</span>
+</div>
+<h4 class="text-slate-900 dark:text-slate-100 font-bold mb-2">Terapia para Adultos</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Un espacio individual diseñado para afrontar los diversos retos de la vida adulta.</p>
+</div>
+</div>
+</div>
 </section>
-
-<!-- Testimonials -->
-<section class="py-24 bg-calm text-white">
-  <div class="max-w-7xl mx-auto px-6">
-    <h2 class="font-serif text-4xl font-semibold text-center mb-16">Testimonios</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
-        <div class="flex gap-1 text-yellow-300 mb-4">★★★★★</div>
-        <p class="mb-6 text-lg">"Laura me ayudó a entender mis emociones. Después de meses de terapia, me siento más tranquila y en control de mi vida."</p>
-        <div class="font-semibold">- María E.</div>
-      </div>
-      <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
-        <div class="flex gap-1 text-yellow-300 mb-4">★★★★★</div>
-        <p class="mb-6 text-lg">"La terapia online fue perfecta para mi rutina. Laura es profesional y empática. La recomiendo 100%."</p>
-        <div class="font-semibold">- Carlos R.</div>
-      </div>
-      <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
-        <div class="flex gap-1 text-yellow-300 mb-4">★★★★★</div>
-        <p class="mb-6 text-lg">"Después de años de tristeza, encontré en Laura una guía luz. Hoy puedo decir que estoy mejor que nunca."</p>
-        <div class="font-semibold">- Ana L.</div>
-      </div>
-    </div>
-  </div>
+<section class="px-6 md:px-20 lg:px-40 py-20 bg-primary/5" id="metodologia">
+<div class="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-16 items-center">
+<div class="lg:w-1/2 flex flex-col gap-6">
+<h3 class="text-slate-900 dark:text-slate-100 text-3xl font-bold">Nuestro Enfoque Terapéutico</h3>
+<p class="text-slate-700 dark:text-slate-300 text-lg leading-relaxed">
+                                Mi metodología se basa en la <b>Terapia Cognitivo-Conductual</b>, un enfoque práctico y orientado a resultados que busca identificar patrones de pensamiento negativos para transformarlos en conductas más saludables.
+                            </p>
+<div class="flex flex-col gap-4 mt-4">
+<div class="flex items-start gap-4">
+<div class="bg-primary text-white rounded-full size-8 flex items-center justify-center shrink-0 mt-1">1</div>
+<div>
+<h5 class="font-bold text-slate-900 dark:text-slate-100">Evaluación Inicial</h5>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Comprendemos tu situación actual e identificamos los objetivos que deseas alcanzar.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="bg-primary text-white rounded-full size-8 flex items-center justify-center shrink-0 mt-1">2</div>
+<div>
+<h5 class="font-bold text-slate-900 dark:text-slate-100">Plan de Trabajo</h5>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Diseñamos una estrategia personalizada adaptada a tu ritmo y necesidades específicas.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="bg-primary text-white rounded-full size-8 flex items-center justify-center shrink-0 mt-1">3</div>
+<div>
+<h5 class="font-bold text-slate-900 dark:text-slate-100">Seguimiento y Cierre</h5>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Consolidamos los aprendizajes y aseguramos que cuentes con las herramientas para el futuro.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2 w-full">
+<div class="rounded-2xl overflow-hidden shadow-xl aspect-video relative">
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+<img alt="Ambiente de consultorio" class="w-full h-full object-cover" data-alt="Interior de un consultorio psicológico moderno y minimalista con luz suave" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV5sf7iFgtkc8gqyr2Hjak4CmMkNr_DVC6a66C7hCl3IZKc2b7kiPqQyyL9XYqSngLz4LKLdoizecHgpgt9BpNlHJN0DymR87IsYgl0tChPPohQhLPgd0MY0gMmnDnnoox9M6fohk_EPfZYh5mjqutvSN9Go9E8C5tpvAH58B78s4B5o4URaaiV_V9sOaCE6R0yEC38CJ83GrNUzSYbhCAZiZbQ-AKqYIhxgfUjk77xzeR7umhT4b51-xFZB9wGqfrjapus5r2jje4"/>
+</div>
+</div>
+</div>
 </section>
-
-<!-- FAQ -->
-<section class="py-24 bg-white">
-  <div class="max-w-3xl mx-auto px-6">
-    <h2 class="font-serif text-4xl font-semibold text-center mb-12">Preguntas Frecuentes</h2>
-    <div class="space-y-4">
-      <div class="bg-soft-gray rounded-xl p-6">
-        <h3 class="font-semibold mb-2">¿Cuántas sesiones necesito?</h3>
-        <p class="text-slate-600">Depende de cada caso. Algunas personas sienten mejoras en 4-6 sesiones, otras necesitan un proceso más largo. Lo evaluamos juntos en la primera sesión.</p>
-      </div>
-      <div class="bg-soft-gray rounded-xl p-6">
-        <h3 class="font-semibold mb-2">¿Las sesiones son confidenciales?</h3>
-        <p class="text-slate-600">Sí, todo lo que conversamos es completamente confidencial. Estoy bound by professional ethics.</p>
-      </div>
-      <div class="bg-soft-gray rounded-xl p-6">
-        <h3 class="font-semibold mb-2">¿Qué es la primera sesión?</h3>
-        <p class="text-slate-600">Es una sesión de evaluación donde me cuentas tu situación y vemos si podemos trabajar juntos. Sin compromiso.</p>
-      </div>
-    </div>
-  </div>
+<section class="px-6 md:px-20 lg:px-40 py-20 bg-white dark:bg-background-dark" id="testimonios">
+<div class="max-w-[1200px] mx-auto">
+<h3 class="text-slate-900 dark:text-slate-100 text-3xl font-bold mb-12 text-center">Historias de Transformación</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-background-light dark:bg-slate-900 p-8 rounded-2xl relative">
+<span class="material-symbols-outlined text-primary/20 text-6xl absolute top-4 right-6">format_quote</span>
+<p class="text-slate-700 dark:text-slate-300 italic mb-6 relative z-10">
+                                    "Llegué con mucha ansiedad y sentía que no podía controlar mi día a día. Gracias a las sesiones con la Dra. Laura, hoy tengo herramientas reales para calmarme y disfrutar de mi presente."
+                                </p>
+<div class="font-bold text-slate-900 dark:text-slate-100">— Mariana G.</div>
+<div class="text-sm text-slate-500">Paciente desde hace 6 meses</div>
+</div>
+<div class="bg-background-light dark:bg-slate-900 p-8 rounded-2xl relative">
+<span class="material-symbols-outlined text-primary/20 text-6xl absolute top-4 right-6">format_quote</span>
+<p class="text-slate-700 dark:text-slate-300 italic mb-6 relative z-10">
+                                    "Un espacio de total respeto. Me ayudó a atravesar un duelo muy difícil y a reencontrarme con mis fortalezas. No tengo palabras para agradecer su empatía."
+                                </p>
+<div class="font-bold text-slate-900 dark:text-slate-100">— Carlos R.</div>
+<div class="text-sm text-slate-500">Paciente de terapia individual</div>
+</div>
+<div class="bg-background-light dark:bg-slate-900 p-8 rounded-2xl relative">
+<span class="material-symbols-outlined text-primary/20 text-6xl absolute top-4 right-6">format_quote</span>
+<p class="text-slate-700 dark:text-slate-300 italic mb-6 relative z-10">
+                                    "Aprendí que pedir ayuda es el primer paso para sanar. El proceso terapéutico ha sido la mejor inversión en mi salud mental que he hecho jamás."
+                                </p>
+<div class="font-bold text-slate-900 dark:text-slate-100">— Sofía L.</div>
+<div class="text-sm text-slate-500">Paciente de desarrollo personal</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- Contact -->
-<section id="contacto" class="py-24 bg-soft-gray">
-  <div class="max-w-3xl mx-auto px-6">
-    <div class="text-center mb-12">
-      <h2 class="font-serif text-4xl font-semibold text-slate-800 mb-4">¿Hablamos?</h2>
-      <p class="text-slate-600">Escríbeme y coordinemos tu primera sesión.</p>
-    </div>
-    <div class="bg-white rounded-3xl p-8 md:p-12 text-center">
-      <div class="w-20 h-20 bg-calm/10 rounded-full flex items-center justify-center mx-auto mb-6">
-        <svg class="w-10 h-10 text-calm" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      </div>
-      <a href="https://wa.me/541166448389?text=Hola%20Dra.%20Fern%C3%A1ndez%2C%20quiero%20agendar%20una%20sesi%C3%B3n" target="_blank" class="inline-flex items-center gap-3 bg-calm text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-calm-dark transition-all hover:scale-105 shadow-lg">
-        <span>Escribirme por WhatsApp</span>
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-      </a>
-      <p class="mt-6 text-slate-500 text-sm">Respondemos en menos de 24 horas</p>
-    </div>
-  </div>
+<section class="px-6 md:px-20 lg:px-40 py-20 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800" id="contacto">
+<div class="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-16">
+<div class="lg:w-1/3 flex flex-col gap-8">
+<div>
+<h3 class="text-slate-900 dark:text-slate-100 text-3xl font-bold mb-4">Contacto</h3>
+<p class="text-slate-600 dark:text-slate-400">Estoy aquí para escucharte. Elige el medio que prefieras para agendar tu primera sesión.</p>
+</div>
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-4 text-slate-700 dark:text-slate-300">
+<div class="size-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div>
+<p class="font-bold text-sm">Horarios de Atención</p>
+<p class="text-sm">Lun - Vie: 9:00 AM - 7:00 PM</p>
+</div>
+</div>
+<div class="flex items-center gap-4 text-slate-700 dark:text-slate-300">
+<div class="size-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div>
+<p class="font-bold text-sm">Ubicación</p>
+<p class="text-sm">Consultorio Médico Central, Piso 4. Ciudad de México.</p>
+</div>
+</div>
+<a class="flex items-center gap-4 p-4 rounded-xl bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 transition-all" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-bold">Escríbeme por WhatsApp</span>
+</a>
+</div>
+<div class="w-full h-48 rounded-xl overflow-hidden grayscale">
+<img alt="Mapa ubicación" class="w-full h-full object-cover" data-location="Mexico City" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmI3yYpZqZhC5GTDxSlLWowNpqhTxOkW9FJfeEUmTNLnoSxNBvHsha5EZ5yhYtn72CKariOQhhd2Bs_5L10lZyOvD8rbAv2qtx31TpkI6nsEwHhHm3TqnVOXUHxLSvk-YYi6_vjUYmL2E1MdJCt46l8_qfOGS2EM0sWs3DIhsNhgC3oEbVIJLpK64k_SmUjGSBf-EAaUz2eXj474PFXlpexq4YE8CpaAoRRQmwqxStUnIdWpfc3whmLfHuxLIa2XTrX7gjDii0yrEF"/>
+</div>
+</div>
+<div class="lg:w-2/3 bg-white dark:bg-slate-900 p-8 md:p-12 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+<h4 class="text-xl font-bold mb-8 text-slate-900 dark:text-slate-100">Solicitar Información</h4>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Nombre Completo</label>
+<input class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary" placeholder="Ej. Juan Pérez" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Correo Electrónico</label>
+<input class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary" placeholder="correo@ejemplo.com" type="email"/>
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Motivo de consulta (Opcional)</label>
+<select class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary">
+<option>Ansiedad / Estrés</option>
+<option>Terapia de Pareja</option>
+<option>Desarrollo Personal</option>
+<option>Otro</option>
+</select>
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Mensaje</label>
+<textarea class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary" placeholder="¿Cómo puedo ayudarte?" rows="4"></textarea>
+</div>
+<div class="md:col-span-2">
+<button class="w-full bg-primary text-white font-bold h-14 rounded-lg shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all" type="submit">
+                                        Enviar Solicitud de Cita
+                                    </button>
+</div>
+</form>
+</div>
+</div>
 </section>
-
-<!-- Footer -->
-<footer class="bg-slate-800 text-white py-12">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
-    <div>
-      <div class="font-serif text-2xl font-semibold mb-4">Dra. Laura Fernández</div>
-      <p class="text-slate-400 text-sm">Psicóloga clínica comprometida con tu bienestar emocional.</p>
-    </div>
-    <div>
-      <div class="font-semibold mb-4">Enlaces</div>
-      <ul class="space-y-2 text-slate-400 text-sm">
-        <li><a href="#acerca" class="hover:text-white">Sobre mí</a></li>
-        <li><a href="#servicios" class="hover:text-white">Servicios</a></li>
-        <li><a href="#contacto" class="hover:text-white">Contacto</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="font-semibold mb-4">Contacto</div>
-      <ul class="space-y-2 text-slate-400 text-sm">
-        <li>WhatsApp: +54 11 6644-8389</li>
-        <li>Email: hola@laurafernandez.psi</li>
-      </ul>
-    </div>
-    <div>
-      <div class="font-semibold mb-4">Redes</div>
-      <div class="flex gap-4">
-        <a href="#" class="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center hover:bg-calm transition">IG</a>
-        <a href="#" class="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center hover:bg-calm transition">LI</a>
-      </div>
-    </div>
-  </div>
+</main>
+<footer class="px-6 md:px-20 lg:px-40 py-12 bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-bold text-slate-900 dark:text-slate-100">Dra. Laura Fernández</span>
+</div>
+<div class="flex gap-6 text-sm text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Aviso de Privacidad</a>
+<a class="hover:text-primary transition-colors" href="#">Términos y Condiciones</a>
+</div>
+<div class="text-sm text-slate-500">
+                        © 2024 Dra. Laura Fernández. Todos los derechos reservados.
+                    </div>
+</div>
 </footer>
-</body>
-</html>
+</div>
+</div>
+</body></html>
