@@ -1,188 +1,263 @@
-<!doctype html>
-<html lang="es" data-wa-phone="541166448389">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Demo | Gimnasio — Impulsor Web</title>
-    <meta
-      name="description"
-      content="Demo de página web para Gimnasio creada por Impulsor Web. Planes, clases, galería y contacto por WhatsApp."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./demo.css" />
-    <style>
-      /* Gimnasio: negro + amarillo + gris metálico */
-      :root {
-        --bg: #0a0a0a;
-        --fg: #fafafa;
-        --muted: #a1a1aa;
-        --border: rgba(255, 255, 255, 0.10);
-        --card: rgba(25, 25, 25, 0.70);
-        --yellow: #eab308;
-        --yellow-dark: #ca8a04;
-        --gray-metallic: #3f3f46;
-        --gradient: linear-gradient(90deg, #eab308, #facc15, #fef08a);
-        --gradient-card: linear-gradient(145deg, rgba(35, 35, 35, 0.80), rgba(15, 15, 15, 0.50));
-        --shadow: 0 18px 70px -45px rgba(234, 179, 8, 0.35), 0 12px 50px -45px rgba(254, 240, 138, 0.25);
-      }
-      .bg {
-        background:
-          radial-gradient(circle at 14% 12%, rgba(234, 179, 8, 0.15), transparent 55%),
-          radial-gradient(circle at 82% 18%, rgba(254, 240, 138, 0.10), transparent 55%),
-          radial-gradient(circle at 58% 92%, rgba(63, 63, 70, 0.12), transparent 55%),
-          linear-gradient(160deg, #0a0a0a 0%, #18181b 55%, #0a0a0a 100%);
-      }
-      .badge i {
-        background: var(--gradient);
-        box-shadow: 0 0 18px rgba(234, 179, 8, 0.45);
-      }
-      .btn {
-        box-shadow: 0 0 38px -18px rgba(234, 179, 8, 0.55);
-      }
-      .btn:hover {
-        box-shadow: 0 0 52px -18px rgba(234, 179, 8, 0.65);
-      }
-      .media {
-        background: radial-gradient(circle at 20% 25%, rgba(234, 179, 8, 0.12), transparent 55%),
-                    radial-gradient(circle at 82% 30%, rgba(254, 240, 138, 0.08), transparent 55%),
-                    linear-gradient(145deg, rgba(35, 35, 35, 0.65), rgba(20, 20, 20, 0.40));
-      }
-      .media__img {
-        background: linear-gradient(135deg, #3f3f46 0%, #27272a 100%);
-      }
-      .card::before {
-        background: radial-gradient(circle at 20% 25%, rgba(234, 179, 8, 0.15), transparent 60%),
-                    radial-gradient(circle at 85% 65%, rgba(254, 240, 138, 0.10), transparent 60%);
-      }
-    </style>
-    <script src="./demo.js" defer></script>
-  </head>
-  <body>
-    <div class="bg" aria-hidden="true"></div>
+<!DOCTYPE html>
 
-    <div class="demo-bar">
-      <div class="container demo-bar__inner">
-        <div class="badge">
-          <i></i>
-          Esta es una página de demostración creada por Impulsor Web. Podemos crear una similar para tu negocio.
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        "power": "#fbbf24",
+        "power-dark": "#f59e0b",
+        "black": "#0f0f0f",
+        "dark": "#1a1a1a",
+        "gray": "#2d2d2d",
+      },
+      fontFamily: {
+        "heading": ["Teko", "sans-serif"],
+        "body": ["Roboto", "sans-serif"],
+      }
+    }
+  }
+}
+</script>
+<title>FITNESS PRO | Gimnasio</title>
+<meta name="description" content="El gimnasio más moderno de la zona. Equipos de última generación, trainers certificados y ambiente profesional."/>
+</head>
+<body class="bg-black text-white font-body">
+<!-- Hero -->
+<section class="relative min-h-screen flex items-center">
+  <div class="absolute inset-0 z-0">
+    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80" alt="Gym" class="w-full h-full object-cover"/>
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-transparent to-transparent"></div>
+  </div>
+  
+  <div class="relative z-10 max-w-7xl mx-auto px-6 py-32">
+    <div class="max-w-3xl">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="h-1 w-20 bg-power"></div>
+        <span class="text-power font-bold tracking-widest uppercase">NUEVO</span>
+      </div>
+      <h1 class="font-heading text-7xl md:text-8xl lg:text-9xl leading-none mb-4 text-white">
+        FITNESS<br/>
+        <span class="text-power">PRO</span>
+      </h1>
+      <p class="text-xl text-gray-300 mb-8 max-w-xl">
+        El gimnasio que vas a querer посещать. Equipos de última generación, trainers certified y ambiente profesional.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#membresia" class="bg-power text-black px-10 py-5 font-bold text-lg tracking-wider hover:bg-power-dark transition-all hover:scale-105 shadow-lg shadow-power/30 uppercase">
+          ¡Entrenar gratis 7 días!
+        </a>
+        <a href="#instalaciones" class="border-2 border-white text-white px-10 py-5 font-bold text-lg tracking-wider hover:bg-white hover:text-black transition-all uppercase">
+          Conocer el gym
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="py-16 bg-dark">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="space-y-2">
+        <div class="font-heading text-5xl text-power">500+</div>
+        <div class="text-gray-400 uppercase tracking-wider text-sm">EQUIPOS</div>
+      </div>
+      <div class="space-y-2">
+        <div class="font-heading text-5xl text-power">50+</div>
+        <div class="text-gray-400 uppercase tracking-wider text-sm">CLASES/DÍA</div>
+      </div>
+      <div class="space-y-2">
+        <div class="font-heading text-5xl text-power">24/7</div>
+        <div class="text-gray-400 uppercase tracking-wider text-sm">ABIERTO</div>
+      </div>
+      <div class="space-y-2">
+        <div class="font-heading text-5xl text-power">12</div>
+        <div class="text-gray-400 uppercase tracking-wider text-sm">ENTRENADORES</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="instalaciones" class="py-24 bg-black">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="space-y-6">
+        <h2 class="font-heading text-6xl">
+          NO SOLO UN <span class="text-power">GIMNASIO</span>
+        </h2>
+        <p class="text-gray-400 leading-relaxed">
+          Fitness Pro es un centro de entrenamiento completo con más de 2000m² de instalaciones. Contamos con zona de weights, cardio, clases grupales, pilates, yoga y mucho más.
+        </p>
+        <p class="text-gray-400 leading-relaxed">
+          Nuestro equipo de trainers certificados te ayudará a alcanzar tus objetivos. Ya sea perder peso, ganar músculo o mejorar tu condición física, tenemos el programa para ti.
+        </p>
+        <div class="grid grid-cols-2 gap-4 pt-4">
+          <div class="bg-dark p-4 rounded-xl border-l-4 border-power">
+            <div class="font-bold text-xl">Zona de Pesas</div>
+            <div class="text-gray-400 text-sm">Libre y máquinas</div>
+          </div>
+          <div class="bg-dark p-4 rounded-xl border-l-4 border-power">
+            <div class="font-bold text-xl">Cardio Zone</div>
+            <div class="text-gray-400 text-sm">Equipos última generación</div>
+          </div>
+          <div class="bg-dark p-4 rounded-xl border-l-4 border-power">
+            <div class="font-bold text-xl">Clases Grupales</div>
+            <div class="text-gray-400 text-sm">+30 clases diarias</div>
+          </div>
+          <div class="bg-dark p-4 rounded-xl border-l-4 border-power">
+            <div class="font-bold text-xl">Spa & Sauna</div>
+            <div class="text-gray-400 text-sm">Recuperación total</div>
+          </div>
         </div>
-        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end;">
-          <a class="btn btn--ghost" data-back-to-landing data-base-url="../" href="../">Volver a Impulsor Web</a>
-          <a class="btn btn--wa" href="#" data-wa-message="Hola, vi la demo de Gimnasio y quiero una web así para mi gym. ¿Podemos hablar?">Quiero una web así</a>
+      </div>
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800&q=80" alt="Gym interior" class="rounded-2xl shadow-2xl"/>
+        <div class="absolute -bottom-6 -right-6 bg-power text-black px-6 py-4 rounded-xl">
+          <div class="font-heading text-3xl">15%</div>
+          <div class="text-sm font-bold">DESCUENTO</div>
+          <div class="text-xs">Primera membresía</div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <main class="container" id="top">
-      <section class="hero">
-        <div class="hero__top">
-          <span class="badge"><i></i> Gimnasio</span>
-          <span class="badge"><i></i> Planes + Clases</span>
-          <span class="badge"><i></i> WhatsApp</span>
+<!-- Membership -->
+<section id="membresia" class="py-24 bg-dark">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="font-heading text-6xl text-center mb-16">MEMBRESÍAS</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Plan 1 -->
+      <div class="bg-black rounded-2xl p-8 border border-gray-800 hover:border-power/50 transition-all">
+        <div class="text-gray-400 uppercase tracking-wider mb-4">BÁSICO</div>
+        <div class="flex items-baseline gap-1 mb-6">
+          <span class="font-heading text-5xl text-white">$79</span>
+          <span class="text-gray-400">/mes</span>
         </div>
-
-        <h1>Tu mejor versión empieza <span class="grad">hoy</span>.</h1>
-        <p class="lead">Demo con estructura de venta: oferta, planes, clases, galería y un CTA a consulta/inscripción.</p>
-
-        <div class="hero__cta">
-          <a class="btn btn--wa" href="#" data-wa-message="Hola, quiero info de planes y promos para inscribirme.">Consultar por WhatsApp</a>
-          <a class="btn btn--ghost" href="#planes">Ver planes</a>
+        <ul class="space-y-3 text-gray-400 mb-8">
+          <li>✓ Acceso al gimnasio</li>
+          <li>✓ Horario limitado</li>
+          <li>✓ 1 clase grupal/día</li>
+          <li>✓ Área de cardio</li>
+        </ul>
+        <a href="#contacto" class="block text-center bg-gray text-white py-3 font-bold uppercase tracking-wider hover:bg-power hover:text-black transition">Comprar</a>
+      </div>
+      
+      <!-- Plan 2 -->
+      <div class="bg-black rounded-2xl p-8 border-2 border-power relative">
+        <div class="absolute top-0 right-0 bg-power text-black text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl">MÁS VENDIDO</div>
+        <div class="text-power uppercase tracking-wider mb-4">PREMIUM</div>
+        <div class="flex items-baseline gap-1 mb-6">
+          <span class="font-heading text-5xl text-white">$129</span>
+          <span class="text-gray-400">/mes</span>
         </div>
-
-        <div class="media" role="region" aria-label="Hero gimnasio">
-          <div class="media__inner">
-            <div class="media__copy">
-              <h2 style="margin:0 0 8px 0;">Impulso Gym</h2>
-              <p class="sub">Entrena fuerza, cardio y clases funcionales. Instalaciones modernas + entrenadores que te acompañan.</p>
-              <div class="kpis">
-                <div class="kpi"><strong>06–23</strong><span>Horarios</span></div>
-                <div class="kpi"><strong>+15</strong><span>Clases</span></div>
-                <div class="kpi"><strong>Promo</strong><span>Primera semana</span></div>
-              </div>
-            </div>
-            <div class="media__img" aria-hidden="true"></div>
-          </div>
+        <ul class="space-y-3 text-gray-400 mb-8">
+          <li>✓ Acceso 24/7</li>
+          <li>✓ Clases ilimitadas</li>
+          <li>✓ Trainer personal (2x mes)</li>
+          <li>✓ Spa & Sauna</li>
+          <li>✓ Toallas incluidas</li>
+        </ul>
+        <a href="#contacto" class="block text-center bg-power text-black py-3 font-bold uppercase tracking-wider hover:bg-power-dark transition">Comprar</a>
+      </div>
+      
+      <!-- Plan 3 -->
+      <div class="bg-black rounded-2xl p-8 border border-gray-800 hover:border-power/50 transition-all">
+        <div class="text-gray-400 uppercase tracking-wider mb-4">VIP</div>
+        <div class="flex items-baseline gap-1 mb-6">
+          <span class="font-heading text-5xl text-white">$199</span>
+          <span class="text-gray-400">/mes</span>
         </div>
-      </section>
+        <ul class="space-y-3 text-gray-400 mb-8">
+          <li>✓ Todo premium</li>
+          <li>✓ Trainer ilimitado</li>
+          <li>✓ Nutrition plan</li>
+          <li>✓ Sesiones recover</li>
+          <li>✓ Parking privado</li>
+        </ul>
+        <a href="#contacto" class="block text-center bg-gray text-white py-3 font-bold uppercase tracking-wider hover:bg-power hover:text-black transition">Comprar</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <section id="planes" class="section">
-        <h2>Planes mensuales</h2>
-        <p class="sub">Bloques simples que convierten: nombre del plan + beneficio + CTA.</p>
-        <div class="grid" style="grid-template-columns:repeat(3, minmax(0,1fr)); margin-top:16px;">
-          <div class="card"><div class="card__inner"><h3>Starter</h3><p>Acceso libre + rutina inicial.</p><p style="margin-top:12px;"><a class="btn btn--wa" href="#" data-wa-message="Hola, quiero el plan Starter. ¿Precio y requisitos?">Quiero este plan</a></p></div></div>
-          <div class="card"><div class="card__inner"><h3>Pro</h3><p>Acceso + 2 clases por semana.</p><p style="margin-top:12px;"><a class="btn btn--wa" href="#" data-wa-message="Hola, quiero el plan Pro. ¿Hay promo del mes?">Quiero este plan</a></p></div></div>
-          <div class="card"><div class="card__inner"><h3>Elite</h3><p>Acceso + clases ilimitadas.</p><p style="margin-top:12px;"><a class="btn btn--wa" href="#" data-wa-message="Hola, quiero el plan Elite. ¿Podés contarme beneficios?">Quiero este plan</a></p></div></div>
+<!-- Classes -->
+<section class="py-24 bg-black">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="font-heading text-6xl text-center mb-4">CLASES <span class="text-power">GRUPALES</span></h2>
+    <p class="text-gray-400 text-center mb-16">+30 clases diarias para todos los niveles</p>
+    <div class="grid md:grid-cols-4 gap-4">
+      <div class="bg-dark rounded-xl overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=80" alt="Spinning" class="w-full h-40 object-cover group-hover:scale-110 transition duration-500"/>
+        <div class="p-4">
+          <div class="font-bold text-lg">Spinning</div>
+          <div class="text-gray-400 text-sm">Intensidad alta</div>
         </div>
-      </section>
-
-      <section class="section">
-        <h2>Clases disponibles</h2>
-        <p class="sub">En una web real, se puede sumar calendario/turnos. En la demo, mostramos la lista.</p>
-        <div class="list">
-          <div class="item"><b>Funcional</b><small>Alta intensidad, 45 min.</small></div>
-          <div class="item"><b>Spinning</b><small>Cardio guiado, 50 min.</small></div>
-          <div class="item"><b>Cross Training</b><small>Fuerza + potencia.</small></div>
+      </div>
+      <div class="bg-dark rounded-xl overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=400&q=80" alt="CrossFit" class="w-full h-40 object-cover group-hover:scale-110 transition duration-500"/>
+        <div class="p-4">
+          <div class="font-bold text-lg">CrossFit</div>
+          <div class="text-gray-400 text-sm">Funcional</div>
         </div>
-      </section>
-
-      <section class="section">
-        <h2>Galería</h2>
-        <p class="sub">Mock visual (tarjetas). En un proyecto real, serían fotos reales del gym.</p>
-        <div class="grid" style="grid-template-columns:repeat(3, minmax(0,1fr));">
-          <div class="card"><div class="card__inner"><h3>Sala de fuerza</h3><p>Máquinas + peso libre.</p></div></div>
-          <div class="card"><div class="card__inner"><h3>Zona funcional</h3><p>Espacio para clases.</p></div></div>
-          <div class="card"><div class="card__inner"><h3>Vestuarios</h3><p>Comodidad y seguridad.</p></div></div>
+      </div>
+      <div class="bg-dark rounded-xl overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=400&q=80" alt="Yoga" class="w-full h-40 object-cover group-hover:scale-110 transition duration-500"/>
+        <div class="p-4">
+          <div class="font-bold text-lg">Yoga</div>
+          <div class="text-gray-400 text-sm">Relax y flexibilidad</div>
         </div>
-      </section>
-
-      <section id="form" class="section">
-        <h2>Contacto</h2>
-        <p class="sub">Formulario demo (abre WhatsApp).</p>
-        <div class="card">
-          <div class="card__inner">
-            <form class="form" data-wa-form>
-              <div class="grid" style="grid-template-columns:1fr 1fr;">
-                <div class="field">
-                  <label>Nombre</label>
-                  <input name="nombre" placeholder="Tu nombre" required />
-                </div>
-                <div class="field">
-                  <label>Interés</label>
-                  <input name="negocio" placeholder="Ej: Pro, Elite, clases..." />
-                </div>
-              </div>
-              <div class="field">
-                <label>Mensaje</label>
-                <textarea name="mensaje" placeholder="¿Qué horarios te quedan mejor?"></textarea>
-              </div>
-              <button class="btn btn--wa" type="submit">Enviar por WhatsApp</button>
-            </form>
-          </div>
+      </div>
+      <div class="bg-dark rounded-xl overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=400&q=80" alt="Box" class="w-full h-40 object-cover group-hover:scale-110 transition duration-500"/>
+        <div class="p-4">
+          <div class="font-bold text-lg">Box</div>
+          <div class="text-gray-400 text-sm">Kickboxing & Box</div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <section class="cta-final">
-        <div class="card">
-          <div class="card__inner">
-            <h3>¿Te gustaría una página como esta para tu negocio?</h3>
-            <p>Con tus fotos, tus planes y un flujo optimizado para que la gente consulte e ingrese.</p>
-            <div class="actions">
-              <a class="btn" href="#" data-wa-message="Hola, vi la demo de Gimnasio y quiero solicitar mi página web. Busco una web que convierta en inscripciones.">Solicitar mi página web</a>
-              <a class="btn btn--ghost" href="#top">Ver arriba</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <a class="float-wa" href="#" data-wa-message="Hola, vi la demo de Gimnasio y quiero información sobre tus servicios.">
-      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path fill="currentColor" d="M19.11 17.46c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.46-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.48.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
-        <path fill="currentColor" d="M16.02 3.2c-7.06 0-12.8 5.65-12.8 12.6 0 2.22.59 4.38 1.72 6.28L3.2 28.8l6.9-1.7a12.9 12.9 0 0 0 5.92 1.43c7.06 0 12.8-5.65 12.8-12.6 0-6.95-5.74-12.73-12.8-12.73Zm7.52 18.13c-.32.9-1.6 1.73-2.23 1.82-.58.08-1.31.12-2.12-.13-.49-.15-1.12-.36-1.93-.7-3.39-1.44-5.6-4.96-5.77-5.18-.17-.22-1.38-1.82-1.38-3.48 0-1.66.88-2.48 1.2-2.82.32-.35.7-.43.93-.43h.67c.22 0 .52-.08.82.63.32.74 1.08 2.56 1.18 2.75.1.2.17.43.05.7-.12.27-.17.43-.35.66-.17.22-.37.49-.52.66-.17.2-.35.4-.15.78.2.39.9 1.48 1.93 2.4 1.33 1.17 2.45 1.54 2.82 1.72.37.17.59.15.82-.1.22-.25.95-1.1 1.2-1.48.25-.39.49-.32.82-.2.32.12 2.08.97 2.43 1.14.35.17.57.25.65.39.08.13.08.78-.24 1.68Z"/>
-      </svg>
-      WhatsApp
+<!-- CTA -->
+<section id="contacto" class="py-24 bg-gradient-to-b from-dark to-black">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <h2 class="font-heading text-6xl mb-6">¿LISTO PARA <span class="text-power">ENTRENAR</span>?</h2>
+    <p class="text-gray-400 text-xl mb-8">Ven a entrenar gratis 7 días y conocé nuestras instalaciones.</p>
+    <a href="https://wa.me/541166448389?text=Hola%2C%20quiero%20entrenar%20gratis%207%20d%C3%ADas%20en%20Fitness%20Pro" target="_blank" class="inline-flex items-center gap-3 bg-power text-black px-12 py-5 font-bold text-lg tracking-wider hover:bg-power-dark transition-all hover:scale-105 shadow-lg">
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      RESERVAR VISITA
     </a>
-  </body>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black py-12 border-t border-gray-800">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+    <div class="col-span-2">
+      <div class="font-heading text-5xl mb-4">FITNESS <span class="text-power">PRO</span></div>
+      <p class="text-gray-400">El gimnasio más moderno de la zona. Transformá tu cuerpo y tu vida.</p>
+    </div>
+    <div>
+      <div class="font-bold mb-4">DIRECCIÓN</div>
+      <p class="text-gray-400">Av. Principal 1234<br/>Zona Centro</p>
+    </div>
+    <div>
+      <div class="font-bold mb-4">CONTACTO</div>
+      <ul class="space-y-2 text-gray-400">
+        <li>WhatsApp: +54 11 6644-8389</li>
+        <li>Instagram: @fitnesspro</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
 </html>
