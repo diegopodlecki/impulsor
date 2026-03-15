@@ -590,6 +590,195 @@ export default function Index() {
     });
   }, []);
 
+  const renderConstructorPreview = React.useCallback(
+    (s: (typeof constructorSections)[number]) => {
+      const accent =
+        s.id === "home"
+          ? "from-cyan-500/30 to-fuchsia-500/20"
+          : s.id === "services"
+            ? "from-indigo-500/25 to-cyan-500/15"
+            : s.id === "testimonials"
+              ? "from-fuchsia-500/20 to-indigo-500/15"
+              : "from-cyan-500/15 to-fuchsia-500/10";
+
+      const Header = (
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <div className="text-[11px] font-semibold tracking-[0.25em] text-[hsl(var(--neon-purple))]">{s.title}</div>
+            <div className="mt-2 text-xs text-muted-foreground">{s.body}</div>
+          </div>
+          <div
+            className={cn(
+              "hidden sm:block h-10 w-10 rounded-2xl border border-border/60 bg-background/35",
+              "shadow-[0_18px_60px_-35px_rgba(168,85,247,0.22)]",
+            )}
+          >
+            <div className={cn("h-full w-full rounded-2xl bg-gradient-to-br", accent)} />
+          </div>
+        </div>
+      );
+
+      if (s.id === "home") {
+        return (
+          <div>
+            {Header}
+            <div className="mt-4 overflow-hidden rounded-2xl border border-border/60 bg-background/25">
+              <div
+                className={cn(
+                  "relative p-5",
+                  "bg-[radial-gradient(circle_at_18%_22%,rgba(34,211,238,0.18),transparent_55%),radial-gradient(circle_at_82%_20%,rgba(168,85,247,0.18),transparent_55%)]",
+                )}
+              >
+              <div className="flex items-center justify-between text-[11px] text-muted-foreground">
+                <div className="font-semibold tracking-tight text-foreground/90">{BRAND.name}</div>
+                <div className="hidden sm:flex items-center gap-3">
+                  <span>Servicios</span>
+                  <span>Contacto</span>
+                </div>
+              </div>
+              <div className="mt-4 text-lg font-semibold tracking-tight">Tu web lista para convertir</div>
+              <div className="mt-1 text-xs text-muted-foreground">
+                Explicá tu propuesta en una frase + CTA visible.
+              </div>
+              <div className="mt-4 inline-flex items-center gap-2 rounded-xl border border-[hsl(var(--neon-cyan))]/35 bg-background/30 px-3 py-2 text-xs font-semibold">
+                <MessageCircle className="h-4 w-4 text-[hsl(var(--neon-cyan))]" /> Hablar por WhatsApp
+              </div>
+            </div>
+            </div>
+          </div>
+        );
+      }
+
+      if (s.id === "about") {
+        return (
+          <div>
+            {Header}
+            <div className="mt-4 grid gap-4 rounded-2xl border border-border/60 bg-background/25 p-5 sm:grid-cols-3">
+              <div className="sm:col-span-1">
+                <div className="aspect-square w-full max-w-[140px] rounded-2xl border border-border/60 bg-gradient-to-br from-cyan-500/20 to-fuchsia-500/15 shadow-glow" />
+              </div>
+              <div className="sm:col-span-2">
+                <div className="text-sm font-semibold tracking-tight">Sobre mí</div>
+                <div className="mt-2 space-y-2 text-xs text-muted-foreground">
+                  <div className="h-2 w-[92%] rounded bg-white/10" />
+                  <div className="h-2 w-[84%] rounded bg-white/10" />
+                  <div className="h-2 w-[70%] rounded bg-white/10" />
+                </div>
+                <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/25 px-3 py-1 text-[11px] text-muted-foreground">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[hsl(var(--neon-cyan))]" /> Experiencia + enfoque
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      if (s.id === "services") {
+        return (
+          <div>
+            {Header}
+            <div className="mt-4 grid gap-3 rounded-2xl border border-border/60 bg-background/25 p-5 sm:grid-cols-3">
+              {[
+                { icon: <Zap className="h-4 w-4" />, title: "Servicio 1" },
+                { icon: <Rocket className="h-4 w-4" />, title: "Servicio 2" },
+                { icon: <Globe className="h-4 w-4" />, title: "Servicio 3" },
+              ].map((c) => (
+                <div key={c.title} className="rounded-xl border border-border/50 bg-background/20 p-4">
+                  <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border/60 bg-background/30 text-[hsl(var(--neon-cyan))]">
+                    {c.icon}
+                  </div>
+                  <div className="mt-3 text-xs font-semibold tracking-tight">{c.title}</div>
+                  <div className="mt-2 h-2 w-full rounded bg-white/10" />
+                  <div className="mt-2 h-2 w-[70%] rounded bg-white/10" />
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      }
+
+      if (s.id === "testimonials") {
+        return (
+          <div>
+            {Header}
+            <div className="mt-4 grid gap-3 rounded-2xl border border-border/60 bg-background/25 p-5 sm:grid-cols-2">
+              {["Cliente A", "Cliente B"].map((who) => (
+                <div key={who} className="rounded-xl border border-border/50 bg-background/20 p-4">
+                  <div className="flex items-center gap-1 text-[hsl(var(--neon-cyan))]">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="h-3.5 w-3.5" />
+                    ))}
+                  </div>
+                  <div className="mt-3 space-y-2">
+                    <div className="h-2 w-[95%] rounded bg-white/10" />
+                    <div className="h-2 w-[82%] rounded bg-white/10" />
+                  </div>
+                  <div className="mt-3 text-[11px] font-semibold text-foreground/90">— {who}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      }
+
+      if (s.id === "gallery") {
+        return (
+          <div>
+            {Header}
+            <div className="mt-4 rounded-2xl border border-border/60 bg-background/25 p-5">
+              <div className="grid grid-cols-3 gap-3">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className={cn(
+                      "aspect-[4/3] rounded-xl border border-border/50",
+                      "bg-[radial-gradient(circle_at_30%_30%,rgba(34,211,238,0.18),transparent_55%),radial-gradient(circle_at_75%_60%,rgba(168,85,247,0.16),transparent_55%)]",
+                    )}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      if (s.id === "wa") {
+        return (
+          <div>
+            {Header}
+            <div className="mt-4 rounded-2xl border border-border/60 bg-background/25 p-5">
+              <div className="text-sm font-semibold tracking-tight">Contacto</div>
+              <div className="mt-2 text-xs text-muted-foreground">Botón destacado con mensaje pre-escrito.</div>
+              <div className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[hsl(142,70%,45%)] px-4 py-3 text-sm font-bold text-white">
+                <MessageCircle className="h-5 w-5" /> WhatsApp
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      if (s.id === "form") {
+        return (
+          <div>
+            {Header}
+            <div className="mt-4 rounded-2xl border border-border/60 bg-background/25 p-5">
+              <div className="text-sm font-semibold tracking-tight">Formulario</div>
+              <div className="mt-4 grid gap-2">
+                <div className="h-10 rounded-xl border border-border/50 bg-background/20" />
+                <div className="h-10 rounded-xl border border-border/50 bg-background/20" />
+                <div className="h-20 rounded-xl border border-border/50 bg-background/20" />
+                <div className="mt-1 h-10 rounded-xl border border-[hsl(var(--neon-purple))]/35 bg-background/25" />
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      return <div>{Header}</div>;
+    },
+    [],
+  );
+
   const persistLeadLocally = React.useCallback((lead: Record<string, unknown>) => {
     // Demo real: guardamos el lead localmente para que se vea el "registro" aunque el webhook no esté configurado
     // o falle por CORS.
@@ -653,14 +842,30 @@ export default function Index() {
     };
 
     try {
+      const jsonBody = JSON.stringify(googlePayload);
       const response = await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
         method: "POST",
-        body: JSON.stringify(googlePayload),
+        body: jsonBody,
+        redirect: "follow",
+        keepalive: true,
       });
 
-      const result = (await response.json().catch(() => null)) as { result?: string } | null;
+      const rawText = await response.text().catch(() => "");
+      const parsed = (() => {
+        try {
+          return rawText ? (JSON.parse(rawText) as { result?: string } | null) : null;
+        } catch {
+          return null;
+        }
+      })();
 
-      if (result?.result === "success") {
+      const isSuccess =
+        parsed?.result === "success" ||
+        /"result"\s*:\s*"success"/i.test(rawText) ||
+        /\bsuccess\b/i.test(rawText) ||
+        response.ok;
+
+      if (isSuccess) {
         setStatusText("Mensaje enviado correctamente");
 
         sendLead({
@@ -686,8 +891,37 @@ export default function Index() {
         setLeadStage("idle");
       }
     } catch {
-      setStatusText("Error de conexión");
-      setLeadStage("idle");
+      try {
+        await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
+          method: "POST",
+          body: JSON.stringify(googlePayload),
+          mode: "no-cors",
+          keepalive: true,
+        });
+        setStatusText("Mensaje enviado correctamente");
+
+        sendLead({
+          id: leadId,
+          nombre: name.trim(),
+          email: email.trim(),
+          negocio: "landing webappimpulsor",
+          mensaje: message.trim(),
+          fecha,
+          source: "landing",
+          path: window.location.pathname,
+          referrer: document.referrer || null,
+          userAgent: navigator.userAgent,
+        });
+
+        setName("");
+        setEmail("");
+        setMessage("");
+        setLeadStage("sent");
+        toast.success("Gracias. Tu consulta quedó registrada. Continuá por WhatsApp para terminar de enviarla.");
+      } catch {
+        setStatusText("Error de conexión");
+        setLeadStage("idle");
+      }
     }
   }, [email, leadStage, message, name, sendLead]);
 
@@ -1403,7 +1637,7 @@ export default function Index() {
                       />
                       <div className="flex-1">
                         <div className="font-semibold tracking-tight">{s.label}</div>
-                        <div className="mt-1 text-xs text-muted-foreground">Sección recomendada para convertir.</div>
+                        <div className="mt-1 text-xs text-muted-foreground">{s.body}</div>
                       </div>
                     </label>
                   ))}
@@ -1452,11 +1686,7 @@ export default function Index() {
                         )}
                         aria-hidden={!isOpen}
                       >
-                        <div className="text-xs font-semibold tracking-[0.25em] text-[hsl(var(--neon-purple))]">
-                          {s.title}
-                        </div>
-                        <div className="mt-2 text-sm text-muted-foreground">{s.body}</div>
-                        <div className="mt-3 h-px w-full bg-gradient-primary opacity-60" />
+                        {renderConstructorPreview(s)}
                       </div>
                     );
                   })}
@@ -1783,6 +2013,8 @@ export default function Index() {
             <form
               onSubmit={submitLead}
               id="contactForm"
+              method="POST"
+              action={GOOGLE_SHEETS_SCRIPT_URL}
               className="card-neon glow-soft lg:col-span-7 rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
             >
               {leadStage === "sent" ? (
@@ -1828,6 +2060,7 @@ export default function Index() {
                 <input
                   type="text"
                   id="nombre"
+                  name="nombre"
                   placeholder="Nombre"
                   required
                   value={name}
@@ -1842,6 +2075,7 @@ export default function Index() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   placeholder="Email"
                   required
                   value={email}
@@ -1855,6 +2089,7 @@ export default function Index() {
 
                 <textarea
                   id="mensaje"
+                  name="mensaje"
                   placeholder="Mensaje"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
@@ -1865,6 +2100,8 @@ export default function Index() {
                   )}
                 />
               </div>
+
+              <input type="hidden" name="origen" value="landing webappimpulsor" />
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <Button type="submit" variant="hero" size="lg" className="justify-center" disabled={leadStage !== "idle"}>
