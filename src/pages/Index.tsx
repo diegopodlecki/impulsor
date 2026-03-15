@@ -42,6 +42,13 @@ const DEFAULT_WA_MESSAGE =
 const GOOGLE_SHEETS_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbybYzGbEKrL6g7PxcPR61rY-2xYRAixB65ggZ7Com4DYsqG_O_SQan-kMiuX7oA0IbN/exec";
 
+function withBase(path: string) {
+  const base = (import.meta.env.BASE_URL ?? "/") + "";
+  const normalizedBase = base.endsWith("/") ? base : `${base}/`;
+  const normalizedPath = (path ?? "").replace(/^\//, "");
+  return `${normalizedBase}${normalizedPath}`;
+}
+
 // Plantilla del mensaje post-formulario (incluye los datos del lead).
 function buildFormWhatsAppMessage(params: {
   name: string;
@@ -204,13 +211,6 @@ function ServiceCard({
 }
 
 function ExampleCard({ title, subtitle, href }: { title: string; subtitle: string; href: string }) {
-  // Nota: usamos BASE_URL para que funcione bien en GitHub Pages o subcarpetas.
-  const withBase = (path: string) => {
-    const base = (import.meta.env.BASE_URL ?? "/") + "";
-    const normalizedBase = base.endsWith("/") ? base : `${base}/`;
-    const normalizedPath = (path ?? "").replace(/^\//, "");
-    return `${normalizedBase}${normalizedPath}`;
-  };
   const resolvedHref = withBase(href);
 
   return (
@@ -291,6 +291,69 @@ export default function Index() {
   const [preparedWhatsAppUrl, setPreparedWhatsAppUrl] = React.useState<string>("");
 
   const webhookUrl = ((import.meta.env.VITE_LEADS_WEBHOOK_URL as string | undefined) ?? "").trim();
+
+  const demoOptions = React.useMemo(
+    () =>
+      [
+        { key: "trainer", label: "Entrenador personal", src: "/demos/trainer.html" },
+        { key: "psicologo", label: "Psicólogo", src: "/demos/psicologo.html" },
+        { key: "nutricionista", label: "Nutricionista", src: "/demos/nutricionista.html" },
+        { key: "gimnasio", label: "Gimnasio", src: "/demos/gimnasio.html" },
+      ] as const,
+    [],
+  );
+
+  const [selectedDemoKey, setSelectedDemoKey] = React.useState<(typeof demoOptions)[number]["key"]>("trainer");
+  const [iframeSrc, setIframeSrc] = React.useState<string>(withBase("/demos/trainer.html"));
+  const [iframeVisible, setIframeVisible] = React.useState(true);
+  const iframeTimerRef = React.useRef<number | null>(null);
+
+  React.useEffect(() => {
+    return () => {
+      if (iframeTimerRef.current) window.clearTimeout(iframeTimerRef.current);
+    };
+  }, []);
+
+  const selectDemo = React.useCallback(
+    (key: (typeof demoOptions)[number]["key"]) => {
+      if (key === selectedDemoKey) return;
+      const next = demoOptions.find((d) => d.key === key);
+      if (!next) return;
+
+      setSelectedDemoKey(key);
+      setIframeVisible(false);
+
+      if (iframeTimerRef.current) window.clearTimeout(iframeTimerRef.current);
+      iframeTimerRef.current = window.setTimeout(() => {
+        setIframeSrc(withBase(next.src));
+        setIframeVisible(true);
+      }, 180);
+    },
+    [demoOptions, selectedDemoKey],
+  );
+
+  const [calcBusiness, setCalcBusiness] = React.useState("Entrenador personal");
+  const [calcPageType, setCalcPageType] = React.useState<"landing" | "profesional" | "completa">("landing");
+  const [extraWhatsapp, setExtraWhatsapp] = React.useState(true);
+  const [extraForm, setExtraForm] = React.useState(true);
+  const [extraMobile, setExtraMobile] = React.useState(true);
+  const [extraCustom, setExtraCustom] = React.useState(false);
+
+  const calcPrice = React.useMemo(() => {
+    const base =
+      calcPageType === "landing" ? 150 : calcPageType === "profesional" ? 250 : calcPageType === "completa" ? 350 : 150;
+    const extras =
+      (extraWhatsapp ? 20 : 0) +
+      (extraForm ? 30 : 0) +
+      (extraMobile ? 40 : 0) +
+      (extraCustom ? 60 : 0);
+    return base + extras;
+  }, [calcPageType, extraCustom, extraForm, extraMobile, extraWhatsapp]);
+
+  const calcWhatsAppUrl = React.useMemo(() => {
+    const msg = `Hola, quiero crear mi página web. El simulador me dio un precio aproximado de ${calcPrice} USD.`;
+    return buildWhatsAppUrl(msg);
+  }, [calcPrice]);
 
   const persistLeadLocally = React.useCallback((lead: Record<string, unknown>) => {
     // Demo real: guardamos el lead localmente para que se vea el "registro" aunque el webhook no esté configurado
@@ -423,6 +486,12 @@ export default function Index() {
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#como-funciona">
               Cómo funciona
             </a>
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#simulador">
+              Simulador
+            </a>
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#calculadora">
+              Calculadora
+            </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#ejemplos">
               Ejemplos
             </a>
@@ -476,7 +545,7 @@ export default function Index() {
                 </a>
               </Button>
               <Button asChild variant="outline" size="lg" className="justify-center border-border/60 hover:bg-background/40">
-                <a href="#ejemplos">
+                <a href="#simulador">
                   Ver cómo sería tu página <Eye className="h-4 w-4" />
                 </a>
               </Button>
@@ -662,6 +731,104 @@ export default function Index() {
           </div>
         </section>
 
+        <section id="simulador" className="container py-16 sm:py-20">
+          <SectionHeader
+            eyebrow="Simulador"
+            title="Simula cómo se vería la web de tu negocio"
+            description="Explora ejemplos reales de cómo podría verse la página web de tu negocio."
+          />
+
+          <div className="mt-10 grid gap-4 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <div
+                data-reveal
+                className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-5 text-left shadow-card"
+              >
+                <div className="text-sm font-semibold tracking-tight">Elegí tu rubro</div>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Cambiá de demo y mirá la web dentro de la página (como si fuera una micro-plataforma).
+                </p>
+
+                <div className="mt-5 grid gap-2">
+                  {demoOptions.map((opt) => {
+                    const active = opt.key === selectedDemoKey;
+                    return (
+                      <button
+                        key={opt.key}
+                        type="button"
+                        onClick={() => selectDemo(opt.key)}
+                        className={cn(
+                          "flex items-center justify-between gap-3 rounded-xl border px-4 py-3 text-left text-sm",
+                          "transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                          active
+                            ? "border-[hsl(var(--neon-cyan))]/55 bg-background/35 shadow-glow"
+                            : "border-border/60 bg-background/20 hover:bg-background/30",
+                        )}
+                        aria-pressed={active}
+                      >
+                        <span className="font-semibold tracking-tight">{opt.label}</span>
+                        <span className={cn("text-xs", active ? "text-[hsl(var(--neon-cyan))]" : "text-muted-foreground")}>
+                          Vista previa
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-5">
+                  <Button asChild variant="outline" className="w-full justify-center border-border/60 hover:bg-background/40">
+                    <a href="#ejemplos">
+                      Ver todas las demos <ChevronRight className="h-4 w-4" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-8">
+              <div
+                data-reveal
+                className="card-neon overflow-hidden rounded-2xl border border-border/70 bg-gradient-card shadow-card"
+              >
+                <div className="flex items-center justify-between border-b border-border/40 bg-background/25 px-4 py-3">
+                  <div className="text-sm font-semibold tracking-tight">Vista previa interactiva</div>
+                  <a
+                    href={iframeSrc}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-muted-foreground underline decoration-border/60 underline-offset-4 hover:text-foreground"
+                  >
+                    Abrir en nueva pestaña
+                  </a>
+                </div>
+                <div className="relative aspect-[16/10] w-full bg-background/20">
+                  <div
+                    className={cn(
+                      "absolute inset-0 transition-opacity duration-300",
+                      iframeVisible ? "opacity-100" : "opacity-0",
+                    )}
+                  >
+                    <iframe
+                      title="Vista previa de demo"
+                      src={iframeSrc}
+                      className="h-full w-full"
+                      loading="lazy"
+                      sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+                    />
+                  </div>
+                  {!iframeVisible ? (
+                    <div className="absolute inset-0 grid place-items-center">
+                      <div className="rounded-full border border-border/60 bg-background/40 px-4 py-2 text-xs text-muted-foreground">
+                        Cargando demo…
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="automatizacion" className="container py-16 sm:py-20">
           <SectionHeader
             eyebrow="Demostración"
@@ -725,6 +892,120 @@ export default function Index() {
                     </a>
                   </Button>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="calculadora" className="container py-16 sm:py-20">
+          <SectionHeader
+            eyebrow="Calculadora"
+            title="Calcula el precio de tu página web"
+            description="Elegí opciones y mirá un precio aproximado en tiempo real. Sin vueltas."
+          />
+
+          <div className="mt-10 grid gap-4 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <div
+                data-reveal
+                className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
+              >
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <label className="space-y-2">
+                    <div className="text-sm font-medium text-foreground/90">Tipo de negocio</div>
+                    <select
+                      value={calcBusiness}
+                      onChange={(e) => setCalcBusiness(e.target.value)}
+                      className={cn(
+                        "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
+                        "focus:outline-none focus:ring-2 focus:ring-ring",
+                      )}
+                    >
+                      {[
+                        "Entrenador personal",
+                        "Psicólogo",
+                        "Nutricionista",
+                        "Gimnasio",
+                        "Profesional independiente",
+                      ].map((v) => (
+                        <option key={v} value={v}>
+                          {v}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+
+                  <label className="space-y-2">
+                    <div className="text-sm font-medium text-foreground/90">Tipo de página</div>
+                    <select
+                      value={calcPageType}
+                      onChange={(e) => setCalcPageType(e.target.value as typeof calcPageType)}
+                      className={cn(
+                        "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
+                        "focus:outline-none focus:ring-2 focus:ring-ring",
+                      )}
+                    >
+                      <option value="landing">Landing simple</option>
+                      <option value="profesional">Web profesional</option>
+                      <option value="completa">Web completa con secciones</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div className="mt-6">
+                  <div className="text-sm font-medium text-foreground/90">Extras</div>
+                  <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                    {[
+                      { key: "wa", label: "Botón de WhatsApp", value: extraWhatsapp, set: setExtraWhatsapp, price: 20 },
+                      { key: "form", label: "Formulario de contacto", value: extraForm, set: setExtraForm, price: 30 },
+                      { key: "mobile", label: "Optimización móvil", value: extraMobile, set: setExtraMobile, price: 40 },
+                      { key: "custom", label: "Diseño personalizado", value: extraCustom, set: setExtraCustom, price: 60 },
+                    ].map((x) => (
+                      <label
+                        key={x.key}
+                        className="flex cursor-pointer items-start gap-3 rounded-xl border border-border/60 bg-background/20 px-4 py-3 text-sm transition-colors hover:bg-background/30"
+                      >
+                        <input
+                          type="checkbox"
+                          checked={x.value}
+                          onChange={(e) => x.set(e.target.checked)}
+                          className="mt-1 h-4 w-4 accent-[hsl(var(--neon-cyan))]"
+                        />
+                        <div className="flex-1">
+                          <div className="font-semibold tracking-tight">{x.label}</div>
+                          <div className="mt-1 text-xs text-muted-foreground">+{x.price} USD</div>
+                        </div>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5">
+              <div
+                data-reveal
+                className="card-neon glow-soft rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
+              >
+                <div className="text-sm text-muted-foreground">Resultado</div>
+                <div className="mt-2 text-balance text-2xl font-semibold tracking-tight">
+                  Tu web desde: <span className="text-gradient gradient-animate">{calcPrice} USD</span>
+                </div>
+                <p className="mt-3 text-sm text-muted-foreground">
+                  Rubro: <span className="text-foreground/90">{calcBusiness}</span>
+                </p>
+
+                <div className="mt-6">
+                  <Button asChild variant="whatsapp" size="lg" className="w-full justify-center">
+                    <a href={calcWhatsAppUrl} target="_blank" rel="noopener noreferrer">
+                      Quiero mi página web <MessageCircle />
+                    </a>
+                  </Button>
+                </div>
+
+                <p className="mt-4 text-xs text-muted-foreground">
+                  Este valor es aproximado. Te paso un presupuesto final según tu contenido y objetivos.
+                </p>
               </div>
             </div>
           </div>
