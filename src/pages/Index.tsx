@@ -91,6 +91,8 @@ function normalizeText(value: string) {
     .trim();
 }
 
+type PresenceStatus = "ok" | "warn" | "bad";
+
 function LogoMark({ className }: { className?: string }) {
   const [brandFirst, ...brandRest] = BRAND.name.split(" ");
   const brandRestText = brandRest.join(" ").trim();
@@ -460,6 +462,94 @@ export default function Index() {
     ideaTimerRef.current = window.setTimeout(() => setIdeaVisible(true), 30);
     window.setTimeout(() => ideaResultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
   }, [ideaBusiness]);
+
+  const [presenceQuery, setPresenceQuery] = React.useState("");
+  const [presenceStage, setPresenceStage] = React.useState<"idle" | "scanning" | "done">("idle");
+  const [presenceVisibleCount, setPresenceVisibleCount] = React.useState(0);
+  const presenceTimersRef = React.useRef<number[]>([]);
+
+  React.useEffect(() => {
+    return () => {
+      for (const t of presenceTimersRef.current) window.clearTimeout(t);
+      presenceTimersRef.current = [];
+    };
+  }, []);
+
+  const presenceWhatsAppUrl = React.useMemo(() => {
+    const msg =
+      "Hola, acabo de analizar la presencia digital de mi negocio en WebAppImpulsor y me gustaría crear una página web profesional.";
+    return buildWhatsAppUrl(msg);
+  }, []);
+
+  const presenceResults = React.useMemo(() => {
+    const q = presenceQuery.trim();
+    const n = normalizeText(q);
+    const looksLikeInstagram = q.includes("@") || n.includes("instagram") || n.includes("ig");
+    const looksLikeWebsite = n.includes("http") || n.includes("www.") || n.includes(".com") || n.includes(".ar");
+
+    const igStatus: PresenceStatus = q ? "ok" : "warn";
+    const webStatus: PresenceStatus = looksLikeWebsite ? "warn" : "bad";
+
+    return [
+      {
+        label: "Instagram",
+        status: looksLikeInstagram || q ? igStatus : "warn",
+        ok: "Presente",
+        warn: "Parcial",
+        bad: "No detectado",
+      },
+      {
+        label: "Página web profesional",
+        status: webStatus,
+        ok: "Detectada",
+        warn: "Parcial (link encontrado, falta optimización)",
+        bad: "No detectada",
+      },
+      {
+        label: "Catálogo de servicios organizado",
+        status: "warn" as const,
+        ok: "Completo",
+        warn: "Parcial",
+        bad: "No detectado",
+      },
+      {
+        label: "Formulario de contacto",
+        status: looksLikeWebsite ? ("warn" as const) : ("bad" as const),
+        ok: "Presente",
+        warn: "Parcial",
+        bad: "No detectado",
+      },
+      {
+        label: "Contacto directo automatizado",
+        status: "warn" as const,
+        ok: "Activo",
+        warn: "Limitado",
+        bad: "No detectado",
+      },
+    ] as const;
+  }, [presenceQuery]);
+
+  const runPresenceAnalysis = React.useCallback(() => {
+    const q = presenceQuery.trim();
+    if (!q) return;
+
+    for (const t of presenceTimersRef.current) window.clearTimeout(t);
+    presenceTimersRef.current = [];
+
+    setPresenceStage("scanning");
+    setPresenceVisibleCount(0);
+
+    const first = window.setTimeout(() => setPresenceVisibleCount(1), 420);
+    presenceTimersRef.current.push(first);
+
+    for (let i = 2; i <= presenceResults.length; i += 1) {
+      const t = window.setTimeout(() => setPresenceVisibleCount(i), 420 * i);
+      presenceTimersRef.current.push(t);
+    }
+
+    const done = window.setTimeout(() => setPresenceStage("done"), 420 * (presenceResults.length + 1));
+    presenceTimersRef.current.push(done);
+  }, [presenceQuery, presenceResults.length]);
 
   const calcPrice = React.useMemo(() => {
     const base =
@@ -958,6 +1048,9 @@ export default function Index() {
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#simulador">
               Simulador
             </a>
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#analizador">
+              Analizador
+            </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#calculadora">
               Calculadora
             </a>
@@ -1369,6 +1462,132 @@ export default function Index() {
                       Quiero esta automatización <ArrowRight />
                     </a>
                   </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="analizador" className="container py-16 sm:py-20">
+          <SectionHeader
+            eyebrow="Diagnóstico"
+            title="Analiza la presencia digital de tu negocio"
+            description="Descubre qué le falta a tu negocio para verse realmente profesional online."
+          />
+
+          <div className="mt-10 grid gap-4 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <div
+                data-reveal
+                className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
+              >
+                <div className="text-sm font-semibold tracking-tight">Ingresá tu Instagram o tu nombre</div>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Esto es un análisis simulado (tipo startup). Te muestra qué suele faltar para convertir visitas en consultas.
+                </p>
+
+                <div className="mt-5 grid gap-3">
+                  <input
+                    value={presenceQuery}
+                    onChange={(e) => setPresenceQuery(e.target.value)}
+                    placeholder="Ej: @entrenadorfitness o Estética Bella"
+                    className={cn(
+                      "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
+                      "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
+                    )}
+                    autoComplete="off"
+                    inputMode="text"
+                  />
+                  <Button
+                    type="button"
+                    variant="hero"
+                    size="lg"
+                    className="w-full justify-center glow-neon"
+                    onClick={runPresenceAnalysis}
+                    disabled={!presenceQuery.trim() || presenceStage === "scanning"}
+                  >
+                    {presenceStage === "scanning" ? "Analizando..." : "Analizar presencia digital"}{" "}
+                    <Sparkles className="h-4 w-4" />
+                  </Button>
+                </div>
+
+                <div className="mt-4 text-xs text-muted-foreground">
+                  Tip: probá con tu @ de Instagram. Luego te digo cómo lo potenciaríamos con una web.
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7">
+              <div
+                data-reveal
+                className="card-neon overflow-hidden rounded-2xl border border-border/70 bg-gradient-card shadow-card"
+              >
+                <div className="border-b border-border/40 bg-background/25 px-4 py-3">
+                  <div className="text-sm font-semibold tracking-tight">Análisis de presencia digital</div>
+                  <div className="mt-1 text-xs text-muted-foreground">
+                    {presenceStage === "scanning"
+                      ? "Escaneando…"
+                      : presenceStage === "done"
+                        ? "Listo. Este es un diagnóstico rápido."
+                        : "Completá el campo y ejecutá el análisis."}
+                  </div>
+                </div>
+
+                <div className="p-4 sm:p-6">
+                  <div className="grid gap-3">
+                    {presenceResults.map((row, idx) => {
+                      const isVisible = presenceVisibleCount >= idx + 1;
+                      const status = row.status;
+                      const icon =
+                        status === "ok" ? (
+                          <span className="text-[hsl(var(--neon-cyan))]">✔</span>
+                        ) : status === "warn" ? (
+                          <span className="text-[hsl(var(--neon-purple))]">⚠</span>
+                        ) : (
+                          <span className="text-red-400">✖</span>
+                        );
+
+                      const label =
+                        status === "ok" ? row.ok : status === "warn" ? row.warn : row.bad;
+
+                      return (
+                        <div
+                          key={row.label}
+                          className={cn(
+                            "rounded-xl border border-border/60 bg-background/20 px-4 py-3",
+                            "transition-all duration-300 ease-out",
+                            isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1",
+                          )}
+                        >
+                          <div className="flex items-center justify-between gap-4">
+                            <div className="flex items-center gap-3">
+                              <div className="grid h-9 w-9 place-items-center rounded-xl border border-border/60 bg-background/30">
+                                {icon}
+                              </div>
+                              <div className="text-sm font-semibold tracking-tight">{row.label}</div>
+                            </div>
+                            <div className="text-sm text-muted-foreground">{label}</div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {presenceStage === "done" ? (
+                    <div className="mt-6 rounded-2xl border border-border/60 bg-background/25 p-5">
+                      <div className="text-sm font-semibold tracking-tight">Cómo mejorar tu presencia digital</div>
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        Una página web profesional te permite mostrar tus servicios claramente, recibir consultas automáticas y generar más confianza en nuevos clientes.
+                      </p>
+                      <div className="mt-4">
+                        <Button asChild variant="whatsapp" size="lg" className="w-full justify-center">
+                          <a href={presenceWhatsAppUrl} target="_blank" rel="noopener noreferrer">
+                            Quiero mejorar mi presencia digital <MessageCircle />
+                          </a>
+                        </Button>
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
               </div>
             </div>
