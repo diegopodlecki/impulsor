@@ -31,9 +31,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const BRAND = {
-  name: "Impulsor Web",
+  name: "WebAppImpulsor",
   domain: "webappimpulsor.com",
-  tagline: "Webs inteligentes y automatización digital para impulsar tu negocio.",
+  tagline: "Páginas web profesionales que generan consultas por WhatsApp.",
 };
 
 const DEFAULT_WA_MESSAGE =
@@ -74,6 +74,9 @@ function buildWhatsAppUrl(message: string) {
 }
 
 function LogoMark({ className }: { className?: string }) {
+  const [brandFirst, ...brandRest] = BRAND.name.split(" ");
+  const brandRestText = brandRest.join(" ").trim();
+
   return (
     <div className={cn("inline-flex items-center gap-2", className)}>
       <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true" className="shrink-0">
@@ -92,8 +95,13 @@ function LogoMark({ className }: { className?: string }) {
       </svg>
       <div className="leading-tight">
         <div className="text-sm font-semibold tracking-tight">
-          <span className="text-gradient">{BRAND.name.split(" ")[0]}</span>{" "}
-          <span className="text-foreground">{BRAND.name.split(" ").slice(1).join(" ")}</span>
+          <span className="text-gradient">{brandFirst}</span>
+          {brandRestText ? (
+            <>
+              {" "}
+              <span className="text-foreground">{brandRestText}</span>
+            </>
+          ) : null}
         </div>
         <div className="text-xs text-muted-foreground">{BRAND.domain}</div>
       </div>
@@ -221,7 +229,8 @@ function ExampleCard({ title, subtitle, href }: { title: string; subtitle: strin
         <div className="text-sm text-muted-foreground">{subtitle}</div>
         <div className="mt-2 text-lg font-semibold tracking-tight">{title}</div>
         <div className="mt-4 inline-flex items-center gap-2 text-sm text-foreground/90">
-          Ver demo real <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+          Ver demo del sitio{" "}
+          <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
         </div>
       </div>
     </a>
@@ -697,8 +706,8 @@ export default function Index() {
         <section id="ejemplos" className="container py-16 sm:py-20">
           <SectionHeader
             eyebrow="Ejemplos"
-            title="Ejemplos de proyectos reales."
-            description="Cada web está diseñada para tu tipo de negocio. Hacé click para ver la demo completa."
+            title="Así podría verse la página web de tu negocio."
+            description="Abrí una demo (se abre en una nueva pestaña) y mirá cómo se sentiría tu marca online."
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <ExampleCard
@@ -722,7 +731,7 @@ export default function Index() {
           <SectionHeader
             eyebrow="¿Para quién?"
             title="Ideal para profesionales que quieren más clientes"
-            description="Diseñado específicamente para independientes y negocios locales que necesitan presencia profesional online."
+            description="Si tu negocio depende de que nuevos clientes te encuentren y te contacten, una página web profesional puede marcar la diferencia."
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {[
@@ -730,7 +739,7 @@ export default function Index() {
               { icon: <Brain className="h-8 w-8" />, title: "Psicólogos", desc: "Confianza y agenda" },
               { icon: <Heart className="h-8 w-8" />, title: "Nutricionistas", desc: "Programas y resultados" },
               { icon: <Building2 className="h-8 w-8" />, title: "Gimnasios", desc: "Servicios y promos" },
-              { icon: <Stethoscope className="h-8 w-8" />, title: "Otros Profesionales", desc: "Médicos, therapists" },
+              { icon: <Stethoscope className="h-8 w-8" />, title: "Profesionales independientes", desc: "Servicios y contacto" },
             ].map((item) => (
               <div
                 key={item.title}
@@ -758,7 +767,7 @@ export default function Index() {
           <SectionHeader
             eyebrow="Inversión"
             title="Planes simples"
-            description="Sin sorpresas. Todo lo que necesitás para tener tu web profesional y empezar a recibir clientes."
+            description="Landing profesional desde 180 USD. Todo lo esencial para verte profesional y recibir consultas por WhatsApp."
           />
           <div className="mt-10 flex justify-center">
             <div
@@ -769,19 +778,18 @@ export default function Index() {
                 <div className="absolute -inset-24 bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,0.2),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(168,85,247,0.18),transparent_55%)]" />
               </div>
               <div className="relative">
-                <div className="text-lg font-semibold tracking-tight text-muted-foreground">Landing Profesional</div>
+                <div className="text-lg font-semibold tracking-tight text-muted-foreground">Landing profesional desde</div>
                 <div className="mt-2 flex items-baseline justify-center gap-1">
                   <span className="text-4xl font-bold tracking-tight text-gradient gradient-animate">$180</span>
                   <span className="text-muted-foreground">USD</span>
                 </div>
                 <div className="mt-6 space-y-3 text-left">
                   {[
-                    "Diseño moderno y profesional",
-                    "Optimización completa para móviles",
-                    "Botón de WhatsApp integrado",
-                    "Formulario de contacto",
-                    "Publicación online incluída",
-                    "Entrega en 72 horas",
+                    "Diseño moderno",
+                    "Optimización para celular",
+                    "Botón de contacto por WhatsApp",
+                    "Formulario de consultas",
+                    "Publicación online",
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-2">
                       <CheckCircle2 className="mt-0.5 h-5 w-5 text-[hsl(var(--neon-cyan))]" />
@@ -798,6 +806,50 @@ export default function Index() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section id="testimonios" className="container py-16 sm:py-20">
+          <SectionHeader
+            eyebrow="Testimonios"
+            title="Profesionales que ahora reciben consultas más fácil"
+            description="Ejemplos temporales para mostrar el estilo. Los reemplazamos por testimonios reales cuando tengas."
+          />
+          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+            {[
+              {
+                quote:
+                  "Mi página web me permitió mostrar mejor mis servicios y ahora recibo consultas directamente por WhatsApp.",
+                who: "Entrenador personal",
+              },
+              {
+                quote: "Es una forma simple de tener presencia profesional online. La gente entiende qué hago en segundos.",
+                who: "Nutricionista",
+              },
+              {
+                quote: "Ahora puedo enviar mi web a mis pacientes y explicar mis servicios fácilmente. Genera confianza.",
+                who: "Psicóloga",
+              },
+            ].map((t) => (
+              <div
+                key={t.who}
+                data-reveal
+                className="card-neon group relative rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card transition-transform duration-300 hover:-translate-y-1"
+              >
+                <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="absolute -inset-24 bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,0.16),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(168,85,247,0.14),transparent_55%)]" />
+                </div>
+                <div className="relative">
+                  <div className="mb-4 flex items-center gap-1 text-[hsl(var(--neon-cyan))]">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="h-4 w-4" />
+                    ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground">“{t.quote}”</p>
+                  <div className="mt-5 text-sm font-semibold tracking-tight text-foreground/90">— {t.who}</div>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -938,7 +990,7 @@ export default function Index() {
                   Empieza hoy a tener presencia profesional online
                 </h2>
                 <p className="mt-3 text-pretty text-muted-foreground">
-                  Tu página web lista en pocos días y preparada para recibir clientes.
+                  Tu página web lista en pocos días y preparada para recibir nuevos clientes.
                 </p>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
                   <Button asChild variant="whatsapp" size="lg" className="justify-center">

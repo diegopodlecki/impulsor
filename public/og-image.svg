@@ -28,7 +28,7 @@
 
   <g transform="translate(270 150)">
     <text x="0" y="74" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="64" font-weight="800" fill="#ffffff">
-      Impulsor <tspan fill="url(#g)">Web</tspan>
+      WebApp<tspan fill="url(#g)">Impulsor</tspan>
     </text>
     <text x="0" y="136" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="34" font-weight="600" fill="#cbd5e1">
       Webs inteligentes y automatización con IA
