@@ -485,6 +485,111 @@ export default function Index() {
     return buildWhatsAppUrl(msg);
   }, [ideaResult?.businessLabel]);
 
+  const constructorWhatsAppUrl = React.useMemo(() => {
+    const msg =
+      "Hola, acabo de usar el constructor de WebAppImpulsor y me gustaría crear una página web para mi negocio.";
+    return buildWhatsAppUrl(msg);
+  }, []);
+
+  const constructorSections = React.useMemo(
+    () =>
+      [
+        {
+          id: "home",
+          label: "Home",
+          title: "[ HERO / HOME ]",
+          body: "Propuesta clara + botón de WhatsApp + beneficio principal en 5 segundos.",
+        },
+        {
+          id: "about",
+          label: "Sobre mí",
+          title: "[ SOBRE MÍ ]",
+          body: "Quién sos, por qué confiar, tu enfoque y resultados (sin humo).",
+        },
+        {
+          id: "services",
+          label: "Servicios",
+          title: "[ SERVICIOS ]",
+          body: "3–6 servicios bien explicados con CTA corto: “Consultar por WhatsApp”.",
+        },
+        {
+          id: "testimonials",
+          label: "Testimonios",
+          title: "[ TESTIMONIOS ]",
+          body: "Reseñas breves que generen confianza y reduzcan dudas antes de escribirte.",
+        },
+        {
+          id: "gallery",
+          label: "Galería",
+          title: "[ GALERÍA ]",
+          body: "Fotos reales o trabajos: que se entienda tu propuesta de un vistazo.",
+        },
+        {
+          id: "wa",
+          label: "Contacto con WhatsApp",
+          title: "[ CONTACTO (WHATSAPP) ]",
+          body: "Botón destacado con mensaje pre-escrito para bajar fricción y aumentar consultas.",
+        },
+        {
+          id: "form",
+          label: "Formulario de contacto",
+          title: "[ FORMULARIO ]",
+          body: "Nombre + email + mensaje. Si no quieren llamar, igual te dejan la consulta.",
+        },
+      ] as const,
+    [],
+  );
+
+  const [selectedConstructor, setSelectedConstructor] = React.useState<Record<string, boolean>>(() => ({
+    home: true,
+    services: true,
+    wa: true,
+    form: true,
+    about: false,
+    testimonials: false,
+    gallery: false,
+  }));
+
+  const [leavingConstructor, setLeavingConstructor] = React.useState<Record<string, boolean>>({});
+  const leavingConstructorRef = React.useRef<Record<string, number>>({});
+
+  React.useEffect(() => {
+    const timeouts = leavingConstructorRef.current;
+    return () => {
+      for (const key of Object.keys(timeouts)) {
+        window.clearTimeout(timeouts[key]);
+      }
+    };
+  }, []);
+
+  const toggleConstructorSection = React.useCallback((id: string) => {
+    setSelectedConstructor((prev) => {
+      const nextValue = !prev[id];
+
+      if (nextValue) {
+        setLeavingConstructor((prevLeaving) => {
+          if (!prevLeaving[id]) return prevLeaving;
+          const nextLeaving = { ...prevLeaving };
+          delete nextLeaving[id];
+          return nextLeaving;
+        });
+        if (leavingConstructorRef.current[id]) window.clearTimeout(leavingConstructorRef.current[id]);
+      } else {
+        setLeavingConstructor((prevLeaving) => ({ ...prevLeaving, [id]: true }));
+        if (leavingConstructorRef.current[id]) window.clearTimeout(leavingConstructorRef.current[id]);
+        leavingConstructorRef.current[id] = window.setTimeout(() => {
+          setLeavingConstructor((prevLeaving) => {
+            const nextLeaving = { ...prevLeaving };
+            delete nextLeaving[id];
+            return nextLeaving;
+          });
+        }, 260);
+      }
+
+      return { ...prev, [id]: nextValue };
+    });
+  }, []);
+
   const persistLeadLocally = React.useCallback((lead: Record<string, unknown>) => {
     // Demo real: guardamos el lead localmente para que se vea el "registro" aunque el webhook no esté configurado
     // o falle por CORS.
@@ -624,6 +729,12 @@ export default function Index() {
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#generador-ideas">
               Generador
+            </a>
+            <a
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              href="#constructor-visual"
+            >
+              Constructor
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#ejemplos">
               Ejemplos
@@ -1255,6 +1366,101 @@ export default function Index() {
                     </p>
                   </div>
                 )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="constructor-visual" className="container py-16 sm:py-20">
+          <SectionHeader
+            eyebrow="Constructor visual"
+            title="Crea una idea de tu página web en segundos"
+            description="Selecciona las secciones que quieres para tu página y mira cómo se vería."
+          />
+
+          <div className="mt-10 grid gap-4 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <div
+                data-reveal
+                className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
+              >
+                <div className="text-sm font-semibold tracking-tight">Constructor</div>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Marcá secciones y mirá la maqueta actualizarse en tiempo real. Esto se ajusta a tu rubro y objetivos.
+                </p>
+
+                <div className="mt-5 grid gap-3">
+                  {constructorSections.map((s) => (
+                    <label
+                      key={s.id}
+                      className="flex cursor-pointer items-start gap-3 rounded-xl border border-border/60 bg-background/20 px-4 py-3 text-sm transition-colors hover:bg-background/30"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={!!selectedConstructor[s.id]}
+                        onChange={() => toggleConstructorSection(s.id)}
+                        className="mt-1 h-4 w-4 accent-[hsl(var(--neon-cyan))]"
+                      />
+                      <div className="flex-1">
+                        <div className="font-semibold tracking-tight">{s.label}</div>
+                        <div className="mt-1 text-xs text-muted-foreground">Sección recomendada para convertir.</div>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+
+                <div className="mt-6">
+                  <Button asChild variant="whatsapp" size="lg" className="w-full justify-center">
+                    <a href={constructorWhatsAppUrl} target="_blank" rel="noopener noreferrer">
+                      Quiero esta página para mi negocio <MessageCircle />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7">
+              <div
+                data-reveal
+                className="card-neon overflow-hidden rounded-2xl border border-border/70 bg-gradient-card shadow-card"
+              >
+                <div className="border-b border-border/40 bg-background/25 px-4 py-3">
+                  <div className="text-sm font-semibold tracking-tight">Vista previa</div>
+                  <div className="mt-1 text-xs text-muted-foreground">
+                    Maqueta visual (bloques) de cómo quedaría tu web.
+                  </div>
+                </div>
+
+                <div className="p-4 sm:p-6">
+                  {constructorSections.map((s) => {
+                    const isSelected = !!selectedConstructor[s.id];
+                    const isLeaving = !!leavingConstructor[s.id];
+                    const shouldRender = isSelected || isLeaving;
+                    const isOpen = isSelected;
+
+                    if (!shouldRender) return null;
+
+                    return (
+                      <div
+                        key={s.id}
+                        className={cn(
+                          "rounded-2xl border bg-background/20 px-5 py-4 shadow-[0_18px_60px_-35px_rgba(34,211,238,0.25)]",
+                          "transition-all duration-300 ease-out",
+                          isOpen
+                            ? "mt-3 first:mt-0 opacity-100 translate-y-0 border-[hsl(var(--neon-cyan))]/25"
+                            : "mt-0 opacity-0 -translate-y-1 border-border/30",
+                        )}
+                        aria-hidden={!isOpen}
+                      >
+                        <div className="text-xs font-semibold tracking-[0.25em] text-[hsl(var(--neon-purple))]">
+                          {s.title}
+                        </div>
+                        <div className="mt-2 text-sm text-muted-foreground">{s.body}</div>
+                        <div className="mt-3 h-px w-full bg-gradient-primary opacity-60" />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
