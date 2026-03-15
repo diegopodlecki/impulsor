@@ -39,6 +39,9 @@ const BRAND = {
 const DEFAULT_WA_MESSAGE =
   "Hola, vi tu página web y quiero información sobre tus servicios.";
 
+const GOOGLE_SHEETS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbx9Z8g7bTOZkpApdktK7J5IaUywu5mFLqpMG2F6873kYU_jfLGRAqe1QrG8uiCYiyek/exec";
+
 // Plantilla del mensaje post-formulario (incluye los datos del lead).
 function buildFormWhatsAppMessage(params: {
   name: string;
@@ -283,6 +286,7 @@ export default function Index() {
   const [email, setEmail] = React.useState("");
   const [businessType, setBusinessType] = React.useState("");
   const [message, setMessage] = React.useState("");
+  const [statusText, setStatusText] = React.useState("");
 
   const [leadStage, setLeadStage] = React.useState<"idle" | "sending" | "sent">("idle");
   const [preparedWhatsAppUrl, setPreparedWhatsAppUrl] = React.useState<string>("");
@@ -332,10 +336,11 @@ export default function Index() {
     [persistLeadLocally, webhookUrl],
   );
 
-  const submitLead = React.useCallback((e: React.FormEvent) => {
+  const submitLead = React.useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     if (leadStage !== "idle") return;
     setLeadStage("sending");
+    setStatusText("Enviando...");
 
     const leadId = (crypto?.randomUUID?.() ?? `lead_${Math.random().toString(16).slice(2)}`).slice(0, 40);
     const fecha = new Date().toISOString();
@@ -348,21 +353,51 @@ export default function Index() {
     });
     setPreparedWhatsAppUrl(buildWhatsAppUrl(waMessage));
 
-    sendLead({
-      id: leadId,
+    const googlePayload = {
       nombre: name.trim(),
       email: email.trim(),
-      negocio: businessType.trim(),
       mensaje: message.trim(),
-      fecha,
-      source: "landing",
-      path: window.location.pathname,
-      referrer: document.referrer || null,
-      userAgent: navigator.userAgent,
-    });
+      origen: "landing webappimpulsor",
+    };
 
-    setLeadStage("sent");
-    toast.success("Gracias. Tu consulta quedó registrada. Continuá por WhatsApp para terminar de enviarla.");
+    try {
+      const response = await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify(googlePayload),
+      });
+
+      const result = (await response.json().catch(() => null)) as { result?: string } | null;
+
+      if (result?.result === "success") {
+        setStatusText("Mensaje enviado correctamente");
+
+        sendLead({
+          id: leadId,
+          nombre: name.trim(),
+          email: email.trim(),
+          negocio: businessType.trim(),
+          mensaje: message.trim(),
+          fecha,
+          source: "landing",
+          path: window.location.pathname,
+          referrer: document.referrer || null,
+          userAgent: navigator.userAgent,
+        });
+
+        setName("");
+        setEmail("");
+        setBusinessType("");
+        setMessage("");
+        setLeadStage("sent");
+        toast.success("Gracias. Tu consulta quedó registrada. Continuá por WhatsApp para terminar de enviarla.");
+      } else {
+        setStatusText("Error al enviar");
+        setLeadStage("idle");
+      }
+    } catch {
+      setStatusText("Error de conexión");
+      setLeadStage("idle");
+    }
   }, [businessType, email, leadStage, message, name, sendLead]);
 
   const openPreparedWhatsApp = React.useCallback(() => {
@@ -675,13 +710,12 @@ export default function Index() {
               <div data-reveal className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card">
                 <div className="text-lg font-semibold tracking-tight">Estado del webhook</div>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  {webhookUrl
-                    ? "Webhook configurado: los leads se envían automáticamente al endpoint."
-                    : "Webhook no configurado: el flujo funciona igual, pero debes setear VITE_LEADS_WEBHOOK_URL para guardar en Sheets/PHP."}
+                  Leads enviados a Google Sheets (Apps Script).
+                  {webhookUrl ? " Además, hay un webhook extra configurado por entorno." : null}
                 </p>
                 <div className="mt-4 rounded-xl border border-border/60 bg-background/25 px-3 py-2 text-xs text-muted-foreground">
-                  Tip: agrega <span className="text-foreground/90">VITE_LEADS_WEBHOOK_URL</span> y{" "}
-                  <span className="text-foreground/90">VITE_WA_PHONE</span> en tu entorno para adaptar la demo a tu negocio.
+                  Tip: agrega <span className="text-foreground/90">VITE_WA_PHONE</span> y (opcional){" "}
+                  <span className="text-foreground/90">VITE_LEADS_WEBHOOK_URL</span> para adaptar la demo a tu negocio.
                 </div>
               </div>
 
@@ -1019,6 +1053,7 @@ export default function Index() {
           <div className="mt-10 grid gap-6 lg:grid-cols-12">
             <form
               onSubmit={submitLead}
+              id="contactForm"
               className="card-neon glow-soft lg:col-span-7 rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
             >
               {leadStage === "sent" ? (
@@ -1049,7 +1084,10 @@ export default function Index() {
                       variant="secondary"
                       size="lg"
                       className="w-full justify-center"
-                      onClick={() => setLeadStage("idle")}
+                      onClick={() => {
+                        setLeadStage("idle");
+                        setStatusText("");
+                      }}
                     >
                       Editar formulario <ArrowRight />
                     </Button>
@@ -1061,6 +1099,7 @@ export default function Index() {
                 <label className="space-y-2">
                   <span className="text-sm font-medium text-foreground/90">Nombre</span>
                   <input
+                    id="nombre"
                     name="nombre"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -1076,6 +1115,7 @@ export default function Index() {
                 <label className="space-y-2">
                   <span className="text-sm font-medium text-foreground/90">Email</span>
                   <input
+                    id="email"
                     name="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -1109,6 +1149,7 @@ export default function Index() {
               <label className="mt-4 block space-y-2">
                 <span className="text-sm font-medium text-foreground/90">Mensaje</span>
                 <textarea
+                  id="mensaje"
                   name="mensaje"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
@@ -1128,6 +1169,9 @@ export default function Index() {
                 <div className="text-xs text-muted-foreground">
                   Se registra el lead y luego continúas por WhatsApp con un mensaje listo.
                 </div>
+              </div>
+              <div id="status" aria-live="polite" className="mt-3 text-sm text-muted-foreground">
+                {statusText}
               </div>
               <div className="mt-4 text-xs text-muted-foreground">
                 Este formulario envía tus datos a un webhook (Google Apps Script o PHP) y guarda un registro local para la demo.
