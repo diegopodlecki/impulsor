@@ -284,7 +284,6 @@ export default function Index() {
 
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
-  const [businessType, setBusinessType] = React.useState("");
   const [message, setMessage] = React.useState("");
   const [statusText, setStatusText] = React.useState("");
 
@@ -345,12 +344,7 @@ export default function Index() {
     const leadId = (crypto?.randomUUID?.() ?? `lead_${Math.random().toString(16).slice(2)}`).slice(0, 40);
     const fecha = new Date().toISOString();
 
-    const waMessage = buildFormWhatsAppMessage({
-      name,
-      businessType,
-      email,
-      message,
-    });
+    const waMessage = buildFormWhatsAppMessage({ name, businessType: "landing webappimpulsor", email, message });
     setPreparedWhatsAppUrl(buildWhatsAppUrl(waMessage));
 
     const googlePayload = {
@@ -375,7 +369,7 @@ export default function Index() {
           id: leadId,
           nombre: name.trim(),
           email: email.trim(),
-          negocio: businessType.trim(),
+          negocio: "landing webappimpulsor",
           mensaje: message.trim(),
           fecha,
           source: "landing",
@@ -386,7 +380,6 @@ export default function Index() {
 
         setName("");
         setEmail("");
-        setBusinessType("");
         setMessage("");
         setLeadStage("sent");
         toast.success("Gracias. Tu consulta quedó registrada. Continuá por WhatsApp para terminar de enviarla.");
@@ -398,7 +391,7 @@ export default function Index() {
       setStatusText("Error de conexión");
       setLeadStage("idle");
     }
-  }, [businessType, email, leadStage, message, name, sendLead]);
+  }, [email, leadStage, message, name, sendLead]);
 
   const openPreparedWhatsApp = React.useCallback(() => {
     if (!preparedWhatsAppUrl) return;
@@ -1095,72 +1088,47 @@ export default function Index() {
                 </div>
               ) : null}
 
-              <div className="grid gap-4 sm:grid-cols-2">
-                <label className="space-y-2">
-                  <span className="text-sm font-medium text-foreground/90">Nombre</span>
-                  <input
-                    id="nombre"
-                    name="nombre"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Tu nombre"
-                    className={cn(
-                      "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
-                      "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
-                    )}
-                    autoComplete="name"
-                    required
-                  />
-                </label>
-                <label className="space-y-2">
-                  <span className="text-sm font-medium text-foreground/90">Email</span>
-                  <input
-                    id="email"
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="tu@email.com"
-                    type="email"
-                    className={cn(
-                      "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
-                      "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
-                    )}
-                    autoComplete="email"
-                    required
-                  />
-                </label>
-              </div>
-
-              <label className="mt-4 block space-y-2">
-                <span className="text-sm font-medium text-foreground/90">Tipo de negocio</span>
+              <div className="grid gap-4">
                 <input
-                  name="negocio"
-                  value={businessType}
-                  onChange={(e) => setBusinessType(e.target.value)}
-                  placeholder="Ej: gimnasio, psicología, nutrición..."
+                  type="text"
+                  id="nombre"
+                  placeholder="Nombre"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className={cn(
                     "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
                     "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
                   )}
-                  autoComplete="organization"
+                  autoComplete="name"
                 />
-              </label>
 
-              <label className="mt-4 block space-y-2">
-                <span className="text-sm font-medium text-foreground/90">Mensaje</span>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className={cn(
+                    "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
+                    "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
+                  )}
+                  autoComplete="email"
+                />
+
                 <textarea
                   id="mensaje"
-                  name="mensaje"
+                  placeholder="Mensaje"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Contame qué necesitás (web, automatización, turnos, presupuestos...)"
                   rows={5}
                   className={cn(
                     "w-full resize-none rounded-xl border border-border bg-background/40 px-3 py-3 text-sm text-foreground",
                     "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
                   )}
                 />
-              </label>
+              </div>
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <Button type="submit" variant="hero" size="lg" className="justify-center" disabled={leadStage !== "idle"}>
@@ -1170,9 +1138,9 @@ export default function Index() {
                   Se registra el lead y luego continúas por WhatsApp con un mensaje listo.
                 </div>
               </div>
-              <div id="status" aria-live="polite" className="mt-3 text-sm text-muted-foreground">
+              <p id="status" aria-live="polite" className="mt-3 text-sm text-muted-foreground">
                 {statusText}
-              </div>
+              </p>
               <div className="mt-4 text-xs text-muted-foreground">
                 Este formulario envía tus datos a un webhook (Google Apps Script o PHP) y guarda un registro local para la demo.
               </div>
