@@ -83,6 +83,14 @@ function buildWhatsAppUrl(message: string) {
   return `https://wa.me/${phone}?text=${text}`;
 }
 
+function normalizeText(value: string) {
+  return (value ?? "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+}
+
 function LogoMark({ className }: { className?: string }) {
   const [brandFirst, ...brandRest] = BRAND.name.split(" ");
   const brandRestText = brandRest.join(" ").trim();
@@ -339,6 +347,120 @@ export default function Index() {
   const [extraMobile, setExtraMobile] = React.useState(true);
   const [extraCustom, setExtraCustom] = React.useState(false);
 
+  const [ideaBusiness, setIdeaBusiness] = React.useState("");
+  const [ideaResult, setIdeaResult] = React.useState<{
+    title: string;
+    businessLabel: string;
+    sections: string[];
+    suggestion: string;
+  } | null>(null);
+  const [ideaVisible, setIdeaVisible] = React.useState(false);
+  const ideaTimerRef = React.useRef<number | null>(null);
+  const ideaResultRef = React.useRef<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    return () => {
+      if (ideaTimerRef.current) window.clearTimeout(ideaTimerRef.current);
+    };
+  }, []);
+
+  const generateIdea = React.useCallback(() => {
+    const raw = ideaBusiness.trim();
+    const normalized = normalizeText(raw);
+    const businessLabel = raw || "tu negocio";
+
+    const presets: Array<{
+      id: string;
+      match: (v: string) => boolean;
+      title: string;
+      sections: string[];
+      suggestion: string;
+    }> = [
+      {
+        id: "trainer",
+        match: (v) => v.includes("entrenador") || v.includes("personal trainer") || v.includes("trainer") || v.includes("coach"),
+        title: "Idea de página para Entrenador Personal",
+        sections: [
+          "Home (propuesta de valor + CTA WhatsApp)",
+          "Sobre mí",
+          "Servicios de entrenamiento",
+          "Resultados / progreso de alumnos",
+          "Testimonios",
+          "Galería de entrenamientos",
+          "Contacto con WhatsApp",
+        ],
+        suggestion:
+          "Tu página podría mostrar tus planes de entrenamiento, resultados de alumnos y permitir que nuevos clientes te contacten fácilmente por WhatsApp.",
+      },
+      {
+        id: "psico",
+        match: (v) => v.includes("psicolog"),
+        title: "Idea de página para Psicólogo/a",
+        sections: [
+          "Home (confianza + CTA de consulta)",
+          "Sobre mí y enfoque terapéutico",
+          "Especialidades",
+          "Cómo trabajo (metodología)",
+          "Preguntas frecuentes",
+          "Testimonios / reseñas",
+          "Reserva / contacto por WhatsApp",
+        ],
+        suggestion:
+          "Tu página puede explicar tu enfoque, especialidades y facilitar que te reserven o te consulten por WhatsApp con un mensaje claro y profesional.",
+      },
+      {
+        id: "nutri",
+        match: (v) => v.includes("nutricion") || v.includes("nutri") || v.includes("dietista") || v.includes("dietista"),
+        title: "Idea de página para Nutricionista",
+        sections: [
+          "Home (beneficio + CTA WhatsApp)",
+          "Planes y programas",
+          "Qué incluye cada plan",
+          "Antes y después / resultados",
+          "Tips y consejos",
+          "Testimonios",
+          "Contacto / reservas por WhatsApp",
+        ],
+        suggestion:
+          "Tu página podría vender tus planes con claridad, mostrar resultados y tips, y permitir que te escriban por WhatsApp para arrancar sin fricción.",
+      },
+      {
+        id: "gym",
+        match: (v) => v.includes("gimnasio") || v.includes("gym") || v.includes("fitness"),
+        title: "Idea de página para Gimnasio",
+        sections: [
+          "Home (promo + CTA de inscripción)",
+          "Clases y horarios",
+          "Planes / membresías",
+          "Instalaciones (galería)",
+          "Entrenadores",
+          "Preguntas frecuentes",
+          "Contacto por WhatsApp",
+        ],
+        suggestion:
+          "Tu web puede mostrar clases y horarios, planes de membresía y un botón de WhatsApp para que se inscriban o consulten en 1 click.",
+      },
+    ];
+
+    const preset = presets.find((p) => p.match(normalized));
+
+    const result = preset
+      ? { title: preset.title, businessLabel, sections: preset.sections, suggestion: preset.suggestion }
+      : {
+          title: `Idea de página para ${businessLabel}`,
+          businessLabel,
+          sections: ["Home", "Sobre el negocio", "Servicios", "Testimonios", "Contacto con WhatsApp"],
+          suggestion:
+            "Tu página debería explicar rápidamente qué ofrecés, mostrar tus servicios y generar confianza para que te contacten directo por WhatsApp.",
+        };
+
+    setIdeaResult(result);
+    setIdeaVisible(false);
+    if (ideaTimerRef.current) window.clearTimeout(ideaTimerRef.current);
+    ideaTimerRef.current = window.setTimeout(() => setIdeaVisible(true), 30);
+    window.setTimeout(() => ideaResultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+  }, [ideaBusiness]);
+
   const calcPrice = React.useMemo(() => {
     const base =
       calcPageType === "landing" ? 150 : calcPageType === "profesional" ? 250 : calcPageType === "completa" ? 350 : 150;
@@ -354,6 +476,14 @@ export default function Index() {
     const msg = `Hola, quiero crear mi página web. El simulador me dio un precio aproximado de ${calcPrice} USD.`;
     return buildWhatsAppUrl(msg);
   }, [calcPrice]);
+
+  const ideaWhatsAppUrl = React.useMemo(() => {
+    const business = ideaResult?.businessLabel?.trim();
+    const msg = business
+      ? `Hola, probé el generador de ideas de WebAppImpulsor y me gustaría crear una página web para mi negocio (${business}).`
+      : "Hola, probé el generador de ideas de WebAppImpulsor y me gustaría crear una página web para mi negocio.";
+    return buildWhatsAppUrl(msg);
+  }, [ideaResult?.businessLabel]);
 
   const persistLeadLocally = React.useCallback((lead: Record<string, unknown>) => {
     // Demo real: guardamos el lead localmente para que se vea el "registro" aunque el webhook no esté configurado
@@ -491,6 +621,9 @@ export default function Index() {
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#calculadora">
               Calculadora
+            </a>
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#generador-ideas">
+              Generador
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#ejemplos">
               Ejemplos
@@ -1006,6 +1139,122 @@ export default function Index() {
                 <p className="mt-4 text-xs text-muted-foreground">
                   Este valor es aproximado. Te paso un presupuesto final según tu contenido y objetivos.
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="generador-ideas" className="container py-16 sm:py-20">
+          <SectionHeader
+            eyebrow="Herramienta"
+            title="Genera una idea para la página web de tu negocio"
+            description="En segundos, obtené una estructura sugerida para visualizar cómo podría ser tu web y qué mostrar."
+          />
+
+          <div className="mt-10 grid gap-4 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <div
+                data-reveal
+                className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
+              >
+                <label className="space-y-2">
+                  <div className="text-sm font-medium text-foreground/90">¿Qué tipo de negocio tienes?</div>
+                  <input
+                    value={ideaBusiness}
+                    onChange={(e) => setIdeaBusiness(e.target.value)}
+                    placeholder="Ej: entrenador personal, psicólogo, nutricionista, gimnasio..."
+                    className={cn(
+                      "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
+                      "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
+                    )}
+                    autoComplete="organization"
+                  />
+                </label>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {["Entrenador personal", "Psicólogo", "Nutricionista", "Gimnasio"].map((chip) => (
+                    <button
+                      key={chip}
+                      type="button"
+                      onClick={() => setIdeaBusiness(chip)}
+                      className="rounded-full border border-border/60 bg-background/25 px-3 py-1 text-xs text-muted-foreground transition-colors hover:bg-background/35 hover:text-foreground"
+                    >
+                      {chip}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="mt-6">
+                  <Button
+                    type="button"
+                    variant="hero"
+                    size="lg"
+                    className="w-full justify-center glow-neon"
+                    onClick={generateIdea}
+                    disabled={!ideaBusiness.trim()}
+                  >
+                    Generar idea <Sparkles className="h-4 w-4" />
+                  </Button>
+                  <div className="mt-3 text-xs text-muted-foreground">
+                    Tip: si escribís tu rubro, la idea se adapta automáticamente.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7">
+              <div
+                ref={ideaResultRef}
+                className={cn(
+                  "transition-all duration-300",
+                  ideaResult ? "opacity-100" : "opacity-0",
+                  ideaResult && ideaVisible ? "translate-y-0" : "translate-y-2",
+                )}
+              >
+                {ideaResult ? (
+                  <div
+                    data-reveal
+                    className="card-neon glow-soft rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <div className="text-sm text-muted-foreground">Resultado</div>
+                        <h3 className="mt-2 text-balance text-2xl font-semibold tracking-tight">{ideaResult.title}</h3>
+                        <p className="mt-3 text-sm text-muted-foreground">{ideaResult.suggestion}</p>
+                      </div>
+                      <div className="hidden md:flex h-12 w-12 items-center justify-center rounded-2xl border border-border/60 bg-background/35 text-[hsl(var(--neon-purple))]">
+                        <Globe className="h-6 w-6" />
+                      </div>
+                    </div>
+
+                    <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                      {ideaResult.sections.map((s) => (
+                        <div key={s} className="rounded-xl border border-border/60 bg-background/20 px-4 py-3 text-sm">
+                          <div className="font-semibold tracking-tight">{s}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-6">
+                      <Button asChild variant="whatsapp" size="lg" className="w-full justify-center">
+                        <a href={ideaWhatsAppUrl} target="_blank" rel="noopener noreferrer">
+                          Quiero una página así para mi negocio <MessageCircle />
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    data-reveal
+                    className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
+                  >
+                    <div className="text-sm text-muted-foreground">Vista previa</div>
+                    <div className="mt-2 text-lg font-semibold tracking-tight">Generá una idea y te muestro la estructura.</div>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Esto ayuda a visualizar el resultado y acelera la decisión.
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
