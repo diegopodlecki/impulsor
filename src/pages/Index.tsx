@@ -93,6 +93,15 @@ function normalizeText(value: string) {
 
 type PresenceStatus = "ok" | "warn" | "bad";
 
+type InstantDemoType =
+  | "Entrenador personal"
+  | "Psicólogo"
+  | "Nutricionista"
+  | "Centro de estética"
+  | "Gimnasio"
+  | "Restaurante o casa de comida"
+  | "Profesional independiente";
+
 function LogoMark({ className }: { className?: string }) {
   const [brandFirst, ...brandRest] = BRAND.name.split(" ");
   const brandRestText = brandRest.join(" ").trim();
@@ -550,6 +559,290 @@ export default function Index() {
     const done = window.setTimeout(() => setPresenceStage("done"), 420 * (presenceResults.length + 1));
     presenceTimersRef.current.push(done);
   }, [presenceQuery, presenceResults.length]);
+
+  const [instantBusinessName, setInstantBusinessName] = React.useState("");
+  const [instantBusinessType, setInstantBusinessType] = React.useState<InstantDemoType>("Centro de estética");
+  const [instantStage, setInstantStage] = React.useState<"idle" | "generating" | "done">("idle");
+  const [instantVisibleCount, setInstantVisibleCount] = React.useState(0);
+  const instantTimersRef = React.useRef<number[]>([]);
+  const instantResultRef = React.useRef<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    return () => {
+      for (const t of instantTimersRef.current) window.clearTimeout(t);
+      instantTimersRef.current = [];
+    };
+  }, []);
+
+  const instantDemoWhatsAppUrl = React.useMemo(() => {
+    const msg =
+      "Hola, acabo de generar una demo de página para mi negocio en WebAppImpulsor y me gustaría crear una página web profesional.";
+    return buildWhatsAppUrl(msg);
+  }, []);
+
+  const buildInstantDemo = React.useCallback(
+    (name: string, type: InstantDemoType) => {
+      const safeName = name.trim() || "Tu negocio";
+
+      const commonCta = "Contactar por WhatsApp";
+
+      const templates: Record<
+        InstantDemoType,
+        {
+          promo: string;
+          heroImage: string;
+          sections: Array<{ title: string; text: string; image: string }>;
+        }
+      > = {
+        "Entrenador personal": {
+          promo: "Entrenamientos personalizados para resultados reales.",
+          heroImage:
+            "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1800&q=80",
+          sections: [
+            {
+              title: "Sobre el entrenador",
+              text: "Tu enfoque, experiencia y por qué tus alumnos confían en vos.",
+              image:
+                "https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Programas de entrenamiento",
+              text: "Planes claros por objetivo (bajar grasa, fuerza, recomposición).",
+              image:
+                "https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Testimonios de alumnos",
+              text: "Prueba social para convertir visitas en consultas.",
+              image:
+                "https://images.unsplash.com/photo-1550345332-09e3ac987658?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Contacto WhatsApp",
+              text: "Botón destacado con mensaje pre-escrito para agendar.",
+              image:
+                "https://images.unsplash.com/photo-1520975682031-a122b69f1a12?auto=format&fit=crop&w=1400&q=80",
+            },
+          ],
+        },
+        "Psicólogo": {
+          promo: "Un espacio profesional para acompañarte en tu bienestar.",
+          heroImage:
+            "https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?auto=format&fit=crop&w=1800&q=80",
+          sections: [
+            {
+              title: "Especialidades",
+              text: "Áreas de trabajo, problemáticas frecuentes y qué podés esperar.",
+              image:
+                "https://images.unsplash.com/photo-1580281657527-47f249e8f049?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Enfoque terapéutico",
+              text: "Cómo trabajás y qué resultados buscás con tus pacientes.",
+              image:
+                "https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Reserva de consulta",
+              text: "CTA claro para coordinar por WhatsApp y reducir fricción.",
+              image:
+                "https://images.unsplash.com/photo-1526779259212-939e64788e3c?auto=format&fit=crop&w=1400&q=75",
+            },
+          ],
+        },
+        "Nutricionista": {
+          promo: "Planes simples y sostenibles para mejorar tu salud.",
+          heroImage:
+            "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1800&q=80",
+          sections: [
+            {
+              title: "Planes alimenticios",
+              text: "Programas por objetivo con qué incluye cada plan.",
+              image:
+                "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Consejos de salud",
+              text: "Contenido útil para atraer visitas y generar confianza.",
+              image:
+                "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Contacto",
+              text: "WhatsApp + formulario para capturar leads.",
+              image:
+                "https://images.unsplash.com/photo-1528823872057-9c018a7a7553?auto=format&fit=crop&w=1400&q=80",
+            },
+          ],
+        },
+        "Centro de estética": {
+          promo: "Tratamientos modernos y resultados visibles con cuidado profesional.",
+          heroImage:
+            "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=1800&q=80",
+          sections: [
+            {
+              title: "Tratamientos",
+              text: "Micropeeling, faciales, masajes y packs por objetivo.",
+              image:
+                "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Resultados",
+              text: "Fotos/antes y después para generar confianza (sin exagerar).",
+              image:
+                "https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Promociones",
+              text: "Packs y promos para aumentar conversiones en temporada.",
+              image:
+                "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Contacto",
+              text: "Turnos por WhatsApp y consulta rápida.",
+              image:
+                "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=80",
+            },
+          ],
+        },
+        "Gimnasio": {
+          promo: "Clases, horarios y planes listos para que se inscriban.",
+          heroImage:
+            "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=80",
+          sections: [
+            {
+              title: "Clases y horarios",
+              text: "Agenda clara, filtros y CTA a WhatsApp.",
+              image:
+                "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Planes / membresías",
+              text: "Precios simples y beneficios por plan.",
+              image:
+                "https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Instalaciones",
+              text: "Galería + recorrido para motivar la visita.",
+              image:
+                "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Inscripción",
+              text: "CTA directo por WhatsApp para convertir en 1 click.",
+              image:
+                "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1400&q=80",
+            },
+          ],
+        },
+        "Restaurante o casa de comida": {
+          promo: "Menú claro, destacados y pedidos por WhatsApp.",
+          heroImage:
+            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1800&q=80",
+          sections: [
+            {
+              title: "Menú",
+              text: "Menú escaneable con precios y combos.",
+              image:
+                "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Platos destacados",
+              text: "Fotos reales para aumentar pedidos.",
+              image:
+                "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Opiniones",
+              text: "Reseñas breves para generar confianza.",
+              image:
+                "https://images.unsplash.com/photo-1523906630133-f6934a1ab2b9?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Ubicación y pedidos",
+              text: "Mapa + botón de WhatsApp para pedir rápido.",
+              image:
+                "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1400&q=75",
+            },
+          ],
+        },
+        "Profesional independiente": {
+          promo: "Una presencia online moderna para conseguir más clientes.",
+          heroImage:
+            "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1800&q=80",
+          sections: [
+            {
+              title: "Servicios",
+              text: "Qué ofrecés y cómo trabajás (en simple).",
+              image:
+                "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Casos / resultados",
+              text: "Ejemplos de trabajos o resultados para aumentar confianza.",
+              image:
+                "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80",
+            },
+            {
+              title: "Contacto",
+              text: "WhatsApp + formulario para captar consultas.",
+              image:
+                "https://images.unsplash.com/photo-1520975682031-a122b69f1a12?auto=format&fit=crop&w=1400&q=80",
+            },
+          ],
+        },
+      };
+
+      return {
+        name: safeName,
+        type,
+        promo: templates[type].promo,
+        cta: commonCta,
+        heroImage: templates[type].heroImage,
+        sections: templates[type].sections,
+      };
+    },
+    [],
+  );
+
+  const [instantDemo, setInstantDemo] = React.useState<ReturnType<typeof buildInstantDemo> | null>(null);
+
+  const generateInstantDemo = React.useCallback(
+    (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!instantBusinessName.trim()) return;
+
+      for (const t of instantTimersRef.current) window.clearTimeout(t);
+      instantTimersRef.current = [];
+
+      setInstantStage("generating");
+      setInstantVisibleCount(0);
+
+      const demo = buildInstantDemo(instantBusinessName, instantBusinessType);
+      setInstantDemo(demo);
+
+      const baseDelay = 320;
+      const heroT = window.setTimeout(() => setInstantVisibleCount(1), 220);
+      instantTimersRef.current.push(heroT);
+
+      for (let i = 1; i <= demo.sections.length + 1; i += 1) {
+        const t = window.setTimeout(() => setInstantVisibleCount(i + 1), 220 + baseDelay * i);
+        instantTimersRef.current.push(t);
+      }
+
+      const doneT = window.setTimeout(() => setInstantStage("done"), 220 + baseDelay * (demo.sections.length + 2));
+      instantTimersRef.current.push(doneT);
+
+      const scrollT = window.setTimeout(
+        () => instantResultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+        260,
+      );
+      instantTimersRef.current.push(scrollT);
+    },
+    [buildInstantDemo, instantBusinessName, instantBusinessType],
+  );
 
   const calcPrice = React.useMemo(() => {
     const base =
@@ -1048,6 +1341,9 @@ export default function Index() {
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#simulador">
               Simulador
             </a>
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#demo-instantaneo">
+              Demo instantánea
+            </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#analizador">
               Analizador
             </a>
@@ -1462,6 +1758,186 @@ export default function Index() {
                       Quiero esta automatización <ArrowRight />
                     </a>
                   </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="demo-instantaneo" className="container py-16 sm:py-20">
+          <SectionHeader
+            eyebrow="Generador"
+            title="Generador instantáneo de demo de página web"
+            description="Generá una mini web visual en segundos y sentí cómo se vería tu marca online."
+          />
+
+          <div className="mt-10 grid gap-4 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <div
+                data-reveal
+                className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
+              >
+                <form onSubmit={generateInstantDemo} className="grid gap-4">
+                  <label className="space-y-2">
+                    <div className="text-sm font-medium text-foreground/90">Nombre del negocio</div>
+                    <input
+                      value={instantBusinessName}
+                      onChange={(e) => setInstantBusinessName(e.target.value)}
+                      placeholder="Ej: Estética Bella"
+                      className={cn(
+                        "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
+                        "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
+                      )}
+                      autoComplete="organization"
+                    />
+                  </label>
+
+                  <label className="space-y-2">
+                    <div className="text-sm font-medium text-foreground/90">Tipo de negocio</div>
+                    <select
+                      value={instantBusinessType}
+                      onChange={(e) => setInstantBusinessType(e.target.value as InstantDemoType)}
+                      className={cn(
+                        "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
+                        "focus:outline-none focus:ring-2 focus:ring-ring",
+                      )}
+                    >
+                      {[
+                        "Entrenador personal",
+                        "Psicólogo",
+                        "Nutricionista",
+                        "Centro de estética",
+                        "Gimnasio",
+                        "Restaurante o casa de comida",
+                        "Profesional independiente",
+                      ].map((v) => (
+                        <option key={v} value={v}>
+                          {v}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+
+                  <Button
+                    type="submit"
+                    variant="hero"
+                    size="lg"
+                    className="w-full justify-center glow-neon"
+                    disabled={!instantBusinessName.trim() || instantStage === "generating"}
+                  >
+                    {instantStage === "generating" ? "Generando..." : "Generar demo"} <Sparkles className="h-4 w-4" />
+                  </Button>
+                </form>
+
+                <div className="mt-4 text-xs text-muted-foreground">
+                  La demo es una vista simulada dentro de la landing (estilo SaaS). Ideal para visualizar rápido.
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-8">
+              <div
+                ref={instantResultRef}
+                data-reveal
+                className="card-neon overflow-hidden rounded-2xl border border-border/70 bg-gradient-card shadow-card"
+              >
+                <div className="border-b border-border/40 bg-background/25 px-4 py-3">
+                  <div className="text-sm font-semibold tracking-tight">Demo generada</div>
+                  <div className="mt-1 text-xs text-muted-foreground">
+                    {instantStage === "generating"
+                      ? "Construyendo secciones…"
+                      : instantDemo
+                        ? "Listo. Así podría verse tu página."
+                        : "Completá el formulario y generá tu demo."}
+                  </div>
+                </div>
+
+                <div className="p-4 sm:p-6">
+                  {!instantDemo ? (
+                    <div className="rounded-2xl border border-border/60 bg-background/20 p-6 text-left">
+                      <div className="text-sm text-muted-foreground">Vista previa</div>
+                      <div className="mt-2 text-lg font-semibold tracking-tight">Tu demo aparece acá.</div>
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        Elegí tu tipo de negocio y vas a ver una mini web con secciones y estilo.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="space-y-4">
+                      <div
+                        className={cn(
+                          "overflow-hidden rounded-2xl border border-border/60 bg-background/20",
+                          "transition-all duration-300 ease-out",
+                          instantVisibleCount >= 1 ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1",
+                        )}
+                      >
+                        <div className="relative">
+                          <img
+                            src={instantDemo.heroImage}
+                            alt={`Imagen principal de ${instantDemo.type}`}
+                            className="h-44 w-full object-cover opacity-65"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_25%,rgba(34,211,238,0.18),transparent_55%),radial-gradient(circle_at_78%_20%,rgba(168,85,247,0.18),transparent_55%)]" />
+                          <div className="absolute inset-0 p-5">
+                            <div className="text-xs font-semibold tracking-[0.25em] text-[hsl(var(--neon-cyan))]">
+                              {instantDemo.type}
+                            </div>
+                            <div className="mt-2 text-xl font-semibold tracking-tight sm:text-2xl">
+                              {instantDemo.name}
+                            </div>
+                            <div className="mt-2 max-w-xl text-sm text-muted-foreground">{instantDemo.promo}</div>
+                            <div className="mt-4 inline-flex items-center gap-2 rounded-xl border border-[hsl(var(--neon-cyan))]/35 bg-background/35 px-3 py-2 text-xs font-semibold">
+                              <MessageCircle className="h-4 w-4 text-[hsl(var(--neon-cyan))]" /> {instantDemo.cta}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        {instantDemo.sections.map((s, idx) => {
+                          const isVisible = instantVisibleCount >= idx + 2;
+                          return (
+                            <div
+                              key={s.title}
+                              className={cn(
+                                "overflow-hidden rounded-2xl border border-border/60 bg-background/20",
+                                "transition-all duration-300 ease-out",
+                                isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1",
+                              )}
+                            >
+                              <img
+                                src={s.image}
+                                alt={s.title}
+                                className="h-28 w-full object-cover opacity-70"
+                                loading="lazy"
+                              />
+                              <div className="p-4">
+                                <div className="text-sm font-semibold tracking-tight">{s.title}</div>
+                                <div className="mt-2 text-sm text-muted-foreground">{s.text}</div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      <div
+                        className={cn(
+                          "rounded-2xl border border-border/60 bg-background/20 p-5",
+                          "transition-all duration-300 ease-out",
+                          instantVisibleCount >= instantDemo.sections.length + 2
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 -translate-y-1",
+                        )}
+                      >
+                        <Button asChild variant="whatsapp" size="lg" className="w-full justify-center">
+                          <a href={instantDemoWhatsAppUrl} target="_blank" rel="noopener noreferrer">
+                            Quiero esta página para mi negocio <MessageCircle />
+                          </a>
+                        </Button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
