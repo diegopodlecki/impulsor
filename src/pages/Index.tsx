@@ -40,7 +40,7 @@ const DEFAULT_WA_MESSAGE =
   "Hola, vi tu página web y quiero información sobre tus servicios.";
 
 const GOOGLE_SHEETS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbx9Z8g7bTOZkpApdktK7J5IaUywu5mFLqpMG2F6873kYU_jfLGRAqe1QrG8uiCYiyek/exec";
+  "https://script.google.com/macros/s/AKfycbybYzGbEKrL6g7PxcPR61rY-2xYRAixB65ggZ7Com4DYsqG_O_SQan-kMiuX7oA0IbN/exec";
 
 // Plantilla del mensaje post-formulario (incluye los datos del lead).
 function buildFormWhatsAppMessage(params: {
