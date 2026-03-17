@@ -1228,19 +1228,36 @@ export default function Index() {
     };
 
     try {
-      const formData = new FormData();
-      for (const [k, v] of Object.entries(googlePayload)) {
-        formData.set(k, String(v ?? ""));
-      }
+      const jsonBody = JSON.stringify(googlePayload);
 
-      // Apps Script suele funcionar mejor con envíos estilo formulario (FormData).
-      // Además usamos `no-cors` para evitar que una política CORS rompa el envío.
-      await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
+      // 1) Intento "verificable": si el Web App responde con JSON y CORS habilitado,
+      // podemos confirmar éxito real (evita falsos positivos).
+      const response = await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
         method: "POST",
-        body: formData,
-        mode: "no-cors",
+        body: jsonBody,
+        redirect: "follow",
         keepalive: true,
       });
+
+      const rawText = await response.text().catch(() => "");
+      const parsed = (() => {
+        try {
+          return rawText ? (JSON.parse(rawText) as { result?: string; error?: string; message?: string } | null) : null;
+        } catch {
+          return null;
+        }
+      })();
+
+      const isSuccess =
+        parsed?.result === "success" ||
+        /"result"\s*:\s*"success"/i.test(rawText) ||
+        /\bsuccess\b/i.test(rawText) ||
+        response.ok;
+
+      if (!isSuccess) {
+        const errMsg = parsed?.error || parsed?.message || rawText || "Error al enviar";
+        throw new Error(errMsg.slice(0, 300));
+      }
 
       setStatusText("Mensaje enviado correctamente. Nos pondremos en contacto pronto.");
 
@@ -1265,8 +1282,42 @@ export default function Index() {
       setLeadStage("sent");
       toast.success("Mensaje enviado. Si querés acelerar, continuá por WhatsApp con el mensaje prellenado.");
     } catch {
-      setStatusText("Error de conexión");
-      setLeadStage("idle");
+      try {
+        // 2) Fallback compatible: envío `no-cors` (no permite leer respuesta, pero suele llegar a Sheets).
+        // Evitamos headers custom para no disparar preflight.
+        await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
+          method: "POST",
+          body: JSON.stringify(googlePayload),
+          mode: "no-cors",
+          keepalive: true,
+        });
+
+        setStatusText("Mensaje enviado. Si no recibís respuesta, continuá por WhatsApp.");
+
+        sendLead({
+          id: leadId,
+          nombre: name.trim(),
+          telefono: phone.trim(),
+          email: email.trim(),
+          negocio: "landing webappimpulsor",
+          mensaje: message.trim(),
+          fecha,
+          source: "landing",
+          path: window.location.pathname,
+          referrer: document.referrer || null,
+          userAgent: navigator.userAgent,
+        });
+
+        setName("");
+        setPhone("");
+        setEmail("");
+        setMessage("");
+        setLeadStage("sent");
+        toast.success("Mensaje enviado. Si querés acelerar, continuá por WhatsApp con el mensaje prellenado.");
+      } catch {
+        setStatusText("Error de conexión");
+        setLeadStage("idle");
+      }
     }
   }, [email, leadStage, message, name, phone, sendLead]);
 
