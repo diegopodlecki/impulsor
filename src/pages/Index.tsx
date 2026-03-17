@@ -1228,13 +1228,16 @@ export default function Index() {
     };
 
     try {
-      const jsonBody = JSON.stringify(googlePayload);
+      const urlBody = new URLSearchParams();
+      for (const [k, v] of Object.entries(googlePayload)) {
+        urlBody.set(k, String(v ?? ""));
+      }
 
       // 1) Intento "verificable": si el Web App responde con JSON y CORS habilitado,
       // podemos confirmar éxito real (evita falsos positivos).
       const response = await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
         method: "POST",
-        body: jsonBody,
+        body: urlBody,
         redirect: "follow",
         keepalive: true,
       });
@@ -1287,12 +1290,12 @@ export default function Index() {
         // Evitamos headers custom para no disparar preflight.
         await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
           method: "POST",
-          body: JSON.stringify(googlePayload),
+          body: urlBody,
           mode: "no-cors",
           keepalive: true,
         });
 
-        setStatusText("Mensaje enviado. Si no recibís respuesta, continuá por WhatsApp.");
+        setStatusText("Mensaje enviado (modo compatibilidad). Si no recibís respuesta, continuá por WhatsApp.");
 
         sendLead({
           id: leadId,
