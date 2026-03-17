@@ -52,24 +52,23 @@ function withBase(path: string) {
 // Plantilla del mensaje post-formulario (incluye los datos del lead).
 function buildFormWhatsAppMessage(params: {
   name: string;
-  businessType: string;
+  phone: string;
   email: string;
-  message: string;
+  note: string;
 }) {
   const safeName = params.name.trim();
-  const safeBusiness = params.businessType.trim();
+  const safePhone = params.phone.trim();
   const safeEmail = params.email.trim();
-  const safeMessage = params.message.trim();
+  const safeNote = params.note.trim();
 
   return [
-    safeName ? `Hola, soy ${safeName}.` : "Hola,",
-    safeBusiness ? `Tengo un negocio de ${safeBusiness}.` : null,
+    "Hola! Quiero información para crear mi página web profesional.",
     "",
-    "Acabo de enviar un formulario desde tu página web y quiero información sobre desarrollo web o automatización para mi negocio.",
-    safeEmail ? "" : null,
-    safeEmail ? `Mi email: ${safeEmail}` : null,
-    safeMessage ? "" : null,
-    safeMessage ? `Mensaje: ${safeMessage}` : null,
+    "Datos:",
+    safeName ? `Nombre: ${safeName}` : null,
+    safePhone ? `Teléfono: ${safePhone}` : null,
+    safeEmail ? `Email: ${safeEmail}` : null,
+    safeNote ? `Nota: ${safeNote}` : null,
   ]
     .filter(Boolean)
     .join("\n");
@@ -302,6 +301,7 @@ export default function Index() {
   }, []);
 
   const [name, setName] = React.useState("");
+  const [phone, setPhone] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [message, setMessage] = React.useState("");
   const [statusText, setStatusText] = React.useState("");
@@ -1214,99 +1214,61 @@ export default function Index() {
     const leadId = (crypto?.randomUUID?.() ?? `lead_${Math.random().toString(16).slice(2)}`).slice(0, 40);
     const fecha = new Date().toISOString();
 
-    const waMessage = buildFormWhatsAppMessage({ name, businessType: "landing webappimpulsor", email, message });
+    const waMessage = buildFormWhatsAppMessage({ name, phone, email, note: message });
     setPreparedWhatsAppUrl(buildWhatsAppUrl(waMessage));
 
     const googlePayload = {
+      id: leadId,
       nombre: name.trim(),
+      telefono: phone.trim(),
       email: email.trim(),
       mensaje: message.trim(),
       origen: "landing webappimpulsor",
+      fecha,
     };
 
     try {
-      const jsonBody = JSON.stringify(googlePayload);
-      const response = await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
+      const formData = new FormData();
+      for (const [k, v] of Object.entries(googlePayload)) {
+        formData.set(k, String(v ?? ""));
+      }
+
+      // Apps Script suele funcionar mejor con envíos estilo formulario (FormData).
+      // Además usamos `no-cors` para evitar que una política CORS rompa el envío.
+      await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
         method: "POST",
-        body: jsonBody,
-        redirect: "follow",
+        body: formData,
+        mode: "no-cors",
         keepalive: true,
       });
 
-      const rawText = await response.text().catch(() => "");
-      const parsed = (() => {
-        try {
-          return rawText ? (JSON.parse(rawText) as { result?: string } | null) : null;
-        } catch {
-          return null;
-        }
-      })();
+      setStatusText("Mensaje enviado correctamente. Nos pondremos en contacto pronto.");
 
-      const isSuccess =
-        parsed?.result === "success" ||
-        /"result"\s*:\s*"success"/i.test(rawText) ||
-        /\bsuccess\b/i.test(rawText) ||
-        response.ok;
+      sendLead({
+        id: leadId,
+        nombre: name.trim(),
+        telefono: phone.trim(),
+        email: email.trim(),
+        negocio: "landing webappimpulsor",
+        mensaje: message.trim(),
+        fecha,
+        source: "landing",
+        path: window.location.pathname,
+        referrer: document.referrer || null,
+        userAgent: navigator.userAgent,
+      });
 
-      if (isSuccess) {
-        setStatusText("Mensaje enviado correctamente");
-
-        sendLead({
-          id: leadId,
-          nombre: name.trim(),
-          email: email.trim(),
-          negocio: "landing webappimpulsor",
-          mensaje: message.trim(),
-          fecha,
-          source: "landing",
-          path: window.location.pathname,
-          referrer: document.referrer || null,
-          userAgent: navigator.userAgent,
-        });
-
-        setName("");
-        setEmail("");
-        setMessage("");
-        setLeadStage("sent");
-        toast.success("Gracias. Tu consulta quedó registrada. Continuá por WhatsApp para terminar de enviarla.");
-      } else {
-        setStatusText("Error al enviar");
-        setLeadStage("idle");
-      }
+      setName("");
+      setPhone("");
+      setEmail("");
+      setMessage("");
+      setLeadStage("sent");
+      toast.success("Mensaje enviado. Si querés acelerar, continuá por WhatsApp con el mensaje prellenado.");
     } catch {
-      try {
-        await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
-          method: "POST",
-          body: JSON.stringify(googlePayload),
-          mode: "no-cors",
-          keepalive: true,
-        });
-        setStatusText("Mensaje enviado correctamente");
-
-        sendLead({
-          id: leadId,
-          nombre: name.trim(),
-          email: email.trim(),
-          negocio: "landing webappimpulsor",
-          mensaje: message.trim(),
-          fecha,
-          source: "landing",
-          path: window.location.pathname,
-          referrer: document.referrer || null,
-          userAgent: navigator.userAgent,
-        });
-
-        setName("");
-        setEmail("");
-        setMessage("");
-        setLeadStage("sent");
-        toast.success("Gracias. Tu consulta quedó registrada. Continuá por WhatsApp para terminar de enviarla.");
-      } catch {
-        setStatusText("Error de conexión");
-        setLeadStage("idle");
-      }
+      setStatusText("Error de conexión");
+      setLeadStage("idle");
     }
-  }, [email, leadStage, message, name, sendLead]);
+  }, [email, leadStage, message, name, phone, sendLead]);
 
   const openPreparedWhatsApp = React.useCallback(() => {
     if (!preparedWhatsAppUrl) return;
@@ -2768,6 +2730,22 @@ export default function Index() {
                 />
 
                 <input
+                  type="tel"
+                  id="telefono"
+                  name="telefono"
+                  placeholder="Teléfono"
+                  required
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className={cn(
+                    "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
+                    "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
+                  )}
+                  autoComplete="tel"
+                  inputMode="tel"
+                />
+
+                <input
                   type="email"
                   id="email"
                   name="email"
@@ -2785,7 +2763,7 @@ export default function Index() {
                 <textarea
                   id="mensaje"
                   name="mensaje"
-                  placeholder="Mensaje"
+                  placeholder="Nota"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={5}
