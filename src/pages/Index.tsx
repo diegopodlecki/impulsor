@@ -1,4 +1,4 @@
-import * as React from "react";
+﻿import * as React from "react";
 import {
   ArrowRight,
   Bot,
@@ -81,25 +81,6 @@ function buildWhatsAppUrl(message: string) {
   const text = encodeURIComponent(message);
   return `https://wa.me/${phone}?text=${text}`;
 }
-
-function normalizeText(value: string) {
-  return (value ?? "")
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .trim();
-}
-
-type PresenceStatus = "ok" | "warn" | "bad";
-
-type InstantDemoType =
-  | "Entrenador personal"
-  | "Psicólogo"
-  | "Nutricionista"
-  | "Centro de estética"
-  | "Gimnasio"
-  | "Restaurante o casa de comida"
-  | "Profesional independiente";
 
 function LogoMark({ className }: { className?: string }) {
   const [brandFirst, ...brandRest] = BRAND.name.split(" ");
@@ -358,492 +339,6 @@ export default function Index() {
   const [extraMobile, setExtraMobile] = React.useState(true);
   const [extraCustom, setExtraCustom] = React.useState(false);
 
-  const [ideaBusiness, setIdeaBusiness] = React.useState("");
-  const [ideaResult, setIdeaResult] = React.useState<{
-    title: string;
-    businessLabel: string;
-    sections: string[];
-    suggestion: string;
-  } | null>(null);
-  const [ideaVisible, setIdeaVisible] = React.useState(false);
-  const ideaTimerRef = React.useRef<number | null>(null);
-  const ideaResultRef = React.useRef<HTMLDivElement | null>(null);
-
-  React.useEffect(() => {
-    return () => {
-      if (ideaTimerRef.current) window.clearTimeout(ideaTimerRef.current);
-    };
-  }, []);
-
-  const generateIdea = React.useCallback(() => {
-    const raw = ideaBusiness.trim();
-    const normalized = normalizeText(raw);
-    const businessLabel = raw || "tu negocio";
-
-    const presets: Array<{
-      id: string;
-      match: (v: string) => boolean;
-      title: string;
-      sections: string[];
-      suggestion: string;
-    }> = [
-      {
-        id: "trainer",
-        match: (v) => v.includes("entrenador") || v.includes("personal trainer") || v.includes("trainer") || v.includes("coach"),
-        title: "Idea de página para Entrenador Personal",
-        sections: [
-          "Home (propuesta de valor + CTA WhatsApp)",
-          "Sobre mí",
-          "Servicios de entrenamiento",
-          "Resultados / progreso de alumnos",
-          "Testimonios",
-          "Galería de entrenamientos",
-          "Contacto con WhatsApp",
-        ],
-        suggestion:
-          "Tu página podría mostrar tus planes de entrenamiento, resultados de alumnos y permitir que nuevos clientes te contacten fácilmente por WhatsApp.",
-      },
-      {
-        id: "psico",
-        match: (v) => v.includes("psicolog"),
-        title: "Idea de página para Psicólogo/a",
-        sections: [
-          "Home (confianza + CTA de consulta)",
-          "Sobre mí y enfoque terapéutico",
-          "Especialidades",
-          "Cómo trabajo (metodología)",
-          "Preguntas frecuentes",
-          "Testimonios / reseñas",
-          "Reserva / contacto por WhatsApp",
-        ],
-        suggestion:
-          "Tu página puede explicar tu enfoque, especialidades y facilitar que te reserven o te consulten por WhatsApp con un mensaje claro y profesional.",
-      },
-      {
-        id: "nutri",
-        match: (v) => v.includes("nutricion") || v.includes("nutri") || v.includes("dietista") || v.includes("dietista"),
-        title: "Idea de página para Nutricionista",
-        sections: [
-          "Home (beneficio + CTA WhatsApp)",
-          "Planes y programas",
-          "Qué incluye cada plan",
-          "Antes y después / resultados",
-          "Tips y consejos",
-          "Testimonios",
-          "Contacto / reservas por WhatsApp",
-        ],
-        suggestion:
-          "Tu página podría vender tus planes con claridad, mostrar resultados y tips, y permitir que te escriban por WhatsApp para arrancar sin fricción.",
-      },
-      {
-        id: "gym",
-        match: (v) => v.includes("gimnasio") || v.includes("gym") || v.includes("fitness"),
-        title: "Idea de página para Gimnasio",
-        sections: [
-          "Home (promo + CTA de inscripción)",
-          "Clases y horarios",
-          "Planes / membresías",
-          "Instalaciones (galería)",
-          "Entrenadores",
-          "Preguntas frecuentes",
-          "Contacto por WhatsApp",
-        ],
-        suggestion:
-          "Tu web puede mostrar clases y horarios, planes de membresía y un botón de WhatsApp para que se inscriban o consulten en 1 click.",
-      },
-    ];
-
-    const preset = presets.find((p) => p.match(normalized));
-
-    const result = preset
-      ? { title: preset.title, businessLabel, sections: preset.sections, suggestion: preset.suggestion }
-      : {
-          title: `Idea de página para ${businessLabel}`,
-          businessLabel,
-          sections: ["Home", "Sobre el negocio", "Servicios", "Testimonios", "Contacto con WhatsApp"],
-          suggestion:
-            "Tu página debería explicar rápidamente qué ofrecés, mostrar tus servicios y generar confianza para que te contacten directo por WhatsApp.",
-        };
-
-    setIdeaResult(result);
-    setIdeaVisible(false);
-    if (ideaTimerRef.current) window.clearTimeout(ideaTimerRef.current);
-    ideaTimerRef.current = window.setTimeout(() => setIdeaVisible(true), 30);
-    window.setTimeout(() => ideaResultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
-  }, [ideaBusiness]);
-
-  const [presenceQuery, setPresenceQuery] = React.useState("");
-  const [presenceStage, setPresenceStage] = React.useState<"idle" | "scanning" | "done">("idle");
-  const [presenceVisibleCount, setPresenceVisibleCount] = React.useState(0);
-  const presenceTimersRef = React.useRef<number[]>([]);
-
-  React.useEffect(() => {
-    return () => {
-      for (const t of presenceTimersRef.current) window.clearTimeout(t);
-      presenceTimersRef.current = [];
-    };
-  }, []);
-
-  const presenceWhatsAppUrl = React.useMemo(() => {
-    const msg =
-      "Hola, acabo de analizar la presencia digital de mi negocio en WebAppImpulsor y me gustaría crear una página web profesional.";
-    return buildWhatsAppUrl(msg);
-  }, []);
-
-  const presenceResults = React.useMemo(() => {
-    const q = presenceQuery.trim();
-    const n = normalizeText(q);
-    const looksLikeInstagram = q.includes("@") || n.includes("instagram") || n.includes("ig");
-    const looksLikeWebsite = n.includes("http") || n.includes("www.") || n.includes(".com") || n.includes(".ar");
-
-    const igStatus: PresenceStatus = q ? "ok" : "warn";
-    const webStatus: PresenceStatus = looksLikeWebsite ? "warn" : "bad";
-
-    return [
-      {
-        label: "Instagram",
-        status: looksLikeInstagram || q ? igStatus : "warn",
-        ok: "Presente",
-        warn: "Parcial",
-        bad: "No detectado",
-      },
-      {
-        label: "Página web profesional",
-        status: webStatus,
-        ok: "Detectada",
-        warn: "Parcial (link encontrado, falta optimización)",
-        bad: "No detectada",
-      },
-      {
-        label: "Catálogo de servicios organizado",
-        status: "warn" as const,
-        ok: "Completo",
-        warn: "Parcial",
-        bad: "No detectado",
-      },
-      {
-        label: "Formulario de contacto",
-        status: looksLikeWebsite ? ("warn" as const) : ("bad" as const),
-        ok: "Presente",
-        warn: "Parcial",
-        bad: "No detectado",
-      },
-      {
-        label: "Contacto directo automatizado",
-        status: "warn" as const,
-        ok: "Activo",
-        warn: "Limitado",
-        bad: "No detectado",
-      },
-    ] as const;
-  }, [presenceQuery]);
-
-  const runPresenceAnalysis = React.useCallback(() => {
-    const q = presenceQuery.trim();
-    if (!q) return;
-
-    for (const t of presenceTimersRef.current) window.clearTimeout(t);
-    presenceTimersRef.current = [];
-
-    setPresenceStage("scanning");
-    setPresenceVisibleCount(0);
-
-    const first = window.setTimeout(() => setPresenceVisibleCount(1), 420);
-    presenceTimersRef.current.push(first);
-
-    for (let i = 2; i <= presenceResults.length; i += 1) {
-      const t = window.setTimeout(() => setPresenceVisibleCount(i), 420 * i);
-      presenceTimersRef.current.push(t);
-    }
-
-    const done = window.setTimeout(() => setPresenceStage("done"), 420 * (presenceResults.length + 1));
-    presenceTimersRef.current.push(done);
-  }, [presenceQuery, presenceResults.length]);
-
-  const [instantBusinessName, setInstantBusinessName] = React.useState("");
-  const [instantBusinessType, setInstantBusinessType] = React.useState<InstantDemoType>("Centro de estética");
-  const [instantStage, setInstantStage] = React.useState<"idle" | "generating" | "done">("idle");
-  const [instantVisibleCount, setInstantVisibleCount] = React.useState(0);
-  const instantTimersRef = React.useRef<number[]>([]);
-  const instantResultRef = React.useRef<HTMLDivElement | null>(null);
-
-  React.useEffect(() => {
-    return () => {
-      for (const t of instantTimersRef.current) window.clearTimeout(t);
-      instantTimersRef.current = [];
-    };
-  }, []);
-
-  const instantDemoWhatsAppUrl = React.useMemo(() => {
-    const msg =
-      "Hola, acabo de generar una demo de página para mi negocio en WebAppImpulsor y me gustaría crear una página web profesional.";
-    return buildWhatsAppUrl(msg);
-  }, []);
-
-  const buildInstantDemo = React.useCallback(
-    (name: string, type: InstantDemoType) => {
-      const safeName = name.trim() || "Tu negocio";
-
-      const commonCta = "Contactar por WhatsApp";
-
-      const templates: Record<
-        InstantDemoType,
-        {
-          promo: string;
-          heroImage: string;
-          sections: Array<{ title: string; text: string; image: string }>;
-        }
-      > = {
-        "Entrenador personal": {
-          promo: "Entrenamientos personalizados para resultados reales.",
-          heroImage:
-            "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1800&q=80",
-          sections: [
-            {
-              title: "Sobre el entrenador",
-              text: "Tu enfoque, experiencia y por qué tus alumnos confían en vos.",
-              image:
-                "https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Programas de entrenamiento",
-              text: "Planes claros por objetivo (bajar grasa, fuerza, recomposición).",
-              image:
-                "https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Testimonios de alumnos",
-              text: "Prueba social para convertir visitas en consultas.",
-              image:
-                "https://images.unsplash.com/photo-1550345332-09e3ac987658?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Contacto WhatsApp",
-              text: "Botón destacado con mensaje pre-escrito para agendar.",
-              image:
-                "https://images.unsplash.com/photo-1520975682031-a122b69f1a12?auto=format&fit=crop&w=1400&q=80",
-            },
-          ],
-        },
-        "Psicólogo": {
-          promo: "Un espacio profesional para acompañarte en tu bienestar.",
-          heroImage:
-            "https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?auto=format&fit=crop&w=1800&q=80",
-          sections: [
-            {
-              title: "Especialidades",
-              text: "Áreas de trabajo, problemáticas frecuentes y qué podés esperar.",
-              image:
-                "https://images.unsplash.com/photo-1580281657527-47f249e8f049?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Enfoque terapéutico",
-              text: "Cómo trabajás y qué resultados buscás con tus pacientes.",
-              image:
-                "https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Reserva de consulta",
-              text: "CTA claro para coordinar por WhatsApp y reducir fricción.",
-              image:
-                "https://images.unsplash.com/photo-1526779259212-939e64788e3c?auto=format&fit=crop&w=1400&q=75",
-            },
-          ],
-        },
-        "Nutricionista": {
-          promo: "Planes simples y sostenibles para mejorar tu salud.",
-          heroImage:
-            "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1800&q=80",
-          sections: [
-            {
-              title: "Planes alimenticios",
-              text: "Programas por objetivo con qué incluye cada plan.",
-              image:
-                "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Consejos de salud",
-              text: "Contenido útil para atraer visitas y generar confianza.",
-              image:
-                "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Contacto",
-              text: "WhatsApp + formulario para capturar leads.",
-              image:
-                "https://images.unsplash.com/photo-1528823872057-9c018a7a7553?auto=format&fit=crop&w=1400&q=80",
-            },
-          ],
-        },
-        "Centro de estética": {
-          promo: "Tratamientos modernos y resultados visibles con cuidado profesional.",
-          heroImage:
-            "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=1800&q=80",
-          sections: [
-            {
-              title: "Tratamientos",
-              text: "Micropeeling, faciales, masajes y packs por objetivo.",
-              image:
-                "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Resultados",
-              text: "Fotos/antes y después para generar confianza (sin exagerar).",
-              image:
-                "https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Promociones",
-              text: "Packs y promos para aumentar conversiones en temporada.",
-              image:
-                "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Contacto",
-              text: "Turnos por WhatsApp y consulta rápida.",
-              image:
-                "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=80",
-            },
-          ],
-        },
-        "Gimnasio": {
-          promo: "Clases, horarios y planes listos para que se inscriban.",
-          heroImage:
-            "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=80",
-          sections: [
-            {
-              title: "Clases y horarios",
-              text: "Agenda clara, filtros y CTA a WhatsApp.",
-              image:
-                "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Planes / membresías",
-              text: "Precios simples y beneficios por plan.",
-              image:
-                "https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Instalaciones",
-              text: "Galería + recorrido para motivar la visita.",
-              image:
-                "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Inscripción",
-              text: "CTA directo por WhatsApp para convertir en 1 click.",
-              image:
-                "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1400&q=80",
-            },
-          ],
-        },
-        "Restaurante o casa de comida": {
-          promo: "Menú claro, destacados y pedidos por WhatsApp.",
-          heroImage:
-            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1800&q=80",
-          sections: [
-            {
-              title: "Menú",
-              text: "Menú escaneable con precios y combos.",
-              image:
-                "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Platos destacados",
-              text: "Fotos reales para aumentar pedidos.",
-              image:
-                "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Opiniones",
-              text: "Reseñas breves para generar confianza.",
-              image:
-                "https://images.unsplash.com/photo-1523906630133-f6934a1ab2b9?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Ubicación y pedidos",
-              text: "Mapa + botón de WhatsApp para pedir rápido.",
-              image:
-                "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1400&q=75",
-            },
-          ],
-        },
-        "Profesional independiente": {
-          promo: "Una presencia online moderna para conseguir más clientes.",
-          heroImage:
-            "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1800&q=80",
-          sections: [
-            {
-              title: "Servicios",
-              text: "Qué ofrecés y cómo trabajás (en simple).",
-              image:
-                "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Casos / resultados",
-              text: "Ejemplos de trabajos o resultados para aumentar confianza.",
-              image:
-                "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80",
-            },
-            {
-              title: "Contacto",
-              text: "WhatsApp + formulario para captar consultas.",
-              image:
-                "https://images.unsplash.com/photo-1520975682031-a122b69f1a12?auto=format&fit=crop&w=1400&q=80",
-            },
-          ],
-        },
-      };
-
-      return {
-        name: safeName,
-        type,
-        promo: templates[type].promo,
-        cta: commonCta,
-        heroImage: templates[type].heroImage,
-        sections: templates[type].sections,
-      };
-    },
-    [],
-  );
-
-  const [instantDemo, setInstantDemo] = React.useState<ReturnType<typeof buildInstantDemo> | null>(null);
-
-  const generateInstantDemo = React.useCallback(
-    (e: React.FormEvent) => {
-      e.preventDefault();
-      if (!instantBusinessName.trim()) return;
-
-      for (const t of instantTimersRef.current) window.clearTimeout(t);
-      instantTimersRef.current = [];
-
-      setInstantStage("generating");
-      setInstantVisibleCount(0);
-
-      const demo = buildInstantDemo(instantBusinessName, instantBusinessType);
-      setInstantDemo(demo);
-
-      const baseDelay = 320;
-      const heroT = window.setTimeout(() => setInstantVisibleCount(1), 220);
-      instantTimersRef.current.push(heroT);
-
-      for (let i = 1; i <= demo.sections.length + 1; i += 1) {
-        const t = window.setTimeout(() => setInstantVisibleCount(i + 1), 220 + baseDelay * i);
-        instantTimersRef.current.push(t);
-      }
-
-      const doneT = window.setTimeout(() => setInstantStage("done"), 220 + baseDelay * (demo.sections.length + 2));
-      instantTimersRef.current.push(doneT);
-
-      const scrollT = window.setTimeout(
-        () => instantResultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
-        260,
-      );
-      instantTimersRef.current.push(scrollT);
-    },
-    [buildInstantDemo, instantBusinessName, instantBusinessType],
-  );
-
   const calcPrice = React.useMemo(() => {
     const base =
       calcPageType === "landing" ? 150 : calcPageType === "profesional" ? 250 : calcPageType === "completa" ? 350 : 150;
@@ -859,308 +354,6 @@ export default function Index() {
     const msg = `Hola, quiero crear mi página web. El simulador me dio un precio aproximado de ${calcPrice} USD.`;
     return buildWhatsAppUrl(msg);
   }, [calcPrice]);
-
-  const ideaWhatsAppUrl = React.useMemo(() => {
-    const business = ideaResult?.businessLabel?.trim();
-    const msg = business
-      ? `Hola, probé el generador de ideas de WebAppImpulsor y me gustaría crear una página web para mi negocio (${business}).`
-      : "Hola, probé el generador de ideas de WebAppImpulsor y me gustaría crear una página web para mi negocio.";
-    return buildWhatsAppUrl(msg);
-  }, [ideaResult?.businessLabel]);
-
-  const constructorWhatsAppUrl = React.useMemo(() => {
-    const msg =
-      "Hola, acabo de usar el constructor de WebAppImpulsor y me gustaría crear una página web para mi negocio.";
-    return buildWhatsAppUrl(msg);
-  }, []);
-
-  const constructorSections = React.useMemo(
-    () =>
-      [
-        {
-          id: "home",
-          label: "Home",
-          title: "[ HERO / HOME ]",
-          body: "Propuesta clara + botón de WhatsApp + beneficio principal en 5 segundos.",
-        },
-        {
-          id: "about",
-          label: "Sobre mí",
-          title: "[ SOBRE MÍ ]",
-          body: "Quién sos, por qué confiar, tu enfoque y resultados (sin humo).",
-        },
-        {
-          id: "services",
-          label: "Servicios",
-          title: "[ SERVICIOS ]",
-          body: "3–6 servicios bien explicados con CTA corto: “Consultar por WhatsApp”.",
-        },
-        {
-          id: "testimonials",
-          label: "Testimonios",
-          title: "[ TESTIMONIOS ]",
-          body: "Reseñas breves que generen confianza y reduzcan dudas antes de escribirte.",
-        },
-        {
-          id: "gallery",
-          label: "Galería",
-          title: "[ GALERÍA ]",
-          body: "Fotos reales o trabajos: que se entienda tu propuesta de un vistazo.",
-        },
-        {
-          id: "wa",
-          label: "Contacto con WhatsApp",
-          title: "[ CONTACTO (WHATSAPP) ]",
-          body: "Botón destacado con mensaje pre-escrito para bajar fricción y aumentar consultas.",
-        },
-        {
-          id: "form",
-          label: "Formulario de contacto",
-          title: "[ FORMULARIO ]",
-          body: "Nombre + email + mensaje. Si no quieren llamar, igual te dejan la consulta.",
-        },
-      ] as const,
-    [],
-  );
-
-  const [selectedConstructor, setSelectedConstructor] = React.useState<Record<string, boolean>>(() => ({
-    home: true,
-    services: true,
-    wa: true,
-    form: true,
-    about: false,
-    testimonials: false,
-    gallery: false,
-  }));
-
-  const [leavingConstructor, setLeavingConstructor] = React.useState<Record<string, boolean>>({});
-  const leavingConstructorRef = React.useRef<Record<string, number>>({});
-
-  React.useEffect(() => {
-    const timeouts = leavingConstructorRef.current;
-    return () => {
-      for (const key of Object.keys(timeouts)) {
-        window.clearTimeout(timeouts[key]);
-      }
-    };
-  }, []);
-
-  const toggleConstructorSection = React.useCallback((id: string) => {
-    setSelectedConstructor((prev) => {
-      const nextValue = !prev[id];
-
-      if (nextValue) {
-        setLeavingConstructor((prevLeaving) => {
-          if (!prevLeaving[id]) return prevLeaving;
-          const nextLeaving = { ...prevLeaving };
-          delete nextLeaving[id];
-          return nextLeaving;
-        });
-        if (leavingConstructorRef.current[id]) window.clearTimeout(leavingConstructorRef.current[id]);
-      } else {
-        setLeavingConstructor((prevLeaving) => ({ ...prevLeaving, [id]: true }));
-        if (leavingConstructorRef.current[id]) window.clearTimeout(leavingConstructorRef.current[id]);
-        leavingConstructorRef.current[id] = window.setTimeout(() => {
-          setLeavingConstructor((prevLeaving) => {
-            const nextLeaving = { ...prevLeaving };
-            delete nextLeaving[id];
-            return nextLeaving;
-          });
-        }, 260);
-      }
-
-      return { ...prev, [id]: nextValue };
-    });
-  }, []);
-
-  const renderConstructorPreview = React.useCallback(
-    (s: (typeof constructorSections)[number]) => {
-      const accent =
-        s.id === "home"
-          ? "from-cyan-500/30 to-fuchsia-500/20"
-          : s.id === "services"
-            ? "from-indigo-500/25 to-cyan-500/15"
-            : s.id === "testimonials"
-              ? "from-fuchsia-500/20 to-indigo-500/15"
-              : "from-cyan-500/15 to-fuchsia-500/10";
-
-      const Header = (
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <div className="text-[11px] font-semibold tracking-[0.25em] text-[hsl(var(--neon-purple))]">{s.title}</div>
-            <div className="mt-2 text-xs text-muted-foreground">{s.body}</div>
-          </div>
-          <div
-            className={cn(
-              "hidden sm:block h-10 w-10 rounded-2xl border border-border/60 bg-background/35",
-              "shadow-[0_18px_60px_-35px_rgba(168,85,247,0.22)]",
-            )}
-          >
-            <div className={cn("h-full w-full rounded-2xl bg-gradient-to-br", accent)} />
-          </div>
-        </div>
-      );
-
-      if (s.id === "home") {
-        return (
-          <div>
-            {Header}
-            <div className="mt-4 overflow-hidden rounded-2xl border border-border/60 bg-background/25">
-              <div
-                className={cn(
-                  "relative p-5",
-                  "bg-[radial-gradient(circle_at_18%_22%,rgba(34,211,238,0.18),transparent_55%),radial-gradient(circle_at_82%_20%,rgba(168,85,247,0.18),transparent_55%)]",
-                )}
-              >
-              <div className="flex items-center justify-between text-[11px] text-muted-foreground">
-                <div className="font-semibold tracking-tight text-foreground/90">{BRAND.name}</div>
-                <div className="hidden sm:flex items-center gap-3">
-                  <span>Servicios</span>
-                  <span>Contacto</span>
-                </div>
-              </div>
-              <div className="mt-4 text-lg font-semibold tracking-tight">Tu web lista para convertir</div>
-              <div className="mt-1 text-xs text-muted-foreground">
-                Explicá tu propuesta en una frase + CTA visible.
-              </div>
-              <div className="mt-4 inline-flex items-center gap-2 rounded-xl border border-[hsl(var(--neon-cyan))]/35 bg-background/30 px-3 py-2 text-xs font-semibold">
-                <MessageCircle className="h-4 w-4 text-[hsl(var(--neon-cyan))]" /> Hablar por WhatsApp
-              </div>
-            </div>
-            </div>
-          </div>
-        );
-      }
-
-      if (s.id === "about") {
-        return (
-          <div>
-            {Header}
-            <div className="mt-4 grid gap-4 rounded-2xl border border-border/60 bg-background/25 p-5 sm:grid-cols-3">
-              <div className="sm:col-span-1">
-                <div className="aspect-square w-full max-w-[140px] rounded-2xl border border-border/60 bg-gradient-to-br from-cyan-500/20 to-fuchsia-500/15 shadow-glow" />
-              </div>
-              <div className="sm:col-span-2">
-                <div className="text-sm font-semibold tracking-tight">Sobre mí</div>
-                <div className="mt-2 space-y-2 text-xs text-muted-foreground">
-                  <div className="h-2 w-[92%] rounded bg-white/10" />
-                  <div className="h-2 w-[84%] rounded bg-white/10" />
-                  <div className="h-2 w-[70%] rounded bg-white/10" />
-                </div>
-                <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/25 px-3 py-1 text-[11px] text-muted-foreground">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[hsl(var(--neon-cyan))]" /> Experiencia + enfoque
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      }
-
-      if (s.id === "services") {
-        return (
-          <div>
-            {Header}
-            <div className="mt-4 grid gap-3 rounded-2xl border border-border/60 bg-background/25 p-5 sm:grid-cols-3">
-              {[
-                { icon: <Zap className="h-4 w-4" />, title: "Servicio 1" },
-                { icon: <Rocket className="h-4 w-4" />, title: "Servicio 2" },
-                { icon: <Globe className="h-4 w-4" />, title: "Servicio 3" },
-              ].map((c) => (
-                <div key={c.title} className="rounded-xl border border-border/50 bg-background/20 p-4">
-                  <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border/60 bg-background/30 text-[hsl(var(--neon-cyan))]">
-                    {c.icon}
-                  </div>
-                  <div className="mt-3 text-xs font-semibold tracking-tight">{c.title}</div>
-                  <div className="mt-2 h-2 w-full rounded bg-white/10" />
-                  <div className="mt-2 h-2 w-[70%] rounded bg-white/10" />
-                </div>
-              ))}
-            </div>
-          </div>
-        );
-      }
-
-      if (s.id === "testimonials") {
-        return (
-          <div>
-            {Header}
-            <div className="mt-4 grid gap-3 rounded-2xl border border-border/60 bg-background/25 p-5 sm:grid-cols-2">
-              {["Cliente A", "Cliente B"].map((who) => (
-                <div key={who} className="rounded-xl border border-border/50 bg-background/20 p-4">
-                  <div className="flex items-center gap-1 text-[hsl(var(--neon-cyan))]">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-3.5 w-3.5" />
-                    ))}
-                  </div>
-                  <div className="mt-3 space-y-2">
-                    <div className="h-2 w-[95%] rounded bg-white/10" />
-                    <div className="h-2 w-[82%] rounded bg-white/10" />
-                  </div>
-                  <div className="mt-3 text-[11px] font-semibold text-foreground/90">— {who}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        );
-      }
-
-      if (s.id === "gallery") {
-        return (
-          <div>
-            {Header}
-            <div className="mt-4 rounded-2xl border border-border/60 bg-background/25 p-5">
-              <div className="grid grid-cols-3 gap-3">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className={cn(
-                      "aspect-[4/3] rounded-xl border border-border/50",
-                      "bg-[radial-gradient(circle_at_30%_30%,rgba(34,211,238,0.18),transparent_55%),radial-gradient(circle_at_75%_60%,rgba(168,85,247,0.16),transparent_55%)]",
-                    )}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        );
-      }
-
-      if (s.id === "wa") {
-        return (
-          <div>
-            {Header}
-            <div className="mt-4 rounded-2xl border border-border/60 bg-background/25 p-5">
-              <div className="text-sm font-semibold tracking-tight">Contacto</div>
-              <div className="mt-2 text-xs text-muted-foreground">Botón destacado con mensaje pre-escrito.</div>
-              <div className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[hsl(142,70%,45%)] px-4 py-3 text-sm font-bold text-white">
-                <MessageCircle className="h-5 w-5" /> WhatsApp
-              </div>
-            </div>
-          </div>
-        );
-      }
-
-      if (s.id === "form") {
-        return (
-          <div>
-            {Header}
-            <div className="mt-4 rounded-2xl border border-border/60 bg-background/25 p-5">
-              <div className="text-sm font-semibold tracking-tight">Formulario</div>
-              <div className="mt-4 grid gap-2">
-                <div className="h-10 rounded-xl border border-border/50 bg-background/20" />
-                <div className="h-10 rounded-xl border border-border/50 bg-background/20" />
-                <div className="h-20 rounded-xl border border-border/50 bg-background/20" />
-                <div className="mt-1 h-10 rounded-xl border border-[hsl(var(--neon-purple))]/35 bg-background/25" />
-              </div>
-            </div>
-          </div>
-        );
-      }
-
-      return <div>{Header}</div>;
-    },
-    [],
-  );
 
   const persistLeadLocally = React.useCallback((lead: Record<string, unknown>) => {
     // Demo real: guardamos el lead localmente para que se vea el "registro" aunque el webhook no esté configurado
@@ -1351,38 +544,20 @@ export default function Index() {
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#servicios">
               Servicios
             </a>
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#como-funciona">
-              Cómo funciona
-            </a>
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#simulador">
-              Simulador
-            </a>
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#demo-instantaneo">
-              Demo instantánea
-            </a>
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#analizador">
-              Analizador
-            </a>
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#calculadora">
-              Calculadora
-            </a>
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#generador-ideas">
-              Generador
-            </a>
             <a
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-              href="#constructor-visual"
+              href="#simulador"
             >
-              Constructor
+              Demo
+            </a>
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#precios">
+              Precios
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#ejemplos">
               Ejemplos
             </a>
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#para-quien">
-              Para quién
-            </a>
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#precios">
-              Precios
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#diagnostico">
+              Contacto
             </a>
             <Button asChild variant="whatsapp" size="sm">
               <a href={floatingUrl} target="_blank" rel="noreferrer">
@@ -1539,15 +714,15 @@ export default function Index() {
         <section id="servicios" className="container py-16 sm:py-20">
           <SectionHeader eyebrow="Servicios" title="Servicios que impulsan negocios." />
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
-            <ServiceCard
-              icon={<Globe className="h-5 w-5" />}
-              title="Web Profesional Express"
-              bullets={[
-                "Entrega rápida (3 a 5 días)",
-                "Diseño moderno optimizado para móviles",
-                "Integración con WhatsApp",
-              ]}
-            />
+              <ServiceCard
+                icon={<Globe className="h-5 w-5" />}
+                title="Web Profesional Express"
+                bullets={[
+                  "Entrega en 72 horas",
+                  "Diseño moderno optimizado para móviles",
+                  "Integración con WhatsApp",
+                ]}
+              />
             <ServiceCard
               icon={<Bot className="h-5 w-5" />}
               title="Automatización con IA"
@@ -1576,7 +751,7 @@ export default function Index() {
               {
                 icon: <Users className="h-6 w-6" />,
                 n: "1",
-                t: "Nos cuentas sobre tu negocio",
+                t: "Nos contás sobre tu negocio",
                 d: "Objetivo, rubro y qué servicios ofrecés. Sin complicación.",
               },
               {
@@ -1588,7 +763,7 @@ export default function Index() {
               {
                 icon: <MessageCircle className="h-6 w-6" />,
                 n: "3",
-                t: "Empiezas a recibir consultas",
+                t: "Empezás a recibir consultas",
                 d: "Con WhatsApp integrado, tus clientes te escriben directamente.",
               },
             ].map((step) => (
@@ -1730,7 +905,7 @@ export default function Index() {
                   },
                   {
                     icon: <Smartphone className="h-5 w-5" />,
-                    title: "2) Completa el formulario",
+                    title: "2) Completá el formulario",
                     description: "Nombre, email, tipo de negocio y mensaje. Sin fricción, mobile-first.",
                   },
                   {
@@ -1774,312 +949,6 @@ export default function Index() {
                       Quiero esta automatización <ArrowRight />
                     </a>
                   </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="demo-instantaneo" className="container py-16 sm:py-20">
-          <SectionHeader
-            eyebrow="Generador"
-            title="Generador instantáneo de demo de página web"
-            description="Generá una mini web visual en segundos y sentí cómo se vería tu marca online."
-          />
-
-          <div className="mt-10 grid gap-4 lg:grid-cols-12">
-            <div className="lg:col-span-4">
-              <div
-                data-reveal
-                className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
-              >
-                <form onSubmit={generateInstantDemo} className="grid gap-4">
-                  <label className="space-y-2">
-                    <div className="text-sm font-medium text-foreground/90">Nombre del negocio</div>
-                    <input
-                      value={instantBusinessName}
-                      onChange={(e) => setInstantBusinessName(e.target.value)}
-                      placeholder="Ej: Estética Bella"
-                      className={cn(
-                        "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
-                        "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
-                      )}
-                      autoComplete="organization"
-                    />
-                  </label>
-
-                  <label className="space-y-2">
-                    <div className="text-sm font-medium text-foreground/90">Tipo de negocio</div>
-                    <select
-                      value={instantBusinessType}
-                      onChange={(e) => setInstantBusinessType(e.target.value as InstantDemoType)}
-                      className={cn(
-                        "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
-                        "focus:outline-none focus:ring-2 focus:ring-ring",
-                      )}
-                    >
-                      {[
-                        "Entrenador personal",
-                        "Psicólogo",
-                        "Nutricionista",
-                        "Centro de estética",
-                        "Gimnasio",
-                        "Restaurante o casa de comida",
-                        "Profesional independiente",
-                      ].map((v) => (
-                        <option key={v} value={v}>
-                          {v}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-
-                  <Button
-                    type="submit"
-                    variant="hero"
-                    size="lg"
-                    className="w-full justify-center glow-neon"
-                    disabled={!instantBusinessName.trim() || instantStage === "generating"}
-                  >
-                    {instantStage === "generating" ? "Generando..." : "Generar demo"} <Sparkles className="h-4 w-4" />
-                  </Button>
-                </form>
-
-                <div className="mt-4 text-xs text-muted-foreground">
-                  La demo es una vista simulada dentro de la landing (estilo SaaS). Ideal para visualizar rápido.
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-8">
-              <div
-                ref={instantResultRef}
-                data-reveal
-                className="card-neon overflow-hidden rounded-2xl border border-border/70 bg-gradient-card shadow-card"
-              >
-                <div className="border-b border-border/40 bg-background/25 px-4 py-3">
-                  <div className="text-sm font-semibold tracking-tight">Demo generada</div>
-                  <div className="mt-1 text-xs text-muted-foreground">
-                    {instantStage === "generating"
-                      ? "Construyendo secciones…"
-                      : instantDemo
-                        ? "Listo. Así podría verse tu página."
-                        : "Completá el formulario y generá tu demo."}
-                  </div>
-                </div>
-
-                <div className="p-4 sm:p-6">
-                  {!instantDemo ? (
-                    <div className="rounded-2xl border border-border/60 bg-background/20 p-6 text-left">
-                      <div className="text-sm text-muted-foreground">Vista previa</div>
-                      <div className="mt-2 text-lg font-semibold tracking-tight">Tu demo aparece acá.</div>
-                      <p className="mt-2 text-sm text-muted-foreground">
-                        Elegí tu tipo de negocio y vas a ver una mini web con secciones y estilo.
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="space-y-4">
-                      <div
-                        className={cn(
-                          "overflow-hidden rounded-2xl border border-border/60 bg-background/20",
-                          "transition-all duration-300 ease-out",
-                          instantVisibleCount >= 1 ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1",
-                        )}
-                      >
-                        <div className="relative">
-                          <img
-                            src={instantDemo.heroImage}
-                            alt={`Imagen principal de ${instantDemo.type}`}
-                            className="h-44 w-full object-cover opacity-65"
-                            loading="lazy"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
-                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_25%,rgba(34,211,238,0.18),transparent_55%),radial-gradient(circle_at_78%_20%,rgba(168,85,247,0.18),transparent_55%)]" />
-                          <div className="absolute inset-0 p-5">
-                            <div className="text-xs font-semibold tracking-[0.25em] text-[hsl(var(--neon-cyan))]">
-                              {instantDemo.type}
-                            </div>
-                            <div className="mt-2 text-xl font-semibold tracking-tight sm:text-2xl">
-                              {instantDemo.name}
-                            </div>
-                            <div className="mt-2 max-w-xl text-sm text-muted-foreground">{instantDemo.promo}</div>
-                            <div className="mt-4 inline-flex items-center gap-2 rounded-xl border border-[hsl(var(--neon-cyan))]/35 bg-background/35 px-3 py-2 text-xs font-semibold">
-                              <MessageCircle className="h-4 w-4 text-[hsl(var(--neon-cyan))]" /> {instantDemo.cta}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="grid gap-4 sm:grid-cols-2">
-                        {instantDemo.sections.map((s, idx) => {
-                          const isVisible = instantVisibleCount >= idx + 2;
-                          return (
-                            <div
-                              key={s.title}
-                              className={cn(
-                                "overflow-hidden rounded-2xl border border-border/60 bg-background/20",
-                                "transition-all duration-300 ease-out",
-                                isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1",
-                              )}
-                            >
-                              <img
-                                src={s.image}
-                                alt={s.title}
-                                className="h-28 w-full object-cover opacity-70"
-                                loading="lazy"
-                              />
-                              <div className="p-4">
-                                <div className="text-sm font-semibold tracking-tight">{s.title}</div>
-                                <div className="mt-2 text-sm text-muted-foreground">{s.text}</div>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-
-                      <div
-                        className={cn(
-                          "rounded-2xl border border-border/60 bg-background/20 p-5",
-                          "transition-all duration-300 ease-out",
-                          instantVisibleCount >= instantDemo.sections.length + 2
-                            ? "opacity-100 translate-y-0"
-                            : "opacity-0 -translate-y-1",
-                        )}
-                      >
-                        <Button asChild variant="whatsapp" size="lg" className="w-full justify-center">
-                          <a href={instantDemoWhatsAppUrl} target="_blank" rel="noopener noreferrer">
-                            Quiero esta página para mi negocio <MessageCircle />
-                          </a>
-                        </Button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="analizador" className="container py-16 sm:py-20">
-          <SectionHeader
-            eyebrow="Diagnóstico"
-            title="Analiza la presencia digital de tu negocio"
-            description="Descubre qué le falta a tu negocio para verse realmente profesional online."
-          />
-
-          <div className="mt-10 grid gap-4 lg:grid-cols-12">
-            <div className="lg:col-span-5">
-              <div
-                data-reveal
-                className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
-              >
-                <div className="text-sm font-semibold tracking-tight">Ingresá tu Instagram o tu nombre</div>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Esto es un análisis simulado (tipo startup). Te muestra qué suele faltar para convertir visitas en consultas.
-                </p>
-
-                <div className="mt-5 grid gap-3">
-                  <input
-                    value={presenceQuery}
-                    onChange={(e) => setPresenceQuery(e.target.value)}
-                    placeholder="Ej: @entrenadorfitness o Estética Bella"
-                    className={cn(
-                      "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
-                      "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
-                    )}
-                    autoComplete="off"
-                    inputMode="text"
-                  />
-                  <Button
-                    type="button"
-                    variant="hero"
-                    size="lg"
-                    className="w-full justify-center glow-neon"
-                    onClick={runPresenceAnalysis}
-                    disabled={!presenceQuery.trim() || presenceStage === "scanning"}
-                  >
-                    {presenceStage === "scanning" ? "Analizando..." : "Analizar presencia digital"}{" "}
-                    <Sparkles className="h-4 w-4" />
-                  </Button>
-                </div>
-
-                <div className="mt-4 text-xs text-muted-foreground">
-                  Tip: probá con tu @ de Instagram. Luego te digo cómo lo potenciaríamos con una web.
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-7">
-              <div
-                data-reveal
-                className="card-neon overflow-hidden rounded-2xl border border-border/70 bg-gradient-card shadow-card"
-              >
-                <div className="border-b border-border/40 bg-background/25 px-4 py-3">
-                  <div className="text-sm font-semibold tracking-tight">Análisis de presencia digital</div>
-                  <div className="mt-1 text-xs text-muted-foreground">
-                    {presenceStage === "scanning"
-                      ? "Escaneando…"
-                      : presenceStage === "done"
-                        ? "Listo. Este es un diagnóstico rápido."
-                        : "Completá el campo y ejecutá el análisis."}
-                  </div>
-                </div>
-
-                <div className="p-4 sm:p-6">
-                  <div className="grid gap-3">
-                    {presenceResults.map((row, idx) => {
-                      const isVisible = presenceVisibleCount >= idx + 1;
-                      const status = row.status;
-                      const icon =
-                        status === "ok" ? (
-                          <span className="text-[hsl(var(--neon-cyan))]">✔</span>
-                        ) : status === "warn" ? (
-                          <span className="text-[hsl(var(--neon-purple))]">⚠</span>
-                        ) : (
-                          <span className="text-red-400">✖</span>
-                        );
-
-                      const label =
-                        status === "ok" ? row.ok : status === "warn" ? row.warn : row.bad;
-
-                      return (
-                        <div
-                          key={row.label}
-                          className={cn(
-                            "rounded-xl border border-border/60 bg-background/20 px-4 py-3",
-                            "transition-all duration-300 ease-out",
-                            isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1",
-                          )}
-                        >
-                          <div className="flex items-center justify-between gap-4">
-                            <div className="flex items-center gap-3">
-                              <div className="grid h-9 w-9 place-items-center rounded-xl border border-border/60 bg-background/30">
-                                {icon}
-                              </div>
-                              <div className="text-sm font-semibold tracking-tight">{row.label}</div>
-                            </div>
-                            <div className="text-sm text-muted-foreground">{label}</div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {presenceStage === "done" ? (
-                    <div className="mt-6 rounded-2xl border border-border/60 bg-background/25 p-5">
-                      <div className="text-sm font-semibold tracking-tight">Cómo mejorar tu presencia digital</div>
-                      <p className="mt-2 text-sm text-muted-foreground">
-                        Una página web profesional te permite mostrar tus servicios claramente, recibir consultas automáticas y generar más confianza en nuevos clientes.
-                      </p>
-                      <div className="mt-4">
-                        <Button asChild variant="whatsapp" size="lg" className="w-full justify-center">
-                          <a href={presenceWhatsAppUrl} target="_blank" rel="noopener noreferrer">
-                            Quiero mejorar mi presencia digital <MessageCircle />
-                          </a>
-                        </Button>
-                      </div>
-                    </div>
-                  ) : null}
                 </div>
               </div>
             </div>
@@ -2200,213 +1069,6 @@ export default function Index() {
           </div>
         </section>
 
-        <section id="generador-ideas" className="container py-16 sm:py-20">
-          <SectionHeader
-            eyebrow="Herramienta"
-            title="Genera una idea para la página web de tu negocio"
-            description="En segundos, obtené una estructura sugerida para visualizar cómo podría ser tu web y qué mostrar."
-          />
-
-          <div className="mt-10 grid gap-4 lg:grid-cols-12">
-            <div className="lg:col-span-5">
-              <div
-                data-reveal
-                className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
-              >
-                <label className="space-y-2">
-                  <div className="text-sm font-medium text-foreground/90">¿Qué tipo de negocio tienes?</div>
-                  <input
-                    value={ideaBusiness}
-                    onChange={(e) => setIdeaBusiness(e.target.value)}
-                    placeholder="Ej: entrenador personal, psicólogo, nutricionista, gimnasio..."
-                    className={cn(
-                      "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
-                      "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
-                    )}
-                    autoComplete="organization"
-                  />
-                </label>
-
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {["Entrenador personal", "Psicólogo", "Nutricionista", "Gimnasio"].map((chip) => (
-                    <button
-                      key={chip}
-                      type="button"
-                      onClick={() => setIdeaBusiness(chip)}
-                      className="rounded-full border border-border/60 bg-background/25 px-3 py-1 text-xs text-muted-foreground transition-colors hover:bg-background/35 hover:text-foreground"
-                    >
-                      {chip}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="mt-6">
-                  <Button
-                    type="button"
-                    variant="hero"
-                    size="lg"
-                    className="w-full justify-center glow-neon"
-                    onClick={generateIdea}
-                    disabled={!ideaBusiness.trim()}
-                  >
-                    Generar idea <Sparkles className="h-4 w-4" />
-                  </Button>
-                  <div className="mt-3 text-xs text-muted-foreground">
-                    Tip: si escribís tu rubro, la idea se adapta automáticamente.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-7">
-              <div
-                ref={ideaResultRef}
-                className={cn(
-                  "transition-all duration-300",
-                  ideaResult ? "opacity-100" : "opacity-0",
-                  ideaResult && ideaVisible ? "translate-y-0" : "translate-y-2",
-                )}
-              >
-                {ideaResult ? (
-                  <div
-                    data-reveal
-                    className="card-neon glow-soft rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <div className="text-sm text-muted-foreground">Resultado</div>
-                        <h3 className="mt-2 text-balance text-2xl font-semibold tracking-tight">{ideaResult.title}</h3>
-                        <p className="mt-3 text-sm text-muted-foreground">{ideaResult.suggestion}</p>
-                      </div>
-                      <div className="hidden md:flex h-12 w-12 items-center justify-center rounded-2xl border border-border/60 bg-background/35 text-[hsl(var(--neon-purple))]">
-                        <Globe className="h-6 w-6" />
-                      </div>
-                    </div>
-
-                    <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                      {ideaResult.sections.map((s) => (
-                        <div key={s} className="rounded-xl border border-border/60 bg-background/20 px-4 py-3 text-sm">
-                          <div className="font-semibold tracking-tight">{s}</div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="mt-6">
-                      <Button asChild variant="whatsapp" size="lg" className="w-full justify-center">
-                        <a href={ideaWhatsAppUrl} target="_blank" rel="noopener noreferrer">
-                          Quiero una página así para mi negocio <MessageCircle />
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-                ) : (
-                  <div
-                    data-reveal
-                    className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
-                  >
-                    <div className="text-sm text-muted-foreground">Vista previa</div>
-                    <div className="mt-2 text-lg font-semibold tracking-tight">Generá una idea y te muestro la estructura.</div>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      Esto ayuda a visualizar el resultado y acelera la decisión.
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="constructor-visual" className="container py-16 sm:py-20">
-          <SectionHeader
-            eyebrow="Constructor visual"
-            title="Crea una idea de tu página web en segundos"
-            description="Selecciona las secciones que quieres para tu página y mira cómo se vería."
-          />
-
-          <div className="mt-10 grid gap-4 lg:grid-cols-12">
-            <div className="lg:col-span-5">
-              <div
-                data-reveal
-                className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
-              >
-                <div className="text-sm font-semibold tracking-tight">Constructor</div>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Marcá secciones y mirá la maqueta actualizarse en tiempo real. Esto se ajusta a tu rubro y objetivos.
-                </p>
-
-                <div className="mt-5 grid gap-3">
-                  {constructorSections.map((s) => (
-                    <label
-                      key={s.id}
-                      className="flex cursor-pointer items-start gap-3 rounded-xl border border-border/60 bg-background/20 px-4 py-3 text-sm transition-colors hover:bg-background/30"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={!!selectedConstructor[s.id]}
-                        onChange={() => toggleConstructorSection(s.id)}
-                        className="mt-1 h-4 w-4 accent-[hsl(var(--neon-cyan))]"
-                      />
-                      <div className="flex-1">
-                        <div className="font-semibold tracking-tight">{s.label}</div>
-                        <div className="mt-1 text-xs text-muted-foreground">{s.body}</div>
-                      </div>
-                    </label>
-                  ))}
-                </div>
-
-                <div className="mt-6">
-                  <Button asChild variant="whatsapp" size="lg" className="w-full justify-center">
-                    <a href={constructorWhatsAppUrl} target="_blank" rel="noopener noreferrer">
-                      Quiero esta página para mi negocio <MessageCircle />
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-7">
-              <div
-                data-reveal
-                className="card-neon overflow-hidden rounded-2xl border border-border/70 bg-gradient-card shadow-card"
-              >
-                <div className="border-b border-border/40 bg-background/25 px-4 py-3">
-                  <div className="text-sm font-semibold tracking-tight">Vista previa</div>
-                  <div className="mt-1 text-xs text-muted-foreground">
-                    Maqueta visual (bloques) de cómo quedaría tu web.
-                  </div>
-                </div>
-
-                <div className="p-4 sm:p-6">
-                  {constructorSections.map((s) => {
-                    const isSelected = !!selectedConstructor[s.id];
-                    const isLeaving = !!leavingConstructor[s.id];
-                    const shouldRender = isSelected || isLeaving;
-                    const isOpen = isSelected;
-
-                    if (!shouldRender) return null;
-
-                    return (
-                      <div
-                        key={s.id}
-                        className={cn(
-                          "rounded-2xl border bg-background/20 px-5 py-4 shadow-[0_18px_60px_-35px_rgba(34,211,238,0.25)]",
-                          "transition-all duration-300 ease-out",
-                          isOpen
-                            ? "mt-3 first:mt-0 opacity-100 translate-y-0 border-[hsl(var(--neon-cyan))]/25"
-                            : "mt-0 opacity-0 -translate-y-1 border-border/30",
-                        )}
-                        aria-hidden={!isOpen}
-                      >
-                        {renderConstructorPreview(s)}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section id="ejemplos" className="container py-16 sm:py-20">
           <SectionHeader
             eyebrow="Ejemplos"
@@ -2517,7 +1179,6 @@ export default function Index() {
           <SectionHeader
             eyebrow="Testimonios"
             title="Profesionales que ahora reciben consultas más fácil"
-            description="Ejemplos temporales para mostrar el estilo. Los reemplazamos por testimonios reales cuando tengas."
           />
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
             {[
@@ -2531,7 +1192,7 @@ export default function Index() {
                 who: "Nutricionista",
               },
               {
-                quote: "Ahora puedo enviar mi web a mis pacientes y explicar mis servicios fácilmente. Genera confianza.",
+                quote: "Ahora puedo enviar mi web a mis pacientes y explicar mis servicios fácil. Me da más confianza.",
                 who: "Psicóloga",
               },
             ].map((t) => (
@@ -2640,7 +1301,7 @@ export default function Index() {
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                 <Button asChild variant="hero" className="justify-center">
                   <a href="#diagnostico">
-                    Solicitar diagnóstico <ArrowRight />
+                    Solicitá un diagnóstico <ArrowRight />
                   </a>
                 </Button>
                 <Button asChild variant="whatsapp" className="justify-center">
@@ -2668,9 +1329,9 @@ export default function Index() {
             <div className="relative grid items-center gap-8 lg:grid-cols-12">
               <div className="lg:col-span-8">
                 <h3 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
-                  Haz que tu negocio trabaje para ti en internet.
+                  Hacé que tu negocio trabaje por vos en internet.
                 </h3>
-                <p className="mt-3 text-muted-foreground">Recibe información sin compromiso.</p>
+                <p className="mt-3 text-muted-foreground">Recibí info sin compromiso.</p>
               </div>
               <div className="lg:col-span-4">
                 <Button asChild variant="hero" size="lg" className="w-full justify-center">
@@ -2691,10 +1352,10 @@ export default function Index() {
               </div>
               <div className="relative">
                 <h2 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
-                  Empieza hoy a tener presencia profesional online
+                  Empezá hoy a tener presencia profesional online
                 </h2>
                 <p className="mt-3 text-pretty text-muted-foreground">
-                  Tu página web lista en pocos días y preparada para recibir nuevos clientes.
+                  Tu página web lista en 72 horas y preparada para recibir nuevos clientes.
                 </p>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
                   <Button asChild variant="whatsapp" size="lg" className="justify-center">
@@ -2717,7 +1378,7 @@ export default function Index() {
           <SectionHeader
             eyebrow="Contacto"
             title="¿Listo para empezar?"
-            description="Escríbenos y te respondemos rápidamente. Tu web profesional está a un mensaje de distancia."
+            description="Escribinos y te respondemos rápido. Tu web profesional está a un mensaje de distancia."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-12">
@@ -2734,7 +1395,7 @@ export default function Index() {
                     <CheckCircle2 className="mt-0.5 h-5 w-5 text-[hsl(var(--neon-cyan))]" />
                     <div>
                       <div className="font-semibold tracking-tight">
-                        Gracias por tu mensaje. En breve me pondré en contacto contigo.
+                        Gracias por tu mensaje. En breve me pongo en contacto con vos.
                       </div>
                       <div className="mt-1 text-sm text-muted-foreground">
                         Si querés acelerar, continuá por WhatsApp con el mensaje ya prellenado.
@@ -2761,7 +1422,7 @@ export default function Index() {
                         setStatusText("");
                       }}
                     >
-                      Editar formulario <ArrowRight />
+                      Editá el formulario <ArrowRight />
                     </Button>
                   </div>
                 </div>
@@ -2832,7 +1493,7 @@ export default function Index() {
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <Button type="submit" variant="hero" size="lg" className="justify-center" disabled={leadStage !== "idle"}>
-                  {leadStage === "sending" ? "Enviando..." : "Enviar y registrar lead"} <MessageCircle />
+                  {leadStage === "sending" ? "Enviando..." : "Solicitar mi página web"} <MessageCircle />
                 </Button>
                 <div className="text-xs text-muted-foreground">
                   Se registra el lead y luego continúas por WhatsApp con un mensaje listo.
@@ -2931,3 +1592,5 @@ export default function Index() {
     </div>
   );
 }
+
+
