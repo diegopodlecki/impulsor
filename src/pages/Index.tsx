@@ -406,6 +406,10 @@ export default function Index() {
     setLeadStage("sending");
     setStatusText("Enviando...");
 
+    // Guardamos el form al inicio para no depender del event después de awaits
+    // (en algunos entornos el SyntheticEvent puede quedar inválido).
+    const formEl = e.currentTarget as HTMLFormElement;
+
     const leadId = (crypto?.randomUUID?.() ?? `lead_${Math.random().toString(16).slice(2)}`).slice(0, 40);
     const fecha = new Date().toISOString();
 
@@ -483,11 +487,10 @@ export default function Index() {
       // 2) Fallback ultra-compatible: submit nativo del formulario (sin CORS) hacia un iframe oculto.
       // Esto suele funcionar incluso cuando fetch() falla por CORS o políticas del navegador.
       try {
-        const form = e.currentTarget as HTMLFormElement;
         if (leadIdInputRef.current) leadIdInputRef.current.value = leadId;
         if (leadFechaInputRef.current) leadFechaInputRef.current.value = fecha;
 
-        form.submit();
+        formEl.submit();
 
         setStatusText("Mensaje enviado (modo compatibilidad). Si no recibís respuesta, continuá por WhatsApp.");
 
