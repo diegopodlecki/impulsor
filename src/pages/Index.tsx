@@ -483,14 +483,16 @@ export default function Index() {
       setMessage("");
       setLeadStage("sent");
       toast.success("Mensaje enviado. Si querés acelerar, continuá por WhatsApp con el mensaje prellenado.");
-    } catch {
+    } catch (err) {
+      console.error("Google Sheets submit (fetch) failed:", err);
       // 2) Fallback ultra-compatible: submit nativo del formulario (sin CORS) hacia un iframe oculto.
       // Esto suele funcionar incluso cuando fetch() falla por CORS o políticas del navegador.
       try {
         if (leadIdInputRef.current) leadIdInputRef.current.value = leadId;
         if (leadFechaInputRef.current) leadFechaInputRef.current.value = fecha;
 
-        formEl.submit();
+        // Usamos el método nativo para evitar colisiones con campos llamados "submit".
+        HTMLFormElement.prototype.submit.call(formEl);
 
         setStatusText("Mensaje enviado (modo compatibilidad). Si no recibís respuesta, continuá por WhatsApp.");
 
@@ -514,8 +516,9 @@ export default function Index() {
         setMessage("");
         setLeadStage("sent");
         toast.success("Mensaje enviado. Si querés acelerar, continuá por WhatsApp con el mensaje prellenado.");
-      } catch {
-        setStatusText("Error de conexión");
+      } catch (fallbackErr) {
+        console.error("Google Sheets submit (iframe fallback) failed:", fallbackErr);
+        setStatusText("Error de conexión. Si querés, continuá por WhatsApp y lo resolvemos.");
         setLeadStage("idle");
       }
     }
