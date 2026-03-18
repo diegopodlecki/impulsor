@@ -415,14 +415,10 @@ export default function Index() {
     setPreparedWhatsAppUrl(buildWhatsAppUrl(waMessage));
 
     try {
-      const formData = new FormData(formEl);
-      formData.set("id", leadId);
-      formData.set("fecha", fecha);
-      formData.set("origen", "landing webappimpulsor");
-
+      // Formato EXACTO para evitar CORS con Google Apps Script:
       await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
         method: "POST",
-        body: formData,
+        body: new FormData(formEl),
         mode: "no-cors",
       });
 
@@ -449,9 +445,37 @@ export default function Index() {
       setLeadStage("sent");
       toast.success("Mensaje enviado. Si querés acelerar, continuá por WhatsApp con el mensaje prellenado.");
     } catch (err) {
-      console.error("Error:", err);
-      setStatusText("Error al enviar");
-      setLeadStage("idle");
+      // Fallback HTML puro (sin CORS): submit nativo a un iframe oculto.
+      try {
+        HTMLFormElement.prototype.submit.call(formEl);
+
+        setStatusText("Mensaje enviado correctamente");
+
+        sendLead({
+          id: leadId,
+          nombre: name.trim(),
+          telefono: phone.trim(),
+          email: email.trim(),
+          negocio: "landing webappimpulsor",
+          mensaje: message.trim(),
+          fecha,
+          source: "landing",
+          path: window.location.pathname,
+          referrer: document.referrer || null,
+          userAgent: navigator.userAgent,
+        });
+
+        setName("");
+        setPhone("");
+        setEmail("");
+        setMessage("");
+        setLeadStage("sent");
+        toast.success("Mensaje enviado. Si querés acelerar, continuá por WhatsApp con el mensaje prellenado.");
+      } catch {
+        console.error("Error:", err);
+        setStatusText("Error al enviar");
+        setLeadStage("idle");
+      }
     }
   }, [email, leadStage, message, name, phone, sendLead]);
 
@@ -1325,6 +1349,7 @@ export default function Index() {
               id="contactForm"
               method="POST"
               action={GOOGLE_SHEETS_SCRIPT_URL}
+              target="hidden_iframe"
               className="card-neon glow-soft lg:col-span-7 rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
             >
               {leadStage === "sent" ? (
@@ -1444,6 +1469,7 @@ export default function Index() {
                 Este formulario envía tus datos a un webhook (Google Apps Script o PHP) y guarda un registro local para la demo.
               </div>
             </form>
+            <iframe name="hidden_iframe" title="hidden_iframe" className="hidden" />
 
             <div className="space-y-4 lg:col-span-5">
               <div data-reveal className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card">
