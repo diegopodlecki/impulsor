@@ -49,6 +49,8 @@ function withBase(path: string) {
   return `${normalizedBase}${normalizedPath}`;
 }
 
+const HOSTINGER_LEADS_URL = withBase("/enviar.php");
+
 // Plantilla del mensaje post-formulario (incluye los datos del lead).
 function buildFormWhatsAppMessage(params: {
   name: string;
@@ -415,12 +417,14 @@ export default function Index() {
     setPreparedWhatsAppUrl(buildWhatsAppUrl(waMessage));
 
     try {
-      // Formato EXACTO para evitar CORS con Google Apps Script:
-      await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
+      const response = await fetch(HOSTINGER_LEADS_URL, {
         method: "POST",
         body: new FormData(formEl),
-        mode: "no-cors",
       });
+
+      const text = await response.text().catch(() => "");
+      const ok = response.ok && (!text.trim() || text.trim().toUpperCase() === "OK");
+      if (!ok) throw new Error(text || "Error al enviar");
 
       setStatusText("Mensaje enviado correctamente");
 
@@ -1348,7 +1352,7 @@ export default function Index() {
               onSubmit={submitLead}
               id="contactForm"
               method="POST"
-              action={GOOGLE_SHEETS_SCRIPT_URL}
+              action={HOSTINGER_LEADS_URL}
               target="hidden_iframe"
               className="card-neon glow-soft lg:col-span-7 rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
             >
