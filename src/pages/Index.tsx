@@ -289,8 +289,6 @@ export default function Index() {
 
   const [leadStage, setLeadStage] = React.useState<"idle" | "sending" | "sent">("idle");
   const [preparedWhatsAppUrl, setPreparedWhatsAppUrl] = React.useState<string>("");
-  const leadIdInputRef = React.useRef<HTMLInputElement | null>(null);
-  const leadFechaInputRef = React.useRef<HTMLInputElement | null>(null);
 
   const webhookUrl = ((import.meta.env.VITE_LEADS_WEBHOOK_URL as string | undefined) ?? "").trim();
 
@@ -416,52 +414,19 @@ export default function Index() {
     const waMessage = buildFormWhatsAppMessage({ name, phone, email, note: message });
     setPreparedWhatsAppUrl(buildWhatsAppUrl(waMessage));
 
-    const googlePayload = {
-      id: leadId,
-      nombre: name.trim(),
-      telefono: phone.trim(),
-      email: email.trim(),
-      mensaje: message.trim(),
-      origen: "landing webappimpulsor",
-      fecha,
-    };
-
-    const urlBody = new URLSearchParams();
-    for (const [k, v] of Object.entries(googlePayload)) {
-      urlBody.set(k, String(v ?? ""));
-    }
-
     try {
-      // 1) Intento "verificable": si el Web App responde con JSON y CORS habilitado,
-      // podemos confirmar éxito real (evita falsos positivos).
-      const response = await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
+      const formData = new FormData(formEl);
+      formData.set("id", leadId);
+      formData.set("fecha", fecha);
+      formData.set("origen", "landing webappimpulsor");
+
+      await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
         method: "POST",
-        body: urlBody,
-        redirect: "follow",
-        keepalive: true,
+        body: formData,
+        mode: "no-cors",
       });
 
-      const rawText = await response.text().catch(() => "");
-      const parsed = (() => {
-        try {
-          return rawText ? (JSON.parse(rawText) as { result?: string; error?: string; message?: string } | null) : null;
-        } catch {
-          return null;
-        }
-      })();
-
-      const isSuccess =
-        parsed?.result === "success" ||
-        /"result"\s*:\s*"success"/i.test(rawText) ||
-        /\bsuccess\b/i.test(rawText) ||
-        response.ok;
-
-      if (!isSuccess) {
-        const errMsg = parsed?.error || parsed?.message || rawText || "Error al enviar";
-        throw new Error(errMsg.slice(0, 300));
-      }
-
-      setStatusText("Mensaje enviado correctamente. Nos pondremos en contacto pronto.");
+      setStatusText("Mensaje enviado correctamente");
 
       sendLead({
         id: leadId,
@@ -484,43 +449,9 @@ export default function Index() {
       setLeadStage("sent");
       toast.success("Mensaje enviado. Si querés acelerar, continuá por WhatsApp con el mensaje prellenado.");
     } catch (err) {
-      console.error("Google Sheets submit (fetch) failed:", err);
-      // 2) Fallback ultra-compatible: submit nativo del formulario (sin CORS) hacia un iframe oculto.
-      // Esto suele funcionar incluso cuando fetch() falla por CORS o políticas del navegador.
-      try {
-        if (leadIdInputRef.current) leadIdInputRef.current.value = leadId;
-        if (leadFechaInputRef.current) leadFechaInputRef.current.value = fecha;
-
-        // Usamos el método nativo para evitar colisiones con campos llamados "submit".
-        HTMLFormElement.prototype.submit.call(formEl);
-
-        setStatusText("Mensaje enviado (modo compatibilidad). Si no recibís respuesta, continuá por WhatsApp.");
-
-        sendLead({
-          id: leadId,
-          nombre: name.trim(),
-          telefono: phone.trim(),
-          email: email.trim(),
-          negocio: "landing webappimpulsor",
-          mensaje: message.trim(),
-          fecha,
-          source: "landing",
-          path: window.location.pathname,
-          referrer: document.referrer || null,
-          userAgent: navigator.userAgent,
-        });
-
-        setName("");
-        setPhone("");
-        setEmail("");
-        setMessage("");
-        setLeadStage("sent");
-        toast.success("Mensaje enviado. Si querés acelerar, continuá por WhatsApp con el mensaje prellenado.");
-      } catch (fallbackErr) {
-        console.error("Google Sheets submit (iframe fallback) failed:", fallbackErr);
-        setStatusText("Error de conexión. Si querés, continuá por WhatsApp y lo resolvemos.");
-        setLeadStage("idle");
-      }
+      console.error("Error:", err);
+      setStatusText("Error al enviar");
+      setLeadStage("idle");
     }
   }, [email, leadStage, message, name, phone, sendLead]);
 
@@ -1394,7 +1325,6 @@ export default function Index() {
               id="contactForm"
               method="POST"
               action={GOOGLE_SHEETS_SCRIPT_URL}
-              target="sheets_sink"
               className="card-neon glow-soft lg:col-span-7 rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
             >
               {leadStage === "sent" ? (
@@ -1497,8 +1427,6 @@ export default function Index() {
                 />
               </div>
 
-              <input ref={leadIdInputRef} type="hidden" name="id" defaultValue="" />
-              <input ref={leadFechaInputRef} type="hidden" name="fecha" defaultValue="" />
               <input type="hidden" name="origen" value="landing webappimpulsor" />
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -1516,7 +1444,6 @@ export default function Index() {
                 Este formulario envía tus datos a un webhook (Google Apps Script o PHP) y guarda un registro local para la demo.
               </div>
             </form>
-            <iframe name="sheets_sink" title="Google Sheets sink" className="hidden" />
 
             <div className="space-y-4 lg:col-span-5">
               <div data-reveal className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card">
