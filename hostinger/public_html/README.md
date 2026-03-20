@@ -2,17 +2,19 @@
 
 ## 1) Subida de archivos
 
-- Subí el contenido de `dist/` a tu `public_html/` (Hostinger).
-- Subí también estos archivos:
-  - `public_html/config.php`
-  - `public_html/enviar.php`
-  - `public_html/schema.sql`
+- Subí **todo el contenido** de `hostinger/public_html/` a la carpeta `public_html/` de tu hosting (Hostinger).
+- Incluye:
+  - `index.html` + `assets/` (build del frontend)
+  - `demos/` (páginas demo)
+  - `enviar.php` + `config.php` (backend de leads)
+  - `schema.sql` (estructura de la tabla)
+  - `.htaccess` (soporte SPA y protección básica)
 
 ## 2) Base de datos
 
 - Creá una base MySQL en Hostinger.
-- Importá `public_html/schema.sql`.
-- Editá `public_html/config.php` con tus credenciales.
+- Importá `schema.sql`.
+- Editá `config.php` con tus credenciales.
 
 ## 3) Formulario
 
