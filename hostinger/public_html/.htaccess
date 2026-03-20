@@ -1,6 +1,9 @@
 <IfModule mod_mime.c>
   # Fix: algunos hostings sirven .js como text/plain si no está el MIME correcto
+  RemoveType .js
+  RemoveType .mjs
   AddType application/javascript .js .mjs
+  AddType text/javascript .js
   AddType text/css .css
   AddType application/wasm .wasm
   AddType application/json .json
