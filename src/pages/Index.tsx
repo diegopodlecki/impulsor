@@ -1,27 +1,14 @@
 ﻿import * as React from "react";
 import {
   ArrowRight,
-  Bot,
   CheckCircle2,
-  Globe,
   MessageCircle,
-  Rocket,
-  Smartphone,
   Sparkles,
   Zap,
-  Users,
-  Brain,
-  Dumbbell,
-  Heart,
-  Building2,
-  Stethoscope,
-  Calendar,
   Clock,
-  Star,
   Send,
   Eye,
   Target,
-  Award,
   ChevronRight,
 } from "lucide-react";
 import { toast } from "sonner";
@@ -38,9 +25,6 @@ const BRAND = {
 
 const DEFAULT_WA_MESSAGE =
   "Hola, vi tu página web y quiero información sobre tus servicios.";
-
-const GOOGLE_SHEETS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbybYzGbEKrL6g7PxcPR61rY-2xYRAixB65ggZ7Com4DYsqG_O_SQan-kMiuX7oA0IbN/exec";
 
 function withBase(path: string) {
   const base = (import.meta.env.BASE_URL ?? "/") + "";
@@ -139,74 +123,6 @@ function SectionHeader({
       <h2 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h2>
       <div className="mx-auto mt-4 h-px w-28 bg-gradient-primary gradient-animate opacity-80" />
       {description ? <p className="mt-3 text-pretty text-muted-foreground">{description}</p> : null}
-    </div>
-  );
-}
-
-function FeatureCard({
-  icon,
-  title,
-  description,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div
-      data-reveal
-      className={cn(
-        "card-neon group relative overflow-hidden rounded-2xl border border-border/70 bg-gradient-card p-5 text-left shadow-card",
-        "transition-transform duration-300 hover:-translate-y-1",
-      )}
-    >
-      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-        <div className="absolute -inset-24 bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,0.16),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(168,85,247,0.14),transparent_55%)]" />
-      </div>
-      <div className="relative flex items-start gap-3">
-        <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-background/40">
-          <div className="text-[hsl(var(--neon-cyan))]">{icon}</div>
-        </div>
-        <div>
-          <div className="font-semibold tracking-tight">{title}</div>
-          <p className="mt-1 text-sm text-muted-foreground">{description}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ServiceCard({
-  icon,
-  title,
-  bullets,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  bullets: string[];
-}) {
-  return (
-    <div
-      data-reveal
-      className={cn(
-        "card-neon group relative rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card",
-        "transition-transform duration-300 hover:-translate-y-1",
-      )}
-    >
-      <div className="flex items-center gap-3">
-        <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-border/60 bg-background/35">
-        <div className="text-[hsl(var(--neon-purple))]">{icon}</div>
-        </div>
-        <div className="text-lg font-semibold tracking-tight">{title}</div>
-      </div>
-      <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
-        {bullets.map((line) => (
-          <li key={line} className="flex gap-2">
-            <CheckCircle2 className="mt-0.5 h-4 w-4 text-[hsl(var(--neon-cyan))]" />
-            <span>{line}</span>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
@@ -507,9 +423,6 @@ export default function Index() {
             <LogoMark />
           </a>
           <div className="hidden items-center gap-6 md:flex">
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#servicios">
-              Servicios
-            </a>
             <a
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               href="#simulador"
@@ -616,145 +529,6 @@ export default function Index() {
           </div>
         </section>
 
-        <section className="container py-16 sm:py-20">
-          <SectionHeader
-            eyebrow="Problema"
-            title="La mayoría de los negocios pierde clientes en internet."
-            description="Muchos profesionales y pequeños negocios tienen presencia digital débil o inexistente. Una web lenta, desactualizada o inexistente puede hacer que potenciales clientes elijan a tu competencia."
-          />
-
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            <FeatureCard
-              icon={<Zap className="h-5 w-5" />}
-              title="Consultas que se pierden"
-              description="Si no respondés rápido o no inspirás confianza, el cliente se va con otro."
-            />
-            <FeatureCard
-              icon={<Globe className="h-5 w-5" />}
-              title="Web que no convierte"
-              description="Una página bonita no alcanza: tiene que guiar al usuario a pedir info."
-            />
-            <FeatureCard
-              icon={<Bot className="h-5 w-5" />}
-              title="Tareas manuales"
-              description="Mensajes, turnos, presupuestos: podés automatizar lo repetitivo."
-            />
-          </div>
-        </section>
-
-        <section className="container py-16 sm:py-20">
-          <SectionHeader
-            eyebrow="Solución"
-            title="Transforma tu negocio con herramientas digitales modernas."
-            description="Construimos una presencia online que vende y automatizamos pasos clave para que te enfoques en atender mejor."
-          />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <FeatureCard
-              icon={<Globe className="h-5 w-5" />}
-              title="Web profesional moderna"
-              description="Diseño limpio tipo startup, rápido, con copy que convierte y CTA claros."
-            />
-            <FeatureCard
-              icon={<Bot className="h-5 w-5" />}
-              title="Automatización de tareas repetitivas"
-              description="Respuestas automáticas, formularios a WhatsApp y flujos simples con IA."
-            />
-            <FeatureCard
-              icon={<Rocket className="h-5 w-5" />}
-              title="Captación de clientes desde internet"
-              description="Estructura pensada para generar consultas: menos rebote, más contactos."
-            />
-            <FeatureCard
-              icon={<MessageCircle className="h-5 w-5" />}
-              title="Integración con WhatsApp"
-              description="Botón flotante, mensajes pre-escritos y atajos para responder más rápido."
-            />
-            <FeatureCard
-              icon={<Smartphone className="h-5 w-5" />}
-              title="Optimización total para móviles"
-              description="La mayoría llega desde el celular. La experiencia es mobile-first."
-            />
-          </div>
-        </section>
-
-        <section id="servicios" className="container py-16 sm:py-20">
-          <SectionHeader eyebrow="Servicios" title="Servicios que impulsan negocios." />
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
-              <ServiceCard
-                icon={<Globe className="h-5 w-5" />}
-                title="Web Profesional Express"
-                bullets={[
-                  "Entrega en 72 horas",
-                  "Diseño moderno optimizado para móviles",
-                  "Integración con WhatsApp",
-                ]}
-              />
-            <ServiceCard
-              icon={<Bot className="h-5 w-5" />}
-              title="Automatización con IA"
-              bullets={[
-                "Automatización de tareas",
-                "Respuestas automáticas",
-                "Flujos inteligentes y seguimiento",
-              ]}
-            />
-            <ServiceCard
-              icon={<Rocket className="h-5 w-5" />}
-              title="Presencia digital profesional"
-              bullets={[
-                "Imagen moderna online",
-                "Copy y estructura que convierte",
-                "Herramientas para atraer clientes",
-              ]}
-            />
-          </div>
-        </section>
-
-        <section id="como-funciona" className="container py-16 sm:py-20">
-          <SectionHeader eyebrow="Cómo funciona" title="En 3 pasos, listo para convertir." />
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
-            {[
-              {
-                icon: <Users className="h-6 w-6" />,
-                n: "1",
-                t: "Nos contás sobre tu negocio",
-                d: "Objetivo, rubro y qué servicios ofrecés. Sin complicación.",
-              },
-              {
-                icon: <Brain className="h-6 w-6" />,
-                n: "2",
-                t: "Diseñamos tu página profesional",
-                d: "Web moderna, optimizada para móviles y enfocada en convertir.",
-              },
-              {
-                icon: <MessageCircle className="h-6 w-6" />,
-                n: "3",
-                t: "Empezás a recibir consultas",
-                d: "Con WhatsApp integrado, tus clientes te escriben directamente.",
-              },
-            ].map((step) => (
-              <div
-                key={step.n}
-                data-reveal
-                className="card-neon group relative rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card transition-transform duration-300 hover:-translate-y-2"
-              >
-                <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <div className="absolute -inset-24 bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,0.16),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(168,85,247,0.14),transparent_55%)]" />
-                </div>
-                <div className="relative flex flex-col items-start gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-primary gradient-animate text-[hsl(var(--primary-foreground))] font-semibold shadow-glow">
-                    {step.icon}
-                  </div>
-                  <div>
-                    <div className="text-lg font-semibold tracking-tight">{step.t}</div>
-                    <p className="mt-1 text-sm text-muted-foreground">{step.d}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <section id="simulador" className="container py-16 sm:py-20">
           <SectionHeader
             eyebrow="Simulador"
@@ -853,188 +627,6 @@ export default function Index() {
           </div>
         </section>
 
-        <section id="automatizacion" className="container py-16 sm:py-20">
-          <SectionHeader
-            eyebrow="Demostración"
-            title="Así funciona una captación moderna (en vivo)."
-            description="Este sitio muestra el flujo completo: formulario → lead registrado → WhatsApp listo para enviar."
-          />
-
-          <div className="mt-10 grid gap-4 lg:grid-cols-12">
-            <div className="lg:col-span-8">
-              <div className="grid gap-4 sm:grid-cols-2">
-                {[
-                  {
-                    icon: <Globe className="h-5 w-5" />,
-                    title: "1) Visitante entra a la web",
-                    description: "Llega desde redes/Google y ve CTAs claros (hero + botón flotante).",
-                  },
-                  {
-                    icon: <Smartphone className="h-5 w-5" />,
-                    title: "2) Completá el formulario",
-                    description: "Nombre, email, tipo de negocio y mensaje. Sin fricción, mobile-first.",
-                  },
-                  {
-                    icon: <Zap className="h-5 w-5" />,
-                    title: "3) Lead se registra automáticamente",
-                    description: "Se envía por fetch() a un webhook (Google Apps Script o PHP) con fecha incluida.",
-                  },
-                  {
-                    icon: <MessageCircle className="h-5 w-5" />,
-                    title: "4) Se abre WhatsApp con mensaje listo",
-                    description: "Confirmación visual + botón grande para continuar con texto prellenado.",
-                  },
-                ].map((step) => (
-                  <FeatureCard key={step.title} icon={step.icon} title={step.title} description={step.description} />
-                ))}
-              </div>
-            </div>
-
-            <div className="lg:col-span-4 space-y-4">
-              <div data-reveal className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card">
-                <div className="text-lg font-semibold tracking-tight">Estado del webhook</div>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Leads enviados a Google Sheets (Apps Script).
-                  {webhookUrl ? " Además, hay un webhook extra configurado por entorno." : null}
-                </p>
-                <div className="mt-4 rounded-xl border border-border/60 bg-background/25 px-3 py-2 text-xs text-muted-foreground">
-                  Tip: agrega <span className="text-foreground/90">VITE_WA_PHONE</span> y (opcional){" "}
-                  <span className="text-foreground/90">VITE_LEADS_WEBHOOK_URL</span> para adaptar la demo a tu negocio.
-                </div>
-              </div>
-
-              <div data-reveal className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card">
-                <div className="text-lg font-semibold tracking-tight">¿Para qué sirve?</div>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Este mismo flujo se puede aplicar a reservas, presupuestos, turnos, onboarding o soporte: captás el lead,
-                  lo registrás y lo llevás a conversación con 1 click.
-                </p>
-                <div className="mt-4">
-                  <Button asChild variant="hero" className="w-full justify-center">
-                    <a href="#diagnostico">
-                      Quiero esta automatización <ArrowRight />
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="calculadora" className="container py-16 sm:py-20">
-          <SectionHeader
-            eyebrow="Calculadora"
-            title="Calcula el precio de tu página web"
-            description="Elegí opciones y mirá un precio aproximado en tiempo real. Sin vueltas."
-          />
-
-          <div className="mt-10 grid gap-4 lg:grid-cols-12">
-            <div className="lg:col-span-7">
-              <div
-                data-reveal
-                className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
-              >
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <label className="space-y-2">
-                    <div className="text-sm font-medium text-foreground/90">Tipo de negocio</div>
-                    <select
-                      value={calcBusiness}
-                      onChange={(e) => setCalcBusiness(e.target.value)}
-                      className={cn(
-                        "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
-                        "focus:outline-none focus:ring-2 focus:ring-ring",
-                      )}
-                    >
-                      {[
-                        "Entrenador personal",
-                        "Psicólogo",
-                        "Nutricionista",
-                        "Gimnasio",
-                        "Profesional independiente",
-                      ].map((v) => (
-                        <option key={v} value={v}>
-                          {v}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-
-                  <label className="space-y-2">
-                    <div className="text-sm font-medium text-foreground/90">Tipo de página</div>
-                    <select
-                      value={calcPageType}
-                      onChange={(e) => setCalcPageType(e.target.value as typeof calcPageType)}
-                      className={cn(
-                        "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
-                        "focus:outline-none focus:ring-2 focus:ring-ring",
-                      )}
-                    >
-                      <option value="landing">Landing simple</option>
-                      <option value="profesional">Web profesional</option>
-                      <option value="completa">Web completa con secciones</option>
-                    </select>
-                  </label>
-                </div>
-
-                <div className="mt-6">
-                  <div className="text-sm font-medium text-foreground/90">Extras</div>
-                  <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                    {[
-                      { key: "wa", label: "Botón de WhatsApp", value: extraWhatsapp, set: setExtraWhatsapp, price: 20 },
-                      { key: "form", label: "Formulario de contacto", value: extraForm, set: setExtraForm, price: 30 },
-                      { key: "mobile", label: "Optimización móvil", value: extraMobile, set: setExtraMobile, price: 40 },
-                      { key: "custom", label: "Diseño personalizado", value: extraCustom, set: setExtraCustom, price: 60 },
-                    ].map((x) => (
-                      <label
-                        key={x.key}
-                        className="flex cursor-pointer items-start gap-3 rounded-xl border border-border/60 bg-background/20 px-4 py-3 text-sm transition-colors hover:bg-background/30"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={x.value}
-                          onChange={(e) => x.set(e.target.checked)}
-                          className="mt-1 h-4 w-4 accent-[hsl(var(--neon-cyan))]"
-                        />
-                        <div className="flex-1">
-                          <div className="font-semibold tracking-tight">{x.label}</div>
-                          <div className="mt-1 text-xs text-muted-foreground">+{x.price} USD</div>
-                        </div>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5">
-              <div
-                data-reveal
-                className="card-neon glow-soft rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
-              >
-                <div className="text-sm text-muted-foreground">Resultado</div>
-                <div className="mt-2 text-balance text-2xl font-semibold tracking-tight">
-                  Tu web desde: <span className="text-gradient gradient-animate">{calcPrice} USD</span>
-                </div>
-                <p className="mt-3 text-sm text-muted-foreground">
-                  Rubro: <span className="text-foreground/90">{calcBusiness}</span>
-                </p>
-
-                <div className="mt-6">
-                  <Button asChild variant="whatsapp" size="lg" className="w-full justify-center">
-                    <a href={calcWhatsAppUrl} target="_blank" rel="noopener noreferrer">
-                      Quiero mi página web <MessageCircle />
-                    </a>
-                  </Button>
-                </div>
-
-                <p className="mt-4 text-xs text-muted-foreground">
-                  Este valor es aproximado. Te paso un presupuesto final según tu contenido y objetivos.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section id="ejemplos" className="container py-16 sm:py-20">
           <SectionHeader
             eyebrow="Ejemplos"
@@ -1056,42 +648,6 @@ export default function Index() {
               subtitle="Tratamientos, turnos y promos"
               href="/demos/estetica-corporal.html"
             />
-          </div>
-        </section>
-
-        <section id="para-quien" className="container py-16 sm:py-20">
-          <SectionHeader
-            eyebrow="¿Para quién?"
-            title="Ideal para profesionales que quieren más clientes"
-            description="Si tu negocio depende de que nuevos clientes te encuentren y te contacten, una página web profesional puede marcar la diferencia."
-          />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {[
-              { icon: <Dumbbell className="h-8 w-8" />, title: "Entrenadores Personales", desc: "Planes, precios y turnos" },
-              { icon: <Brain className="h-8 w-8" />, title: "Psicólogos", desc: "Confianza y agenda" },
-              { icon: <Heart className="h-8 w-8" />, title: "Nutricionistas", desc: "Programas y resultados" },
-              { icon: <Building2 className="h-8 w-8" />, title: "Gimnasios", desc: "Servicios y promos" },
-              { icon: <Stethoscope className="h-8 w-8" />, title: "Profesionales independientes", desc: "Servicios y contacto" },
-            ].map((item) => (
-              <div
-                key={item.title}
-                data-reveal
-                className="card-neon group relative rounded-2xl border border-border/70 bg-gradient-card p-5 text-center shadow-card transition-transform duration-300 hover:-translate-y-1"
-              >
-                <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <div className="absolute -inset-24 bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,0.16),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(168,85,247,0.14),transparent_55%)]" />
-                </div>
-                <div className="relative flex flex-col items-center gap-3">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-border/60 bg-background/40 text-[hsl(var(--neon-cyan))]">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <div className="font-semibold tracking-tight">{item.title}</div>
-                    <p className="mt-1 text-xs text-muted-foreground">{item.desc}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </section>
 
@@ -1139,204 +695,216 @@ export default function Index() {
               </div>
             </div>
           </div>
+
+          <div className="mx-auto mt-8 max-w-5xl">
+            <details
+              data-reveal
+              className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
+            >
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden">
+                Calculá un precio aproximado
+                <ChevronRight className="h-5 w-5 text-muted-foreground" />
+              </summary>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Elegí opciones y mirá un valor estimado en tiempo real. El presupuesto final depende de tu contenido y objetivos.
+              </p>
+
+              <div className="mt-6 grid gap-4 lg:grid-cols-12">
+                <div className="lg:col-span-7">
+                  <div className="rounded-2xl border border-border/60 bg-background/20 p-5">
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <label className="space-y-2">
+                        <div className="text-sm font-medium text-foreground/90">Tipo de negocio</div>
+                        <select
+                          value={calcBusiness}
+                          onChange={(e) => setCalcBusiness(e.target.value)}
+                          className={cn(
+                            "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
+                            "focus:outline-none focus:ring-2 focus:ring-ring",
+                          )}
+                        >
+                          {[
+                            "Entrenador personal",
+                            "Psicólogo",
+                            "Nutricionista",
+                            "Gimnasio",
+                            "Profesional independiente",
+                          ].map((v) => (
+                            <option key={v} value={v}>
+                              {v}
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+
+                      <label className="space-y-2">
+                        <div className="text-sm font-medium text-foreground/90">Tipo de página</div>
+                        <select
+                          value={calcPageType}
+                          onChange={(e) => setCalcPageType(e.target.value as typeof calcPageType)}
+                          className={cn(
+                            "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
+                            "focus:outline-none focus:ring-2 focus:ring-ring",
+                          )}
+                        >
+                          <option value="landing">Landing simple</option>
+                          <option value="profesional">Web profesional</option>
+                          <option value="completa">Web completa con secciones</option>
+                        </select>
+                      </label>
+                    </div>
+
+                    <div className="mt-6">
+                      <div className="text-sm font-medium text-foreground/90">Extras</div>
+                      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                        {[
+                          { key: "wa", label: "Botón de WhatsApp", value: extraWhatsapp, set: setExtraWhatsapp, price: 20 },
+                          { key: "form", label: "Formulario de contacto", value: extraForm, set: setExtraForm, price: 30 },
+                          { key: "mobile", label: "Optimización móvil", value: extraMobile, set: setExtraMobile, price: 40 },
+                          { key: "custom", label: "Diseño personalizado", value: extraCustom, set: setExtraCustom, price: 60 },
+                        ].map((x) => (
+                          <label
+                            key={x.key}
+                            className="flex cursor-pointer items-start gap-3 rounded-xl border border-border/60 bg-background/20 px-4 py-3 text-sm transition-colors hover:bg-background/30"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={x.value}
+                              onChange={(e) => x.set(e.target.checked)}
+                              className="mt-1 h-4 w-4 accent-[hsl(var(--neon-cyan))]"
+                            />
+                            <div className="flex-1">
+                              <div className="font-semibold tracking-tight">{x.label}</div>
+                              <div className="mt-1 text-xs text-muted-foreground">+{x.price} USD</div>
+                            </div>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-5">
+                  <div className="card-neon glow-soft rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card">
+                    <div className="text-sm text-muted-foreground">Resultado</div>
+                    <div className="mt-2 text-balance text-2xl font-semibold tracking-tight">
+                      Tu web desde: <span className="text-gradient gradient-animate">{calcPrice} USD</span>
+                    </div>
+                    <p className="mt-3 text-sm text-muted-foreground">
+                      Rubro: <span className="text-foreground/90">{calcBusiness}</span>
+                    </p>
+
+                    <div className="mt-6">
+                      <Button asChild variant="whatsapp" size="lg" className="w-full justify-center">
+                        <a href={calcWhatsAppUrl} target="_blank" rel="noopener noreferrer">
+                          Quiero mi página web <MessageCircle />
+                        </a>
+                      </Button>
+                    </div>
+
+                    <p className="mt-4 text-xs text-muted-foreground">
+                      Este valor es aproximado. Te paso un presupuesto final según tu contenido y objetivos.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
         </section>
 
-        <section id="testimonios" className="container py-16 sm:py-20">
+        <section id="faq" className="container py-16 sm:py-20">
           <SectionHeader
-            eyebrow="Testimonios"
-            title="Profesionales que ahora reciben consultas más fácil"
+            eyebrow="FAQ"
+            title="Preguntas frecuentes (sin tecnicismos)"
+            description="Si te queda alguna duda, escribime y te respondo rápido."
           />
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+
+          <div className="mx-auto mt-10 max-w-3xl space-y-3">
             {[
               {
-                quote:
-                  "Mi página web me permitió mostrar mejor mis servicios y ahora recibo consultas directamente por WhatsApp.",
-                who: "Entrenador personal",
+                q: "¿Qué incluye la web?",
+                a: (
+                  <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                    {[
+                      "Diseño moderno (oscuro + neon) y copy claro",
+                      "Optimización para celular (mobile-first)",
+                      "Botón a WhatsApp + mensaje prellenado",
+                      "Formulario de contacto para registrar consultas",
+                      "Publicación online y configuración básica",
+                    ].map((line) => (
+                      <li key={line} className="flex gap-2">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 text-[hsl(var(--neon-cyan))]" />
+                        <span>{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ),
               },
               {
-                quote: "Es una forma simple de tener presencia profesional online. La gente entiende qué hago en segundos.",
-                who: "Nutricionista",
+                q: "¿En cuánto tiempo está lista?",
+                a: (
+                  <p className="mt-3 text-sm text-muted-foreground">
+                    En general, en 72 horas desde que me pasás la info básica (rubro, servicios y datos de contacto).
+                  </p>
+                ),
               },
               {
-                quote: "Ahora puedo enviar mi web a mis pacientes y explicar mis servicios fácil. Me da más confianza.",
-                who: "Psicóloga",
-              },
-            ].map((t) => (
-              <div
-                key={t.who}
-                data-reveal
-                className="card-neon group relative rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card transition-transform duration-300 hover:-translate-y-1"
-              >
-                <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <div className="absolute -inset-24 bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,0.16),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(168,85,247,0.14),transparent_55%)]" />
-                </div>
-                <div className="relative">
-                  <div className="mb-4 flex items-center gap-1 text-[hsl(var(--neon-cyan))]">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4" />
+                q: "¿Cómo es el proceso?",
+                a: (
+                  <div className="mt-3 grid gap-3 sm:grid-cols-3">
+                    {[
+                      { n: "1", t: "Me contás tu negocio", d: "Objetivo, rubro y servicios." },
+                      { n: "2", t: "Te armo la web", d: "Diseño + estructura enfocada en consultas." },
+                      { n: "3", t: "La publicamos", d: "Lista para recibir mensajes por WhatsApp." },
+                    ].map((step) => (
+                      <div key={step.n} className="rounded-2xl border border-border/60 bg-background/20 p-4">
+                        <div className="text-xs font-semibold text-muted-foreground">Paso {step.n}</div>
+                        <div className="mt-1 font-semibold tracking-tight">{step.t}</div>
+                        <div className="mt-1 text-xs text-muted-foreground">{step.d}</div>
+                      </div>
                     ))}
                   </div>
-                  <p className="text-sm text-muted-foreground">“{t.quote}”</p>
-                  <div className="mt-5 text-sm font-semibold tracking-tight text-foreground/90">— {t.who}</div>
-                </div>
-              </div>
+                ),
+              },
+              {
+                q: "¿Necesito dominio y hosting?",
+                a: (
+                  <p className="mt-3 text-sm text-muted-foreground">
+                    Si ya los tenés, los usamos. Si no, te guío para configurarlo (por ejemplo, en Hostinger) y dejarlo listo.
+                  </p>
+                ),
+              },
+              {
+                q: "¿Esto ayuda con Google/SEO?",
+                a: (
+                  <p className="mt-3 text-sm text-muted-foreground">
+                    Sí: armamos una estructura clara y rápida para que tu negocio se vea profesional y sea más fácil de encontrar.
+                    El SEO “fuerte” se trabaja con el tiempo, pero arrancás bien desde el día 1.
+                  </p>
+                ),
+              },
+              {
+                q: "¿Cómo recibo las consultas?",
+                a: (
+                  <p className="mt-3 text-sm text-muted-foreground">
+                    Te escriben por WhatsApp con un botón visible y también pueden dejarte un mensaje en el formulario.
+                    Así no se te pierden consultas.
+                  </p>
+                ),
+              },
+            ].map((item) => (
+              <details
+                key={item.q}
+                data-reveal
+                className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-5 text-left shadow-card"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden">
+                  {item.q}
+                  <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                </summary>
+                {item.a}
+              </details>
             ))}
-          </div>
-        </section>
-
-        <section className="container py-16 sm:py-20">
-          <SectionHeader eyebrow="Beneficios" title="¿Por qué trabajar conmigo?" />
-
-          <div className="mt-10 grid gap-4 lg:grid-cols-12">
-            <div
-              data-reveal
-              className="card-neon lg:col-span-7 rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
-            >
-              <div className="text-lg font-semibold tracking-tight">Soluciones simples, resultado real</div>
-              <p className="mt-2 text-sm text-muted-foreground">
-                La idea no es complicarte: es darte una web que convierta y automatizaciones prácticas para que atiendas
-                más rápido, con menos trabajo manual.
-              </p>
-              <div className="mt-5 grid gap-2 sm:grid-cols-2">
-                {[
-                  "Soluciones simples y efectivas",
-                  "Desarrollo rápido y directo",
-                  "Pensado para pequeños negocios",
-                  "Comunicación directa",
-                  "Tecnología moderna",
-                ].map((line) => (
-                  <div
-                    key={line}
-                    className="flex items-start gap-2 rounded-xl border border-border/60 bg-background/25 px-3 py-2"
-                  >
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-[hsl(var(--neon-cyan))]" />
-                    <span className="text-sm text-muted-foreground">{line}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div
-              data-reveal
-              className="card-neon lg:col-span-5 rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
-            >
-              <div className="text-lg font-semibold tracking-tight">Enfoque CRO (conversión)</div>
-              <p className="mt-2 text-sm text-muted-foreground">
-                No es solo diseño: la página guía al visitante para que te escriba.
-              </p>
-              <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
-                {[
-                  "CTA visibles en hero y secciones clave",
-                  "Estructura por intención (problema → solución → servicios → contacto)",
-                  "WhatsApp con mensaje pre-escrito para bajar fricción",
-                  "Performance y mobile-first para ganar consultas",
-                ].map((line) => (
-                  <li key={line} className="flex gap-2">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-[hsl(var(--neon-indigo))]" />
-                    <span>{line}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6">
-                <Button asChild variant="hero" className="w-full justify-center">
-                  <a href="#diagnostico">
-                    Pedir diagnóstico gratis <ArrowRight />
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="container py-16 sm:py-20">
-          <div
-            data-reveal
-            className="card-neon glow-soft mx-auto max-w-4xl rounded-3xl border border-border/70 bg-gradient-card p-8 text-left shadow-card sm:p-10"
-          >
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-              <div>
-                <div className="text-sm text-muted-foreground">Confianza</div>
-                <h3 className="mt-2 text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
-                  Soluciones digitales simples para negocios reales.
-                </h3>
-                <p className="mt-3 text-muted-foreground">
-                  Trabajo con profesionales y pequeños negocios que necesitan presencia digital moderna y efectiva para
-                  generar consultas por WhatsApp.
-                </p>
-              </div>
-              <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-                <Button asChild variant="hero" className="justify-center">
-                  <a href="#diagnostico">
-                    Solicitá un diagnóstico <ArrowRight />
-                  </a>
-                </Button>
-                <Button asChild variant="whatsapp" className="justify-center">
-                  <a href={floatingUrl} target="_blank" rel="noreferrer">
-                    Hablar por WhatsApp <MessageCircle />
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="container py-16 sm:py-20">
-          <div
-            data-reveal
-            className={cn(
-              "card-neon glow-soft relative overflow-hidden rounded-3xl border border-border/70 bg-gradient-card p-8 text-left shadow-card",
-              "sm:p-10",
-            )}
-          >
-            <div className="pointer-events-none absolute inset-0 opacity-90">
-              <div className="absolute -inset-24 bg-[radial-gradient(circle_at_20%_30%,rgba(34,211,238,0.18),transparent_55%),radial-gradient(circle_at_85%_55%,rgba(168,85,247,0.16),transparent_55%)]" />
-            </div>
-
-            <div className="relative grid items-center gap-8 lg:grid-cols-12">
-              <div className="lg:col-span-8">
-                <h3 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
-                  Hacé que tu negocio trabaje por vos en internet.
-                </h3>
-                <p className="mt-3 text-muted-foreground">Recibí info sin compromiso.</p>
-              </div>
-              <div className="lg:col-span-4">
-                <Button asChild variant="hero" size="lg" className="w-full justify-center">
-                  <a href="#diagnostico">
-                    Quiero mejorar mi presencia digital <ArrowRight />
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="cta-final" className="container py-16 sm:py-20">
-          <div className="mx-auto max-w-3xl text-center">
-            <div data-reveal className="card-neon group relative rounded-2xl border border-border/70 bg-gradient-card p-8 text-center shadow-card">
-              <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <div className="absolute -inset-24 bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,0.2),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(168,85,247,0.18),transparent_55%)]" />
-              </div>
-              <div className="relative">
-                <h2 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
-                  Empezá hoy a tener presencia profesional online
-                </h2>
-                <p className="mt-3 text-pretty text-muted-foreground">
-                  Tu página web lista en 72 horas y preparada para recibir nuevos clientes.
-                </p>
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
-                  <Button asChild variant="whatsapp" size="lg" className="justify-center">
-                    <a href={floatingUrl} target="_blank" rel="noreferrer">
-                      Hablar por WhatsApp <MessageCircle />
-                    </a>
-                  </Button>
-                  <Button asChild variant="outline" size="lg" className="justify-center border-border/60 hover:bg-background/40">
-                    <a href="#precios">
-                      Ver precios <ChevronRight className="h-4 w-4" />
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -1463,15 +1031,12 @@ export default function Index() {
                   {leadStage === "sending" ? "Enviando..." : "Solicitar mi página web"} <MessageCircle />
                 </Button>
                 <div className="text-xs text-muted-foreground">
-                  Se registra el lead y luego continúas por WhatsApp con un mensaje listo.
+                  Se envía tu consulta y, si querés, continuás por WhatsApp con un mensaje listo.
                 </div>
               </div>
               <p id="status" aria-live="polite" className="mt-3 text-sm text-muted-foreground">
                 {statusText}
               </p>
-              <div className="mt-4 text-xs text-muted-foreground">
-                Este formulario envía tus datos a un webhook (Google Apps Script o PHP) y guarda un registro local para la demo.
-              </div>
             </form>
             <iframe name="hidden_iframe" title="hidden_iframe" className="hidden" />
 
@@ -1520,11 +1085,17 @@ export default function Index() {
               </span>
             </div>
             <div className="flex flex-wrap items-center gap-4">
-              <a className="transition-colors hover:text-foreground" href="#servicios">
-                Servicios
+              <a className="transition-colors hover:text-foreground" href="#simulador">
+                Demo
               </a>
-              <a className="transition-colors hover:text-foreground" href="#automatizacion">
-                Automatización
+              <a className="transition-colors hover:text-foreground" href="#precios">
+                Precios
+              </a>
+              <a className="transition-colors hover:text-foreground" href="#ejemplos">
+                Ejemplos
+              </a>
+              <a className="transition-colors hover:text-foreground" href="#faq">
+                FAQ
               </a>
               <a className="transition-colors hover:text-foreground" href="#diagnostico">
                 Contacto
