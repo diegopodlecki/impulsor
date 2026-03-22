@@ -33,3 +33,22 @@ export async function insertarFormulario(params: { nombre: string; email: string
 
   return { error };
 }
+
+export async function listarFormulariosPorUsuario(userId: string) {
+  if (!supabase) {
+    return {
+      data: [] as Formulario[],
+      error: { message: "Supabase no está configurado en este build." },
+    };
+  }
+
+  const { data, error } = await supabase
+    .from("formularios")
+    .select("id,nombre,email,mensaje,user_id,created_at")
+    .eq("user_id", userId)
+    .order("created_at", { ascending: false })
+    .limit(50)
+    .returns<Formulario[]>();
+
+  return { data: data ?? [], error };
+}

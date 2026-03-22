@@ -1,36 +1,57 @@
 import { Link } from "react-router-dom";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import React from "react";
+import { format } from "date-fns";
 
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
-import { insertarFormulario } from "@/features/formularios/formularios";
+import type { Formulario } from "@/features/formularios/formularios";
+import { insertarFormulario, listarFormulariosPorUsuario } from "@/features/formularios/formularios";
 
 export default function Dashboard() {
   const { user, signOut } = useAuth();
+  const queryClient = useQueryClient();
   const [nombre, setNombre] = React.useState("");
   const [email, setEmail] = React.useState(user?.email ?? "");
   const [mensaje, setMensaje] = React.useState("");
-  const [saving, setSaving] = React.useState(false);
 
   React.useEffect(() => {
     setEmail(user?.email ?? "");
   }, [user?.email]);
 
+  const formulariosQuery = useQuery({
+    queryKey: ["formularios", user?.id],
+    enabled: Boolean(user?.id),
+    queryFn: async () => {
+      const { data, error } = await listarFormulariosPorUsuario(user!.id);
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const insertarMutation = useMutation({
+    mutationFn: async () => {
+      const { error } = await insertarFormulario({ nombre, email, mensaje });
+      if (error) throw error;
+      return true;
+    },
+    onSuccess: async () => {
+      setNombre("");
+      setMensaje("");
+      toast.success("Guardado en Supabase");
+      await queryClient.invalidateQueries({ queryKey: ["formularios", user?.id] });
+    },
+    onError: (err: unknown) => {
+      const message =
+        typeof err === "object" && err && "message" in err ? String((err as { message: unknown }).message) : "Error";
+      toast.error(message);
+    },
+  });
+
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSaving(true);
-    const { error } = await insertarFormulario({ nombre, email, mensaje });
-    setSaving(false);
-
-    if (error) {
-      toast.error(error.message);
-      return;
-    }
-
-    setNombre("");
-    setMensaje("");
-    toast.success("Guardado en Supabase");
+    insertarMutation.mutate();
   }
 
   return (
@@ -117,8 +138,8 @@ export default function Dashboard() {
           </label>
 
           <div className="flex gap-2">
-            <Button type="submit" disabled={saving}>
-              {saving ? "Guardando…" : "Guardar"}
+            <Button type="submit" disabled={insertarMutation.isPending}>
+              {insertarMutation.isPending ? "Guardando…" : "Guardar"}
             </Button>
             <Button
               type="button"
@@ -128,13 +149,57 @@ export default function Dashboard() {
                 setMensaje("");
                 setEmail(user?.email ?? "");
               }}
-              disabled={saving}
+              disabled={insertarMutation.isPending}
             >
               Limpiar
             </Button>
           </div>
         </form>
       </div>
+
+      <div className="mt-8 rounded-lg border bg-card p-5">
+        <h2 className="text-lg font-medium">Tus envíos</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Solo ves los registros cuyo <span className="font-mono">user_id</span> coincide con tu sesión.
+        </p>
+
+        {formulariosQuery.isLoading ? (
+          <div className="mt-4 text-sm text-muted-foreground">Cargando envíos…</div>
+        ) : formulariosQuery.isError ? (
+          <div className="mt-4 rounded-md border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">
+            {String((formulariosQuery.error as { message?: string } | undefined)?.message ?? "Error al cargar")}
+          </div>
+        ) : (
+          <FormulariosList items={formulariosQuery.data ?? []} />
+        )}
+      </div>
+    </div>
+  );
+}
+
+function FormulariosList({ items }: { items: Formulario[] }) {
+  if (!items.length) {
+    return <div className="mt-4 text-sm text-muted-foreground">Todavía no tenés envíos guardados.</div>;
+  }
+
+  return (
+    <div className="mt-5 grid gap-3">
+      {items.map((item) => (
+        <div key={item.id} className="rounded-lg border bg-background/40 p-4">
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+            <div className="text-sm font-medium">
+              {item.nombre} · <span className="text-muted-foreground">{item.email}</span>
+            </div>
+            <div className="text-xs text-muted-foreground">
+              {format(new Date(item.created_at), "yyyy-MM-dd HH:mm")}
+            </div>
+          </div>
+          {item.mensaje ? <div className="mt-2 whitespace-pre-wrap text-sm">{item.mensaje}</div> : null}
+          <div className="mt-3 text-xs text-muted-foreground">
+            ID: <span className="font-mono">{item.id}</span>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
