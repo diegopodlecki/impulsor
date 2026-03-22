@@ -11,20 +11,21 @@ export type Formulario = {
 
 export async function insertarFormulario(params: { nombre: string; email: string; mensaje?: string }) {
   const { data: userData, error: userError } = await supabase.auth.getUser();
-  if (userError) return { data: null as Formulario | null, error: userError };
+  if (userError) return { error: userError };
 
   const userId = userData.user?.id ?? null;
 
-  const { data, error } = await supabase
+  // Importante (RLS): si el usuario es anónimo, un `.select()` tras el insert puede fallar con 403
+  // porque la policy de SELECT está restringida a usuarios autenticados. Por eso no pedimos
+  // "return=representation" aquí.
+  const { error } = await supabase
     .from("formularios")
     .insert({
       nombre: params.nombre.trim(),
       email: params.email.trim(),
       mensaje: params.mensaje?.trim() ? params.mensaje.trim() : null,
       user_id: userId,
-    })
-    .select("*")
-    .single<Formulario>();
+    });
 
-  return { data, error };
+  return { error };
 }
