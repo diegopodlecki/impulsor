@@ -12,6 +12,12 @@ No subas `src/`, `node_modules/`, etc. (eso es del proyecto, no va al hosting).
 
 ## Cómo subir (paso a paso)
 
+0) Generá el build para Hostinger (recomendado):
+
+- `npm.cmd run build:hostinger`
+
+Esto actualiza `hostinger/public_html/index.html` y `hostinger/public_html/assets/` sin borrar los archivos PHP.
+
 1) Entrá a Hostinger → **Administrador de Archivos** (o FTP).
 2) Abrí la carpeta del sitio: `public_html/`.
 3) (Recomendado) Hacé backup o renombrá lo viejo.
@@ -40,4 +46,3 @@ No subas `src/`, `node_modules/`, etc. (eso es del proyecto, no va al hosting).
 ## Nota importante (React SPA)
 
 El archivo `.htaccess` ya está incluido para que funcionen las rutas internas (si tu landing navega como SPA).
-

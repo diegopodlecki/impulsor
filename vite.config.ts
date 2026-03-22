@@ -5,6 +5,15 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // Hostinger can serve from `hostinger/public_html/`. To keep PHP files (.htaccess, enviar.php, etc.),
+  // we build into that directory without emptying it.
+  build:
+    process.env.HOSTINGER === "true"
+      ? {
+          outDir: "hostinger/public_html",
+          emptyOutDir: false,
+        }
+      : undefined,
   // GitHub Pages serves this repo at `/impulsor/`:
   // https://diegopodlecki.github.io/impulsor/
   // The workflow sets `GITHUB_PAGES=true` during build.
