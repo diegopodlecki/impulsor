@@ -16,6 +16,7 @@ import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/lib/supabaseClient";
+import { isSupabaseConfigured } from "@/lib/supabaseClient";
 import { cn } from "@/lib/utils";
 
 const BRAND = {
@@ -37,12 +38,10 @@ function withBase(path: string) {
 // Plantilla del mensaje post-formulario (incluye los datos del lead).
 function buildFormWhatsAppMessage(params: {
   name: string;
-  phone: string;
   email: string;
   note: string;
 }) {
   const safeName = params.name.trim();
-  const safePhone = params.phone.trim();
   const safeEmail = params.email.trim();
   const safeNote = params.note.trim();
 
@@ -51,7 +50,6 @@ function buildFormWhatsAppMessage(params: {
     "",
     "Datos:",
     safeName ? `Nombre: ${safeName}` : null,
-    safePhone ? `Teléfono: ${safePhone}` : null,
     safeEmail ? `Email: ${safeEmail}` : null,
     safeNote ? `Nota: ${safeNote}` : null,
   ]
@@ -199,7 +197,6 @@ export default function Index() {
   }, []);
 
   const [name, setName] = React.useState("");
-  const [phone, setPhone] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [message, setMessage] = React.useState("");
   const [statusText, setStatusText] = React.useState("");
@@ -280,7 +277,7 @@ export default function Index() {
     const leadId = (crypto?.randomUUID?.() ?? `lead_${Math.random().toString(16).slice(2)}`).slice(0, 40);
     const fecha = new Date().toISOString();
 
-    const waMessage = buildFormWhatsAppMessage({ name, phone, email, note: message });
+    const waMessage = buildFormWhatsAppMessage({ name, email, note: message });
     setPreparedWhatsAppUrl(buildWhatsAppUrl(waMessage));
 
     try {
@@ -290,9 +287,7 @@ export default function Index() {
       const nombre = name.trim();
       const correo = email.trim();
       const nota = message.trim();
-      const tel = phone.trim();
-
-      console.log("[form vars]", { nombre, email: correo, nota, tel });
+      console.log("[form vars]", { nombre, email: correo, nota });
 
       if (!nombre || !correo || !nota) {
         throw new Error("Completá nombre, email y mensaje antes de enviar.");
@@ -300,7 +295,6 @@ export default function Index() {
 
       const mensajeDb = [
         nota ? `Mensaje: ${nota}` : null,
-        tel ? `Teléfono: ${tel}` : null,
         `Fuente: landing`,
         `Lead ID: ${leadId}`,
         `Fecha: ${fecha}`,
@@ -329,7 +323,6 @@ export default function Index() {
 
       setStatusText("Mensaje guardado correctamente");
       setName("");
-      setPhone("");
       setEmail("");
       setMessage("");
       setLeadStage("sent");
@@ -343,7 +336,7 @@ export default function Index() {
       setStatusText("Error al enviar");
       setLeadStage("idle");
     }
-  }, [email, leadStage, message, name, phone]);
+  }, [email, leadStage, message, name]);
 
   const openPreparedWhatsApp = React.useCallback(() => {
     if (!preparedWhatsAppUrl) return;
@@ -923,22 +916,6 @@ export default function Index() {
                 />
 
                 <input
-                  type="tel"
-                  id="telefono"
-                  name="telefono"
-                  placeholder="Teléfono"
-                  required
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className={cn(
-                    "h-11 w-full rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground",
-                    "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
-                  )}
-                  autoComplete="tel"
-                  inputMode="tel"
-                />
-
-                <input
                   type="email"
                   id="email"
                   name="email"
@@ -976,6 +953,10 @@ export default function Index() {
                 <div className="text-xs text-muted-foreground">
                   Se envía tu consulta y, si querés, continuás por WhatsApp con un mensaje listo.
                 </div>
+              </div>
+              <div className="mt-4 text-xs text-muted-foreground">
+                Debug: build <span className="font-mono">{import.meta.env.VITE_BUILD_ID ?? "sin-build-id"}</span> ·
+                Supabase <span className="font-mono">{isSupabaseConfigured ? "ok" : "no-config"}</span>
               </div>
               <p id="status" aria-live="polite" className="mt-3 text-sm text-muted-foreground">
                 {statusText}
