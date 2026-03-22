@@ -10,6 +10,10 @@ export type Formulario = {
 };
 
 export async function insertarFormulario(params: { nombre: string; email: string; mensaje?: string }) {
+  if (!supabase) {
+    return { error: { message: "Supabase no está configurado en este build." } };
+  }
+
   const { data: userData, error: userError } = await supabase.auth.getUser();
   if (userError) return { error: userError };
 

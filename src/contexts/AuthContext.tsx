@@ -3,13 +3,16 @@ import React, { createContext, useContext, useEffect, useMemo, useState } from "
 
 import { supabase } from "@/lib/supabaseClient";
 
+type AuthErrorLike = { message: string };
+type AuthCallResult = Promise<{ data: unknown; error: AuthErrorLike | null }>;
+
 type AuthContextValue = {
   user: User | null;
   session: Session | null;
   loading: boolean;
-  signUp: (email: string, password: string) => ReturnType<typeof supabase.auth.signUp>;
-  signIn: (email: string, password: string) => ReturnType<typeof supabase.auth.signInWithPassword>;
-  signOut: () => ReturnType<typeof supabase.auth.signOut>;
+  signUp: (email: string, password: string) => AuthCallResult;
+  signIn: (email: string, password: string) => AuthCallResult;
+  signOut: () => AuthCallResult;
 };
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
@@ -21,6 +24,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     let isMounted = true;
+
+    if (!supabase) {
+      setSession(null);
+      setUser(null);
+      setLoading(false);
+      return () => {
+        isMounted = false;
+      };
+    }
 
     supabase.auth
       .getSession()
@@ -61,10 +73,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       user,
       session,
       loading,
-      signUp: (email: string, password: string) => supabase.auth.signUp({ email, password }),
+      signUp: (email: string, password: string) =>
+        supabase
+          ? (supabase.auth.signUp({ email, password }) as unknown as AuthCallResult)
+          : Promise.resolve({
+              data: null,
+              error: { message: "Supabase no está configurado en este build." },
+            }),
       signIn: (email: string, password: string) =>
-        supabase.auth.signInWithPassword({ email, password }),
-      signOut: () => supabase.auth.signOut(),
+        supabase
+          ? (supabase.auth.signInWithPassword({ email, password }) as unknown as AuthCallResult)
+          : Promise.resolve({
+              data: null,
+              error: { message: "Supabase no está configurado en este build." },
+            }),
+      signOut: () =>
+        supabase
+          ? (supabase.auth.signOut() as unknown as AuthCallResult)
+          : Promise.resolve({
+              data: null,
+              error: { message: "Supabase no está configurado en este build." },
+            }),
     }),
     [user, session, loading],
   );
@@ -79,4 +108,3 @@ export function useAuth() {
   }
   return context;
 }
-
