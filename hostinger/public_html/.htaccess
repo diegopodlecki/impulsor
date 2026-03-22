@@ -1,5 +1,5 @@
-<IfModule mod_mime.c>
-  # Fix: algunos hostings sirven .js como text/plain si no está el MIME correcto
+﻿<IfModule mod_mime.c>
+  # Fix: algunos hostings sirven .js como text/plain si no estÃ¡ el MIME correcto
   RemoveType .js
   RemoveType .mjs
   AddType application/javascript .js .mjs
@@ -9,6 +9,8 @@
   AddType application/json .json
   AddType image/svg+xml .svg
 </IfModule>
+
+DirectoryIndex index.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -23,7 +25,7 @@
 </IfModule>
 
 # Bloquear acceso a archivos sensibles
-<FilesMatch "^(config\\.php|schema\\.sql|README\\.md)$">
+<FilesMatch "^(enviar\\.php|config\\.php|schema\\.sql|README\\.md)$">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>
