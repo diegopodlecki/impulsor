@@ -272,6 +272,7 @@ export default function Index() {
 
   const handleSubmit = React.useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("submit ejecutado");
     if (leadStage !== "idle") return;
     setLeadStage("sending");
     setStatusText("Enviando...");
@@ -283,12 +284,19 @@ export default function Index() {
     setPreparedWhatsAppUrl(buildWhatsAppUrl(waMessage));
 
     try {
+      console.log("[supabase]", { disponible: Boolean(supabase) });
       if (!supabase) throw new Error("Supabase no está configurado en este build.");
 
       const nombre = name.trim();
       const correo = email.trim();
       const nota = message.trim();
       const tel = phone.trim();
+
+      console.log("[form vars]", { nombre, email: correo, nota, tel });
+
+      if (!nombre || !correo || !nota) {
+        throw new Error("Completá nombre, email y mensaje antes de enviar.");
+      }
 
       const mensajeDb = [
         nota ? `Mensaje: ${nota}` : null,
@@ -307,12 +315,14 @@ export default function Index() {
 
       const userId = userData.user?.id ?? null;
 
-      const { data, error } = await supabase.from("formularios").insert({
-        nombre,
-        email: correo,
-        mensaje: mensajeDb,
-        user_id: userId,
-      });
+      const { data, error } = await supabase.from("formularios").insert([
+        {
+          nombre,
+          email: correo,
+          mensaje: mensajeDb,
+          user_id: userId,
+        },
+      ]);
 
       console.log("[formularios insert]", { data, error });
       if (error) throw error;
@@ -329,6 +339,7 @@ export default function Index() {
       const messageText =
         typeof err === "object" && err && "message" in err ? String((err as { message: unknown }).message) : "Error";
       toast.error(messageText);
+      alert(messageText);
       setStatusText("Error al enviar");
       setLeadStage("idle");
     }
