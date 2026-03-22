@@ -1,0 +1,82 @@
+import type { Session, User } from "@supabase/supabase-js";
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+
+import { supabase } from "@/lib/supabaseClient";
+
+type AuthContextValue = {
+  user: User | null;
+  session: Session | null;
+  loading: boolean;
+  signUp: (email: string, password: string) => ReturnType<typeof supabase.auth.signUp>;
+  signIn: (email: string, password: string) => ReturnType<typeof supabase.auth.signInWithPassword>;
+  signOut: () => ReturnType<typeof supabase.auth.signOut>;
+};
+
+const AuthContext = createContext<AuthContextValue | undefined>(undefined);
+
+export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const [session, setSession] = useState<Session | null>(null);
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    supabase.auth
+      .getSession()
+      .then(({ data, error }) => {
+        if (!isMounted) return;
+        if (error) {
+          setSession(null);
+          setUser(null);
+          setLoading(false);
+          return;
+        }
+
+        setSession(data.session);
+        setUser(data.session?.user ?? null);
+        setLoading(false);
+      })
+      .catch(() => {
+        if (!isMounted) return;
+        setSession(null);
+        setUser(null);
+        setLoading(false);
+      });
+
+    const { data } = supabase.auth.onAuthStateChange((_event, nextSession) => {
+      setSession(nextSession);
+      setUser(nextSession?.user ?? null);
+      setLoading(false);
+    });
+
+    return () => {
+      isMounted = false;
+      data.subscription.unsubscribe();
+    };
+  }, []);
+
+  const value = useMemo<AuthContextValue>(
+    () => ({
+      user,
+      session,
+      loading,
+      signUp: (email: string, password: string) => supabase.auth.signUp({ email, password }),
+      signIn: (email: string, password: string) =>
+        supabase.auth.signInWithPassword({ email, password }),
+      signOut: () => supabase.auth.signOut(),
+    }),
+    [user, session, loading],
+  );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}
+
+export function useAuth() {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth debe usarse dentro de <AuthProvider />.");
+  }
+  return context;
+}
+

@@ -1,0 +1,41 @@
+import { createClient } from "@supabase/supabase-js";
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+function getJwtRole(token: string) {
+  try {
+    const parts = token.split(".");
+    if (parts.length < 2) return null;
+
+    const base64Url = parts[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(base64Url.length / 4) * 4, "=");
+    if (typeof atob !== "function") return null;
+    const json = atob(base64);
+
+    const payload = JSON.parse(json) as { role?: string };
+    return payload.role ?? null;
+  } catch {
+    return null;
+  }
+}
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error(
+    "Faltan variables de entorno de Supabase. Configurá VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY (por ejemplo en .env.local).",
+  );
+}
+
+if (getJwtRole(supabaseAnonKey) === "service_role") {
+  throw new Error(
+    "VITE_SUPABASE_ANON_KEY parece ser una key de service_role. No la uses en el frontend: usá la anon public key.",
+  );
+}
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+    detectSessionInUrl: true,
+  },
+});
