@@ -8,7 +8,7 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "build:github": "GITHUB_PAGES=true vite build",
-    "build:hostinger": "powershell -NoProfile -Command \"$env:HOSTINGER='true'; vite build\"",
+    "build:hostinger": "powershell -NoProfile -Command \"$env:HOSTINGER='true'; Remove-Item -Recurse -Force hostinger/public_html/assets -ErrorAction SilentlyContinue; vite build\"",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",

@@ -5,8 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Hostinger can serve from `hostinger/public_html/`. To keep PHP files (.htaccess, enviar.php, etc.),
-  // we build into that directory without emptying it.
+  // Hostinger can serve from `hostinger/public_html/`. We build into that directory without emptying it
+  // to preserve static files like `.htaccess`, `demos/`, icons, etc.
   build:
     process.env.HOSTINGER === "true"
       ? {

@@ -6,7 +6,7 @@ Subí **solo** el contenido de:
 
 - `hostinger/public_html/`
 
-Esa carpeta ya contiene el **build listo** del sitio (frontend) + el **backend PHP** del formulario.
+Esa carpeta ya contiene el **build listo** del sitio (frontend).
 
 No subas `src/`, `node_modules/`, etc. (eso es del proyecto, no va al hosting).
 
@@ -16,7 +16,7 @@ No subas `src/`, `node_modules/`, etc. (eso es del proyecto, no va al hosting).
 
 - `npm.cmd run build:hostinger`
 
-Esto actualiza `hostinger/public_html/index.html` y `hostinger/public_html/assets/` sin borrar los archivos PHP.
+Esto actualiza `hostinger/public_html/index.html` y `hostinger/public_html/assets/`.
 
 1) Entrá a Hostinger → **Administrador de Archivos** (o FTP).
 2) Abrí la carpeta del sitio: `public_html/`.
@@ -27,21 +27,12 @@ Esto actualiza `hostinger/public_html/index.html` y `hostinger/public_html/asset
    - `demos/`
    - `favicon.svg`, `robots.txt`, `sitemap.xml`, `og-image.svg`
    - `.htaccess`
-   - `enviar.php` y `config.php`
-   - `schema.sql` (solo para importar la tabla; puede quedar subido, pero no es necesario)
-
-## Base de datos (para que el formulario guarde leads)
-
-1) En Hostinger → **Bases de datos MySQL**: creá una base + usuario + contraseña.
-2) En **phpMyAdmin**: importá `schema.sql` (crea la tabla `leads`).
-3) Editá `config.php` en Hostinger y completá tus credenciales:
-   - host / dbname / user / password
 
 ## Cómo probar que quedó bien
 
 - Entrá a tu web, enviá el formulario y verificá que:
   - no aparezcan errores visuales
-  - el lead se inserte en MySQL (tabla `leads`)
+  - el registro aparezca en Supabase (tabla `formularios`)
 
 ## Nota importante (React SPA)
 

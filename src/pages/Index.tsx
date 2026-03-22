@@ -15,6 +15,7 @@ import { toast } from "sonner";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/lib/supabaseClient";
 import { cn } from "@/lib/utils";
 
 const BRAND = {
@@ -32,8 +33,6 @@ function withBase(path: string) {
   const normalizedPath = (path ?? "").replace(/^\//, "");
   return `${normalizedBase}${normalizedPath}`;
 }
-
-const HOSTINGER_LEADS_URL = withBase("/enviar.php");
 
 // Plantilla del mensaje post-formulario (incluye los datos del lead).
 function buildFormWhatsAppMessage(params: {
@@ -208,8 +207,6 @@ export default function Index() {
   const [leadStage, setLeadStage] = React.useState<"idle" | "sending" | "sent">("idle");
   const [preparedWhatsAppUrl, setPreparedWhatsAppUrl] = React.useState<string>("");
 
-  const webhookUrl = ((import.meta.env.VITE_LEADS_WEBHOOK_URL as string | undefined) ?? "").trim();
-
   const demoOptions = React.useMemo(
     () =>
       [
@@ -273,58 +270,11 @@ export default function Index() {
     return buildWhatsAppUrl(msg);
   }, [calcPrice]);
 
-  const persistLeadLocally = React.useCallback((lead: Record<string, unknown>) => {
-    // Demo real: guardamos el lead localmente para que se vea el "registro" aunque el webhook no esté configurado
-    // o falle por CORS.
-    try {
-      const key = "impulsorweb_leads";
-      const current = JSON.parse(localStorage.getItem(key) ?? "[]");
-      const next = Array.isArray(current) ? current : [];
-      next.unshift(lead);
-      localStorage.setItem(key, JSON.stringify(next.slice(0, 50)));
-    } catch {
-      // Optional: localStorage puede fallar en modo privado o por políticas del navegador.
-    }
-  }, []);
-
-  const sendLead = React.useCallback(
-    (payload: Record<string, unknown>) => {
-      persistLeadLocally(payload);
-      if (!webhookUrl) return;
-
-      try {
-        if (navigator.sendBeacon) {
-          const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
-          navigator.sendBeacon(webhookUrl, blob);
-          return;
-        }
-      } catch {
-        // Fall through to fetch.
-      }
-
-      void fetch(webhookUrl, {
-        method: "POST",
-        body: JSON.stringify(payload),
-        // Para compatibilidad (GAS/PHP) evitamos preflight/CORS usando no-cors y sin headers custom.
-        // El webhook puede leer el body como texto y parsear JSON.
-        mode: "no-cors",
-        keepalive: true,
-      }).catch(() => {
-        // Silent: la demo debe seguir (el visitante igual puede continuar por WhatsApp).
-      });
-    },
-    [persistLeadLocally, webhookUrl],
-  );
-
-  const submitLead = React.useCallback(async (e: React.FormEvent) => {
+  const handleSubmit = React.useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     if (leadStage !== "idle") return;
     setLeadStage("sending");
     setStatusText("Enviando...");
-
-    // Guardamos el form al inicio para no depender del event después de awaits
-    // (en algunos entornos el SyntheticEvent puede quedar inválido).
-    const formEl = e.currentTarget as HTMLFormElement;
 
     const leadId = (crypto?.randomUUID?.() ?? `lead_${Math.random().toString(16).slice(2)}`).slice(0, 40);
     const fecha = new Date().toISOString();
@@ -333,31 +283,41 @@ export default function Index() {
     setPreparedWhatsAppUrl(buildWhatsAppUrl(waMessage));
 
     try {
-      const response = await fetch(HOSTINGER_LEADS_URL, {
-        method: "POST",
-        body: new FormData(formEl),
+      if (!supabase) throw new Error("Supabase no está configurado en este build.");
+
+      const nombre = name.trim();
+      const correo = email.trim();
+      const nota = message.trim();
+      const tel = phone.trim();
+
+      const mensajeDb = [
+        nota ? `Mensaje: ${nota}` : null,
+        tel ? `Teléfono: ${tel}` : null,
+        `Fuente: landing`,
+        `Lead ID: ${leadId}`,
+        `Fecha: ${fecha}`,
+      ]
+        .filter(Boolean)
+        .join("\n");
+
+      console.log("[formularios payload]", { nombre, email: correo, mensaje: mensajeDb });
+
+      const { data: userData, error: userError } = await supabase.auth.getUser();
+      if (userError) throw userError;
+
+      const userId = userData.user?.id ?? null;
+
+      const { data, error } = await supabase.from("formularios").insert({
+        nombre,
+        email: correo,
+        mensaje: mensajeDb,
+        user_id: userId,
       });
 
-      const text = await response.text().catch(() => "");
-      const ok = response.ok && (!text.trim() || text.trim().toUpperCase() === "OK");
-      if (!ok) throw new Error(text || "Error al enviar");
+      console.log("[formularios insert]", { data, error });
+      if (error) throw error;
 
-      setStatusText("Mensaje enviado correctamente");
-
-      sendLead({
-        id: leadId,
-        nombre: name.trim(),
-        telefono: phone.trim(),
-        email: email.trim(),
-        negocio: "landing webappimpulsor",
-        mensaje: message.trim(),
-        fecha,
-        source: "landing",
-        path: window.location.pathname,
-        referrer: document.referrer || null,
-        userAgent: navigator.userAgent,
-      });
-
+      setStatusText("Mensaje guardado correctamente");
       setName("");
       setPhone("");
       setEmail("");
@@ -365,39 +325,14 @@ export default function Index() {
       setLeadStage("sent");
       toast.success("Mensaje enviado. Si querés acelerar, continuá por WhatsApp con el mensaje prellenado.");
     } catch (err) {
-      // Fallback HTML puro (sin CORS): submit nativo a un iframe oculto.
-      try {
-        HTMLFormElement.prototype.submit.call(formEl);
-
-        setStatusText("Mensaje enviado correctamente");
-
-        sendLead({
-          id: leadId,
-          nombre: name.trim(),
-          telefono: phone.trim(),
-          email: email.trim(),
-          negocio: "landing webappimpulsor",
-          mensaje: message.trim(),
-          fecha,
-          source: "landing",
-          path: window.location.pathname,
-          referrer: document.referrer || null,
-          userAgent: navigator.userAgent,
-        });
-
-        setName("");
-        setPhone("");
-        setEmail("");
-        setMessage("");
-        setLeadStage("sent");
-        toast.success("Mensaje enviado. Si querés acelerar, continuá por WhatsApp con el mensaje prellenado.");
-      } catch {
-        console.error("Error:", err);
-        setStatusText("Error al enviar");
-        setLeadStage("idle");
-      }
+      console.log("[formularios error]", err);
+      const messageText =
+        typeof err === "object" && err && "message" in err ? String((err as { message: unknown }).message) : "Error";
+      toast.error(messageText);
+      setStatusText("Error al enviar");
+      setLeadStage("idle");
     }
-  }, [email, leadStage, message, name, phone, sendLead]);
+  }, [email, leadStage, message, name, phone]);
 
   const openPreparedWhatsApp = React.useCallback(() => {
     if (!preparedWhatsAppUrl) return;
@@ -917,11 +852,8 @@ export default function Index() {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-12">
             <form
-              onSubmit={submitLead}
+              onSubmit={handleSubmit}
               id="contactForm"
-              method="POST"
-              action={HOSTINGER_LEADS_URL}
-              target="hidden_iframe"
               className="card-neon glow-soft lg:col-span-7 rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card"
             >
               {leadStage === "sent" ? (
@@ -1038,7 +970,6 @@ export default function Index() {
                 {statusText}
               </p>
             </form>
-            <iframe name="hidden_iframe" title="hidden_iframe" className="hidden" />
 
             <div className="space-y-4 lg:col-span-5">
               <div data-reveal className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card">
