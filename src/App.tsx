@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound.tsx";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import Admin from "./pages/Admin.tsx";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,8 @@ const App = () => (
             <Route element={<ProtectedRoute />}>
               <Route path="/dashboard" element={<Dashboard />} />
             </Route>
+
+            <Route path="/admin" element={<Admin />} />
 
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
