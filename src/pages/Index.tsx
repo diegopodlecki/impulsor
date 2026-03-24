@@ -963,6 +963,58 @@ export default function Index() {
               </p>
             </form>
 
+            {/* 🔍 BOTONES DE DIAGNÓSTICO */}
+            <div className="mt-6 p-4 border-2 border-dashed border-orange-500/50 rounded-xl bg-orange-50/50">
+              <h3 className="font-semibold mb-3 flex items-center gap-2 text-orange-900">
+                🔍 Botones de Test (solo para diagnóstico)
+              </h3>
+              
+              <div className="grid gap-3 sm:grid-cols-2">
+                {/* Test React Events */}
+                <button
+                  type="button"
+                  onClick={() => console.log("🔥 CLICK FUNCIONA - React eventos OK")}
+                  className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors"
+                >
+                  ✅ Test React Click
+                </button>
+                
+                {/* Test Supabase */}
+                <button
+                  type="button"
+                  onClick={async () => {
+                    console.log("🔥 probando supabase");
+                    if (!supabase) {
+                      console.log("❌ supabase es null - revisar env vars");
+                      return;
+                    }
+                    try {
+                      const { data, error } = await supabase
+                        .from("formularios")
+                        .insert([
+                          {
+                            nombre: "Test",
+                            email: "test@test.com",
+                            mensaje: "Hola"
+                          }
+                        ]);
+                      console.log("✅ DATA:", data);
+                      console.log("❌ ERROR:", error);
+                    } catch (err) {
+                      console.log("💥 ERROR completo:", err);
+                    }
+                  }}
+                  className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors"
+                >
+                  🧪 Test Supabase Insert
+                </button>
+              </div>
+              
+              <p className="mt-2 text-xs text-orange-800">
+                Abrí consola (F12). Clickeá botones → revisá logs. Reportá resultados.
+              </p>
+            </div>
+
             <div className="space-y-4 lg:col-span-5">
               <div data-reveal className="card-neon rounded-2xl border border-border/70 bg-gradient-card p-6 text-left shadow-card">
                 <div className="text-lg font-semibold tracking-tight">¿Qué incluye el diagnóstico?</div>
