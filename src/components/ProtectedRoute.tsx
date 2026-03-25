@@ -7,9 +7,7 @@ export default function ProtectedRoute() {
   const location = useLocation();
 
   if (loading) {
-    return (
-      <div className="mx-auto max-w-md p-6 text-sm text-muted-foreground">Cargando sesión…</div>
-    );
+    return <div className="mx-auto max-w-md p-6 text-sm text-muted-foreground">Cargando sesión…</div>;
   }
 
   if (!user) {
@@ -18,4 +16,3 @@ export default function ProtectedRoute() {
 
   return <Outlet />;
 }
-

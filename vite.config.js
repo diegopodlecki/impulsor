@@ -1,12 +1,12 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import path from "path";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
+const rootDir = path.dirname(fileURLToPath(import.meta.url));
+
 export default defineConfig(({ mode }) => ({
-  // Hostinger can serve from `hostinger/public_html/`. We build into that directory without emptying it
-  // to preserve static files like `.htaccess`, `demos/`, icons, etc.
   build:
     process.env.HOSTINGER === "true"
       ? {
@@ -14,9 +14,6 @@ export default defineConfig(({ mode }) => ({
           emptyOutDir: false,
         }
       : undefined,
-  // GitHub Pages serves this repo at `/impulsor/`:
-  // https://diegopodlecki.github.io/impulsor/
-  // The workflow sets `GITHUB_PAGES=true` during build.
   base: process.env.GITHUB_PAGES === "true" ? "/impulsor/" : "/",
   server: {
     host: "::",
@@ -28,7 +25,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(rootDir, "./src"),
     },
   },
 }));

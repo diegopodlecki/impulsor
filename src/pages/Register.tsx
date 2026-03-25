@@ -15,7 +15,7 @@ export default function Register() {
   const [success, setSuccess] = useState<string | null>(null);
 
   if (!loading && user) {
-    return <Navigate to="/dashboard" replace />;
+    return <Navigate to="/admin" replace />;
   }
 
   async function onSubmit(e: React.FormEvent) {
@@ -33,7 +33,7 @@ export default function Register() {
     }
 
     if (data.session) {
-      navigate("/dashboard", { replace: true });
+      navigate("/admin", { replace: true });
       return;
     }
 
@@ -100,4 +100,3 @@ export default function Register() {
     </div>
   );
 }
-

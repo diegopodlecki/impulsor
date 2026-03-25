@@ -20,11 +20,11 @@ export default function Login() {
     const state = location.state as LocationState | null;
     return state?.from?.pathname && state.from.pathname !== "/login"
       ? state.from.pathname
-      : "/dashboard";
+      : "/admin";
   }, [location.state]);
 
   if (!loading && user) {
-    return <Navigate to="/dashboard" replace />;
+    return <Navigate to="/admin" replace />;
   }
 
   async function onSubmit(e: React.FormEvent) {
@@ -95,4 +95,3 @@ export default function Login() {
     </div>
   );
 }
-

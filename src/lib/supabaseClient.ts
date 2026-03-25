@@ -1,7 +1,7 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+export const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+export const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 function getJwtRole(token: string) {
   try {
@@ -23,9 +23,7 @@ function getJwtRole(token: string) {
 export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
 
 if (supabaseAnonKey && getJwtRole(supabaseAnonKey) === "service_role") {
-  throw new Error(
-    "VITE_SUPABASE_ANON_KEY parece ser una key de service_role. No la uses en el frontend: usá la anon public key.",
-  );
+  throw new Error("VITE_SUPABASE_ANON_KEY parece ser una key de service_role. Usa la anon public key.");
 }
 
 export const supabase: SupabaseClient | null = isSupabaseConfigured
