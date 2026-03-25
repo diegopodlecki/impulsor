@@ -1,5 +1,5 @@
-﻿<IfModule mod_mime.c>
-  # Fix: algunos hostings sirven .js como text/plain si no estÃ¡ el MIME correcto
+<IfModule mod_mime.c>
+  # Fix: algunos hostings sirven .js como text/plain si no está el MIME correcto
   RemoveType .js
   RemoveType .mjs
   AddType application/javascript .js .mjs
@@ -12,6 +12,14 @@
 
 DirectoryIndex index.html
 
+# Evita que el navegador se quede con un index.html viejo cuando se sube un build nuevo
+<IfModule mod_headers.c>
+  <FilesMatch "(?i)^(index\.html|.*\.html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
