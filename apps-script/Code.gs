@@ -1,4 +1,4 @@
-﻿function doPost(e) {
+function doPost(e) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const sheet = ss.getSheetByName('contactos');
 
@@ -43,7 +43,7 @@
 
 function enviarNotificacion(data) {
   const emailDestino = getConfig_('CONTACT_TO_EMAIL', 'diego.podlecki@gmail.com');
-  const resendApiKey = getConfig_('re_BAfjGrH5_6BcfZijw49h35sYXiYCcg3ju', '');
+  const resendApiKey = getConfig_('RESEND_API_KEY', '');
   const asunto = 'Nuevo lead desde WebApp Impulsor';
   const mensaje =
     'Nuevo contacto recibido:\n\n' +

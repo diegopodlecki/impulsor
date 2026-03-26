@@ -12,6 +12,12 @@ const baseUrl = (import.meta.env.BASE_URL ?? "/") + "";
 // React Router basename should not end with "/" (except root). GitHub Pages can serve `/impulsor` and `/impulsor/`.
 const routerBaseName = baseUrl === "/" ? "/" : baseUrl.replace(/\/+$/, "");
 
+const clearDiagnosticHash = () => {
+  if (window.location.hash === "#diagnostico") {
+    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+  }
+};
+
 const App = () => (
   <AuthProvider>
     <BrowserRouter basename={routerBaseName}>
@@ -35,9 +41,15 @@ export default App;
 
 const HashCleanup = () => {
   useEffect(() => {
-    if (window.location.hash === "#diagnostico") {
-      window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
-    }
+    clearDiagnosticHash();
+
+    window.addEventListener("hashchange", clearDiagnosticHash);
+    window.addEventListener("popstate", clearDiagnosticHash);
+
+    return () => {
+      window.removeEventListener("hashchange", clearDiagnosticHash);
+      window.removeEventListener("popstate", clearDiagnosticHash);
+    };
   }, []);
 
   return null;

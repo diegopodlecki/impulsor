@@ -11,10 +11,17 @@ export function ContactForm() {
   const [submitting, setSubmitting] = React.useState(false);
   const [status, setStatus] = React.useState("");
 
+  const clearDiagnosticHash = React.useCallback(() => {
+    if (window.location.hash === "#diagnostico") {
+      window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+    }
+  }, []);
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (submitting) return;
 
+    clearDiagnosticHash();
     setSubmitting(true);
     setStatus("Enviando...");
 
@@ -52,10 +59,12 @@ export function ContactForm() {
       setNombre("");
       setEmail("");
       setMensaje("");
+      clearDiagnosticHash();
     } catch (error) {
       console.error(error);
       toast.error("Error al enviar formulario");
       setStatus("");
+      clearDiagnosticHash();
     } finally {
       setSubmitting(false);
     }
