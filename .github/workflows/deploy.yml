@@ -33,12 +33,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      # Ensure Hostinger-required files (PHP backend + .htaccess) exist in dist/
+      # Ensure Hostinger-required files (.htaccess) exist in dist/
       - name: Prepare dist for Hostinger
         run: |
           cp -f hostinger/public_html/.htaccess dist/.htaccess
-          cp -f hostinger/public_html/enviar.php dist/enviar.php
-          cp -f hostinger/public_html/config.php dist/config.php
           mkdir -p dist/demos
           cp -f demos/*.html dist/demos/
 
@@ -52,4 +50,5 @@ jobs:
           local-dir: dist/
           server-dir: /public_html/
           dangerous-clean-slate: true
+
 
