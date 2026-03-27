@@ -34,7 +34,8 @@ function doPost(e) {
 
   try {
     enviarNotificacion(data);
-  } catch (_) {
+  } catch (error) {
+    console.error('Error al enviar notificación:', error);
     // No bloquear el guardado por un error de notificacion.
   }
 
@@ -102,6 +103,6 @@ function escapeHtml_(value) {
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/\"/g, '&quot;')
+    .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 }

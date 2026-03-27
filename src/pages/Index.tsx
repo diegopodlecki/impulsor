@@ -47,6 +47,33 @@ const faqs = [
   },
 ];
 
+const showcases = [
+  {
+    title: "Entrenador personal",
+    tone: "Naranja de alto impacto",
+    text: "Un estilo energetico y directo, pensado para vender transformacion fisica y sesiones premium.",
+    tags: ["hero fuerte", "servicios", "testimonios"],
+  },
+  {
+    title: "Psicologia clinica",
+    tone: "Azul calmo y confiable",
+    text: "Una estetica sobria, limpia y humana para transmitir confianza y reservar turnos sin friccion.",
+    tags: ["agenda", "confianza", "claridad"],
+  },
+  {
+    title: "Nutricion y bienestar",
+    tone: "Verde fresco y profesional",
+    text: "Pensado para planes, seguimiento y conversion, con una lectura rapida y ordenada.",
+    tags: ["planes", "seguimiento", "conversion"],
+  },
+  {
+    title: "Estetica corporal",
+    tone: "Oscuro premium con brillo",
+    text: "Un look mas editorial y sofisticado, ideal para servicios de alto ticket y marca personal.",
+    tags: ["premium", "marca personal", "alto ticket"],
+  },
+];
+
 export default function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -74,6 +101,9 @@ export default function Index() {
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#proceso">
               Proceso
+            </a>
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#ejemplos">
+              Ejemplos
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#contacto">
               Contacto
@@ -139,7 +169,7 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="lg:col-span-6">
+          <div id="contacto" className="lg:col-span-6">
             <div className="card-neon glow-soft rounded-3xl border border-border/70 bg-gradient-card p-6 shadow-card sm:p-8">
               <div className="mb-6">
                 <p className="text-sm text-muted-foreground">Contacto</p>
@@ -196,6 +226,48 @@ export default function Index() {
               <div className="text-sm font-semibold tracking-tight text-[hsl(var(--neon-cyan))]">{step.title}</div>
               <p className="mt-4 text-sm leading-6 text-muted-foreground">{step.text}</p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="ejemplos" className="container py-12 sm:py-16">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="mb-3 text-sm font-medium uppercase tracking-[0.22em] text-muted-foreground">Ejemplos</p>
+          <h2 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
+            La parte visual que hacia que las demos se sintieran reales
+          </h2>
+          <p className="mt-3 text-pretty text-muted-foreground">
+            Rescatamos la idea de los ejemplos por rubro, pero ahora como una seccion limpia dentro de la landing.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
+          {showcases.map((item) => (
+            <article
+              key={item.title}
+              className="rounded-3xl border border-border/70 bg-gradient-card p-5 shadow-card transition-transform duration-300 hover:-translate-y-1"
+            >
+              <div className="rounded-2xl border border-white/10 bg-background/20 p-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">Demo visual</span>
+                  <span className="rounded-full border border-border/70 bg-background/40 px-3 py-1 text-[11px] font-medium text-foreground/80">
+                    {item.tone}
+                  </span>
+                </div>
+                <h3 className="mt-4 text-xl font-semibold tracking-tight">{item.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.text}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {item.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-border/60 bg-background/30 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-foreground/80"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
           ))}
         </div>
       </section>

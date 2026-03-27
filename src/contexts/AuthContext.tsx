@@ -4,15 +4,16 @@ import React, { createContext, useContext, useEffect, useMemo, useState } from "
 import { supabase } from "@/lib/supabaseClient";
 
 type AuthErrorLike = { message: string };
-type AuthCallResult = Promise<{ data: unknown; error: AuthErrorLike | null }>;
+type AuthSessionResult = Promise<{ data: { session: Session | null }; error: AuthErrorLike | null }>;
+type AuthVoidResult = Promise<{ data: null; error: AuthErrorLike | null }>;
 
 type AuthContextValue = {
   user: User | null;
   session: Session | null;
   loading: boolean;
-  signUp: (email: string, password: string) => AuthCallResult;
-  signIn: (email: string, password: string) => AuthCallResult;
-  signOut: () => AuthCallResult;
+  signUp: (email: string, password: string) => AuthSessionResult;
+  signIn: (email: string, password: string) => AuthSessionResult;
+  signOut: () => AuthVoidResult;
 };
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
@@ -75,21 +76,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       loading,
       signUp: (email: string, password: string) =>
         supabase
-          ? (supabase.auth.signUp({ email, password }) as unknown as AuthCallResult)
+          ? (supabase.auth.signUp({ email, password }) as unknown as AuthSessionResult)
           : Promise.resolve({
-              data: null,
+              data: { session: null },
               error: { message: "Supabase no está configurado en este build." },
             }),
       signIn: (email: string, password: string) =>
         supabase
-          ? (supabase.auth.signInWithPassword({ email, password }) as unknown as AuthCallResult)
+          ? (supabase.auth.signInWithPassword({ email, password }) as unknown as AuthSessionResult)
           : Promise.resolve({
-              data: null,
+              data: { session: null },
               error: { message: "Supabase no está configurado en este build." },
             }),
       signOut: () =>
         supabase
-          ? (supabase.auth.signOut() as unknown as AuthCallResult)
+          ? (supabase.auth.signOut() as unknown as AuthVoidResult)
           : Promise.resolve({
               data: null,
               error: { message: "Supabase no está configurado en este build." },

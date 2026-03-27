@@ -76,26 +76,45 @@ export async function enviarEmailFormulario(params: {
     return { error: { message: "Supabase no esta configurado en este build." } };
   }
 
-  const response = await fetch(`${supabaseUrl}/functions/v1/send-email`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      apikey: supabaseAnonKey,
-      Authorization: `Bearer ${supabaseAnonKey}`,
-    },
-    body: JSON.stringify({
-      nombre: params.nombre.trim(),
-      correo_electronico: params.correo_electronico.trim(),
-      mensaje: params.mensaje.trim(),
-    }),
-  });
+  try {
+    const response = await fetch(`${supabaseUrl}/functions/v1/resend-email`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: supabaseAnonKey,
+        Authorization: `Bearer ${supabaseAnonKey}`,
+      },
+      body: JSON.stringify({
+        nombre: params.nombre.trim(),
+        correo_electronico: params.correo_electronico.trim(),
+        mensaje: params.mensaje.trim(),
+      }),
+    });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    return { error: { message: errorText || `Edge function respondio ${response.status}` } };
+    if (!response.ok) {
+      const contentType = response.headers.get("content-type") ?? "";
+      let errorMessage = `Edge function respondio ${response.status}`;
+
+      if (contentType.includes("application/json")) {
+        try {
+          const body = (await response.json()) as { error?: string; message?: string };
+          errorMessage = body.error ?? body.message ?? errorMessage;
+        } catch {
+          // Fall through to the default message below.
+        }
+      } else {
+        const errorText = await response.text();
+        errorMessage = errorText || errorMessage;
+      }
+
+      return { error: { message: errorMessage } };
+    }
+
+    return { error: null };
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : "Error desconocido al enviar email";
+    return { error: { message: errorMessage } };
   }
-
-  return { error: null };
 }
 
 export function toCsv(formularios: Formulario[]) {

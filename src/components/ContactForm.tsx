@@ -4,12 +4,18 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { enviarEmailFormulario, insertarFormulario } from "@/features/formularios/formularios";
 
+function isValidEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
 export function ContactForm() {
   const [nombre, setNombre] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [mensaje, setMensaje] = React.useState("");
   const [submitting, setSubmitting] = React.useState(false);
   const [status, setStatus] = React.useState("");
+  const [emailError, setEmailError] = React.useState("");
 
   const clearDiagnosticHash = React.useCallback(() => {
     if (window.location.hash === "#diagnostico") {
@@ -17,9 +23,24 @@ export function ContactForm() {
     }
   }, []);
 
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+    if (value && !isValidEmail(value)) {
+      setEmailError("Formato de email inválido");
+    } else {
+      setEmailError("");
+    }
+  };
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (submitting) return;
+
+    if (!isValidEmail(email)) {
+      setEmailError("Formato de email inválido");
+      return;
+    }
 
     clearDiagnosticHash();
     setSubmitting(true);
@@ -35,30 +56,25 @@ export function ContactForm() {
       if (insertError) throw insertError;
       toast.success("Formulario guardado");
 
-      try {
-        const { error: emailError } = await enviarEmailFormulario({
-          nombre,
-          correo_electronico: email,
-          mensaje,
-        });
+      const { error: emailError } = await enviarEmailFormulario({
+        nombre,
+        correo_electronico: email,
+        mensaje,
+      });
 
-        if (emailError) {
-          console.error("ERROR EMAIL:", emailError);
-          toast.error("Se guardó el mensaje, pero falló el aviso por email");
-          setStatus("Formulario enviado. El aviso por email falló, pero los datos quedaron guardados.");
-        } else {
-          toast.success("Aviso por email enviado");
-          setStatus("Formulario enviado correctamente.");
-        }
-      } catch (emailError) {
+      if (emailError) {
         console.error("ERROR EMAIL:", emailError);
-        toast.error("Se guardó el mensaje, pero falló el aviso por email");
-        setStatus("Formulario enviado. El aviso por email falló, pero los datos quedaron guardados.");
+        toast.error(`Se guardó el mensaje, pero falló el aviso por email: ${emailError.message}`);
+        setStatus(`Formulario enviado. El aviso por email falló: ${emailError.message}`);
+      } else {
+        toast.success("Aviso por email enviado");
+        setStatus("Formulario enviado correctamente.");
       }
 
       setNombre("");
       setEmail("");
       setMensaje("");
+      setEmailError("");
       clearDiagnosticHash();
     } catch (error) {
       console.error(error);
@@ -90,12 +106,15 @@ export function ContactForm() {
         <input
           type="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleEmailChange}
           required
           autoComplete="email"
-          className="h-11 rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+          className={`h-11 rounded-xl border bg-background/40 px-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring ${
+            emailError ? "border-red-500" : "border-border"
+          }`}
           placeholder="tu@email.com"
         />
+        {emailError && <p className="text-xs text-red-500">{emailError}</p>}
       </label>
 
       <label className="grid gap-2">
@@ -111,7 +130,7 @@ export function ContactForm() {
       </label>
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <Button type="submit" variant="hero" size="lg" className="justify-center" disabled={submitting}>
+        <Button type="submit" variant="hero" size="lg" className="justify-center" disabled={submitting || Boolean(emailError)}>
           {submitting ? "Enviando..." : "Enviar formulario"}
         </Button>
         <p className="text-xs text-muted-foreground">{status || "Los datos se guardan en la tabla formularios."}</p>
