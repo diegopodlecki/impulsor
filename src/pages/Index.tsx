@@ -6,8 +6,8 @@ import { ContactForm } from "@/components/ContactForm";
 const highlights = [
   "Diseño premium y mobile-first",
   "Leads guardados en Supabase",
-  "Aviso por email al instante",
-  "Panel admin privado con login",
+  "Aviso por correo al instante",
+  "Panel admin privado con inicio de sesión",
 ];
 
 const steps = [
@@ -21,7 +21,7 @@ const steps = [
   },
   {
     title: "3. Seguimiento",
-    text: "Se dispara el email automático y el lead no se pierde en el camino.",
+    text: "Se dispara el correo automático y el contacto no se pierde en el camino.",
   },
 ];
 
@@ -39,7 +39,7 @@ const faqs = [
   },
   {
     q: "¿Necesito un backend aparte?",
-    a: "No. La app usa Supabase para base, auth y funciones de email, así que la arquitectura queda simple.",
+    a: "No. La app usa Supabase para base, auth y funciones de correo, así que la arquitectura queda simple.",
   },
   {
     q: "¿Puedo cambiar el branding?",
@@ -51,25 +51,25 @@ const showcases = [
   {
     title: "Entrenador personal",
     tone: "Naranja de alto impacto",
-    text: "Un estilo energetico y directo, pensado para vender transformacion fisica y sesiones premium.",
+    text: "Un estilo enérgico y directo, pensado para vender transformación física y sesiones premium.",
     tags: ["hero fuerte", "servicios", "testimonios"],
   },
   {
-    title: "Psicologia clinica",
+    title: "Psicología clínica",
     tone: "Azul calmo y confiable",
-    text: "Una estetica sobria, limpia y humana para transmitir confianza y reservar turnos sin friccion.",
+    text: "Una estética sobria, limpia y humana para transmitir confianza y reservar turnos sin fricción.",
     tags: ["agenda", "confianza", "claridad"],
   },
   {
-    title: "Nutricion y bienestar",
+    title: "Nutrición y bienestar",
     tone: "Verde fresco y profesional",
-    text: "Pensado para planes, seguimiento y conversion, con una lectura rapida y ordenada.",
-    tags: ["planes", "seguimiento", "conversion"],
+    text: "Pensado para planes, seguimiento y conversión, con una lectura rápida y ordenada.",
+    tags: ["planes", "seguimiento", "conversión"],
   },
   {
-    title: "Estetica corporal",
+    title: "Estética corporal",
     tone: "Oscuro premium con brillo",
-    text: "Un look mas editorial y sofisticado, ideal para servicios de alto ticket y marca personal.",
+    text: "Un look más editorial y sofisticado, ideal para servicios de alto ticket y marca personal.",
     tags: ["premium", "marca personal", "alto ticket"],
   },
 ];
@@ -91,7 +91,7 @@ export default function Index() {
             </div>
             <div>
               <p className="text-sm font-semibold tracking-tight">WebAppImpulsor</p>
-              <p className="text-xs text-muted-foreground">Landing comercial + Supabase + admin</p>
+              <p className="text-xs text-muted-foreground">Landing comercial + Supabase + panel admin</p>
             </div>
           </Link>
 
@@ -131,7 +131,7 @@ export default function Index() {
                 Una landing profesional que convierte visitas en contactos reales
               </h1>
               <p className="mt-5 text-pretty text-base text-muted-foreground sm:text-lg">
-                Diseñada para vender servicios, guardar contactos en Supabase, notificar por email y dejar un panel
+                Diseñada para vender servicios, guardar contactos en Supabase, notificar por correo y dejar un panel
                 admin privado para hacer seguimiento sin perder leads.
               </p>
 
@@ -175,7 +175,7 @@ export default function Index() {
                 <p className="text-sm text-muted-foreground">Contacto</p>
                 <h2 className="mt-2 text-2xl font-semibold tracking-tight">Enviar consulta</h2>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  El formulario guarda en Supabase y dispara el aviso por email automáticamente.
+                  El formulario guarda en Supabase y dispara el aviso por correo automáticamente.
                 </p>
               </div>
               <ContactForm />
@@ -204,7 +204,7 @@ export default function Index() {
           <div className="rounded-3xl border border-border/70 bg-gradient-card p-6 shadow-card">
             <Zap className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />
             <h3 className="mt-4 text-lg font-semibold">Escalable</h3>
-            <p className="mt-2 text-sm text-muted-foreground">La base ya está modular para agregar más clientes o features.</p>
+            <p className="mt-2 text-sm text-muted-foreground">La base ya está modular para agregar más clientes o funcionalidades.</p>
           </div>
         </div>
       </section>
@@ -303,7 +303,7 @@ export default function Index() {
 
             <div className="grid gap-3">
               {[
-                "Búsqueda por nombre, email o mensaje",
+                "Búsqueda por nombre, correo o mensaje",
                 "Filtro por fecha y estado",
                 "Exportación CSV para respaldo",
                 "Autenticación con Supabase",
@@ -344,7 +344,7 @@ export default function Index() {
             <p className="font-semibold tracking-tight">WebAppImpulsor</p>
             <p className="text-sm text-muted-foreground">Landing comercial con backend real.</p>
           </div>
-          <div className="text-sm text-muted-foreground">Formulario, admin y email automático integrados.</div>
+          <div className="text-sm text-muted-foreground">Formulario, panel admin y correo automático integrados.</div>
         </div>
       </footer>
     </main>

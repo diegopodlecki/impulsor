@@ -47,12 +47,12 @@ export default function Login() {
     <div className="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center px-6 py-10">
       <h1 className="text-2xl font-semibold">Ingresar</h1>
       <p className="mt-1 text-sm text-muted-foreground">
-        Accedé con tu email y contraseña.
+        Accedé con tu correo electrónico y contraseña.
       </p>
 
       <form onSubmit={onSubmit} className="mt-6 space-y-4">
         <label className="block space-y-1">
-          <span className="text-sm">Email</span>
+          <span className="text-sm">Correo electrónico</span>
           <input
             type="email"
             autoComplete="email"
@@ -82,7 +82,7 @@ export default function Login() {
         ) : null}
 
         <Button type="submit" className="w-full" disabled={submitting}>
-          {submitting ? "Ingresando…" : "Ingresar"}
+          {submitting ? "Ingresando..." : "Ingresar"}
         </Button>
       </form>
 

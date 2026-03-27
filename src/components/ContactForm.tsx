@@ -27,7 +27,7 @@ export function ContactForm() {
     const value = e.target.value;
     setEmail(value);
     if (value && !isValidEmail(value)) {
-      setEmailError("Formato de email inválido");
+      setEmailError("Formato de correo inválido");
     } else {
       setEmailError("");
     }
@@ -38,7 +38,7 @@ export function ContactForm() {
     if (submitting) return;
 
     if (!isValidEmail(email)) {
-      setEmailError("Formato de email inválido");
+      setEmailError("Formato de correo inválido");
       return;
     }
 
@@ -64,10 +64,10 @@ export function ContactForm() {
 
       if (emailError) {
         console.error("ERROR EMAIL:", emailError);
-        toast.error(`Se guardó el mensaje, pero falló el aviso por email: ${emailError.message}`);
-        setStatus(`Formulario enviado. El aviso por email falló: ${emailError.message}`);
+        toast.error(`Se guardó el mensaje, pero falló el aviso por correo: ${emailError.message}`);
+        setStatus(`Formulario enviado. El aviso por correo falló: ${emailError.message}`);
       } else {
-        toast.success("Aviso por email enviado");
+        toast.success("Aviso por correo enviado");
         setStatus("Formulario enviado correctamente.");
       }
 
@@ -102,7 +102,7 @@ export function ContactForm() {
       </label>
 
       <label className="grid gap-2">
-        <span className="text-sm font-medium text-foreground/90">Email</span>
+        <span className="text-sm font-medium text-foreground/90">Correo electrónico</span>
         <input
           type="email"
           value={email}
@@ -112,7 +112,7 @@ export function ContactForm() {
           className={`h-11 rounded-xl border bg-background/40 px-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring ${
             emailError ? "border-red-500" : "border-border"
           }`}
-          placeholder="tu@email.com"
+          placeholder="tu@correo.com"
         />
         {emailError && <p className="text-xs text-red-500">{emailError}</p>}
       </label>

@@ -146,7 +146,7 @@ export default function Admin() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col gap-4 border-b border-border/60 pb-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <p className="text-sm text-muted-foreground">Admin</p>
+              <p className="text-sm text-muted-foreground">Panel</p>
               <h1 className="mt-1 text-3xl font-semibold tracking-tight">Formularios</h1>
               <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
                 Panel privado con búsqueda, filtros, exportación y estado leído/no leído.
@@ -184,7 +184,7 @@ export default function Admin() {
                       <input
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Nombre, email o mensaje"
+                        placeholder="Nombre, correo o mensaje"
                         className="h-11 w-full rounded-xl border border-border bg-background/40 pl-10 pr-3 text-sm outline-none focus:ring-2 focus:ring-ring"
                       />
                     </div>
@@ -239,7 +239,7 @@ export default function Admin() {
                         <tr>
                           <th className="px-6 py-4 font-medium">Estado</th>
                           <th className="px-6 py-4 font-medium">Nombre</th>
-                          <th className="px-6 py-4 font-medium">Email</th>
+                          <th className="px-6 py-4 font-medium">Correo</th>
                           <th className="px-6 py-4 font-medium">Mensaje</th>
                           <th className="px-6 py-4 font-medium">Fecha</th>
                           <th className="px-6 py-4 font-medium">Acción</th>
