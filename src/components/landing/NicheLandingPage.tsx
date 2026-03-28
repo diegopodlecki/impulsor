@@ -321,6 +321,68 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </section>
 
+      {/* Ejemplo Visual Section */}
+      <section className="container py-12 sm:py-16">
+        <SectionTitle
+          eyebrow="Ejemplo visual"
+          title="Así podría verse tu web"
+          description="Un diseño profesional enfocado en convertir visitas en clientes."
+        />
+
+        <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-[1.5rem] border border-border/70 bg-gradient-card shadow-card">
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-primary" />
+              <img
+                src={config.heroImage}
+                alt={`Mockup de web para ${config.title}`}
+                className="h-[400px] w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div className="absolute -bottom-6 -right-6 w-32 overflow-hidden rounded-2xl border border-border/70 bg-background shadow-xl sm:-bottom-8 sm:-right-8 sm:w-40">
+              <img
+                src={config.heroMockupImage}
+                alt={`Vista móvil de ${config.title}`}
+                className="h-44 w-full object-cover sm:h-52"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <h3 className="text-2xl font-semibold tracking-tight">Diseño profesional que convierte</h3>
+            <p className="text-sm leading-6 text-muted-foreground">
+              Tu web va a tener un diseño moderno, profesional y enfocado en resultados. Cada sección está pensada para guiar al visitante hacia el contacto.
+            </p>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <div className="mt-1 h-2 w-2 rounded-full bg-[hsl(var(--neon-cyan))]" />
+                <span className="text-sm text-muted-foreground">Hero impactante con tu propuesta de valor</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="mt-1 h-2 w-2 rounded-full bg-[hsl(var(--neon-cyan))]" />
+                <span className="text-sm text-muted-foreground">Secciones claras que generan confianza</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="mt-1 h-2 w-2 rounded-full bg-[hsl(var(--neon-cyan))]" />
+                <span className="text-sm text-muted-foreground">Botón de WhatsApp siempre visible</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="mt-1 h-2 w-2 rounded-full bg-[hsl(var(--neon-cyan))]" />
+                <span className="text-sm text-muted-foreground">Formulario de contacto simple y directo</span>
+              </li>
+            </ul>
+            <Button asChild variant="hero" size="lg" className="justify-center">
+              <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
+                Quiero mi web
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Beneficios Section */}
       <section id="beneficios" className="container py-12 sm:py-16">
         <div className="grid gap-8 lg:grid-cols-[1fr_0.95fr] lg:items-center">

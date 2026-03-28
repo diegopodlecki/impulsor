@@ -116,7 +116,7 @@ export function ContactForm({
 
         <p className="mt-4 text-sm leading-6 text-muted-foreground">{description}</p>
         <p className="mt-3 text-sm font-medium text-foreground/90">
-          Te respondemos por WhatsApp y por correo desde <span className="font-semibold">hola@webappimpulsor.com</span>.
+          Te respondemos por WhatsApp y por correo desde <span className="font-semibold">info.diego@webappimpulsor.com</span>.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
