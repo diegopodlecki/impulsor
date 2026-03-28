@@ -88,15 +88,15 @@ export function ContactForm() {
   }
 
   return (
-    <div className="rounded-[1.75rem] border border-border/70 bg-background/30 p-1">
-      <div className="rounded-[1.5rem] border border-border/60 bg-gradient-card p-5 shadow-card sm:p-6">
+    <div className="surface-card hover-card rounded-[1.75rem] p-1">
+      <div className="surface-card hover-card rounded-[1.5rem] p-5 sm:p-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground">Formulario de contacto</p>
             <h3 className="mt-2 text-2xl font-semibold tracking-tight">Pedí tu web y empezá a recibir clientes</h3>
           </div>
           <div className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-300">
-            Te respondo en menos de 24 hs
+            Te respondemos en menos de 24 hs
           </div>
         </div>
 
@@ -114,7 +114,7 @@ export function ContactForm() {
                 onChange={(e) => setNombre(e.target.value)}
                 required
                 autoComplete="name"
-                className="h-11 rounded-2xl border border-border bg-background/40 px-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                className="h-11 rounded-2xl border border-border bg-background/20 px-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring backdrop-blur"
                 placeholder="Ej. María López"
               />
             </label>
@@ -127,7 +127,7 @@ export function ContactForm() {
                 onChange={(e) => setWhatsapp(e.target.value)}
                 required
                 autoComplete="tel"
-                className="h-11 rounded-2xl border border-border bg-background/40 px-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                className="h-11 rounded-2xl border border-border bg-background/20 px-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring backdrop-blur"
                 placeholder="+54 11 1234 5678"
               />
             </label>
@@ -139,7 +139,7 @@ export function ContactForm() {
               value={tipoNegocio}
               onChange={(e) => setTipoNegocio(e.target.value)}
               required
-              className="h-11 rounded-2xl border border-border bg-background/40 px-4 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+              className="h-11 rounded-2xl border border-border bg-background/20 px-4 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring backdrop-blur"
             >
               {businessOptions.map((option) => (
                 <option key={option} value={option}>
@@ -154,7 +154,7 @@ export function ContactForm() {
               {submitting ? "Enviando..." : "Quiero mi web"}
             </Button>
             <p className="text-xs text-muted-foreground">
-              {status || "Te respondo en menos de 24 hs y sin compromiso."}
+              {status || "Te respondemos en menos de 24 hs y sin compromiso."}
             </p>
           </div>
         </form>
