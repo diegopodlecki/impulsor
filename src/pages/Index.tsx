@@ -402,7 +402,8 @@ export default function Index() {
 
           <div className="surface-card hover-card rounded-[2rem] p-6 sm:p-8">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Quién está detrás</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Quién soy</h2>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Diego Podlecki</h2>
+            <p className="mt-2 text-sm text-muted-foreground">Diseñador web enfocado en resultados</p>
             <p className="mt-4 text-sm leading-7 text-muted-foreground">
               Soy Diego Podlecki, el creador de WebAppImpulsor. Diseño páginas web para negocios que necesitan algo
               más que "verse bien": necesitan generar consultas, confianza y ventas reales.
@@ -410,6 +411,10 @@ export default function Index() {
             <p className="mt-4 text-sm leading-7 text-muted-foreground">
               Empecé este proyecto para ayudar a negocios de servicios a dejar de depender solo de redes y tener una
               web que trabaje como una verdadera herramienta comercial.
+            </p>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground">
+              Trabajo con gimnasios, entrenadores personales, nutricionistas, psicólogos y centros de estética que quieren
+              más clientes sin depender solo del boca a boca.
             </p>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -519,7 +524,7 @@ export default function Index() {
             <p className="font-semibold tracking-tight">WebAppImpulsor</p>
             <p className="text-sm text-muted-foreground">Landing de conversión con Supabase y WhatsApp.</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              Diego Podlecki · <a className="transition-colors hover:text-foreground" href="mailto:hola@webappimpulsor.com">hola@webappimpulsor.com</a>
+              Diego Podlecki · <a className="transition-colors hover:text-foreground" href="mailto:info.diego@webappimpulsor.com">info.diego@webappimpulsor.com</a>
             </p>
           </div>
           <div className="text-sm text-muted-foreground">WhatsApp, formulario y seguimiento de consultas integrados.</div>
