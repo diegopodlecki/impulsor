@@ -1,6 +1,6 @@
 import { useEffect, type ReactNode } from "react";
 
-import { ArrowRight, CheckCircle2, MessageCircle, Sparkles, Target, TrendingUp, Zap } from "lucide-react";
+import { ArrowRight, CheckCircle2, MessageCircle, Sparkles, Target, TrendingUp, Zap, Star, Quote } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { ContactForm } from "@/components/ContactForm";
@@ -119,6 +119,27 @@ const landingSeo: Record<
   },
 };
 
+const testimonials = [
+  {
+    name: "María González",
+    role: "Dueña de gimnasio",
+    text: "Desde que tenemos la web, recibimos 3-4 consultas por día. Antes dependíamos solo de Instagram.",
+    rating: 5,
+  },
+  {
+    name: "Carlos Rodríguez",
+    role: "Personal Trainer",
+    text: "Mi marca personal se ve mucho más profesional. Los clientes me encuentran más fácil y confían más.",
+    rating: 5,
+  },
+  {
+    name: "Laura Martínez",
+    role: "Nutricionista",
+    text: "La web me ayuda a filtrar pacientes y agendar consultas sin perder tiempo. Muy recomendable.",
+    rating: 5,
+  },
+];
+
 export function NicheLandingPage({ config }: { config: LandingConfig }) {
   useEffect(() => {
     const seo = landingSeo[config.slug];
@@ -165,11 +186,14 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
           </Link>
 
           <nav className="hidden items-center gap-4 sm:flex">
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#problema">
-              Problema
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#servicios">
+              Servicios
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#beneficios">
               Beneficios
+            </a>
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#testimonios">
+              Testimonios
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#contacto">
               Contacto
@@ -184,6 +208,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </header>
 
+      {/* Hero Section */}
       <section className="container py-12 sm:py-16 lg:py-20">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="space-y-6">
@@ -203,7 +228,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
                 </a>
               </Button>
               <Button asChild variant="outline" size="lg" className="justify-center">
-              <a href="#beneficios">{config.heroSecondaryCta}</a>
+              <a href="#servicios">{config.heroSecondaryCta}</a>
               </Button>
             </div>
 
@@ -214,65 +239,64 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
             </div>
           </div>
 
-          <div className="surface-card hover-card overflow-hidden rounded-[2rem] p-4 sm:p-5">
-            <div className="grid gap-4 lg:grid-cols-[1fr_1.05fr]">
-              <div className="rounded-[1.5rem] border border-border/60 bg-background/30 p-4 backdrop-blur">
-                <div className="flex items-center justify-between gap-4">
-                  <p className="text-sm font-semibold text-muted-foreground">Vista previa</p>
-                  <span className="rounded-full border border-border/60 bg-background/30 px-3 py-1 text-xs font-semibold text-foreground/90">
-                    {config.heroBadge}
-                  </span>
-                </div>
-                <div className="mt-5 space-y-3">
-                  <div className="rounded-2xl bg-background/30 p-4">
-                    <p className="text-sm text-muted-foreground">{config.heroPreviewTitle}</p>
-                    <p className="mt-1 text-xl font-semibold tracking-tight">{config.heroTitle}</p>
-                  </div>
-                  <div className="rounded-2xl bg-background/30 p-4">
-                    <p className="text-sm text-muted-foreground">Mensaje</p>
-                    <p className="mt-1 text-lg font-medium text-foreground/90">{config.heroSubtitle}</p>
-                  </div>
-                  <div className="rounded-2xl bg-background/30 p-4">
-                    <p className="text-sm text-muted-foreground">Objetivo</p>
-                    <p className="mt-1 text-lg font-semibold text-foreground">Recibir consultas todos los días</p>
-                  </div>
-                </div>
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-gradient-card shadow-card">
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-primary" />
+              <img
+                src={config.heroImage}
+                alt={config.heroTitle}
+                className="h-[500px] w-full object-cover"
+                loading="eager"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-6">
+                <p className="text-sm font-semibold text-foreground">{config.heroPreviewTitle}</p>
+                <p className="mt-1 text-xs text-muted-foreground">{config.heroPreviewSubtitle}</p>
               </div>
-              <div className="overflow-hidden rounded-[1.5rem]">
-                <img src={config.heroImage} alt={config.heroTitle} className="h-full w-full object-cover" loading="eager" />
-              </div>
+            </div>
+            {/* Mockup de celular */}
+            <div className="absolute -bottom-6 -right-6 w-48 overflow-hidden rounded-2xl border border-border/70 bg-background shadow-xl">
+              <img
+                src={config.heroImage}
+                alt="Vista móvil"
+                className="h-64 w-full object-cover"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="problema" className="container py-12 sm:py-16">
+      {/* Servicios Section */}
+      <section id="servicios" className="container py-12 sm:py-16">
         <SectionTitle
-          eyebrow="Problema"
-          title={config.problemsTitle}
-          description="Identificar el problema correcto ayuda a que la landing hable directamente con tu cliente ideal."
+          eyebrow="Servicios"
+          title={config.solutionTitle}
+          description={config.solutionText}
         />
         <SectionActions />
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {config.problems.map((item) => (
-            <div key={item.title} className="surface-card hover-card rounded-3xl p-6">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-border/60 bg-background/30">
-                <MessageCircle className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {config.solutionPoints.map((point, index) => (
+            <div key={point} className="surface-card hover-card rounded-3xl p-6">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-primary">
+                <span className="text-lg font-bold text-primary-foreground">{index + 1}</span>
               </div>
-              <h3 className="mt-4 text-xl font-semibold tracking-tight">{item.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.text}</p>
+              <h3 className="mt-4 text-xl font-semibold tracking-tight">{point}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                {index === 0 ? "Lo que más le importa ver al cliente." : index === 1 ? "La información clara acelera la decisión." : index === 2 ? "Todo queda pensado para cerrar mejor." : "Elemento clave para tu negocio."}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
+      {/* Beneficios Section */}
       <section id="beneficios" className="container py-12 sm:py-16">
         <div className="grid gap-8 lg:grid-cols-[1fr_0.95fr] lg:items-center">
           <div className="surface-card hover-card rounded-[2rem] p-6 sm:p-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Solución</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">{config.solutionTitle}</h2>
-            <p className="mt-4 text-sm leading-7 text-muted-foreground">{config.solutionText}</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Beneficios</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">{config.benefitsTitle}</h2>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground">La landing está pensada para mover a la persona desde la duda hasta el contacto.</p>
             <div className="mt-6">
               <Button asChild variant="hero" size="sm">
                 <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
@@ -282,9 +306,10 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
             </div>
 
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {config.solutionPoints.map((point) => (
-                <div key={point} className="p-4">
-                  <p className="text-sm font-semibold text-foreground">{point}</p>
+              {config.benefits.map((item) => (
+                <div key={item.title} className="p-4">
+                  <p className="text-sm font-semibold text-foreground">{item.title}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{item.text}</p>
                 </div>
               ))}
             </div>
@@ -292,15 +317,13 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
           <div className="surface-card hover-card rounded-[2rem] p-6 sm:p-8">
             <div className="grid gap-4 sm:grid-cols-3">
-              {config.solutionPoints.slice(0, 3).map((point, index) => (
-                <div key={point} className="p-5">
+              {config.benefits.slice(0, 3).map((item, index) => (
+                <div key={item.title} className="p-5">
                   <div className="flex h-10 w-10 items-center justify-center">
                     <CheckCircle2 className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />
                   </div>
-                  <p className="mt-3 font-semibold text-foreground">{point}</p>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    {index === 0 ? "Lo que más le importa ver al cliente." : index === 1 ? "La información clara acelera la decisión." : "Todo queda pensado para cerrar mejor."}
-                  </p>
+                  <p className="mt-3 font-semibold text-foreground">{item.title}</p>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.text}</p>
                 </div>
               ))}
             </div>
@@ -308,27 +331,39 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </section>
 
-      <section className="container py-12 sm:py-16">
+      {/* Testimonios Section */}
+      <section id="testimonios" className="container py-12 sm:py-16">
         <SectionTitle
-          eyebrow="Beneficios"
-          title={config.benefitsTitle}
-          description="La landing está pensada para mover a la persona desde la duda hasta el contacto."
+          eyebrow="Testimonios"
+          title="Lo que dicen nuestros clientes"
+          description="Historias reales de negocios que mejoraron su presencia online."
         />
-        <SectionActions />
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {config.benefits.map((item) => (
-            <div key={item.title} className="surface-card hover-card rounded-3xl p-6">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-border/60 bg-background/30">
-                <Sparkles className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {testimonials.map((testimonial) => (
+            <div key={testimonial.name} className="surface-card hover-card rounded-3xl p-6">
+              <div className="flex items-center gap-1">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                ))}
               </div>
-              <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.text}</p>
+              <Quote className="mt-4 h-8 w-8 text-muted-foreground/50" />
+              <p className="mt-4 text-sm leading-6 text-muted-foreground">{testimonial.text}</p>
+              <div className="mt-6 flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-primary">
+                  <span className="text-sm font-bold text-primary-foreground">{testimonial.name.charAt(0)}</span>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold">{testimonial.name}</p>
+                  <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
+      {/* Proceso Section */}
       <section className="container py-12 sm:py-16">
         <SectionTitle
           eyebrow="Proceso"
@@ -348,6 +383,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </section>
 
+      {/* Sobre mí Section */}
       <section className="container py-12 sm:py-16">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="surface-card hover-card rounded-[2rem] p-4 sm:p-6">
@@ -377,6 +413,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </section>
 
+      {/* Formulario Section */}
       <section id="contacto" className="container py-12 sm:py-16">
         <SectionTitle
           eyebrow="Formulario"
@@ -390,6 +427,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </section>
 
+      {/* CTA Final */}
       <section className="container py-12 sm:py-16">
         <div className="surface-card hover-card rounded-[2rem] px-6 py-10 text-center sm:px-8 lg:px-12">
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">CTA final</p>
@@ -409,6 +447,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </section>
 
+      {/* WhatsApp Flotante */}
       <a
         href={defaultWhatsappLink()}
         target="_blank"
