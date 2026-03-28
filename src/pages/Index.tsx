@@ -215,16 +215,11 @@ export default function Index() {
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-6">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/30 px-4 py-2 text-sm font-medium text-foreground/90">
-                <Zap className="h-4 w-4 text-[hsl(var(--neon-cyan))]" />
-                Creamamos páginas web que generan clientes
-              </div>
               <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-                Creamamos páginas web que generan clientes, no solo visitas
+                Tu web debería traerte clientes, no solo verse bien
               </h1>
               <p className="mt-5 max-w-xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
-                Si tu negocio está online pero no recibe consultas, el problema no es el mercado, es tu web. Nosotros lo
-                solucionamos.
+                Si tu negocio no recibe consultas, el problema no es el mercado, es tu web.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
