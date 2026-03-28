@@ -59,6 +59,37 @@ function previewSvg(title: string, subtitle: string, accentA: string, accentB: s
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
 
+function profileSvg(name: string, role: string) {
+  const safeName = xmlEscape(name);
+  const safeRole = xmlEscape(role);
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-label="${safeName}">
+      <defs>
+        <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stop-color="#08101d" />
+          <stop offset="100%" stop-color="#12243b" />
+        </linearGradient>
+        <linearGradient id="accent" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stop-color="#22d3ee" />
+          <stop offset="100%" stop-color="#3b82f6" />
+        </linearGradient>
+      </defs>
+      <rect width="900" height="1100" rx="54" fill="url(#bg)" />
+      <circle cx="690" cy="180" r="180" fill="#22d3ee" fill-opacity="0.12" />
+      <circle cx="190" cy="920" r="220" fill="#3b82f6" fill-opacity="0.12" />
+      <circle cx="450" cy="390" r="170" fill="#f8fafc" fill-opacity="0.95" />
+      <circle cx="450" cy="350" r="68" fill="#e2e8f0" />
+      <path d="M325 540c40-92 210-92 250 0v110H325V540Z" fill="#e2e8f0" />
+      <path d="M355 318c42-52 148-52 190 0v35c-18 36-52 62-95 62s-77-26-95-62v-35Z" fill="#0f172a" />
+      <rect x="120" y="760" width="660" height="136" rx="34" fill="#0f172a" fill-opacity="0.8" stroke="#ffffff" stroke-opacity="0.1" />
+      <text x="160" y="816" fill="#ffffff" font-size="34" font-family="Inter, Arial, sans-serif" font-weight="700">${safeName}</text>
+      <text x="160" y="862" fill="#cbd5e1" font-size="22" font-family="Inter, Arial, sans-serif">${safeRole}</text>
+      <rect x="160" y="902" width="210" height="18" rx="9" fill="url(#accent)" />
+    </svg>`;
+
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
 function whatsappLink(message: string) {
   return `${WHATSAPP_URL}?text=${encodeURIComponent(message)}`;
 }
@@ -320,6 +351,60 @@ export default function Index() {
                     {item}
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sobre-mi" className="container py-12 sm:py-16">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="rounded-[2rem] border border-border/70 bg-gradient-card p-6 shadow-card sm:p-8">
+            <img
+              src={profileSvg("Diego Podlecki", "Diseño web enfocado en resultados")}
+              alt="Foto de perfil de Diego Podlecki"
+              className="h-full w-full rounded-[1.5rem] object-cover"
+            />
+          </div>
+
+          <div className="rounded-[2rem] border border-border/70 bg-gradient-card p-6 shadow-card sm:p-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Sobre mí</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+              Quién soy y por qué hago webs que venden
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground">
+              Soy Diego Podlecki. Diseño páginas web para negocios que necesitan algo más que “verse bien”: necesitan
+              generar consultas, confianza y ventas reales.
+            </p>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground">
+              Me enfoco en ayudar a marcas personales y negocios de servicios porque sé que una buena primera impresión
+              puede cambiar por completo cuántas personas te escriben.
+            </p>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-border/60 bg-background/30 p-4">
+                <p className="text-sm font-semibold">Quién soy</p>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  Un diseñador y desarrollador enfocado en webs claras, directas y pensadas para convertir.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-border/60 bg-background/30 p-4">
+                <p className="text-sm font-semibold">Qué hago</p>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  Creo landing pages que presentan tu servicio, generan confianza y empujan a la acción.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-border/60 bg-background/30 p-4">
+                <p className="text-sm font-semibold">Por qué ayudo a negocios</p>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  Porque muchas marcas pierden oportunidades por no mostrar bien lo que hacen.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-border/60 bg-background/30 p-4">
+                <p className="text-sm font-semibold">Enfoque en resultados</p>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  Todo está pensado para conseguir más consultas, más mensajes y más clientes.
+                </p>
               </div>
             </div>
           </div>
