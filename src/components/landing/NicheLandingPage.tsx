@@ -494,6 +494,56 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </section>
 
+      {/* Sección de Confianza */}
+      <section className="container py-12 sm:py-16">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Confianza</p>
+          <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Más de 50 webs creadas</h2>
+          <p className="mt-4 text-pretty text-muted-foreground">Historias reales de negocios que mejoraron su presencia online.</p>
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="surface-card hover-card rounded-3xl p-6">
+            <p className="text-sm leading-6 text-muted-foreground">"En una semana ya tenía consultas nuevas"</p>
+            <div className="mt-6 flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-primary text-primary-foreground">
+                <span className="text-sm font-bold">MG</span>
+              </div>
+              <div>
+                <p className="text-sm font-semibold">María González</p>
+                <p className="text-xs text-muted-foreground">Dueña de gimnasio</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="surface-card hover-card rounded-3xl p-6">
+            <p className="text-sm leading-6 text-muted-foreground">"Ahora mis clientes me encuentran online"</p>
+            <div className="mt-6 flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-primary text-primary-foreground">
+                <span className="text-sm font-bold">CR</span>
+              </div>
+              <div>
+                <p className="text-sm font-semibold">Carlos Rodríguez</p>
+                <p className="text-xs text-muted-foreground">Personal Trainer</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="surface-card hover-card rounded-3xl p-6">
+            <p className="text-sm leading-6 text-muted-foreground">"La web me ayuda a filtrar pacientes"</p>
+            <div className="mt-6 flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-primary text-primary-foreground">
+                <span className="text-sm font-bold">LM</span>
+              </div>
+              <div>
+                <p className="text-sm font-semibold">Laura Martínez</p>
+                <p className="text-xs text-muted-foreground">Nutricionista</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Formulario Section */}
       <section id="contacto" className="container py-12 sm:py-16">
         <SectionTitle
