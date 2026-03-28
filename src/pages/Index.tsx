@@ -359,7 +359,7 @@ export default function Index() {
           {rubros.map((rubro) => (
             <article
               key={rubro.slug}
-              className="group relative overflow-hidden rounded-[2rem] border border-border/70 bg-gradient-card shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_28px_70px_-28px_rgba(0,0,0,0.7)]"
+              className="group relative overflow-hidden rounded-[2rem] border border-border/70 bg-gradient-card shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_28px_70px_-28px_rgba(0,0,0,0.7)] cursor-pointer"
             >
               <Link to={rubro.demoHref} aria-label={`Abrir landing de ${rubro.title}`} className="absolute inset-0 z-10 rounded-[2rem]" />
               <img src={rubro.image} alt={`Ejemplo de web para ${rubro.title}`} className="h-64 w-full object-cover" loading="lazy" />
