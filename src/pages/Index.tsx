@@ -99,41 +99,51 @@ const rubros = [
   {
     slug: "gimnasios",
     title: "Gimnasios",
+    headline: "Así podría verse tu web si sos dueño de un gimnasio",
     subtitle: "Más consultas, más visitas y más inscripciones.",
     copy: "Mostrá clases, horarios y planes con una web que convierte interés en mensajes.",
     message: "Hola, quiero una web para mi gimnasio que me consiga más consultas e inscripciones.",
+    demoHref: "/demos/code.html",
     preview: previewSvg("Gimnasios", "Clases, planes y reservas", "#22c55e", "#06b6d4"),
   },
   {
     slug: "personal-trainers",
     title: "Personal Trainers",
+    headline: "Así podría verse tu web si sos entrenador personal",
     subtitle: "Construí autoridad y cerrá entrenamientos por chat.",
     copy: "Presentá tu método, tus resultados y un CTA claro para que te escriban sin dudar.",
     message: "Hola, quiero una web para mi trabajo de personal trainer que me ayude a vender más.",
+    demoHref: "/demos/code1.html",
     preview: previewSvg("Personal Trainer", "Resultados y disciplina", "#f97316", "#ef4444"),
   },
   {
     slug: "nutricionistas",
     title: "Nutricionistas",
+    headline: "Así podría verse tu web si sos nutricionista",
     subtitle: "Más consultas para planes, seguimiento y cambios reales.",
     copy: "Mostrá tu enfoque y tu forma de trabajar con una experiencia visual que inspire confianza.",
     message: "Hola, quiero una web para mi consultorio de nutrición y atraer más pacientes.",
+    demoHref: "/demos/code2.html",
     preview: previewSvg("Nutricionista", "Planes, habitos y seguimiento", "#84cc16", "#22c55e"),
   },
   {
     slug: "psicologos",
     title: "Psicologos",
+    headline: "Así podría verse tu web si sos psicólogo",
     subtitle: "Transmití calma, credibilidad y reserva de turnos.",
     copy: "Una página sobria y humana que facilite reservar sesiones sin fricción.",
     message: "Hola, quiero una web para mi consultorio de psicología y agendar más turnos.",
+    demoHref: "/demos/code2.html",
     preview: previewSvg("Psicologia", "Calma, empatia y turnos", "#3b82f6", "#0ea5e9"),
   },
   {
     slug: "estetica-corporal",
     title: "Estetica corporal",
+    headline: "Así podría verse tu web si ofrecés estética corporal",
     subtitle: "Vendé sesiones premium con una imagen más aspiracional.",
     copy: "Mostrá transformación, resultados y una estética cuidada para servicios de alto valor.",
     message: "Hola, quiero una web para estética corporal que me ayude a vender más tratamientos.",
+    demoHref: "/demos/code.html",
     preview: previewSvg("Estetica corporal", "Premium, visual y elegante", "#ec4899", "#f97316"),
   },
 ];
@@ -379,33 +389,37 @@ export default function Index() {
 
       <section id="rubros" className="container py-12 sm:py-16">
         <SectionTitle
-          eyebrow="Páginas por rubro"
-          title="Mostrá tu especialidad con una página hecha para tu tipo de cliente"
-          description="Cada rubro tiene necesidades distintas. La landing debe hablarle a ese cliente específico y llevarlo a pedir turno o cotización."
+          eyebrow="Ejemplos"
+          title="Elegí una solución pensada para tu tipo de cliente"
+          description="No mostramos webs genéricas. Cada demo está presentada como una opción concreta para vender mejor en tu rubro."
         />
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {rubros.map((rubro) => (
-            <article key={rubro.slug} className="overflow-hidden rounded-[2rem] border border-border/70 bg-gradient-card shadow-card">
-              <img src={rubro.preview} alt={`Preview de ${rubro.title}`} className="h-64 w-full object-cover" />
+          {rubros.map((rubro, index) => (
+            <article
+              key={rubro.slug}
+              id={`ejemplo-${rubro.slug}`}
+              className={`overflow-hidden rounded-[2rem] border border-border/70 bg-gradient-card shadow-card ${
+                index === 0 ? "md:col-span-2 xl:col-span-1" : ""
+              }`}
+            >
+              <img src={rubro.preview} alt={`Demo de ${rubro.title}`} className="h-64 w-full object-cover" />
               <div className="p-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-2xl font-semibold tracking-tight">{rubro.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{rubro.subtitle}</p>
-                  </div>
-                  <Badge className="border-transparent bg-background/50 text-foreground" variant="secondary">
-                    Ventas
-                  </Badge>
-                </div>
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground">Ejemplo por rubro</p>
+                <h3 className="mt-3 text-2xl font-semibold tracking-tight">{rubro.title}</h3>
+                <p className="mt-2 text-lg font-medium text-foreground/90">{rubro.headline}</p>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">{rubro.subtitle}</p>
                 <p className="mt-4 text-sm leading-6 text-muted-foreground">{rubro.copy}</p>
+
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   <Button asChild variant="outline" size="sm" className="w-full sm:w-auto">
-                    <a href={`#ejemplo-${rubro.slug}`}>Ver ejemplo</a>
+                    <a href={rubro.demoHref} target="_blank" rel="noreferrer">
+                      Ver demo
+                    </a>
                   </Button>
                   <Button asChild variant="whatsapp" size="sm" className="w-full sm:w-auto">
                     <a href={whatsappLink(rubro.message)} target="_blank" rel="noreferrer">
-                      Quiero una igual
+                      Quiero esta web
                     </a>
                   </Button>
                 </div>
@@ -417,23 +431,26 @@ export default function Index() {
         <div className="mt-14 grid gap-6">
           {rubros.map((rubro, index) => (
             <article
-              key={rubro.slug}
-              id={`ejemplo-${rubro.slug}`}
+              key={`${rubro.slug}-solution`}
               className={`grid gap-6 rounded-[2rem] border border-border/70 bg-gradient-card p-6 shadow-card lg:grid-cols-2 lg:items-center ${
                 index % 2 === 1 ? "lg:[&>img]:order-2" : ""
               }`}
             >
-              <img src={rubro.preview} alt={`Ejemplo ampliado de ${rubro.title}`} className="h-full min-h-[280px] w-full rounded-[1.5rem] object-cover" />
+              <img
+                src={rubro.preview}
+                alt={`Vista ampliada de ${rubro.title}`}
+                className="h-full min-h-[280px] w-full rounded-[1.5rem] object-cover"
+              />
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Ejemplo real</p>
-                <h3 className="mt-3 text-3xl font-semibold tracking-tight">{rubro.title}</h3>
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Solución específica</p>
+                <h3 className="mt-3 text-3xl font-semibold tracking-tight">{rubro.headline}</h3>
                 <p className="mt-4 text-sm leading-6 text-muted-foreground">{rubro.copy}</p>
                 <div className="mt-6 grid gap-3 sm:grid-cols-2">
                   {[
-                    "Mensaje claro para el cliente ideal",
-                    "Botones visibles para consultar por WhatsApp",
-                    "Formularios y llamadas a la acción",
-                    "Diseño pensado para convertir visitas",
+                    "Pensada para atraer consultas de ese rubro",
+                    "Diseño listo para vender desde el primer impacto",
+                    "Llamadas a la acción claras y visibles",
+                    "Contacto directo por WhatsApp y formulario",
                   ].map((item) => (
                     <div key={item} className="rounded-2xl border border-border/60 bg-background/30 px-4 py-4 text-sm">
                       {item}
@@ -441,13 +458,15 @@ export default function Index() {
                   ))}
                 </div>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                  <Button asChild variant="whatsapp" size="sm">
-                    <a href={whatsappLink(rubro.message)} target="_blank" rel="noreferrer">
-                      Quiero una igual
+                  <Button asChild variant="outline" size="sm">
+                    <a href={rubro.demoHref} target="_blank" rel="noreferrer">
+                      Ver demo
                     </a>
                   </Button>
-                  <Button asChild variant="hero" size="sm">
-                    <a href="#contacto">Pedir propuesta</a>
+                  <Button asChild variant="whatsapp" size="sm">
+                    <a href={whatsappLink(rubro.message)} target="_blank" rel="noreferrer">
+                      Quiero esta web
+                    </a>
                   </Button>
                 </div>
               </div>
