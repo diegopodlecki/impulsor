@@ -182,12 +182,6 @@ export default function Index() {
           </Link>
 
           <nav className="hidden items-center gap-4 lg:flex">
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#problema">
-              Problema
-            </a>
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#solucion">
-              Solución
-            </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#rubros">
               Ejemplos
             </a>
@@ -196,9 +190,6 @@ export default function Index() {
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#proceso">
               Proceso
-            </a>
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#sobre-mi">
-              Sobre mí
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#contacto">
               Formulario
