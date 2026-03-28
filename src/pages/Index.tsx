@@ -1,7 +1,6 @@
 ﻿import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/ContactForm";
 import { defaultWhatsappLink } from "@/components/landing/landingVisuals";
@@ -295,29 +294,7 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="lg:col-span-5">
-            <div className="surface-card hover-card rounded-[2rem] p-6">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Qué logramos</p>
-              <div className="mt-5 space-y-4">
-                <div className="p-4">
-                  <p className="text-sm font-semibold">Más consultas</p>
-                  <p className="mt-1 text-sm text-muted-foreground">Tu web guía al visitante a escribirte o pedir más información.</p>
-                </div>
-                <div className="p-4">
-                  <p className="text-sm font-semibold">Imagen profesional</p>
-                  <p className="mt-1 text-sm text-muted-foreground">Mostrás valor desde el primer vistazo y generás más confianza.</p>
-                </div>
-                <div className="p-4">
-                  <p className="text-sm font-semibold">Presencia online sólida</p>
-                  <p className="mt-1 text-sm text-muted-foreground">Tu negocio deja de depender solo de redes o del boca a boca.</p>
-                </div>
-                <div className="p-4">
-                  <p className="text-sm font-semibold">Automatización básica</p>
-                  <p className="mt-1 text-sm text-muted-foreground">Formularios, WhatsApp y seguimiento para no perder consultas.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
       </section>
 
@@ -341,12 +318,6 @@ export default function Index() {
                 <h3 className="mt-3 text-2xl font-semibold tracking-tight">{rubro.title}</h3>
                 <p className="mt-2 text-lg font-medium text-foreground/90">{rubro.headline}</p>
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">{rubro.copy}</p>
-                <Badge className="mt-4 border-transparent bg-background/50 text-foreground" variant="secondary">
-                  Diseñada para vender
-                </Badge>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.22em] text-[hsl(var(--neon-cyan))]">
-                  Clickeá para abrir la landing
-                </p>
 
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   <Button asChild variant="outline" size="sm" className="w-full sm:w-auto">
@@ -458,31 +429,11 @@ export default function Index() {
               más clientes sin depender solo del boca a boca.
             </p>
 
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <div className="p-4">
-                <p className="text-sm font-semibold">Qué hago</p>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  Creo landing pages que presentan tu servicio, generan confianza y empujan a la acción.
-                </p>
-              </div>
-              <div className="p-4">
-                <p className="text-sm font-semibold">Por qué ayudo a negocios</p>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  Porque muchas marcas pierden oportunidades por no mostrar bien lo que hacen.
-                </p>
-              </div>
-              <div className="p-4">
-                <p className="text-sm font-semibold">Enfoque en resultados</p>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  Todo está pensado para conseguir más consultas, más mensajes y más clientes.
-                </p>
-              </div>
-              <div className="p-4">
-                <p className="text-sm font-semibold">Cerca tuyo</p>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  Trabajo de forma simple, directa y sin vueltas para avanzar rápido.
-                </p>
-              </div>
+            <div className="mt-6 space-y-3 text-sm leading-6 text-muted-foreground">
+              <p><strong className="text-foreground">Qué hago:</strong> Creo landing pages que presentan tu servicio, generan confianza y empujan a la acción.</p>
+              <p><strong className="text-foreground">Por qué ayudo a negocios:</strong> Porque muchas marcas pierden oportunidades por no mostrar bien lo que hacen.</p>
+              <p><strong className="text-foreground">Enfoque en resultados:</strong> Todo está pensado para conseguir más consultas, más mensajes y más clientes.</p>
+              <p><strong className="text-foreground">Cerca tuyo:</strong> Trabajo de forma simple, directa y sin vueltas para avanzar rápido.</p>
             </div>
           </div>
         </div>
