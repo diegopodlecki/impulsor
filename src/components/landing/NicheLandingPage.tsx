@@ -288,6 +288,9 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
       <footer className="border-t border-gray-200 bg-white py-8">
         <div className="container text-center">
           <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} {config.title}. Todos los derechos reservados.</p>
+          <p className="mt-2 text-xs text-muted-foreground">
+            Sitio desarrollado por <Link to="/" className="underline hover:text-foreground">WebAppImpulsor</Link>
+          </p>
         </div>
       </footer>
 
