@@ -371,6 +371,35 @@ export default function Index() {
         </div>
       </section>
 
+      {/* CTA Mitad de página */}
+      <section className="container py-12 sm:py-16">
+        <div className="rounded-[2rem] border border-border/70 bg-gradient-primary p-8 text-primary-foreground shadow-glow sm:p-10">
+          <div className="grid gap-6 lg:grid-cols-[1.4fr_0.8fr] lg:items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary-foreground/80">¿Listo para empezar?</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+                Tu competencia ya está online. La diferencia es quién convierte mejor.
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-primary-foreground/85">
+                Si querés una web que genere clientes, te ayudo a construirla con una propuesta clara y enfocada en
+                resultados.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <Button asChild variant="whatsapp" size="lg" className="w-full">
+                <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
+                  Quiero más clientes
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="w-full border-white/30 bg-white/10 text-primary-foreground hover:bg-white/20 hover:text-primary-foreground">
+                <a href="#contacto">Hablar por WhatsApp</a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="proceso" className="container py-12 sm:py-16">
         <SectionTitle
           eyebrow="Proceso"
