@@ -49,8 +49,8 @@ export const landingPages: Record<string, LandingConfig> = {
     heroBadge: "Especialistas en gimnasios",
     heroPreviewTitle: "Tu gimnasio con más inscripciones",
     heroPreviewSubtitle: "Clases, horarios y reservas desde un mismo lugar.",
-    heroImage: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop",
-    heroMockupImage: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=600&fit=crop",
+    heroMockupImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
     problemsTitle: "¿Tu gimnasio tiene estos problemas?",
     problems: [
       { title: "Pocos alumnos nuevos", text: "Tu web no convierte visitas en inscripciones." },
@@ -107,8 +107,8 @@ export const landingPages: Record<string, LandingConfig> = {
     heroBadge: "Especialistas en entrenadores",
     heroPreviewTitle: "Tu marca personal vendiendo mejor",
     heroPreviewSubtitle: "Rutinas, testimonios y planes en una sola landing.",
-    heroImage: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=600&fit=crop",
-    heroMockupImage: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=400&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
+    heroMockupImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
     problemsTitle: "¿Te pasa esto como entrenador?",
     problems: [
       { title: "No destacás entre la competencia", text: "Tu propuesta se ve igual a la de otros trainers." },
@@ -165,8 +165,8 @@ export const landingPages: Record<string, LandingConfig> = {
     heroBadge: "Especialistas en nutrición",
     heroPreviewTitle: "Tu consultorio más claro y confiable",
     heroPreviewSubtitle: "Servicios, información y contacto directo.",
-    heroImage: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&h=600&fit=crop",
-    heroMockupImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&h=600&fit=crop",
+    heroMockupImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
     problemsTitle: "¿Tu consultorio tiene estos problemas?",
     problems: [
       { title: "Falta de confianza online", text: "Si tu web no transmite confianza, cuesta agendar." },
@@ -224,7 +224,7 @@ export const landingPages: Record<string, LandingConfig> = {
     heroPreviewTitle: "Tu consultorio generando confianza",
     heroPreviewSubtitle: "Calma, empatía y contacto directo.",
     heroImage: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&h=600&fit=crop",
-    heroMockupImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop",
+    heroMockupImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
     problemsTitle: "¿Tu consultorio tiene estos problemas?",
     problems: [
       { title: "Dificultad para generar confianza", text: "Si la web no transmite seguridad, cuesta dar el paso." },
@@ -282,7 +282,7 @@ export const landingPages: Record<string, LandingConfig> = {
     heroPreviewTitle: "Tu marca con presencia premium",
     heroPreviewSubtitle: "Visual, elegante y enfocada en ventas.",
     heroImage: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&h=600&fit=crop",
-    heroMockupImage: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=400&fit=crop",
+    heroMockupImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
     problemsTitle: "¿Tu centro de estética tiene estos problemas?",
     problems: [
       { title: "Falta de impacto visual", text: "Si tu web no se ve premium, cuesta destacar." },
