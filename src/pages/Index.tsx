@@ -249,7 +249,7 @@ export default function Index() {
 
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
                 {heroStats.map((item) => (
-                  <div key={item.label} className="rounded-2xl border border-border/60 bg-background/20 px-4 py-4 shadow-card">
+                  <div key={item.label} className="px-4 py-4">
                     <div className="text-lg font-semibold">{item.value}</div>
                     <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{item.label}</p>
                   </div>
@@ -269,7 +269,7 @@ export default function Index() {
               />
               <div className="mt-4 grid gap-3 sm:grid-cols-3">
                 {["Más consultas", "Más confianza", "Más cierres"].map((item) => (
-                  <div key={item} className="rounded-2xl border border-border/60 bg-background/20 px-4 py-3 text-sm font-medium backdrop-blur">
+                  <div key={item} className="px-4 py-3 text-sm font-medium">
                     {item}
                   </div>
                 ))}
@@ -314,7 +314,7 @@ export default function Index() {
 
             <div className="mt-10 grid gap-3 sm:grid-cols-2">
               {solutions.map((item) => (
-                <div key={item} className="flex items-center gap-3 rounded-2xl border border-border/60 bg-background/20 px-4 py-4 shadow-card">
+                <div key={item} className="flex items-center gap-3 px-4 py-4">
                   <CheckCircle2 className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />
                   <span className="text-sm font-medium">{item}</span>
                 </div>
@@ -326,19 +326,19 @@ export default function Index() {
             <div className="surface-card hover-card rounded-[2rem] p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Qué logramos</p>
               <div className="mt-5 space-y-4">
-                <div className="rounded-2xl border border-border/60 bg-background/20 p-4 backdrop-blur">
+                <div className="p-4">
                   <p className="text-sm font-semibold">Más consultas</p>
                   <p className="mt-1 text-sm text-muted-foreground">Tu web guía al visitante a escribirte o pedir más información.</p>
                 </div>
-                <div className="rounded-2xl border border-border/60 bg-background/20 p-4 backdrop-blur">
+                <div className="p-4">
                   <p className="text-sm font-semibold">Imagen profesional</p>
                   <p className="mt-1 text-sm text-muted-foreground">Mostrás valor desde el primer vistazo y generás más confianza.</p>
                 </div>
-                <div className="rounded-2xl border border-border/60 bg-background/20 p-4 backdrop-blur">
+                <div className="p-4">
                   <p className="text-sm font-semibold">Presencia online sólida</p>
                   <p className="mt-1 text-sm text-muted-foreground">Tu negocio deja de depender solo de redes o del boca a boca.</p>
                 </div>
-                <div className="rounded-2xl border border-border/60 bg-background/20 p-4 backdrop-blur">
+                <div className="p-4">
                   <p className="text-sm font-semibold">Automatización básica</p>
                   <p className="mt-1 text-sm text-muted-foreground">Formularios, WhatsApp y seguimiento para no perder consultas.</p>
                 </div>
@@ -455,25 +455,25 @@ export default function Index() {
             </p>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-border/60 bg-background/20 p-4 backdrop-blur">
+              <div className="p-4">
                 <p className="text-sm font-semibold">Qué hago</p>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
                   Creo landing pages que presentan tu servicio, generan confianza y empujan a la acción.
                 </p>
               </div>
-              <div className="rounded-2xl border border-border/60 bg-background/20 p-4 backdrop-blur">
+              <div className="p-4">
                 <p className="text-sm font-semibold">Por qué ayudo a negocios</p>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
                   Porque muchas marcas pierden oportunidades por no mostrar bien lo que hacen.
                 </p>
               </div>
-              <div className="rounded-2xl border border-border/60 bg-background/20 p-4 backdrop-blur">
+              <div className="p-4">
                 <p className="text-sm font-semibold">Enfoque en resultados</p>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
                   Todo está pensado para conseguir más consultas, más mensajes y más clientes.
                 </p>
               </div>
-              <div className="rounded-2xl border border-border/60 bg-background/20 p-4 backdrop-blur">
+              <div className="p-4">
                 <p className="text-sm font-semibold">Cerca tuyo</p>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
                   Trabajo de forma simple, directa y sin vueltas para avanzar rápido.
@@ -501,7 +501,7 @@ export default function Index() {
               <div className="mt-6 space-y-3">
                 {["Respuesta rápida y clara", "Ideal para presupuestos, reservas y consultas", "Te respondo en menos de 24 hs"].map(
                   (item) => (
-                    <div key={item} className="rounded-2xl border border-border/60 bg-background/20 px-4 py-4 text-sm backdrop-blur">
+                    <div key={item} className="px-4 py-4 text-sm">
                       {item}
                     </div>
                   ),

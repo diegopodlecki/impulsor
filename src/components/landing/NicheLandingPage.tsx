@@ -283,7 +283,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {config.solutionPoints.map((point) => (
-                <div key={point} className="rounded-2xl border border-border/60 bg-background/20 p-4 backdrop-blur">
+                <div key={point} className="p-4">
                   <p className="text-sm font-semibold text-foreground">{point}</p>
                 </div>
               ))}
@@ -293,8 +293,8 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
           <div className="surface-card hover-card rounded-[2rem] p-6 sm:p-8">
             <div className="grid gap-4 sm:grid-cols-3">
               {config.solutionPoints.slice(0, 3).map((point, index) => (
-                <div key={point} className="rounded-2xl bg-background/25 p-5">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-border/60 bg-background/30">
+                <div key={point} className="p-5">
+                  <div className="flex h-10 w-10 items-center justify-center">
                     <CheckCircle2 className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />
                   </div>
                   <p className="mt-3 font-semibold text-foreground">{point}</p>
@@ -367,7 +367,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {config.aboutPoints.map((point) => (
-                <div key={point.title} className="rounded-2xl border border-border/60 bg-background/20 p-4 backdrop-blur">
+                <div key={point.title} className="p-4">
                   <p className="text-sm font-semibold">{point.title}</p>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">{point.text}</p>
                 </div>
