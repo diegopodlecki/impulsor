@@ -89,7 +89,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="grid gap-4">
       <label className="grid gap-2">
-        <span className="text-sm font-medium text-foreground/90">Nombre</span>
+        <span className="text-sm font-medium text-foreground/90">Tu nombre</span>
         <input
           type="text"
           value={nombre}
@@ -97,12 +97,12 @@ export function ContactForm() {
           required
           autoComplete="name"
           className="h-11 rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-          placeholder="Tu nombre"
+          placeholder="Ej. María López"
         />
       </label>
 
       <label className="grid gap-2">
-        <span className="text-sm font-medium text-foreground/90">Correo electrónico</span>
+        <span className="text-sm font-medium text-foreground/90">Tu correo</span>
         <input
           type="email"
           value={email}
@@ -112,28 +112,30 @@ export function ContactForm() {
           className={`h-11 rounded-xl border bg-background/40 px-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring ${
             emailError ? "border-red-500" : "border-border"
           }`}
-          placeholder="tu@correo.com"
+          placeholder="tu@email.com"
         />
         {emailError && <p className="text-xs text-red-500">{emailError}</p>}
       </label>
 
       <label className="grid gap-2">
-        <span className="text-sm font-medium text-foreground/90">Mensaje</span>
+        <span className="text-sm font-medium text-foreground/90">Contanos qué necesitás</span>
         <textarea
           value={mensaje}
           onChange={(e) => setMensaje(e.target.value)}
           required
           rows={5}
           className="resize-none rounded-xl border border-border bg-background/40 px-3 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-          placeholder="Escribí tu mensaje"
+          placeholder="Cuéntanos qué querés vender, a quién le hablás y qué resultado buscás."
         />
       </label>
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <Button type="submit" variant="hero" size="lg" className="justify-center" disabled={submitting || Boolean(emailError)}>
-          {submitting ? "Enviando..." : "Enviar formulario"}
+          {submitting ? "Enviando..." : "Quiero mi propuesta"}
         </Button>
-        <p className="text-xs text-muted-foreground">{status || "Los datos se guardan en la tabla formularios."}</p>
+        <p className="text-xs text-muted-foreground">
+          {status || "Te respondemos con una propuesta personalizada y guardamos tu consulta en Supabase."}
+        </p>
       </div>
     </form>
   );
