@@ -238,14 +238,7 @@ export default function Index() {
               </Button>
             </div>
 
-              <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                {heroStats.map((item) => (
-                  <div key={item.label} className="px-4 py-4">
-                    <div className="text-lg font-semibold">{item.value}</div>
-                    <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{item.label}</p>
-                  </div>
-                ))}
-              </div>
+
             </div>
           </div>
 
