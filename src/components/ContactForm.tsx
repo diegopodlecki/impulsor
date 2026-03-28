@@ -23,10 +23,24 @@ function buildSyntheticEmail(whatsapp: string) {
   return `${safeValue}@whatsapp.local`;
 }
 
-export function ContactForm() {
+type ContactFormProps = {
+  title?: string;
+  description?: string;
+  buttonLabel?: string;
+  trustText?: string;
+  eyebrow?: string;
+};
+
+export function ContactForm({
+  title = "Pedí tu web y empezá a recibir clientes",
+  description = "Dejanos tus datos y te mando una propuesta clara para tu negocio.",
+  buttonLabel = "Quiero mi web",
+  trustText = "Te respondemos en menos de 24 hs y sin compromiso.",
+  eyebrow = "Formulario de contacto",
+}: ContactFormProps) {
   const [nombre, setNombre] = React.useState("");
   const [whatsapp, setWhatsapp] = React.useState("");
-  const [tipoNegocio, setTipoNegocio] = React.useState(businessOptions[0]);
+  const [tipoNegocio, setTipoNegocio] = React.useState("");
   const [submitting, setSubmitting] = React.useState(false);
   const [status, setStatus] = React.useState("");
 
@@ -42,7 +56,7 @@ export function ContactForm() {
 
     const cleanWhatsapp = normalizeWhatsApp(whatsapp);
     const syntheticEmail = buildSyntheticEmail(cleanWhatsapp);
-    const mensaje = `Tipo de negocio: ${tipoNegocio}. WhatsApp: ${whatsapp.trim()}.`;
+    const mensaje = `Tipo de negocio: ${tipoNegocio || "No especificado"}. WhatsApp: ${whatsapp.trim()}.`;
 
     clearDiagnosticHash();
     setSubmitting(true);
@@ -75,7 +89,7 @@ export function ContactForm() {
 
       setNombre("");
       setWhatsapp("");
-      setTipoNegocio(businessOptions[0]);
+      setTipoNegocio("");
       clearDiagnosticHash();
     } catch (error) {
       console.error(error);
@@ -92,17 +106,15 @@ export function ContactForm() {
       <div className="surface-card hover-card rounded-[1.5rem] p-5 sm:p-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground">Formulario de contacto</p>
-            <h3 className="mt-2 text-2xl font-semibold tracking-tight">Pedí tu web y empezá a recibir clientes</h3>
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground">{eyebrow}</p>
+            <h3 className="mt-2 text-2xl font-semibold tracking-tight">{title}</h3>
           </div>
           <div className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-300">
-            Te respondemos en menos de 24 hs
+            {trustText}
           </div>
         </div>
 
-        <p className="mt-4 text-sm leading-6 text-muted-foreground">
-          Dejanos tus datos y te mando una propuesta pensada para vender más.
-        </p>
+        <p className="mt-4 text-sm leading-6 text-muted-foreground">{description}</p>
 
         <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
           <div className="grid gap-4 md:grid-cols-2">
@@ -138,9 +150,9 @@ export function ContactForm() {
             <select
               value={tipoNegocio}
               onChange={(e) => setTipoNegocio(e.target.value)}
-              required
               className="h-11 rounded-2xl border border-border bg-background/20 px-4 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring backdrop-blur"
             >
+              <option value="">Elegí tu rubro</option>
               {businessOptions.map((option) => (
                 <option key={option} value={option}>
                   {option}
@@ -151,11 +163,9 @@ export function ContactForm() {
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <Button type="submit" variant="hero" size="lg" className="justify-center" disabled={submitting || !nombre.trim() || !whatsapp.trim()}>
-              {submitting ? "Enviando..." : "Quiero mi web"}
+              {submitting ? "Enviando..." : buttonLabel}
             </Button>
-            <p className="text-xs text-muted-foreground">
-              {status || "Te respondemos en menos de 24 hs y sin compromiso."}
-            </p>
+            <p className="text-xs text-muted-foreground">{status || trustText}</p>
           </div>
         </form>
       </div>

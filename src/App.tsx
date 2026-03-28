@@ -6,6 +6,11 @@ import ProtectedRoute from "./components/ProtectedRoute.tsx";
 import Index from "./pages/Index.tsx";
 import Admin from "./pages/Admin.tsx";
 import Login from "./pages/Login.tsx";
+import Gimnasios from "./pages/Gimnasios.tsx";
+import PersonalTrainers from "./pages/PersonalTrainers.tsx";
+import Nutricionistas from "./pages/Nutricionistas.tsx";
+import Psicologos from "./pages/Psicologos.tsx";
+import EsteticaCorporal from "./pages/EsteticaCorporal.tsx";
 import Register from "./pages/Register.tsx";
 
 const baseUrl = (import.meta.env.BASE_URL ?? "/") + "";
@@ -25,6 +30,12 @@ const App = () => (
       <Toaster position="top-right" />
       <Routes>
         <Route path="/" element={<Index />} />
+        <Route path="/gimnasios" element={<Gimnasios />} />
+        <Route path="/entrenadores" element={<PersonalTrainers />} />
+        <Route path="/personal-trainers" element={<Navigate to="/entrenadores" replace />} />
+        <Route path="/nutricionistas" element={<Nutricionistas />} />
+        <Route path="/psicologos" element={<Psicologos />} />
+        <Route path="/estetica-corporal" element={<EsteticaCorporal />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Navigate to="/admin" replace />} />

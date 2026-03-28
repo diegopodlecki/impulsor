@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/ContactForm";
+import { defaultWhatsappLink } from "@/components/landing/landingVisuals";
 
 const WHATSAPP_NUMBER = "541166448389";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
@@ -137,7 +138,7 @@ const rubros = [
     headline: "Así podría verse tu web si sos dueño de un gimnasio",
     copy: "Diseñada para atraer clientes en gimnasios.",
     message: "Hola, quiero una web para mi gimnasio que me consiga más consultas e inscripciones.",
-    demoHref: "/demos/code.html",
+    demoHref: "/gimnasios",
     preview: previewSvg("Gimnasios", "Clases, planes y reservas", "#22c55e", "#06b6d4"),
   },
   {
@@ -146,7 +147,7 @@ const rubros = [
     headline: "Así podría verse tu web si sos entrenador personal",
     copy: "Diseñada para atraer clientes en entrenamiento personal.",
     message: "Hola, quiero una web para mi trabajo de personal trainer que me ayude a vender más.",
-    demoHref: "/demos/code1.html",
+    demoHref: "/entrenadores",
     preview: previewSvg("Personal Trainer", "Resultados y disciplina", "#f97316", "#ef4444"),
   },
   {
@@ -155,7 +156,7 @@ const rubros = [
     headline: "Así podría verse tu web si sos nutricionista",
     copy: "Diseñada para atraer clientes en nutrición.",
     message: "Hola, quiero una web para mi consultorio de nutrición y atraer más pacientes.",
-    demoHref: "/demos/code2.html",
+    demoHref: "/nutricionistas",
     preview: previewSvg("Nutricionista", "Planes, hábitos y seguimiento", "#84cc16", "#22c55e"),
   },
   {
@@ -164,7 +165,7 @@ const rubros = [
     headline: "Así podría verse tu web si sos psicólogo",
     copy: "Diseñada para atraer clientes en psicología.",
     message: "Hola, quiero una web para mi consultorio de psicología y agendar más turnos.",
-    demoHref: "/demos/code2.html",
+    demoHref: "/psicologos",
     preview: previewSvg("Psicología", "Calma, empatía y turnos", "#3b82f6", "#0ea5e9"),
   },
   {
@@ -173,7 +174,7 @@ const rubros = [
     headline: "Así podría verse tu web si ofrecés estética corporal",
     copy: "Diseñada para atraer clientes en estética corporal.",
     message: "Hola, quiero una web para estética corporal que me ayude a vender más tratamientos.",
-    demoHref: "/demos/code.html",
+    demoHref: "/estetica-corporal",
     preview: previewSvg("Estética corporal", "Premium, visual y elegante", "#ec4899", "#f97316"),
   },
 ];
@@ -294,7 +295,7 @@ export default function Index() {
           </nav>
 
           <Button asChild variant="whatsapp" size="sm" className="hidden md:inline-flex">
-            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+            <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
               WhatsApp
             </a>
           </Button>
@@ -318,15 +319,15 @@ export default function Index() {
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button asChild variant="whatsapp" size="lg">
-                  <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-                    Hablar por WhatsApp
-                  </a>
-                </Button>
-                <Button asChild variant="hero" size="lg">
-                  <a href="#rubros">Ver ejemplos reales</a>
-                </Button>
-              </div>
+              <Button asChild variant="whatsapp" size="lg">
+                <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
+                  Hablar por WhatsApp
+                </a>
+              </Button>
+              <Button asChild variant="hero" size="lg">
+                <a href="#rubros">Quiero ver ejemplos</a>
+              </Button>
+            </div>
 
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
                 {heroStats.map((item) => (
@@ -437,9 +438,13 @@ export default function Index() {
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {rubros.map((rubro) => (
-            <article key={rubro.slug} className="overflow-hidden rounded-[2rem] border border-border/70 bg-gradient-card shadow-card">
+            <article
+              key={rubro.slug}
+              className="group relative overflow-hidden rounded-[2rem] border border-border/70 bg-gradient-card shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_28px_70px_-28px_rgba(0,0,0,0.7)]"
+            >
+              <Link to={rubro.demoHref} aria-label={`Abrir landing de ${rubro.title}`} className="absolute inset-0 z-10 rounded-[2rem]" />
               <img src={rubro.preview} alt={`Preview de ${rubro.title}`} className="h-64 w-full object-cover" />
-              <div className="p-6">
+              <div className="relative z-20 p-6">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground">Ejemplo por rubro</p>
                 <h3 className="mt-3 text-2xl font-semibold tracking-tight">{rubro.title}</h3>
                 <p className="mt-2 text-lg font-medium text-foreground/90">{rubro.headline}</p>
@@ -447,16 +452,19 @@ export default function Index() {
                 <Badge className="mt-4 border-transparent bg-background/50 text-foreground" variant="secondary">
                   Diseñada para vender
                 </Badge>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.22em] text-[hsl(var(--neon-cyan))]">
+                  Clickeá para abrir la landing
+                </p>
 
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   <Button asChild variant="outline" size="sm" className="w-full sm:w-auto">
-                    <a href={rubro.demoHref} target="_blank" rel="noreferrer">
+                    <Link to={rubro.demoHref}>
                       Ver ejemplo
-                    </a>
+                    </Link>
                   </Button>
                   <Button asChild variant="whatsapp" size="sm" className="w-full sm:w-auto">
-                    <a href={whatsappLink(rubro.message)} target="_blank" rel="noreferrer">
-                      Quiero una igual
+                    <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
+                      Quiero mi web
                     </a>
                   </Button>
                 </div>
@@ -602,12 +610,12 @@ export default function Index() {
 
             <div className="flex flex-col gap-3">
               <Button asChild variant="whatsapp" size="lg" className="w-full">
-                <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-                  Hablar por WhatsApp ahora
+                <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
+                  Hablar por WhatsApp
                 </a>
               </Button>
               <Button asChild variant="outline" size="lg" className="w-full border-white/30 bg-white/10 text-primary-foreground hover:bg-white/20 hover:text-primary-foreground">
-                <a href="#rubros">Ver ejemplos reales</a>
+                <a href="#rubros">Quiero ver ejemplos</a>
               </Button>
             </div>
           </div>
@@ -615,7 +623,7 @@ export default function Index() {
       </section>
 
       <a
-        href={WHATSAPP_URL}
+        href={defaultWhatsappLink()}
         target="_blank"
         rel="noreferrer"
         aria-label="Hablar por WhatsApp"

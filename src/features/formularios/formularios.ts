@@ -118,15 +118,17 @@ export async function enviarEmailFormulario(params: {
 }
 
 export function toCsv(formularios: Formulario[]) {
-  const headers = ["id", "nombre", "email", "mensaje", "leido", "leido_at", "created_at"];
+  const dateFormatter = new Intl.DateTimeFormat("es-AR", {
+    dateStyle: "short",
+    timeStyle: "short",
+  });
+
+  const headers = ["nombre", "email", "mensaje", "fecha"];
   const rows = formularios.map((formulario) => [
-    formulario.id,
     formulario.nombre,
     formulario.email,
     formulario.mensaje ?? "",
-    formulario.leido ? "si" : "no",
-    formulario.leido_at ?? "",
-    formulario.created_at,
+    dateFormatter.format(new Date(formulario.created_at)),
   ]);
 
   return [headers, ...rows]
