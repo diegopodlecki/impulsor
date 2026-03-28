@@ -1,4 +1,4 @@
-﻿import { ArrowRight, CheckCircle2, Globe2, MessageCircle, Sparkles, Target, TrendingUp, Zap } from "lucide-react";
+﻿import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { Badge } from "@/components/ui/badge";
@@ -21,22 +21,18 @@ const heroStats = [
 
 const problems = [
   {
-    icon: <MessageCircle className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />,
     title: "Tenés redes pero no recibís consultas",
     text: "Publicás contenido, pero eso no siempre se transforma en mensajes o reservas.",
   },
   {
-    icon: <TrendingUp className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />,
     title: "Tu competencia se ve más profesional",
     text: "Cuando una web transmite más valor, es más fácil que el cliente se incline por ellos.",
   },
   {
-    icon: <Globe2 className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />,
     title: "Dependés del boca a boca",
     text: "Sin una web que convierta, cada consulta depende de una recomendación aislada.",
   },
   {
-    icon: <Target className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />,
     title: "Tu web no genera resultados",
     text: "Si no guía a una acción, termina siendo una presencia online que no vende.",
   },
@@ -101,22 +97,18 @@ const benefits = [
   {
     title: "Recibir consultas todos los días",
     text: "Cada sección está pensada para invitar a escribirte o pedir más información.",
-    icon: <Target className="h-4 w-4" />,
   },
   {
     title: "Mostrarte profesional desde el primer contacto",
     text: "Una web clara y moderna hace que te tomen en serio enseguida.",
-    icon: <Sparkles className="h-4 w-4" />,
   },
   {
     title: "Diferenciarte de tu competencia",
     text: "No se trata solo de verse bien, sino de transmitir mejor el valor de tu trabajo.",
-    icon: <TrendingUp className="h-4 w-4" />,
   },
   {
     title: "Tener una web que trabaja por vos 24/7",
     text: "Tu sitio sigue generando oportunidades aunque vos estés ocupado con tu negocio.",
-    icon: <CheckCircle2 className="h-4 w-4" />,
   },
 ];
 
@@ -246,13 +238,7 @@ export default function Index() {
                 className="h-[460px] w-full rounded-[1.5rem] object-cover"
                 loading="eager"
               />
-              <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                {["Más consultas", "Más confianza", "Más cierres"].map((item) => (
-                  <div key={item} className="px-4 py-3 text-sm font-medium">
-                    {item}
-                  </div>
-                ))}
-              </div>
+
             </div>
           </div>
         </div>
@@ -267,10 +253,7 @@ export default function Index() {
 
         <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {problems.map((item) => (
-            <div key={item.title} className="surface-card hover-card rounded-3xl p-6">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-border/60 bg-background/30">
-                {item.icon}
-              </div>
+            <div key={item.title} className="hover-card rounded-3xl p-6">
               <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.text}</p>
             </div>
@@ -293,8 +276,7 @@ export default function Index() {
 
             <div className="mt-10 grid gap-3 sm:grid-cols-2">
               {solutions.map((item) => (
-                <div key={item} className="flex items-center gap-3 px-4 py-4">
-                  <CheckCircle2 className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />
+                <div key={item} className="px-4 py-4">
                   <span className="text-sm font-medium">{item}</span>
                 </div>
               ))}
@@ -381,10 +363,7 @@ export default function Index() {
 
         <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {benefits.map((item) => (
-            <div key={item.title} className="surface-card hover-card rounded-3xl p-6">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-border/60 bg-background/30">
-                {item.icon}
-              </div>
+            <div key={item.title} className="hover-card rounded-3xl p-6">
               <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.text}</p>
             </div>
@@ -473,7 +452,6 @@ export default function Index() {
                 Completá tus datos y te respondo con una propuesta concreta. Te respondo en menos de 24 hs.
               </p>
               <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-600 dark:text-emerald-300">
-                <MessageCircle className="h-4 w-4" />
                 WhatsApp visible y respuesta rápida
               </div>
 
@@ -532,7 +510,7 @@ export default function Index() {
         aria-label="Hablar por WhatsApp"
         className="animate-wa-pulse fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(142_70%_45%)] text-white shadow-[0_18px_50px_-18px_rgba(34,197,94,0.7)] transition-transform duration-300 hover:scale-110"
       >
-        <MessageCircle className="h-6 w-6" />
+
       </a>
 
       <footer className="border-t border-border/40 bg-background/25">

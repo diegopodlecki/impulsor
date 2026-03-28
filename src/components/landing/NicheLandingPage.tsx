@@ -1,6 +1,6 @@
 import { useEffect, type ReactNode } from "react";
 
-import { ArrowRight, CheckCircle2, MessageCircle, Sparkles, Target, TrendingUp, Zap, Star, Quote } from "lucide-react";
+import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { ContactForm } from "@/components/ContactForm";
@@ -232,11 +232,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
               </Button>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-3">
-              <StatCard icon={<Target className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />} title="Más consultas" text="Tu landing guía a la acción." />
-              <StatCard icon={<TrendingUp className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />} title="Más confianza" text="Tu servicio se ve más sólido." />
-              <StatCard icon={<Zap className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />} title="Más ventas" text="La web trabaja por vos 24/7." />
-            </div>
+
           </div>
 
           <div className="relative">
@@ -277,10 +273,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {config.solutionPoints.map((point, index) => (
-            <div key={point} className="surface-card hover-card rounded-3xl p-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-primary">
-                <span className="text-lg font-bold text-primary-foreground">{index + 1}</span>
-              </div>
+            <div key={point} className="hover-card rounded-3xl p-6">
               <h3 className="mt-4 text-xl font-semibold tracking-tight">{point}</h3>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
                 {index === 0 ? "Lo que más le importa ver al cliente." : index === 1 ? "La información clara acelera la decisión." : index === 2 ? "Todo queda pensado para cerrar mejor." : "Elemento clave para tu negocio."}
@@ -319,9 +312,6 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
             <div className="grid gap-4 sm:grid-cols-3">
               {config.benefits.slice(0, 3).map((item, index) => (
                 <div key={item.title} className="p-5">
-                  <div className="flex h-10 w-10 items-center justify-center">
-                    <CheckCircle2 className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />
-                  </div>
                   <p className="mt-3 font-semibold text-foreground">{item.title}</p>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.text}</p>
                 </div>
@@ -341,18 +331,9 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {testimonials.map((testimonial) => (
-            <div key={testimonial.name} className="surface-card hover-card rounded-3xl p-6">
-              <div className="flex items-center gap-1">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <Quote className="mt-4 h-8 w-8 text-muted-foreground/50" />
+            <div key={testimonial.name} className="hover-card rounded-3xl p-6">
               <p className="mt-4 text-sm leading-6 text-muted-foreground">{testimonial.text}</p>
               <div className="mt-6 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-primary">
-                  <span className="text-sm font-bold text-primary-foreground">{testimonial.name.charAt(0)}</span>
-                </div>
                 <div>
                   <p className="text-sm font-semibold">{testimonial.name}</p>
                   <p className="text-xs text-muted-foreground">{testimonial.role}</p>
@@ -374,8 +355,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
         <div className="mt-10 grid gap-4 lg:grid-cols-4">
           {config.process.map((item) => (
-            <div key={item.step} className="surface-card hover-card rounded-3xl p-6">
-              <div className="text-sm font-semibold tracking-[0.2em] text-[hsl(var(--neon-cyan))]">{item.step}</div>
+            <div key={item.step} className="hover-card rounded-3xl p-6">
               <h3 className="mt-4 text-xl font-semibold tracking-tight">{item.title}</h3>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.text}</p>
             </div>
@@ -469,20 +449,4 @@ function BadgePill({ text }: { text: string }) {
   );
 }
 
-function StatCard({
-  icon,
-  title,
-  text,
-}: {
-  icon: ReactNode;
-  title: string;
-  text: string;
-}) {
-  return (
-    <div className="surface-card hover-card rounded-3xl p-4">
-      <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-border/60 bg-background/30">{icon}</div>
-      <h3 className="mt-4 text-lg font-semibold tracking-tight">{title}</h3>
-      <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
-    </div>
-  );
-}
+
