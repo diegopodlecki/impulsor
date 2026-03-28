@@ -36,6 +36,13 @@ export type LandingConfig = {
   whatsappMessage: string;
   preview: string;
   profile: string;
+  primaryColor?: string;
+  accentColor?: string;
+  testimonial?: {
+    name: string;
+    role: string;
+    text: string;
+  };
 };
 
 export const landingPages: Record<string, LandingConfig> = {
@@ -328,6 +335,69 @@ export const landingPages: Record<string, LandingConfig> = {
     whatsappMessage: "Hola, quiero una web para estética corporal que me ayude a vender más tratamientos.",
     preview: previewSvg("Estética corporal", "Premium, visual y elegante", "#ec4899", "#f97316"),
     profile: profileSvg("Diego Podlecki", "Diseño web enfocado en resultados"),
+  },
+  "iron-fitness": {
+    slug: "iron-fitness",
+    title: "Iron Fitness",
+    heroTitle: "Transformá tu cuerpo. Empezá hoy.",
+    heroSubtitle: "Clases grupales, pesas y cardio en un solo lugar. Primera semana gratis.",
+    heroCta: "Quiero empezar",
+    heroSecondaryCta: "Ver servicios",
+    heroBadge: "Gimnasio",
+    heroPreviewTitle: "Tu transformación empieza acá",
+    heroPreviewSubtitle: "Musculación, clases y funcional.",
+    heroImage: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200",
+    heroMockupImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
+    problemsTitle: "¿Te pasa esto?",
+    problems: [
+      { title: "No ves resultados", text: "Entrenás sin un plan claro y no avanzás." },
+      { title: "Falta de motivación", text: "Solo es difícil mantener la constancia." },
+      { title: "No sabés qué hacer", text: "Necesitás guía profesional para entrenar bien." },
+    ],
+    solutionTitle: "Un lugar para transformarte",
+    solutionText: "Contamos con todo lo que necesitás para alcanzar tu mejor versión.",
+    solutionPoints: ["Equipamiento profesional", "Clases dirigidas", "Acompañamiento personalizado", "Ambiente motivador"],
+    benefitsTitle: "Lo que vas a lograr",
+    benefits: [
+      { title: "Resultados reales", text: "Entrená con un plan que funciona." },
+      { title: "Constancia", text: "El ambiente y la comunidad te mantienen motivado." },
+      { title: "Salud y energía", text: "Mejorá tu calidad de vida desde hoy." },
+    ],
+    servicesTitle: "Qué ofrecemos",
+    servicesSubtitle: "Todo lo que necesitás para entrenar bien.",
+    services: [
+      { title: "Musculación", description: "Equipamiento profesional para todos los niveles.", icon: "dumbbell" },
+      { title: "Clases grupales", description: "Spinning, funcional, yoga y más.", icon: "users" },
+      { title: "Entrenamiento funcional", description: "Mejorá tu fuerza y resistencia.", icon: "target" },
+    ],
+    processTitle: "Cómo empezar",
+    process: [
+      { step: "01", title: "Vení a conocer", text: "Recorré el gimnasio y conocé nuestras instalaciones." },
+      { step: "02", title: "Elegí tu plan", text: "Te ayudamos a elegir el mejor plan para vos." },
+      { step: "03", title: "Empezá a entrenar", text: "Comenzá tu transformación con acompañamiento." },
+    ],
+    aboutTitle: "Quiénes somos",
+    aboutName: "Iron Fitness",
+    aboutRole: "Tu gimnasio de confianza",
+    aboutText: "Somos un gimnasio comprometido con ayudarte a alcanzar tus objetivos. Contamos con equipamiento de primera y un equipo de profesionales listos para acompañarte.",
+    aboutPoints: [
+      { title: "Equipamiento profesional", text: "Máquinas y pesas de última generación." },
+      { title: "Ambiente motivador", text: "Una comunidad que te impulsa a dar más." },
+    ],
+    formTitle: "Consultanos",
+    formSubtitle: "Dejanos tus datos y te contactamos para arrancar.",
+    finalCtaTitle: "Empezá tu transformación hoy",
+    finalCtaText: "La primera semana es gratis. No hay excusas.",
+    whatsappMessage: "Hola, quiero empezar a entrenar en Iron Fitness.",
+    preview: previewSvg("Iron Fitness", "Transformá tu cuerpo", "#111111", "#F97316"),
+    profile: profileSvg("Iron Fitness", "Tu gimnasio de confianza"),
+    primaryColor: "#111111",
+    accentColor: "#F97316",
+    testimonial: {
+      name: "Martín G.",
+      role: "Socio",
+      text: "Desde que entreno acá bajé 8 kilos en 3 meses. El equipo es increíble.",
+    },
   },
 };
 

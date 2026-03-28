@@ -11,6 +11,7 @@ import PersonalTrainers from "./pages/PersonalTrainers.tsx";
 import Nutricionistas from "./pages/Nutricionistas.tsx";
 import Psicologos from "./pages/Psicologos.tsx";
 import EsteticaCorporal from "./pages/EsteticaCorporal.tsx";
+import IronFitness from "./pages/IronFitness.tsx";
 import Register from "./pages/Register.tsx";
 
 const baseUrl = (import.meta.env.BASE_URL ?? "/") + "";
@@ -36,6 +37,7 @@ const App = () => (
         <Route path="/nutricionistas" element={<Nutricionistas />} />
         <Route path="/psicologos" element={<Psicologos />} />
         <Route path="/estetica-corporal" element={<EsteticaCorporal />} />
+        <Route path="/iron-fitness" element={<IronFitness />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Navigate to="/admin" replace />} />
