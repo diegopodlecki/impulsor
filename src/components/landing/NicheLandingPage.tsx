@@ -1,6 +1,6 @@
 import { useEffect, type ReactNode } from "react";
 
-import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowRight, MessageCircle, Sparkles, Calendar, Camera, FileText, Target, Dumbbell, Star, CreditCard, Heart, List, User, Info, Image } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { ContactForm } from "@/components/ContactForm";
@@ -39,6 +39,25 @@ function SectionActions() {
       </Button>
     </div>
   );
+}
+
+function getIcon(iconName: string) {
+  const icons: Record<string, ReactNode> = {
+    image: <Image className="h-6 w-6" />,
+    calendar: <Calendar className="h-6 w-6" />,
+    camera: <Camera className="h-6 w-6" />,
+    form: <FileText className="h-6 w-6" />,
+    target: <Target className="h-6 w-6" />,
+    dumbbell: <Dumbbell className="h-6 w-6" />,
+    star: <Star className="h-6 w-6" />,
+    "credit-card": <CreditCard className="h-6 w-6" />,
+    heart: <Heart className="h-6 w-6" />,
+    list: <List className="h-6 w-6" />,
+    user: <User className="h-6 w-6" />,
+    info: <Info className="h-6 w-6" />,
+    sparkles: <Sparkles className="h-6 w-6" />,
+  };
+  return icons[iconName] || <Sparkles className="h-6 w-6" />;
 }
 
 function syncMetaTag(selector: string, attributes: Record<string, string>) {
@@ -208,7 +227,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </header>
 
-      {/* Hero Section */}
+      {/* Hero Section con Mockup */}
       <section className="container py-12 sm:py-16 lg:py-20">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="space-y-6">
@@ -224,37 +243,37 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
               <Button asChild variant="hero" size="lg" className="justify-center">
                 <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
                   {config.heroCta}
-                  <ArrowRight />
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
               <Button asChild variant="outline" size="lg" className="justify-center">
-              <a href="#servicios">{config.heroSecondaryCta}</a>
+                <a href="#servicios">{config.heroSecondaryCta}</a>
               </Button>
             </div>
-
-
           </div>
 
+          {/* Mockup Laptop + Celular */}
           <div className="relative">
-            <div className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-gradient-card shadow-card">
+            {/* Laptop mockup */}
+            <div className="relative overflow-hidden rounded-[1.5rem] border border-border/70 bg-gradient-card shadow-card">
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-primary" />
               <img
                 src={config.heroImage}
-                alt={config.heroTitle}
-                className="h-[500px] w-full object-cover"
+                alt={`Ejemplo de web para ${config.title}`}
+                className="h-[400px] w-full object-cover"
                 loading="eager"
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-6">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-4">
                 <p className="text-sm font-semibold text-foreground">{config.heroPreviewTitle}</p>
                 <p className="mt-1 text-xs text-muted-foreground">{config.heroPreviewSubtitle}</p>
               </div>
             </div>
-            {/* Mockup de celular */}
-            <div className="absolute -bottom-6 -right-6 w-48 overflow-hidden rounded-2xl border border-border/70 bg-background shadow-xl">
+            {/* Celular mockup */}
+            <div className="absolute -bottom-8 -right-4 w-40 overflow-hidden rounded-2xl border border-border/70 bg-background shadow-xl sm:-bottom-10 sm:-right-8 sm:w-48">
               <img
-                src={config.heroImage}
-                alt="Vista móvil"
-                className="h-64 w-full object-cover"
+                src={config.heroMockupImage}
+                alt={`Vista móvil de ${config.title}`}
+                className="h-56 w-full object-cover sm:h-64"
                 loading="lazy"
               />
             </div>
@@ -262,22 +281,41 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </section>
 
+      {/* Problemas Section */}
+      <section className="container py-12 sm:py-16">
+        <SectionTitle
+          eyebrow="Problemas"
+          title={config.problemsTitle}
+          description="¿Te identificás con alguno de estos problemas?"
+        />
+
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {config.problems.map((problem) => (
+            <div key={problem.title} className="hover-card rounded-3xl p-6">
+              <h3 className="text-xl font-semibold tracking-tight">{problem.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">{problem.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Servicios Section */}
       <section id="servicios" className="container py-12 sm:py-16">
         <SectionTitle
-          eyebrow="Servicios"
-          title={config.solutionTitle}
-          description={config.solutionText}
+          eyebrow="Secciones"
+          title={config.servicesTitle}
+          description={config.servicesSubtitle}
         />
         <SectionActions />
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {config.solutionPoints.map((point, index) => (
-            <div key={point} className="hover-card rounded-3xl p-6">
-              <h3 className="mt-4 text-xl font-semibold tracking-tight">{point}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                {index === 0 ? "Lo que más le importa ver al cliente." : index === 1 ? "La información clara acelera la decisión." : index === 2 ? "Todo queda pensado para cerrar mejor." : "Elemento clave para tu negocio."}
-              </p>
+          {config.services.map((service) => (
+            <div key={service.title} className="hover-card rounded-3xl p-6">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-primary text-primary-foreground">
+                {getIcon(service.icon)}
+              </div>
+              <h3 className="mt-4 text-xl font-semibold tracking-tight">{service.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">{service.description}</p>
             </div>
           ))}
         </div>
@@ -310,7 +348,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
           <div className="surface-card hover-card rounded-[2rem] p-6 sm:p-8">
             <div className="grid gap-4 sm:grid-cols-3">
-              {config.benefits.slice(0, 3).map((item, index) => (
+              {config.benefits.slice(0, 3).map((item) => (
                 <div key={item.title} className="p-5">
                   <p className="mt-3 font-semibold text-foreground">{item.title}</p>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.text}</p>
@@ -332,7 +370,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {testimonials.map((testimonial) => (
             <div key={testimonial.name} className="hover-card rounded-3xl p-6">
-              <p className="mt-4 text-sm leading-6 text-muted-foreground">{testimonial.text}</p>
+              <p className="text-sm leading-6 text-muted-foreground">{testimonial.text}</p>
               <div className="mt-6 flex items-center gap-3">
                 <div>
                   <p className="text-sm font-semibold">{testimonial.name}</p>
@@ -356,6 +394,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         <div className="mt-10 grid gap-4 lg:grid-cols-4">
           {config.process.map((item) => (
             <div key={item.step} className="hover-card rounded-3xl p-6">
+              <p className="text-sm font-semibold tracking-[0.2em] text-[hsl(var(--neon-cyan))]">{item.step}</p>
               <h3 className="mt-4 text-xl font-semibold tracking-tight">{item.title}</h3>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.text}</p>
             </div>
@@ -417,7 +456,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
             <Button asChild variant="hero" size="lg" className="justify-center">
               <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
                 Hablar por WhatsApp
-                <ArrowRight />
+                <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>
             <Button asChild variant="outline" size="lg" className="justify-center">
@@ -448,5 +487,3 @@ function BadgePill({ text }: { text: string }) {
     </div>
   );
 }
-
-
