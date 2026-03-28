@@ -89,56 +89,76 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4">
-      <label className="grid gap-2">
-        <span className="text-sm font-medium text-foreground/90">Tu nombre</span>
-        <input
-          type="text"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-          required
-          autoComplete="name"
-          className="h-11 rounded-xl border border-border bg-background/40 px-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-          placeholder="Ej. María López"
-        />
-      </label>
+    <div className="rounded-[1.75rem] border border-border/70 bg-background/30 p-1">
+      <div className="rounded-[1.5rem] border border-border/60 bg-gradient-card p-5 shadow-card sm:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground">Formulario de contacto</p>
+            <h3 className="mt-2 text-2xl font-semibold tracking-tight">Pedí tu web y empezá a recibir clientes</h3>
+          </div>
+          <div className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-300">
+            Te respondemos en menos de 24 hs
+          </div>
+        </div>
 
-      <label className="grid gap-2">
-        <span className="text-sm font-medium text-foreground/90">Tu correo</span>
-        <input
-          type="email"
-          value={email}
-          onChange={handleEmailChange}
-          required
-          autoComplete="email"
-          className={`h-11 rounded-xl border bg-background/40 px-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring ${
-            emailError ? "border-red-500" : "border-border"
-          }`}
-          placeholder="tu@email.com"
-        />
-        {emailError && <p className="text-xs text-red-500">{emailError}</p>}
-      </label>
-
-      <label className="grid gap-2">
-        <span className="text-sm font-medium text-foreground/90">Contanos qué necesitás</span>
-        <textarea
-          value={mensaje}
-          onChange={(e) => setMensaje(e.target.value)}
-          required
-          rows={5}
-          className="resize-none rounded-xl border border-border bg-background/40 px-3 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-          placeholder="Contanos qué querés vender, a quién le hablás y qué resultado buscás."
-        />
-      </label>
-
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <Button type="submit" variant="hero" size="lg" className="justify-center" disabled={submitting || Boolean(emailError)}>
-          {submitting ? "Enviando..." : "Quiero mi propuesta"}
-        </Button>
-        <p className="text-xs text-muted-foreground">
-          {status || "Te respondemos con una propuesta pensada para conseguirte más clientes."}
+        <p className="mt-4 text-sm leading-6 text-muted-foreground">
+          Contanos qué querés vender y te devolvemos una propuesta pensada para conseguirte más consultas.
         </p>
+
+        <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
+          <div className="grid gap-4 md:grid-cols-2">
+            <label className="grid gap-2">
+              <span className="text-sm font-medium text-foreground/90">Tu nombre</span>
+              <input
+                type="text"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+                required
+                autoComplete="name"
+                className="h-11 rounded-2xl border border-border bg-background/40 px-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                placeholder="Ej. María López"
+              />
+            </label>
+
+            <label className="grid gap-2">
+              <span className="text-sm font-medium text-foreground/90">Tu correo</span>
+              <input
+                type="email"
+                value={email}
+                onChange={handleEmailChange}
+                required
+                autoComplete="email"
+                className={`h-11 rounded-2xl border bg-background/40 px-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring ${
+                  emailError ? "border-red-500" : "border-border"
+                }`}
+                placeholder="tu@email.com"
+              />
+              {emailError && <p className="text-xs text-red-500">{emailError}</p>}
+            </label>
+          </div>
+
+          <label className="grid gap-2">
+            <span className="text-sm font-medium text-foreground/90">Contanos qué necesitás</span>
+            <textarea
+              value={mensaje}
+              onChange={(e) => setMensaje(e.target.value)}
+              required
+              rows={5}
+              className="resize-none rounded-2xl border border-border bg-background/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+              placeholder="Contanos qué querés vender, a quién le hablás y qué resultado buscás."
+            />
+          </label>
+
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <Button type="submit" variant="hero" size="lg" className="justify-center" disabled={submitting || Boolean(emailError)}>
+              {submitting ? "Enviando..." : "Quiero mi web"}
+            </Button>
+            <p className="text-xs text-muted-foreground">
+              {status || "Te respondemos con una propuesta pensada para conseguirte más clientes."}
+            </p>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   );
 }

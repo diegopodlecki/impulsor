@@ -518,14 +518,14 @@ export default function Index() {
           <div className="lg:col-span-5">
             <div className="rounded-[2rem] border border-border/70 bg-gradient-card p-6 shadow-card sm:p-8">
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Formulario</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight">Pedí tu web lista para conseguir clientes</h2>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight">Pedí tu web y empezá a recibir clientes</h2>
               <p className="mt-4 text-sm leading-6 text-muted-foreground">
-                Dejanos tu consulta y te respondemos con una propuesta concreta. El formulario sigue guardando todo en
-                Supabase para que no se pierda ningún contacto.
+                Dejanos tu consulta y te respondemos con una propuesta concreta. Te respondemos en menos de 24 hs y
+                no se pierde ningún contacto.
               </p>
 
               <div className="mt-6 space-y-3">
-                {["Respuesta rápida y clara", "Ideal para presupuestos, reservas y consultas", "Seguimiento centralizado en Supabase"].map(
+                {["Respuesta rápida y clara", "Ideal para presupuestos, reservas y consultas", "Te respondemos en menos de 24 hs"].map(
                   (item) => (
                     <div key={item} className="rounded-2xl border border-border/60 bg-background/30 px-4 py-4 text-sm">
                       {item}
