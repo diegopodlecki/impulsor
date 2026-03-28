@@ -26,11 +26,13 @@ export function ContactForm() {
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setEmail(value);
+
     if (value && !isValidEmail(value)) {
       setEmailError("Formato de correo inválido");
-    } else {
-      setEmailError("");
+      return;
     }
+
+    setEmailError("");
   };
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -54,7 +56,7 @@ export function ContactForm() {
       });
 
       if (insertError) throw insertError;
-      toast.success("Formulario guardado");
+      toast.success("Tu consulta quedó guardada");
 
       const { error: emailError } = await enviarEmailFormulario({
         nombre,
@@ -65,10 +67,10 @@ export function ContactForm() {
       if (emailError) {
         console.error("ERROR EMAIL:", emailError);
         toast.error(`Se guardó el mensaje, pero falló el aviso por correo: ${emailError.message}`);
-        setStatus(`Formulario enviado. El aviso por correo falló: ${emailError.message}`);
+        setStatus(`Tu consulta quedó guardada. El aviso por correo falló: ${emailError.message}`);
       } else {
-        toast.success("Aviso por correo enviado");
-        setStatus("Formulario enviado correctamente.");
+        toast.success("Te respondimos por correo");
+        setStatus("Tu consulta fue enviada correctamente.");
       }
 
       setNombre("");
@@ -78,7 +80,7 @@ export function ContactForm() {
       clearDiagnosticHash();
     } catch (error) {
       console.error(error);
-      toast.error("Error al enviar formulario");
+      toast.error("No pudimos enviar tu consulta");
       setStatus("");
       clearDiagnosticHash();
     } finally {
@@ -125,7 +127,7 @@ export function ContactForm() {
           required
           rows={5}
           className="resize-none rounded-xl border border-border bg-background/40 px-3 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-          placeholder="Cuéntanos qué querés vender, a quién le hablás y qué resultado buscás."
+          placeholder="Contanos qué querés vender, a quién le hablás y qué resultado buscás."
         />
       </label>
 
@@ -134,7 +136,7 @@ export function ContactForm() {
           {submitting ? "Enviando..." : "Quiero mi propuesta"}
         </Button>
         <p className="text-xs text-muted-foreground">
-          {status || "Te respondemos con una propuesta personalizada y guardamos tu consulta en Supabase."}
+          {status || "Te respondemos con una propuesta pensada para conseguirte más clientes."}
         </p>
       </div>
     </form>

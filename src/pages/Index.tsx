@@ -64,16 +64,16 @@ function whatsappLink(message: string) {
 }
 
 const heroStats = [
-  { value: "+Consultas", label: "en menos tiempo" },
-  { value: "+Confianza", label: "desde el primer impacto" },
-  { value: "+Cierres", label: "por WhatsApp" },
+  { value: "+Consultas", label: "desde el primer día" },
+  { value: "+Confianza", label: "en el primer vistazo" },
+  { value: "+Cierres", label: "con WhatsApp y formulario" },
 ];
 
 const problems = [
   {
     icon: <MessageCircle className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />,
     title: "Tu web no vende",
-    text: "Tenes presencia online, pero no guia al visitante a escribirte ni a pedir una cita.",
+    text: "Tenés presencia online, pero no guía al visitante a escribirte ni a pedir una cita.",
   },
   {
     icon: <TrendingUp className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />,
@@ -82,15 +82,15 @@ const problems = [
   },
   {
     icon: <Globe2 className="h-5 w-5 text-[hsl(var(--neon-cyan))]" />,
-    title: "Tu marca se ve debil",
-    text: "Sin una landing pensada para convertir, terminás pareciendo uno mas entre muchos.",
+    title: "Tu marca se ve débil",
+    text: "Sin una landing pensada para vender, terminás pareciendo uno más entre muchos.",
   },
 ];
 
 const solutions = [
   "Mensaje claro desde el primer segundo",
-  "Diseno que genera confianza y profesionalismo",
-  "Llamadas a la accion visibles en toda la pagina",
+  "Diseño que hace que te tomen en serio",
+  "Botones visibles para escribirte sin dar vueltas",
   "WhatsApp como canal principal de cierre",
   "Formulario conectado a Supabase para no perder consultas",
 ];
@@ -99,41 +99,41 @@ const rubros = [
   {
     slug: "gimnasios",
     title: "Gimnasios",
-    subtitle: "Mas consultas, mas visitas y mas inscripciones.",
-    copy: "Mostra clases, horarios y planes con una landing que convierte interes en mensajes.",
-    message: "Hola, quiero una web como la de gimnasios para captar mas consultas y ventas.",
+    subtitle: "Más consultas, más visitas y más inscripciones.",
+    copy: "Mostrá clases, horarios y planes con una web que convierte interés en mensajes.",
+    message: "Hola, quiero una web para mi gimnasio que me consiga más consultas e inscripciones.",
     preview: previewSvg("Gimnasios", "Clases, planes y reservas", "#22c55e", "#06b6d4"),
   },
   {
     slug: "personal-trainers",
     title: "Personal Trainers",
-    subtitle: "Construi autoridad y cerrá entrenamientos por chat.",
-    copy: "Presenta tu metodo, tus resultados y un CTA claro para que te escriban sin dudar.",
-    message: "Hola, quiero una web como la de personal trainer para vender mis servicios.",
+    subtitle: "Construí autoridad y cerrá entrenamientos por chat.",
+    copy: "Presentá tu método, tus resultados y un CTA claro para que te escriban sin dudar.",
+    message: "Hola, quiero una web para mi trabajo de personal trainer que me ayude a vender más.",
     preview: previewSvg("Personal Trainer", "Resultados y disciplina", "#f97316", "#ef4444"),
   },
   {
     slug: "nutricionistas",
     title: "Nutricionistas",
-    subtitle: "Mas consultas para planes, seguimiento y cambios reales.",
-    copy: "Mostra tu enfoque, tus servicios y una experiencia visual que inspire cuidado y profesionalismo.",
-    message: "Hola, quiero una web como la de nutricionista para atraer mas pacientes.",
+    subtitle: "Más consultas para planes, seguimiento y cambios reales.",
+    copy: "Mostrá tu enfoque y tu forma de trabajar con una experiencia visual que inspire confianza.",
+    message: "Hola, quiero una web para mi consultorio de nutrición y atraer más pacientes.",
     preview: previewSvg("Nutricionista", "Planes, habitos y seguimiento", "#84cc16", "#22c55e"),
   },
   {
     slug: "psicologos",
     title: "Psicologos",
-    subtitle: "Transmiti calma, credibilidad y reserva de turnos.",
-    copy: "Una pagina sobria y humana que facilite reservar sesiones sin friccion.",
-    message: "Hola, quiero una web como la de psicologia para agendar mas turnos.",
+    subtitle: "Transmití calma, credibilidad y reserva de turnos.",
+    copy: "Una página sobria y humana que facilite reservar sesiones sin fricción.",
+    message: "Hola, quiero una web para mi consultorio de psicología y agendar más turnos.",
     preview: previewSvg("Psicologia", "Calma, empatia y turnos", "#3b82f6", "#0ea5e9"),
   },
   {
     slug: "estetica-corporal",
     title: "Estetica corporal",
-    subtitle: "Vende sesiones premium con una imagen mas aspiracional.",
-    copy: "Mostra transformacion, resultados y una estetica cuidada para servicios de alto valor.",
-    message: "Hola, quiero una web como la de estetica corporal para vender mas tratamientos.",
+    subtitle: "Vendé sesiones premium con una imagen más aspiracional.",
+    copy: "Mostrá transformación, resultados y una estética cuidada para servicios de alto valor.",
+    message: "Hola, quiero una web para estética corporal que me ayude a vender más tratamientos.",
     preview: previewSvg("Estetica corporal", "Premium, visual y elegante", "#ec4899", "#f97316"),
   },
 ];
@@ -141,17 +141,17 @@ const rubros = [
 const benefits = [
   {
     title: "Mas consultas",
-    text: "Cada seccion empuja al visitante a escribirte o agendar una llamada.",
+    text: "Cada sección empuja al visitante a escribirte o agendar una llamada.",
     icon: <Target className="h-4 w-4" />,
   },
   {
     title: "Mejor primera impresion",
-    text: "Una web moderna comunica valor antes de que la persona lea demasiado.",
+    text: "Una web moderna hace que tu servicio se vea mejor antes de leer demasiado.",
     icon: <Sparkles className="h-4 w-4" />,
   },
   {
     title: "Cierre por WhatsApp",
-    text: "El contacto principal se mantiene simple, directo y familiar para el usuario.",
+    text: "El contacto principal se mantiene simple, directo y fácil de usar.",
     icon: <MessageCircle className="h-4 w-4" />,
   },
   {
@@ -165,12 +165,12 @@ const process = [
   {
     step: "01",
     title: "Entendemos tu negocio",
-    text: "Definimos que vendes, a quien le hablas y que accion queres que haga el usuario.",
+    text: "Definimos qué vendés, a quién le hablás y qué acción querés que haga el usuario.",
   },
   {
     step: "02",
     title: "Armamos la landing",
-    text: "Disenamos una pagina clara, moderna y enfocada en convertir visitas en leads.",
+    text: "Diseñamos una página clara, moderna y enfocada en convertir visitas en clientes.",
   },
   {
     step: "03",
@@ -180,7 +180,7 @@ const process = [
   {
     step: "04",
     title: "Publicas y vendes",
-    text: "Tu sitio queda listo para recibir trafico desde redes, anuncios o Google.",
+    text: "Tu sitio queda listo para recibir tráfico desde redes, anuncios o Google.",
   },
 ];
 
@@ -218,7 +218,7 @@ export default function Index() {
             </div>
             <div>
               <p className="text-sm font-semibold tracking-tight">WebAppImpulsor</p>
-              <p className="text-xs text-muted-foreground">Landing orientada a generar clientes</p>
+                  <p className="text-xs text-muted-foreground">Landing orientada a conseguir clientes</p>
             </div>
           </Link>
 
@@ -227,7 +227,7 @@ export default function Index() {
               Problema
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#solucion">
-              Solucion
+              Solución
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#rubros">
               Rubros
@@ -264,20 +264,20 @@ export default function Index() {
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/30 px-4 py-2 text-sm font-medium text-foreground/90">
                 <Zap className="h-4 w-4 text-[hsl(var(--neon-cyan))]" />
-                Creamamos paginas web que generan clientes
+                Creamos páginas web que generan clientes
               </div>
               <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-                Creamos paginas web que convierten visitas en consultas reales
+                Creamos páginas web que convierten visitas en consultas reales
               </h1>
               <p className="mt-5 max-w-xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
-                Si tu web no vende, solo esta ocupando espacio. Disenamos landing pages claras, modernas y enfocadas en
+                Si tu web no vende, solo está ocupando espacio. Diseñamos páginas claras, modernas y enfocadas en
                 hacer que la gente te escriba por WhatsApp o deje sus datos.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button asChild variant="whatsapp" size="lg">
                   <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-                    WhatsApp
+                    Quiero más clientes
                   </a>
                 </Button>
                 <Button asChild variant="hero" size="lg">
@@ -305,7 +305,7 @@ export default function Index() {
                 className="h-[460px] w-full rounded-[1.5rem] object-cover"
               />
               <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                {["Mas consultas", "Mas confianza", "Mas cierres"].map((item) => (
+                {["Más consultas", "Más confianza", "Más cierres"].map((item) => (
                   <div key={item} className="rounded-2xl border border-border/60 bg-background/30 px-4 py-3 text-sm font-medium">
                     {item}
                   </div>
@@ -319,8 +319,8 @@ export default function Index() {
       <section id="problema" className="container py-12 sm:py-16">
         <SectionTitle
           eyebrow="Problema"
-          title="La mayoria de las webs muestran servicios, pero no generan consultas"
-          description="Muchas paginas se ven bien, pero no responden la pregunta mas importante: por que alguien deberia contactarte ahora?"
+          title="La mayoría de las webs muestran servicios, pero no generan consultas"
+          description="Muchas páginas se ven bien, pero no responden la pregunta más importante: por qué alguien debería contactarte ahora."
         />
 
         <div className="mt-10 grid gap-4 lg:grid-cols-3">
@@ -340,9 +340,9 @@ export default function Index() {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-7">
             <SectionTitle
-              eyebrow="Solucion"
-              title="Una landing pensada para convertir interes en clientes"
-              description="Disenamos paginas que ordenan el mensaje, elevan la percepcion de tu marca y llevan al visitante directo a la accion."
+              eyebrow="Solución"
+              title="Una landing pensada para convertir interés en clientes"
+              description="Diseñamos páginas que ordenan el mensaje, elevan la percepción de tu marca y llevan al visitante directo a la acción."
             />
 
             <div className="mt-10 grid gap-3">
@@ -357,19 +357,19 @@ export default function Index() {
 
           <div className="lg:col-span-5">
             <div className="rounded-[2rem] border border-border/70 bg-gradient-card p-6 shadow-card">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Que logramos</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Qué logramos</p>
               <div className="mt-5 space-y-4">
                 <div className="rounded-2xl border border-border/60 bg-background/30 p-4">
-                  <p className="text-sm font-semibold">Mas consultas</p>
-                  <p className="mt-1 text-sm text-muted-foreground">La web guia al visitante a escribirte o dejar sus datos sin pensar demasiado.</p>
+                  <p className="text-sm font-semibold">Más consultas</p>
+                  <p className="mt-1 text-sm text-muted-foreground">La web guía al visitante a escribirte o dejar sus datos sin pensar demasiado.</p>
                 </div>
                 <div className="rounded-2xl border border-border/60 bg-background/30 p-4">
-                  <p className="text-sm font-semibold">Mas credibilidad</p>
-                  <p className="mt-1 text-sm text-muted-foreground">Un diseno limpio transmite valor y profesionalismo desde el primer vistazo.</p>
+                  <p className="text-sm font-semibold">Más credibilidad</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Un diseño limpio transmite valor y profesionalismo desde el primer vistazo.</p>
                 </div>
                 <div className="rounded-2xl border border-border/60 bg-background/30 p-4">
-                  <p className="text-sm font-semibold">Mas cierres</p>
-                  <p className="mt-1 text-sm text-muted-foreground">WhatsApp sigue siendo el camino mas simple para cerrar ventas de servicios.</p>
+                  <p className="text-sm font-semibold">Más cierres</p>
+                  <p className="mt-1 text-sm text-muted-foreground">WhatsApp sigue siendo el camino más simple para cerrar ventas de servicios.</p>
                 </div>
               </div>
             </div>
@@ -379,9 +379,9 @@ export default function Index() {
 
       <section id="rubros" className="container py-12 sm:py-16">
         <SectionTitle
-          eyebrow="Paginas por rubro"
-          title="Mostra tu especialidad con una pagina hecha para tu tipo de cliente"
-          description="Cada rubro tiene necesidades distintas. La landing debe hablarle a ese cliente especifico y llevarlo a pedir turno o cotizacion."
+          eyebrow="Páginas por rubro"
+          title="Mostrá tu especialidad con una página hecha para tu tipo de cliente"
+          description="Cada rubro tiene necesidades distintas. La landing debe hablarle a ese cliente específico y llevarlo a pedir turno o cotización."
         />
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -395,7 +395,7 @@ export default function Index() {
                     <p className="mt-2 text-sm text-muted-foreground">{rubro.subtitle}</p>
                   </div>
                   <Badge className="border-transparent bg-background/50 text-foreground" variant="secondary">
-                    Conversion
+                    Ventas
                   </Badge>
                 </div>
                 <p className="mt-4 text-sm leading-6 text-muted-foreground">{rubro.copy}</p>
@@ -432,8 +432,8 @@ export default function Index() {
                   {[
                     "Mensaje claro para el cliente ideal",
                     "Botones visibles para consultar por WhatsApp",
-                    "Formularios y llamadas a la accion",
-                    "Diseno pensado para convertir visitas",
+                    "Formularios y llamadas a la acción",
+                    "Diseño pensado para convertir visitas",
                   ].map((item) => (
                     <div key={item} className="rounded-2xl border border-border/60 bg-background/30 px-4 py-4 text-sm">
                       {item}
@@ -459,8 +459,8 @@ export default function Index() {
       <section id="beneficios" className="container py-12 sm:py-16">
         <SectionTitle
           eyebrow="Beneficios"
-          title="Beneficios que importan al negocio, no solo al diseno"
-          description="La landing esta pensada para sumar consultas, mejorar la percepcion de tu marca y hacer mas facil el cierre comercial."
+          title="Beneficios que importan al negocio, no solo al diseño"
+          description="La landing está pensada para sumar consultas, mejorar la percepción de tu marca y hacer más fácil el cierre comercial."
         />
 
         <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -480,7 +480,7 @@ export default function Index() {
         <SectionTitle
           eyebrow="Proceso"
           title="Un servicio simple, claro y sin vueltas"
-          description="Mantenemos el proceso corto para avanzar rapido y llegar a una web lista para vender."
+          description="Mantenemos el proceso corto para avanzar rápido y llegar a una web lista para vender."
         />
 
         <div className="mt-10 grid gap-4 lg:grid-cols-4">
@@ -499,14 +499,14 @@ export default function Index() {
           <div className="lg:col-span-5">
             <div className="rounded-[2rem] border border-border/70 bg-gradient-card p-6 shadow-card sm:p-8">
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Formulario</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight">Pedí tu web lista para convertir</h2>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight">Pedí tu web lista para conseguir clientes</h2>
               <p className="mt-4 text-sm leading-6 text-muted-foreground">
                 Dejanos tu consulta y te respondemos con una propuesta concreta. El formulario sigue guardando todo en
-                Supabase para que no se pierda ningun contacto.
+                Supabase para que no se pierda ningún contacto.
               </p>
 
               <div className="mt-6 space-y-3">
-                {["Respuesta rapida y clara", "Ideal para presupuestos, reservas y consultas", "Seguimiento centralizado en Supabase"].map(
+                {["Respuesta rápida y clara", "Ideal para presupuestos, reservas y consultas", "Seguimiento centralizado en Supabase"].map(
                   (item) => (
                     <div key={item} className="rounded-2xl border border-border/60 bg-background/30 px-4 py-4 text-sm">
                       {item}
@@ -531,10 +531,10 @@ export default function Index() {
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary-foreground/80">CTA final</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                Si queres mas consultas, empecemos por tu landing
+                Si querés más consultas, empecemos por tu landing
               </h2>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-primary-foreground/85">
-                Hacemos una pagina pensada para tu rubro, con mensajes que convierten y una via directa para que te
+                Hacemos una página pensada para tu rubro, con mensajes que convierten y una vía directa para que te
                 contacten por WhatsApp.
               </p>
             </div>
@@ -542,7 +542,7 @@ export default function Index() {
             <div className="flex flex-col gap-3">
               <Button asChild variant="whatsapp" size="lg" className="w-full">
                 <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-                  Escribirme por WhatsApp
+                  Quiero más consultas
                 </a>
               </Button>
               <Button asChild variant="outline" size="lg" className="w-full border-white/30 bg-white/10 text-primary-foreground hover:bg-white/20 hover:text-primary-foreground">
@@ -557,7 +557,7 @@ export default function Index() {
         <div className="container flex flex-col gap-3 py-8 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="font-semibold tracking-tight">WebAppImpulsor</p>
-            <p className="text-sm text-muted-foreground">Landing de conversion con Supabase y WhatsApp.</p>
+            <p className="text-sm text-muted-foreground">Landing de conversión con Supabase y WhatsApp.</p>
           </div>
           <div className="text-sm text-muted-foreground">Formulario, panel admin y seguimiento de consultas integrados.</div>
         </div>
