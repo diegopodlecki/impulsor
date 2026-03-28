@@ -1,4 +1,4 @@
-﻿import { ArrowRight, Sparkles } from "lucide-react";
+﻿import { ArrowRight, Sparkles, MessageCircle, Clock, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
@@ -114,23 +114,21 @@ const benefits = [
 const process = [
   {
     step: "01",
-    title: "Analizamos tu negocio",
-    text: "Entendemos qué vendés, a quién le hablás y qué querés lograr con la web.",
+    title: "Nos escribís por WhatsApp",
+    text: "Nos contás qué necesitás y a quién le vendés. Sin vueltas.",
+    icon: MessageCircle,
   },
   {
     step: "02",
-    title: "Diseñamos tu web",
-    text: "Armamos una página clara, moderna y enfocada en convertir visitas en consultas.",
+    title: "Definimos tu web en 10 minutos",
+    text: "En una llamada rápida definimos el contenido y el estilo de tu página.",
+    icon: Clock,
   },
   {
     step: "03",
-    title: "La publicamos",
-    text: "Dejamos todo listo para que empieces a mostrar tu negocio online.",
-  },
-  {
-    step: "04",
-    title: "Empezás a recibir consultas",
-    text: "Tu sitio queda listo para trabajar con WhatsApp, formularios y tráfico de redes o anuncios.",
+    title: "En pocos días tenés tu página lista",
+    text: "Tu web queda publicada, funcionando y lista para recibir clientes.",
+    icon: CheckCircle,
   },
 ];
 
@@ -388,11 +386,14 @@ export default function Index() {
           description="Un proceso simple y claro para avanzar rápido y llegar a una web lista para vender."
         />
 
-        <div className="mt-10 grid gap-4 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
           {process.map((item) => (
-            <div key={item.step} className="surface-card hover-card rounded-3xl p-6">
-              <div className="text-sm font-semibold tracking-[0.2em] text-[hsl(var(--neon-cyan))]">{item.step}</div>
-              <h3 className="mt-4 text-xl font-semibold tracking-tight">{item.title}</h3>
+            <div key={item.step} className="surface-card hover-card rounded-3xl p-6 text-center">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(var(--neon-cyan))]/10">
+                <item.icon className="h-6 w-6 text-[hsl(var(--neon-cyan))]" />
+              </div>
+              <div className="mt-4 text-sm font-semibold tracking-[0.2em] text-[hsl(var(--neon-cyan))]">{item.step}</div>
+              <h3 className="mt-2 text-xl font-semibold tracking-tight">{item.title}</h3>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.text}</p>
             </div>
           ))}
