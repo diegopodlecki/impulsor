@@ -57,7 +57,7 @@ const rubros = [
     copy: "Diseñada para atraer clientes en gimnasios.",
     message: "Hola, quiero una web para mi gimnasio que me consiga más consultas e inscripciones.",
     demoHref: "/gimnasios",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "personal-trainers",
@@ -75,7 +75,7 @@ const rubros = [
     copy: "Diseñada para atraer clientes en nutrición.",
     message: "Hola, quiero una web para mi consultorio de nutrición y atraer más pacientes.",
     demoHref: "/nutricionistas",
-    image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "psicologos",
@@ -246,7 +246,7 @@ export default function Index() {
             <div className="relative overflow-hidden surface-card hover_card rounded-[2rem] p-4 sm:p-6">
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-primary" />
               <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80"
                 alt="Dashboard de análisis web mostrando métricas de conversión"
                 className="h-[460px] w-full rounded-[1.5rem] object-cover"
                 loading="eager"

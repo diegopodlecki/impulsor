@@ -45,7 +45,7 @@ export const landingPages: Record<string, LandingConfig> = {
     heroBadge: "Pensada para gimnasios",
     heroPreviewTitle: "Tu gimnasio con más inscripciones",
     heroPreviewSubtitle: "Clases, horarios y reservas desde un mismo lugar.",
-    heroImage: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80",
     problemsTitle: "¿Qué te está frenando?",
     problems: [
       { title: "Pocos alumnos nuevos", text: "La web debe llevar a consultas e inscripciones." },
@@ -95,7 +95,7 @@ export const landingPages: Record<string, LandingConfig> = {
     heroBadge: "Pensada para entrenadores",
     heroPreviewTitle: "Tu marca personal vendiendo mejor",
     heroPreviewSubtitle: "Rutinas, testimonios y planes en una sola landing.",
-    heroImage: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=80",
     problemsTitle: "¿Qué te está frenando?",
     problems: [
       { title: "No destacarte", text: "Si tu propuesta no se entiende rápido, te comparan solo por precio." },
@@ -145,7 +145,7 @@ export const landingPages: Record<string, LandingConfig> = {
     heroBadge: "Pensada para nutrición",
     heroPreviewTitle: "Tu consultorio más claro y confiable",
     heroPreviewSubtitle: "Servicios, información y contacto directo.",
-    heroImage: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1200&q=80",
     problemsTitle: "¿Qué te está frenando?",
     problems: [
       { title: "Falta de confianza online", text: "Si tu web no transmite confianza, cuesta agendar." },
@@ -195,7 +195,7 @@ export const landingPages: Record<string, LandingConfig> = {
     heroBadge: "Pensada para psicología",
     heroPreviewTitle: "Tu consultorio generando confianza",
     heroPreviewSubtitle: "Calma, empatía y contacto directo.",
-    heroImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80",
     problemsTitle: "¿Qué te está frenando?",
     problems: [
       { title: "Dificultad para generar confianza online", text: "Si la web no transmite seguridad, cuesta dar el paso." },
@@ -244,7 +244,7 @@ export const landingPages: Record<string, LandingConfig> = {
     heroBadge: "Pensada para estética",
     heroPreviewTitle: "Tu marca con una presencia más premium",
     heroPreviewSubtitle: "Visual, elegante y enfocada en ventas.",
-    heroImage: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=80",
     problemsTitle: "¿Qué te está frenando?",
     problems: [
       { title: "Falta de impacto visual", text: "Si la web no se ve premium, cuesta destacar el servicio." },
