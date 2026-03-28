@@ -263,28 +263,28 @@ export default function Index() {
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
           {[
-            { emoji: "🏋️", name: "Gimnasio", desc: "Atrae más socios", href: "/gimnasios" },
-            { emoji: "💪", name: "Personal trainer", desc: "Vende tus entrenamientos", href: "/entrenadores" },
-            { emoji: "🧠", name: "Psicólogo/a", desc: "Agenda más consultas", href: "/psicologos" },
-            { emoji: "🥗", name: "Nutricionista", desc: "Consigue más pacientes", href: "/nutricionistas" },
-            { emoji: "✨", name: "Estética corporal", desc: "Vende más tratamientos", href: "/estetica-corporal" },
-            { emoji: "🚀", name: "Emprendedor", desc: "Impulsa tu negocio", href: "/emprendedores" },
+            { name: "Iron Fitness", rubro: "Gimnasio", accentColor: "#F97316", bgColor: "#111111", href: "/gimnasios" },
+            { name: "FitPro Training", rubro: "Personal trainer", accentColor: "#f97316", bgColor: "#1a1a1a", href: "/entrenadores" },
+            { name: "Consultorio Psicológico", rubro: "Psicólogo/a", accentColor: "#3b82f6", bgColor: "#f8fafc", href: "/psicologos" },
+            { name: "NutriVida", rubro: "Nutricionista", accentColor: "#22c55e", bgColor: "#f0fdf4", href: "/nutricionistas" },
+            { name: "Estética Premium", rubro: "Estética corporal", accentColor: "#ec4899", bgColor: "#fdf2f8", href: "/estetica-corporal" },
+            { name: "Impulsa Negocio", rubro: "Emprendedor", accentColor: "#8b5cf6", bgColor: "#faf5ff", href: "/emprendedores" },
           ].map((rubro) => (
             <Link
               key={rubro.name}
               to={rubro.href}
-              className="group flex items-center justify-between rounded-2xl border border-border/70 bg-card p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:shadow-md"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:shadow-md"
             >
-              <div className="flex items-center gap-4">
-                <span className="text-2xl">{rubro.emoji}</span>
+              <div className="h-1" style={{ backgroundColor: rubro.accentColor }} />
+              <div className="flex items-center justify-between p-5">
                 <div>
                   <h3 className="font-semibold">{rubro.name}</h3>
-                  <p className="text-sm text-muted-foreground">{rubro.desc}</p>
+                  <p className="text-sm text-muted-foreground">{rubro.rubro}</p>
                 </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-600 dark:text-blue-400">Ver demo</span>
-                <span className="text-muted-foreground transition-transform group-hover:translate-x-0.5">›</span>
+                <div className="flex items-center gap-2">
+                  <span className="rounded-full px-3 py-1 text-xs font-medium" style={{ backgroundColor: `${rubro.accentColor}20`, color: rubro.accentColor }}>Ver sitio demo</span>
+                  <span className="text-muted-foreground transition-transform group-hover:translate-x-0.5">›</span>
+                </div>
               </div>
             </Link>
           ))}
