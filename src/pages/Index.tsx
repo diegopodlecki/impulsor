@@ -208,24 +208,37 @@ export default function Index() {
           <div className="lg:col-span-6">
             <div className="max-w-2xl">
               <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-                Tu web debería traerte clientes, no solo verse bien
+                Hacemos páginas web que te consiguen clientes, no solo visitas
               </h1>
               <p className="mt-5 max-w-xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
-                Si tu negocio no recibe consultas, el problema no es el mercado, es tu web.
+                Diseñamos webs profesionales para entrenadores, centros de estética y profesionales que quieren vender más sin depender de redes sociales.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild variant="whatsapp" size="lg">
-                <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
-                  Hablar por WhatsApp
-                </a>
-              </Button>
-              <Button asChild variant="hero" size="lg">
-                <a href="#rubros">Quiero ver ejemplos</a>
-              </Button>
-            </div>
+                <Button asChild variant="whatsapp" size="lg">
+                  <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
+                    Hablar por WhatsApp
+                  </a>
+                </Button>
+                <Button asChild variant="hero" size="lg">
+                  <a href="#rubros">Ver ejemplos reales</a>
+                </Button>
+              </div>
 
-
+              <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:gap-6">
+                <div className="flex items-center gap-2">
+                  <span className="text-[hsl(var(--neon-cyan))]">✔</span>
+                  <span className="text-sm text-muted-foreground">Entrega en 5 días</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-[hsl(var(--neon-cyan))]">✔</span>
+                  <span className="text-sm text-muted-foreground">Adaptado a celular</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-[hsl(var(--neon-cyan))]">✔</span>
+                  <span className="text-sm text-muted-foreground">Optimizado para captar clientes</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -233,12 +246,11 @@ export default function Index() {
             <div className="relative overflow-hidden surface-card hover_card rounded-[2rem] p-4 sm:p-6">
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-primary" />
               <img
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80"
-                alt="Dashboard de análisis web mostrando métricas de conversión"
+                src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80"
+                alt="Persona usando celular con web profesional"
                 className="h-[460px] w-full rounded-[1.5rem] object-cover"
                 loading="eager"
               />
-
             </div>
           </div>
         </div>
