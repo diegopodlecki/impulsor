@@ -173,25 +173,23 @@ export default function Index() {
           </Link>
 
           <nav className="hidden items-center gap-4 lg:flex">
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#">
+              Inicio
+            </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#rubros">
               Ejemplos
             </a>
-            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#beneficios">
-              Beneficios
-            </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#proceso">
-              Proceso
+              Cómo funciona
             </a>
             <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#contacto">
-              Formulario
+              Contacto
             </a>
-            <Link
-              to="/admin"
-              className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/30 px-4 py-2 text-sm font-medium text-foreground/90 transition-colors hover:bg-background/50"
-            >
-              Admin
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            <Button asChild variant="whatsapp" size="sm">
+              <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
+                WhatsApp
+              </a>
+            </Button>
           </nav>
 
           <Button asChild variant="whatsapp" size="sm" className="hidden md:inline-flex">
