@@ -238,7 +238,7 @@ export default function Admin() {
                   Panel de contactos
                 </div>
                 <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-                  Dashboard profesional para gestionar leads
+                  Panel para gestionar consultas
                 </h1>
                 <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base">
                   Buscador en tiempo real, filtros por fecha, estado leído/no leído, exportación CSV y detalle del mensaje

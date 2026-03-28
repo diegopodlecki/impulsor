@@ -164,6 +164,18 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
             </div>
           </Link>
 
+          <nav className="hidden items-center gap-4 sm:flex">
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#problema">
+              Problema
+            </a>
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#beneficios">
+              Beneficios
+            </a>
+            <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" href="#contacto">
+              Contacto
+            </a>
+          </nav>
+
           <Button asChild variant="whatsapp" size="sm" className="hidden sm:inline-flex">
             <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
               Hablar por WhatsApp
@@ -227,14 +239,14 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
                 </div>
               </div>
               <div className="overflow-hidden rounded-[1.5rem]">
-                <img src={config.heroImage} alt={config.heroTitle} className="h-full w-full object-cover" />
+                <img src={config.heroImage} alt={config.heroTitle} className="h-full w-full object-cover" loading="eager" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="contacto" className="container py-12 sm:py-16">
+      <section id="problema" className="container py-12 sm:py-16">
         <SectionTitle
           eyebrow="Problema"
           title={config.problemsTitle}
@@ -339,7 +351,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
       <section className="container py-12 sm:py-16">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="surface-card hover-card rounded-[2rem] p-4 sm:p-6">
-            <img src={config.profile} alt={`Foto de perfil de ${config.aboutName}`} className="h-full w-full rounded-[1.5rem] object-cover" />
+            <img src={config.profile} alt={`Foto de perfil de ${config.aboutName}`} className="h-full w-full rounded-[1.5rem] object-cover" loading="lazy" />
           </div>
 
           <div className="surface-card hover-card rounded-[2rem] p-6 sm:p-8">
@@ -365,7 +377,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </section>
 
-      <section className="container py-12 sm:py-16">
+      <section id="contacto" className="container py-12 sm:py-16">
         <SectionTitle
           eyebrow="Formulario"
           title={config.formTitle}

@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, Globe2, MessageCircle, Sparkles, Target, TrendingUp, Zap } from "lucide-react";
+﻿import { ArrowRight, CheckCircle2, Globe2, MessageCircle, Sparkles, Target, TrendingUp, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { Badge } from "@/components/ui/badge";
@@ -8,88 +8,6 @@ import { defaultWhatsappLink } from "@/components/landing/landingVisuals";
 
 const WHATSAPP_NUMBER = "541166448389";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
-
-function xmlEscape(value: string) {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&apos;");
-}
-
-function previewSvg(title: string, subtitle: string, accentA: string, accentB: string) {
-  const safeTitle = xmlEscape(title);
-  const safeSubtitle = xmlEscape(subtitle);
-  const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="${safeTitle}">
-      <defs>
-        <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stop-color="#07111f" />
-          <stop offset="100%" stop-color="#101d35" />
-        </linearGradient>
-        <linearGradient id="accent" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stop-color="${accentA}" />
-          <stop offset="100%" stop-color="${accentB}" />
-        </linearGradient>
-      </defs>
-      <rect width="1200" height="900" rx="48" fill="url(#bg)" />
-      <circle cx="960" cy="170" r="150" fill="${accentA}" fill-opacity="0.18" />
-      <circle cx="1040" cy="620" r="220" fill="${accentB}" fill-opacity="0.12" />
-      <rect x="74" y="82" width="188" height="44" rx="22" fill="url(#accent)" fill-opacity="0.95" />
-      <text x="98" y="111" fill="#ffffff" font-size="22" font-family="Inter, Arial, sans-serif" font-weight="700">Web que convierte</text>
-      <text x="74" y="202" fill="#ffffff" font-size="54" font-family="Inter, Arial, sans-serif" font-weight="800">${safeTitle}</text>
-      <text x="74" y="264" fill="#cbd5e1" font-size="28" font-family="Inter, Arial, sans-serif">${safeSubtitle}</text>
-      <rect x="74" y="360" width="560" height="300" rx="32" fill="#0f172a" fill-opacity="0.72" stroke="#ffffff" stroke-opacity="0.08" />
-      <rect x="108" y="398" width="260" height="24" rx="12" fill="#1e293b" />
-      <rect x="108" y="445" width="460" height="22" rx="11" fill="#1e293b" />
-      <rect x="108" y="486" width="400" height="22" rx="11" fill="#1e293b" />
-      <rect x="108" y="548" width="180" height="58" rx="16" fill="url(#accent)" />
-      <text x="135" y="586" fill="#ffffff" font-size="20" font-family="Inter, Arial, sans-serif" font-weight="700">Quiero consultar</text>
-      <rect x="332" y="548" width="236" height="58" rx="16" fill="#0f172a" stroke="#ffffff" stroke-opacity="0.12" />
-      <text x="365" y="586" fill="#e2e8f0" font-size="20" font-family="Inter, Arial, sans-serif" font-weight="700">Ver más información</text>
-      <rect x="690" y="328" width="420" height="272" rx="32" fill="#0f172a" fill-opacity="0.82" stroke="#ffffff" stroke-opacity="0.08" />
-      <rect x="726" y="368" width="348" height="18" rx="9" fill="#1e293b" />
-      <rect x="726" y="414" width="280" height="18" rx="9" fill="#1e293b" />
-      <rect x="726" y="460" width="310" height="18" rx="9" fill="#1e293b" />
-      <circle cx="1022" cy="526" r="48" fill="url(#accent)" fill-opacity="0.9" />
-      <path d="M1010 526h24m-12-12v24" stroke="#ffffff" stroke-width="8" stroke-linecap="round" />
-      <text x="726" y="548" fill="#94a3b8" font-size="18" font-family="Inter, Arial, sans-serif">Consultas, reservas y ventas por WhatsApp</text>
-    </svg>`;
-
-  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
-}
-
-function profileSvg(name: string, role: string) {
-  const safeName = xmlEscape(name);
-  const safeRole = xmlEscape(role);
-  const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-label="${safeName}">
-      <defs>
-        <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stop-color="#08101d" />
-          <stop offset="100%" stop-color="#12243b" />
-        </linearGradient>
-        <linearGradient id="accent" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stop-color="#22d3ee" />
-          <stop offset="100%" stop-color="#3b82f6" />
-        </linearGradient>
-      </defs>
-      <rect width="900" height="1100" rx="54" fill="url(#bg)" />
-      <circle cx="690" cy="180" r="180" fill="#22d3ee" fill-opacity="0.12" />
-      <circle cx="190" cy="920" r="220" fill="#3b82f6" fill-opacity="0.12" />
-      <circle cx="450" cy="390" r="170" fill="#f8fafc" fill-opacity="0.95" />
-      <circle cx="450" cy="350" r="68" fill="#e2e8f0" />
-      <path d="M325 540c40-92 210-92 250 0v110H325V540Z" fill="#e2e8f0" />
-      <path d="M355 318c42-52 148-52 190 0v35c-18 36-52 62-95 62s-77-26-95-62v-35Z" fill="#0f172a" />
-      <rect x="120" y="760" width="660" height="136" rx="34" fill="#0f172a" fill-opacity="0.8" stroke="#ffffff" stroke-opacity="0.1" />
-      <text x="160" y="816" fill="#ffffff" font-size="34" font-family="Inter, Arial, sans-serif" font-weight="700">${safeName}</text>
-      <text x="160" y="862" fill="#cbd5e1" font-size="22" font-family="Inter, Arial, sans-serif">${safeRole}</text>
-      <rect x="160" y="902" width="210" height="18" rx="9" fill="url(#accent)" />
-    </svg>`;
-
-  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
-}
 
 function whatsappLink(message: string) {
   return `${WHATSAPP_URL}?text=${encodeURIComponent(message)}`;
@@ -139,7 +57,7 @@ const rubros = [
     copy: "Diseñada para atraer clientes en gimnasios.",
     message: "Hola, quiero una web para mi gimnasio que me consiga más consultas e inscripciones.",
     demoHref: "/gimnasios",
-    preview: previewSvg("Gimnasios", "Clases, planes y reservas", "#22c55e", "#06b6d4"),
+    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "personal-trainers",
@@ -148,7 +66,7 @@ const rubros = [
     copy: "Diseñada para atraer clientes en entrenamiento personal.",
     message: "Hola, quiero una web para mi trabajo de personal trainer que me ayude a vender más.",
     demoHref: "/entrenadores",
-    preview: previewSvg("Personal Trainer", "Resultados y disciplina", "#f97316", "#ef4444"),
+    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "nutricionistas",
@@ -157,7 +75,7 @@ const rubros = [
     copy: "Diseñada para atraer clientes en nutrición.",
     message: "Hola, quiero una web para mi consultorio de nutrición y atraer más pacientes.",
     demoHref: "/nutricionistas",
-    preview: previewSvg("Nutricionista", "Planes, hábitos y seguimiento", "#84cc16", "#22c55e"),
+    image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "psicologos",
@@ -166,7 +84,7 @@ const rubros = [
     copy: "Diseñada para atraer clientes en psicología.",
     message: "Hola, quiero una web para mi consultorio de psicología y agendar más turnos.",
     demoHref: "/psicologos",
-    preview: previewSvg("Psicología", "Calma, empatía y turnos", "#3b82f6", "#0ea5e9"),
+    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "estetica-corporal",
@@ -175,7 +93,7 @@ const rubros = [
     copy: "Diseñada para atraer clientes en estética corporal.",
     message: "Hola, quiero una web para estética corporal que me ayude a vender más tratamientos.",
     demoHref: "/estetica-corporal",
-    preview: previewSvg("Estética corporal", "Premium, visual y elegante", "#ec4899", "#f97316"),
+    image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -341,12 +259,13 @@ export default function Index() {
           </div>
 
           <div className="lg:col-span-6">
-            <div className="relative overflow-hidden surface-card hover-card rounded-[2rem] p-4 sm:p-6">
+            <div className="relative overflow-hidden surface-card hover_card rounded-[2rem] p-4 sm:p-6">
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-primary" />
               <img
-                src={previewSvg("Landing que vende", "Más consultas, más turnos y más cierres", "#22c55e", "#38bdf8")}
-                alt="Mockup de una web en uso"
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+                alt="Dashboard de análisis web mostrando métricas de conversión"
                 className="h-[460px] w-full rounded-[1.5rem] object-cover"
+                loading="eager"
               />
               <div className="mt-4 grid gap-3 sm:grid-cols-3">
                 {["Más consultas", "Más confianza", "Más cierres"].map((item) => (
@@ -443,7 +362,7 @@ export default function Index() {
               className="group relative overflow-hidden rounded-[2rem] border border-border/70 bg-gradient-card shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_28px_70px_-28px_rgba(0,0,0,0.7)]"
             >
               <Link to={rubro.demoHref} aria-label={`Abrir landing de ${rubro.title}`} className="absolute inset-0 z-10 rounded-[2rem]" />
-              <img src={rubro.preview} alt={`Preview de ${rubro.title}`} className="h-64 w-full object-cover" />
+              <img src={rubro.image} alt={`Ejemplo de web para ${rubro.title}`} className="h-64 w-full object-cover" loading="lazy" />
               <div className="relative z-20 p-6">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground">Ejemplo por rubro</p>
                 <h3 className="mt-3 text-2xl font-semibold tracking-tight">{rubro.title}</h3>
@@ -516,9 +435,10 @@ export default function Index() {
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="surface-card hover-card rounded-[2rem] p-6 sm:p-8">
             <img
-              src={profileSvg("Diego Podlecki", "Diseño web enfocado en resultados")}
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
               alt="Foto de perfil de Diego Podlecki"
               className="h-full w-full rounded-[1.5rem] object-cover"
+              loading="lazy"
             />
           </div>
 
@@ -526,12 +446,12 @@ export default function Index() {
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Quién está detrás</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Quién soy</h2>
             <p className="mt-4 text-sm leading-7 text-muted-foreground">
-              Soy Diego Podlecki. Diseño páginas web para negocios que necesitan algo más que “verse bien”: necesitan
-              generar consultas, confianza y ventas reales.
+              Soy Diego Podlecki, el creador de WebAppImpulsor. Diseño páginas web para negocios que necesitan algo
+              más que "verse bien": necesitan generar consultas, confianza y ventas reales.
             </p>
             <p className="mt-4 text-sm leading-7 text-muted-foreground">
-              Ayudo a marcas personales y negocios de servicios porque una buena primera impresión puede cambiar por
-              completo cuántas personas te escriben.
+              Empecé este proyecto para ayudar a negocios de servicios a dejar de depender solo de redes y tener una
+              web que trabaje como una verdadera herramienta comercial.
             </p>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -568,11 +488,15 @@ export default function Index() {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-5">
             <div className="surface-card hover-card rounded-[2rem] p-6 sm:p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Formulario</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Contacto directo</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight">Pedí tu web y empezá a recibir clientes</h2>
               <p className="mt-4 text-sm leading-6 text-muted-foreground">
                 Completá tus datos y te respondo con una propuesta concreta. Te respondo en menos de 24 hs.
               </p>
+              <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-600 dark:text-emerald-300">
+                <MessageCircle className="h-4 w-4" />
+                WhatsApp visible y respuesta rápida
+              </div>
 
               <div className="mt-6 space-y-3">
                 {["Respuesta rápida y clara", "Ideal para presupuestos, reservas y consultas", "Te respondo en menos de 24 hs"].map(
@@ -637,8 +561,11 @@ export default function Index() {
           <div>
             <p className="font-semibold tracking-tight">WebAppImpulsor</p>
             <p className="text-sm text-muted-foreground">Landing de conversión con Supabase y WhatsApp.</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Diego Podlecki · <a className="transition-colors hover:text-foreground" href="mailto:hola@webappimpulsor.com">hola@webappimpulsor.com</a>
+            </p>
           </div>
-          <div className="text-sm text-muted-foreground">Formulario, panel admin y seguimiento de consultas integrados.</div>
+          <div className="text-sm text-muted-foreground">WhatsApp, formulario y seguimiento de consultas integrados.</div>
         </div>
       </footer>
     </main>
