@@ -1,6 +1,5 @@
-import { NicheLandingPage } from "@/components/landing/NicheLandingPage";
-import { landingPages } from "@/data/landings";
+import IronFitnessPage from "@/components/landing/IronFitnessPage";
 
 export default function IronFitness() {
-  return <NicheLandingPage config={landingPages["iron-fitness"]} />;
+  return <IronFitnessPage />;
 }

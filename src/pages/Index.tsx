@@ -44,9 +44,7 @@ const exampleCards = [
     name: "Iron Fitness",
     rubro: "Gimnasio",
     accentColor: "#F97316",
-    bgColor: "#07111f",
-    href: "/iron-fitness",
-    image: landingPages["iron-fitness"].preview,
+    href: "/gimnasio",
   },
   {
     name: "ProCoach",
@@ -89,6 +87,71 @@ const exampleCards = [
     image: landingPages.emprendedores.preview,
   },
 ];
+
+function IronFitnessExampleCard() {
+  return (
+    <Link
+      to="/gimnasio"
+      className="group flex h-full flex-col overflow-hidden rounded-[14px] border border-[rgba(249,115,22,0.25)] bg-[#0d0d12] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(249,115,22,0.6)]"
+      style={{
+        boxShadow: "0 18px 40px -30px rgba(249,115,22,0.28)",
+      }}
+    >
+      <style>{`
+        @keyframes iron-card-dot {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.4; }
+        }
+      `}</style>
+
+      <div className="h-[110px] bg-[#0a0a0f] px-4 py-3">
+        <div
+          className="h-[2px] w-full rounded-[3px]"
+          style={{ backgroundColor: "#F97316", boxShadow: "0 0 8px #F97316" }}
+        />
+
+        <div className="mt-4 flex h-[78px] flex-col justify-between">
+          <div className="flex items-center justify-between gap-3">
+            <div className="h-[7px] w-16 rounded-[3px]" style={{ backgroundColor: "#F97316" }} />
+            <div className="h-[7px] w-12 rounded-[3px]" style={{ backgroundColor: "rgba(249,115,22,0.35)" }} />
+          </div>
+
+          <div className="space-y-2">
+            <div className="h-[9px] w-[86%] rounded-[3px]" style={{ backgroundColor: "rgba(255,255,255,0.85)" }} />
+            <div className="h-[9px] w-[72%] rounded-[3px]" style={{ backgroundColor: "rgba(255,255,255,0.85)" }} />
+          </div>
+
+          <div className="space-y-2">
+            <div className="h-[6px] w-[78%] rounded-[3px]" style={{ backgroundColor: "rgba(249,115,22,0.4)" }} />
+            <div className="h-[6px] w-[64%] rounded-[3px]" style={{ backgroundColor: "rgba(249,115,22,0.4)" }} />
+          </div>
+
+          <div className="flex items-center justify-between">
+            <div className="h-[14px] w-[80px] rounded-[3px]" style={{ backgroundColor: "#F97316" }} />
+            <div className="h-[12px] w-10 rounded-[3px] bg-white/10" />
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-1 flex-col gap-2 p-4">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h3 className="text-[13px] font-medium leading-none text-[#f0f0f0]">Iron Fitness</h3>
+            <p className="mt-1 text-[11px] text-[rgba(255,255,255,0.38)]">Gimnasio</p>
+          </div>
+
+          <span className="inline-flex items-center gap-2 rounded-full bg-[rgba(249,115,22,0.15)] px-3 py-1 text-[10px] font-semibold text-[#F97316]">
+            <span
+              className="h-2 w-2 rounded-full bg-[#F97316]"
+              style={{ animation: "iron-card-dot 2s ease-in-out infinite" }}
+            />
+            Ver demo
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
 
 const benefits = [
   {
@@ -281,7 +344,8 @@ export default function Index() {
         />
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {exampleCards.map((card) => (
+          <IronFitnessExampleCard />
+          {exampleCards.slice(1).map((card) => (
             <NicheCard key={card.name} {...card} />
           ))}
         </div>
