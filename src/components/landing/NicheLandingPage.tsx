@@ -290,6 +290,33 @@ function getLandingVoice(slug: string) {
   return landingVoices[slug] ?? landingVoices.default;
 }
 
+function ActionButtons({ config, theme }: { config: LandingConfig; theme: ReturnType<typeof getLandingTheme> }) {
+  return (
+    <div className="container py-12">
+      <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <Button
+          asChild
+          size="lg"
+          className="bg-[#25D366] text-white hover:bg-[#20bd5a]"
+        >
+          <a href={whatsappLink(config.whatsappMessage)} target="_blank" rel="noreferrer">
+            <MessageCircle className="mr-2 h-5 w-5" />
+            Quiero más clientes
+          </a>
+        </Button>
+        <Button
+          asChild
+          variant="outline"
+          size="lg"
+          className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white"
+        >
+          <a href="#diagnostico">Analizar mi web gratis</a>
+        </Button>
+      </div>
+    </div>
+  );
+}
+
 function HeroMockup({
   config,
   accent,
@@ -748,6 +775,8 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </section>
 
+      <ActionButtons config={config} theme={theme} />
+
       <section id="testimonios" className="container scroll-mt-24 py-16 sm:py-20">
         <SectionTitle
           eyebrow="Testimonios"
@@ -877,6 +906,8 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
           </div>
         </div>
       </section>
+
+      <ActionButtons config={config} theme={theme} />
 
       {/* Sección de captura de leads */}
       <section id="diagnostico" className="container scroll-mt-24 py-16 sm:py-20">
