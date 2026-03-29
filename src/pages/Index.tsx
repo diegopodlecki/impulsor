@@ -198,7 +198,9 @@ export default function Index() {
 
           {/* H1 */}
           <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-            Tu negocio merece una web que <span className="text-[#0EA5E9]">trabaje por vos</span>
+            Tu página web no te está generando clientes.
+            <br />
+            <span className="text-[#0EA5E9]">Nosotros la convertimos en una máquina de consultas.</span>
           </h1>
 
           {/* Subtitle */}
@@ -209,7 +211,7 @@ export default function Index() {
           {/* CTAs */}
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Button asChild size="lg" className="bg-[#0EA5E9] text-white hover:bg-[#0284C7]">
-              <a href="#rubros">Quiero mi web</a>
+              <a href="#rubros">Quiero más clientes</a>
             </Button>
             <Button asChild variant="outline" size="lg">
               <a href="#rubros">Ver ejemplos de sitios →</a>
