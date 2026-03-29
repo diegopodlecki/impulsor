@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/ContactForm";
+import { NicheCard } from "@/components/NicheCard";
 import { defaultWhatsappLink } from "@/components/landing/landingVisuals";
 
 const WHATSAPP_NUMBER = "541166448389";
@@ -158,10 +159,15 @@ export default function Index() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.16),transparent_32%),radial-gradient(circle_at_84%_12%,rgba(59,130,246,0.12),transparent_30%),radial-gradient(circle_at_60%_88%,rgba(16,185,129,0.1),transparent_28%)]" />
       </div>
 
-      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0d0d12]/80 backdrop-blur-xl">
         <div className="container flex h-16 items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="text-lg font-semibold tracking-tight">WebApp<span className="text-[#2563EB]">Impulsor</span></span>
+          <Link to="/" className="flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-[#2563EB] to-[#7C3AED]">
+              <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <span className="text-lg font-bold tracking-tight text-white">WebApp<span className="text-[#2563EB]">Impulsor</span></span>
           </Link>
 
           <Button asChild size="sm" className="bg-[#25D366] text-white hover:bg-[#20bd5a]">
@@ -261,33 +267,49 @@ export default function Index() {
           description="Cada rubro tiene una solución específica pensada para atraer clientes y facilitar el contacto."
         />
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2">
-          {[
-            { name: "Iron Fitness", rubro: "Gimnasio", accentColor: "#F97316", bgColor: "#111111", href: "/gimnasios" },
-            { name: "FitPro Training", rubro: "Personal trainer", accentColor: "#f97316", bgColor: "#1a1a1a", href: "/entrenadores" },
-            { name: "Consultorio Psicológico", rubro: "Psicólogo/a", accentColor: "#3b82f6", bgColor: "#f8fafc", href: "/psicologos" },
-            { name: "NutriVida", rubro: "Nutricionista", accentColor: "#22c55e", bgColor: "#f0fdf4", href: "/nutricionistas" },
-            { name: "Estética Premium", rubro: "Estética corporal", accentColor: "#ec4899", bgColor: "#fdf2f8", href: "/estetica-corporal" },
-            { name: "Impulsa Negocio", rubro: "Emprendedor", accentColor: "#8b5cf6", bgColor: "#faf5ff", href: "/emprendedores" },
-          ].map((rubro) => (
-            <Link
-              key={rubro.name}
-              to={rubro.href}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:shadow-md"
-            >
-              <div className="h-1" style={{ backgroundColor: rubro.accentColor }} />
-              <div className="flex items-center justify-between p-5">
-                <div>
-                  <h3 className="font-semibold">{rubro.name}</h3>
-                  <p className="text-sm text-muted-foreground">{rubro.rubro}</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="rounded-full px-3 py-1 text-xs font-medium" style={{ backgroundColor: `${rubro.accentColor}20`, color: rubro.accentColor }}>Ver sitio demo</span>
-                  <span className="text-muted-foreground transition-transform group-hover:translate-x-0.5">›</span>
-                </div>
-              </div>
-            </Link>
-          ))}
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <NicheCard
+            name="Iron Fitness"
+            rubro="Gimnasio"
+            accentColor="#F97316"
+            bgColor="#0a0a0f"
+            href="/gimnasios"
+          />
+          <NicheCard
+            name="ProCoach"
+            rubro="Personal trainer"
+            accentColor="#06B6D4"
+            bgColor="#030d10"
+            href="/entrenadores"
+          />
+          <NicheCard
+            name="Mente Clara"
+            rubro="Psicólogo"
+            accentColor="#A78BFA"
+            bgColor="#080610"
+            href="/psicologos"
+          />
+          <NicheCard
+            name="NutriVida"
+            rubro="Nutricionista"
+            accentColor="#34D399"
+            bgColor="#030e09"
+            href="/nutricionistas"
+          />
+          <NicheCard
+            name="Glam Studio"
+            rubro="Estética corporal"
+            accentColor="#F472B6"
+            bgColor="#0d060b"
+            href="/estetica-corporal"
+          />
+          <NicheCard
+            name="LaunchMe"
+            rubro="Emprendedor"
+            accentColor="#FACC15"
+            bgColor="#0d0c02"
+            href="/emprendedores"
+          />
         </div>
       </section>
 
@@ -348,26 +370,32 @@ export default function Index() {
 
       {/* CTA Mitad de página */}
       <section className="container py-12 sm:py-16">
-        <div className="rounded-[2rem] border border-border/70 bg-gradient-primary p-8 text-primary-foreground shadow-glow sm:p-10">
-          <div className="grid gap-6 lg:grid-cols-[1.4fr_0.8fr] lg:items-center">
+        <div className="relative overflow-hidden rounded-[2rem] border border-[#2563EB]/30 bg-[#0d0d12] p-8 sm:p-10">
+          {/* Background glow */}
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(37,99,235,0.15),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(124,58,237,0.1),transparent_50%)]" />
+          
+          <div className="relative grid gap-6 lg:grid-cols-[1.4fr_0.8fr] lg:items-center">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary-foreground/80">¿Listo para empezar?</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#2563EB]">¿Listo para empezar?</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                 Tu competencia ya está online. La diferencia es quién convierte mejor.
               </h2>
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-primary-foreground/85">
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-white/70">
                 Si querés una web que genere clientes, te ayudo a construirla con una propuesta clara y enfocada en
                 resultados.
               </p>
             </div>
 
             <div className="flex flex-col gap-3">
-              <Button asChild variant="whatsapp" size="lg" className="w-full">
+              <Button asChild size="lg" className="w-full bg-[#25D366] text-white hover:bg-[#20bd5a]">
                 <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
+                  <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
                   Quiero más clientes
                 </a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="w-full border-white/30 bg-white/10 text-primary-foreground hover:bg-white/20 hover:text-primary-foreground">
+              <Button asChild variant="outline" size="lg" className="w-full border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white">
                 <a href="#contacto">Hablar por WhatsApp</a>
               </Button>
             </div>
@@ -468,26 +496,32 @@ export default function Index() {
       </section>
 
       <section className="container pb-16 pt-2 sm:pb-20">
-        <div className="rounded-[2rem] border border-border/70 bg-gradient-primary p-8 text-primary-foreground shadow-glow sm:p-10">
-          <div className="grid gap-6 lg:grid-cols-[1.4fr_0.8fr] lg:items-center">
+        <div className="relative overflow-hidden rounded-[2rem] border border-[#2563EB]/30 bg-[#0d0d12] p-8 sm:p-10">
+          {/* Background glow */}
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(37,99,235,0.15),transparent_50%),radial-gradient(circle_at_30%_80%,rgba(124,58,237,0.1),transparent_50%)]" />
+          
+          <div className="relative grid gap-6 lg:grid-cols-[1.4fr_0.8fr] lg:items-center">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary-foreground/80">CTA final</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#2563EB]">CTA final</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                 Tu competencia ya está online. La diferencia es quién convierte mejor.
               </h2>
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-primary-foreground/85">
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-white/70">
                 Si querés una web que genere clientes, te ayudo a construirla con una propuesta clara y enfocada en
                 resultados.
               </p>
             </div>
 
             <div className="flex flex-col gap-3">
-              <Button asChild variant="whatsapp" size="lg" className="w-full">
+              <Button asChild size="lg" className="w-full bg-[#25D366] text-white hover:bg-[#20bd5a]">
                 <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
+                  <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
                   Hablar por WhatsApp
                 </a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="w-full border-white/30 bg-white/10 text-primary-foreground hover:bg-white/20 hover:text-primary-foreground">
+              <Button asChild variant="outline" size="lg" className="w-full border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white">
                 <a href="#rubros">Quiero ver ejemplos</a>
               </Button>
             </div>
@@ -502,7 +536,9 @@ export default function Index() {
         aria-label="Hablar por WhatsApp"
         className="animate-wa-pulse fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(142_70%_45%)] text-white shadow-[0_18px_50px_-18px_rgba(34,197,94,0.7)] transition-transform duration-300 hover:scale-110"
       >
-
+        <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
       </a>
 
       {/* Cierre */}
@@ -530,16 +566,15 @@ export default function Index() {
         </div>
       </section>
 
-      <footer className="border-t border-border/40 bg-background/25">
+      <footer className="border-t border-white/10 bg-[#0d0d12]">
         <div className="container flex flex-col gap-3 py-8 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-semibold tracking-tight">WebAppImpulsor</p>
-            <p className="text-sm text-muted-foreground">Landing de conversión con Supabase y WhatsApp.</p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Diego Podlecki · <a className="transition-colors hover:text-foreground" href="mailto:info.diego@webappimpulsor.com">info.diego@webappimpulsor.com</a>
+            <p className="font-semibold tracking-tight text-white">WebAppImpulsor</p>
+            <p className="mt-1 text-sm text-white/50">
+              Diego Podlecki · <a className="transition-colors hover:text-white" href="mailto:info.diego@webappimpulsor.com">info.diego@webappimpulsor.com</a>
             </p>
           </div>
-          <div className="text-sm text-muted-foreground">WhatsApp, formulario y seguimiento de consultas integrados.</div>
+          <div className="text-sm text-white/50">Diseño web enfocado en resultados</div>
         </div>
       </footer>
     </main>
