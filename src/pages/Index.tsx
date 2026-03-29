@@ -40,6 +40,16 @@ const solutions = [
   "Automatización básica",
 ];
 
+function initials(name: string) {
+  return name
+    .split(/[\s.]+/)
+    .filter(Boolean)
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
 const ironFitnessPreviewServices = [
   {
     title: "Musculación",
