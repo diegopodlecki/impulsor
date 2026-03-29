@@ -195,7 +195,7 @@ const landingVoices: Record<
     testimonialTitle: "Mockups y prueba social para cerrar más confianza",
     testimonialDescription:
       "La combinación de una landing visual con testimonios claros ayuda a que la decisión de contactarte se sienta más fácil.",
-    contactBadge: "WhatsApp visible y respuesta rápida",
+    contactBadge: "{voice.contactBadge}",
     closingEyebrow: "Cierre",
   },
   gimnasios: {
@@ -625,8 +625,9 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
       <section id="testimonios" className="container scroll-mt-24 py-16 sm:py-20">
         <SectionTitle
           eyebrow="Testimonios"
-          title="Mockups y prueba social para cerrar más confianza"
-          description="La combinación de una landing visual con testimonios claros ayuda a que la decisión de contactarte se sienta más fácil."
+          title={voice.testimonialTitle}
+          description={voice.testimonialDescription}
+          accent={accent}
         />
 
         <div className="mt-12">
@@ -644,7 +645,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
               <div className="mt-5 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium" style={{ border: `1px solid ${theme.border}`, backgroundColor: `${theme.accent}12`, color: theme.accent }}>
                 <MessageCircle className="h-4 w-4" />
-                WhatsApp visible y respuesta rápida
+                {voice.contactBadge}
               </div>
 
               <div className="mt-6 space-y-3">
@@ -717,3 +718,5 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
     </main>
   );
 }
+
+
