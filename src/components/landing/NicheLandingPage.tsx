@@ -176,6 +176,106 @@ const fallbackTestimonials = [
   },
 ];
 
+const landingVoices: Record<
+  string,
+  {
+    heroStats: Array<{ value: string; label: string }>;
+    testimonialTitle: string;
+    testimonialDescription: string;
+    contactBadge: string;
+    closingEyebrow: string;
+  }
+> = {
+  default: {
+    heroStats: [
+      { value: "Más consultas", label: "en menos fricción" },
+      { value: "Imagen premium", label: "desde el primer vistazo" },
+      { value: "Contacto directo", label: "con WhatsApp y formulario" },
+    ],
+    testimonialTitle: "Mockups y prueba social para cerrar más confianza",
+    testimonialDescription:
+      "La combinación de una landing visual con testimonios claros ayuda a que la decisión de contactarte se sienta más fácil.",
+    contactBadge: "WhatsApp visible y respuesta rápida",
+    closingEyebrow: "Cierre",
+  },
+  gimnasios: {
+    heroStats: [
+      { value: "+ Socios", label: "más inscripciones" },
+      { value: "Clases claras", label: "en un vistazo" },
+      { value: "Turnos rápidos", label: "por WhatsApp" },
+    ],
+    testimonialTitle: "Inscripciones y prueba social para sumar alumnos",
+    testimonialDescription:
+      "Para gimnasios, mostrar resultados, horarios y comunidad hace que la visita se convierta en consulta con más facilidad.",
+    contactBadge: "Consultas rápidas y visitas al gym",
+    closingEyebrow: "Empezá hoy",
+  },
+  "personal-trainers": {
+    heroStats: [
+      { value: "Método propio", label: "más autoridad" },
+      { value: "Resultados", label: "que generan confianza" },
+      { value: "Plan premium", label: "más cierres" },
+    ],
+    testimonialTitle: "Resultados y método para vender tu marca personal",
+    testimonialDescription:
+      "Como entrenador, lo que más convierte es una propuesta clara, con autoridad y foco en transformación real.",
+    contactBadge: "Captá clientes para entrenamiento personalizado",
+    closingEyebrow: "Tu método",
+  },
+  nutricionistas: {
+    heroStats: [
+      { value: "Confianza", label: "desde el primer scroll" },
+      { value: "Agenda clara", label: "sin fricción" },
+      { value: "Seguimiento", label: "más ordenado" },
+    ],
+    testimonialTitle: "Autoridad y claridad para captar pacientes",
+    testimonialDescription:
+      "En nutrición, la claridad del servicio y la sensación de acompañamiento son claves para lograr reservas.",
+    contactBadge: "Consultas claras y turnos organizados",
+    closingEyebrow: "Agendá hoy",
+  },
+  psicologos: {
+    heroStats: [
+      { value: "Calma visual", label: "más confianza" },
+      { value: "Contacto simple", label: "sin fricción" },
+      { value: "Primer turno", label: "más fácil" },
+    ],
+    testimonialTitle: "Confianza y cercanía para facilitar el primer contacto",
+    testimonialDescription:
+      "La experiencia visual debe acompañar una decisión sensible: pedir ayuda y agendar el primer turno.",
+    contactBadge: "Un primer paso más humano y claro",
+    closingEyebrow: "Acompañamiento",
+  },
+  "estetica-corporal": {
+    heroStats: [
+      { value: "Imagen premium", label: "más deseo" },
+      { value: "Antes y después", label: "más prueba" },
+      { value: "Más consultas", label: "menos dudas" },
+    ],
+    testimonialTitle: "Presencia premium para tratamientos que venden",
+    testimonialDescription:
+      "En estética, la percepción visual y la prueba de resultados empujan mucho más que un texto genérico.",
+    contactBadge: "Consultas elegantes con foco en resultados",
+    closingEyebrow: "Elegancia",
+  },
+  emprendedores: {
+    heroStats: [
+      { value: "Oferta clara", label: "en segundos" },
+      { value: "Autoridad", label: "que ordena" },
+      { value: "Más ventas", label: "con foco" },
+    ],
+    testimonialTitle: "Claridad y autoridad para vender servicios",
+    testimonialDescription:
+      "Cuando un emprendimiento comunica mejor su propuesta, consigue consultas más calificadas y mejor tasa de cierre.",
+    contactBadge: "Una landing pensada para convertir",
+    closingEyebrow: "Convertí más",
+  },
+};
+
+function getLandingVoice(slug: string) {
+  return landingVoices[slug] ?? landingVoices.default;
+}
+
 function HeroMockup({
   config,
   accent,
@@ -395,6 +495,8 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
   const accent = config.accentColor ?? config.primaryColor ?? "#0EA5E9";
   const primary = config.primaryColor ?? accent;
+  const theme = getLandingTheme(config.slug);
+  const voice = getLandingVoice(config.slug);
   const featuredTestimonial = config.testimonial ?? fallbackTestimonials[0];
 
   return (
@@ -475,11 +577,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
             </div>
 
             <div className="mt-10 grid gap-3 sm:grid-cols-3">
-              {[
-                { value: "Más consultas", label: "en menos fricción" },
-                { value: "Imagen premium", label: "desde el primer vistazo" },
-                { value: "Contacto directo", label: "con WhatsApp y formulario" },
-              ].map((item) => (
+              {voice.heroStats.map((item) => (
                 <div key={item.value} className="rounded-[1.5rem] p-4" style={{ border: `1px solid ${theme.border}`, backgroundColor: `${theme.surface}cc` }}>
                   <p className="text-sm font-semibold text-white">{item.value}</p>
                   <p className="mt-1 text-sm text-muted-foreground">{item.label}</p>
@@ -574,7 +672,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
           <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.24em]" style={{ color: theme.accent }}>
-                Cierre
+                {voice.closingEyebrow}
               </p>
               <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">{config.finalCtaTitle}</h3>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-white/70">{config.finalCtaText}</p>

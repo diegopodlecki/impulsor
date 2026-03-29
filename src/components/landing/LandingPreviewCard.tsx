@@ -24,6 +24,78 @@ function fallbackTestimonial(config: LandingConfig) {
   };
 }
 
+const previewVariants: Record<
+  string,
+  {
+    kicker: string;
+    heroLabel: string;
+    serviceLabel: string;
+    footerLabel: string;
+    badgeLabel: string;
+  }
+> = {
+  default: {
+    kicker: "Landing moderna y enfocada",
+    heroLabel: "Presencia clara",
+    serviceLabel: "Lo esencial",
+    footerLabel: "Ver ejemplo real",
+    badgeLabel: "Demo",
+  },
+  gimnasios: {
+    kicker: "Entrenamiento, horarios y acción",
+    heroLabel: "Más alumnos",
+    serviceLabel: "Clases y equipamiento",
+    footerLabel: "Ver la versión gym",
+    badgeLabel: "Fitness",
+  },
+  "personal-trainers": {
+    kicker: "Marca personal que convierte",
+    heroLabel: "Método y resultados",
+    serviceLabel: "Tu sistema de trabajo",
+    footerLabel: "Ver el ejemplo trainer",
+    badgeLabel: "Trainer",
+  },
+  nutricionistas: {
+    kicker: "Confianza, agenda y claridad",
+    heroLabel: "Consultas más ordenadas",
+    serviceLabel: "Servicios y seguimiento",
+    footerLabel: "Ver el ejemplo nutrición",
+    badgeLabel: "Nutrición",
+  },
+  psicologos: {
+    kicker: "Calma visual y primer turno",
+    heroLabel: "Cercanía profesional",
+    serviceLabel: "Confianza y acompañamiento",
+    footerLabel: "Ver el ejemplo consultorio",
+    badgeLabel: "Psi",
+  },
+  "estetica-corporal": {
+    kicker: "Imagen premium y resultados",
+    heroLabel: "Más deseo visual",
+    serviceLabel: "Tratamientos y prueba",
+    footerLabel: "Ver el ejemplo estética",
+    badgeLabel: "Beauty",
+  },
+  emprendedores: {
+    kicker: "Oferta clara y autoridad",
+    heroLabel: "Más conversiones",
+    serviceLabel: "Propuesta y prueba social",
+    footerLabel: "Ver el ejemplo negocio",
+    badgeLabel: "Launch",
+  },
+  "iron-fitness": {
+    kicker: "La landing original",
+    heroLabel: "Iron Fitness",
+    serviceLabel: "Versión completa",
+    footerLabel: "Ver ejemplo real",
+    badgeLabel: "Gym",
+  },
+};
+
+function getPreviewVariant(slug: string) {
+  return previewVariants[slug] ?? previewVariants.default;
+}
+
 export function LandingPreviewCard({
   config,
   href,
@@ -34,6 +106,7 @@ export function LandingPreviewCard({
   rubric: string;
 }) {
   const theme = getLandingTheme(config.slug);
+  const variant = getPreviewVariant(config.slug);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   const pausedRef = useRef(false);
 
@@ -104,10 +177,10 @@ export function LandingPreviewCard({
       <div className="border-b px-4 py-3" style={{ borderColor: theme.border, background: theme.primary }}>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.24em] text-[#9CA3AF]">{rubric}</p>
+            <p className="text-[10px] uppercase tracking-[0.24em] text-[#9CA3AF]">{variant.badgeLabel}</p>
             <div className="mt-1 flex items-center gap-2">
               <div className="h-2 w-2 rounded-full" style={{ backgroundColor: theme.accent }} />
-              <h3 className="text-[13px] font-semibold text-[#F5F5F5]">{config.heroBadge}</h3>
+              <h3 className="text-[13px] font-semibold text-[#F5F5F5]">{rubric}</h3>
             </div>
           </div>
 
@@ -146,8 +219,9 @@ export function LandingPreviewCard({
           >
             <div className="inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-medium" style={{ borderColor: theme.border, backgroundColor: `${theme.accent}14`, color: theme.accent }}>
               <span className="mr-2">●</span>
-              {config.heroBadge}
+              {variant.kicker}
             </div>
+            <p className="mt-3 text-[10px] uppercase tracking-[0.24em] text-[#9CA3AF]">{variant.heroLabel}</p>
             <h4 className="mt-3 text-[24px] font-extrabold leading-[1.05] text-[#F5F5F5]">
               {config.heroTitle}
             </h4>
@@ -213,10 +287,10 @@ export function LandingPreviewCard({
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-[#9CA3AF]">{config.servicesTitle}</p>
-                <p className="mt-1 text-[14px] font-semibold text-[#F5F5F5]">{config.formTitle}</p>
+                <p className="mt-1 text-[14px] font-semibold text-[#F5F5F5]">{variant.serviceLabel}</p>
               </div>
               <div className="rounded-full px-4 py-2 text-[11px] font-bold text-[#0A0A0A]" style={{ backgroundColor: theme.accent }}>
-                Hablame por WhatsApp
+                {variant.footerLabel}
               </div>
             </div>
           </div>
@@ -225,7 +299,7 @@ export function LandingPreviewCard({
 
       <div className="flex items-start justify-between gap-3 p-4">
         <div>
-          <h4 className="text-[13px] font-medium leading-none text-[#f0f0f0]">{config.heroBadge}</h4>
+          <h4 className="text-[13px] font-medium leading-none text-[#f0f0f0]">{variant.heroLabel}</h4>
           <p className="mt-1 text-[11px] text-[rgba(255,255,255,0.38)]">{rubric}</p>
         </div>
 
