@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { MessageCircle, Clock, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -89,10 +90,60 @@ const exampleCards = [
 ];
 
 function IronFitnessExampleCard() {
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const isPausedRef = useRef(false);
+
+  useEffect(() => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    let frame = 0;
+    let direction: 1 | -1 = 1;
+
+    const tick = () => {
+      if (!scroller || isPausedRef.current) {
+        frame = window.setTimeout(tick, 60);
+        return;
+      }
+
+      const maxScroll = scroller.scrollHeight - scroller.clientHeight;
+      if (maxScroll <= 0) {
+        frame = window.setTimeout(tick, 60);
+        return;
+      }
+
+      const nextTop = scroller.scrollTop + 0.35 * direction;
+      if (nextTop >= maxScroll - 2) {
+        direction = -1;
+        scroller.scrollTop = maxScroll;
+        frame = window.setTimeout(tick, 900);
+        return;
+      }
+
+      if (nextTop <= 0) {
+        direction = 1;
+        scroller.scrollTop = 0;
+        frame = window.setTimeout(tick, 1200);
+        return;
+      }
+
+      scroller.scrollTop = nextTop;
+      frame = window.setTimeout(tick, 24);
+    };
+
+    frame = window.setTimeout(tick, 700);
+
+    return () => {
+      window.clearTimeout(frame);
+    };
+  }, []);
+
   return (
-    <Link
-      to="/gimnasio"
-      className="group flex h-full flex-col overflow-hidden rounded-[14px] border border-[rgba(249,115,22,0.25)] bg-[#0d0d12] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(249,115,22,0.6)]"
+    <div
+      className="group relative flex h-full flex-col overflow-hidden rounded-[14px] border border-[rgba(249,115,22,0.25)] bg-[#0d0d12] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(249,115,22,0.6)]"
       style={{
         boxShadow: "0 18px 40px -30px rgba(249,115,22,0.28)",
       }}
@@ -104,31 +155,177 @@ function IronFitnessExampleCard() {
         }
       `}</style>
 
-      <div className="h-[110px] bg-[#0a0a0f] px-4 py-3">
+      <div className="relative bg-[#0a0a0f] px-4 py-4">
         <div
           className="h-[2px] w-full rounded-[3px]"
           style={{ backgroundColor: "#F97316", boxShadow: "0 0 8px #F97316" }}
         />
 
-        <div className="mt-4 flex h-[78px] flex-col justify-between">
-          <div className="flex items-center justify-between gap-3">
-            <div className="h-[7px] w-16 rounded-[3px]" style={{ backgroundColor: "#F97316" }} />
-            <div className="h-[7px] w-12 rounded-[3px]" style={{ backgroundColor: "rgba(249,115,22,0.35)" }} />
-          </div>
+        <div
+          ref={scrollerRef}
+          className="mt-3 h-[330px] overflow-y-auto rounded-[12px] border border-white/5 bg-[#050507] overscroll-contain [scrollbar-width:none]"
+          onPointerEnter={() => {
+            isPausedRef.current = true;
+          }}
+          onPointerLeave={() => {
+            isPausedRef.current = false;
+          }}
+        >
+          <div className="px-3 py-3">
+            <div className="flex items-center justify-between rounded-[10px] border border-white/5 bg-[#0d0d12] px-3 py-2">
+              <div className="flex items-center gap-2">
+                <span className="text-[12px] font-extrabold uppercase tracking-[0.28em] text-[#F5F5F5]">IRON</span>
+                <span className="text-[12px] font-extrabold uppercase tracking-[0.28em] text-[#F97316]">FITNESS</span>
+              </div>
+              <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-[#9CA3AF]">
+                <span>Servicios</span>
+                <span>Planes</span>
+                <span>Contacto</span>
+              </div>
+            </div>
 
-          <div className="space-y-2">
-            <div className="h-[9px] w-[86%] rounded-[3px]" style={{ backgroundColor: "rgba(255,255,255,0.85)" }} />
-            <div className="h-[9px] w-[72%] rounded-[3px]" style={{ backgroundColor: "rgba(255,255,255,0.85)" }} />
-          </div>
+            <div className="mt-3 rounded-[12px] border border-[rgba(249,115,22,0.18)] bg-[#0d0d12] px-4 py-4">
+              <div className="inline-flex items-center rounded-full border border-[rgba(249,115,22,0.35)] bg-[rgba(249,115,22,0.12)] px-3 py-1 text-[10px] font-medium text-[#F97316]">
+                <span className="mr-2">●</span>
+                Abierto las 24hs
+              </div>
+              <h3 className="mt-4 text-[26px] font-extrabold leading-[1.05] text-[#F5F5F5]">
+                Transformá tu cuerpo.
+                <br />
+                <span className="text-[#F97316]">Empezá</span> hoy.
+              </h3>
+              <p className="mt-3 max-w-[60ch] text-[13px] leading-6 text-[#9CA3AF]">
+                Musculación, clases grupales y cardio en un solo lugar. Primera semana completamente gratis.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="rounded-[8px] bg-[#F97316] px-3 py-2 text-[11px] font-bold text-[#0A0A0A]">Quiero mi semana gratis</span>
+                <span className="rounded-[8px] border border-[#F97316] px-3 py-2 text-[11px] font-bold text-[#F97316]">
+                  Ver los planes
+                </span>
+              </div>
+              <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#9CA3AF]">
+                <span>+500 socios</span>
+                <span className="text-[#F97316]">·</span>
+                <span>12 años de experiencia</span>
+                <span className="text-[#F97316]">·</span>
+                <span>Equipamiento premium</span>
+              </div>
+            </div>
 
-          <div className="space-y-2">
-            <div className="h-[6px] w-[78%] rounded-[3px]" style={{ backgroundColor: "rgba(249,115,22,0.4)" }} />
-            <div className="h-[6px] w-[64%] rounded-[3px]" style={{ backgroundColor: "rgba(249,115,22,0.4)" }} />
-          </div>
+            <div className="mt-3">
+              <div className="mb-2 flex items-center justify-between px-1">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.22em] text-[#9CA3AF]">Servicios</p>
+                  <p className="mt-1 text-[13px] font-semibold text-[#F5F5F5]">Todo lo que necesitás para entrenar mejor</p>
+                </div>
+                <span className="text-[10px] text-[#F97316]">1 / 3</span>
+              </div>
 
-          <div className="flex items-center justify-between">
-            <div className="h-[14px] w-[80px] rounded-[3px]" style={{ backgroundColor: "#F97316" }} />
-            <div className="h-[12px] w-10 rounded-[3px] bg-white/10" />
+              <div className="grid gap-3 md:grid-cols-3">
+                {services.map((service) => (
+                  <article
+                    key={service.title}
+                    className="rounded-[10px] border border-[rgba(249,115,22,0.16)] bg-[#141414] p-3"
+                  >
+                    <div className="h-[86px] overflow-hidden rounded-[8px]">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover"
+                        style={{ backgroundColor: "#141414" }}
+                      />
+                    </div>
+                    <h4 className="mt-3 text-[13px] font-semibold text-[#F5F5F5]">{service.title}</h4>
+                    <p className="mt-1 text-[11px] leading-5 text-[#9CA3AF]">{service.text}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-3">
+              <div className="mb-2 flex items-center justify-between px-1">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.22em] text-[#9CA3AF]">Socios</p>
+                  <p className="mt-1 text-[13px] font-semibold text-[#F5F5F5]">Lo que dicen nuestros socios</p>
+                </div>
+                <span className="text-[10px] text-[#F97316]">★★★★★</span>
+              </div>
+
+              <div className="grid gap-3 md:grid-cols-2">
+                {testimonials.map((item) => (
+                  <article key={item.name} className="rounded-[10px] border border-white/5 bg-[#1A1A1A] p-3">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[rgba(249,115,22,0.15)] text-[10px] font-semibold text-[#F97316]">
+                        {initials(item.name)}
+                      </div>
+                      <div>
+                        <p className="text-[12px] font-semibold text-[#F5F5F5]">{item.name}</p>
+                        <p className="text-[10px] text-[#9CA3AF]">{item.role}</p>
+                      </div>
+                    </div>
+                    <p className="mt-2 text-[11px] leading-5 text-[#D1D5DB]">"{item.text}"</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-3">
+              <div className="mb-2 flex items-center justify-between px-1">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.22em] text-[#9CA3AF]">Planes</p>
+                  <p className="mt-1 text-[13px] font-semibold text-[#F5F5F5]">Elegí tu plan</p>
+                </div>
+                <span className="rounded-full bg-[#F97316] px-2 py-1 text-[9px] font-semibold text-[#0A0A0A]">
+                  Más popular
+                </span>
+              </div>
+
+              <div className="grid gap-3 lg:grid-cols-3">
+                {plans.map((plan) => (
+                  <article
+                    key={plan.name}
+                    className={`rounded-[10px] bg-[#141414] p-3 ${
+                      plan.featured ? "border-2 border-[#F97316]" : "border border-[rgba(249,115,22,0.2)]"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <h4 className="text-[13px] font-semibold text-[#F5F5F5]">{plan.name}</h4>
+                        <p className="mt-1 text-[18px] font-extrabold text-[#F5F5F5]">{plan.price}</p>
+                      </div>
+                      {plan.featured ? (
+                        <span className="rounded-full bg-[#F97316] px-2 py-1 text-[9px] font-semibold text-[#0A0A0A]">
+                          Popular
+                        </span>
+                      ) : null}
+                    </div>
+                    <ul className="mt-3 space-y-1.5">
+                      {plan.features.slice(0, 3).map((feature) => (
+                        <li key={feature} className="flex items-start gap-2 text-[11px] leading-5 text-[#D1D5DB]">
+                          <span className="text-[#F97316]">✓</span>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-3 rounded-[12px] border border-white/5 bg-[#0d0d12] px-4 py-4">
+              <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.22em] text-[#9CA3AF]">Contacto</p>
+                  <h4 className="mt-1 text-[14px] font-semibold text-[#F5F5F5]">¿Listo para empezar?</h4>
+                  <p className="mt-1 text-[11px] leading-5 text-[#9CA3AF]">Tu primera semana es gratis. Sin excusas, sin contratos.</p>
+                </div>
+                <div className="rounded-full bg-[#25D366] px-4 py-2 text-[11px] font-bold text-white">
+                  Hablame por WhatsApp
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -148,8 +345,23 @@ function IronFitnessExampleCard() {
             Ver demo
           </span>
         </div>
+
+        <p className="text-[12px] leading-5 text-[rgba(255,255,255,0.45)]">
+          Mini preview interactivo de la landing. Podés imaginar la experiencia en un celular, y abrir la versión real cuando quieras.
+        </p>
       </div>
-    </Link>
+
+      <Link
+        to="/gimnasio"
+        target="_blank"
+        rel="noreferrer"
+        className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-full bg-[#F97316] px-4 py-2 text-[12px] font-semibold text-[#0A0A0A] shadow-[0_10px_24px_-10px_rgba(249,115,22,0.65)] transition-transform duration-200 hover:scale-[1.03]"
+        aria-label="Ver ejemplo real de Iron Fitness en una nueva pestaña"
+      >
+        Ver ejemplo real
+        <span aria-hidden="true">↗</span>
+      </Link>
+    </div>
   );
 }
 
