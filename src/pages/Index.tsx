@@ -1,17 +1,11 @@
-﻿import { ArrowRight, Sparkles, MessageCircle, Clock, CheckCircle } from "lucide-react";
+import { MessageCircle, Clock, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/ContactForm";
 import { NicheCard } from "@/components/NicheCard";
 import { defaultWhatsappLink } from "@/components/landing/landingVisuals";
-
-const WHATSAPP_NUMBER = "541166448389";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
-
-function whatsappLink(message: string) {
-  return `${WHATSAPP_URL}?text=${encodeURIComponent(message)}`;
-}
+import { landingPages } from "@/data/landings";
 
 const heroStats = [
   { value: "+Consultas", label: "desde el primer día" },
@@ -45,51 +39,54 @@ const solutions = [
   "Automatización básica",
 ];
 
-const rubros = [
+const exampleCards = [
   {
-    slug: "gimnasios",
-    title: "Gimnasios",
-    headline: "Así podría verse tu web si sos dueño de un gimnasio",
-    copy: "Diseñada para atraer clientes en gimnasios.",
-    message: "Hola, quiero una web para mi gimnasio que me consiga más consultas e inscripciones.",
-    demoHref: "/gimnasios",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
+    name: "Iron Fitness",
+    rubro: "Gimnasio",
+    accentColor: "#F97316",
+    bgColor: "#07111f",
+    href: "/iron-fitness",
+    image: landingPages["iron-fitness"].preview,
   },
   {
-    slug: "personal-trainers",
-    title: "Personal Trainers",
-    headline: "Así podría verse tu web si sos entrenador personal",
-    copy: "Diseñada para atraer clientes en entrenamiento personal.",
-    message: "Hola, quiero una web para mi trabajo de personal trainer que me ayude a vender más.",
-    demoHref: "/entrenadores",
-    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80",
+    name: "ProCoach",
+    rubro: "Personal trainer",
+    accentColor: "#06B6D4",
+    bgColor: "#05121b",
+    href: "/entrenadores",
+    image: landingPages["personal-trainers"].preview,
   },
   {
-    slug: "nutricionistas",
-    title: "Nutricionistas",
-    headline: "Así podría verse tu web si sos nutricionista",
-    copy: "Diseñada para atraer clientes en nutrición.",
-    message: "Hola, quiero una web para mi consultorio de nutrición y atraer más pacientes.",
-    demoHref: "/nutricionistas",
-    image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=800&q=80",
+    name: "Mente Clara",
+    rubro: "Psicólogo",
+    accentColor: "#38BDF8",
+    bgColor: "#07131f",
+    href: "/psicologos",
+    image: landingPages.psicologos.preview,
   },
   {
-    slug: "psicologos",
-    title: "Psicólogos",
-    headline: "Así podría verse tu web si sos psicólogo",
-    copy: "Diseñada para atraer clientes en psicología.",
-    message: "Hola, quiero una web para mi consultorio de psicología y agendar más turnos.",
-    demoHref: "/psicologos",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80",
+    name: "NutriVida",
+    rubro: "Nutricionista",
+    accentColor: "#84CC16",
+    bgColor: "#07140f",
+    href: "/nutricionistas",
+    image: landingPages.nutricionistas.preview,
   },
   {
-    slug: "estetica-corporal",
-    title: "Estética corporal",
-    headline: "Así podría verse tu web si ofrecés estética corporal",
-    copy: "Diseñada para atraer clientes en estética corporal.",
-    message: "Hola, quiero una web para estética corporal que me ayude a vender más tratamientos.",
-    demoHref: "/estetica-corporal",
-    image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80",
+    name: "Glam Studio",
+    rubro: "Estética corporal",
+    accentColor: "#F472B6",
+    bgColor: "#130912",
+    href: "/estetica-corporal",
+    image: landingPages["estetica-corporal"].preview,
+  },
+  {
+    name: "LaunchMe",
+    rubro: "Emprendedor",
+    accentColor: "#F59E0B",
+    bgColor: "#161105",
+    href: "/emprendedores",
+    image: landingPages.emprendedores.preview,
   },
 ];
 
@@ -159,16 +156,23 @@ export default function Index() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.16),transparent_32%),radial-gradient(circle_at_84%_12%,rgba(59,130,246,0.12),transparent_30%),radial-gradient(circle_at_60%_88%,rgba(16,185,129,0.1),transparent_28%)]" />
       </div>
 
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0d0d12]/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
         <div className="container flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-[#2563EB] to-[#7C3AED]">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-[#0EA5E9] to-[#10B981]">
               <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <span className="text-lg font-bold tracking-tight text-white">WebApp<span className="text-[#2563EB]">Impulsor</span></span>
+            <span className="text-lg font-bold tracking-tight text-white">WebApp<span className="text-[#0EA5E9]">Impulsor</span></span>
           </Link>
+
+          <nav className="hidden items-center gap-8 md:flex">
+            <a href="#problema" className="text-sm font-medium text-white/70 transition-colors hover:text-white">Problema</a>
+            <a href="#solucion" className="text-sm font-medium text-white/70 transition-colors hover:text-white">Solución</a>
+            <a href="#rubros" className="text-sm font-medium text-white/70 transition-colors hover:text-white">Ejemplos</a>
+            <a href="#contacto" className="text-sm font-medium text-white/70 transition-colors hover:text-white">Contacto</a>
+          </nav>
 
           <Button asChild size="sm" className="bg-[#25D366] text-white hover:bg-[#20bd5a]">
             <a href="https://wa.me/541166448389" target="_blank" rel="noreferrer">
@@ -191,7 +195,7 @@ export default function Index() {
 
           {/* H1 */}
           <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-            Tu negocio merece una web que <span className="text-[#2563EB]">trabaje por vos</span>
+            Tu negocio merece una web que <span className="text-[#0EA5E9]">trabaje por vos</span>
           </h1>
 
           {/* Subtitle */}
@@ -201,7 +205,7 @@ export default function Index() {
 
           {/* CTAs */}
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Button asChild size="lg" className="bg-[#2563EB] text-white hover:bg-[#1d4ed8]">
+            <Button asChild size="lg" className="bg-[#0EA5E9] text-white hover:bg-[#0284C7]">
               <a href="#rubros">Quiero mi web</a>
             </Button>
             <Button asChild variant="outline" size="lg">
@@ -213,6 +217,15 @@ export default function Index() {
           <div className="mt-8 flex items-center justify-center gap-2">
             <span className="text-yellow-500">★★★★★</span>
             <span className="text-sm text-muted-foreground">+20 negocios con web activa</span>
+          </div>
+
+          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            {heroStats.map((item) => (
+              <div key={item.value} className="surface-card rounded-3xl p-4 text-left">
+                <p className="text-lg font-semibold text-white">{item.value}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{item.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -268,48 +281,9 @@ export default function Index() {
         />
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <NicheCard
-            name="Iron Fitness"
-            rubro="Gimnasio"
-            accentColor="#F97316"
-            bgColor="#0a0a0f"
-            href="/gimnasios"
-          />
-          <NicheCard
-            name="ProCoach"
-            rubro="Personal trainer"
-            accentColor="#06B6D4"
-            bgColor="#030d10"
-            href="/entrenadores"
-          />
-          <NicheCard
-            name="Mente Clara"
-            rubro="Psicólogo"
-            accentColor="#A78BFA"
-            bgColor="#080610"
-            href="/psicologos"
-          />
-          <NicheCard
-            name="NutriVida"
-            rubro="Nutricionista"
-            accentColor="#34D399"
-            bgColor="#030e09"
-            href="/nutricionistas"
-          />
-          <NicheCard
-            name="Glam Studio"
-            rubro="Estética corporal"
-            accentColor="#F472B6"
-            bgColor="#0d060b"
-            href="/estetica-corporal"
-          />
-          <NicheCard
-            name="LaunchMe"
-            rubro="Emprendedor"
-            accentColor="#FACC15"
-            bgColor="#0d0c02"
-            href="/emprendedores"
-          />
+          {exampleCards.map((card) => (
+            <NicheCard key={card.name} {...card} />
+          ))}
         </div>
       </section>
 
@@ -339,7 +313,7 @@ export default function Index() {
             },
           ].map((item) => (
             <div key={item.step} className="flex items-start gap-5">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#2563EB] text-sm font-semibold text-white">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0EA5E9] text-sm font-semibold text-white">
                 {item.step}
               </div>
               <div>
@@ -370,13 +344,13 @@ export default function Index() {
 
       {/* CTA Mitad de página */}
       <section className="container py-12 sm:py-16">
-        <div className="relative overflow-hidden rounded-[2rem] border border-[#2563EB]/30 bg-[#0d0d12] p-8 sm:p-10">
+        <div className="relative overflow-hidden rounded-[2rem] border border-cyan-400/20 bg-slate-950 p-8 sm:p-10">
           {/* Background glow */}
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(37,99,235,0.15),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(124,58,237,0.1),transparent_50%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(14,165,233,0.16),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.1),transparent_50%)]" />
           
           <div className="relative grid gap-6 lg:grid-cols-[1.4fr_0.8fr] lg:items-center">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#2563EB]">¿Listo para empezar?</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0EA5E9]">¿Listo para empezar?</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                 Tu competencia ya está online. La diferencia es quién convierte mejor.
               </h2>
@@ -496,13 +470,13 @@ export default function Index() {
       </section>
 
       <section className="container pb-16 pt-2 sm:pb-20">
-        <div className="relative overflow-hidden rounded-[2rem] border border-[#2563EB]/30 bg-[#0d0d12] p-8 sm:p-10">
+        <div className="relative overflow-hidden rounded-[2rem] border border-cyan-400/20 bg-slate-950 p-8 sm:p-10">
           {/* Background glow */}
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(37,99,235,0.15),transparent_50%),radial-gradient(circle_at_30%_80%,rgba(124,58,237,0.1),transparent_50%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(14,165,233,0.16),transparent_50%),radial-gradient(circle_at_30%_80%,rgba(16,185,129,0.1),transparent_50%)]" />
           
           <div className="relative grid gap-6 lg:grid-cols-[1.4fr_0.8fr] lg:items-center">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#2563EB]">CTA final</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0EA5E9]">CTA final</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                 Tu competencia ya está online. La diferencia es quién convierte mejor.
               </h2>
@@ -543,9 +517,9 @@ export default function Index() {
 
       {/* Cierre */}
       <section className="container py-12 sm:py-16">
-        <div className="rounded-xl border border-[#BFDBFE] bg-[#EFF6FF] p-8 text-center sm:p-12">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">¿Querés una web así para tu negocio?</h2>
-          <p className="mt-4 text-muted-foreground">Consultame sin compromiso. Te cuento qué podés tener y en cuánto tiempo.</p>
+        <div className="rounded-xl border border-cyan-400/20 bg-slate-950 p-8 text-center sm:p-12">
+          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">¿Querés una web así para tu negocio?</h2>
+          <p className="mt-4 text-white/70">Consultame sin compromiso. Te cuento qué podés tener y en cuánto tiempo.</p>
 
           <Button asChild size="lg" className="mt-6 bg-[#25D366] text-white hover:bg-[#20bd5a]">
             <a href="https://wa.me/541166448389" target="_blank" rel="noreferrer">
@@ -557,16 +531,16 @@ export default function Index() {
           </Button>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <span className="rounded-full bg-gray-100 px-4 py-1.5 text-sm text-muted-foreground">Sin contratos largos</span>
+            <span className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/70">Sin contratos largos</span>
             <span className="text-muted-foreground">·</span>
-            <span className="rounded-full bg-gray-100 px-4 py-1.5 text-sm text-muted-foreground">Entrega rápida</span>
+            <span className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/70">Entrega rápida</span>
             <span className="text-muted-foreground">·</span>
-            <span className="rounded-full bg-gray-100 px-4 py-1.5 text-sm text-muted-foreground">Soporte incluido</span>
+            <span className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/70">Soporte incluido</span>
           </div>
         </div>
       </section>
 
-      <footer className="border-t border-white/10 bg-[#0d0d12]">
+      <footer className="border-t border-white/10 bg-slate-950">
         <div className="container flex flex-col gap-3 py-8 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="font-semibold tracking-tight text-white">WebAppImpulsor</p>

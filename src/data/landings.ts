@@ -1,4 +1,4 @@
-﻿import { previewSvg, profileSvg } from "@/components/landing/landingVisuals";
+import { previewSvg, profileSvg } from "@/components/landing/landingVisuals";
 
 export type LandingConfig = {
   slug: string;
@@ -397,6 +397,71 @@ export const landingPages: Record<string, LandingConfig> = {
       name: "Martín G.",
       role: "Socio",
       text: "Desde que entreno acá bajé 8 kilos en 3 meses. El equipo es increíble.",
+    },
+  },
+  emprendedores: {
+    slug: "emprendedores",
+    title: "Página web para emprendedores que venden servicios",
+    heroTitle: "Convertí tu idea en una landing que genera clientes",
+    heroSubtitle: "Mostrá tu propuesta, explicá tu método y facilitá que te contacten sin vueltas.",
+    heroCta: "Quiero más clientes",
+    heroSecondaryCta: "Ver el ejemplo",
+    heroBadge: "Emprendedores",
+    heroPreviewTitle: "Tu propuesta en foco",
+    heroPreviewSubtitle: "Claridad, autoridad y contacto directo.",
+    heroImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=600&fit=crop",
+    heroMockupImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=500&fit=crop",
+    problemsTitle: "¿Tu marca tiene estos problemas?",
+    problems: [
+      { title: "No se entiende tu oferta", text: "Si el mensaje no es claro, la gente se va sin preguntar." },
+      { title: "Dependés de redes sociales", text: "Sin una landing, cada consulta depende del feed." },
+      { title: "Poca credibilidad", text: "Una web prolija ayuda a transmitir más valor en segundos." },
+    ],
+    solutionTitle: "Una landing que ordena tu propuesta",
+    solutionText: "Mostramos lo que hacés, por qué sos la mejor opción y cómo contactarte rápido.",
+    solutionPoints: ["Oferta clara", "Prueba social", "CTA visible", "Seguimiento simple"],
+    benefitsTitle: "Lo que vas a lograr",
+    benefits: [
+      { title: "Más consultas", text: "Convertí visitas en mensajes reales y oportunidades." },
+      { title: "Más autoridad", text: "Tu marca se ve más sólida y profesional." },
+      { title: "Más claridad", text: "Cada sección guía hacia una decisión simple." },
+    ],
+    servicesTitle: "Qué incluye tu web",
+    servicesSubtitle: "Todo lo que necesitás para vender mejor tus servicios online.",
+    services: [
+      { title: "Hero con tu propuesta", description: "Mensaje claro sobre qué hacés y para quién.", icon: "image" },
+      { title: "Servicios ordenados", description: "Explicación simple de tu oferta y beneficios.", icon: "list" },
+      { title: "Prueba social", description: "Testimonios y señales de confianza para sumar credibilidad.", icon: "star" },
+      { title: "Formulario de contacto", description: "Un CTA simple para cerrar el contacto sin fricción.", icon: "form" },
+    ],
+    processTitle: "Cómo trabajamos",
+    process: [
+      { step: "01", title: "Entendemos tu oferta", text: "Aterrizamos lo que vendés y cómo comunicarlo." },
+      { step: "02", title: "Diseñamos tu landing", text: "Creamos una página que ordena y vende tu propuesta." },
+      { step: "03", title: "Publicamos todo", text: "Tu web queda lista para recibir consultas." },
+      { step: "04", title: "Empezás a vender mejor", text: "Tu marca se vuelve más clara y convincente." },
+    ],
+    aboutTitle: "Quién está detrás",
+    aboutName: "LaunchMe",
+    aboutRole: "Emprendimiento digital",
+    aboutText: "Ayudo a emprendedores a transformar su propuesta en una landing clara, moderna y enfocada en ventas.",
+    aboutPoints: [
+      { title: "Más claridad", text: "Explicar mejor tu oferta ayuda a convertir mejor." },
+      { title: "Más confianza", text: "El diseño acompaña la decisión de contactarte." },
+    ],
+    formTitle: "Pedí tu web para tu emprendimiento",
+    formSubtitle: "Te respondo con una propuesta pensada para vender mejor.",
+    finalCtaTitle: "Empezá a convertir visitas en clientes",
+    finalCtaText: "Si querés una web simple, clara y pensada para vender, esta base te sirve para arrancar.",
+    whatsappMessage: "Hola, quiero una web para mi emprendimiento que me ayude a vender más servicios.",
+    preview: previewSvg("LaunchMe", "Autoridad, claridad y ventas", "#F59E0B", "#10B981"),
+    profile: profileSvg("LaunchMe", "Emprendimiento digital"),
+    primaryColor: "#0EA5E9",
+    accentColor: "#F59E0B",
+    testimonial: {
+      name: "Sofía R.",
+      role: "Emprendedora digital",
+      text: "La landing ordenó mi oferta y empecé a recibir consultas mucho más calificadas.",
     },
   },
 };

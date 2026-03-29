@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { useEffect, useLayoutEffect } from "react";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Toaster } from "./components/ui/sonner.tsx";
 import ProtectedRoute from "./components/ProtectedRoute.tsx";
@@ -12,6 +12,7 @@ import Nutricionistas from "./pages/Nutricionistas.tsx";
 import Psicologos from "./pages/Psicologos.tsx";
 import EsteticaCorporal from "./pages/EsteticaCorporal.tsx";
 import IronFitness from "./pages/IronFitness.tsx";
+import Emprendedores from "./pages/Emprendedores.tsx";
 import Register from "./pages/Register.tsx";
 
 const baseUrl = (import.meta.env.BASE_URL ?? "/") + "";
@@ -27,6 +28,7 @@ const clearDiagnosticHash = () => {
 const App = () => (
   <AuthProvider>
     <BrowserRouter basename={routerBaseName}>
+      <ScrollToTop />
       <HashCleanup />
       <Toaster position="top-right" />
       <Routes>
@@ -38,6 +40,7 @@ const App = () => (
         <Route path="/psicologos" element={<Psicologos />} />
         <Route path="/estetica-corporal" element={<EsteticaCorporal />} />
         <Route path="/iron-fitness" element={<IronFitness />} />
+        <Route path="/emprendedores" element={<Emprendedores />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Navigate to="/admin" replace />} />
@@ -51,6 +54,16 @@ const App = () => (
 );
 
 export default App;
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 const HashCleanup = () => {
   useEffect(() => {
