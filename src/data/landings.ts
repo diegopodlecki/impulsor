@@ -21,7 +21,7 @@ export type LandingConfig = {
   benefits: Array<{ title: string; text: string }>;
   servicesTitle: string;
   servicesSubtitle: string;
-  services: Array<{ title: string; description: string; icon: string }>;
+  services: Array<{ title: string; description: string; icon: string; image?: string }>;
   processTitle: string;
   process: Array<{ step: string; title: string; text: string }>;
   aboutTitle: string;
@@ -467,3 +467,4 @@ export const landingPages: Record<string, LandingConfig> = {
 };
 
 export const landingPageList = Object.values(landingPages);
+

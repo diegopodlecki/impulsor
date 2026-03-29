@@ -23,6 +23,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { Button } from "@/components/ui/button";
 import { type LandingConfig } from "@/data/landings";
 import { defaultWhatsappLink, whatsappLink } from "@/components/landing/landingVisuals";
+import { getLandingImages } from "@/components/landing/landingImages";
 import { getLandingTheme } from "@/components/landing/landingThemes";
 
 function SectionTitle({
@@ -496,6 +497,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
   const accent = config.accentColor ?? config.primaryColor ?? "#0EA5E9";
   const primary = config.primaryColor ?? accent;
   const theme = getLandingTheme(config.slug);
+  const images = getLandingImages(config.slug);
   const voice = getLandingVoice(config.slug);
   const featuredTestimonial = config.testimonial ?? fallbackTestimonials[0];
 
@@ -586,7 +588,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
             </div>
           </div>
 
-          <HeroMockup config={config} accent={accent} theme={theme} />
+          <HeroMockup config={{ ...config, heroImage: images.heroImage, heroMockupImage: images.heroMockupImage } as LandingConfig} accent={accent} theme={theme} />
         </div>
       </section>
 
@@ -599,7 +601,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         />
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {config.services.map((service) => (
+          {config.services.map((service, index) => (
             <div
               key={service.title}
               className="rounded-[1.75rem] p-6 transition-transform duration-200 hover:-translate-y-1"
@@ -609,6 +611,18 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
                 boxShadow: `0 20px 40px -30px ${theme.glow}`,
               }}
             >
+              {images.serviceImages[index] || service.image ? (
+                <div className="mb-4 h-[180px] overflow-hidden rounded-[1rem]">
+                  <img
+                    src={service.image ?? images.serviceImages[index] ?? images.heroImage}
+                    alt={service.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                    style={{ backgroundColor: theme.surface }}
+                  />
+                </div>
+              ) : null}
               <div
                 className="flex h-12 w-12 items-center justify-center rounded-2xl"
                 style={{ backgroundColor: `${accent}14`, color: primary }}

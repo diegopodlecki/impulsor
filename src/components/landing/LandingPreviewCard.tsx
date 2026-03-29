@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { type LandingConfig } from "@/data/landings";
+import { getLandingImages } from "./landingImages";
 import { getLandingTheme } from "./landingThemes";
 
 function initials(name: string) {
@@ -106,6 +107,7 @@ export function LandingPreviewCard({
   rubric: string;
 }) {
   const theme = getLandingTheme(config.slug);
+  const images = getLandingImages(config.slug);
   const variant = getPreviewVariant(config.slug);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   const pausedRef = useRef(false);
@@ -245,14 +247,20 @@ export function LandingPreviewCard({
           </div>
 
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
-            {serviceCards.map((service) => (
+            {serviceCards.map((service, index) => (
               <article
                 key={service.title}
                 className="rounded-[10px] border p-3"
                 style={{ borderColor: theme.border, background: `${theme.surface}cc` }}
               >
                 <div className="h-[84px] overflow-hidden rounded-[8px]">
-                  <img src={config.heroImage} alt={service.title} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                  <img
+                    src={service.image ?? images.serviceImages[index] ?? images.heroImage}
+                    alt={service.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <h5 className="mt-3 text-[12px] font-semibold text-[#F5F5F5]">{service.title}</h5>
                 <p className="mt-1 text-[11px] leading-5 text-[#9CA3AF]">{service.description}</p>
@@ -274,7 +282,7 @@ export function LandingPreviewCard({
 
             <article className="rounded-[10px] border p-3" style={{ borderColor: theme.border, background: `${theme.accent}10` }}>
               <div className="flex items-center gap-3">
-                <img src={config.heroMockupImage} alt={config.heroPreviewTitle} className="h-16 w-16 rounded-[8px] object-cover" loading="lazy" decoding="async" />
+                <img src={images.heroMockupImage} alt={config.heroPreviewTitle} className="h-16 w-16 rounded-[8px] object-cover" loading="lazy" decoding="async" />
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.2em] text-[#9CA3AF]">{config.heroPreviewTitle}</p>
                   <p className="mt-1 text-[12px] leading-5 text-[#F5F5F5]">{config.heroPreviewSubtitle}</p>
