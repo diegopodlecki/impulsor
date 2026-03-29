@@ -23,19 +23,24 @@ import { ContactForm } from "@/components/ContactForm";
 import { Button } from "@/components/ui/button";
 import { type LandingConfig } from "@/data/landings";
 import { defaultWhatsappLink, whatsappLink } from "@/components/landing/landingVisuals";
+import { getLandingTheme } from "@/components/landing/landingThemes";
 
 function SectionTitle({
   eyebrow,
   title,
   description,
+  accent,
 }: {
   eyebrow: string;
   title: string;
   description: string;
+  accent?: string;
 }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">{eyebrow}</p>
+      <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground" style={{ color: accent }}>
+        {eyebrow}
+      </p>
       <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
       <p className="mt-4 text-pretty text-muted-foreground">{description}</p>
     </div>
@@ -171,20 +176,41 @@ const fallbackTestimonials = [
   },
 ];
 
-function HeroMockup({ config, accent }: { config: LandingConfig; accent: string }) {
+function HeroMockup({
+  config,
+  accent,
+  theme,
+}: {
+  config: LandingConfig;
+  accent: string;
+  theme: ReturnType<typeof getLandingTheme>;
+}) {
   return (
     <div className="relative">
       <div
         className="pointer-events-none absolute -inset-6 rounded-[2.5rem] blur-3xl"
-        style={{ background: `radial-gradient(circle at top, ${accent}2e, transparent 65%)` }}
+        style={{ background: `radial-gradient(circle at top, ${theme.heroGlow}, transparent 65%)` }}
       />
 
-      <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#07111d]/95 p-4 shadow-2xl shadow-black/30">
-        <div className="flex items-center gap-2 border-b border-white/10 pb-3 text-xs text-white/55">
+      <div
+        className="relative overflow-hidden rounded-[2rem] p-4 shadow-2xl shadow-black/30"
+        style={{
+          border: `1px solid ${theme.border}`,
+          background: `linear-gradient(180deg, ${theme.primary}f2, rgba(0,0,0,0.96))`,
+        }}
+      >
+        <div className="flex items-center gap-2 border-b pb-3 text-xs text-white/55" style={{ borderColor: theme.border }}>
           <span className="h-3 w-3 rounded-full bg-rose-400/90" />
           <span className="h-3 w-3 rounded-full bg-amber-300/90" />
           <span className="h-3 w-3 rounded-full bg-emerald-400/90" />
-          <span className="ml-3 rounded-full border border-white/10 bg-white/5 px-3 py-1 uppercase tracking-[0.22em] text-white/55">
+          <span
+            className="ml-3 rounded-full px-3 py-1 uppercase tracking-[0.22em]"
+            style={{
+              border: `1px solid ${theme.border}`,
+              background: `${theme.accent}12`,
+              color: "rgba(255,255,255,0.72)",
+            }}
+          >
             Mockup de landing
           </span>
         </div>
@@ -224,10 +250,12 @@ function HeroMockup({ config, accent }: { config: LandingConfig; accent: string 
 function TestimonialPreview({
   config,
   accent,
+  theme,
   testimonial,
 }: {
   config: LandingConfig;
   accent: string;
+  theme: ReturnType<typeof getLandingTheme>;
   testimonial: { name: string; role: string; text: string };
 }) {
   const secondaryCard = fallbackTestimonials[1];
@@ -235,8 +263,21 @@ function TestimonialPreview({
 
   return (
     <div className="grid gap-4 lg:grid-cols-[1.02fr_0.98fr]">
-      <div className="surface-card rounded-[2rem] p-6 sm:p-8">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/60">
+      <div
+        className="rounded-[2rem] p-6 sm:p-8"
+        style={{
+          border: `1px solid ${theme.border}`,
+          background: `linear-gradient(180deg, ${theme.surface}, ${theme.primary})`,
+        }}
+      >
+        <div
+          className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em]"
+          style={{
+            border: `1px solid ${theme.border}`,
+            backgroundColor: `${theme.accent}12`,
+            color: theme.accent,
+          }}
+        >
           <Sparkles className="h-3.5 w-3.5" style={{ color: accent }} />
           Testimonio destacado
         </div>
@@ -244,7 +285,7 @@ function TestimonialPreview({
           “{testimonial.text}”
         </blockquote>
         <div className="mt-8 flex items-center gap-4">
-          <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-2">
+          <div className="overflow-hidden rounded-2xl p-2" style={{ border: `1px solid ${theme.border}`, backgroundColor: `${theme.accent}10` }}>
             <img src={config.profile} alt={testimonial.name} className="h-14 w-14 rounded-xl object-cover" />
           </div>
           <div>
@@ -263,7 +304,11 @@ function TestimonialPreview({
             "Más consultas",
             "Mejor imagen",
           ].map((item) => (
-            <div key={item} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/80">
+            <div
+              key={item}
+              className="rounded-2xl px-4 py-3 text-sm text-white/80"
+              style={{ border: `1px solid ${theme.border}`, backgroundColor: `${theme.primary}cc` }}
+            >
               {item}
             </div>
           ))}
@@ -271,16 +316,21 @@ function TestimonialPreview({
       </div>
 
       <div className="grid gap-4">
-        <div className="surface-card overflow-hidden rounded-[2rem] p-4">
-          <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-950/80">
+        <div className="rounded-[2rem] p-4" style={{ border: `1px solid ${theme.border}`, backgroundColor: theme.primary }}>
+          <div className="overflow-hidden rounded-[1.5rem]" style={{ border: `1px solid ${theme.border}`, backgroundColor: theme.surface }}>
             <img src={config.preview} alt={`Vista previa secundaria de ${config.title}`} className="h-full w-full object-cover" />
           </div>
           <div className="mt-4 flex items-center justify-between gap-3">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Mockup de resultado</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground" style={{ color: theme.accent }}>
+                Mockup de resultado
+              </p>
               <p className="mt-1 text-sm text-muted-foreground">Así se ve tu landing antes de escribirte.</p>
             </div>
-            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/65">
+            <span
+              className="rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/65"
+              style={{ border: `1px solid ${theme.border}`, backgroundColor: `${theme.accent}12`, color: theme.accent }}
+            >
               Preview
             </span>
           </div>
@@ -288,9 +338,12 @@ function TestimonialPreview({
 
         <div className="grid gap-4 sm:grid-cols-2">
           {[secondaryCard, tertiaryCard].map((item) => (
-            <div key={item.name} className="surface-card rounded-[1.5rem] p-5">
+            <div key={item.name} className="rounded-[1.5rem] p-5" style={{ border: `1px solid ${theme.border}`, backgroundColor: theme.surface }}>
               <div className="flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/5 text-white">
+                <div
+                  className="flex h-11 w-11 items-center justify-center rounded-2xl text-white"
+                  style={{ backgroundColor: `${theme.accent}14` }}
+                >
                   <span className="text-sm font-bold">{item.name.split(" ").map((part) => part[0]).join("")}</span>
                 </div>
                 <div>
@@ -345,16 +398,21 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
   const featuredTestimonial = config.testimonial ?? fallbackTestimonials[0];
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <main className="min-h-screen overflow-x-hidden text-foreground" style={{ background: theme.pageBackground, color: "#F5F5F5" }}>
       <div className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-hero" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(14,165,233,0.16),transparent_32%),radial-gradient(circle_at_84%_12%,rgba(16,185,129,0.12),transparent_30%),radial-gradient(circle_at_60%_88%,rgba(245,158,11,0.1),transparent_28%)]" />
+        <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, ${theme.primary}, ${theme.pageBackground})` }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `radial-gradient(circle at 12% 18%, ${theme.heroGlow}, transparent 32%), radial-gradient(circle at 84% 12%, ${theme.accent}14, transparent 30%), radial-gradient(circle at 60% 88%, ${theme.accent}10, transparent 28%)`,
+          }}
+        />
       </div>
 
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/85 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 backdrop-blur-xl" style={{ borderBottom: `1px solid ${theme.border}`, background: `${theme.primary}dd` }}>
         <div className="container flex h-16 items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-emerald-500">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg" style={{ background: `linear-gradient(135deg, ${theme.accent}, ${theme.primary})` }}>
               <Sparkles className="h-5 w-5 text-white" />
             </div>
             <div className="flex flex-col">
@@ -383,7 +441,10 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
       <section id="inicio" className="container scroll-mt-24 py-16 sm:py-20 lg:py-24">
         <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white/80">
+            <div
+              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium"
+              style={{ border: `1px solid ${theme.border}`, backgroundColor: `${theme.accent}12`, color: theme.accent }}
+            >
               <Sparkles className="h-4 w-4" style={{ color: accent }} />
               {config.heroBadge}
             </div>
@@ -402,7 +463,13 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
                   {config.heroCta}
                 </a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white">
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="text-white hover:text-white"
+                style={{ borderColor: theme.border, backgroundColor: `${theme.primary}80` }}
+              >
                 <a href="#servicios">{config.heroSecondaryCta}</a>
               </Button>
             </div>
@@ -413,7 +480,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
                 { value: "Imagen premium", label: "desde el primer vistazo" },
                 { value: "Contacto directo", label: "con WhatsApp y formulario" },
               ].map((item) => (
-                <div key={item.value} className="surface-card rounded-[1.5rem] p-4">
+                <div key={item.value} className="rounded-[1.5rem] p-4" style={{ border: `1px solid ${theme.border}`, backgroundColor: `${theme.surface}cc` }}>
                   <p className="text-sm font-semibold text-white">{item.value}</p>
                   <p className="mt-1 text-sm text-muted-foreground">{item.label}</p>
                 </div>
@@ -421,7 +488,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
             </div>
           </div>
 
-          <HeroMockup config={config} accent={accent} />
+          <HeroMockup config={config} accent={accent} theme={theme} />
         </div>
       </section>
 
@@ -430,11 +497,20 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
           eyebrow="Servicios"
           title={config.servicesTitle}
           description={config.servicesSubtitle}
+          accent={accent}
         />
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {config.services.map((service) => (
-            <div key={service.title} className="surface-card rounded-[1.75rem] p-6 transition-transform duration-200 hover:-translate-y-1">
+            <div
+              key={service.title}
+              className="rounded-[1.75rem] p-6 transition-transform duration-200 hover:-translate-y-1"
+              style={{
+                border: `1px solid ${theme.border}`,
+                background: `linear-gradient(180deg, ${theme.surface}, ${theme.primary})`,
+                boxShadow: `0 20px 40px -30px ${theme.glow}`,
+              }}
+            >
               <div
                 className="flex h-12 w-12 items-center justify-center rounded-2xl"
                 style={{ backgroundColor: `${accent}14`, color: primary }}
@@ -456,19 +532,19 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         />
 
         <div className="mt-12">
-          <TestimonialPreview config={config} accent={accent} testimonial={featuredTestimonial} />
+          <TestimonialPreview config={config} accent={accent} theme={theme} testimonial={featuredTestimonial} />
         </div>
       </section>
 
       <section id="contacto" className="container scroll-mt-24 py-16 sm:py-20">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-5">
-            <div className="surface-card rounded-[2rem] p-6 sm:p-8">
+            <div className="rounded-[2rem] p-6 sm:p-8" style={{ border: `1px solid ${theme.border}`, background: `linear-gradient(180deg, ${theme.surface}, ${theme.primary})` }}>
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Contacto directo</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight">{config.formTitle}</h2>
               <p className="mt-4 text-sm leading-6 text-muted-foreground">{config.formSubtitle}</p>
 
-              <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-300">
+              <div className="mt-5 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium" style={{ border: `1px solid ${theme.border}`, backgroundColor: `${theme.accent}12`, color: theme.accent }}>
                 <MessageCircle className="h-4 w-4" />
                 WhatsApp visible y respuesta rápida
               </div>
@@ -479,7 +555,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
                   "Ideal para presupuestos, reservas y consultas",
                   "Te respondo en menos de 24 hs",
                 ].map((item) => (
-                  <div key={item} className="surface-card rounded-2xl px-4 py-4 text-sm text-white/80">
+                  <div key={item} className="rounded-2xl px-4 py-4 text-sm text-white/80" style={{ border: `1px solid ${theme.border}`, backgroundColor: `${theme.primary}cc` }}>
                     {item}
                   </div>
                 ))}
@@ -488,16 +564,18 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="card-neon glow-soft surface-card rounded-[2rem] p-6 sm:p-8">
+            <div className="rounded-[2rem] p-6 sm:p-8" style={{ border: `1px solid ${theme.border}`, background: `linear-gradient(180deg, ${theme.surface}, ${theme.primary})`, boxShadow: `0 24px 70px -44px ${theme.glow}` }}>
               <ContactForm title={config.formTitle} description={config.formSubtitle} buttonLabel="Enviar mensaje" trustText="Te respondo en menos de 24 hs" />
             </div>
           </div>
         </div>
 
-        <div className="mt-8 rounded-[2rem] border border-white/10 bg-slate-950/95 p-6 sm:p-8">
+        <div className="mt-8 rounded-[2rem] p-6 sm:p-8" style={{ border: `1px solid ${theme.border}`, background: `linear-gradient(180deg, ${theme.primary}, ${theme.pageBackground})` }}>
           <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/55">Cierre</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em]" style={{ color: theme.accent }}>
+                Cierre
+              </p>
               <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">{config.finalCtaTitle}</h3>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-white/70">{config.finalCtaText}</p>
             </div>
@@ -517,7 +595,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </section>
 
-      <footer className="border-t border-white/10 bg-slate-950/95 py-8">
+      <footer className="py-8" style={{ borderTop: `1px solid ${theme.border}`, background: `${theme.primary}f2` }}>
         <div className="container flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="font-semibold tracking-tight text-white">WebAppImpulsor</p>

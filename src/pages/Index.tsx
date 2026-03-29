@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/ContactForm";
-import { NicheCard } from "@/components/NicheCard";
+import { LandingPreviewCard } from "@/components/landing/LandingPreviewCard";
 import { defaultWhatsappLink } from "@/components/landing/landingVisuals";
 import { landingPages } from "@/data/landings";
 
@@ -106,48 +106,38 @@ const exampleCards = [
   {
     name: "Iron Fitness",
     rubro: "Gimnasio",
-    accentColor: "#F97316",
     href: "/gimnasio",
+    configKey: "iron-fitness",
   },
   {
     name: "ProCoach",
     rubro: "Personal trainer",
-    accentColor: "#06B6D4",
-    bgColor: "#05121b",
     href: "/entrenadores",
-    image: landingPages["personal-trainers"].preview,
+    configKey: "personal-trainers",
   },
   {
     name: "Mente Clara",
     rubro: "Psicólogo",
-    accentColor: "#38BDF8",
-    bgColor: "#07131f",
     href: "/psicologos",
-    image: landingPages.psicologos.preview,
+    configKey: "psicologos",
   },
   {
     name: "NutriVida",
     rubro: "Nutricionista",
-    accentColor: "#84CC16",
-    bgColor: "#07140f",
     href: "/nutricionistas",
-    image: landingPages.nutricionistas.preview,
+    configKey: "nutricionistas",
   },
   {
     name: "Glam Studio",
     rubro: "Estética corporal",
-    accentColor: "#F472B6",
-    bgColor: "#130912",
     href: "/estetica-corporal",
-    image: landingPages["estetica-corporal"].preview,
+    configKey: "estetica-corporal",
   },
   {
     name: "LaunchMe",
     rubro: "Emprendedor",
-    accentColor: "#F59E0B",
-    bgColor: "#161105",
     href: "/emprendedores",
-    image: landingPages.emprendedores.preview,
+    configKey: "emprendedores",
   },
 ];
 
@@ -620,7 +610,12 @@ export default function Index() {
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <IronFitnessExampleCard />
           {exampleCards.slice(1).map((card) => (
-            <NicheCard key={card.name} {...card} />
+            <LandingPreviewCard
+              key={card.name}
+              config={landingPages[card.configKey as keyof typeof landingPages]}
+              href={card.href}
+              rubric={card.rubro}
+            />
           ))}
         </div>
       </section>
