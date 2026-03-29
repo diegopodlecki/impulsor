@@ -761,6 +761,90 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </section>
 
+      {/* Sección de captura de leads */}
+      <section id="diagnostico" className="container scroll-mt-24 py-16 sm:py-20">
+        <div className="mx-auto max-w-2xl">
+          <div className="rounded-[2rem] p-6 sm:p-8" style={{ border: `1px solid ${theme.border}`, background: `linear-gradient(180deg, ${theme.surface}, ${theme.primary})`, boxShadow: `0 24px 70px -44px ${theme.glow}` }}>
+            <div className="text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em]" style={{ color: theme.accent }}>AnÃ¡lisis gratuito</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">Analizamos tu web GRATIS</h2>
+              <p className="mt-4 text-sm leading-6 text-white/70">Te mostramos por quÃ© no estÃ¡ generando clientes y cÃ³mo solucionarlo</p>
+            </div>
+
+            <form className="mt-8 space-y-4" onSubmit={(e) => {
+              e.preventDefault();
+              const formData = new FormData(e.currentTarget);
+              const nombre = formData.get('nombre');
+              const web = formData.get('web');
+              const whatsapp = formData.get('whatsapp');
+              const message = `Hola! Quiero un diagnÃ³stico de mi web.%0A%0ANombre: ${nombre}%0AWeb: ${web || 'No especificada'}%0AWhatsApp: ${whatsapp}`;
+              window.open(whatsappLink(message), '_blank');
+            }}>
+              <div>
+                <label htmlFor="nombre" className="block text-sm font-medium text-white/80 mb-2">Nombre</label>
+                <input
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  required
+                  className="w-full rounded-xl border px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2"
+                  style={{
+                    borderColor: theme.border,
+                    backgroundColor: `${theme.primary}80`,
+                    '--tw-ring-color': theme.accent,
+                  } as React.CSSProperties}
+                  placeholder="Tu nombre"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="web" className="block text-sm font-medium text-white/80 mb-2">Web (opcional)</label>
+                <input
+                  type="url"
+                  id="web"
+                  name="web"
+                  className="w-full rounded-xl border px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2"
+                  style={{
+                    borderColor: theme.border,
+                    backgroundColor: `${theme.primary}80`,
+                    '--tw-ring-color': theme.accent,
+                  } as React.CSSProperties}
+                  placeholder="https://tuweb.com"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="whatsapp" className="block text-sm font-medium text-white/80 mb-2">WhatsApp</label>
+                <input
+                  type="tel"
+                  id="whatsapp"
+                  name="whatsapp"
+                  required
+                  className="w-full rounded-xl border px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2"
+                  style={{
+                    borderColor: theme.border,
+                    backgroundColor: `${theme.primary}80`,
+                    '--tw-ring-color': theme.accent,
+                  } as React.CSSProperties}
+                  placeholder="+54 9 11 1234-5678"
+                />
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full"
+                size="lg"
+                style={{ backgroundColor: theme.accent, color: theme.primary }}
+              >
+                Quiero mi diagnÃ³stico
+              </Button>
+
+              <p className="text-center text-xs text-white/50">Sin compromiso</p>
+            </form>
+          </div>
+        </div>
+      </section>
+
       <section id="contacto" className="container scroll-mt-24 py-16 sm:py-20">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-5">
