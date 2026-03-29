@@ -761,6 +761,123 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </section>
 
+      {/* Sección de Resultados reales */}
+      <section id="resultados" className="container scroll-mt-24 py-16 sm:py-20">
+        <SectionTitle
+          eyebrow="Resultados reales"
+          title="Clientes que ya transformaron su negocio"
+          description="Casos reales de negocios que pasaron de no recibir consultas a tener un flujo constante de clientes"
+          accent={accent}
+        />
+
+        <div className="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-3">
+          {/* Caso 1: Negocio local */}
+          <div
+            className="rounded-[1.75rem] p-6 transition-transform duration-200 hover:-translate-y-1"
+            style={{
+              border: `1px solid ${theme.border}`,
+              background: `linear-gradient(180deg, ${theme.surface}, ${theme.primary})`,
+              boxShadow: `0 20px 40px -30px ${theme.glow}`,
+            }}
+          >
+            <div
+              className="flex h-12 w-12 items-center justify-center rounded-2xl"
+              style={{ backgroundColor: `${accent}14`, color: primary }}
+            >
+              <MapPin className="h-6 w-6" />
+            </div>
+            <h3 className="mt-4 text-lg font-semibold">Negocio local</h3>
+            
+            <div className="mt-4 space-y-3">
+              <div className="rounded-xl p-3" style={{ backgroundColor: `${theme.surface}80` }}>
+                <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>Problema</p>
+                <p className="mt-1 text-sm text-white/80">No recibía consultas a pesar de tener web</p>
+              </div>
+              
+              <div className="rounded-xl p-3" style={{ backgroundColor: `${theme.surface}80` }}>
+                <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>Solución</p>
+                <p className="mt-1 text-sm text-white/80">Landing optimizada con SEO local y botón WhatsApp estratégico</p>
+              </div>
+              
+              <div className="rounded-xl p-3" style={{ backgroundColor: `${accent}15`, borderColor: accent, borderWidth: 1 }}>
+                <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>Resultado</p>
+                <p className="mt-1 text-sm font-semibold text-white">10+ consultas semanales</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Caso 2: Emprendedor */}
+          <div
+            className="rounded-[1.75rem] p-6 transition-transform duration-200 hover:-translate-y-1"
+            style={{
+              border: `1px solid ${theme.border}`,
+              background: `linear-gradient(180deg, ${theme.surface}, ${theme.primary})`,
+              boxShadow: `0 20px 40px -30px ${theme.glow}`,
+            }}
+          >
+            <div
+              className="flex h-12 w-12 items-center justify-center rounded-2xl"
+              style={{ backgroundColor: `${accent}14`, color: primary }}
+            >
+              <Target className="h-6 w-6" />
+            </div>
+            <h3 className="mt-4 text-lg font-semibold">Emprendedor</h3>
+            
+            <div className="mt-4 space-y-3">
+              <div className="rounded-xl p-3" style={{ backgroundColor: `${theme.surface}80` }}>
+                <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>Problema</p>
+                <p className="mt-1 text-sm text-white/80">Dependía solo de Instagram para conseguir clientes</p>
+              </div>
+              
+              <div className="rounded-xl p-3" style={{ backgroundColor: `${theme.surface}80` }}>
+                <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>Solución</p>
+                <p className="mt-1 text-sm text-white/80">Web profesional con propuesta clara y formulario de contacto</p>
+              </div>
+              
+              <div className="rounded-xl p-3" style={{ backgroundColor: `${accent}15`, borderColor: accent, borderWidth: 1 }}>
+                <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>Resultado</p>
+                <p className="mt-1 text-sm font-semibold text-white">Canal estable de clientes</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Caso 3: Servicio profesional */}
+          <div
+            className="rounded-[1.75rem] p-6 transition-transform duration-200 hover:-translate-y-1"
+            style={{
+              border: `1px solid ${theme.border}`,
+              background: `linear-gradient(180deg, ${theme.surface}, ${theme.primary})`,
+              boxShadow: `0 20px 40px -30px ${theme.glow}`,
+            }}
+          >
+            <div
+              className="flex h-12 w-12 items-center justify-center rounded-2xl"
+              style={{ backgroundColor: `${accent}14`, color: primary }}
+            >
+              <Star className="h-6 w-6" />
+            </div>
+            <h3 className="mt-4 text-lg font-semibold">Servicio profesional</h3>
+            
+            <div className="mt-4 space-y-3">
+              <div className="rounded-xl p-3" style={{ backgroundColor: `${theme.surface}80` }}>
+                <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>Problema</p>
+                <p className="mt-1 text-sm text-white/80">Web sin conversiones, visitas que no se transformaban en contactos</p>
+              </div>
+              
+              <div className="rounded-xl p-3" style={{ backgroundColor: `${theme.surface}80` }}>
+                <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>Solución</p>
+                <p className="mt-1 text-sm text-white/80">Rediseño con enfoque en conversión y llamados a la acción claros</p>
+              </div>
+              
+              <div className="rounded-xl p-3" style={{ backgroundColor: `${accent}15`, borderColor: accent, borderWidth: 1 }}>
+                <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>Resultado</p>
+                <p className="mt-1 text-sm font-semibold text-white">Aumento de contactos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Sección de captura de leads */}
       <section id="diagnostico" className="container scroll-mt-24 py-16 sm:py-20">
         <div className="mx-auto max-w-2xl">
