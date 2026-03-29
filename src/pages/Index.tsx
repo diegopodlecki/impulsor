@@ -68,6 +68,16 @@ const ironFitnessPreviewServices = [
   },
 ];
 
+const ironFitnessLandingImages = {
+  heroImage: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=600&fit=crop",
+  heroMockupImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=500&fit=crop",
+  serviceImages: [
+    "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80",
+    "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80",
+    "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=80",
+  ],
+};
+
 const ironFitnessPreviewTestimonials = [
   {
     name: "Martín G.",
@@ -274,14 +284,14 @@ function IronFitnessExampleCard() {
               </div>
 
               <div className="grid gap-3 md:grid-cols-3">
-                {ironFitnessPreviewServices.map((service) => (
+                {ironFitnessPreviewServices.map((service, index) => (
                   <article
                     key={service.title}
                     className="rounded-[10px] border border-[rgba(249,115,22,0.16)] bg-[#141414] p-3"
                   >
                     <div className="h-[86px] overflow-hidden rounded-[8px]">
                       <img
-                        src={service.image}
+                        src={ironFitnessLandingImages.serviceImages[index] ?? service.image}
                         alt={service.title}
                         loading="lazy"
                         decoding="async"
@@ -307,7 +317,7 @@ function IronFitnessExampleCard() {
 
               <div className="grid gap-3 md:grid-cols-2">
                 {ironFitnessPreviewTestimonials.map((item) => (
-                  <article key={item.name} className="rounded-[10px] border border-white/5 bg-[#1A1A1A] p-3">
+                  <article key={item.name} className="rounded-[10px] border border-[rgba(249,115,22,0.16)] bg-[#141414] p-3">
                     <div className="flex items-center gap-3">
                       <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[rgba(249,115,22,0.15)] text-[10px] font-semibold text-[#F97316]">
                         {initials(item.name)}
@@ -366,7 +376,30 @@ function IronFitnessExampleCard() {
               </div>
             </div>
 
-            <div className="mt-3 rounded-[12px] border border-white/5 bg-[#0d0d12] px-4 py-4">
+            <div className="mt-3 grid gap-3 sm:grid-cols-[1.05fr_0.95fr]">
+              <article className="rounded-[10px] border border-[rgba(249,115,22,0.16)] bg-[#141414] p-3">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-[#9CA3AF]">Testimonio</p>
+                    <p className="mt-1 text-[13px] font-semibold text-[#F5F5F5]">Martín G.</p>
+                  </div>
+                  <div className="text-[11px] text-[#F5F5F5]">★★★★★</div>
+                </div>
+                <p className="mt-2 text-[11px] leading-5 text-[#D1D5DB]">"Desde que entreno en Iron Fitness bajé 10 kilos en 4 meses. Los instructores son increíbles."</p>
+              </article>
+
+              <article className="rounded-[10px] border border-[rgba(249,115,22,0.16)] bg-[rgba(249,115,22,0.1)] p-3">
+                <div className="flex items-center gap-3">
+                  <img src={ironFitnessLandingImages.heroMockupImage} alt="Iron Fitness" className="h-16 w-16 rounded-[8px] object-cover" loading="lazy" decoding="async" />
+                  <div>
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-[#9CA3AF]">Iron Fitness</p>
+                    <p className="mt-1 text-[12px] leading-5 text-[#F5F5F5]">Tu gimnasio online</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div className="mt-3 rounded-[12px] border border-[rgba(249,115,22,0.16)] bg-[#0d0d12] px-4 py-4">
               <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.22em] text-[#9CA3AF]">Contacto</p>
@@ -382,37 +415,24 @@ function IronFitnessExampleCard() {
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col gap-2 p-4">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <h3 className="text-[13px] font-medium leading-none text-[#f0f0f0]">Iron Fitness</h3>
-            <p className="mt-1 text-[11px] text-[rgba(255,255,255,0.38)]">Gimnasio</p>
-          </div>
-
-          <span className="inline-flex items-center gap-2 rounded-full bg-[rgba(249,115,22,0.15)] px-3 py-1 text-[10px] font-semibold text-[#F97316]">
-            <span
-              className="h-2 w-2 rounded-full bg-[#F97316]"
-              style={{ animation: "iron-card-dot 2s ease-in-out infinite" }}
-            />
-            Ver demo
-          </span>
+      <div className="flex items-start justify-between gap-3 p-4">
+        <div>
+          <h4 className="text-[13px] font-medium leading-none text-[#f0f0f0]">Iron Fitness</h4>
+          <p className="mt-1 text-[11px] text-[rgba(255,255,255,0.38)]">Gimnasio</p>
         </div>
 
-        <p className="text-[12px] leading-5 text-[rgba(255,255,255,0.45)]">
-          Mini preview interactivo de la landing. Podés imaginar la experiencia en un celular, y abrir la versión real cuando quieras.
-        </p>
+        <Link
+          to="/gimnasio"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 rounded-full bg-[#F97316] px-4 py-2 text-[12px] font-semibold text-[#0A0A0A] transition-transform duration-200 hover:scale-[1.03]"
+          aria-label="Ver ejemplo real de Iron Fitness en una nueva pestaña"
+        >
+          Ver ejemplo real
+          <span aria-hidden="true">↗</span>
+        </Link>
       </div>
 
-      <Link
-        to="/gimnasio"
-        target="_blank"
-        rel="noreferrer"
-        className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-full bg-[#F97316] px-4 py-2 text-[12px] font-semibold text-[#0A0A0A] shadow-[0_10px_24px_-10px_rgba(249,115,22,0.65)] transition-transform duration-200 hover:scale-[1.03]"
-        aria-label="Ver ejemplo real de Iron Fitness en una nueva pestaña"
-      >
-        Ver ejemplo real
-        <span aria-hidden="true">↗</span>
-      </Link>
     </div>
   );
 }
