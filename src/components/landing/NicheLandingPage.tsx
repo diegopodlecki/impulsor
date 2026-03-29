@@ -195,7 +195,7 @@ const landingVoices: Record<
     testimonialTitle: "Mockups y prueba social para cerrar más confianza",
     testimonialDescription:
       "La combinación de una landing visual con testimonios claros ayuda a que la decisión de contactarte se sienta más fácil.",
-    contactBadge: "{voice.contactBadge}",
+    contactBadge: "WhatsApp visible y respuesta rápida",
     closingEyebrow: "Cierre",
   },
   gimnasios: {
@@ -718,5 +718,6 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
     </main>
   );
 }
+
 
 
