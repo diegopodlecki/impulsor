@@ -255,7 +255,7 @@ export function LandingPreviewCard({
               >
                 <div className="h-[84px] overflow-hidden rounded-[8px]">
                   <img
-                    src={service.image ?? images.serviceImages[index] ?? images.heroImage}
+                    src={config.slug === "iron-fitness" && index === 0 ? images.heroImage : service.image ?? images.serviceImages[index] ?? images.heroImage}
                     alt={service.title}
                     loading="lazy"
                     decoding="async"
