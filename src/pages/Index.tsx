@@ -198,15 +198,29 @@ export default function Index() {
 
           {/* H1 */}
           <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-            Tu página web no te está generando clientes.
-            <br />
-            <span className="text-[#0EA5E9]">Nosotros la convertimos en una máquina de consultas.</span>
+            Tu página web no te está generando clientes
           </h1>
 
           {/* Subtitle */}
           <p className="mt-5 text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
-            Diseño páginas web para gimnasios, profesionales de la salud y emprendedores que necesitan conseguir clientes online.
+            La convertimos en una máquina de consultas automatizadas con WhatsApp y Google
           </p>
+
+          {/* Benefits */}
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <div className="flex items-center gap-2">
+              <span className="text-[#0EA5E9]">✓</span>
+              <span className="text-sm">Más consultas sin pagar publicidad</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[#0EA5E9]">✓</span>
+              <span className="text-sm">Diseño pensado para vender, no solo verse bien</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[#0EA5E9]">✓</span>
+              <span className="text-sm">Integración directa con WhatsApp</span>
+            </div>
+          </div>
 
           {/* CTAs */}
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -214,9 +228,14 @@ export default function Index() {
               <a href="#rubros">Quiero más clientes</a>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <a href="#rubros">Ver ejemplos de sitios →</a>
+              <a href="#contacto">Analizar mi web gratis</a>
             </Button>
           </div>
+
+          {/* Microcopy */}
+          <p className="mt-4 text-sm text-muted-foreground">
+            Respuesta en menos de 24hs
+          </p>
 
           {/* Social proof */}
           <div className="mt-8 flex items-center justify-center gap-2">
@@ -231,6 +250,47 @@ export default function Index() {
                 <p className="mt-1 text-sm text-muted-foreground">{item.label}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Problema section */}
+      <section className="container py-12 sm:py-16">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+            Si tu web no vende, no sirve
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            La mayoría de las páginas web están mal pensadas
+          </p>
+
+          <div className="mt-8 space-y-4">
+            <div className="flex items-start gap-3">
+              <span className="text-[#0EA5E9]">•</span>
+              <p className="text-left">Recibís visitas pero nadie te escribe</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-[#0EA5E9]">•</span>
+              <p className="text-left">Dependés solo de redes sociales</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-[#0EA5E9]">•</span>
+              <p className="text-left">Tu web parece linda pero no genera ingresos</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-[#0EA5E9]">•</span>
+              <p className="text-left">No sabés si está funcionando o no</p>
+            </div>
+          </div>
+
+          <p className="mt-8 text-lg font-medium">
+            Esto no es un problema de marketing. Es un problema de estrategia web.
+          </p>
+
+          <div className="mt-8">
+            <Button asChild size="lg" className="bg-[#0EA5E9] text-white hover:bg-[#0284C7]">
+              <a href="#contacto">Quiero solucionarlo</a>
+            </Button>
           </div>
         </div>
       </section>
