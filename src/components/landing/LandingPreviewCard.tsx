@@ -43,43 +43,43 @@ const previewVariants: Record<
     badgeLabel: "Demo",
   },
   gimnasios: {
-    kicker: "Entrenamiento, horarios y acción",
-    heroLabel: "Más alumnos",
+    kicker: "Entrenamiento, horarios y acciÃ³n",
+    heroLabel: "MÃ¡s alumnos",
     serviceLabel: "Clases y equipamiento",
-    footerLabel: "Ver la versión gym",
+    footerLabel: "Ver la versiÃ³n gym",
     badgeLabel: "Fitness",
   },
   "personal-trainers": {
-    kicker: "Marca personal que convierte",
-    heroLabel: "Método y resultados",
-    serviceLabel: "Tu sistema de trabajo",
+    kicker: "Marca personal premium",
+    heroLabel: "Sesiones y progreso",
+    serviceLabel: "Experiencia de entrenamiento",
     footerLabel: "Ver el ejemplo trainer",
     badgeLabel: "Trainer",
   },
   nutricionistas: {
-    kicker: "Confianza, agenda y claridad",
-    heroLabel: "Consultas más ordenadas",
-    serviceLabel: "Servicios y seguimiento",
+    kicker: "Clínica, orden y confianza",
+    heroLabel: "Consultas más claras",
+    serviceLabel: "Seguimiento y turnos",
     footerLabel: "Ver el ejemplo nutrición",
     badgeLabel: "Nutrición",
   },
   psicologos: {
-    kicker: "Calma visual y primer turno",
-    heroLabel: "Cercanía profesional",
-    serviceLabel: "Confianza y acompañamiento",
+    kicker: "Calma y cercanía",
+    heroLabel: "Espacio seguro",
+    serviceLabel: "Acompañamiento amable",
     footerLabel: "Ver el ejemplo consultorio",
     badgeLabel: "Psi",
   },
   "estetica-corporal": {
     kicker: "Imagen premium y resultados",
-    heroLabel: "Más deseo visual",
+    heroLabel: "MÃ¡s deseo visual",
     serviceLabel: "Tratamientos y prueba",
-    footerLabel: "Ver el ejemplo estética",
+    footerLabel: "Ver el ejemplo estÃ©tica",
     badgeLabel: "Beauty",
   },
   emprendedores: {
     kicker: "Oferta clara y autoridad",
-    heroLabel: "Más conversiones",
+    heroLabel: "MÃ¡s conversiones",
     serviceLabel: "Propuesta y prueba social",
     footerLabel: "Ver el ejemplo negocio",
     badgeLabel: "Launch",
@@ -87,7 +87,7 @@ const previewVariants: Record<
   "iron-fitness": {
     kicker: "La landing original",
     heroLabel: "Iron Fitness",
-    serviceLabel: "Versión completa",
+    serviceLabel: "VersiÃ³n completa",
     footerLabel: "Ver ejemplo real",
     badgeLabel: "Gym",
   },
@@ -220,7 +220,7 @@ export function LandingPreviewCard({
             }}
           >
             <div className="inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-medium" style={{ borderColor: theme.border, backgroundColor: `${theme.accent}14`, color: theme.accent }}>
-              <span className="mr-2">●</span>
+              <span className="mr-2">â—</span>
               {variant.kicker}
             </div>
             <p className="mt-3 text-[10px] uppercase tracking-[0.24em] text-[#9CA3AF]">{variant.heroLabel}</p>
@@ -239,7 +239,7 @@ export function LandingPreviewCard({
             <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#9CA3AF]">
               {points.map((point, index) => (
                 <span key={point} className="inline-flex items-center gap-x-3">
-                  {index > 0 ? <span style={{ color: theme.accent }}>·</span> : null}
+                  {index > 0 ? <span style={{ color: theme.accent }}>Â·</span> : null}
                   <span>{point}</span>
                 </span>
               ))}
@@ -275,7 +275,7 @@ export function LandingPreviewCard({
                   <p className="text-[10px] uppercase tracking-[0.2em] text-[#9CA3AF]">Testimonio</p>
                   <p className="mt-1 text-[13px] font-semibold text-[#F5F5F5]">{testimonial.name}</p>
                 </div>
-                <div className="text-[11px] text-[#F5F5F5]">★★★★★</div>
+                <div className="text-[11px] text-[#F5F5F5]">â˜…â˜…â˜…â˜…â˜…</div>
               </div>
               <p className="mt-2 text-[11px] leading-5 text-[#D1D5DB]">"{testimonial.text}"</p>
             </article>
@@ -317,12 +317,13 @@ export function LandingPreviewCard({
           rel="noreferrer"
           className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold text-[#0A0A0A] transition-transform duration-200 hover:scale-[1.03]"
           style={{ backgroundColor: theme.accent }}
-          aria-label={`Ver ejemplo real de ${config.heroBadge} en una nueva pestaña`}
+          aria-label={`Ver ejemplo real de ${config.heroBadge} en una nueva pestaÃ±a`}
         >
           Ver ejemplo real
-          <span aria-hidden="true">↗</span>
+          <span aria-hidden="true">â†—</span>
         </Link>
       </div>
     </article>
   );
 }
+

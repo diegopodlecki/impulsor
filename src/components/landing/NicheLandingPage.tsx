@@ -110,39 +110,51 @@ const landingSeo: Record<
     title: "Web para gimnasios que generan alumnos | WebAppImpulsor",
     description:
       "Landing page para gimnasios enfocada en conseguir nuevos alumnos, mostrar clases, horarios e instalaciones y convertir consultas por WhatsApp.",
-    keywords: "web para gimnasios, landing page para gimnasios, página web para gimnasio, conseguir alumnos online",
+    keywords: "web para gimnasios, landing page para gimnasios, pÃ¡gina web para gimnasio, conseguir alumnos online",
     canonicalPath: "/gimnasios",
     ogImagePath: "/og/gimnasios.svg",
   },
   "personal-trainers": {
-    title: "Web para entrenadores personales que generan clientes | WebAppImpulsor",
-    description:
-      "Landing page para entrenadores personales pensada para conseguir clientes online, mostrar rutinas, testimonios y planes de entrenamiento.",
-    keywords: "web para entrenadores personales, landing para personal trainer, página web para entrenador, conseguir clientes online",
-    canonicalPath: "/entrenadores",
-    ogImagePath: "/og/entrenadores.svg",
+    heroStats: [
+      { value: "Sesiones 1 a 1", label: "más foco" },
+      { value: "Método propio", label: "más autoridad" },
+      { value: "Progreso visible", label: "más cierres" },
+    ],
+    testimonialTitle: "Un servicio premium para vender tu marca personal",
+    testimonialDescription:
+      "Como entrenador, lo que más convierte es una experiencia clara, premium y centrada en transformaciones reales.",
+    contactBadge: "Convertí tu experiencia en clientes premium",
+    closingEyebrow: "Método y marca",
   },
   nutricionistas: {
-    title: "Web para nutricionistas que generan consultas | WebAppImpulsor",
-    description:
-      "Landing page para nutricionistas enfocada en captar pacientes, mostrar servicios y facilitar el contacto directo por WhatsApp.",
-    keywords: "web para nutricionistas, landing page para nutricionista, página web para nutrición, conseguir consultas online",
-    canonicalPath: "/nutricionistas",
-    ogImagePath: "/og/nutricionistas.svg",
+    heroStats: [
+      { value: "Protocolos claros", label: "más orden" },
+      { value: "Agenda clara", label: "sin fricción" },
+      { value: "Seguimiento clínico", label: "más confianza" },
+    ],
+    testimonialTitle: "Claridad clínica para captar más consultas",
+    testimonialDescription:
+      "En nutrición, la confianza crece cuando el servicio se ve ordenado, profesional y fácil de entender.",
+    contactBadge: "Turnos claros y seguimiento profesional",
+    closingEyebrow: "Consulta",
   },
   psicologos: {
-    title: "Web para psicólogos que transmiten confianza | WebAppImpulsor",
-    description:
-      "Landing page para psicólogos pensada para transmitir confianza, captar consultas y facilitar el primer contacto con pacientes.",
-    keywords: "web para psicólogos, landing page para psicólogo, página web para consultorio, generar consultas online",
-    canonicalPath: "/psicologos",
-    ogImagePath: "/og/psicologos.svg",
+    heroStats: [
+      { value: "Calma visual", label: "más contención" },
+      { value: "Contacto simple", label: "sin fricción" },
+      { value: "Primer turno", label: "más amable" },
+    ],
+    testimonialTitle: "Una experiencia visual más cálida y contenida",
+    testimonialDescription:
+      "La experiencia visual debe acompañar una decisión sensible con calma, cercanía y claridad.",
+    contactBadge: "Un primer paso más humano",
+    closingEyebrow: "Acompañamiento",
   },
   "estetica-corporal": {
-    title: "Web para estética corporal que vende más consultas | WebAppImpulsor",
+    title: "Web para estÃ©tica corporal que vende mÃ¡s consultas | WebAppImpulsor",
     description:
-      "Landing page para estética corporal diseñada para mostrar tratamientos, transmitir imagen premium y convertir más consultas.",
-    keywords: "web para estética corporal, landing page para estética, página web para tratamientos, conseguir consultas online",
+      "Landing page para estÃ©tica corporal diseÃ±ada para mostrar tratamientos, transmitir imagen premium y convertir mÃ¡s consultas.",
+    keywords: "web para estÃ©tica corporal, landing page para estÃ©tica, pÃ¡gina web para tratamientos, conseguir consultas online",
     canonicalPath: "/estetica-corporal",
     ogImagePath: "/og/estetica-corporal.svg",
   },
@@ -150,7 +162,7 @@ const landingSeo: Record<
     title: "Web para emprendedores que convierten visitas en clientes | WebAppImpulsor",
     description:
       "Landing page para emprendedores enfocada en mostrar la propuesta de valor, construir autoridad y facilitar el contacto.",
-    keywords: "web para emprendedores, landing page para emprendedores, página web para servicios, vender online",
+    keywords: "web para emprendedores, landing page para emprendedores, pÃ¡gina web para servicios, vender online",
     canonicalPath: "/emprendedores",
     ogImagePath: "/og/emprendedores.svg",
   },
@@ -158,19 +170,19 @@ const landingSeo: Record<
 
 const fallbackTestimonials = [
   {
-    name: "María González",
-    role: "Dueña de gimnasio",
-    text: "Desde que tenemos la web, recibimos consultas todos los días. Antes dependíamos solo de Instagram.",
+    name: "MarÃ­a GonzÃ¡lez",
+    role: "DueÃ±a de gimnasio",
+    text: "Desde que tenemos la web, recibimos consultas todos los dÃ­as. Antes dependÃ­amos solo de Instagram.",
     rating: 5,
   },
   {
-    name: "Carlos Rodríguez",
+    name: "Carlos RodrÃ­guez",
     role: "Personal trainer",
-    text: "Mi marca personal se ve mucho más profesional. Los clientes me encuentran más fácil y confían más.",
+    text: "Mi marca personal se ve mucho mÃ¡s profesional. Los clientes me encuentran mÃ¡s fÃ¡cil y confÃ­an mÃ¡s.",
     rating: 5,
   },
   {
-    name: "Laura Martínez",
+    name: "Laura MartÃ­nez",
     role: "Nutricionista",
     text: "La web me ayuda a filtrar pacientes y agendar consultas sin perder tiempo. Muy recomendable.",
     rating: 5,
@@ -189,73 +201,73 @@ const landingVoices: Record<
 > = {
   default: {
     heroStats: [
-      { value: "Más consultas", label: "en menos fricción" },
+      { value: "MÃ¡s consultas", label: "en menos fricciÃ³n" },
       { value: "Imagen premium", label: "desde el primer vistazo" },
       { value: "Contacto directo", label: "con WhatsApp y formulario" },
     ],
-    testimonialTitle: "Mockups y prueba social para cerrar más confianza",
+    testimonialTitle: "Mockups y prueba social para cerrar mÃ¡s confianza",
     testimonialDescription:
-      "La combinación de una landing visual con testimonios claros ayuda a que la decisión de contactarte se sienta más fácil.",
-    contactBadge: "WhatsApp visible y respuesta rápida",
+      "La combinaciÃ³n de una landing visual con testimonios claros ayuda a que la decisiÃ³n de contactarte se sienta mÃ¡s fÃ¡cil.",
+    contactBadge: "WhatsApp visible y respuesta rÃ¡pida",
     closingEyebrow: "Cierre",
   },
   gimnasios: {
     heroStats: [
-      { value: "+ Socios", label: "más inscripciones" },
+      { value: "+ Socios", label: "mÃ¡s inscripciones" },
       { value: "Clases claras", label: "en un vistazo" },
-      { value: "Turnos rápidos", label: "por WhatsApp" },
+      { value: "Turnos rÃ¡pidos", label: "por WhatsApp" },
     ],
     testimonialTitle: "Inscripciones y prueba social para sumar alumnos",
     testimonialDescription:
-      "Para gimnasios, mostrar resultados, horarios y comunidad hace que la visita se convierta en consulta con más facilidad.",
-    contactBadge: "Consultas rápidas y visitas al gym",
-    closingEyebrow: "Empezá hoy",
+      "Para gimnasios, mostrar resultados, horarios y comunidad hace que la visita se convierta en consulta con mÃ¡s facilidad.",
+    contactBadge: "Consultas rÃ¡pidas y visitas al gym",
+    closingEyebrow: "EmpezÃ¡ hoy",
   },
   "personal-trainers": {
     heroStats: [
+      { value: "Sesiones 1 a 1", label: "más foco" },
       { value: "Método propio", label: "más autoridad" },
-      { value: "Resultados", label: "que generan confianza" },
-      { value: "Plan premium", label: "más cierres" },
+      { value: "Progreso visible", label: "más cierres" },
     ],
-    testimonialTitle: "Resultados y método para vender tu marca personal",
+    testimonialTitle: "Un servicio premium para vender tu marca personal",
     testimonialDescription:
-      "Como entrenador, lo que más convierte es una propuesta clara, con autoridad y foco en transformación real.",
-    contactBadge: "Captá clientes para entrenamiento personalizado",
-    closingEyebrow: "Tu método",
+      "Como entrenador, lo que más convierte es una experiencia clara, premium y centrada en transformaciones reales.",
+    contactBadge: "Convertí tu experiencia en clientes premium",
+    closingEyebrow: "Método y marca",
   },
   nutricionistas: {
     heroStats: [
-      { value: "Confianza", label: "desde el primer scroll" },
+      { value: "Protocolos claros", label: "más orden" },
       { value: "Agenda clara", label: "sin fricción" },
-      { value: "Seguimiento", label: "más ordenado" },
+      { value: "Seguimiento clínico", label: "más confianza" },
     ],
-    testimonialTitle: "Autoridad y claridad para captar pacientes",
+    testimonialTitle: "Claridad clínica para captar más consultas",
     testimonialDescription:
-      "En nutrición, la claridad del servicio y la sensación de acompañamiento son claves para lograr reservas.",
-    contactBadge: "Consultas claras y turnos organizados",
-    closingEyebrow: "Agendá hoy",
+      "En nutrición, la confianza crece cuando el servicio se ve ordenado, profesional y fácil de entender.",
+    contactBadge: "Turnos claros y seguimiento profesional",
+    closingEyebrow: "Consulta",
   },
   psicologos: {
     heroStats: [
-      { value: "Calma visual", label: "más confianza" },
+      { value: "Calma visual", label: "más contención" },
       { value: "Contacto simple", label: "sin fricción" },
-      { value: "Primer turno", label: "más fácil" },
+      { value: "Primer turno", label: "más amable" },
     ],
-    testimonialTitle: "Confianza y cercanía para facilitar el primer contacto",
+    testimonialTitle: "Una experiencia visual más cálida y contenida",
     testimonialDescription:
-      "La experiencia visual debe acompañar una decisión sensible: pedir ayuda y agendar el primer turno.",
-    contactBadge: "Un primer paso más humano y claro",
+      "La experiencia visual debe acompañar una decisión sensible con calma, cercanía y claridad.",
+    contactBadge: "Un primer paso más humano",
     closingEyebrow: "Acompañamiento",
   },
   "estetica-corporal": {
     heroStats: [
-      { value: "Imagen premium", label: "más deseo" },
-      { value: "Antes y después", label: "más prueba" },
-      { value: "Más consultas", label: "menos dudas" },
+      { value: "Imagen premium", label: "mÃ¡s deseo" },
+      { value: "Antes y despuÃ©s", label: "mÃ¡s prueba" },
+      { value: "MÃ¡s consultas", label: "menos dudas" },
     ],
     testimonialTitle: "Presencia premium para tratamientos que venden",
     testimonialDescription:
-      "En estética, la percepción visual y la prueba de resultados empujan mucho más que un texto genérico.",
+      "En estÃ©tica, la percepciÃ³n visual y la prueba de resultados empujan mucho mÃ¡s que un texto genÃ©rico.",
     contactBadge: "Consultas elegantes con foco en resultados",
     closingEyebrow: "Elegancia",
   },
@@ -263,13 +275,13 @@ const landingVoices: Record<
     heroStats: [
       { value: "Oferta clara", label: "en segundos" },
       { value: "Autoridad", label: "que ordena" },
-      { value: "Más ventas", label: "con foco" },
+      { value: "MÃ¡s ventas", label: "con foco" },
     ],
     testimonialTitle: "Claridad y autoridad para vender servicios",
     testimonialDescription:
-      "Cuando un emprendimiento comunica mejor su propuesta, consigue consultas más calificadas y mejor tasa de cierre.",
+      "Cuando un emprendimiento comunica mejor su propuesta, consigue consultas mÃ¡s calificadas y mejor tasa de cierre.",
     contactBadge: "Una landing pensada para convertir",
-    closingEyebrow: "Convertí más",
+    closingEyebrow: "ConvertÃ­ mÃ¡s",
   },
 };
 
@@ -334,7 +346,7 @@ function HeroMockup({
                   WhatsApp visible
                 </span>
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-white/75">
-                  Diseño claro
+                  DiseÃ±o claro
                 </span>
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-white/75">
                   Confianza inmediata
@@ -383,7 +395,7 @@ function TestimonialPreview({
           Testimonio destacado
         </div>
         <blockquote className="mt-6 text-2xl font-semibold leading-9 tracking-tight text-pretty sm:text-3xl sm:leading-10">
-          “{testimonial.text}”
+          â€œ{testimonial.text}â€
         </blockquote>
         <div className="mt-8 flex items-center gap-4">
           <div className="overflow-hidden rounded-2xl p-2" style={{ border: `1px solid ${theme.border}`, backgroundColor: `${theme.accent}10` }}>
@@ -401,8 +413,8 @@ function TestimonialPreview({
         </div>
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
           {[
-            "Más confianza",
-            "Más consultas",
+            "MÃ¡s confianza",
+            "MÃ¡s consultas",
             "Mejor imagen",
           ].map((item) => (
             <div
@@ -426,7 +438,7 @@ function TestimonialPreview({
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground" style={{ color: theme.accent }}>
                 Mockup de resultado
               </p>
-              <p className="mt-1 text-sm text-muted-foreground">Así se ve tu landing antes de escribirte.</p>
+              <p className="mt-1 text-sm text-muted-foreground">AsÃ­ se ve tu landing antes de escribirte.</p>
             </div>
             <span
               className="rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/65"
@@ -664,7 +676,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
               <div className="mt-6 space-y-3">
                 {[
-                  "Respuesta rápida y clara",
+                  "Respuesta rÃ¡pida y clara",
                   "Ideal para presupuestos, reservas y consultas",
                   "Te respondo en menos de 24 hs",
                 ].map((item) => (
@@ -713,10 +725,10 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
           <div>
             <p className="font-semibold tracking-tight text-white">WebAppImpulsor</p>
             <p className="mt-1 text-sm text-white/50">
-              Diego Podlecki · <a className="transition-colors hover:text-white" href="mailto:info.diego@webappimpulsor.com">info.diego@webappimpulsor.com</a>
+              Diego Podlecki Â· <a className="transition-colors hover:text-white" href="mailto:info.diego@webappimpulsor.com">info.diego@webappimpulsor.com</a>
             </p>
           </div>
-          <div className="text-sm text-white/50">Diseño web enfocado en resultados</div>
+          <div className="text-sm text-white/50">DiseÃ±o web enfocado en resultados</div>
         </div>
       </footer>
 
