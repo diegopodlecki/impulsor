@@ -40,6 +40,58 @@ const solutions = [
   "Automatización básica",
 ];
 
+const ironFitnessPreviewServices = [
+  {
+    title: "Musculación",
+    text: "Equipamiento de alta gama para entrenamiento de fuerza. Pesas libres, máquinas y más.",
+    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80",
+  },
+  {
+    title: "Clases grupales",
+    text: "Cycling, funcional, yoga y más. Instructores certificados en cada clase.",
+    image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80",
+  },
+  {
+    title: "Cardio & funcional",
+    text: "Zona de cardio completa. HIIT, funcional y máquinas cardiovasculares.",
+    image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=80",
+  },
+];
+
+const ironFitnessPreviewTestimonials = [
+  {
+    name: "Martín G.",
+    role: "socio hace 1 año",
+    text: "Desde que entreno en Iron Fitness bajé 10 kilos en 4 meses. Los instructores son increíbles.",
+  },
+  {
+    name: "Carolina R.",
+    role: "socia hace 8 meses",
+    text: "Probé varios gimnasios y este es otro nivel. Las clases grupales son adictivas.",
+  },
+];
+
+const ironFitnessPreviewPlans = [
+  {
+    name: "Mensual",
+    price: "$15.000/mes",
+    featured: false,
+    features: ["Acceso completo", "Vestuarios", "Clases incluidas", "Cancelación mensual"],
+  },
+  {
+    name: "Trimestral",
+    price: "$12.000/mes",
+    featured: true,
+    features: ["Todo lo anterior", "Ahorrás 20%", "Congelamiento 1 vez", "Acceso 24hs"],
+  },
+  {
+    name: "Anual",
+    price: "$9.000/mes",
+    featured: false,
+    features: ["Todo lo anterior", "Ahorrás 40%", "Congelamiento ilimitado", "Sesión de evaluación gratis"],
+  },
+];
+
 const exampleCards = [
   {
     name: "Iron Fitness",
@@ -222,7 +274,7 @@ function IronFitnessExampleCard() {
               </div>
 
               <div className="grid gap-3 md:grid-cols-3">
-                {services.map((service) => (
+                {ironFitnessPreviewServices.map((service) => (
                   <article
                     key={service.title}
                     className="rounded-[10px] border border-[rgba(249,115,22,0.16)] bg-[#141414] p-3"
@@ -254,7 +306,7 @@ function IronFitnessExampleCard() {
               </div>
 
               <div className="grid gap-3 md:grid-cols-2">
-                {testimonials.map((item) => (
+                {ironFitnessPreviewTestimonials.map((item) => (
                   <article key={item.name} className="rounded-[10px] border border-white/5 bg-[#1A1A1A] p-3">
                     <div className="flex items-center gap-3">
                       <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[rgba(249,115,22,0.15)] text-[10px] font-semibold text-[#F97316]">
@@ -283,7 +335,7 @@ function IronFitnessExampleCard() {
               </div>
 
               <div className="grid gap-3 lg:grid-cols-3">
-                {plans.map((plan) => (
+                {ironFitnessPreviewPlans.map((plan) => (
                   <article
                     key={plan.name}
                     className={`rounded-[10px] bg-[#141414] p-3 ${
