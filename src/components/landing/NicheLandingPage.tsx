@@ -10,6 +10,7 @@ import {
   Image,
   Info,
   List,
+  MapPin,
   MessageCircle,
   Sparkles,
   Star,
@@ -606,45 +607,144 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
       <section id="servicios" className="container scroll-mt-24 py-16 sm:py-20">
         <SectionTitle
-          eyebrow="Servicios"
-          title={config.servicesTitle}
-          description={config.servicesSubtitle}
+          eyebrow="Ofertas"
+          title="Soluciones web que generan resultados"
+          description="Elegí la que mejor se adapte a tu negocio"
           accent={accent}
         />
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {config.services.map((service, index) => (
+        <div className="mt-12 grid gap-6 md:grid-cols-1 lg:grid-cols-3">
+          {/* Web para generar consultas */}
+          <div
+            className="rounded-[1.75rem] p-6 transition-transform duration-200 hover:-translate-y-1"
+            style={{
+              border: `1px solid ${theme.border}`,
+              background: `linear-gradient(180deg, ${theme.surface}, ${theme.primary})`,
+              boxShadow: `0 20px 40px -30px ${theme.glow}`,
+            }}
+          >
             <div
-              key={service.title}
-              className="rounded-[1.75rem] p-6 transition-transform duration-200 hover:-translate-y-1"
-              style={{
-                border: `1px solid ${theme.border}`,
-                background: `linear-gradient(180deg, ${theme.surface}, ${theme.primary})`,
-                boxShadow: `0 20px 40px -30px ${theme.glow}`,
-              }}
+              className="flex h-12 w-12 items-center justify-center rounded-2xl"
+              style={{ backgroundColor: `${accent}14`, color: primary }}
             >
-              {images.serviceImages[index] || service.image ? (
-                <div className="mb-4 h-[180px] overflow-hidden rounded-[1rem]">
-                  <img
-                    src={service.image ?? images.serviceImages[index] ?? images.heroImage}
-                    alt={service.title}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover"
-                    style={{ backgroundColor: theme.surface }}
-                  />
-                </div>
-              ) : null}
-              <div
-                className="flex h-12 w-12 items-center justify-center rounded-2xl"
-                style={{ backgroundColor: `${accent}14`, color: primary }}
-              >
-                {getIcon(service.icon)}
-              </div>
-              <h3 className="mt-4 text-lg font-semibold">{service.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">{service.description}</p>
+              <Target className="h-6 w-6" />
             </div>
-          ))}
+            <h3 className="mt-4 text-lg font-semibold">Web para generar consultas</h3>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">Para negocios que necesitan clientes constantemente</p>
+            <ul className="mt-4 space-y-2">
+              <li className="flex items-start gap-2 text-sm">
+                <span style={{ color: accent }}>✓</span>
+                <span>Landing optimizada</span>
+              </li>
+              <li className="flex items-start gap-2 text-sm">
+                <span style={{ color: accent }}>✓</span>
+                <span>Botón WhatsApp estratégico</span>
+              </li>
+              <li className="flex items-start gap-2 text-sm">
+                <span style={{ color: accent }}>✓</span>
+                <span>Copy de venta</span>
+              </li>
+            </ul>
+            <div className="mt-4 rounded-xl p-3" style={{ backgroundColor: `${accent}10` }}>
+              <p className="text-sm font-medium" style={{ color: accent }}>Resultado esperado:</p>
+              <p className="text-sm text-muted-foreground">Más consultas en menos de 30 días</p>
+            </div>
+            <Button
+              className="mt-6 w-full"
+              style={{ backgroundColor: accent, color: primary }}
+              onClick={() => window.open(whatsappLink(`Hola! Vi tu landing de ${config.title} y me interesa la Web para generar consultas`), "_blank")}
+            >
+              Quiero este sistema
+            </Button>
+          </div>
+
+          {/* Web para negocios locales */}
+          <div
+            className="rounded-[1.75rem] p-6 transition-transform duration-200 hover:-translate-y-1"
+            style={{
+              border: `1px solid ${theme.border}`,
+              background: `linear-gradient(180deg, ${theme.surface}, ${theme.primary})`,
+              boxShadow: `0 20px 40px -30px ${theme.glow}`,
+            }}
+          >
+            <div
+              className="flex h-12 w-12 items-center justify-center rounded-2xl"
+              style={{ backgroundColor: `${accent}14`, color: primary }}
+            >
+              <MapPin className="h-6 w-6" />
+            </div>
+            <h3 className="mt-4 text-lg font-semibold">Web para negocios locales</h3>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">Para aparecer en Google y atraer clientes cercanos</p>
+            <ul className="mt-4 space-y-2">
+              <li className="flex items-start gap-2 text-sm">
+                <span style={{ color: accent }}>✓</span>
+                <span>SEO básico</span>
+              </li>
+              <li className="flex items-start gap-2 text-sm">
+                <span style={{ color: accent }}>✓</span>
+                <span>Optimización Google Maps</span>
+              </li>
+              <li className="flex items-start gap-2 text-sm">
+                <span style={{ color: accent }}>✓</span>
+                <span>Llamados a la acción</span>
+              </li>
+            </ul>
+            <div className="mt-4 rounded-xl p-3" style={{ backgroundColor: `${accent}10` }}>
+              <p className="text-sm font-medium" style={{ color: accent }}>Resultado:</p>
+              <p className="text-sm text-muted-foreground">Más visibilidad local</p>
+            </div>
+            <Button
+              className="mt-6 w-full"
+              style={{ backgroundColor: accent, color: primary }}
+              onClick={() => window.open(whatsappLink(`Hola! Vi tu landing de ${config.title} y me interesa la Web para negocios locales`), "_blank")}
+            >
+              Quiero este sistema
+            </Button>
+          </div>
+
+          {/* Sistema web + WhatsApp */}
+          <div
+            className="rounded-[1.75rem] p-6 transition-transform duration-200 hover:-translate-y-1"
+            style={{
+              border: `1px solid ${theme.border}`,
+              background: `linear-gradient(180deg, ${theme.surface}, ${theme.primary})`,
+              boxShadow: `0 20px 40px -30px ${theme.glow}`,
+            }}
+          >
+            <div
+              className="flex h-12 w-12 items-center justify-center rounded-2xl"
+              style={{ backgroundColor: `${accent}14`, color: primary }}
+            >
+              <MessageCircle className="h-6 w-6" />
+            </div>
+            <h3 className="mt-4 text-lg font-semibold">Sistema web + WhatsApp</h3>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">Para automatizar consultas</p>
+            <ul className="mt-4 space-y-2">
+              <li className="flex items-start gap-2 text-sm">
+                <span style={{ color: accent }}>✓</span>
+                <span>Web + integración WhatsApp</span>
+              </li>
+              <li className="flex items-start gap-2 text-sm">
+                <span style={{ color: accent }}>✓</span>
+                <span>Mensajes prearmados</span>
+              </li>
+              <li className="flex items-start gap-2 text-sm">
+                <span style={{ color: accent }}>✓</span>
+                <span>Flujo de contacto</span>
+              </li>
+            </ul>
+            <div className="mt-4 rounded-xl p-3" style={{ backgroundColor: `${accent}10` }}>
+              <p className="text-sm font-medium" style={{ color: accent }}>Resultado:</p>
+              <p className="text-sm text-muted-foreground">Clientes sin intervención constante</p>
+            </div>
+            <Button
+              className="mt-6 w-full"
+              style={{ backgroundColor: accent, color: primary }}
+              onClick={() => window.open(whatsappLink(`Hola! Vi tu landing de ${config.title} y me interesa el Sistema web + WhatsApp`), "_blank")}
+            >
+              Quiero este sistema
+            </Button>
+          </div>
         </div>
       </section>
 
