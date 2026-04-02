@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from "react";
+﻿import { useEffect, type ReactNode } from "react";
 import {
   Brain,
   Calendar,
@@ -111,7 +111,7 @@ const landingSeo: Record<
     title: "Web para gimnasios que generan alumnos | WebAppImpulsor",
     description:
       "Landing page para gimnasios enfocada en conseguir nuevos alumnos, mostrar clases, horarios e instalaciones y convertir consultas por WhatsApp.",
-    keywords: "web para gimnasios, landing page para gimnasios, pÃ¡gina web para gimnasio, conseguir alumnos online",
+    keywords: "web para gimnasios, landing page para gimnasios, página web para gimnasio, conseguir alumnos online",
     canonicalPath: "/gimnasios",
     ogImagePath: "/og/gimnasios.svg",
   },
@@ -152,10 +152,10 @@ const landingSeo: Record<
     closingEyebrow: "Acompañamiento",
   },
   "estetica-corporal": {
-    title: "Web para estÃ©tica corporal que vende mÃ¡s consultas | WebAppImpulsor",
+    title: "Web para estética corporal que vende más consultas | WebAppImpulsor",
     description:
-      "Landing page para estÃ©tica corporal diseÃ±ada para mostrar tratamientos, transmitir imagen premium y convertir mÃ¡s consultas.",
-    keywords: "web para estÃ©tica corporal, landing page para estÃ©tica, pÃ¡gina web para tratamientos, conseguir consultas online",
+      "Landing page para estética corporal diseñada para mostrar tratamientos, transmitir imagen premium y convertir más consultas.",
+    keywords: "web para estética corporal, landing page para estética, página web para tratamientos, conseguir consultas online",
     canonicalPath: "/estetica-corporal",
     ogImagePath: "/og/estetica-corporal.svg",
   },
@@ -163,7 +163,7 @@ const landingSeo: Record<
     title: "Web para emprendedores que convierten visitas en clientes | WebAppImpulsor",
     description:
       "Landing page para emprendedores enfocada en mostrar la propuesta de valor, construir autoridad y facilitar el contacto.",
-    keywords: "web para emprendedores, landing page para emprendedores, pÃ¡gina web para servicios, vender online",
+    keywords: "web para emprendedores, landing page para emprendedores, página web para servicios, vender online",
     canonicalPath: "/emprendedores",
     ogImagePath: "/og/emprendedores.svg",
   },
@@ -171,19 +171,19 @@ const landingSeo: Record<
 
 const fallbackTestimonials = [
   {
-    name: "MarÃ­a GonzÃ¡lez",
-    role: "DueÃ±a de gimnasio",
-    text: "Desde que tenemos la web, recibimos consultas todos los dÃ­as. Antes dependÃ­amos solo de Instagram.",
+    name: "María González",
+    role: "Dueña de gimnasio",
+    text: "Desde que tenemos la web, recibimos consultas todos los días. Antes dependíamos solo de Instagram.",
     rating: 5,
   },
   {
-    name: "Carlos RodrÃ­guez",
+    name: "Carlos Rodríguez",
     role: "Personal trainer",
-    text: "Mi marca personal se ve mucho mÃ¡s profesional. Los clientes me encuentran mÃ¡s fÃ¡cil y confÃ­an mÃ¡s.",
+    text: "Mi marca personal se ve mucho más profesional. Los clientes me encuentran más fácil y confían más.",
     rating: 5,
   },
   {
-    name: "Laura MartÃ­nez",
+    name: "Laura Martínez",
     role: "Nutricionista",
     text: "La web me ayuda a filtrar pacientes y agendar consultas sin perder tiempo. Muy recomendable.",
     rating: 5,
@@ -202,27 +202,27 @@ const landingVoices: Record<
 > = {
   default: {
     heroStats: [
-      { value: "MÃ¡s consultas", label: "en menos fricciÃ³n" },
+      { value: "Más consultas", label: "en menos fricción" },
       { value: "Imagen premium", label: "desde el primer vistazo" },
       { value: "Contacto directo", label: "con WhatsApp y formulario" },
     ],
-    testimonialTitle: "Mockups y prueba social para cerrar mÃ¡s confianza",
+    testimonialTitle: "Mockups y prueba social para cerrar más confianza",
     testimonialDescription:
-      "La combinaciÃ³n de una landing visual con testimonios claros ayuda a que la decisiÃ³n de contactarte se sienta mÃ¡s fÃ¡cil.",
-    contactBadge: "WhatsApp visible y respuesta rÃ¡pida",
+      "La combinación de una landing visual con testimonios claros ayuda a que la decisión de contactarte se sienta más fácil.",
+    contactBadge: "WhatsApp visible y respuesta rápida",
     closingEyebrow: "Cierre",
   },
   gimnasios: {
     heroStats: [
-      { value: "+ Socios", label: "mÃ¡s inscripciones" },
+      { value: "+ Socios", label: "más inscripciones" },
       { value: "Clases claras", label: "en un vistazo" },
-      { value: "Turnos rÃ¡pidos", label: "por WhatsApp" },
+      { value: "Turnos rápidos", label: "por WhatsApp" },
     ],
     testimonialTitle: "Inscripciones y prueba social para sumar alumnos",
     testimonialDescription:
-      "Para gimnasios, mostrar resultados, horarios y comunidad hace que la visita se convierta en consulta con mÃ¡s facilidad.",
-    contactBadge: "Consultas rÃ¡pidas y visitas al gym",
-    closingEyebrow: "EmpezÃ¡ hoy",
+      "Para gimnasios, mostrar resultados, horarios y comunidad hace que la visita se convierta en consulta con más facilidad.",
+    contactBadge: "Consultas rápidas y visitas al gym",
+    closingEyebrow: "Empezá hoy",
   },
   "personal-trainers": {
     heroStats: [
@@ -262,13 +262,13 @@ const landingVoices: Record<
   },
   "estetica-corporal": {
     heroStats: [
-      { value: "Imagen premium", label: "mÃ¡s deseo" },
-      { value: "Antes y despuÃ©s", label: "mÃ¡s prueba" },
-      { value: "MÃ¡s consultas", label: "menos dudas" },
+      { value: "Imagen premium", label: "más deseo" },
+      { value: "Antes y después", label: "más prueba" },
+      { value: "Más consultas", label: "menos dudas" },
     ],
     testimonialTitle: "Presencia premium para tratamientos que venden",
     testimonialDescription:
-      "En estÃ©tica, la percepciÃ³n visual y la prueba de resultados empujan mucho mÃ¡s que un texto genÃ©rico.",
+      "En estética, la percepción visual y la prueba de resultados empujan mucho más que un texto genérico.",
     contactBadge: "Consultas elegantes con foco en resultados",
     closingEyebrow: "Elegancia",
   },
@@ -276,13 +276,13 @@ const landingVoices: Record<
     heroStats: [
       { value: "Oferta clara", label: "en segundos" },
       { value: "Autoridad", label: "que ordena" },
-      { value: "MÃ¡s ventas", label: "con foco" },
+      { value: "Más ventas", label: "con foco" },
     ],
     testimonialTitle: "Claridad y autoridad para vender servicios",
     testimonialDescription:
-      "Cuando un emprendimiento comunica mejor su propuesta, consigue consultas mÃ¡s calificadas y mejor tasa de cierre.",
+      "Cuando un emprendimiento comunica mejor su propuesta, consigue consultas más calificadas y mejor tasa de cierre.",
     contactBadge: "Una landing pensada para convertir",
-    closingEyebrow: "ConvertÃ­ mÃ¡s",
+    closingEyebrow: "Convertí más",
   },
 };
 
@@ -374,7 +374,7 @@ function HeroMockup({
                   WhatsApp visible
                 </span>
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-white/75">
-                  DiseÃ±o claro
+                  Diseño claro
                 </span>
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-white/75">
                   Confianza inmediata
@@ -423,7 +423,7 @@ function TestimonialPreview({
           Testimonio destacado
         </div>
         <blockquote className="mt-6 text-2xl font-semibold leading-9 tracking-tight text-pretty sm:text-3xl sm:leading-10">
-          â€œ{testimonial.text}â€
+          "{testimonial.text}"
         </blockquote>
         <div className="mt-8 flex items-center gap-4">
           <div className="overflow-hidden rounded-2xl p-2" style={{ border: `1px solid ${theme.border}`, backgroundColor: `${theme.accent}10` }}>
@@ -441,8 +441,8 @@ function TestimonialPreview({
         </div>
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
           {[
-            "MÃ¡s confianza",
-            "MÃ¡s consultas",
+            "Más confianza",
+            "Más consultas",
             "Mejor imagen",
           ].map((item) => (
             <div
@@ -466,7 +466,7 @@ function TestimonialPreview({
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground" style={{ color: theme.accent }}>
                 Mockup de resultado
               </p>
-              <p className="mt-1 text-sm text-muted-foreground">AsÃ­ se ve tu landing antes de escribirte.</p>
+              <p className="mt-1 text-sm text-muted-foreground">Así se ve tu landing antes de escribirte.</p>
             </div>
             <span
               className="rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/65"
@@ -914,9 +914,9 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         <div className="mx-auto max-w-2xl">
           <div className="rounded-[2rem] p-6 sm:p-8" style={{ border: `1px solid ${theme.border}`, background: `linear-gradient(180deg, ${theme.surface}, ${theme.primary})`, boxShadow: `0 24px 70px -44px ${theme.glow}` }}>
             <div className="text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em]" style={{ color: theme.accent }}>AnÃ¡lisis gratuito</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em]" style={{ color: theme.accent }}>Análisis gratuito</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">Analizamos tu web GRATIS</h2>
-              <p className="mt-4 text-sm leading-6 text-white/70">Te mostramos por quÃ© no estÃ¡ generando clientes y cÃ³mo solucionarlo</p>
+              <p className="mt-4 text-sm leading-6 text-white/70">Te mostramos por qué no está generando clientes y cómo solucionarlo</p>
             </div>
 
             <form className="mt-8 space-y-4" onSubmit={(e) => {
@@ -925,7 +925,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
               const nombre = formData.get('nombre');
               const web = formData.get('web');
               const whatsapp = formData.get('whatsapp');
-              const message = `Hola! Quiero un diagnÃ³stico de mi web.%0A%0ANombre: ${nombre}%0AWeb: ${web || 'No especificada'}%0AWhatsApp: ${whatsapp}`;
+              const message = `Hola! Quiero un diagnóstico de mi web.%0A%0ANombre: ${nombre}%0AWeb: ${web || 'No especificada'}%0AWhatsApp: ${whatsapp}`;
               window.open(whatsappLink(message), '_blank');
             }}>
               <div>
@@ -984,7 +984,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
                 size="lg"
                 style={{ backgroundColor: theme.accent, color: theme.primary }}
               >
-                Quiero mi diagnÃ³stico
+                Quiero mi diagnóstico
               </Button>
 
               <p className="text-center text-xs text-white/50">Sin compromiso</p>
@@ -1008,7 +1008,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
               <div className="mt-6 space-y-3">
                 {[
-                  "Respuesta rÃ¡pida y clara",
+                  "Respuesta rápida y clara",
                   "Ideal para presupuestos, reservas y consultas",
                   "Te respondo en menos de 24 hs",
                 ].map((item) => (
@@ -1057,10 +1057,10 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
           <div>
             <p className="font-semibold tracking-tight text-white">WebAppImpulsor</p>
             <p className="mt-1 text-sm text-white/50">
-              Diego Podlecki Â· <a className="transition-colors hover:text-white" href="mailto:info.diego@webappimpulsor.com">info.diego@webappimpulsor.com</a>
+              Diego Podlecki · <a className="transition-colors hover:text-white" href="mailto:info.diego@webappimpulsor.com">info.diego@webappimpulsor.com</a>
             </p>
           </div>
-          <div className="text-sm text-white/50">DiseÃ±o web enfocado en resultados</div>
+          <div className="text-sm text-white/50">Diseño web enfocado en resultados</div>
         </div>
       </footer>
 

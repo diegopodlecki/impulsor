@@ -14,6 +14,8 @@ import EsteticaCorporal from "./pages/EsteticaCorporal.tsx";
 import IronFitness from "./pages/IronFitness.tsx";
 import Emprendedores from "./pages/Emprendedores.tsx";
 import Register from "./pages/Register.tsx";
+import { LeadCaptureSystem } from "@/components/leads/LeadCaptureSystem";
+import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
 
 const baseUrl = (import.meta.env.BASE_URL ?? "/") + "";
 // React Router basename should not end with "/" (except root). GitHub Pages can serve `/impulsor` and `/impulsor/`.
@@ -31,6 +33,8 @@ const App = () => (
       <ScrollToTop />
       <HashCleanup />
       <Toaster position="top-right" />
+      <AnalyticsProvider />
+      <LeadCaptureSystem />
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/gimnasios" element={<Gimnasios />} />

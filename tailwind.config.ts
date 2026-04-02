@@ -16,8 +16,21 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
+        heading: ["Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
       },
       colors: {
+        brand: {
+          primary: "var(--color-primary)",
+          secondary: "var(--color-secondary)",
+          success: "var(--color-success)",
+          warning: "var(--color-warning)",
+          error: "var(--color-error)",
+          surface: "var(--color-surface)",
+          "surface-2": "var(--color-surface-2)",
+          border: "var(--color-border)",
+          text: "var(--color-text)",
+          muted: "var(--color-muted)",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

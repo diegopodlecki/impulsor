@@ -1,27 +1,18 @@
 import * as React from "react";
+import { CheckCircle2, Mail, MessageCircle, Sparkles } from "lucide-react";
 import { toast } from "sonner";
+import { useLocation } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
-import { enviarEmailFormulario, insertarFormulario } from "@/features/formularios/formularios";
-
-const businessOptions = [
-  "Gimnasio",
-  "Personal Trainer",
-  "Nutricionista",
-  "Psicólogo",
-  "Estética corporal",
-  "Otro",
-];
-
-function normalizeWhatsApp(value: string) {
-  return value.replace(/[^\d+]/g, "").trim();
-}
-
-function buildSyntheticEmail(whatsapp: string) {
-  const digits = whatsapp.replace(/\D/g, "");
-  const safeValue = digits || "contacto";
-  return `${safeValue}@webappimpulsor.com`;
-}
+import { trackFormSubmit } from "@/components/analytics/analytics";
+import { BadgeChip, TextAreaField, TextField } from "@/components/design-system";
+import {
+  formatBudgetLabel,
+  getContextualWhatsappMessage,
+  leadBusinessOptions,
+  leadBudgetOptions,
+  whatsappLink,
+} from "@/components/leads/leadCapture";
 
 type ContactFormProps = {
   title?: string;
@@ -29,146 +20,336 @@ type ContactFormProps = {
   buttonLabel?: string;
   trustText?: string;
   eyebrow?: string;
+  sourceLabel?: string;
 };
 
-export function ContactForm({
-  title = "Pedí tu web y empezá a recibir clientes",
-  description = "Dejanos tus datos y te mando una propuesta clara para tu negocio.",
-  buttonLabel = "Quiero mi web",
-  trustText = "Te respondemos en menos de 24 hs y sin compromiso.",
-  eyebrow = "Formulario de contacto",
-}: ContactFormProps) {
-  const [nombre, setNombre] = React.useState("");
-  const [whatsapp, setWhatsapp] = React.useState("");
-  const [tipoNegocio, setTipoNegocio] = React.useState("");
-  const [submitting, setSubmitting] = React.useState(false);
-  const [status, setStatus] = React.useState("");
+type ContactValues = {
+  nombre: string;
+  email: string;
+  negocio: string;
+  problema: string;
+  presupuesto: string;
+};
 
-  const clearDiagnosticHash = React.useCallback(() => {
-    if (window.location.hash === "#diagnostico") {
-      window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+type FieldKey = keyof ContactValues;
+
+const initialValues: ContactValues = {
+  nombre: "",
+  email: "",
+  negocio: "",
+  problema: "",
+  presupuesto: "",
+};
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function validateField(field: FieldKey, value: string) {
+  const trimmed = value.trim();
+
+  switch (field) {
+    case "nombre":
+      return trimmed.length >= 2 ? "" : "Ingresá tu nombre completo.";
+    case "email":
+      return emailPattern.test(trimmed) ? "" : "Ingresá un email válido.";
+    case "negocio":
+      return trimmed ? "" : "Elegí el rubro de tu negocio.";
+    case "problema":
+      return trimmed.length >= 15 ? "" : "Contanos un poco más sobre el problema que querés resolver.";
+    case "presupuesto":
+      return trimmed ? "" : "Seleccioná un rango aproximado.";
+    default:
+      return "";
+  }
+}
+
+function validateAll(values: ContactValues) {
+  return (Object.keys(values) as FieldKey[]).reduce<Record<string, string>>((acc, field) => {
+    const error = validateField(field, values[field]);
+    if (error) acc[field] = error;
+    return acc;
+  }, {});
+}
+
+export function ContactForm({
+  title = "Pedí una propuesta para tu negocio",
+  description = "Dejanos tus datos y te respondo con una propuesta clara, sin vueltas y pensada para tu tipo de servicio.",
+  buttonLabel = "Quiero mi web",
+  trustText = "Te respondo en menos de 24 hs hábiles.",
+  eyebrow = "Formulario de contacto",
+  sourceLabel = "sitio principal",
+}: ContactFormProps) {
+  const location = useLocation();
+  const [values, setValues] = React.useState<ContactValues>(initialValues);
+  const [errors, setErrors] = React.useState<Partial<Record<FieldKey, string>>>({});
+  const [touched, setTouched] = React.useState<Record<FieldKey, boolean>>({
+    nombre: false,
+    email: false,
+    negocio: false,
+    problema: false,
+    presupuesto: false,
+  });
+  const [submitting, setSubmitting] = React.useState(false);
+  const [success, setSuccess] = React.useState(false);
+  const [apiError, setApiError] = React.useState("");
+
+  const endpoint = import.meta.env.VITE_FORMSPREE_CONTACT_ENDPOINT as string | undefined;
+
+  function updateField(field: FieldKey, value: string) {
+    setValues((current) => ({ ...current, [field]: value }));
+    if (touched[field]) {
+      setErrors((current) => ({ ...current, [field]: validateField(field, value) }));
     }
-  }, []);
+  }
+
+  function markTouched(field: FieldKey) {
+    setTouched((current) => ({ ...current, [field]: true }));
+    setErrors((current) => ({ ...current, [field]: validateField(field, values[field]) }));
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (submitting) return;
+    setApiError("");
 
-    const cleanWhatsapp = normalizeWhatsApp(whatsapp);
-    const syntheticEmail = buildSyntheticEmail(cleanWhatsapp);
-    const mensaje = `Tipo de negocio: ${tipoNegocio || "No especificado"}. WhatsApp: ${whatsapp.trim()}.`;
+    const nextErrors = validateAll(values);
+    setErrors(nextErrors);
+    setTouched({
+      nombre: true,
+      email: true,
+      negocio: true,
+      problema: true,
+      presupuesto: true,
+    });
 
-    clearDiagnosticHash();
+    if (Object.keys(nextErrors).length > 0) {
+      toast.error("Revisá los campos marcados antes de enviar.");
+      return;
+    }
+
+    if (!endpoint) {
+      toast.error("Falta configurar Formspree en el entorno.");
+      setApiError("Configurá `VITE_FORMSPREE_CONTACT_ENDPOINT` para activar el envío.");
+      return;
+    }
+
     setSubmitting(true);
-    setStatus("Enviando...");
 
     try {
-      const { error: insertError } = await insertarFormulario({
-        nombre,
-        email: syntheticEmail,
-        mensaje,
+      const formData = new FormData();
+      formData.append("nombre", values.nombre.trim());
+      formData.append("email", values.email.trim());
+      formData.append("negocio", values.negocio.trim());
+      formData.append("problema", values.problema.trim());
+      formData.append("presupuesto", values.presupuesto.trim());
+      formData.append("source", sourceLabel);
+      formData.append("page", location.pathname);
+      formData.append(
+        "_subject",
+        `Nueva consulta desde WebAppImpulsor - ${values.negocio.trim() || "sin rubro"}`
+      );
+      formData.append("_replyto", values.email.trim());
+
+      const response = await fetch(endpoint, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
       });
 
-      if (insertError) throw insertError;
-      toast.success("Tu consulta quedó guardada");
+      if (!response.ok) {
+        let message = "No pudimos enviar tu consulta.";
 
-      const { error: emailError } = await enviarEmailFormulario({
-        nombre,
-        correo_electronico: syntheticEmail,
-        mensaje,
-      });
+        try {
+          const payload = (await response.json()) as { error?: string; message?: string };
+          message = payload.error ?? payload.message ?? message;
+        } catch {
+          // keep default message
+        }
 
-      if (emailError) {
-        console.error("ERROR EMAIL:", emailError);
-        toast.error(`Se guardó el mensaje, pero falló el aviso por correo: ${emailError.message}`);
-        setStatus(`Tu consulta quedó guardada. El aviso por correo falló: ${emailError.message}`);
-      } else {
-        toast.success("Te respondimos por correo");
-        setStatus("Tu consulta fue enviada correctamente.");
+        throw new Error(message);
       }
 
-      setNombre("");
-      setWhatsapp("");
-      setTipoNegocio("");
-      clearDiagnosticHash();
+      trackFormSubmit({
+        formName: "contacto_principal",
+        status: "success",
+        channel: "formspree",
+        label: buttonLabel,
+      });
+      toast.success("Consulta enviada");
+      setSuccess(true);
+      setValues(initialValues);
+      setErrors({});
+      setTouched({
+        nombre: false,
+        email: false,
+        negocio: false,
+        problema: false,
+        presupuesto: false,
+      });
     } catch (error) {
-      console.error(error);
-      toast.error("No pudimos enviar tu consulta");
-      setStatus("");
-      clearDiagnosticHash();
+      const message = error instanceof Error ? error.message : "No pudimos enviar tu consulta.";
+      trackFormSubmit({
+        formName: "contacto_principal",
+        status: "failure",
+        channel: "formspree",
+        label: buttonLabel,
+        errorMessage: message,
+      });
+      toast.error(message);
+      setApiError(message);
     } finally {
       setSubmitting(false);
     }
   }
 
+  if (success) {
+    return (
+      <div className="card-service p-1">
+        <div className="card-service">
+          <BadgeChip className="border-emerald-500/20 bg-emerald-500/10 text-emerald-300">
+            <CheckCircle2 className="h-3.5 w-3.5" />
+            Enviado correctamente
+          </BadgeChip>
+          <h3 className="mt-4 text-h3">Gracias. Ya tenemos tu consulta.</h3>
+          <p className="mt-3 text-sm leading-6 text-muted-foreground">
+            Te respondo en menos de 24 hs hábiles con una propuesta concreta para tu negocio.
+          </p>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            <Button asChild variant="hero" size="lg" className="justify-center">
+              <a href={whatsappLink(getContextualWhatsappMessage(location.pathname, "contacto"))} target="_blank" rel="noreferrer">
+                <MessageCircle className="mr-2 h-4 w-4" />
+                Seguir por WhatsApp
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="justify-center border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white">
+              <a href="#precios">
+                <Sparkles className="mr-2 h-4 w-4" />
+                Ver planes
+              </a>
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="surface-card hover-card rounded-[1.75rem] p-1">
-      <div className="surface-card hover-card rounded-[1.5rem] p-5 sm:p-6">
+    <div className="card-service p-1">
+      <div className="card-service">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground">{eyebrow}</p>
-            <h3 className="mt-2 text-2xl font-semibold tracking-tight">{title}</h3>
+            <p className="text-label text-muted-foreground">{eyebrow}</p>
+            <h3 className="mt-2 text-h3">{title}</h3>
           </div>
-          <div className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-300">
+          <BadgeChip className="border-emerald-500/20 bg-emerald-500/10 text-emerald-300 normal-case tracking-normal">
+            <Mail className="mr-1 inline h-3.5 w-3.5" />
             {trustText}
-          </div>
+          </BadgeChip>
         </div>
 
         <p className="mt-4 text-sm leading-6 text-muted-foreground">{description}</p>
         <p className="mt-3 text-sm font-medium text-foreground/90">
-          Te respondemos por WhatsApp y por correo desde <span className="font-semibold">info.diego@webappimpulsor.com</span>.
+          También podés escribir por WhatsApp, pero este formulario me ayuda a responderte con una propuesta más precisa.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
           <div className="grid gap-4 md:grid-cols-2">
+            <TextField
+              label="Tu nombre"
+              value={values.nombre}
+              onChange={(e) => updateField("nombre", e.target.value)}
+              onBlur={() => markTouched("nombre")}
+              required
+              autoComplete="name"
+              placeholder="Ej. María López"
+              error={touched.nombre ? errors.nombre : undefined}
+            />
+
+            <TextField
+              label="Tu email"
+              type="email"
+              value={values.email}
+              onChange={(e) => updateField("email", e.target.value)}
+              onBlur={() => markTouched("email")}
+              required
+              autoComplete="email"
+              placeholder="maria@tuempresa.com"
+              error={touched.email ? errors.email : undefined}
+            />
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
             <label className="grid gap-2">
-              <span className="text-sm font-medium text-foreground/90">Tu nombre</span>
-              <input
-                type="text"
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
-                required
-                autoComplete="name"
-                className="h-11 rounded-2xl border border-border bg-background/20 px-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring backdrop-blur"
-                placeholder="Ej. María López"
-              />
+              <span className="text-label text-white/80">Rubro del negocio</span>
+              <select
+                value={values.negocio}
+                onChange={(e) => updateField("negocio", e.target.value)}
+                onBlur={() => markTouched("negocio")}
+                className="input-shell"
+                data-state={touched.negocio && errors.negocio ? "error" : undefined}
+              >
+                <option value="">Elegí tu rubro</option>
+                {leadBusinessOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+              {touched.negocio && errors.negocio ? <span className="text-xs text-[var(--color-error)]">{errors.negocio}</span> : null}
             </label>
 
             <label className="grid gap-2">
-              <span className="text-sm font-medium text-foreground/90">Tu WhatsApp</span>
-              <input
-                type="tel"
-                value={whatsapp}
-                onChange={(e) => setWhatsapp(e.target.value)}
-                required
-                autoComplete="tel"
-                className="h-11 rounded-2xl border border-border bg-background/20 px-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring backdrop-blur"
-                placeholder="+54 11 1234 5678"
-              />
+              <span className="text-label text-white/80">Presupuesto aproximado</span>
+              <select
+                value={values.presupuesto}
+                onChange={(e) => updateField("presupuesto", e.target.value)}
+                onBlur={() => markTouched("presupuesto")}
+                className="input-shell"
+                data-state={touched.presupuesto && errors.presupuesto ? "error" : undefined}
+              >
+                <option value="">Elegí un rango</option>
+                {leadBudgetOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {formatBudgetLabel(option)}
+                  </option>
+                ))}
+              </select>
+              {touched.presupuesto && errors.presupuesto ? <span className="text-xs text-[var(--color-error)]">{errors.presupuesto}</span> : null}
             </label>
           </div>
 
-          <label className="grid gap-2">
-            <span className="text-sm font-medium text-foreground/90">Tipo de negocio</span>
-            <select
-              value={tipoNegocio}
-              onChange={(e) => setTipoNegocio(e.target.value)}
-              className="h-11 rounded-2xl border border-border bg-background/20 px-4 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring backdrop-blur"
-            >
-              <option value="">Elegí tu rubro</option>
-              {businessOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </label>
+          <TextAreaField
+            label="Qué problema querés resolver"
+            value={values.problema}
+            onChange={(e) => updateField("problema", e.target.value)}
+            onBlur={() => markTouched("problema")}
+            required
+            rows={4}
+            placeholder="Ej. Necesito más consultas, una imagen más profesional y un sitio que convierta mejor."
+            error={touched.problema ? errors.problema : undefined}
+            helperText="Contanos el contexto para darte una propuesta más precisa."
+          />
+          <div className="flex items-center justify-between gap-3">
+            <span className="text-xs text-muted-foreground">{values.problema.length}/240</span>
+            <div className="flex items-center justify-between gap-3">
+              {apiError ? <span className="text-xs text-[var(--color-error)]">{apiError}</span> : null}
+            </div>
+          </div>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <Button type="submit" variant="hero" size="lg" className="justify-center" disabled={submitting || !nombre.trim() || !whatsapp.trim()}>
+            <Button
+              type="submit"
+              variant="hero"
+              size="lg"
+              className="justify-center"
+              disabled={submitting || !values.nombre.trim() || !values.email.trim() || !values.negocio.trim() || !values.problema.trim() || !values.presupuesto.trim()}
+            >
               {submitting ? "Enviando..." : buttonLabel}
             </Button>
-            <p className="text-xs text-muted-foreground">{status || trustText}</p>
+            <p className="text-xs text-muted-foreground">
+              {apiError || trustText}
+            </p>
           </div>
         </form>
       </div>
