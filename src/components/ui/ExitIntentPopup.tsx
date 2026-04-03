@@ -195,8 +195,10 @@ export default function ExitIntentPopup() {
     [location.pathname, currentSection],
   );
 
-  const isLeadCaptureVisible = () =>
-    typeof document !== "undefined" && document.body.dataset.leadCaptureVisible === "1";
+  const isLeadCaptureVisible = useCallback(
+    () => typeof document !== "undefined" && document.body.dataset.leadCaptureVisible === "1",
+    [],
+  );
 
   const clearCloseTimer = useCallback(() => {
     if (closeTimerRef.current !== null) {
@@ -224,7 +226,7 @@ export default function ExitIntentPopup() {
     window.requestAnimationFrame(() => {
       setIsEntered(true);
     });
-  }, [clearCloseTimer]);
+  }, [clearCloseTimer, isLeadCaptureVisible]);
 
   useEffect(() => {
     if (sessionStorage.getItem(SESSION_KEY)) return;
@@ -303,7 +305,7 @@ export default function ExitIntentPopup() {
       document.removeEventListener("click", handleClick, true);
       disposeObserver();
     };
-  }, [isReady, location.pathname, showPopup]);
+  }, [isReady, location.pathname, showPopup, isLeadCaptureVisible]);
 
   useEffect(() => {
     if (!isVisible) return;
