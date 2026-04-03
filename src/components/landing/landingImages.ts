@@ -126,7 +126,7 @@ const landingImages: Record<string, LandingImageSet> = {
       ["Consultas", "Llevá al contacto", "#EC4899", "#F59E0B"],
     ],
   }),
-  empreendedor: buildImageSet({
+  emprendedor: buildImageSet({
     heroTitle: "LaunchMe",
     heroSubtitle: "Autoridad, claridad y ventas",
     heroAccentA: "#F59E0B",

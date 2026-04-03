@@ -57,7 +57,7 @@ export const landingPages: Record<string, LandingConfig> = {
     heroPreviewTitle: "Tu gimnasio online",
     heroPreviewSubtitle: "Clases, horarios y reservas desde un mismo lugar.",
     heroImage: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=800&fit=crop&q=80",
-    heroMockupImage: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&h=600&fit=crop&q=80",
+    heroMockupImage: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800&h=600&fit=crop&q=80",
     problemsTitle: "¿Tu gimnasio tiene estos problemas?",
     problems: [
       { title: "Pocos alumnos nuevos", text: "Tu web no convierte visitas en inscripciones." },
@@ -108,7 +108,7 @@ export const landingPages: Record<string, LandingConfig> = {
     testimonial: {
       name: "María González",
       role: "Dueña de gimnasio",
-      text: "Desde que tenemos la web, recibimos consultas todos los días. Antes dependíamos solo de Instagram.",
+      text: "Desde que tenemos la web, recibimos consultas todos los días. Logramos una imagen mucho más profesional.",
     },
   },
   "personal-trainer": {
@@ -166,7 +166,7 @@ export const landingPages: Record<string, LandingConfig> = {
     finalCtaTitle: "Empezá a vender tu experiencia online",
     finalCtaText: "Tu competencia ya está construyendo presencia. Vos también podés convertir mejor.",
     whatsappMessage: "Hola, quiero una web para mi trabajo de personal trainer que me ayude a vender más.",
-    preview: "https://images.unsplash.com/photo-1594381898411-846e3d133963?w=1200&h=800&fit=crop&q=80",
+    preview: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&h=800&fit=crop&q=80",
     profile: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400&h=500&fit=crop&q=80",
     primaryColor: "#0f172a",
     accentColor: "#f97316",
@@ -186,7 +186,7 @@ export const landingPages: Record<string, LandingConfig> = {
     heroBadge: "Especialistas en nutrición",
     heroPreviewTitle: "Tu consultorio online",
     heroPreviewSubtitle: "Servicios, información y contacto directo.",
-    heroImage: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1200&h=800&fit=crop&q=80",
+    heroImage: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&h=800&fit=crop&q=80",
     heroMockupImage: "https://images.unsplash.com/photo-1505576399279-565b52d4ac39?w=800&h=600&fit=crop&q=80",
     problemsTitle: "¿Tu consultorio tiene estos problemas?",
     problems: [
@@ -251,7 +251,7 @@ export const landingPages: Record<string, LandingConfig> = {
     heroBadge: "Especialistas en psicología",
     heroPreviewTitle: "Tu consultorio online",
     heroPreviewSubtitle: "Calma, empatía y contacto directo.",
-    heroImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&h=800&fit=crop&q=80",
+    heroImage: "https://images.unsplash.com/photo-1527137342181-df9ad2f54c70?w=1200&h=800&fit=crop&q=80",
     heroMockupImage: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&h=600&fit=crop&q=80",
     problemsTitle: "¿Tu consultorio tiene estos problemas?",
     problems: [
@@ -316,7 +316,7 @@ export const landingPages: Record<string, LandingConfig> = {
     heroBadge: "Especialistas en estética",
     heroPreviewTitle: "Tu centro online",
     heroPreviewSubtitle: "Visual, elegante y enfocada en ventas.",
-    heroImage: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200&h=800&fit=crop&q=80",
+    heroImage: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&h=800&fit=crop&q=80",
     heroMockupImage: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&h=600&fit=crop&q=80",
     problemsTitle: "¿Tu centro de estética tiene estos problemas?",
     problems: [

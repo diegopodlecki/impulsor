@@ -1,4 +1,4 @@
-﻿import { lazy, Suspense, useEffect, useRef } from "react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import { MessageCircle, Clock, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -61,8 +61,8 @@ const exampleCards = [
   {
     name: "Iron Fitness",
     rubro: "Gimnasio",
-    href: "/gimnasios",
-    configKey: "gimnasio",
+    href: "/gimnasio",
+    configKey: "iron-fitness",
   },
   {
     name: "ProCoach",
@@ -160,11 +160,11 @@ export default function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <div className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-hero" />
+        <div className="absolute inset-0 bg-gradient-hero opacity-80" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.16),transparent_32%),radial-gradient(circle_at_84%_12%,rgba(59,130,246,0.12),transparent_30%),radial-gradient(circle_at_60%_88%,rgba(16,185,129,0.1),transparent_28%)]" />
       </div>
 
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/5 bg-slate-950/60 backdrop-blur-2xl transition-all duration-300">
         <div className="container flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-[#0EA5E9] to-[#10B981]">
@@ -206,8 +206,8 @@ export default function Index() {
       <section className="container hero-critical py-12 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-3xl text-center">
           {/* Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-sm font-medium text-emerald-300 ring-1 ring-emerald-500/20">
-            <span className="h-2 w-2 rounded-full bg-emerald-500" />
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-emerald-300 shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)] backdrop-blur-md">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
             Sitios pensados para generar consultas mejor calificadas
           </div>
 
@@ -217,7 +217,7 @@ export default function Index() {
           </h1>
 
           {/* Subtitle */}
-          <p className="hero-subtitle mt-5 text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
+          <p className="hero-subtitle mt-6 text-pretty text-lg leading-relaxed text-slate-300/90 sm:text-xl">
             Diseñamos sitios para psicólogos, abogados, consultores y coaches que necesitan autoridad, claridad y más consultas reales.
           </p>
 

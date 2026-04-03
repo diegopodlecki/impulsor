@@ -78,7 +78,7 @@ const previewVariants: Record<
     footerLabel: "Ver propuesta estética",
     badgeLabel: "Beauty",
   },
-  empreendedor: {
+  emprendedor: {
     kicker: "Oferta clara y autoridad",
     heroLabel: "Más conversiones",
     serviceLabel: "Propuesta y prueba social",
