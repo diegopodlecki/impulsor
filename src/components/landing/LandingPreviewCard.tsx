@@ -37,50 +37,50 @@ const previewVariants: Record<
   }
 > = {
   default: {
-    kicker: "Presentación clara y estratégica",
-    heroLabel: "Primera impresión",
+    kicker: "PresentaciÃ³n clara y estratÃ©gica",
+    heroLabel: "Primera impresiÃ³n",
     serviceLabel: "Lo esencial, bien comunicado",
     footerLabel: "Ver propuesta",
     badgeLabel: "Propuesta",
   },
-  gimnasios: {
-    kicker: "Clases, horarios y decisión",
-    heroLabel: "Más socios",
+  gimnasio: {
+    kicker: "Clases, horarios y decisiÃ³n",
+    heroLabel: "MÃ¡s socios",
     serviceLabel: "Clases y equipamiento",
     footerLabel: "Ver caso gimnasio",
     badgeLabel: "Fitness",
   },
-  "personal-trainers": {
+  "personal-trainer": {
     kicker: "Marca personal con autoridad",
     heroLabel: "Sesiones y progreso",
     serviceLabel: "Experiencia de entrenamiento",
     footerLabel: "Ver propuesta trainer",
     badgeLabel: "Trainer",
   },
-  nutricionistas: {
+  nutritionist: {
     kicker: "Orden, claridad y confianza",
     heroLabel: "Consultas mejor calificadas",
     serviceLabel: "Seguimiento y turnos",
-    footerLabel: "Ver propuesta nutrición",
-    badgeLabel: "Nutrición",
+    footerLabel: "Ver propuesta nutriciÃ³n",
+    badgeLabel: "NutriciÃ³n",
   },
-  psicologos: {
-    kicker: "Calma visual y contención",
+  psicologo: {
+    kicker: "Calma visual y contenciÃ³n",
     heroLabel: "Espacio seguro",
-    serviceLabel: "Acompañamiento profesional",
+    serviceLabel: "AcompaÃ±amiento profesional",
     footerLabel: "Ver propuesta consultorio",
     badgeLabel: "Psi",
   },
   "estetica-corporal": {
     kicker: "Imagen premium y resultados",
-    heroLabel: "Más deseo visual",
+    heroLabel: "MÃ¡s deseo visual",
     serviceLabel: "Tratamientos y prueba",
-    footerLabel: "Ver propuesta estética",
+    footerLabel: "Ver propuesta estÃ©tica",
     badgeLabel: "Beauty",
   },
-  emprendedores: {
+  empreendedor: {
     kicker: "Oferta clara y autoridad",
-    heroLabel: "Más conversiones",
+    heroLabel: "MÃ¡s conversiones",
     serviceLabel: "Propuesta y prueba social",
     footerLabel: "Ver propuesta negocio",
     badgeLabel: "Launch",
@@ -88,7 +88,7 @@ const previewVariants: Record<
   "iron-fitness": {
     kicker: "La landing original",
     heroLabel: "Iron Fitness",
-    serviceLabel: "Versión completa",
+    serviceLabel: "VersiÃ³n completa",
     footerLabel: "Ver caso real",
     badgeLabel: "Gym",
   },
@@ -240,7 +240,7 @@ export function LandingPreviewCard({
             <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#9CA3AF]">
               {points.map((point, index) => (
                 <span key={point} className="inline-flex items-center gap-x-3">
-                  {index > 0 ? <span style={{ color: theme.accent }}>·</span> : null}
+                  {index > 0 ? <span style={{ color: theme.accent }}>âœ“</span> : null}
                   <span>{point}</span>
                 </span>
               ))}
@@ -278,7 +278,7 @@ export function LandingPreviewCard({
                   <p className="text-[10px] uppercase tracking-[0.2em] text-[#9CA3AF]">Testimonio</p>
                   <p className="mt-1 text-[13px] font-semibold text-[#F5F5F5]">{testimonial.name}</p>
                 </div>
-                <div className="text-[11px] text-[#F5F5F5]">?????</div>
+                <div className="text-yellow-500 text-[11px]">â˜…â˜…â˜…â˜…â˜…</div>
               </div>
               <p className="mt-2 text-[11px] leading-5 text-[#D1D5DB]">"{testimonial.text}"</p>
             </article>

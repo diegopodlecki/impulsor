@@ -25,6 +25,17 @@ function normalizePath(pathname: string) {
 function buildLandingSeoConfig(path: string, landingKey: keyof typeof landingPages): LandingSeoConfig {
   const landing = landingPages[landingKey];
 
+  if (!landing) {
+    console.error(`[SEO] Landing not found for key: ${landingKey} at path: ${path}`);
+    return {
+      title: "WebAppImpulsor",
+      description: "Diseño web para profesionales",
+      canonical: `${SITE_URL}${path}`,
+      ogImage: DEFAULT_OG_IMAGE,
+      schema: null,
+    };
+  }
+
   return {
     title: landing.title,
     description: landing.heroSubtitle,
@@ -98,13 +109,13 @@ export const SEO_ROUTE_CONFIGS = {
       url: SITE_URL,
     },
   },
-  "/gimnasios": buildLandingSeoConfig("/gimnasios", "gimnasios"),
-  "/entrenadores": buildLandingSeoConfig("/entrenadores", "personal-trainers"),
-  "/nutricionistas": buildLandingSeoConfig("/nutricionistas", "nutricionistas"),
-  "/psicologos": buildLandingSeoConfig("/psicologos", "psicologos"),
+  "/gimnasios": buildLandingSeoConfig("/gimnasios", "gimnasio"),
+  "/entrenadores": buildLandingSeoConfig("/entrenadores", "personal-trainer"),
+  "/nutricionistas": buildLandingSeoConfig("/nutricionistas", "nutricionista"),
+  "/psicologos": buildLandingSeoConfig("/psicologos", "psicologo"),
   "/estetica-corporal": buildLandingSeoConfig("/estetica-corporal", "estetica-corporal"),
   "/gimnasio": buildLandingSeoConfig("/gimnasio", "iron-fitness"),
-  "/emprendedores": buildLandingSeoConfig("/emprendedores", "emprendedores"),
+  "/emprendedores": buildLandingSeoConfig("/emprendedores", "emprendedor"),
   "/webs": buildWebsIndexSeoConfig(),
   "/faq": buildFaqSeoConfig(),
   "/login": {
@@ -128,15 +139,15 @@ export const SEO_ROUTE_CONFIGS = {
     ogImage: DEFAULT_OG_IMAGE,
     noIndex: true,
   },
-  "/personal-trainers": {
-    title: landingPages["personal-trainers"].title,
-    description: landingPages["personal-trainers"].heroSubtitle,
+  "/personal-trainer": {
+    title: landingPages["personal-trainer"].title,
+    description: landingPages["personal-trainer"].heroSubtitle,
     canonical: `${SITE_URL}/entrenadores`,
-    ogImage: landingPages["personal-trainers"].heroImage,
+    ogImage: landingPages["personal-trainer"].heroImage,
     noIndex: true,
     schema: generateServiceSchema(
-      landingPages["personal-trainers"].title,
-      landingPages["personal-trainers"].heroSubtitle,
+      landingPages["personal-trainer"].title,
+      landingPages["personal-trainer"].heroSubtitle,
     ),
   },
   "/iron-fitness": {

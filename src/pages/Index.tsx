@@ -68,19 +68,19 @@ const exampleCards = [
     name: "ProCoach",
     rubro: "Personal trainer",
     href: "/entrenadores",
-    configKey: "personal-trainers",
+    configKey: "personal-trainer",
   },
   {
     name: "Mente Clara",
     rubro: "Psicólogo",
     href: "/psicologos",
-    configKey: "psicologos",
+    configKey: "psicologo",
   },
   {
     name: "NutriVida",
     rubro: "Nutricionista",
     href: "/nutricionistas",
-    configKey: "nutricionistas",
+    configKey: "nutricionista",
   },
   {
     name: "Glam Studio",
@@ -92,7 +92,7 @@ const exampleCards = [
     name: "LaunchMe",
     rubro: "Emprendedor",
     href: "/emprendedores",
-    configKey: "emprendedores",
+    configKey: "emprendedor",
   },
 ];
 

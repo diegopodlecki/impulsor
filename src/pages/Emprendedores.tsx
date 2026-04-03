@@ -2,5 +2,5 @@
 import { landingPages } from "@/data/landings";
 
 export default function Emprendedores() {
-  return <NicheLandingPage config={landingPages.emprendedores} />;
+  return <NicheLandingPage config={landingPages.emprendedor} />;
 }

@@ -45,7 +45,7 @@ const landingImages: Record<string, LandingImageSet> = {
       ["Conversión", "Más consultas y mejores cierres", "#0EA5E9", "#22C55E"],
     ],
   }),
-  gimnasios: buildImageSet({
+  gimnasio: buildImageSet({
     heroTitle: "Gimnasio",
     heroSubtitle: "Clases, horarios y reservas",
     heroAccentA: "#22C55E",
@@ -62,7 +62,7 @@ const landingImages: Record<string, LandingImageSet> = {
       ["Entrenamiento", "Sumá autoridad y confianza", "#10B981", "#0EA5E9"],
     ],
   }),
-  "personal-trainers": buildImageSet({
+  "personal-trainer": buildImageSet({
     heroTitle: "Personal Trainer",
     heroSubtitle: "Resultados y disciplina",
     heroAccentA: "#F97316",
@@ -78,7 +78,7 @@ const landingImages: Record<string, LandingImageSet> = {
       ["Planes", "Hacé simple la contratación", "#EC4899", "#F97316"],
     ],
   }),
-  nutricionistas: buildImageSet({
+  nutritionist: buildImageSet({
     heroTitle: "Nutricionista",
     heroSubtitle: "Planes, hábitos y seguimiento",
     heroAccentA: "#84CC16",
@@ -94,7 +94,7 @@ const landingImages: Record<string, LandingImageSet> = {
       ["Contacto", "Convertí dudas en turnos", "#84CC16", "#10B981"],
     ],
   }),
-  psicologos: buildImageSet({
+  psicologo: buildImageSet({
     heroTitle: "Psicología",
     heroSubtitle: "Calma, empatía y turnos",
     heroAccentA: "#3B82F6",
@@ -126,7 +126,7 @@ const landingImages: Record<string, LandingImageSet> = {
       ["Consultas", "Llevá al contacto", "#EC4899", "#F59E0B"],
     ],
   }),
-  emprendedores: buildImageSet({
+  empreendedor: buildImageSet({
     heroTitle: "LaunchMe",
     heroSubtitle: "Autoridad, claridad y ventas",
     heroAccentA: "#F59E0B",

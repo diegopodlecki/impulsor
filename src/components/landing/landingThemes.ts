@@ -18,7 +18,7 @@ export const landingThemes: Record<string, LandingTheme> = {
     heroGlow: "rgba(14,165,233,0.14)",
     pageBackground: "#050B14",
   },
-  gimnasios: {
+  gimnasio: {
     primary: "#08111A",
     accent: "#22C55E",
     surface: "#101827",
@@ -27,7 +27,7 @@ export const landingThemes: Record<string, LandingTheme> = {
     heroGlow: "rgba(34,197,94,0.14)",
     pageBackground: "#050A0D",
   },
-  "personal-trainers": {
+  "personal-trainer": {
     primary: "#0A1118",
     accent: "#14B8A6",
     surface: "#111A22",
@@ -36,7 +36,7 @@ export const landingThemes: Record<string, LandingTheme> = {
     heroGlow: "rgba(20,184,166,0.15)",
     pageBackground: "#04070C",
   },
-  nutricionistas: {
+  nutritionist: {
     primary: "#081417",
     accent: "#A3E635",
     surface: "#112024",
@@ -45,7 +45,7 @@ export const landingThemes: Record<string, LandingTheme> = {
     heroGlow: "rgba(163,230,53,0.14)",
     pageBackground: "#04090B",
   },
-  psicologos: {
+  psicologo: {
     primary: "#0A101A",
     accent: "#8B5CF6",
     surface: "#111A28",
@@ -63,7 +63,7 @@ export const landingThemes: Record<string, LandingTheme> = {
     heroGlow: "rgba(236,72,153,0.14)",
     pageBackground: "#080408",
   },
-  emprendedores: {
+  empreendedor: {
     primary: "#161105",
     accent: "#F59E0B",
     surface: "#20180A",

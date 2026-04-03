@@ -40,7 +40,7 @@ export function previewSvg(title: string, subtitle: string, accentA: string, acc
       <circle cx="960" cy="170" r="150" fill="${accentA}" fill-opacity="0.18" />
       <circle cx="1040" cy="620" r="220" fill="${accentB}" fill-opacity="0.12" />
       <rect x="74" y="82" width="188" height="44" rx="22" fill="url(#accent)" fill-opacity="0.95" />
-      <text x="98" y="111" fill="#ffffff" font-size="22" font-family="Inter, Arial, sans-serif" font-weight="700">Web que convierte</text>
+      <text x="98" y="111" fill="#ffffff" font-size="22" font-family="Inter, Arial, sans-serif" font-weight="700">${safeTitle}</text>
       <text x="74" y="202" fill="#ffffff" font-size="54" font-family="Inter, Arial, sans-serif" font-weight="800">${safeTitle}</text>
       <text x="74" y="264" fill="#cbd5e1" font-size="28" font-family="Inter, Arial, sans-serif">${safeSubtitle}</text>
       <rect x="74" y="360" width="560" height="300" rx="32" fill="#0f172a" fill-opacity="0.72" stroke="#ffffff" stroke-opacity="0.08" />

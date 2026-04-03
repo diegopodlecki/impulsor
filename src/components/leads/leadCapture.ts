@@ -46,15 +46,15 @@ const homeSectionMessages: Record<string, string> = {
 };
 
 const routeMessages: Record<string, string> = {
-  "/gimnasios": landingPages.gimnasios.whatsappMessage,
-  "/entrenadores": landingPages["personal-trainers"].whatsappMessage,
-  "/personal-trainers": landingPages["personal-trainers"].whatsappMessage,
-  "/nutricionistas": landingPages.nutricionistas.whatsappMessage,
-  "/psicologos": landingPages.psicologos.whatsappMessage,
+  "/gimnasios": landingPages.gimnasio.whatsappMessage,
+  "/entrenadores": landingPages["personal-trainer"].whatsappMessage,
+  "/personal-trainer": landingPages["personal-trainer"].whatsappMessage,
+  "/nutricionistas": landingPages.nutricionista.whatsappMessage,
+  "/psicologos": landingPages.psicologo.whatsappMessage,
   "/estetica-corporal": landingPages["estetica-corporal"].whatsappMessage,
   "/gimnasio": landingPages["iron-fitness"].whatsappMessage,
   "/iron-fitness": landingPages["iron-fitness"].whatsappMessage,
-  "/emprendedores": landingPages.emprendedores.whatsappMessage,
+  "/emprendedores": landingPages.emprendedor.whatsappMessage,
 };
 
 export function whatsappLink(message: string) {
