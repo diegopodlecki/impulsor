@@ -344,12 +344,7 @@
   }
 
   .card-service {
-    @apply rounded-[1.75rem] border p-6 sm:p-8;
-    border-color: color-mix(in srgb, var(--color-border) 88%, transparent);
-    background:
-      linear-gradient(180deg, rgba(16, 24, 40, 0.9), rgba(9, 15, 28, 0.94)),
-      var(--color-surface);
-    box-shadow: 0 18px 60px -34px rgba(14, 165, 233, 0.22);
+    @apply card cursor-default; /* Inherit base card styles but remove pointer for non-links */
   }
 
   .badge-chip {
@@ -528,6 +523,7 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    min-height: 100%;
     cursor: pointer;
     position: relative;
     z-index: 1;
@@ -539,12 +535,29 @@
     transform: translateY(-6px);
   }
 
+  .card-image {
+    @apply mb-6 relative overflow-hidden rounded-2xl border border-white/5 bg-white/5;
+    height: 200px; /* Standard height for consistency */
+  }
+
   .card-content {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-title {
+    @apply text-xl font-bold text-white tracking-tight mb-2;
+  }
+
+  .card-description {
+    @apply text-sm leading-relaxed text-slate-400 line-clamp-2;
+    min-height: 2.8em; /* Reserve space for 2 lines */
   }
 
   .card-footer {
     @apply mt-6 pt-6 border-t border-white/5;
+    @apply flex items-center gap-2 text-sm font-semibold text-[#0EA5E9];
   }
 }
 
