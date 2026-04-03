@@ -1,12 +1,17 @@
-﻿import { useEffect, useRef } from "react";
+﻿import { lazy, Suspense, useEffect, useRef } from "react";
 import { MessageCircle, Clock, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
+import { analytics } from "@/components/analytics/analytics";
+import { WhatsAppButtonLink } from "@/components/layout/WhatsAppButton";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/ContactForm";
 import { LandingPreviewCard } from "@/components/landing/LandingPreviewCard";
 import { defaultWhatsappLink, profileSvg } from "@/components/landing/landingVisuals";
 import { landingPages } from "@/data/landings";
+const TrustSection = lazy(() =>
+  import("@/components/trust/TrustSection").then((mod) => ({ default: mod.TrustSection })),
+);
 
 const heroStats = [
   { value: "+Consultas", label: "desde el primer día" },
@@ -178,7 +183,14 @@ export default function Index() {
           </nav>
 
           <Button asChild size="sm" className="bg-[#25D366] text-white hover:bg-[#20bd5a]">
-            <a href="https://wa.me/541166448389" target="_blank" rel="noreferrer">
+            <a
+              href="https://wa.me/541166448389"
+              target="_blank"
+              rel="noreferrer"
+              data-whatsapp-origin="header"
+              data-analytics-cta="header-whatsapp"
+              onClick={() => analytics.whatsappClick("header")}
+            >
               <svg className="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
               </svg>
@@ -191,56 +203,60 @@ export default function Index() {
       <section className="container py-12 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-3xl text-center">
           {/* Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-sm font-medium text-emerald-300 ring-1 ring-emerald-500/20">
             <span className="h-2 w-2 rounded-full bg-emerald-500" />
-            Sitios que generan consultas reales
+            Sitios pensados para generar consultas mejor calificadas
           </div>
 
           {/* H1 */}
           <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-            Tu página web no te está generando clientes
+            Tu web debería traerte clientes
           </h1>
 
           {/* Subtitle */}
           <p className="mt-5 text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
-            La convertimos en una máquina de consultas automatizadas con WhatsApp y Google
+            Diseñamos sitios para psicólogos, abogados, consultores y coaches que necesitan autoridad, claridad y más consultas reales.
           </p>
 
           {/* Benefits */}
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <div className="flex items-center gap-2">
               <span className="text-[#0EA5E9]">✓</span>
-              <span className="text-sm">Más consultas sin pagar publicidad</span>
+              <span className="text-sm">Atraé consultas sin depender solo de redes</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[#0EA5E9]">✓</span>
-              <span className="text-sm">Diseño pensado para vender, no solo verse bien</span>
+              <span className="text-sm">Transmití autoridad desde el primer vistazo</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[#0EA5E9]">✓</span>
-              <span className="text-sm">Integración directa con WhatsApp</span>
+              <span className="text-sm">Convertí visitas en mensajes reales</span>
             </div>
           </div>
 
           {/* CTAs */}
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Button asChild size="lg" className="bg-[#0EA5E9] text-white hover:bg-[#0284C7]">
-              <a href="#rubros">Quiero más clientes</a>
+              <a href="#contacto" data-analytics-cta="hero-primary">
+                Quiero una propuesta
+              </a>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <a href="#contacto">Analizar mi web gratis</a>
+              <a href="#rubros" data-analytics-cta="hero-secondary">
+                Ver ejemplos
+              </a>
             </Button>
           </div>
 
           {/* Microcopy */}
           <p className="mt-4 text-sm text-muted-foreground">
-            Respuesta en menos de 24hs
+            Respuesta en menos de 24 hs hábiles
           </p>
 
           {/* Social proof */}
           <div className="mt-8 flex items-center justify-center gap-2">
             <span className="text-yellow-500">★★★★★</span>
-            <span className="text-sm text-muted-foreground">+20 negocios con web activa</span>
+            <span className="text-sm text-muted-foreground">Trabajo enfocado en negocios de servicios en Argentina</span>
           </div>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -289,7 +305,9 @@ export default function Index() {
 
           <div className="mt-8">
             <Button asChild size="lg" className="bg-[#0EA5E9] text-white hover:bg-[#0284C7]">
-              <a href="#contacto">Quiero solucionarlo</a>
+              <a href="#contacto" data-analytics-cta="problem-solution">
+                Quiero solucionarlo
+              </a>
             </Button>
           </div>
         </div>
@@ -412,6 +430,19 @@ export default function Index() {
         </div>
       </section>
 
+      <Suspense
+        fallback={
+          <section className="container py-16 sm:py-20">
+            <div className="mx-auto max-w-3xl rounded-[2rem] border border-white/10 bg-white/5 p-8 text-center">
+              <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">Prueba social</p>
+              <p className="mt-3 text-lg text-white/70">Cargando testimonios y casos reales…</p>
+            </div>
+          </section>
+        }
+      >
+        <TrustSection />
+      </Suspense>
+
       {/* CTA Mitad de página */}
       <section className="container py-12 sm:py-16">
         <div className="relative overflow-hidden rounded-[2rem] border border-cyan-400/20 bg-slate-950 p-8 sm:p-10">
@@ -432,7 +463,14 @@ export default function Index() {
 
             <div className="flex flex-col gap-3">
               <Button asChild size="lg" className="w-full bg-[#25D366] text-white hover:bg-[#20bd5a]">
-                <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
+                <a
+                  href={defaultWhatsappLink()}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-whatsapp-origin="cta-section"
+                  data-analytics-cta="cta-mid-whatsapp"
+                  onClick={() => analytics.whatsappClick("cta_mid")}
+                >
                   <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                   </svg>
@@ -440,7 +478,16 @@ export default function Index() {
                 </a>
               </Button>
               <Button asChild variant="outline" size="lg" className="w-full border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white">
-                <a href="#contacto">Hablar por WhatsApp</a>
+                <a
+                  href={defaultWhatsappLink()}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-whatsapp-origin="cta-section"
+                  data-analytics-cta="cta-section-whatsapp"
+                  onClick={() => analytics.whatsappClick("cta_mid")}
+                >
+                  Hablar por WhatsApp
+                </a>
               </Button>
             </div>
           </div>
@@ -475,7 +522,10 @@ export default function Index() {
               src={profileSvg("Diego Podlecki", "Diseño web para negocios de servicios")}
               alt="Foto de perfil de Diego Podlecki"
               className="h-full w-full rounded-[1.5rem] object-cover"
+              width={900}
+              height={1100}
               loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -501,7 +551,7 @@ export default function Index() {
                 href="#contacto"
                 className="inline-flex items-center gap-2 rounded-full bg-[#0EA5E9] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0284C7]"
               >
-                Quiero que mi web venda
+                Quiero una propuesta
               </a>
             </div>
           </div>
@@ -513,16 +563,16 @@ export default function Index() {
           <div className="lg:col-span-5">
             <div className="surface-card hover-card rounded-[2rem] p-6 sm:p-8">
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Contacto directo</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight">Pedí tu web y empezá a recibir clientes</h2>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight">Recibí una propuesta pensada para convertir mejor</h2>
               <p className="mt-4 text-sm leading-6 text-muted-foreground">
-                Completá tus datos y te respondo con una propuesta concreta. Te respondo en menos de 24 hs.
+                Completá tus datos y te respondo con una propuesta concreta. Te respondo en menos de 24 hs hábiles.
               </p>
               <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-600 dark:text-emerald-300">
                 WhatsApp visible y respuesta rápida
               </div>
 
               <div className="mt-6 space-y-3">
-                {["Respuesta rápida y clara", "Ideal para presupuestos, reservas y consultas", "Te respondo en menos de 24 hs"].map(
+                {["Respuesta rápida y clara", "Ideal para presupuestos, reservas y consultas", "Te respondo en menos de 24 hs hábiles"].map(
                   (item) => (
                     <div key={item} className="px-4 py-4 text-sm">
                       {item}
@@ -550,17 +600,23 @@ export default function Index() {
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0EA5E9]">CTA final</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                Tu competencia ya está online. La diferencia es quién convierte mejor.
+                Tu competencia ya está online. La diferencia es quién comunica mejor su valor.
               </h2>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-white/70">
-                Si querés una web que genere clientes, te ayudo a construirla con una propuesta clara y enfocada en
-                resultados.
+                Si querés una web que genere clientes, te ayudo a construirla con una propuesta clara, sobria y enfocada en resultados.
               </p>
             </div>
 
             <div className="flex flex-col gap-3">
               <Button asChild size="lg" className="w-full bg-[#25D366] text-white hover:bg-[#20bd5a]">
-                <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
+                <a
+                  href={defaultWhatsappLink()}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-whatsapp-origin="cta-section"
+                  data-analytics-cta="cta-mid-whatsapp"
+                  onClick={() => analytics.whatsappClick("cta_final")}
+                >
                   <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                   </svg>
@@ -575,26 +631,34 @@ export default function Index() {
         </div>
       </section>
 
-      <a
+      <WhatsAppButtonLink
         href={defaultWhatsappLink()}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Hablar por WhatsApp"
+        ariaLabel="Hablar por WhatsApp"
+        dataWaSource="floating"
+        dataWaOnline="true"
+        onClick={() => analytics.whatsappClick("floating_button")}
         className="animate-wa-pulse fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(142_70%_45%)] text-white shadow-[0_18px_50px_-18px_rgba(34,197,94,0.7)] transition-transform duration-300 hover:scale-110"
       >
         <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
-      </a>
+      </WhatsAppButtonLink>
 
       {/* Cierre */}
       <section className="container py-12 sm:py-16">
         <div className="rounded-xl border border-cyan-400/20 bg-slate-950 p-8 text-center sm:p-12">
-          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">¿Querés una web así para tu negocio?</h2>
-          <p className="mt-4 text-white/70">Consultame sin compromiso. Te cuento qué podés tener y en cuánto tiempo.</p>
+          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">¿Querés una web que comunique mejor tu valor?</h2>
+          <p className="mt-4 text-white/70">Escribime sin compromiso. Te cuento qué podés construir y en cuánto tiempo.</p>
 
           <Button asChild size="lg" className="mt-6 bg-[#25D366] text-white hover:bg-[#20bd5a]">
-            <a href="https://wa.me/541166448389" target="_blank" rel="noreferrer">
+            <a
+              href="https://wa.me/541166448389"
+              target="_blank"
+              rel="noreferrer"
+              data-whatsapp-origin="footer"
+              data-analytics-cta="footer-whatsapp"
+              onClick={() => analytics.whatsappClick("footer")}
+            >
               <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
               </svg>
@@ -616,12 +680,19 @@ export default function Index() {
         <div className="container py-12">
           <div className="flex flex-col items-center gap-6 text-center">
             <p className="text-xl font-semibold text-white sm:text-2xl">
-              Tu web debería ser tu mejor vendedor, no una tarjeta digital
+              Tu web debería explicar mejor tu valor, no solo presentarte
             </p>
             
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className="bg-[#25D366] text-white hover:bg-[#20bd5a]">
-                <a href="https://wa.me/541166448389" target="_blank" rel="noreferrer">
+                <a
+                  href="https://wa.me/541166448389"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-whatsapp-origin="footer"
+                  data-analytics-cta="footer-secondary-whatsapp"
+                  onClick={() => analytics.whatsappClick("footer")}
+                >
                   <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                   </svg>
@@ -630,7 +701,14 @@ export default function Index() {
               </Button>
               
               <Button asChild variant="outline" size="lg" className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white">
-                <a href="https://wa.me/541166448389" target="_blank" rel="noreferrer">
+                <a
+                  href="https://wa.me/541166448389"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-whatsapp-origin="footer"
+                  data-analytics-cta="footer-contact"
+                  onClick={() => analytics.whatsappClick("footer")}
+                >
                   <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                   </svg>
@@ -648,3 +726,4 @@ export default function Index() {
     </main>
   );
 }
+

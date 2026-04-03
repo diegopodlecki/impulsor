@@ -1,5 +1,6 @@
 ﻿import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { analytics } from "@/components/analytics/analytics";
 
 import { type LandingConfig } from "@/data/landings";
 import { getLandingImages } from "./landingImages";
@@ -36,59 +37,59 @@ const previewVariants: Record<
   }
 > = {
   default: {
-    kicker: "Landing moderna y enfocada",
-    heroLabel: "Presencia clara",
-    serviceLabel: "Lo esencial",
-    footerLabel: "Ver ejemplo real",
-    badgeLabel: "Demo",
+    kicker: "Presentación clara y estratégica",
+    heroLabel: "Primera impresión",
+    serviceLabel: "Lo esencial, bien comunicado",
+    footerLabel: "Ver propuesta",
+    badgeLabel: "Propuesta",
   },
   gimnasios: {
-    kicker: "Entrenamiento, horarios y acción",
-    heroLabel: "Más alumnos",
+    kicker: "Clases, horarios y decisión",
+    heroLabel: "Más socios",
     serviceLabel: "Clases y equipamiento",
-    footerLabel: "Ver la versión gym",
+    footerLabel: "Ver caso gimnasio",
     badgeLabel: "Fitness",
   },
   "personal-trainers": {
-    kicker: "Marca personal premium",
+    kicker: "Marca personal con autoridad",
     heroLabel: "Sesiones y progreso",
     serviceLabel: "Experiencia de entrenamiento",
-    footerLabel: "Ver el ejemplo trainer",
+    footerLabel: "Ver propuesta trainer",
     badgeLabel: "Trainer",
   },
   nutricionistas: {
-    kicker: "Clínica, orden y confianza",
-    heroLabel: "Consultas más claras",
+    kicker: "Orden, claridad y confianza",
+    heroLabel: "Consultas mejor calificadas",
     serviceLabel: "Seguimiento y turnos",
-    footerLabel: "Ver el ejemplo nutrición",
+    footerLabel: "Ver propuesta nutrición",
     badgeLabel: "Nutrición",
   },
   psicologos: {
-    kicker: "Calma y cercanía",
+    kicker: "Calma visual y contención",
     heroLabel: "Espacio seguro",
-    serviceLabel: "Acompañamiento amable",
-    footerLabel: "Ver el ejemplo consultorio",
+    serviceLabel: "Acompañamiento profesional",
+    footerLabel: "Ver propuesta consultorio",
     badgeLabel: "Psi",
   },
   "estetica-corporal": {
     kicker: "Imagen premium y resultados",
     heroLabel: "Más deseo visual",
     serviceLabel: "Tratamientos y prueba",
-    footerLabel: "Ver el ejemplo estética",
+    footerLabel: "Ver propuesta estética",
     badgeLabel: "Beauty",
   },
   emprendedores: {
     kicker: "Oferta clara y autoridad",
     heroLabel: "Más conversiones",
     serviceLabel: "Propuesta y prueba social",
-    footerLabel: "Ver el ejemplo negocio",
+    footerLabel: "Ver propuesta negocio",
     badgeLabel: "Launch",
   },
   "iron-fitness": {
     kicker: "La landing original",
     heroLabel: "Iron Fitness",
     serviceLabel: "Versión completa",
-    footerLabel: "Ver ejemplo real",
+    footerLabel: "Ver caso real",
     badgeLabel: "Gym",
   },
 };
@@ -219,12 +220,12 @@ export function LandingPreviewCard({
               background: `linear-gradient(180deg, ${theme.surface}, rgba(10,10,10,0.95))`,
             }}
           >
-            <div className="inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-medium" style={{ borderColor: theme.border, backgroundColor: `${theme.accent}14`, color: theme.accent }}>
+          <div className="inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-medium" style={{ borderColor: theme.border, backgroundColor: `${theme.accent}14`, color: theme.accent }}>
               <span className="mr-2">●</span>
               {variant.kicker}
             </div>
             <p className="mt-3 text-[10px] uppercase tracking-[0.24em] text-[#9CA3AF]">{variant.heroLabel}</p>
-            <h4 className="mt-3 text-[24px] font-extrabold leading-[1.05] text-[#F5F5F5]">
+          <h4 className="mt-3 text-[24px] font-extrabold leading-[1.05] text-[#F5F5F5]">
               {config.heroTitle}
             </h4>
             <p className="mt-3 text-[12px] leading-5 text-[#9CA3AF]">{config.heroSubtitle}</p>
@@ -257,6 +258,8 @@ export function LandingPreviewCard({
                   <img
                     src={config.slug === "iron-fitness" && index === 0 ? images.heroImage : service.image ?? images.serviceImages[index] ?? images.heroImage}
                     alt={service.title}
+                    width={600}
+                    height={420}
                     loading="lazy"
                     decoding="async"
                     className="h-full w-full object-cover"
@@ -282,7 +285,15 @@ export function LandingPreviewCard({
 
             <article className="rounded-[10px] border p-3" style={{ borderColor: theme.border, background: `${theme.accent}10` }}>
               <div className="flex items-center gap-3">
-                <img src={images.heroMockupImage} alt={config.heroPreviewTitle} className="h-16 w-16 rounded-[8px] object-cover" loading="lazy" decoding="async" />
+                <img
+                  src={images.heroMockupImage}
+                  alt={config.heroPreviewTitle}
+                  className="h-16 w-16 rounded-[8px] object-cover"
+                  width={160}
+                  height={160}
+                  loading="lazy"
+                  decoding="async"
+                />
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.2em] text-[#9CA3AF]">{config.heroPreviewTitle}</p>
                   <p className="mt-1 text-[12px] leading-5 text-[#F5F5F5]">{config.heroPreviewSubtitle}</p>
@@ -315,9 +326,11 @@ export function LandingPreviewCard({
           to={href}
           className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold text-[#0A0A0A] transition-transform duration-200 hover:scale-[1.03]"
           style={{ backgroundColor: theme.accent }}
-          aria-label={`Ver ejemplo real de ${config.heroBadge}`}
+          aria-label={`Ver propuesta de ${config.heroBadge}`}
+          data-analytics-cta={`preview-${config.slug}`}
+          onClick={() => analytics.demoClick(config.slug)}
         >
-          Ver ejemplo real
+          Ver propuesta
           <span aria-hidden="true">↗</span>
         </Link>
       </div>

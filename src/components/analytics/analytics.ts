@@ -13,6 +13,74 @@ function safeId(value: string | undefined) {
   return typeof value === "string" && value.trim() && !value.includes("%") ? value.trim() : "";
 }
 
+type GtagCommand = "event" | "config" | "js" | "set";
+
+function pushGtag(command: GtagCommand, action: string | Date, params?: Record<string, unknown>) {
+  if (typeof window === "undefined" || !window.gtag) return;
+
+  window.gtag(command, action as never, params);
+}
+
+function recordEvent(eventName: string, params?: Record<string, unknown>) {
+  pushGtag("event", eventName, params);
+}
+
+export const analytics = {
+  pageView(path: string, title?: string) {
+    recordEvent("page_view", {
+      page_path: path,
+      page_title: title ?? document.title,
+      page_location: window.location.href,
+    });
+  },
+
+  whatsappClick(source: string) {
+    recordEvent("whatsapp_click", {
+      event_category: "conversion",
+      event_label: source,
+      value: 1,
+    });
+  },
+
+  demoClick(demo: string) {
+    recordEvent("demo_view", {
+      event_category: "engagement",
+      event_label: demo,
+    });
+  },
+
+  pricingInterest(plan: string) {
+    recordEvent("pricing_click", {
+      event_category: "conversion",
+      event_label: plan,
+      value: 1,
+    });
+  },
+
+  faqOpen(question: string) {
+    recordEvent("faq_open", {
+      event_category: "engagement",
+      event_label: question.substring(0, 50),
+    });
+  },
+
+  scrollDepth(depth: 25 | 50 | 75 | 100) {
+    recordEvent("scroll_depth", {
+      event_category: "engagement",
+      event_label: `${depth}%`,
+      value: depth,
+    });
+  },
+
+  timeOnPage(seconds: number) {
+    recordEvent("time_on_page", {
+      event_category: "engagement",
+      event_label: `${seconds}s`,
+      value: seconds,
+    });
+  },
+};
+
 export function getAnalyticsIds() {
   return {
     ga4Id: safeId(import.meta.env.VITE_GA4_ID as string | undefined),
@@ -109,23 +177,15 @@ export function installHotjar(siteId: string, version: string) {
 }
 
 export function trackPageView(path: string, title?: string) {
-  const win = getWindow();
-  win.gtag?.("event", "page_view", {
-    page_path: path,
-    page_title: title ?? document.title,
-    page_location: window.location.href,
-  });
+  analytics.pageView(path, title);
 
+  const win = getWindow();
   win.fbq?.("track", "PageView");
 }
 
 export function trackWhatsAppClick(origin: string, label: string, url?: string) {
   const win = getWindow();
-  win.gtag?.("event", "whatsapp_click", {
-    origin,
-    label,
-    link_url: url ?? "",
-  });
+  analytics.whatsappClick(origin);
   win.fbq?.("track", "Contact", {
     content_name: label,
     content_category: origin,
@@ -158,27 +218,19 @@ export function trackFormSubmit(params: {
 }
 
 export function trackScrollDepth(depth: 25 | 50 | 75 | 100, path: string) {
-  const win = getWindow();
-  win.gtag?.("event", "scroll_depth", {
-    depth,
-    page_path: path,
-  });
+  analytics.scrollDepth(depth);
 }
 
 export function trackEngagement60s(path: string) {
-  const win = getWindow();
-  win.gtag?.("event", "engagement_60s", {
-    page_path: path,
-    value: 1,
-  });
+  analytics.timeOnPage(60);
 }
 
 export function trackCtaClick(label: string, origin?: string, href?: string) {
   const win = getWindow();
+
   win.gtag?.("event", "cta_click", {
     label,
     origin: origin ?? "unknown",
     link_url: href ?? "",
   });
 }
-

@@ -3,6 +3,8 @@ import { ArrowRight, Clock3, MessageCircle, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
+import { analytics } from "@/components/analytics/analytics";
+import { WhatsAppButtonLink } from "@/components/layout/WhatsAppButton";
 import {
   getContextualWhatsappMessage,
   normalizeLeadSectionId,
@@ -53,6 +55,20 @@ export function LeadCaptureSystem() {
       window.removeEventListener("scroll", onScroll);
     };
   }, [isHiddenRoute, location.pathname]);
+
+  React.useEffect(() => {
+    if (typeof document === "undefined") return;
+
+    if (visible) {
+      document.body.dataset.leadCaptureVisible = "1";
+    } else {
+      delete document.body.dataset.leadCaptureVisible;
+    }
+
+    return () => {
+      delete document.body.dataset.leadCaptureVisible;
+    };
+  }, [visible]);
 
   React.useEffect(() => {
     if (isHiddenRoute) return;
@@ -121,18 +137,18 @@ export function LeadCaptureSystem() {
 
   return (
     <>
-      <a
+      <WhatsAppButtonLink
         href={whatsappLink(whatsappMessage)}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Hablar por WhatsApp"
-        data-whatsapp-origin="floating"
+        ariaLabel="Hablar por WhatsApp"
+        dataWaSource="floating"
+        dataWaOnline="true"
+        onClick={() => analytics.whatsappClick("floating_button")}
         className={`animate-wa-pulse fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(142_70%_45%)] text-white shadow-[0_18px_50px_-18px_rgba(34,197,94,0.7)] transition-all duration-300 hover:scale-110 ${
           visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"
         }`}
       >
         <MessageCircle className="h-7 w-7" />
-      </a>
+      </WhatsAppButtonLink>
 
       {exitOpen ? (
         <div className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-md rounded-[1.75rem] border border-cyan-400/20 bg-slate-950 p-4 shadow-[0_24px_80px_-24px_rgba(15,23,42,0.8)] sm:inset-x-auto sm:bottom-6 sm:left-6 sm:right-auto sm:max-w-lg sm:p-5">
@@ -158,7 +174,13 @@ export function LeadCaptureSystem() {
 
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
             <Button asChild size="lg" className="bg-[#25D366] text-white hover:bg-[#20bd5a]">
-              <a href={whatsappLink(whatsappMessage)} target="_blank" rel="noreferrer" data-whatsapp-origin="exit_popup">
+              <a
+                href={whatsappLink(whatsappMessage)}
+                target="_blank"
+                rel="noreferrer"
+                data-whatsapp-origin="exit_popup"
+                onClick={() => analytics.whatsappClick("cta_final")}
+              >
                 <MessageCircle className="mr-2 h-4 w-4" />
                 Hablar por WhatsApp
               </a>

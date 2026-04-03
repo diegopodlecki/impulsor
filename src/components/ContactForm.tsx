@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { useLocation } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
-import { trackFormSubmit } from "@/components/analytics/analytics";
+import { analytics, trackFormSubmit } from "@/components/analytics/analytics";
 import { BadgeChip, TextAreaField, TextField } from "@/components/design-system";
 import {
   formatBudgetLabel,
@@ -71,9 +71,9 @@ function validateAll(values: ContactValues) {
 }
 
 export function ContactForm({
-  title = "Pedí una propuesta para tu negocio",
-  description = "Dejanos tus datos y te respondo con una propuesta clara, sin vueltas y pensada para tu tipo de servicio.",
-  buttonLabel = "Quiero mi web",
+  title = "Pedí una propuesta pensada para tu negocio",
+  description = "Dejanos tus datos y te respondo con una propuesta clara, sin vueltas y alineada a tu tipo de servicio.",
+  buttonLabel = "Quiero una propuesta",
   trustText = "Te respondo en menos de 24 hs hábiles.",
   eyebrow = "Formulario de contacto",
   sourceLabel = "sitio principal",
@@ -208,22 +208,29 @@ export function ContactForm({
         <div className="card-service">
           <BadgeChip className="border-emerald-500/20 bg-emerald-500/10 text-emerald-300">
             <CheckCircle2 className="h-3.5 w-3.5" />
-            Enviado correctamente
+            Consulta enviada
           </BadgeChip>
-          <h3 className="mt-4 text-h3">Gracias. Ya tenemos tu consulta.</h3>
+          <h3 className="mt-4 text-h3">Gracias. Ya recibimos tu consulta.</h3>
           <p className="mt-3 text-sm leading-6 text-muted-foreground">
             Te respondo en menos de 24 hs hábiles con una propuesta concreta para tu negocio.
           </p>
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             <Button asChild variant="hero" size="lg" className="justify-center">
-              <a href={whatsappLink(getContextualWhatsappMessage(location.pathname, "contacto"))} target="_blank" rel="noreferrer">
+              <a
+                href={whatsappLink(getContextualWhatsappMessage(location.pathname, "contacto"))}
+                target="_blank"
+                rel="noreferrer"
+                data-whatsapp-origin="form-success"
+                data-analytics-cta="form-success-whatsapp"
+                onClick={() => analytics.whatsappClick("cta_final")}
+              >
                 <MessageCircle className="mr-2 h-4 w-4" />
                 Seguir por WhatsApp
               </a>
             </Button>
             <Button asChild variant="outline" size="lg" className="justify-center border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white">
-              <a href="#precios">
+              <a href="#precios" data-analytics-cta="form-success-plans">
                 <Sparkles className="mr-2 h-4 w-4" />
                 Ver planes
               </a>
@@ -250,7 +257,7 @@ export function ContactForm({
 
         <p className="mt-4 text-sm leading-6 text-muted-foreground">{description}</p>
         <p className="mt-3 text-sm font-medium text-foreground/90">
-          También podés escribir por WhatsApp, pero este formulario me ayuda a responderte con una propuesta más precisa.
+          También podés escribir por WhatsApp, pero este formulario me ayuda a responderte con una propuesta más precisa y mejor alineada a tu negocio.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
@@ -338,11 +345,12 @@ export function ContactForm({
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <Button
+              <Button
               type="submit"
               variant="hero"
               size="lg"
               className="justify-center"
+              data-analytics-cta="contact-form-submit"
               disabled={submitting || !values.nombre.trim() || !values.email.trim() || !values.negocio.trim() || !values.problema.trim() || !values.presupuesto.trim()}
             >
               {submitting ? "Enviando..." : buttonLabel}

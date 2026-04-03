@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import { analytics } from "@/components/analytics/analytics";
+import { WhatsAppButtonLink } from "@/components/layout/WhatsAppButton";
 import { previewSvg } from "@/components/landing/landingVisuals";
 
 const WHATSAPP_URL = "https://wa.me/541166448389";
@@ -167,6 +169,7 @@ export default function IronFitnessPage() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
+            onClick={() => analytics.whatsappClick("header")}
             className="inline-flex items-center justify-center rounded-[6px] bg-[#F97316] px-4 py-2 text-[13px] font-bold text-[#0A0A0A] transition-opacity hover:opacity-90"
           >
             Empezá hoy
@@ -182,6 +185,8 @@ export default function IronFitnessPage() {
           src={previewSvg("Iron Fitness", "Clases, horarios y reservas", "#f97316", "#22c55e")}
           alt=""
           aria-hidden="true"
+          width={1200}
+          height={900}
           loading="lazy"
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
@@ -210,6 +215,7 @@ export default function IronFitnessPage() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
+              onClick={() => analytics.whatsappClick("hero_primary")}
               className="inline-flex w-full items-center justify-center rounded-[8px] bg-[#F97316] px-6 py-3.5 text-[15px] font-bold text-[#0A0A0A] transition-opacity hover:opacity-90 sm:w-auto"
             >
               Quiero mi semana gratis
@@ -250,6 +256,8 @@ export default function IronFitnessPage() {
                   <img
                     src={service.image}
                     alt={service.title}
+                    width={600}
+                    height={420}
                     loading="lazy"
                     decoding="async"
                     className="h-full w-full object-cover"
@@ -296,7 +304,7 @@ export default function IronFitnessPage() {
           <SectionHeading title="Elegí tu plan" titleClassName="text-[28px]" />
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {plans.map((plan) => (
+            {plans.map((plan, index) => (
               <article
                 key={plan.name}
                 className={`rounded-xl bg-[#141414] p-7 ${
@@ -328,6 +336,11 @@ export default function IronFitnessPage() {
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() =>
+                    analytics.whatsappClick(
+                      index === 0 ? "pricing_basica" : index === 1 ? "pricing_profesional" : "pricing_completa",
+                    )
+                  }
                   className={`mt-8 inline-flex w-full items-center justify-center rounded-[8px] px-5 py-3.5 text-[15px] font-bold transition-colors ${
                     plan.featured
                       ? "bg-[#F97316] text-[#0A0A0A] hover:opacity-90"
@@ -347,6 +360,8 @@ export default function IronFitnessPage() {
           src={previewSvg("Hablá con nosotros", "Tu semana gratis te espera", "#f97316", "#06b6d4")}
           alt=""
           aria-hidden="true"
+          width={1200}
+          height={900}
           loading="lazy"
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
@@ -362,6 +377,7 @@ export default function IronFitnessPage() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
+            onClick={() => analytics.whatsappClick("cta_final")}
             className="mt-8 inline-flex items-center justify-center gap-3 rounded-[8px] bg-[#25D366] px-7 py-4 text-[16px] font-bold text-white transition-opacity hover:opacity-90"
           >
             <WhatsAppIcon />
@@ -408,18 +424,19 @@ export default function IronFitnessPage() {
         </div>
       </footer>
 
-      <a
+      <WhatsAppButtonLink
         href={WHATSAPP_URL}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Hablar por WhatsApp"
+        ariaLabel="Hablar por WhatsApp"
+        dataWaSource="floating"
+        dataWaOnline="true"
+        onClick={() => analytics.whatsappClick("floating_button")}
         className="fixed bottom-6 right-6 z-[9999] inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white"
         style={{
           animation: "iron-wa-pulse 2s ease-in-out infinite",
         }}
       >
         <WhatsAppIcon />
-      </a>
+      </WhatsAppButtonLink>
     </main>
   );
 }

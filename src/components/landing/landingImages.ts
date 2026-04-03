@@ -1,90 +1,162 @@
+import { previewSvg } from "@/components/landing/landingVisuals";
+
 export type LandingImageSet = {
   heroImage: string;
   heroMockupImage: string;
   serviceImages: string[];
 };
 
+type ImageSpec = {
+  heroTitle: string;
+  heroSubtitle: string;
+  heroAccentA: string;
+  heroAccentB: string;
+  mockupTitle: string;
+  mockupSubtitle: string;
+  mockupAccentA: string;
+  mockupAccentB: string;
+  serviceSpecs: Array<[string, string, string, string]>;
+};
+
+function buildImageSet(spec: ImageSpec): LandingImageSet {
+  return {
+    heroImage: previewSvg(spec.heroTitle, spec.heroSubtitle, spec.heroAccentA, spec.heroAccentB),
+    heroMockupImage: previewSvg(spec.mockupTitle, spec.mockupSubtitle, spec.mockupAccentA, spec.mockupAccentB),
+    serviceImages: spec.serviceSpecs.map(([title, subtitle, accentA, accentB]) =>
+      previewSvg(title, subtitle, accentA, accentB),
+    ),
+  };
+}
+
 const landingImages: Record<string, LandingImageSet> = {
-  default: {
-    heroImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=600&fit=crop",
-    heroMockupImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=500&fit=crop",
-    serviceImages: [
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=420&fit=crop",
+  default: buildImageSet({
+    heroTitle: "Web que convierte",
+    heroSubtitle: "Consultas, reservas y ventas",
+    heroAccentA: "#0EA5E9",
+    heroAccentB: "#10B981",
+    mockupTitle: "Propuesta clara",
+    mockupSubtitle: "Mensaje, confianza y contacto",
+    mockupAccentA: "#0EA5E9",
+    mockupAccentB: "#22C55E",
+    serviceSpecs: [
+      ["Autoridad visual", "Sitios más claros y profesionales", "#0EA5E9", "#10B981"],
+      ["Contacto simple", "WhatsApp y formulario visibles", "#10B981", "#0EA5E9"],
+      ["Prueba social", "Testimonios y credibilidad", "#22C55E", "#0EA5E9"],
+      ["Conversión", "Más consultas y mejores cierres", "#0EA5E9", "#22C55E"],
     ],
-  },
-  gimnasios: {
-    heroImage: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=600&fit=crop",
-    heroMockupImage: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&h=500&fit=crop",
-    serviceImages: [
-      "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1502904550040-7534597429ae?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1514053026555-49ce8618b8d0?w=600&h=420&fit=crop",
+  }),
+  gimnasios: buildImageSet({
+    heroTitle: "Gimnasio",
+    heroSubtitle: "Clases, horarios y reservas",
+    heroAccentA: "#22C55E",
+    heroAccentB: "#06B6D4",
+    mockupTitle: "Más socios",
+    mockupSubtitle: "Inscripciones y horarios claros",
+    mockupAccentA: "#22C55E",
+    mockupAccentB: "#0EA5E9",
+    serviceSpecs: [
+      ["Clases grupales", "Explicá tu propuesta deportiva", "#22C55E", "#06B6D4"],
+      ["Horarios claros", "Facilitá la decisión", "#16A34A", "#0EA5E9"],
+      ["Instalaciones", "Mostrá el espacio real", "#0EA5E9", "#22C55E"],
+      ["Inscripción", "Convertí visitas en alumnos", "#06B6D4", "#22C55E"],
+      ["Entrenamiento", "Sumá autoridad y confianza", "#10B981", "#0EA5E9"],
     ],
-  },
-  "personal-trainers": {
-    heroImage: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&h=600&fit=crop",
-    heroMockupImage: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&h=500&fit=crop",
-    serviceImages: [
-      "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1502904550040-7534597429ae?w=600&h=420&fit=crop",
+  }),
+  "personal-trainers": buildImageSet({
+    heroTitle: "Personal Trainer",
+    heroSubtitle: "Resultados y disciplina",
+    heroAccentA: "#F97316",
+    heroAccentB: "#EF4444",
+    mockupTitle: "Marca personal",
+    mockupSubtitle: "Sesiones, método y progreso",
+    mockupAccentA: "#F97316",
+    mockupAccentB: "#EC4899",
+    serviceSpecs: [
+      ["Método", "Explicá tu forma de entrenar", "#F97316", "#EF4444"],
+      ["Resultados", "Mostrá progreso y evidencia", "#EF4444", "#F97316"],
+      ["Testimonios", "Generá más confianza", "#F59E0B", "#F97316"],
+      ["Planes", "Hacé simple la contratación", "#EC4899", "#F97316"],
     ],
-  },
-  nutricionistas: {
-    heroImage: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200&h=600&fit=crop",
-    heroMockupImage: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&h=500&fit=crop",
-    serviceImages: [
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1a?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=420&fit=crop",
+  }),
+  nutricionistas: buildImageSet({
+    heroTitle: "Nutricionista",
+    heroSubtitle: "Planes, hábitos y seguimiento",
+    heroAccentA: "#84CC16",
+    heroAccentB: "#22C55E",
+    mockupTitle: "Consulta clara",
+    mockupSubtitle: "Turnos y seguimiento profesional",
+    mockupAccentA: "#84CC16",
+    mockupAccentB: "#10B981",
+    serviceSpecs: [
+      ["Consultas", "Ordená tu agenda", "#84CC16", "#22C55E"],
+      ["Protocolos", "Explicá tu enfoque", "#22C55E", "#84CC16"],
+      ["Seguimiento", "Hacé visible el acompañamiento", "#10B981", "#84CC16"],
+      ["Contacto", "Convertí dudas en turnos", "#84CC16", "#10B981"],
     ],
-  },
-  psicologos: {
-    heroImage: "https://images.unsplash.com/photo-1516308775066-5fbf9a3b7d50?w=1200&h=600&fit=crop",
-    heroMockupImage: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=800&h=500&fit=crop",
-    serviceImages: [
-      "https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&h=420&fit=crop",
+  }),
+  psicologos: buildImageSet({
+    heroTitle: "Psicología",
+    heroSubtitle: "Calma, empatía y turnos",
+    heroAccentA: "#3B82F6",
+    heroAccentB: "#0EA5E9",
+    mockupTitle: "Espacio seguro",
+    mockupSubtitle: "Cercanía y contacto simple",
+    mockupAccentA: "#3B82F6",
+    mockupAccentB: "#8B5CF6",
+    serviceSpecs: [
+      ["Calma visual", "Bajá la fricción", "#3B82F6", "#0EA5E9"],
+      ["Acompañamiento", "Transmití contención", "#8B5CF6", "#3B82F6"],
+      ["Turnos", "Hacé simple el primer paso", "#0EA5E9", "#3B82F6"],
+      ["Confianza", "Mostrá claridad profesional", "#6366F1", "#0EA5E9"],
     ],
-  },
-  "estetica-corporal": {
-    heroImage: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=1200&h=600&fit=crop",
-    heroMockupImage: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&h=500&fit=crop",
-    serviceImages: [
-      "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1544161515-4ab6ce6b40d8?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=420&fit=crop",
+  }),
+  "estetica-corporal": buildImageSet({
+    heroTitle: "Estética corporal",
+    heroSubtitle: "Premium, visual y elegante",
+    heroAccentA: "#EC4899",
+    heroAccentB: "#F97316",
+    mockupTitle: "Tratamientos premium",
+    mockupSubtitle: "Deseo visual y contacto directo",
+    mockupAccentA: "#EC4899",
+    mockupAccentB: "#F59E0B",
+    serviceSpecs: [
+      ["Imagen premium", "Subí la percepción de valor", "#EC4899", "#F97316"],
+      ["Tratamientos", "Mostrá lo que hacés", "#F97316", "#EC4899"],
+      ["Resultados", "Apoyate en la evidencia", "#F59E0B", "#EC4899"],
+      ["Consultas", "Llevá al contacto", "#EC4899", "#F59E0B"],
     ],
-  },
-  emprendedores: {
-    heroImage: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&h=600&fit=crop",
-    heroMockupImage: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=500&fit=crop",
-    serviceImages: [
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=420&fit=crop",
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=420&fit=crop",
+  }),
+  emprendedores: buildImageSet({
+    heroTitle: "LaunchMe",
+    heroSubtitle: "Autoridad, claridad y ventas",
+    heroAccentA: "#F59E0B",
+    heroAccentB: "#10B981",
+    mockupTitle: "Oferta clara",
+    mockupSubtitle: "Más claridad, más autoridad",
+    mockupAccentA: "#F59E0B",
+    mockupAccentB: "#0EA5E9",
+    serviceSpecs: [
+      ["Oferta", "Explicá tu propuesta rápido", "#F59E0B", "#10B981"],
+      ["Autoridad", "Mostrá más solidez", "#10B981", "#F59E0B"],
+      ["CTA", "Llevá al contacto", "#0EA5E9", "#F59E0B"],
+      ["Ventas", "Convertí visitas en clientes", "#F97316", "#10B981"],
     ],
-  },
-  "iron-fitness": {
-    heroImage: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=600&fit=crop",
-    heroMockupImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=500&fit=crop",
-    serviceImages: [
-      "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80",
-      "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80",
-      "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=80",
+  }),
+  "iron-fitness": buildImageSet({
+    heroTitle: "Iron Fitness",
+    heroSubtitle: "Transformá tu cuerpo",
+    heroAccentA: "#111111",
+    heroAccentB: "#F97316",
+    mockupTitle: "Semana gratis",
+    mockupSubtitle: "Clases, horarios y reservas",
+    mockupAccentA: "#F97316",
+    mockupAccentB: "#22C55E",
+    serviceSpecs: [
+      ["Musculación", "Equipamiento profesional", "#F97316", "#22C55E"],
+      ["Clases", "Entrenamiento grupal", "#22C55E", "#F97316"],
+      ["Cardio", "Zona completa para entrenar", "#06B6D4", "#F97316"],
     ],
-  },
+  }),
 };
 
 export function getLandingImages(slug: string) {

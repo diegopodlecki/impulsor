@@ -2,7 +2,7 @@ import * as React from "react";
 import { Download, Mail, ShieldCheck, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
-import { trackFormSubmit } from "@/components/analytics/analytics";
+import { analytics, trackFormSubmit } from "@/components/analytics/analytics";
 import { BadgeChip, TextField } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 import { leadMagnetOffer } from "@/components/leads/leadCapture";
@@ -133,7 +133,12 @@ export function LeadMagnetSection() {
                 Revisá tu bandeja de entrada. Si querés acelerar, también podés escribir por WhatsApp y te oriento según tu caso.
               </p>
               <Button asChild size="lg" className="mt-6 w-full bg-[#25D366] text-white hover:bg-[#20bd5a]">
-                <a href="https://wa.me/541166448389" target="_blank" rel="noreferrer">
+                <a
+                  href="https://wa.me/541166448389"
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => analytics.whatsappClick("cta_final")}
+                >
                   <Mail className="mr-2 h-4 w-4" />
                   Quiero revisar mi web
                 </a>

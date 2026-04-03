@@ -46,6 +46,8 @@ export function NicheCard({ name, rubro, accentColor, bgColor, href, image }: Ni
             src={image}
             alt={`Miniatura de ${name}`}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            width={1200}
+            height={900}
             loading="lazy"
             decoding="async"
           />

@@ -22,6 +22,8 @@ import { Link } from "react-router-dom";
 
 import { ContactForm } from "@/components/ContactForm";
 import { Button } from "@/components/ui/button";
+import { analytics } from "@/components/analytics/analytics";
+import { WhatsAppButtonLink } from "@/components/layout/WhatsAppButton";
 import { type LandingConfig } from "@/data/landings";
 import { defaultWhatsappLink, whatsappLink } from "@/components/landing/landingVisuals";
 import { getLandingImages } from "@/components/landing/landingImages";
@@ -202,14 +204,14 @@ const landingVoices: Record<
 > = {
   default: {
     heroStats: [
-      { value: "Más consultas", label: "en menos fricción" },
+      { value: "Más consultas", label: "con menos fricción" },
       { value: "Imagen premium", label: "desde el primer vistazo" },
       { value: "Contacto directo", label: "con WhatsApp y formulario" },
     ],
-    testimonialTitle: "Mockups y prueba social para cerrar más confianza",
+    testimonialTitle: "Prueba social que refuerza la decisión",
     testimonialDescription:
-      "La combinación de una landing visual con testimonios claros ayuda a que la decisión de contactarte se sienta más fácil.",
-    contactBadge: "WhatsApp visible y respuesta rápida",
+      "Una landing visual, ordenada y con señales de confianza ayuda a que la consulta se sienta más natural.",
+    contactBadge: "Contacto visible y respuesta cuidada",
     closingEyebrow: "Cierre",
   },
   gimnasios: {
@@ -230,7 +232,7 @@ const landingVoices: Record<
       { value: "Método propio", label: "más autoridad" },
       { value: "Progreso visible", label: "más cierres" },
     ],
-    testimonialTitle: "Un servicio premium para vender tu marca personal",
+    testimonialTitle: "Una presentación premium para tu marca personal",
     testimonialDescription:
       "Como entrenador, lo que más convierte es una experiencia clara, premium y centrada en transformaciones reales.",
     contactBadge: "Convertí tu experiencia en clientes premium",
@@ -242,7 +244,7 @@ const landingVoices: Record<
       { value: "Agenda clara", label: "sin fricción" },
       { value: "Seguimiento clínico", label: "más confianza" },
     ],
-    testimonialTitle: "Claridad clínica para captar más consultas",
+    testimonialTitle: "Claridad clínica para captar mejores consultas",
     testimonialDescription:
       "En nutrición, la confianza crece cuando el servicio se ve ordenado, profesional y fácil de entender.",
     contactBadge: "Turnos claros y seguimiento profesional",
@@ -266,7 +268,7 @@ const landingVoices: Record<
       { value: "Antes y después", label: "más prueba" },
       { value: "Más consultas", label: "menos dudas" },
     ],
-    testimonialTitle: "Presencia premium para tratamientos que venden",
+    testimonialTitle: "Presencia premium para tratamientos de alto valor percibido",
     testimonialDescription:
       "En estética, la percepción visual y la prueba de resultados empujan mucho más que un texto genérico.",
     contactBadge: "Consultas elegantes con foco en resultados",
@@ -299,9 +301,16 @@ function ActionButtons({ config, theme }: { config: LandingConfig; theme: Return
           size="lg"
           className="bg-[#25D366] text-white hover:bg-[#20bd5a]"
         >
-          <a href={whatsappLink(config.whatsappMessage)} target="_blank" rel="noreferrer">
+          <a
+            href={whatsappLink(config.whatsappMessage)}
+            target="_blank"
+            rel="noreferrer"
+            data-whatsapp-origin="section"
+            data-analytics-cta="section-whatsapp"
+            onClick={() => analytics.whatsappClick("cta_final")}
+          >
             <MessageCircle className="mr-2 h-5 w-5" />
-            Quiero más clientes
+            Ver propuesta
           </a>
         </Button>
         <Button
@@ -310,7 +319,9 @@ function ActionButtons({ config, theme }: { config: LandingConfig; theme: Return
           size="lg"
           className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white"
         >
-          <a href="#diagnostico">Analizar mi web gratis</a>
+          <a href="#diagnostico" data-analytics-cta="section-diagnostico">
+            Analizar mi web
+          </a>
         </Button>
       </div>
     </div>
@@ -358,12 +369,29 @@ function HeroMockup({
 
         <div className="mt-4 grid gap-4 lg:grid-cols-[1.06fr_0.94fr]">
           <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-950/80">
-            <img src={config.preview} alt={`Vista previa de ${config.title}`} className="h-full w-full object-cover" />
+            <img
+              src={config.preview}
+              alt={`Vista previa de ${config.title}`}
+              className="h-full w-full object-cover"
+              width={1200}
+              height={900}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+            />
           </div>
 
           <div className="grid gap-4">
             <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-950/75">
-              <img src={config.preview} alt={`Mockup de ${config.title}`} className="h-full w-full object-cover" />
+              <img
+                src={config.preview}
+                alt={`Mockup de ${config.title}`}
+                className="h-full w-full object-cover"
+                width={1200}
+                height={900}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
 
             <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
@@ -427,7 +455,15 @@ function TestimonialPreview({
         </blockquote>
         <div className="mt-8 flex items-center gap-4">
           <div className="overflow-hidden rounded-2xl p-2" style={{ border: `1px solid ${theme.border}`, backgroundColor: `${theme.accent}10` }}>
-            <img src={config.profile} alt={testimonial.name} className="h-14 w-14 rounded-xl object-cover" />
+            <img
+              src={config.profile}
+              alt={testimonial.name}
+              className="h-14 w-14 rounded-xl object-cover"
+              width={224}
+              height={224}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <div>
             <p className="font-semibold">{testimonial.name}</p>
@@ -459,7 +495,15 @@ function TestimonialPreview({
       <div className="grid gap-4">
         <div className="rounded-[2rem] p-4" style={{ border: `1px solid ${theme.border}`, backgroundColor: theme.primary }}>
           <div className="overflow-hidden rounded-[1.5rem]" style={{ border: `1px solid ${theme.border}`, backgroundColor: theme.surface }}>
-            <img src={config.preview} alt={`Vista previa secundaria de ${config.title}`} className="h-full w-full object-cover" />
+            <img
+              src={config.preview}
+              alt={`Vista previa secundaria de ${config.title}`}
+              className="h-full w-full object-cover"
+              width={1200}
+              height={900}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <div className="mt-4 flex items-center justify-between gap-3">
             <div>
@@ -567,14 +611,26 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
           <nav className="hidden items-center gap-6 lg:flex">
             {landingNav.map((item) => (
-              <a key={item.href} href={item.href} className="text-sm font-medium text-white/70 transition-colors hover:text-white">
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-sm font-medium text-white/70 transition-colors hover:text-white"
+                data-analytics-cta={`nav-${item.label.toLowerCase()}`}
+              >
                 {item.label}
               </a>
             ))}
           </nav>
 
           <Button asChild size="sm" className="bg-[#25D366] text-white hover:bg-[#20bd5a]">
-            <a href={defaultWhatsappLink()} target="_blank" rel="noreferrer">
+          <a
+            href={defaultWhatsappLink()}
+            target="_blank"
+            rel="noreferrer"
+            data-whatsapp-origin="header"
+            data-analytics-cta="landing-top-whatsapp"
+            onClick={() => analytics.whatsappClick("header")}
+          >
               <MessageCircle className="mr-2 h-4 w-4" />
               WhatsApp
             </a>
@@ -602,7 +658,14 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Button asChild size="lg" className="bg-[#25D366] text-white hover:bg-[#20bd5a]">
-                <a href={whatsappLink(config.whatsappMessage)} target="_blank" rel="noreferrer">
+                <a
+                  href={whatsappLink(config.whatsappMessage)}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-whatsapp-origin="hero"
+                  data-analytics-cta="landing-hero-whatsapp"
+                  onClick={() => analytics.whatsappClick("hero_primary")}
+                >
                   <MessageCircle className="mr-2 h-5 w-5" />
                   {config.heroCta}
                 </a>
@@ -612,9 +675,11 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
                 variant="outline"
                 size="lg"
                 className="text-white hover:text-white"
-                style={{ borderColor: theme.border, backgroundColor: `${theme.primary}80` }}
+              style={{ borderColor: theme.border, backgroundColor: `${theme.primary}80` }}
               >
-                <a href="#servicios">{config.heroSecondaryCta}</a>
+                <a href="#servicios" data-analytics-cta="landing-hero-secondary">
+                  {config.heroSecondaryCta}
+                </a>
               </Button>
             </div>
 
@@ -676,12 +741,17 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
               <p className="text-sm font-medium" style={{ color: accent }}>Resultado esperado:</p>
               <p className="text-sm text-muted-foreground">Más consultas en menos de 30 días</p>
             </div>
-            <Button
-              className="mt-6 w-full"
-              style={{ backgroundColor: accent, color: primary }}
-              onClick={() => window.open(whatsappLink(`Hola! Vi tu landing de ${config.title} y me interesa la Web para generar consultas`), "_blank")}
-            >
-              Quiero este sistema
+              <Button
+                className="mt-6 w-full"
+                style={{ backgroundColor: accent, color: primary }}
+              onClick={() => {
+                analytics.whatsappClick("cta_final");
+                window.open(whatsappLink(`Hola! Vi tu landing de ${config.title} y me interesa la Web para generar consultas`), "_blank");
+              }}
+                data-whatsapp-origin="cta-section"
+                data-analytics-cta="offer-generate-queries"
+              >
+              Ver propuesta
             </Button>
           </div>
 
@@ -720,12 +790,17 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
               <p className="text-sm font-medium" style={{ color: accent }}>Resultado:</p>
               <p className="text-sm text-muted-foreground">Más visibilidad local</p>
             </div>
-            <Button
-              className="mt-6 w-full"
-              style={{ backgroundColor: accent, color: primary }}
-              onClick={() => window.open(whatsappLink(`Hola! Vi tu landing de ${config.title} y me interesa la Web para negocios locales`), "_blank")}
-            >
-              Quiero este sistema
+              <Button
+                className="mt-6 w-full"
+                style={{ backgroundColor: accent, color: primary }}
+              onClick={() => {
+                analytics.whatsappClick("cta_final");
+                window.open(whatsappLink(`Hola! Vi tu landing de ${config.title} y me interesa la Web para negocios locales`), "_blank");
+              }}
+                data-whatsapp-origin="cta-section"
+                data-analytics-cta="offer-local-business"
+              >
+              Ver propuesta
             </Button>
           </div>
 
@@ -767,9 +842,14 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
             <Button
               className="mt-6 w-full"
               style={{ backgroundColor: accent, color: primary }}
-              onClick={() => window.open(whatsappLink(`Hola! Vi tu landing de ${config.title} y me interesa el Sistema web + WhatsApp`), "_blank")}
+              onClick={() => {
+                analytics.whatsappClick("cta_final");
+                window.open(whatsappLink(`Hola! Vi tu landing de ${config.title} y me interesa el Sistema web + WhatsApp`), "_blank");
+              }}
+              data-whatsapp-origin="cta-section"
+              data-analytics-cta="offer-whatsapp-system"
             >
-              Quiero este sistema
+              Ver propuesta
             </Button>
           </div>
         </div>
@@ -926,6 +1006,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
               const web = formData.get('web');
               const whatsapp = formData.get('whatsapp');
               const message = `Hola! Quiero un diagnóstico de mi web.%0A%0ANombre: ${nombre}%0AWeb: ${web || 'No especificada'}%0AWhatsApp: ${whatsapp}`;
+              analytics.whatsappClick("cta_final");
               window.open(whatsappLink(message), '_blank');
             }}>
               <div>
@@ -983,6 +1064,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
                 className="w-full"
                 size="lg"
                 style={{ backgroundColor: theme.accent, color: theme.primary }}
+                data-analytics-cta="diagnostico-submit"
               >
                 Quiero mi diagnóstico
               </Button>
@@ -1039,13 +1121,22 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
             <div className="flex flex-col gap-3">
               <Button asChild size="lg" className="bg-[#25D366] text-white hover:bg-[#20bd5a]">
-                <a href={whatsappLink(config.whatsappMessage)} target="_blank" rel="noreferrer">
+              <a
+                href={whatsappLink(config.whatsappMessage)}
+                target="_blank"
+                rel="noreferrer"
+                data-whatsapp-origin="footer"
+                data-analytics-cta="landing-footer-whatsapp"
+                onClick={() => analytics.whatsappClick("footer")}
+              >
                   <MessageCircle className="mr-2 h-5 w-5" />
                   Hablar por WhatsApp
                 </a>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white">
-                <a href="#inicio">Volver arriba</a>
+                <a href="#inicio" data-analytics-cta="landing-footer-top">
+                  Volver arriba
+                </a>
               </Button>
             </div>
           </div>
@@ -1060,19 +1151,20 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
               Diego Podlecki · <a className="transition-colors hover:text-white" href="mailto:info.diego@webappimpulsor.com">info.diego@webappimpulsor.com</a>
             </p>
           </div>
-          <div className="text-sm text-white/50">Diseño web enfocado en resultados</div>
+          <div className="text-sm text-white/50">Diseño web enfocado en claridad, autoridad y conversión</div>
         </div>
       </footer>
 
-      <a
+      <WhatsAppButtonLink
         href={whatsappLink(config.whatsappMessage)}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Hablar por WhatsApp"
+        ariaLabel="Hablar por WhatsApp"
+        dataWaSource="floating"
+        dataWaOnline="true"
+        onClick={() => analytics.whatsappClick("floating_button")}
         className="animate-wa-pulse fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_18px_50px_-18px_rgba(34,197,94,0.7)] transition-transform duration-300 hover:scale-110"
       >
         <MessageCircle className="h-6 w-6" />
-      </a>
+      </WhatsAppButtonLink>
     </main>
   );
 }

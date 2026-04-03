@@ -12,6 +12,22 @@ export default defineConfig(({ mode }) => ({
   build: {
     outDir: process.env.HOSTINGER === "true" ? "hostinger/public_html" : "dist",
     emptyOutDir: process.env.HOSTINGER !== "true",
+    cssCodeSplit: true,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("react-router-dom")) return "router";
+            if (id.includes("@supabase")) return "supabase";
+            if (id.includes("framer-motion")) return "motion";
+            if (id.includes("recharts")) return "charts";
+            if (id.includes("lucide-react")) return "icons";
+            if (id.includes("@radix-ui")) return "radix";
+            return "vendor";
+          }
+        },
+      },
+    },
   },
   base: process.env.GITHUB_PAGES === "true" ? "/impulsor/" : "/",
   server: {
@@ -33,6 +49,9 @@ export default defineConfig(({ mode }) => ({
         open: false,
       }),
   ].filter(Boolean),
+  optimizeDeps: {
+    include: ["react", "react-dom", "react-router-dom"],
+  },
   resolve: {
     alias: {
       "@": path.resolve(rootDir, "./src"),
