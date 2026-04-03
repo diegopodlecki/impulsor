@@ -54,7 +54,7 @@ function buildRubroSeoConfig(slug: string): SeoRouteConfig | undefined {
     title: `Página web para ${rubro.nombrePlural} en Buenos Aires`,
     description: `${rubro.descripcion} Pensada para búsquedas como ${rubro.localKeywords[0]}.`,
     canonical: `${SITE_URL}/webs/${rubro.slug}`,
-    ogImage: DEFAULT_OG_IMAGE,
+    ogImage: `${SITE_URL}/og-${rubro.slug}.png`,
     schema: [
       generateServiceSchema(`Página web para ${rubro.nombrePlural} en Buenos Aires`, rubro.descripcion),
       generateBreadcrumbSchema([
