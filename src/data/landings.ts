@@ -101,7 +101,7 @@ export const landingPages: Record<string, LandingConfig> = {
     finalCtaTitle: "Empezá a recibir nuevos alumnos hoy",
     finalCtaText: "Tu competencia ya está online. La diferencia es quién convierte mejor.",
     whatsappMessage: "Hola, quiero una web para mi gimnasio que me consiga más consultas e inscripciones.",
-    preview: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=800&fit=crop&q=80",
+    preview: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1200&h=800&fit=crop&q=80",
     profile: "https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=400&h=500&fit=crop&q=80",
     primaryColor: "#0f172a",
     accentColor: "#22c55e",
@@ -273,8 +273,8 @@ export const landingPages: Record<string, LandingConfig> = {
     services: [
       { title: "Hero empático", description: "Mensaje que transmite calma y profesionalismo.", icon: "heart", image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop&q=80" },
       { title: "Tu enfoque", description: "Explicación de tu método terapéutico.", icon: "brain", image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=600&h=400&fit=crop&q=80" },
-      { title: "Información útil", description: "Respuestas a preguntas frecuentes de pacientes.", icon: "info", image: "https://images.unsplash.com/photo-1576091160399-112ba8d42d21?w=600&h=400&fit=crop&q=80" },
-      { title: "Formulario de consulta", description: "Formulario simple y confidencial para agendar.", icon: "form", image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=400&fit=crop&q=80" },
+      { title: "Información útil", description: "Respuestas a preguntas frecuentes de pacientes.", icon: "info", image: "https://images.unsplash.com/photo-1559163499-41381127c348?w=600&h=400&fit=crop&q=80" },
+      { title: "Formulario de consulta", description: "Formulario simple y confidencial para agendar.", icon: "form", image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop&q=80" },
     ],
     processTitle: "Cómo trabajamos",
     process: [
