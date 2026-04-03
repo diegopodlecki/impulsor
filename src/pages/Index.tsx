@@ -327,7 +327,7 @@ export default function Index() {
           {problems.map((item) => (
             <div key={item.title} className="card">
               <div className="card-image flex items-center justify-center p-6">
-                <svg className="h-16 w-16 text-red-500/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-16 w-16 text-[#0EA5E9]/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
               </div>
@@ -440,7 +440,7 @@ export default function Index() {
           {benefits.map((item) => (
             <div key={item.title} className="card">
               <div className="card-image flex items-center justify-center p-6">
-                <svg className="h-16 w-16 text-emerald-500/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-16 w-16 text-[#0EA5E9]/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -534,12 +534,12 @@ export default function Index() {
           {process.map((item) => (
             <div key={item.step} className="card text-center">
               <div className="card-image flex items-center justify-center p-6">
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[hsl(var(--neon-cyan))]/10">
-                  <item.icon className="h-10 w-10 text-[hsl(var(--neon-cyan))]" />
+                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#0EA5E9]/10">
+                  <item.icon className="h-10 w-10 text-[#0EA5E9]" />
                 </div>
               </div>
               <div className="card-content">
-                <div className="mb-2 text-xs font-semibold tracking-[0.2em] text-[hsl(var(--neon-cyan))]">PASO {item.step}</div>
+                <div className="mb-2 text-xs font-semibold tracking-[0.2em] text-[#0EA5E9]">PASO {item.step}</div>
                 <h3 className="card-title">{item.title}</h3>
                 <p className="card-description">{item.text}</p>
               </div>

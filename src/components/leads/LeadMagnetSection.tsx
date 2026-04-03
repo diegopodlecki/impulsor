@@ -150,8 +150,8 @@ export function LeadMagnetSection() {
                 <Download className="h-3.5 w-3.5" />
                 Recurso gratuito
               </BadgeChip>
-              <h3 className="mt-4 text-h3 text-white">Te lo envío por email</h3>
-              <p className="mt-3 text-small text-white/70">
+              <h3 className="mt-4 text-h3 text-slate-900">Te lo envío por email</h3>
+              <p className="mt-3 text-small text-slate-600">
                 Ideal si todavía no querés pedir una propuesta, pero sí querés detectar qué está frenando tus consultas.
               </p>
 
@@ -185,7 +185,7 @@ export function LeadMagnetSection() {
                   {submitting ? "Enviando..." : "Recibir mini-guía"}
                 </Button>
 
-                <p className="text-xs leading-5 text-white/55">
+                <p className="text-xs leading-5 text-slate-500">
                   Al registrarte aceptás recibir el material y una secuencia breve de seguimiento. Podés darte de baja cuando quieras.
                 </p>
                 {error ? <p className="text-xs leading-5 text-rose-300">{error}</p> : null}

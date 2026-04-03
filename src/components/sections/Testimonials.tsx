@@ -131,7 +131,7 @@ export function Testimonials() {
 
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="text-h5 text-white">{item.nombre}</h3>
+                      <h3 className="text-h5 text-slate-900">{item.nombre}</h3>
                       <span className="badge-chip border-white/10 bg-black/20 text-white/60">{item.rubro}</span>
                     </div>
 
@@ -149,7 +149,7 @@ export function Testimonials() {
                       </div>
                     ) : null}
 
-                    <p className="mt-4 text-small text-muted-foreground">{item.texto}</p>
+                    <p className="mt-4 text-small text-slate-600">{item.texto}</p>
 
                     <details
                       className="group mt-4 rounded-2xl border border-white/10 bg-black/20 p-4"
@@ -159,17 +159,17 @@ export function Testimonials() {
                         }
                       }}
                     >
-                      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-h6 text-white">
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-h6 text-slate-900">
                         Ver detalle
                         <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" />
                       </summary>
                       <div className="mt-3 space-y-3 text-small text-muted-foreground">
                         <p>
-                          <span className="font-semibold text-white">Plan contratado: </span>
+                          <span className="font-semibold text-slate-900">Plan contratado: </span>
                           {item.plan}
                         </p>
                         <p>
-                          <span className="font-semibold text-white">Mes y año: </span>
+                          <span className="font-semibold text-slate-900">Mes y año: </span>
                           {formatTestimonialDate(item.fecha)}
                         </p>
                       </div>

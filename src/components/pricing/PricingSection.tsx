@@ -53,14 +53,14 @@ export function PricingSection() {
               )}
 
               <div className="mt-3">
-                <p className="text-label text-[#7dd3fc]">{plan.name}</p>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">{plan.audience}</p>
-                <p className="mt-5 text-3xl font-semibold tracking-tight text-white">{plan.price}</p>
+                <p className="text-label text-[#0EA5E9] font-semibold">{plan.name}</p>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{plan.audience}</p>
+                <p className="mt-5 text-3xl font-semibold tracking-tight text-slate-900">{plan.price}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{plan.delivery}</p>
               </div>
 
               <div className="mt-6">
-                <p className="text-h6 text-white">Incluye</p>
+                <p className="text-h6 text-slate-900">Incluye</p>
                 <ul className="mt-4 space-y-3">
                   {plan.includes.map((item) => (
                     <li key={item} className="flex items-start gap-3 text-small text-muted-foreground">
@@ -71,9 +71,9 @@ export function PricingSection() {
                 </ul>
               </div>
 
-              <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-4">
-                <p className="text-h6 text-white">No incluye</p>
-                <ul className="mt-3 space-y-2 text-sm leading-6 text-white/70">
+              <div className="mt-6 rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                <p className="text-h6 text-slate-900">No incluye</p>
+                <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-600">
                   {plan.excludes.map((item) => (
                     <li key={item}>• {item}</li>
                   ))}
@@ -98,7 +98,7 @@ export function PricingSection() {
         <div className="card-service">
           <div className="flex items-center gap-3">
             <HelpCircle className="h-5 w-5 text-[#0EA5E9]" />
-            <h3 className="text-h4 text-white">Dudas frecuentes</h3>
+            <h3 className="text-h4 text-slate-900">Dudas frecuentes</h3>
           </div>
 
           <div className="mt-6 space-y-4">
@@ -112,7 +112,7 @@ export function PricingSection() {
                   }
                 }}
               >
-                <summary className="cursor-pointer list-none text-h6 text-white outline-none">{item.question}</summary>
+                <summary className="cursor-pointer list-none text-h6 text-slate-900 outline-none">{item.question}</summary>
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.answer}</p>
               </details>
             ))}
@@ -131,12 +131,12 @@ export function PricingSection() {
             <ShieldCheck className="h-3.5 w-3.5" />
             Compromiso de claridad
           </div>
-          <h3 className="mt-4 text-h3 text-white">{pricingGuarantee.title}</h3>
-          <p className="mt-4 text-sm leading-7 text-white/70">{pricingGuarantee.body}</p>
+          <h3 className="mt-4 text-h3 text-slate-900">{pricingGuarantee.title}</h3>
+          <p className="mt-4 text-sm leading-7 text-slate-600">{pricingGuarantee.body}</p>
 
-          <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-4">
-            <p className="text-h6 text-white">Pensado para decidir con más criterio</p>
-            <p className="mt-2 text-sm leading-6 text-white/70">
+          <div className="mt-8 rounded-2xl border border-slate-100 bg-slate-50 p-4">
+            <p className="text-h6 text-slate-900">Pensado para decidir con más criterio</p>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
               Reduce el riesgo percibido sin abaratar la propuesta ni prometer resultados que dependen de variables
               externas.
             </p>
