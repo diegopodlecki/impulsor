@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ChevronDown, MessageCircle, ShieldCheck, Star, Target, TrendingUp, Users } from "lucide-react";
 
 import { analytics } from "@/components/analytics/analytics";
@@ -54,6 +55,32 @@ function StarRow({ stars }: { stars: number }) {
   );
 }
 
+function TestimonialAvatar({ testimonial }: { testimonial: (typeof TESTIMONIOS)[number] }) {
+  const [imageError, setImageError] = useState(false);
+  const shouldShowImage = Boolean(testimonial.foto) && !imageError;
+
+  return (
+    <div
+      className={`flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl ${testimonial.colorAvatar} text-sm font-bold text-white`}
+    >
+      {shouldShowImage ? (
+        <img
+          src={testimonial.foto}
+          alt={testimonial.nombre}
+          className="h-full w-full object-cover"
+          width={224}
+          height={224}
+          loading="lazy"
+          decoding="async"
+          onError={() => setImageError(true)}
+        />
+      ) : (
+        <span>{testimonial.iniciales}</span>
+      )}
+    </div>
+  );
+}
+
 function formatTestimonialDate(date: string) {
   const [year, month] = date.split("-").map((part) => Number(part));
   const months = [
@@ -100,21 +127,7 @@ export function Testimonials() {
             {TESTIMONIOS.map((item) => (
               <article key={item.id} className="card-service p-5 sm:p-6">
                 <div className="flex items-start gap-4">
-                  <div className={`flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl ${item.colorAvatar} text-sm font-bold text-white`}>
-                    {item.foto ? (
-                      <img
-                        src={item.foto}
-                        alt={item.nombre}
-                        className="h-full w-full object-cover"
-                        width={224}
-                        height={224}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    ) : (
-                      <span>{item.iniciales}</span>
-                    )}
-                  </div>
+                  <TestimonialAvatar testimonial={item} />
 
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">

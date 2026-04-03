@@ -17,6 +17,7 @@ export const TESTIMONIOS: Testimonio[] = [
     id: "1",
     nombre: "Dra. Luciana Perez",
     rubro: "Psicóloga · CABA",
+    foto: "/testimonios/luciana-perez.jpg",
     iniciales: "LP",
     colorAvatar: "bg-purple-600",
     texto:
@@ -30,6 +31,7 @@ export const TESTIMONIOS: Testimonio[] = [
     id: "2",
     nombre: "Dr. Martin Rivas",
     rubro: "Abogado laboralista · Córdoba",
+    foto: "/testimonios/martin-rivas.jpg",
     iniciales: "MR",
     colorAvatar: "bg-sky-600",
     texto:
@@ -43,6 +45,7 @@ export const TESTIMONIOS: Testimonio[] = [
     id: "3",
     nombre: "Micaela Torres",
     rubro: "Consultora de RRHH · Rosario",
+    foto: "/testimonios/micaela-torres.jpg",
     iniciales: "MT",
     colorAvatar: "bg-emerald-600",
     texto:
@@ -56,6 +59,7 @@ export const TESTIMONIOS: Testimonio[] = [
     id: "4",
     nombre: "Martín G.",
     rubro: "Socio · Buenos Aires",
+    foto: "/testimonios/martin-gimnasio.jpg",
     iniciales: "MG",
     colorAvatar: "bg-orange-600",
     texto: "Desde que entreno acá bajé 8 kilos en 3 meses. El equipo es increíble.",
