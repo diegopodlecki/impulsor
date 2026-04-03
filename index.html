@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html lang="es">
+<html lang="es-AR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,7 +16,6 @@
     <meta name="author" content="Diego Podlecki" />
     <meta name="theme-color" content="#0a0a0a" />
     <meta name="robots" content="index,follow" />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="color-scheme" content="dark light" />
 
     <link rel="canonical" href="https://webappimpulsor.com/" />
@@ -24,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -37,7 +36,10 @@
     <meta property="og:site_name" content="WebAppImpulsor" />
     <meta property="og:locale" content="es_AR" />
     <meta property="og:url" content="https://webappimpulsor.com/" />
-    <meta property="og:image" content="https://webappimpulsor.com/og-image.svg" />
+    <meta property="og:image" content="https://webappimpulsor.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:alt" content="WebAppImpulsor - web para conseguir clientes y consultas" />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -46,19 +48,40 @@
       name="twitter:description"
       content="Landing pages por rubro, formulario con Supabase y contacto directo por WhatsApp."
     />
-    <meta name="twitter:image" content="https://webappimpulsor.com/og-image.svg" />
+    <meta name="twitter:image" content="https://webappimpulsor.com/og-image.png" />
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
-      "name": "WebAppImpulsor",
+        "name": "WebAppImpulsor",
         "url": "https://webappimpulsor.com/",
-        "description": "Diseño web para negocios de servicios en Argentina. Landing pages enfocadas en consultas, confianza y contacto directo por WhatsApp.",
-        "areaServed": "AR",
-        "serviceType": ["Desarrollo web", "Automatización", "Integración con WhatsApp"]
+        "logo": "https://webappimpulsor.com/favicon.svg",
+        "description": "Creación de páginas web profesionales para entrenadores, psicólogos, nutricionistas y profesionales independientes en Argentina. Webs diseñadas para recibir consultas por WhatsApp.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Buenos Aires",
+          "addressRegion": "CABA",
+          "addressCountry": "AR"
+        },
+        "telephone": "+541166448389",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "telephone": "+541166448389",
+          "availableLanguage": "Spanish"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Argentina"
+        },
+        "serviceType": ["Diseño web", "Desarrollo web", "Páginas web para profesionales", "Integración con WhatsApp"],
+        "priceRange": "$$",
+        "sameAs": []
       }
     </script>
+    <meta name="geo.region" content="AR-C" />
+    <meta name="geo.placename" content="Buenos Aires, Argentina" />
     <script>
       if (window.location.hash === "#diagnostico") {
         window.history.replaceState(null, "", window.location.pathname + window.location.search);
