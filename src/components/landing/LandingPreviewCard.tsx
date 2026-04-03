@@ -213,93 +213,63 @@ export function LandingPreviewCard({
             background: `linear-gradient(180deg, ${theme.primary}, #050505 100%)`,
           }}
         >
-          <div
-            className="rounded-[12px] border p-4"
-            style={{
-              borderColor: theme.border,
-              background: `linear-gradient(180deg, ${theme.surface}, rgba(10,10,10,0.95))`,
-            }}
-          >
-          <div className="inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-medium" style={{ borderColor: theme.border, backgroundColor: `${theme.accent}14`, color: theme.accent }}>
-              <span className="mr-2">?</span>
-              {variant.kicker}
-            </div>
-            <p className="mt-3 text-[10px] uppercase tracking-[0.24em] text-[#9CA3AF]">{variant.heroLabel}</p>
-          <h4 className="mt-3 text-[24px] font-extrabold leading-[1.05] text-[#F5F5F5]">
-              {config.heroTitle}
-            </h4>
-            <p className="mt-3 text-[12px] leading-5 text-[#9CA3AF]">{config.heroSubtitle}</p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <span className="rounded-[8px] px-3 py-2 text-[11px] font-bold text-[#0A0A0A]" style={{ backgroundColor: theme.accent }}>
-                {config.heroCta}
-              </span>
-              <span className="rounded-[8px] border px-3 py-2 text-[11px] font-bold" style={{ borderColor: theme.accent, color: theme.accent }}>
-                {config.heroSecondaryCta}
-              </span>
-            </div>
-            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#9CA3AF]">
-              {points.map((point, index) => (
-                <span key={point} className="inline-flex items-center gap-x-3">
-                  {index > 0 ? <span style={{ color: theme.accent }}>✓</span> : null}
-                  <span>{point}</span>
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-3 grid gap-3 sm:grid-cols-2">
-            {serviceCards.map((service, index) => (
-              <article
-                key={service.title}
-                className="rounded-[10px] border p-3"
-                style={{ borderColor: theme.border, background: `${theme.surface}cc` }}
-              >
-                <div className="h-[84px] overflow-hidden rounded-[8px]">
-                  <img
-                    src={config.slug === "iron-fitness" && index === 0 ? images.heroImage : service.image ?? images.serviceImages[index] ?? images.heroImage}
-                    alt={service.title}
-                    width={600}
-                    height={420}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <h5 className="mt-3 text-[12px] font-semibold text-[#F5F5F5]">{service.title}</h5>
-                <p className="mt-1 text-[11px] leading-5 text-[#9CA3AF]">{service.description}</p>
-              </article>
-            ))}
-          </div>
-
-          <div className="mt-3 grid gap-3 sm:grid-cols-[1.05fr_0.95fr]">
-            <article className="rounded-[10px] border p-3" style={{ borderColor: theme.border, background: `${theme.surface}cc` }}>
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-[#9CA3AF]">Testimonio</p>
-                  <p className="mt-1 text-[13px] font-semibold text-[#F5F5F5]">{testimonial.name}</p>
-                </div>
-                <div className="text-yellow-500 text-[11px]">★★★★★</div>
+          <div className="space-y-3">
+            <div
+              className="rounded-[12px] border overflow-hidden"
+              style={{ borderColor: theme.border }}
+            >
+              <img
+                src={`/og/${config.slug}.png`}
+                alt={`${config.heroBadge} - Hero`}
+                width={600}
+                height={400}
+                loading="lazy"
+                decoding="async"
+                className="w-full object-cover"
+              />
+              <div className="p-3" style={{ background: theme.surface }}>
+                <p className="text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.accent }}>Hero</p>
+                <p className="mt-1 text-[11px] text-[#9CA3AF]">{config.heroTitle}</p>
               </div>
-              <p className="mt-2 text-[11px] leading-5 text-[#D1D5DB]">"{testimonial.text}"</p>
-            </article>
+            </div>
 
-            <article className="rounded-[10px] border p-3" style={{ borderColor: theme.border, background: `${theme.accent}10` }}>
-              <div className="flex items-center gap-3">
-                <img
-                  src={images.heroMockupImage}
-                  alt={config.heroPreviewTitle}
-                  className="h-16 w-16 rounded-[8px] object-cover"
-                  width={160}
-                  height={160}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-[#9CA3AF]">{config.heroPreviewTitle}</p>
-                  <p className="mt-1 text-[12px] leading-5 text-[#F5F5F5]">{config.heroPreviewSubtitle}</p>
-                </div>
+            <div
+              className="rounded-[12px] border overflow-hidden"
+              style={{ borderColor: theme.border }}
+            >
+              <img
+                src={`/og/${config.slug}.png`}
+                alt={`${config.heroBadge} - Servicios`}
+                width={600}
+                height={300}
+                loading="lazy"
+                decoding="async"
+                className="w-full object-cover"
+              />
+              <div className="p-3" style={{ background: theme.surface }}>
+                <p className="text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.accent }}>Servicios</p>
+                <p className="mt-1 text-[11px] text-[#9CA3AF]">{config.servicesTitle}</p>
               </div>
-            </article>
+            </div>
+
+            <div
+              className="rounded-[12px] border overflow-hidden"
+              style={{ borderColor: theme.border }}
+            >
+              <img
+                src={`/og/${config.slug}.png`}
+                alt={`${config.heroBadge} - Contacto`}
+                width={600}
+                height={250}
+                loading="lazy"
+                decoding="async"
+                className="w-full object-cover"
+              />
+              <div className="p-3" style={{ background: theme.surface }}>
+                <p className="text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.accent }}>Contacto</p>
+                <p className="mt-1 text-[11px] text-[#9CA3AF]">{config.formTitle}</p>
+              </div>
+            </div>
           </div>
 
           <div className="mt-3 rounded-[12px] border p-4" style={{ borderColor: theme.border, background: `${theme.primary}e6` }}>
