@@ -1,7 +1,9 @@
 import { landingPages } from "@/data/landings";
 import { generateBreadcrumbSchema, generateServiceSchema } from "@/components/SEO/schemas";
 import type { SeoHeadProps } from "@/components/SEO/SeoHead";
+import { FAQ_ITEMS } from "@/lib/faq";
 import { findRubroBySlug } from "@/lib/rubros";
+import { generateFAQSchema } from "@/components/SEO/schemas";
 import { DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE, DEFAULT_TITLE, SITE_URL } from "@/lib/seo-config";
 
 export type SeoRouteConfig = Pick<
@@ -46,6 +48,23 @@ function buildWebsIndexSeoConfig(): SeoRouteConfig {
   };
 }
 
+function buildFaqSeoConfig(): SeoRouteConfig {
+  return {
+    title: "Preguntas Frecuentes | WebAppImpulsor",
+    description:
+      "Respondemos todas tus dudas sobre diseño web para profesionales en Argentina. Precios, plazos, proceso y garantías.",
+    canonical: `${SITE_URL}/faq`,
+    ogImage: DEFAULT_OG_IMAGE,
+    schema: [
+      generateBreadcrumbSchema([
+        { name: "Inicio", url: SITE_URL },
+        { name: "Preguntas frecuentes", url: `${SITE_URL}/faq` },
+      ]),
+      generateFAQSchema(FAQ_ITEMS),
+    ],
+  };
+}
+
 function buildRubroSeoConfig(slug: string): SeoRouteConfig | undefined {
   const rubro = findRubroBySlug(slug);
   if (!rubro) return undefined;
@@ -87,6 +106,7 @@ export const SEO_ROUTE_CONFIGS = {
   "/gimnasio": buildLandingSeoConfig("/gimnasio", "iron-fitness"),
   "/emprendedores": buildLandingSeoConfig("/emprendedores", "emprendedores"),
   "/webs": buildWebsIndexSeoConfig(),
+  "/faq": buildFaqSeoConfig(),
   "/login": {
     title: "Acceso privado",
     description: DEFAULT_DESCRIPTION,

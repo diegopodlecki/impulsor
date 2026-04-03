@@ -1,4 +1,5 @@
 import { CheckCircle2, HelpCircle, ShieldCheck, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import { analytics } from "@/components/analytics/analytics";
 import { Button } from "@/components/ui/button";
@@ -115,6 +116,13 @@ export function PricingSection() {
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.answer}</p>
               </details>
             ))}
+          </div>
+
+          <div className="mt-6 flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4">
+            <p className="text-sm text-white/70">¿Querés ver todas las preguntas con más detalle?</p>
+            <Link className="text-sm font-semibold text-cyan-300 transition-colors hover:text-cyan-200" to="/faq">
+              Ver todas las preguntas →
+            </Link>
           </div>
         </div>
 

@@ -23,6 +23,7 @@ import EsteticaCorporal from "./pages/EsteticaCorporal.tsx";
 import Gimnasios from "./pages/Gimnasios.tsx";
 import Index from "./pages/Index.tsx";
 import IronFitness from "./pages/IronFitness.tsx";
+import Faq from "./pages/Faq.tsx";
 import Login from "./pages/Login.tsx";
 import Nutricionistas from "./pages/Nutricionistas.tsx";
 import PersonalTrainers from "./pages/PersonalTrainers.tsx";
@@ -57,6 +58,7 @@ export const routes: RouteRecord[] = [
       { path: "emprendedores", element: <Emprendedores /> },
       { path: "webs", element: <WebsIndex /> },
       { path: "webs/:rubro", element: <WebRubro /> },
+      { path: "faq", element: <Faq /> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       { path: "dashboard", element: <Navigate to="/admin" replace /> },
