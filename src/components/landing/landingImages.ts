@@ -1,149 +1,90 @@
-import { previewSvg } from "@/components/landing/landingVisuals";
-
 export type LandingImageSet = {
   heroImage: string;
   heroMockupImage: string;
   serviceImages: string[];
 };
 
-type ImageConfig = {
-  heroTitle: string;
-  heroSubtitle: string;
-  mockupTitle: string;
-  mockupSubtitle: string;
-  services: Array<{ title: string; subtitle: string }>;
-  accentA: string;
-  accentB: string;
-};
-
-function makeImageSet(config: ImageConfig): LandingImageSet {
-  return {
-    heroImage: previewSvg(config.heroTitle, config.heroSubtitle, config.accentA, config.accentB),
-    heroMockupImage: previewSvg(config.mockupTitle, config.mockupSubtitle, config.accentB, config.accentA),
-    serviceImages: config.services.map((service, index) =>
-      previewSvg(
-        service.title,
-        service.subtitle,
-        index % 2 === 0 ? config.accentA : config.accentB,
-        index % 2 === 0 ? config.accentB : config.accentA,
-      ),
-    ),
-  };
-}
-
 const landingImages: Record<string, LandingImageSet> = {
-  default: makeImageSet({
-    heroTitle: "Presencia clara",
-    heroSubtitle: "Consultas, confianza y WhatsApp",
-    mockupTitle: "Sitio listo para vender",
-    mockupSubtitle: "Lo esencial sin ruido visual",
-    accentA: "#22c55e",
-    accentB: "#3b82f6",
-    services: [
-      { title: "Mensaje principal", subtitle: "Tu propuesta en segundos" },
-      { title: "Prueba social", subtitle: "Más confianza al decidir" },
-      { title: "Contacto simple", subtitle: "Menos fricción, más consultas" },
-      { title: "Conversión", subtitle: "CTA claro y visible" },
+  default: {
+    heroImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=600&fit=crop",
+    heroMockupImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=500&fit=crop",
+    serviceImages: [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=420&fit=crop",
     ],
-  }),
-  gimnasios: makeImageSet({
-    heroTitle: "Gimnasio con más alumnos",
-    heroSubtitle: "Clases, horarios y reservas",
-    mockupTitle: "Inscripciones desde la web",
-    mockupSubtitle: "Entrenamiento con CTA claro",
-    accentA: "#22c55e",
-    accentB: "#06b6d4",
-    services: [
-      { title: "Hero impactante", subtitle: "Tu gimnasio en primer plano" },
-      { title: "Clases y horarios", subtitle: "Todo en un vistazo" },
-      { title: "Galería real", subtitle: "Instalaciones que generan confianza" },
-      { title: "Formulario", subtitle: "Dejan sus datos sin fricción" },
-      { title: "WhatsApp", subtitle: "Contacto inmediato" },
+  },
+  gimnasios: {
+    heroImage: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=600&fit=crop",
+    heroMockupImage: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&h=500&fit=crop",
+    serviceImages: [
+      "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1502904550040-7534597429ae?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1514053026555-49ce8618b8d0?w=600&h=420&fit=crop",
     ],
-  }),
-  "personal-trainers": makeImageSet({
-    heroTitle: "Marca personal premium",
-    heroSubtitle: "Resultados, método y disciplina",
-    mockupTitle: "Entrenamiento que convierte",
-    mockupSubtitle: "Sesiones, progreso y prueba social",
-    accentA: "#f97316",
-    accentB: "#ef4444",
-    services: [
-      { title: "Propuesta clara", subtitle: "Qué hacés y para quién" },
-      { title: "Tu método", subtitle: "Cómo trabajás el progreso" },
-      { title: "Resultados", subtitle: "Antes y después visibles" },
-      { title: "Planes", subtitle: "Opciones fáciles de elegir" },
+  },
+  "personal-trainers": {
+    heroImage: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&h=600&fit=crop",
+    heroMockupImage: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&h=500&fit=crop",
+    serviceImages: [
+      "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1502904550040-7534597429ae?w=600&h=420&fit=crop",
     ],
-  }),
-  nutricionistas: makeImageSet({
-    heroTitle: "Consultorio que da confianza",
-    heroSubtitle: "Orden, claridad y seguimiento",
-    mockupTitle: "Atención más clara",
-    mockupSubtitle: "Servicios, turnos y contacto",
-    accentA: "#84cc16",
-    accentB: "#22c55e",
-    services: [
-      { title: "Hero profesional", subtitle: "Tu enfoque en una frase" },
-      { title: "Servicios", subtitle: "Consultas y tratamientos" },
-      { title: "Sobre vos", subtitle: "Formación y experiencia" },
-      { title: "Formulario", subtitle: "Turnos simples y ordenados" },
+  },
+  nutricionistas: {
+    heroImage: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200&h=600&fit=crop",
+    heroMockupImage: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&h=500&fit=crop",
+    serviceImages: [
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1a?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=420&fit=crop",
     ],
-  }),
-  psicologos: makeImageSet({
-    heroTitle: "Espacio seguro y cálido",
-    heroSubtitle: "Calma, empatía y contacto",
-    mockupTitle: "Primer paso más humano",
-    mockupSubtitle: "Claridad sin sobrecargar",
-    accentA: "#8b5cf6",
-    accentB: "#06b6d4",
-    services: [
-      { title: "Hero empático", subtitle: "Cercanía desde el inicio" },
-      { title: "Tu enfoque", subtitle: "Cómo acompañás procesos" },
-      { title: "FAQ útil", subtitle: "Resolvés dudas comunes" },
-      { title: "Contacto simple", subtitle: "Menos fricción para consultar" },
+  },
+  psicologos: {
+    heroImage: "https://images.unsplash.com/photo-1516308775066-5fbf9a3b7d50?w=1200&h=600&fit=crop",
+    heroMockupImage: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=800&h=500&fit=crop",
+    serviceImages: [
+      "https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&h=420&fit=crop",
     ],
-  }),
-  "estetica-corporal": makeImageSet({
-    heroTitle: "Imagen premium y resultados",
-    heroSubtitle: "Tratamientos, deseo y confianza",
-    mockupTitle: "Consultas más elegantes",
-    mockupSubtitle: "Antes y después con más impacto",
-    accentA: "#ec4899",
-    accentB: "#f59e0b",
-    services: [
-      { title: "Hero visual", subtitle: "Tu propuesta se ve premium" },
-      { title: "Tratamientos", subtitle: "Servicios claros y ordenados" },
-      { title: "Resultados", subtitle: "Prueba visual que convence" },
-      { title: "CTA fuerte", subtitle: "Más consultas sin dudas" },
+  },
+  "estetica-corporal": {
+    heroImage: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=1200&h=600&fit=crop",
+    heroMockupImage: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&h=500&fit=crop",
+    serviceImages: [
+      "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1544161515-4ab6ce6b40d8?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=420&fit=crop",
     ],
-  }),
-  emprendedores: makeImageSet({
-    heroTitle: "Oferta clara y autoridad",
-    heroSubtitle: "Menos ruido, más consultas",
-    mockupTitle: "Negocio que convierte",
-    mockupSubtitle: "Propuesta y prueba social",
-    accentA: "#0ea5e9",
-    accentB: "#10b981",
-    services: [
-      { title: "Propuesta", subtitle: "Qué hacés y por qué importa" },
-      { title: "Autoridad", subtitle: "Casos y credibilidad" },
-      { title: "Conversión", subtitle: "CTA visible y directo" },
-      { title: "WhatsApp", subtitle: "Contacto simple" },
+  },
+  emprendedores: {
+    heroImage: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&h=600&fit=crop",
+    heroMockupImage: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=500&fit=crop",
+    serviceImages: [
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=420&fit=crop",
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=420&fit=crop",
     ],
-  }),
-  "iron-fitness": makeImageSet({
-    heroTitle: "La landing original",
-    heroSubtitle: "Fitness, energía y acción",
-    mockupTitle: "Versión completa",
-    mockupSubtitle: "Un ejemplo real del sistema",
-    accentA: "#22c55e",
-    accentB: "#06b6d4",
-    services: [
-      { title: "Entrenamiento", subtitle: "Rutinas y resultados" },
-      { title: "Horario", subtitle: "Clases en un vistazo" },
-      { title: "Inscripción", subtitle: "Más socios en menos fricción" },
+  },
+  "iron-fitness": {
+    heroImage: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=600&fit=crop",
+    heroMockupImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=500&fit=crop",
+    serviceImages: [
+      "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80",
+      "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80",
+      "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=80",
     ],
-  }),
+  },
 };
 
 export function getLandingImages(slug: string) {
