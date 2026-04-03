@@ -160,6 +160,9 @@ export default function IronFitnessPage() {
             <a href="#planes" className="text-[13px] text-[#9CA3AF] transition-colors hover:text-[#F5F5F5]">
               Planes
             </a>
+            <a href="/webs" className="text-[13px] text-[#9CA3AF] transition-colors hover:text-[#F5F5F5]">
+              Rubros
+            </a>
             <a href="#contacto" className="text-[13px] text-[#9CA3AF] transition-colors hover:text-[#F5F5F5]">
               Contacto
             </a>

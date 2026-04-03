@@ -179,6 +179,9 @@ export default function Index() {
             <a href="#problema" className="text-sm font-medium text-white/70 transition-colors hover:text-white">Problema</a>
             <a href="#solucion" className="text-sm font-medium text-white/70 transition-colors hover:text-white">Solución</a>
             <a href="#rubros" className="text-sm font-medium text-white/70 transition-colors hover:text-white">Ejemplos</a>
+            <Link to="/webs" className="text-sm font-medium text-white/70 transition-colors hover:text-white">
+              Rubros
+            </Link>
             <a href="#contacto" className="text-sm font-medium text-white/70 transition-colors hover:text-white">Contacto</a>
           </nav>
 

@@ -1,6 +1,7 @@
 import { landingPages } from "@/data/landings";
-import { generateServiceSchema } from "@/components/SEO/schemas";
+import { generateBreadcrumbSchema, generateServiceSchema } from "@/components/SEO/schemas";
 import type { SeoHeadProps } from "@/components/SEO/SeoHead";
+import { findRubroBySlug } from "@/lib/rubros";
 import { DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE, DEFAULT_TITLE, SITE_URL } from "@/lib/seo-config";
 
 export type SeoRouteConfig = Pick<
@@ -31,6 +32,40 @@ function buildLandingSeoConfig(path: string, landingKey: keyof typeof landingPag
   };
 }
 
+function buildWebsIndexSeoConfig(): SeoRouteConfig {
+  return {
+    title: "Webs profesionales para cada rubro",
+    description:
+      "Diseñadas específicamente para tu tipo de negocio y pensadas para rankear por búsquedas de rubro en Argentina.",
+    canonical: `${SITE_URL}/webs`,
+    ogImage: DEFAULT_OG_IMAGE,
+    schema: generateBreadcrumbSchema([
+      { name: "Inicio", url: SITE_URL },
+      { name: "Webs por Rubro", url: `${SITE_URL}/webs` },
+    ]),
+  };
+}
+
+function buildRubroSeoConfig(slug: string): SeoRouteConfig | undefined {
+  const rubro = findRubroBySlug(slug);
+  if (!rubro) return undefined;
+
+  return {
+    title: `Página web para ${rubro.nombrePlural}`,
+    description: rubro.descripcion,
+    canonical: `${SITE_URL}/webs/${rubro.slug}`,
+    ogImage: DEFAULT_OG_IMAGE,
+    schema: [
+      generateServiceSchema(`Página web para ${rubro.nombrePlural}`, rubro.descripcion),
+      generateBreadcrumbSchema([
+        { name: "Inicio", url: SITE_URL },
+        { name: "Webs por Rubro", url: `${SITE_URL}/webs` },
+        { name: rubro.nombrePlural, url: `${SITE_URL}/webs/${rubro.slug}` },
+      ]),
+    ],
+  };
+}
+
 export const SEO_ROUTE_CONFIGS = {
   "/": {
     title: DEFAULT_TITLE,
@@ -51,6 +86,7 @@ export const SEO_ROUTE_CONFIGS = {
   "/estetica-corporal": buildLandingSeoConfig("/estetica-corporal", "estetica-corporal"),
   "/gimnasio": buildLandingSeoConfig("/gimnasio", "iron-fitness"),
   "/emprendedores": buildLandingSeoConfig("/emprendedores", "emprendedores"),
+  "/webs": buildWebsIndexSeoConfig(),
   "/login": {
     title: "Acceso privado",
     description: DEFAULT_DESCRIPTION,
@@ -101,7 +137,15 @@ export const SEO_ROUTE_CONFIGS = {
 } satisfies Record<string, SeoRouteConfig>;
 
 export function getSeoConfigForPath(pathname: string): SeoRouteConfig {
-  return SEO_ROUTE_CONFIGS[normalizePath(pathname)] ?? {
+  const normalized = normalizePath(pathname);
+  const rubroMatch = normalized.match(/^\/webs\/([^/]+)$/);
+
+  if (rubroMatch) {
+    const rubroSeo = buildRubroSeoConfig(decodeURIComponent(rubroMatch[1]));
+    if (rubroSeo) return rubroSeo;
+  }
+
+  return SEO_ROUTE_CONFIGS[normalized] ?? {
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
     canonical: SITE_URL,
@@ -109,4 +153,3 @@ export function getSeoConfigForPath(pathname: string): SeoRouteConfig {
     noIndex: true,
   };
 }
-

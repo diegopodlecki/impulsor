@@ -549,6 +549,7 @@ const landingNav = [
   { href: "#inicio", label: "Inicio" },
   { href: "#servicios", label: "Servicios" },
   { href: "#testimonios", label: "Testimonios" },
+  { href: "/webs", label: "Rubros" },
   { href: "#contacto", label: "Contacto" },
 ];
 

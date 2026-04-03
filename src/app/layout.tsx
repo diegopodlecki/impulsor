@@ -93,6 +93,7 @@ const navigation = [
   { href: "/#servicios", label: "Servicios" },
   { href: "/#testimonios", label: "Testimonios" },
   { href: "/#precios", label: "Precios" },
+  { href: "/webs", label: "Rubros" },
   { href: "/#contacto", label: "Contacto" },
 ];
 

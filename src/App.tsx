@@ -25,6 +25,8 @@ import Login from "./pages/Login.tsx";
 import Nutricionistas from "./pages/Nutricionistas.tsx";
 import PersonalTrainers from "./pages/PersonalTrainers.tsx";
 import Psicologos from "./pages/Psicologos.tsx";
+import WebRubro from "./pages/WebRubro";
+import WebsIndex from "./pages/WebsIndex";
 import Register from "./pages/Register.tsx";
 import { AuthProvider } from "./contexts/AuthContext";
 
@@ -51,6 +53,8 @@ export const routes: RouteRecord[] = [
       { path: "gimnasio", element: <IronFitness /> },
       { path: "iron-fitness", element: <Navigate to="/gimnasio" replace /> },
       { path: "emprendedores", element: <Emprendedores /> },
+      { path: "webs", element: <WebsIndex /> },
+      { path: "webs/:rubro", element: <WebRubro /> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       { path: "dashboard", element: <Navigate to="/admin" replace /> },
