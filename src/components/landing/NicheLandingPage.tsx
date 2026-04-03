@@ -1,4 +1,4 @@
-Ôªøimport { useEffect, type ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import {
   Brain,
   Calendar,
@@ -113,51 +113,51 @@ const landingSeo: Record<
     title: "Web para gimnasios que generan alumnos | WebAppImpulsor",
     description:
       "Landing page para gimnasios enfocada en conseguir nuevos alumnos, mostrar clases, horarios e instalaciones y convertir consultas por WhatsApp.",
-    keywords: "web para gimnasios, landing page para gimnasios, p√°gina web para gimnasio, conseguir alumnos online",
+    keywords: "web para gimnasios, landing page para gimnasios, p·gina web para gimnasio, conseguir alumnos online",
     canonicalPath: "/gimnasios",
     ogImagePath: "/og/gimnasios.svg",
   },
   "personal-trainers": {
     heroStats: [
-      { value: "Sesiones 1 a 1", label: "m√°s foco" },
-      { value: "M√©todo propio", label: "m√°s autoridad" },
-      { value: "Progreso visible", label: "m√°s cierres" },
+      { value: "Sesiones 1 a 1", label: "m·s foco" },
+      { value: "MÈtodo propio", label: "m·s autoridad" },
+      { value: "Progreso visible", label: "m·s cierres" },
     ],
     testimonialTitle: "Un servicio premium para vender tu marca personal",
     testimonialDescription:
-      "Como entrenador, lo que m√°s convierte es una experiencia clara, premium y centrada en transformaciones reales.",
-    contactBadge: "Convert√≠ tu experiencia en clientes premium",
-    closingEyebrow: "M√©todo y marca",
+      "Como entrenador, lo que m·s convierte es una experiencia clara, premium y centrada en transformaciones reales.",
+    contactBadge: "ConvertÌ tu experiencia en clientes premium",
+    closingEyebrow: "MÈtodo y marca",
   },
   nutricionistas: {
     heroStats: [
-      { value: "Protocolos claros", label: "m√°s orden" },
-      { value: "Agenda clara", label: "sin fricci√≥n" },
-      { value: "Seguimiento cl√≠nico", label: "m√°s confianza" },
+      { value: "Protocolos claros", label: "m·s orden" },
+      { value: "Agenda clara", label: "sin fricciÛn" },
+      { value: "Seguimiento clÌnico", label: "m·s confianza" },
     ],
-    testimonialTitle: "Claridad cl√≠nica para captar m√°s consultas",
+    testimonialTitle: "Claridad clÌnica para captar m·s consultas",
     testimonialDescription:
-      "En nutrici√≥n, la confianza crece cuando el servicio se ve ordenado, profesional y f√°cil de entender.",
+      "En nutriciÛn, la confianza crece cuando el servicio se ve ordenado, profesional y f·cil de entender.",
     contactBadge: "Turnos claros y seguimiento profesional",
     closingEyebrow: "Consulta",
   },
   psicologos: {
     heroStats: [
-      { value: "Calma visual", label: "m√°s contenci√≥n" },
-      { value: "Contacto simple", label: "sin fricci√≥n" },
-      { value: "Primer turno", label: "m√°s amable" },
+      { value: "Calma visual", label: "m·s contenciÛn" },
+      { value: "Contacto simple", label: "sin fricciÛn" },
+      { value: "Primer turno", label: "m·s amable" },
     ],
-    testimonialTitle: "Una experiencia visual m√°s c√°lida y contenida",
+    testimonialTitle: "Una experiencia visual m·s c·lida y contenida",
     testimonialDescription:
-      "La experiencia visual debe acompa√±ar una decisi√≥n sensible con calma, cercan√≠a y claridad.",
-    contactBadge: "Un primer paso m√°s humano",
-    closingEyebrow: "Acompa√±amiento",
+      "La experiencia visual debe acompaÒar una decisiÛn sensible con calma, cercanÌa y claridad.",
+    contactBadge: "Un primer paso m·s humano",
+    closingEyebrow: "AcompaÒamiento",
   },
   "estetica-corporal": {
-    title: "Web para est√©tica corporal que vende m√°s consultas | WebAppImpulsor",
+    title: "Web para estÈtica corporal que vende m·s consultas | WebAppImpulsor",
     description:
-      "Landing page para est√©tica corporal dise√±ada para mostrar tratamientos, transmitir imagen premium y convertir m√°s consultas.",
-    keywords: "web para est√©tica corporal, landing page para est√©tica, p√°gina web para tratamientos, conseguir consultas online",
+      "Landing page para estÈtica corporal diseÒada para mostrar tratamientos, transmitir imagen premium y convertir m·s consultas.",
+    keywords: "web para estÈtica corporal, landing page para estÈtica, p·gina web para tratamientos, conseguir consultas online",
     canonicalPath: "/estetica-corporal",
     ogImagePath: "/og/estetica-corporal.svg",
   },
@@ -165,7 +165,7 @@ const landingSeo: Record<
     title: "Web para emprendedores que convierten visitas en clientes | WebAppImpulsor",
     description:
       "Landing page para emprendedores enfocada en mostrar la propuesta de valor, construir autoridad y facilitar el contacto.",
-    keywords: "web para emprendedores, landing page para emprendedores, p√°gina web para servicios, vender online",
+    keywords: "web para emprendedores, landing page para emprendedores, p·gina web para servicios, vender online",
     canonicalPath: "/emprendedores",
     ogImagePath: "/og/emprendedores.svg",
   },
@@ -173,19 +173,19 @@ const landingSeo: Record<
 
 const fallbackTestimonials = [
   {
-    name: "Mar√≠a Gonz√°lez",
-    role: "Due√±a de gimnasio",
-    text: "Desde que tenemos la web, recibimos consultas todos los d√≠as. Antes depend√≠amos solo de Instagram.",
+    name: "MarÌa Gonz·lez",
+    role: "DueÒa de gimnasio",
+    text: "Desde que tenemos la web, recibimos consultas todos los dÌas. Antes dependÌamos solo de Instagram.",
     rating: 5,
   },
   {
-    name: "Carlos Rodr√≠guez",
+    name: "Carlos RodrÌguez",
     role: "Personal trainer",
-    text: "Mi marca personal se ve mucho m√°s profesional. Los clientes me encuentran m√°s f√°cil y conf√≠an m√°s.",
+    text: "Mi marca personal se ve mucho m·s profesional. Los clientes me encuentran m·s f·cil y confÌan m·s.",
     rating: 5,
   },
   {
-    name: "Laura Mart√≠nez",
+    name: "Laura MartÌnez",
     role: "Nutricionista",
     text: "La web me ayuda a filtrar pacientes y agendar consultas sin perder tiempo. Muy recomendable.",
     rating: 5,
@@ -204,73 +204,73 @@ const landingVoices: Record<
 > = {
   default: {
     heroStats: [
-      { value: "M√°s consultas", label: "con menos fricci√≥n" },
+      { value: "M·s consultas", label: "con menos fricciÛn" },
       { value: "Imagen premium", label: "desde el primer vistazo" },
       { value: "Contacto directo", label: "con WhatsApp y formulario" },
     ],
-    testimonialTitle: "Prueba social que refuerza la decisi√≥n",
+    testimonialTitle: "Prueba social que refuerza la decisiÛn",
     testimonialDescription:
-      "Una landing visual, ordenada y con se√±ales de confianza ayuda a que la consulta se sienta m√°s natural.",
+      "Una landing visual, ordenada y con seÒales de confianza ayuda a que la consulta se sienta m·s natural.",
     contactBadge: "Contacto visible y respuesta cuidada",
     closingEyebrow: "Cierre",
   },
   gimnasios: {
     heroStats: [
-      { value: "+ Socios", label: "m√°s inscripciones" },
+      { value: "+ Socios", label: "m·s inscripciones" },
       { value: "Clases claras", label: "en un vistazo" },
-      { value: "Turnos r√°pidos", label: "por WhatsApp" },
+      { value: "Turnos r·pidos", label: "por WhatsApp" },
     ],
     testimonialTitle: "Inscripciones y prueba social para sumar alumnos",
     testimonialDescription:
-      "Para gimnasios, mostrar resultados, horarios y comunidad hace que la visita se convierta en consulta con m√°s facilidad.",
-    contactBadge: "Consultas r√°pidas y visitas al gym",
-    closingEyebrow: "Empez√° hoy",
+      "Para gimnasios, mostrar resultados, horarios y comunidad hace que la visita se convierta en consulta con m·s facilidad.",
+    contactBadge: "Consultas r·pidas y visitas al gym",
+    closingEyebrow: "Empez· hoy",
   },
   "personal-trainers": {
     heroStats: [
-      { value: "Sesiones 1 a 1", label: "m√°s foco" },
-      { value: "M√©todo propio", label: "m√°s autoridad" },
-      { value: "Progreso visible", label: "m√°s cierres" },
+      { value: "Sesiones 1 a 1", label: "m·s foco" },
+      { value: "MÈtodo propio", label: "m·s autoridad" },
+      { value: "Progreso visible", label: "m·s cierres" },
     ],
-    testimonialTitle: "Una presentaci√≥n premium para tu marca personal",
+    testimonialTitle: "Una presentaciÛn premium para tu marca personal",
     testimonialDescription:
-      "Como entrenador, lo que m√°s convierte es una experiencia clara, premium y centrada en transformaciones reales.",
-    contactBadge: "Convert√≠ tu experiencia en clientes premium",
-    closingEyebrow: "M√©todo y marca",
+      "Como entrenador, lo que m·s convierte es una experiencia clara, premium y centrada en transformaciones reales.",
+    contactBadge: "ConvertÌ tu experiencia en clientes premium",
+    closingEyebrow: "MÈtodo y marca",
   },
   nutricionistas: {
     heroStats: [
-      { value: "Protocolos claros", label: "m√°s orden" },
-      { value: "Agenda clara", label: "sin fricci√≥n" },
-      { value: "Seguimiento cl√≠nico", label: "m√°s confianza" },
+      { value: "Protocolos claros", label: "m·s orden" },
+      { value: "Agenda clara", label: "sin fricciÛn" },
+      { value: "Seguimiento clÌnico", label: "m·s confianza" },
     ],
-    testimonialTitle: "Claridad cl√≠nica para captar mejores consultas",
+    testimonialTitle: "Claridad clÌnica para captar mejores consultas",
     testimonialDescription:
-      "En nutrici√≥n, la confianza crece cuando el servicio se ve ordenado, profesional y f√°cil de entender.",
+      "En nutriciÛn, la confianza crece cuando el servicio se ve ordenado, profesional y f·cil de entender.",
     contactBadge: "Turnos claros y seguimiento profesional",
     closingEyebrow: "Consulta",
   },
   psicologos: {
     heroStats: [
-      { value: "Calma visual", label: "m√°s contenci√≥n" },
-      { value: "Contacto simple", label: "sin fricci√≥n" },
-      { value: "Primer turno", label: "m√°s amable" },
+      { value: "Calma visual", label: "m·s contenciÛn" },
+      { value: "Contacto simple", label: "sin fricciÛn" },
+      { value: "Primer turno", label: "m·s amable" },
     ],
-    testimonialTitle: "Una experiencia visual m√°s c√°lida y contenida",
+    testimonialTitle: "Una experiencia visual m·s c·lida y contenida",
     testimonialDescription:
-      "La experiencia visual debe acompa√±ar una decisi√≥n sensible con calma, cercan√≠a y claridad.",
-    contactBadge: "Un primer paso m√°s humano",
-    closingEyebrow: "Acompa√±amiento",
+      "La experiencia visual debe acompaÒar una decisiÛn sensible con calma, cercanÌa y claridad.",
+    contactBadge: "Un primer paso m·s humano",
+    closingEyebrow: "AcompaÒamiento",
   },
   "estetica-corporal": {
     heroStats: [
-      { value: "Imagen premium", label: "m√°s deseo" },
-      { value: "Antes y despu√©s", label: "m√°s prueba" },
-      { value: "M√°s consultas", label: "menos dudas" },
+      { value: "Imagen premium", label: "m·s deseo" },
+      { value: "Antes y despuÈs", label: "m·s prueba" },
+      { value: "M·s consultas", label: "menos dudas" },
     ],
     testimonialTitle: "Presencia premium para tratamientos de alto valor percibido",
     testimonialDescription:
-      "En est√©tica, la percepci√≥n visual y la prueba de resultados empujan mucho m√°s que un texto gen√©rico.",
+      "En estÈtica, la percepciÛn visual y la prueba de resultados empujan mucho m·s que un texto genÈrico.",
     contactBadge: "Consultas elegantes con foco en resultados",
     closingEyebrow: "Elegancia",
   },
@@ -278,13 +278,13 @@ const landingVoices: Record<
     heroStats: [
       { value: "Oferta clara", label: "en segundos" },
       { value: "Autoridad", label: "que ordena" },
-      { value: "M√°s ventas", label: "con foco" },
+      { value: "M·s ventas", label: "con foco" },
     ],
     testimonialTitle: "Claridad y autoridad para vender servicios",
     testimonialDescription:
-      "Cuando un emprendimiento comunica mejor su propuesta, consigue consultas m√°s calificadas y mejor tasa de cierre.",
+      "Cuando un emprendimiento comunica mejor su propuesta, consigue consultas m·s calificadas y mejor tasa de cierre.",
     contactBadge: "Una landing pensada para convertir",
-    closingEyebrow: "Convert√≠ m√°s",
+    closingEyebrow: "ConvertÌ m·s",
   },
 };
 
@@ -377,7 +377,7 @@ function HeroMockup({
               height={900}
               loading="eager"
               decoding="async"
-              fetchPriority="high"
+              fetchpriority="high"
             />
           </div>
 
@@ -402,7 +402,7 @@ function HeroMockup({
                   WhatsApp visible
                 </span>
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-white/75">
-                  Dise√±o claro
+                  DiseÒo claro
                 </span>
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-white/75">
                   Confianza inmediata
@@ -477,8 +477,8 @@ function TestimonialPreview({
         </div>
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
           {[
-            "M√°s confianza",
-            "M√°s consultas",
+            "M·s confianza",
+            "M·s consultas",
             "Mejor imagen",
           ].map((item) => (
             <div
@@ -510,7 +510,7 @@ function TestimonialPreview({
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground" style={{ color: theme.accent }}>
                 Mockup de resultado
               </p>
-              <p className="mt-1 text-sm text-muted-foreground">As√≠ se ve tu landing antes de escribirte.</p>
+              <p className="mt-1 text-sm text-muted-foreground">AsÌ se ve tu landing antes de escribirte.</p>
             </div>
             <span
               className="rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/65"
@@ -702,7 +702,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         <SectionTitle
           eyebrow="Ofertas"
           title="Soluciones web que generan resultados"
-          description="Eleg√≠ la que mejor se adapte a tu negocio"
+          description="ElegÌ la que mejor se adapte a tu negocio"
           accent={accent}
         />
 
@@ -726,21 +726,21 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
             <p className="mt-2 text-sm leading-6 text-muted-foreground">Para negocios que necesitan clientes constantemente</p>
             <ul className="mt-4 space-y-2">
               <li className="flex items-start gap-2 text-sm">
-                <span style={{ color: accent }}>‚úì</span>
+                <span style={{ color: accent }}>?</span>
                 <span>Landing optimizada</span>
               </li>
               <li className="flex items-start gap-2 text-sm">
-                <span style={{ color: accent }}>‚úì</span>
-                <span>Bot√≥n WhatsApp estrat√©gico</span>
+                <span style={{ color: accent }}>?</span>
+                <span>BotÛn WhatsApp estratÈgico</span>
               </li>
               <li className="flex items-start gap-2 text-sm">
-                <span style={{ color: accent }}>‚úì</span>
+                <span style={{ color: accent }}>?</span>
                 <span>Copy de venta</span>
               </li>
             </ul>
             <div className="mt-4 rounded-xl p-3" style={{ backgroundColor: `${accent}10` }}>
               <p className="text-sm font-medium" style={{ color: accent }}>Resultado esperado:</p>
-              <p className="text-sm text-muted-foreground">M√°s consultas en menos de 30 d√≠as</p>
+              <p className="text-sm text-muted-foreground">M·s consultas en menos de 30 dÌas</p>
             </div>
               <Button
                 className="mt-6 w-full"
@@ -775,21 +775,21 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
             <p className="mt-2 text-sm leading-6 text-muted-foreground">Para aparecer en Google y atraer clientes cercanos</p>
             <ul className="mt-4 space-y-2">
               <li className="flex items-start gap-2 text-sm">
-                <span style={{ color: accent }}>‚úì</span>
-                <span>SEO b√°sico</span>
+                <span style={{ color: accent }}>?</span>
+                <span>SEO b·sico</span>
               </li>
               <li className="flex items-start gap-2 text-sm">
-                <span style={{ color: accent }}>‚úì</span>
-                <span>Optimizaci√≥n Google Maps</span>
+                <span style={{ color: accent }}>?</span>
+                <span>OptimizaciÛn Google Maps</span>
               </li>
               <li className="flex items-start gap-2 text-sm">
-                <span style={{ color: accent }}>‚úì</span>
-                <span>Llamados a la acci√≥n</span>
+                <span style={{ color: accent }}>?</span>
+                <span>Llamados a la acciÛn</span>
               </li>
             </ul>
             <div className="mt-4 rounded-xl p-3" style={{ backgroundColor: `${accent}10` }}>
               <p className="text-sm font-medium" style={{ color: accent }}>Resultado:</p>
-              <p className="text-sm text-muted-foreground">M√°s visibilidad local</p>
+              <p className="text-sm text-muted-foreground">M·s visibilidad local</p>
             </div>
               <Button
                 className="mt-6 w-full"
@@ -824,21 +824,21 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
             <p className="mt-2 text-sm leading-6 text-muted-foreground">Para automatizar consultas</p>
             <ul className="mt-4 space-y-2">
               <li className="flex items-start gap-2 text-sm">
-                <span style={{ color: accent }}>‚úì</span>
-                <span>Web + integraci√≥n WhatsApp</span>
+                <span style={{ color: accent }}>?</span>
+                <span>Web + integraciÛn WhatsApp</span>
               </li>
               <li className="flex items-start gap-2 text-sm">
-                <span style={{ color: accent }}>‚úì</span>
+                <span style={{ color: accent }}>?</span>
                 <span>Mensajes prearmados</span>
               </li>
               <li className="flex items-start gap-2 text-sm">
-                <span style={{ color: accent }}>‚úì</span>
+                <span style={{ color: accent }}>?</span>
                 <span>Flujo de contacto</span>
               </li>
             </ul>
             <div className="mt-4 rounded-xl p-3" style={{ backgroundColor: `${accent}10` }}>
               <p className="text-sm font-medium" style={{ color: accent }}>Resultado:</p>
-              <p className="text-sm text-muted-foreground">Clientes sin intervenci√≥n constante</p>
+              <p className="text-sm text-muted-foreground">Clientes sin intervenciÛn constante</p>
             </div>
             <Button
               className="mt-6 w-full"
@@ -871,7 +871,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
         </div>
       </section>
 
-      {/* Secci√≥n de Resultados reales */}
+      {/* SecciÛn de Resultados reales */}
       <section id="resultados" className="container scroll-mt-24 py-16 sm:py-20">
         <SectionTitle
           eyebrow="Resultados reales"
@@ -901,12 +901,12 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
             <div className="mt-4 space-y-3">
               <div className="rounded-xl p-3" style={{ backgroundColor: `${theme.surface}80` }}>
                 <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>Problema</p>
-                <p className="mt-1 text-sm text-white/80">No recib√≠a consultas a pesar de tener web</p>
+                <p className="mt-1 text-sm text-white/80">No recibÌa consultas a pesar de tener web</p>
               </div>
               
               <div className="rounded-xl p-3" style={{ backgroundColor: `${theme.surface}80` }}>
-                <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>Soluci√≥n</p>
-                <p className="mt-1 text-sm text-white/80">Landing optimizada con SEO local y bot√≥n WhatsApp estrat√©gico</p>
+                <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>SoluciÛn</p>
+                <p className="mt-1 text-sm text-white/80">Landing optimizada con SEO local y botÛn WhatsApp estratÈgico</p>
               </div>
               
               <div className="rounded-xl p-3" style={{ backgroundColor: `${accent}15`, borderColor: accent, borderWidth: 1 }}>
@@ -936,11 +936,11 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
             <div className="mt-4 space-y-3">
               <div className="rounded-xl p-3" style={{ backgroundColor: `${theme.surface}80` }}>
                 <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>Problema</p>
-                <p className="mt-1 text-sm text-white/80">Depend√≠a solo de Instagram para conseguir clientes</p>
+                <p className="mt-1 text-sm text-white/80">DependÌa solo de Instagram para conseguir clientes</p>
               </div>
               
               <div className="rounded-xl p-3" style={{ backgroundColor: `${theme.surface}80` }}>
-                <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>Soluci√≥n</p>
+                <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>SoluciÛn</p>
                 <p className="mt-1 text-sm text-white/80">Web profesional con propuesta clara y formulario de contacto</p>
               </div>
               
@@ -975,8 +975,8 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
               </div>
               
               <div className="rounded-xl p-3" style={{ backgroundColor: `${theme.surface}80` }}>
-                <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>Soluci√≥n</p>
-                <p className="mt-1 text-sm text-white/80">Redise√±o con enfoque en conversi√≥n y llamados a la acci√≥n claros</p>
+                <p className="text-xs font-medium uppercase tracking-wide" style={{ color: accent }}>SoluciÛn</p>
+                <p className="mt-1 text-sm text-white/80">RediseÒo con enfoque en conversiÛn y llamados a la acciÛn claros</p>
               </div>
               
               <div className="rounded-xl p-3" style={{ backgroundColor: `${accent}15`, borderColor: accent, borderWidth: 1 }}>
@@ -990,14 +990,14 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
       <ActionButtons config={config} theme={theme} />
 
-      {/* Secci√≥n de captura de leads */}
+      {/* SecciÛn de captura de leads */}
       <section id="diagnostico" className="container scroll-mt-24 py-16 sm:py-20">
         <div className="mx-auto max-w-2xl">
           <div className="rounded-[2rem] p-6 sm:p-8" style={{ border: `1px solid ${theme.border}`, background: `linear-gradient(180deg, ${theme.surface}, ${theme.primary})`, boxShadow: `0 24px 70px -44px ${theme.glow}` }}>
             <div className="text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em]" style={{ color: theme.accent }}>An√°lisis gratuito</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em]" style={{ color: theme.accent }}>An·lisis gratuito</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">Analizamos tu web GRATIS</h2>
-              <p className="mt-4 text-sm leading-6 text-white/70">Te mostramos por qu√© no est√° generando clientes y c√≥mo solucionarlo</p>
+              <p className="mt-4 text-sm leading-6 text-white/70">Te mostramos por quÈ no est· generando clientes y cÛmo solucionarlo</p>
             </div>
 
             <form className="mt-8 space-y-4" onSubmit={(e) => {
@@ -1006,7 +1006,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
               const nombre = formData.get('nombre');
               const web = formData.get('web');
               const whatsapp = formData.get('whatsapp');
-              const message = `Hola! Quiero un diagn√≥stico de mi web.%0A%0ANombre: ${nombre}%0AWeb: ${web || 'No especificada'}%0AWhatsApp: ${whatsapp}`;
+              const message = `Hola! Quiero un diagnÛstico de mi web.%0A%0ANombre: ${nombre}%0AWeb: ${web || 'No especificada'}%0AWhatsApp: ${whatsapp}`;
               analytics.whatsappClick("cta_final");
               window.open(whatsappLink(message), '_blank');
             }}>
@@ -1067,7 +1067,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
                 style={{ backgroundColor: theme.accent, color: theme.primary }}
                 data-analytics-cta="diagnostico-submit"
               >
-                Quiero mi diagn√≥stico
+                Quiero mi diagnÛstico
               </Button>
 
               <p className="text-center text-xs text-white/50">Sin compromiso</p>
@@ -1091,7 +1091,7 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
 
               <div className="mt-6 space-y-3">
                 {[
-                  "Respuesta r√°pida y clara",
+                  "Respuesta r·pida y clara",
                   "Ideal para presupuestos, reservas y consultas",
                   "Te respondo en menos de 24 hs",
                 ].map((item) => (
@@ -1149,10 +1149,10 @@ export function NicheLandingPage({ config }: { config: LandingConfig }) {
           <div>
             <p className="font-semibold tracking-tight text-white">WebAppImpulsor</p>
             <p className="mt-1 text-sm text-white/50">
-              Diego Podlecki ¬∑ <a className="transition-colors hover:text-white" href="mailto:info.diego@webappimpulsor.com">info.diego@webappimpulsor.com</a>
+              Diego Podlecki ∑ <a className="transition-colors hover:text-white" href="mailto:info.diego@webappimpulsor.com">info.diego@webappimpulsor.com</a>
             </p>
           </div>
-          <div className="text-sm text-white/50">Dise√±o web enfocado en claridad, autoridad y conversi√≥n</div>
+          <div className="text-sm text-white/50">DiseÒo web enfocado en claridad, autoridad y conversiÛn</div>
         </div>
       </footer>
 

@@ -1,4 +1,4 @@
-Ôªøimport { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { analytics } from "@/components/analytics/analytics";
 
@@ -37,15 +37,15 @@ const previewVariants: Record<
   }
 > = {
   default: {
-    kicker: "Presentaci√≥n clara y estrat√©gica",
-    heroLabel: "Primera impresi√≥n",
+    kicker: "PresentaciÛn clara y estratÈgica",
+    heroLabel: "Primera impresiÛn",
     serviceLabel: "Lo esencial, bien comunicado",
     footerLabel: "Ver propuesta",
     badgeLabel: "Propuesta",
   },
   gimnasios: {
-    kicker: "Clases, horarios y decisi√≥n",
-    heroLabel: "M√°s socios",
+    kicker: "Clases, horarios y decisiÛn",
+    heroLabel: "M·s socios",
     serviceLabel: "Clases y equipamiento",
     footerLabel: "Ver caso gimnasio",
     badgeLabel: "Fitness",
@@ -61,26 +61,26 @@ const previewVariants: Record<
     kicker: "Orden, claridad y confianza",
     heroLabel: "Consultas mejor calificadas",
     serviceLabel: "Seguimiento y turnos",
-    footerLabel: "Ver propuesta nutrici√≥n",
-    badgeLabel: "Nutrici√≥n",
+    footerLabel: "Ver propuesta nutriciÛn",
+    badgeLabel: "NutriciÛn",
   },
   psicologos: {
-    kicker: "Calma visual y contenci√≥n",
+    kicker: "Calma visual y contenciÛn",
     heroLabel: "Espacio seguro",
-    serviceLabel: "Acompa√±amiento profesional",
+    serviceLabel: "AcompaÒamiento profesional",
     footerLabel: "Ver propuesta consultorio",
     badgeLabel: "Psi",
   },
   "estetica-corporal": {
     kicker: "Imagen premium y resultados",
-    heroLabel: "M√°s deseo visual",
+    heroLabel: "M·s deseo visual",
     serviceLabel: "Tratamientos y prueba",
-    footerLabel: "Ver propuesta est√©tica",
+    footerLabel: "Ver propuesta estÈtica",
     badgeLabel: "Beauty",
   },
   emprendedores: {
     kicker: "Oferta clara y autoridad",
-    heroLabel: "M√°s conversiones",
+    heroLabel: "M·s conversiones",
     serviceLabel: "Propuesta y prueba social",
     footerLabel: "Ver propuesta negocio",
     badgeLabel: "Launch",
@@ -88,7 +88,7 @@ const previewVariants: Record<
   "iron-fitness": {
     kicker: "La landing original",
     heroLabel: "Iron Fitness",
-    serviceLabel: "Versi√≥n completa",
+    serviceLabel: "VersiÛn completa",
     footerLabel: "Ver caso real",
     badgeLabel: "Gym",
   },
@@ -221,7 +221,7 @@ export function LandingPreviewCard({
             }}
           >
           <div className="inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-medium" style={{ borderColor: theme.border, backgroundColor: `${theme.accent}14`, color: theme.accent }}>
-              <span className="mr-2">‚óè</span>
+              <span className="mr-2">?</span>
               {variant.kicker}
             </div>
             <p className="mt-3 text-[10px] uppercase tracking-[0.24em] text-[#9CA3AF]">{variant.heroLabel}</p>
@@ -240,7 +240,7 @@ export function LandingPreviewCard({
             <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#9CA3AF]">
               {points.map((point, index) => (
                 <span key={point} className="inline-flex items-center gap-x-3">
-                  {index > 0 ? <span style={{ color: theme.accent }}>¬∑</span> : null}
+                  {index > 0 ? <span style={{ color: theme.accent }}>∑</span> : null}
                   <span>{point}</span>
                 </span>
               ))}
@@ -278,7 +278,7 @@ export function LandingPreviewCard({
                   <p className="text-[10px] uppercase tracking-[0.2em] text-[#9CA3AF]">Testimonio</p>
                   <p className="mt-1 text-[13px] font-semibold text-[#F5F5F5]">{testimonial.name}</p>
                 </div>
-                <div className="text-[11px] text-[#F5F5F5]">‚òÖ‚òÖ‚òÖ‚òÖ‚òÖ</div>
+                <div className="text-[11px] text-[#F5F5F5]">?????</div>
               </div>
               <p className="mt-2 text-[11px] leading-5 text-[#D1D5DB]">"{testimonial.text}"</p>
             </article>
@@ -331,7 +331,7 @@ export function LandingPreviewCard({
           onClick={() => analytics.demoClick(config.slug)}
         >
           Ver propuesta
-          <span aria-hidden="true">‚Üó</span>
+          <span aria-hidden="true">?</span>
         </Link>
       </div>
     </article>

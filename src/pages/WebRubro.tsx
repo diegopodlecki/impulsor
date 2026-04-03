@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { CheckCircle2, ExternalLink, MessageCircle, Sparkles } from "lucide-react";
 import { Link, Navigate, useParams } from "react-router-dom";
 
@@ -17,7 +16,7 @@ import { buildWhatsAppUrl, cn } from "@/lib/utils";
 
 export default function WebRubro() {
   const { rubro: rubroSlug } = useParams();
-  const rubro = useMemo(() => (rubroSlug ? findRubroBySlug(rubroSlug) : undefined), [rubroSlug]);
+  const rubro = rubroSlug ? findRubroBySlug(rubroSlug) : undefined;
 
   if (!rubro) {
     return <Navigate to="/webs" replace />;

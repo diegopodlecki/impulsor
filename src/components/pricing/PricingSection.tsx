@@ -5,8 +5,19 @@ import { Button } from "@/components/ui/button";
 import { pricingFaq, pricingGuarantee, pricingPlans } from "@/data/pricing";
 
 export function PricingSection() {
+  const handlePricingHover = () => {
+    if (typeof window === "undefined") return;
+    window.dispatchEvent(new Event("webappimpulsor:pricing-hover"));
+  };
+
   return (
-    <section id="precios" data-price-section="true" className="container py-16 sm:py-20">
+    <section
+      id="precios"
+      data-price-section="true"
+      className="container py-16 sm:py-20"
+      onMouseEnter={handlePricingHover}
+      onFocusCapture={handlePricingHover}
+    >
       <div className="mx-auto max-w-3xl text-center">
         <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">
           Servicios y planes

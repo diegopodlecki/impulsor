@@ -9,9 +9,11 @@ import PageTracking from "@/components/analytics/PageTracking";
 import { SeoHead } from "@/components/SEO/SeoHead";
 import ProtectedRoute from "@/components/ProtectedRoute.tsx";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
-import ExitIntentPopup from "@/components/ui/ExitIntentPopup";
 const LeadCaptureSystem = lazy(() =>
   import("@/components/leads/LeadCaptureSystem").then((mod) => ({ default: mod.LeadCaptureSystem })),
+);
+const ExitIntentPopup = lazy(() =>
+  import("@/components/ui/ExitIntentPopup").then((mod) => ({ default: mod.default })),
 );
 import { Toaster } from "@/components/ui/sonner.tsx";
 import { getSeoConfigForPath } from "@/lib/seo-routes";
@@ -92,7 +94,9 @@ function SiteLayout() {
         <LeadCaptureSystem />
       </Suspense>
       <WhatsAppButton />
-      <ExitIntentPopup />
+      <Suspense fallback={null}>
+        <ExitIntentPopup />
+      </Suspense>
       <div className="min-h-screen">
         <Outlet />
       </div>

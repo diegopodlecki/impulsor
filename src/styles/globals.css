@@ -480,3 +480,39 @@
 
 
 
+
+@layer base {
+  .hero-critical {
+    position: relative;
+    isolation: isolate;
+    padding-block: clamp(3rem, 7vw, 5rem);
+  }
+
+  .hero-critical .hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    font-weight: 800;
+  }
+
+  .hero-critical .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    line-height: 1.7;
+  }
+
+  .hero-critical .hero-actions {
+    min-height: 3.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

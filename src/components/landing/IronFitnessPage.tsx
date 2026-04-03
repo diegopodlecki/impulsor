@@ -302,7 +302,12 @@ export default function IronFitnessPage() {
         </div>
       </section>
 
-      <section id="planes" className="scroll-mt-24 bg-[#0A0A0A] px-6 py-20">
+      <section
+        id="planes"
+        className="scroll-mt-24 bg-[#0A0A0A] px-6 py-20"
+        onMouseEnter={() => window.dispatchEvent(new Event("webappimpulsor:pricing-hover"))}
+        onFocusCapture={() => window.dispatchEvent(new Event("webappimpulsor:pricing-hover"))}
+      >
         <div className="mx-auto max-w-[1200px]">
           <SectionHeading title="Elegí tu plan" titleClassName="text-[28px]" />
 

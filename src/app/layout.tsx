@@ -32,6 +32,8 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  adjustFontFallback: true,
+  fallback: ["system-ui", "sans-serif"],
 });
 
 const jakarta = Plus_Jakarta_Sans({
@@ -39,6 +41,8 @@ const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   weight: ["600", "700", "800"],
   display: "swap",
+  adjustFontFallback: true,
+  fallback: ["system-ui", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -232,6 +236,7 @@ export default function RootLayout({
       <head>
         <meta name="geo.region" content="AR-C" />
         <meta name="geo.placename" content="Buenos Aires, Argentina" />
+        <link rel="preload" href="/og-image.png" as="image" />
       </head>
       <body className={inter.className}>
         <JsonLd data={schema} />

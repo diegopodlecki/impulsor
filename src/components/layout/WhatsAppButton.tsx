@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { CSSProperties } from "react";
 import { MessageCircle, Sparkles } from "lucide-react";
 import { useLocation } from "react-router-dom";
@@ -92,10 +92,7 @@ export default function WhatsAppButton() {
   const didRevealRef = useRef(false);
   const timerRef = useRef<number | null>(null);
 
-  const message = useMemo(
-    () => (isOnline ? WHATSAPP_NUMBER_MESSAGE_ONLINE : WHATSAPP_NUMBER_MESSAGE_OFFLINE),
-    [isOnline],
-  );
+  const message = isOnline ? WHATSAPP_NUMBER_MESSAGE_ONLINE : WHATSAPP_NUMBER_MESSAGE_OFFLINE;
 
   const tooltipText = isOnline ? "¡Estamos en línea! Escribinos 💬" : "Dejanos tu consulta 💬 Respondemos pronto";
   const badgeText = isOnline ? "En línea" : "Respondemos en 24hs";
@@ -141,15 +138,12 @@ export default function WhatsAppButton() {
       }
     };
 
-    const handleHover = (event: MouseEvent) => {
-      const target = (event.target as Element | null)?.closest("[data-price-section], #precios");
-      if (target) {
-        reveal();
-      }
+    const handlePricingHover = () => {
+      reveal();
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    document.addEventListener("mouseover", handleHover, true);
+    window.addEventListener("webappimpulsor:pricing-hover", handlePricingHover);
     handleScroll();
 
     return () => {
@@ -157,7 +151,7 @@ export default function WhatsAppButton() {
         window.clearTimeout(timerRef.current);
       }
       window.removeEventListener("scroll", handleScroll);
-      document.removeEventListener("mouseover", handleHover, true);
+      window.removeEventListener("webappimpulsor:pricing-hover", handlePricingHover);
     };
   }, [location.pathname]);
 

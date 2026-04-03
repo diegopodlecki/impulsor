@@ -203,7 +203,7 @@ export default function Index() {
         </div>
       </header>
 
-      <section className="container py-12 sm:py-16 lg:py-20">
+      <section className="container hero-critical py-12 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-3xl text-center">
           {/* Badge */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-sm font-medium text-emerald-300 ring-1 ring-emerald-500/20">
@@ -212,17 +212,17 @@ export default function Index() {
           </div>
 
           {/* H1 */}
-          <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="hero-title text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             Tu web debería traerte clientes
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-5 text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
+          <p className="hero-subtitle mt-5 text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
             Diseñamos sitios para psicólogos, abogados, consultores y coaches que necesitan autoridad, claridad y más consultas reales.
           </p>
 
           {/* Benefits */}
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <div className="hero-actions mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <div className="flex items-center gap-2">
               <span className="text-[#0EA5E9]">✓</span>
               <span className="text-sm">Atraé consultas sin depender solo de redes</span>
