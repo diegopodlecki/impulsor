@@ -13,10 +13,32 @@ type DemoItem = Rubro & {
   screenshot: string;
 };
 
-const DEMO_ITEMS: DemoItem[] = RUBROS.map((rubro) => ({
+const PLAN_PRIORITY: Record<string, number> = {
+  "Todo Incluido": 0,
+  Profesional: 1,
+  "Presencia Básica": 2,
+};
+
+const RUBRO_PRIORITY: Record<string, number> = {
+  "estetica-corporal": 0,
+  psicologo: 1,
+  nutricionista: 2,
+  "personal-trainer": 3,
+  gimnasio: 4,
+  "casa-de-comidas": 5,
+};
+
+const DEMO_ITEMS: DemoItem[] = [...RUBROS]
+  .map((rubro) => ({
   ...rubro,
   screenshot: `/portfolio/${rubro.slug}-preview.jpg`,
-}));
+  }))
+  .sort((a, b) => {
+    const planDelta = PLAN_PRIORITY[a.precioSugerido] - PLAN_PRIORITY[b.precioSugerido];
+    if (planDelta !== 0) return planDelta;
+
+    return (RUBRO_PRIORITY[a.slug] ?? 99) - (RUBRO_PRIORITY[b.slug] ?? 99);
+  });
 
 function DemoImage({ item, onOpen }: { item: DemoItem; onOpen: () => void }) {
   const [hasError, setHasError] = useState(false);
