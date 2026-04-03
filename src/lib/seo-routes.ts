@@ -51,12 +51,12 @@ function buildRubroSeoConfig(slug: string): SeoRouteConfig | undefined {
   if (!rubro) return undefined;
 
   return {
-    title: `Página web para ${rubro.nombrePlural}`,
-    description: rubro.descripcion,
+    title: `Página web para ${rubro.nombrePlural} en Buenos Aires`,
+    description: `${rubro.descripcion} Pensada para búsquedas como ${rubro.localKeywords[0]}.`,
     canonical: `${SITE_URL}/webs/${rubro.slug}`,
     ogImage: DEFAULT_OG_IMAGE,
     schema: [
-      generateServiceSchema(`Página web para ${rubro.nombrePlural}`, rubro.descripcion),
+      generateServiceSchema(`Página web para ${rubro.nombrePlural} en Buenos Aires`, rubro.descripcion),
       generateBreadcrumbSchema([
         { name: "Inicio", url: SITE_URL },
         { name: "Webs por Rubro", url: `${SITE_URL}/webs` },

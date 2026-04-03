@@ -24,6 +24,7 @@ export default function WebRubro() {
   }
 
   const whatsappMessage = `Hola, soy ${rubro.nombre} y quiero saber más sobre la web para ${rubro.nombrePlural.toLowerCase()}.`;
+  const localQueries = rubro.localKeywords;
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -93,6 +94,22 @@ export default function WebRubro() {
                   {keyword}
                 </span>
               ))}
+            </div>
+
+            <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
+                Búsquedas locales que cubre esta página
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {localQueries.map((query) => (
+                  <span
+                    key={query}
+                    className="rounded-full border border-cyan-400/15 bg-cyan-400/10 px-3 py-1 text-[11px] font-medium text-cyan-200"
+                  >
+                    {query}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 

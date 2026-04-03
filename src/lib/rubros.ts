@@ -4,6 +4,7 @@ export interface Rubro {
   nombrePlural: string;
   descripcion: string;
   keywords: string[];
+  localKeywords: string[];
   problemas: string[];
   beneficios: string[];
   demoUrl: string;
@@ -23,6 +24,11 @@ export const RUBROS: Rubro[] = [
       "página web personal trainer",
       "web para entrenador personal argentina",
       "sitio web personal trainer buenos aires",
+    ],
+    localKeywords: [
+      "página web para personal trainer en Buenos Aires",
+      "web para personal trainer en CABA",
+      "sitio web para entrenador personal en Zona Norte",
     ],
     problemas: [
       "Mis potenciales clientes me buscan en Google pero no aparezco",
@@ -48,6 +54,11 @@ export const RUBROS: Rubro[] = [
     descripcion:
       "Página web profesional para psicólogos y terapeutas en Argentina. Generá confianza y conseguí nuevos pacientes que te encuentren en Google.",
     keywords: ["página web psicólogo argentina", "web para psicólogo", "sitio web terapeuta buenos aires"],
+    localKeywords: [
+      "página web para psicólogos en Buenos Aires",
+      "web para psicólogo en CABA",
+      "sitio web para terapeuta en Zona Oeste",
+    ],
     problemas: [
       "Los pacientes nuevos no me pueden encontrar online",
       "Mi presencia digital no transmite la confianza que necesito",
@@ -72,6 +83,11 @@ export const RUBROS: Rubro[] = [
     descripcion:
       "Página web para nutricionistas en Argentina. Conseguí nuevos pacientes que te busquen en Google y que puedan consultar tus servicios online.",
     keywords: ["página web nutricionista argentina", "web para nutricionista", "sitio web nutricionista buenos aires"],
+    localKeywords: [
+      "página web para nutricionistas en Buenos Aires",
+      "web para nutricionista en CABA",
+      "sitio web para nutricionista en Rosario",
+    ],
     problemas: [
       "No aparezco cuando alguien busca nutricionista en mi zona",
       "No tengo donde explicar mis planes y metodología de trabajo",
@@ -96,6 +112,11 @@ export const RUBROS: Rubro[] = [
     descripcion:
       "Página web para gimnasios en Argentina. Mostrá tus clases, precios y profesores. Conseguí nuevos socios y fidelizá a los actuales.",
     keywords: ["página web gimnasio argentina", "web para gimnasio", "sitio web gym"],
+    localKeywords: [
+      "página web para gimnasio en Buenos Aires",
+      "web para gimnasio en Córdoba",
+      "sitio web gym en Rosario",
+    ],
     problemas: [
       "Potenciales socios no pueden ver mis clases y horarios fácilmente",
       "No tengo forma de mostrar mis instalaciones y diferenciarme",
@@ -120,6 +141,11 @@ export const RUBROS: Rubro[] = [
     descripcion:
       "Página web para casas de comida y viandas en Argentina. Mostrá tu menú, precios y zona de entrega. Recibí pedidos por WhatsApp.",
     keywords: ["página web viandas argentina", "web para casa de comidas", "sitio web catering"],
+    localKeywords: [
+      "página web para casa de comidas en Buenos Aires",
+      "web para viandas en Zona Sur",
+      "sitio web para catering en La Plata",
+    ],
     problemas: [
       "Solo me encuentran si alguien me conoce o me recomienda",
       "No tengo forma de mostrar mi menú actualizado online",
@@ -144,6 +170,11 @@ export const RUBROS: Rubro[] = [
     descripcion:
       "Página web para centros de estética en Argentina. Mostrá tus tratamientos, antes y después, y conseguí nuevas clientas.",
     keywords: ["página web estética argentina", "web para centro de estética", "sitio web spa belleza"],
+    localKeywords: [
+      "página web para estética corporal en Buenos Aires",
+      "web para centro de estética en CABA",
+      "sitio web para spa y belleza en Córdoba",
+    ],
     problemas: [
       "Mis tratamientos no se ven bien explicados en Instagram",
       "Las clientas potenciales no confían sin ver resultados reales",
