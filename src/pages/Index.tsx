@@ -62,7 +62,7 @@ const exampleCards = [
     name: "Iron Fitness",
     rubro: "Gimnasio",
     href: "/gimnasios",
-    configKey: "iron-fitness",
+    configKey: "gimnasio",
   },
   {
     name: "ProCoach",
