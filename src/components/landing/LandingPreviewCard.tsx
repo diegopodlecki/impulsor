@@ -6,26 +6,6 @@ import { type LandingConfig } from "@/data/landings";
 import { getLandingImages } from "./landingImages";
 import { getLandingTheme } from "./landingThemes";
 
-function initials(name: string) {
-  return name
-    .split(/[\s.]+/)
-    .filter(Boolean)
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-}
-
-function fallbackTestimonial(config: LandingConfig) {
-  if (config.testimonial) return config.testimonial;
-
-  return {
-    name: config.aboutName,
-    role: config.aboutRole,
-    text: `${config.heroPreviewTitle} con una propuesta visual clara y orientada a convertir consultas reales.`,
-  };
-}
-
 const previewVariants: Record<
   string,
   {
@@ -158,145 +138,48 @@ export function LandingPreviewCard({
   }, []);
 
   return (
-    <Link
-      to={href}
-      className="group relative flex h-full flex-col overflow-hidden rounded-[14px] border bg-[#0d0d12] transition-all duration-300 hover:-translate-y-[5px] cursor-pointer block"
-      style={{
-        borderColor: theme.border,
-        boxShadow: `0 18px 40px -30px ${theme.glow}`,
-      }}
-      aria-label={`Ver propuesta de ${config.heroBadge}`}
-      data-analytics-cta={`preview-${config.slug}`}
+    <Link 
+      to={href} 
+      className="card-link"
       onClick={() => analytics.demoClick(config.slug)}
     >
-      <style>{`
-        @keyframes landing-preview-dot {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.4; }
-        }
-      `}</style>
-
-      <div className="border-b px-4 py-3" style={{ borderColor: theme.border, background: theme.primary }}>
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <p className="text-[10px] uppercase tracking-[0.24em] text-[#9CA3AF]">{variant.badgeLabel}</p>
-            <div className="mt-1 flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full" style={{ backgroundColor: theme.accent }} />
-              <h3 className="text-[13px] font-semibold text-[#F5F5F5]">{rubric}</h3>
+      <div className="card" style={{ borderColor: theme.border, boxShadow: `0 18px 40px -30px ${theme.glow}` }}>
+        <div className="card-content">
+          <div className="mb-4 flex items-center justify-between">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.24em] text-white/50">{variant.badgeLabel}</p>
+              <h3 className="mt-1 text-lg font-bold text-white">{rubric}</h3>
+            </div>
+            <div className="h-8 w-8 rounded-full border border-white/10 bg-white/5 p-1.5 backdrop-blur-sm">
+                <div className="h-full w-full rounded-full" style={{ backgroundColor: theme.accent }} />
             </div>
           </div>
 
-          <span className="inline-flex items-center gap-2 rounded-full bg-[rgba(255,255,255,0.06)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#F5F5F5]">
-            <span
-              className="h-2 w-2 rounded-full"
-              style={{ backgroundColor: theme.accent, animation: "landing-preview-dot 2s ease-in-out infinite" }}
-            />
-            Ver demo
+          <div
+            ref={scrollerRef}
+            className="relative mb-4 h-48 overflow-y-auto overscroll-contain [scrollbar-width:none] rounded-2xl border border-white/5 grayscale-[0.2] transition-all duration-500 group-hover:grayscale-0"
+            onPointerEnter={() => pausedRef.current = true}
+            onPointerLeave={() => pausedRef.current = false}
+          >
+            <div className="flex flex-col gap-2 p-2">
+               <img src={config.heroImage} className="rounded-xl object-cover" alt="Preview 1" />
+               <img src={config.preview} className="rounded-xl object-cover" alt="Preview 2" />
+               <img src={config.services[0]?.image ?? config.heroImage} className="rounded-xl object-cover" alt="Preview 3" />
+            </div>
+          </div>
+
+          <p className="line-clamp-2 text-sm leading-relaxed text-slate-400">
+            {config.heroTitle}
+          </p>
+        </div>
+
+        <div className="card-footer">
+          <span className="flex items-center gap-2 text-sm font-semibold transition-colors group-hover:text-white" style={{ color: theme.accent }}>
+            Quiero este sistema
+            <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
           </span>
-        </div>
-      </div>
-
-      <div
-        ref={scrollerRef}
-        className="relative max-h-[460px] overflow-y-auto overscroll-contain [scrollbar-width:none]"
-        onPointerEnter={() => {
-          pausedRef.current = true;
-        }}
-        onPointerLeave={() => {
-          pausedRef.current = false;
-        }}
-      >
-        <div
-          className="px-4 py-4"
-          style={{
-            background: `linear-gradient(180deg, ${theme.primary}, #050505 100%)`,
-          }}
-        >
-          <div className="space-y-3">
-            <div
-              className="rounded-[12px] border overflow-hidden"
-              style={{ borderColor: theme.border }}
-            >
-              <img
-                src={config.heroImage}
-                alt={`${config.heroBadge} - Hero`}
-                width={600}
-                height={400}
-                loading="lazy"
-                decoding="async"
-                className="w-full object-cover"
-              />
-              <div className="p-3" style={{ background: theme.surface }}>
-                <p className="text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.accent }}>Hero</p>
-                <p className="mt-1 text-[11px] text-[#9CA3AF]">{config.heroTitle}</p>
-              </div>
-            </div>
-
-            <div
-              className="rounded-[12px] border overflow-hidden"
-              style={{ borderColor: theme.border }}
-            >
-              <img
-                src={config.services[0]?.image ?? config.heroImage}
-                alt={`${config.heroBadge} - Servicios`}
-                width={600}
-                height={300}
-                loading="lazy"
-                decoding="async"
-                className="w-full object-cover"
-              />
-              <div className="p-3" style={{ background: theme.surface }}>
-                <p className="text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.accent }}>Servicios</p>
-                <p className="mt-1 text-[11px] text-[#9CA3AF]">{config.servicesTitle}</p>
-              </div>
-            </div>
-
-            <div
-              className="rounded-[12px] border overflow-hidden"
-              style={{ borderColor: theme.border }}
-            >
-              <img
-                src={config.preview}
-                alt={`${config.heroBadge} - Contacto`}
-                width={600}
-                height={250}
-                loading="lazy"
-                decoding="async"
-                className="w-full object-cover"
-              />
-              <div className="p-3" style={{ background: theme.surface }}>
-                <p className="text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.accent }}>Contacto</p>
-                <p className="mt-1 text-[11px] text-[#9CA3AF]">{config.formTitle}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-3 rounded-[12px] border p-4" style={{ borderColor: theme.border, background: `${theme.primary}e6` }}>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-[#9CA3AF]">{config.servicesTitle}</p>
-                <p className="mt-1 text-[14px] font-semibold text-[#F5F5F5]">{variant.serviceLabel}</p>
-              </div>
-              <div className="rounded-full px-4 py-2 text-[11px] font-bold text-[#0A0A0A]" style={{ backgroundColor: theme.accent }}>
-                {variant.footerLabel}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex items-start justify-between gap-3 p-4">
-        <div>
-          <h4 className="text-[13px] font-medium leading-none text-[#f0f0f0]">{variant.heroLabel}</h4>
-          <p className="mt-1 text-[11px] text-[rgba(255,255,255,0.38)]">{rubric}</p>
-        </div>
-
-        <div
-          className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold text-[#0A0A0A]"
-          style={{ backgroundColor: theme.accent }}
-        >
-          Ver propuesta
-          <span aria-hidden="true">→</span>
         </div>
       </div>
     </Link>

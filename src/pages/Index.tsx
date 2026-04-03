@@ -366,7 +366,10 @@ export default function Index() {
           description="Cada rubro tiene una solución específica pensada para atraer clientes y facilitar el contacto."
         />
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
+        <div 
+          className="mt-10 grid gap-[20px]" 
+          style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}
+        >
           {exampleCards.map((card) => (
             <LandingPreviewCard
               key={card.name}
