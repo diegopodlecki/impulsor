@@ -219,7 +219,7 @@ export function LandingPreviewCard({
               style={{ borderColor: theme.border }}
             >
               <img
-                src={`/og/${config.slug}.png`}
+                src={config.heroImage}
                 alt={`${config.heroBadge} - Hero`}
                 width={600}
                 height={400}
@@ -238,7 +238,7 @@ export function LandingPreviewCard({
               style={{ borderColor: theme.border }}
             >
               <img
-                src={`/og/${config.slug}.png`}
+                src={config.services[0]?.image ?? config.heroImage}
                 alt={`${config.heroBadge} - Servicios`}
                 width={600}
                 height={300}
@@ -257,7 +257,7 @@ export function LandingPreviewCard({
               style={{ borderColor: theme.border }}
             >
               <img
-                src={`/og/${config.slug}.png`}
+                src={config.preview}
                 alt={`${config.heroBadge} - Contacto`}
                 width={600}
                 height={250}
