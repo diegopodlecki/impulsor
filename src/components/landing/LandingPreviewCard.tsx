@@ -108,7 +108,6 @@ export function LandingPreviewCard({
   rubric: string;
 }) {
   const theme = getLandingTheme(config.slug);
-  const images = getLandingImages(config.slug);
   const variant = getPreviewVariant(config.slug);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   const pausedRef = useRef(false);
@@ -158,17 +157,17 @@ export function LandingPreviewCard({
     return () => window.clearTimeout(timer);
   }, []);
 
-  const testimonial = fallbackTestimonial(config);
-  const serviceCards = config.services.slice(0, 3);
-  const points = [...config.solutionPoints.slice(0, 3), ...config.benefits.slice(0, 1).map((item) => item.title)];
-
   return (
-    <article
-      className="group relative flex h-full flex-col overflow-hidden rounded-[14px] border bg-[#0d0d12] transition-all duration-200 hover:-translate-y-1"
+    <Link
+      to={href}
+      className="group relative flex h-full flex-col overflow-hidden rounded-[14px] border bg-[#0d0d12] transition-all duration-300 hover:-translate-y-[5px] cursor-pointer block"
       style={{
         borderColor: theme.border,
         boxShadow: `0 18px 40px -30px ${theme.glow}`,
       }}
+      aria-label={`Ver propuesta de ${config.heroBadge}`}
+      data-analytics-cta={`preview-${config.slug}`}
+      onClick={() => analytics.demoClick(config.slug)}
     >
       <style>{`
         @keyframes landing-preview-dot {
@@ -292,19 +291,14 @@ export function LandingPreviewCard({
           <p className="mt-1 text-[11px] text-[rgba(255,255,255,0.38)]">{rubric}</p>
         </div>
 
-        <Link
-          to={href}
-          className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold text-[#0A0A0A] transition-transform duration-200 hover:scale-[1.03]"
+        <div
+          className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold text-[#0A0A0A]"
           style={{ backgroundColor: theme.accent }}
-          aria-label={`Ver propuesta de ${config.heroBadge}`}
-          data-analytics-cta={`preview-${config.slug}`}
-          onClick={() => analytics.demoClick(config.slug)}
         >
           Ver propuesta
-          <span aria-hidden="true">?</span>
-        </Link>
+          <span aria-hidden="true">→</span>
+        </div>
       </div>
-    </article>
+    </Link>
   );
 }
-
