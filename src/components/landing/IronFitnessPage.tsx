@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import { previewSvg } from "@/components/landing/landingVisuals";
+
 const WHATSAPP_URL = "https://wa.me/541166448389";
 
 const heroStats = ["+500 socios", "12 años de experiencia", "Equipamiento premium"];
@@ -8,17 +10,17 @@ const services = [
   {
     title: "Musculación",
     text: "Equipamiento de alta gama para entrenamiento de fuerza. Pesas libres, máquinas y más.",
-    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80",
+    image: previewSvg("Musculación", "Equipamiento de alta gama", "#f97316", "#22c55e"),
   },
   {
     title: "Clases grupales",
     text: "Cycling, funcional, yoga y más. Instructores certificados en cada clase.",
-    image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80",
+    image: previewSvg("Clases grupales", "Cycling, funcional y yoga", "#06b6d4", "#f97316"),
   },
   {
     title: "Cardio & funcional",
     text: "Zona de cardio completa. HIIT, funcional y máquinas cardiovasculares.",
-    image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=80",
+    image: previewSvg("Cardio & funcional", "Zona completa para entrenar", "#22c55e", "#06b6d4"),
   },
 ];
 
@@ -177,7 +179,7 @@ export default function IronFitnessPage() {
         className="relative flex min-h-[100svh] items-center overflow-hidden pt-[72px] scroll-mt-24"
       >
         <img
-          src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=80"
+          src={previewSvg("Iron Fitness", "Clases, horarios y reservas", "#f97316", "#22c55e")}
           alt=""
           aria-hidden="true"
           loading="lazy"
@@ -342,7 +344,7 @@ export default function IronFitnessPage() {
 
       <section id="contacto" className="relative overflow-hidden bg-[#0A0A0A] px-6 py-20 scroll-mt-24">
         <img
-          src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=1400&q=80"
+          src={previewSvg("Hablá con nosotros", "Tu semana gratis te espera", "#f97316", "#06b6d4")}
           alt=""
           aria-hidden="true"
           loading="lazy"

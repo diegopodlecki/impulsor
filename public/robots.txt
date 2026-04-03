@@ -1,4 +1,5 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
-Sitemap: https://diegopodlecki.github.io/impulsor/sitemap.xml
+Sitemap: https://webappimpulsor.com/sitemap.xml
+

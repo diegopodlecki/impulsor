@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/ContactForm";
 import { LandingPreviewCard } from "@/components/landing/LandingPreviewCard";
-import { defaultWhatsappLink } from "@/components/landing/landingVisuals";
+import { defaultWhatsappLink, profileSvg } from "@/components/landing/landingVisuals";
 import { landingPages } from "@/data/landings";
 
 const heroStats = [
@@ -472,7 +472,7 @@ export default function Index() {
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="surface-card hover-card rounded-[2rem] p-6 sm:p-8">
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
+              src={profileSvg("Diego Podlecki", "Diseño web para negocios de servicios")}
               alt="Foto de perfil de Diego Podlecki"
               className="h-full w-full rounded-[1.5rem] object-cover"
               loading="lazy"

@@ -363,7 +363,7 @@ function HeroMockup({
 
           <div className="grid gap-4">
             <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-950/75">
-              <img src={config.heroMockupImage} alt={`Mockup de ${config.title}`} className="h-full w-full object-cover" />
+              <img src={config.preview} alt={`Mockup de ${config.title}`} className="h-full w-full object-cover" />
             </div>
 
             <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm">

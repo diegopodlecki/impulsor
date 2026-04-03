@@ -313,11 +313,9 @@ export function LandingPreviewCard({
 
         <Link
           to={href}
-          target="_blank"
-          rel="noreferrer"
           className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold text-[#0A0A0A] transition-transform duration-200 hover:scale-[1.03]"
           style={{ backgroundColor: theme.accent }}
-          aria-label={`Ver ejemplo real de ${config.heroBadge} en una nueva pestaña`}
+          aria-label={`Ver ejemplo real de ${config.heroBadge}`}
         >
           Ver ejemplo real
           <span aria-hidden="true">↗</span>
