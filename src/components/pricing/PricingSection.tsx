@@ -32,7 +32,7 @@ export function PricingSection() {
         </p>
       </div>
 
-      <div className="mt-12 grid gap-6 lg:grid-cols-3">
+      <div className="mt-12 container-cards">
         {pricingPlans.map((plan, index) => {
           const recommended = index === 1;
           const pricingSource =

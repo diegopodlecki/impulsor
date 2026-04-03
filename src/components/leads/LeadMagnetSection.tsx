@@ -109,7 +109,7 @@ export function LeadMagnetSection() {
             {leadMagnetOffer.description}
           </p>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+          <div className="mt-8 container-cards">
             {leadMagnetOffer.bullets.map((item) => (
               <div key={item} className="card-service p-4">
                 <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[#0EA5E9]/10 text-[#0EA5E9]">

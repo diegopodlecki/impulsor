@@ -323,7 +323,7 @@ export default function Index() {
           description="Cuando la web no convierte, el negocio sigue online pero no despega."
         />
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-10 container-cards">
           {problems.map((item) => (
             <div key={item.title} className="card">
               <div className="card-image flex items-center justify-center p-6">
@@ -379,10 +379,7 @@ export default function Index() {
           description="Cada rubro tiene una solución específica pensada para atraer clientes y facilitar el contacto."
         />
 
-        <div 
-          className="mt-10 grid gap-[20px]" 
-          style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}
-        >
+        <div className="mt-10 container-cards">
           {exampleCards.map((card) => (
             <LandingPreviewCard
               key={card.name}
@@ -439,7 +436,7 @@ export default function Index() {
           description="La web está pensada para ayudarte a conseguir más resultados y menos fricción en la venta."
         />
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-10 container-cards">
           {benefits.map((item) => (
             <div key={item.title} className="card">
               <div className="card-image flex items-center justify-center p-6">
@@ -533,7 +530,7 @@ export default function Index() {
           description="Un proceso simple y claro para avanzar rápido y llegar a una web lista para vender."
         />
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 container-cards">
           {process.map((item) => (
             <div key={item.step} className="card text-center">
               <div className="card-image flex items-center justify-center p-6">
