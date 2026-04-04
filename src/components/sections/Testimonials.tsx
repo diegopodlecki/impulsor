@@ -125,58 +125,61 @@ export function Testimonials() {
         <div className="grid gap-5">
           <div className="grid gap-5">
             {TESTIMONIOS.map((item) => (
-              <article key={item.id} className="card-service p-5 sm:p-6">
-                <div className="flex items-start gap-4">
-                  <TestimonialAvatar testimonial={item} />
+              <a href="#contacto" key={item.id} className="card-link">
+                <article className="card-service p-5 sm:p-6 h-full">
+                  <div className="flex items-start gap-4">
+                    <TestimonialAvatar testimonial={item} />
 
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="text-h5 text-slate-900">{item.nombre}</h3>
-                      <span className="badge-chip border-white/10 bg-black/20 text-white/60">{item.rubro}</span>
-                    </div>
-
-                    <div className="mt-2 flex flex-wrap items-center gap-2">
-                      <StarRow stars={item.rating} />
-                      <Badge variant="outline" className="border-emerald-400/20 bg-emerald-500/10 text-emerald-300">
-                        {item.plan}
-                      </Badge>
-                      <span className="text-xs text-white/45">{formatTestimonialDate(item.fecha)}</span>
-                    </div>
-
-                    {item.resultado ? (
-                      <div className="mt-4 inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-500/10 px-3 py-1.5 text-xs font-semibold text-cyan-200">
-                        🎯 Resultado: {item.resultado}
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className="text-h5 text-slate-900">{item.nombre}</h3>
+                        <span className="badge-chip border-white/10 bg-black/20 text-white/60">{item.rubro}</span>
                       </div>
-                    ) : null}
 
-                    <p className="mt-4 text-small text-slate-600">{item.texto}</p>
-
-                    <details
-                      className="group mt-4 rounded-2xl border border-white/10 bg-black/20 p-4"
-                      onToggle={(event) => {
-                        if (event.currentTarget.open) {
-                          analytics.faqOpen(`Testimonio: ${item.nombre}`);
-                        }
-                      }}
-                    >
-                      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-h6 text-slate-900">
-                        Ver detalle
-                        <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" />
-                      </summary>
-                      <div className="mt-3 space-y-3 text-small text-muted-foreground">
-                        <p>
-                          <span className="font-semibold text-slate-900">Plan contratado: </span>
+                      <div className="mt-2 flex flex-wrap items-center gap-2">
+                        <StarRow stars={item.rating} />
+                        <div className="inline-flex items-center rounded-full border border-slate-100 bg-slate-50 px-2 py-0.5 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
                           {item.plan}
-                        </p>
-                        <p>
-                          <span className="font-semibold text-slate-900">Mes y año: </span>
-                          {formatTestimonialDate(item.fecha)}
-                        </p>
+                        </div>
+                        <span className="text-xs text-slate-500">{formatTestimonialDate(item.fecha)}</span>
                       </div>
-                    </details>
+
+                      {item.resultado ? (
+                        <div className="mt-4 inline-flex items-center rounded-full border border-slate-100 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-[#0EA5E9]">
+                          🎯 Resultado: {item.resultado}
+                        </div>
+                      ) : null}
+
+                      <p className="mt-4 text-small text-slate-600">{item.texto}</p>
+
+                      <details
+                        className="group mt-4 rounded-2xl border border-slate-100 bg-slate-50 p-4"
+                        onClick={(e) => e.stopPropagation()} /* Prevent card click when clicking details */
+                        onToggle={(event) => {
+                          if (event.currentTarget.open) {
+                            analytics.faqOpen(`Testimonio: ${item.nombre}`);
+                          }
+                        }}
+                      >
+                        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-h6 text-slate-900">
+                          Ver detalle
+                          <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" />
+                        </summary>
+                        <div className="mt-3 space-y-3 text-small text-slate-600">
+                          <p>
+                            <span className="font-semibold text-slate-900">Plan contratado: </span>
+                            {item.plan}
+                          </p>
+                          <p>
+                            <span className="font-semibold text-slate-900">Mes y año: </span>
+                            {formatTestimonialDate(item.fecha)}
+                          </p>
+                        </div>
+                      </details>
+                    </div>
                   </div>
-                </div>
-              </article>
+                </article>
+              </a>
             ))}
           </div>
 

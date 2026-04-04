@@ -316,7 +316,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="problema" className="container py-12 sm:py-16">
+      <section id="problema" className="container py-20 sm:py-24">
         <SectionTitle
           eyebrow="Problema"
           title="¿Te pasa esto?"
@@ -325,23 +325,25 @@ export default function Index() {
 
         <div className="mt-10 container-cards">
           {problems.map((item) => (
-            <div key={item.title} className="card">
-              <div className="card-image flex items-center justify-center p-6">
-                <svg className="h-16 w-16 text-[#0EA5E9]/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
+            <a href="#contacto" key={item.title} className="card-link">
+              <div className="card">
+                <div className="card-image flex items-center justify-center p-6">
+                  <svg className="h-16 w-16 text-[#0EA5E9]/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                </div>
+                <div className="card-content">
+                  <h3 className="card-title">{item.title}</h3>
+                  <p className="card-description">{item.text}</p>
+                </div>
+                <div className="card-footer">
+                  <span>Quiero este sistema</span>
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </div>
               </div>
-              <div className="card-content">
-                <h3 className="card-title">{item.title}</h3>
-                <p className="card-description">{item.text}</p>
-              </div>
-              <div className="card-footer">
-                <span>Quiero este sistema</span>
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </div>
-            </div>
+            </a>
           ))}
         </div>
 
@@ -350,7 +352,7 @@ export default function Index() {
         </p>
       </section>
 
-      <section id="solucion" className="container py-12 sm:py-16">
+      <section id="solucion" className="container py-20 sm:py-24">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-7">
             <SectionTitle
@@ -361,8 +363,9 @@ export default function Index() {
 
             <div className="mt-10 grid gap-3 sm:grid-cols-2">
               {solutions.map((item) => (
-                <div key={item} className="px-4 py-4">
-                  <span className="text-sm font-medium">{item}</span>
+                <div key={item} className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 px-4 py-3">
+                  <div className="h-1.5 w-1.5 rounded-full bg-[#0EA5E9]" />
+                  <span className="text-sm font-medium text-slate-700">{item}</span>
                 </div>
               ))}
             </div>
@@ -372,7 +375,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="rubros" className="container py-12 sm:py-16">
+      <section id="rubros" className="container py-20 sm:py-24">
         <SectionTitle
           eyebrow="Ejemplos"
           title="Elegí tu tipo de negocio y mirá cómo sería tu web"
@@ -391,7 +394,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="como-funciona" className="container py-12 sm:py-16">
+      <section id="como-funciona" className="container py-20 sm:py-24">
         <SectionTitle
           eyebrow="Proceso"
           title="¿Cómo funciona?"
@@ -429,7 +432,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="beneficios" className="container py-12 sm:py-16">
+      <section id="beneficios" className="container py-20 sm:py-24">
         <SectionTitle
           eyebrow="Beneficios"
           title="Lo que vas a lograr con tu web"
@@ -438,23 +441,25 @@ export default function Index() {
 
         <div className="mt-10 container-cards">
           {benefits.map((item) => (
-            <div key={item.title} className="card">
-              <div className="card-image flex items-center justify-center p-6">
-                <svg className="h-16 w-16 text-[#0EA5E9]/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M5 13l4 4L19 7" />
-                </svg>
+            <a href="#contacto" key={item.title} className="card-link">
+              <div className="card">
+                <div className="card-image flex items-center justify-center p-6">
+                  <svg className="h-16 w-16 text-[#0EA5E9]/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div className="card-content">
+                  <h3 className="card-title">{item.title}</h3>
+                  <p className="card-description">{item.text}</p>
+                </div>
+                <div className="card-footer">
+                  <span>Quiero este sistema</span>
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </div>
               </div>
-              <div className="card-content">
-                <h3 className="card-title">{item.title}</h3>
-                <p className="card-description">{item.text}</p>
-              </div>
-              <div className="card-footer">
-                <span>Quiero este sistema</span>
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </div>
-            </div>
+            </a>
           ))}
         </div>
       </section>
@@ -473,18 +478,18 @@ export default function Index() {
       </Suspense>
 
       {/* CTA Mitad de página */}
-      <section className="container py-12 sm:py-16">
-        <div className="relative overflow-hidden rounded-[2rem] border border-cyan-400/20 bg-slate-950 p-8 sm:p-10">
+      <section className="container py-20 sm:py-24">
+        <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-8 sm:p-10 shadow-lg">
           {/* Background glow */}
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(14,165,233,0.16),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.1),transparent_50%)]" />
+          
           
           <div className="relative grid gap-6 lg:grid-cols-[1.4fr_0.8fr] lg:items-center">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0EA5E9]">¿Listo para empezar?</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
                 Tu competencia ya está online. La diferencia es quién convierte mejor.
               </h2>
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-white/70">
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600">
                 Si querés una web que genere clientes, te ayudo a construirla con una propuesta clara y enfocada en
                 resultados.
               </p>
@@ -523,7 +528,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="proceso" className="container py-12 sm:py-16">
+      <section id="proceso" className="container py-20 sm:py-24">
         <SectionTitle
           eyebrow="Proceso"
           title="Así trabajamos"
@@ -532,39 +537,37 @@ export default function Index() {
 
         <div className="mt-10 container-cards">
           {process.map((item) => (
-            <div key={item.step} className="card text-center">
-              <div className="card-image flex items-center justify-center p-6">
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#0EA5E9]/10">
-                  <item.icon className="h-10 w-10 text-[#0EA5E9]" />
+            <a href="#contacto" key={item.step} className="card-link">
+              <div className="card text-center">
+                <div className="card-image flex items-center justify-center p-6">
+                  <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#0EA5E9]/10">
+                    <item.icon className="h-10 w-10 text-[#0EA5E9]" />
+                  </div>
+                </div>
+                <div className="card-content">
+                  <div className="mb-2 text-xs font-semibold tracking-[0.2em] text-[#0EA5E9]">PASO {item.step}</div>
+                  <h3 className="card-title">{item.title}</h3>
+                  <p className="card-description">{item.text}</p>
+                </div>
+                <div className="card-footer justify-center">
+                  <span>Comenzar ahora</span>
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
                 </div>
               </div>
-              <div className="card-content">
-                <div className="mb-2 text-xs font-semibold tracking-[0.2em] text-[#0EA5E9]">PASO {item.step}</div>
-                <h3 className="card-title">{item.title}</h3>
-                <p className="card-description">{item.text}</p>
-              </div>
-              <div className="card-footer justify-center">
-                <span>Comenzar ahora</span>
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </div>
-            </div>
+            </a>
           ))}
         </div>
       </section>
 
-      <section id="sobre-mi" className="container py-12 sm:py-16">
+      <section id="sobre-mi" className="container py-20 sm:py-24">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="surface-card hover-card rounded-[2rem] p-6 sm:p-8">
+          <div className="card rounded-[2rem] p-6 sm:p-8">
             <img
-              src={profileSvg("Diego Podlecki", "Diseño web para negocios de servicios")}
-              alt="Foto de perfil de Diego Podlecki"
-              className="h-full w-full rounded-[1.5rem] object-cover"
-              width={900}
-              height={1100}
-              loading="lazy"
-              decoding="async"
+              src="/lovable-uploads/6007e543-982c-473d-82d2-ca49d47343e0.png"
+              alt="Diego Podlecki"
+              className="mx-auto h-48 w-48 rounded-full border-4 border-white object-cover shadow-xl sm:h-64 sm:w-64"
             />
           </div>
 

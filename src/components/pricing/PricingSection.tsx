@@ -39,57 +39,55 @@ export function PricingSection() {
             index === 0 ? "pricing_basica" : index === 1 ? "pricing_profesional" : "pricing_completa";
 
           return (
-            <article
-              key={plan.name}
-              className={`card-service relative p-6 sm:p-7 ${recommended ? "ring-1 ring-[#0EA5E9]/30" : ""}`}
-            >
-              {recommended ? (
-                <div className="absolute -top-3 left-6 badge-chip border-transparent bg-[#0EA5E9] text-white">
-                  <Sparkles className="h-3.5 w-3.5" />
-                  Más elegido
+            <a href="#contacto" key={plan.name} className="card-link">
+              <article
+                className={`card-service relative h-all ${recommended ? "ring-1 ring-[#0EA5E9]/30" : ""}`}
+              >
+                {recommended ? (
+                  <div className="absolute -top-3 left-6 badge-chip border-transparent bg-[#0EA5E9] text-white">
+                    <Sparkles className="h-3.5 w-3.5" />
+                    Más elegido
+                  </div>
+                ) : (
+                  <div className="absolute -top-3 left-6 badge-chip text-slate-500 border-slate-100">{plan.badge}</div>
+                )}
+
+                <div className="mt-3">
+                  <p className="text-label text-[#0EA5E9] font-semibold">{plan.name}</p>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{plan.audience}</p>
+                  <p className="mt-5 text-3xl font-semibold tracking-tight text-slate-900">{plan.price}</p>
+                  <p className="mt-1 text-sm text-slate-500">{plan.delivery}</p>
                 </div>
-              ) : (
-                <div className="absolute -top-3 left-6 badge-chip text-white/70">{plan.badge}</div>
-              )}
 
-              <div className="mt-3">
-                <p className="text-label text-[#0EA5E9] font-semibold">{plan.name}</p>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{plan.audience}</p>
-                <p className="mt-5 text-3xl font-semibold tracking-tight text-slate-900">{plan.price}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{plan.delivery}</p>
-              </div>
+                <div className="mt-6">
+                  <p className="text-h6 text-slate-900">Incluye</p>
+                  <ul className="mt-4 space-y-3">
+                    {plan.includes.map((item) => (
+                      <li key={item} className="flex items-start gap-3 text-small text-slate-600">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-              <div className="mt-6">
-                <p className="text-h6 text-slate-900">Incluye</p>
-                <ul className="mt-4 space-y-3">
-                  {plan.includes.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-small text-muted-foreground">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                <div className="mt-6 rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                  <p className="text-h6 text-slate-900">No incluye</p>
+                  <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-600">
+                    {plan.excludes.map((item) => (
+                      <li key={item}>• {item}</li>
+                    ))}
+                  </ul>
+                </div>
 
-              <div className="mt-6 rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                <p className="text-h6 text-slate-900">No incluye</p>
-                <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-600">
-                  {plan.excludes.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <Button asChild size="lg" className="btn-primary mt-6 w-full">
-                <a
-                  href="#contacto"
-                  data-analytics-cta={plan.cta}
+                <div 
+                  className="btn-primary mt-6 w-full py-3 text-center rounded-xl font-semibold text-white bg-[#0EA5E9] hover:bg-[#0284C7] transition-colors"
                   onClick={() => analytics.pricingInterest(pricingSource)}
                 >
                   {plan.cta}
-                </a>
-              </Button>
-            </article>
+                </div>
+              </article>
+            </a>
           );
         })}
       </div>
@@ -127,8 +125,8 @@ export function PricingSection() {
         </div>
 
         <div className="card-service ring-1 ring-[#0EA5E9]/20">
-          <div className="badge-chip border-emerald-500/20 bg-emerald-500/10 text-emerald-300">
-            <ShieldCheck className="h-3.5 w-3.5" />
+          <div className="badge-chip border-slate-200 bg-slate-100 text-slate-600">
+            <ShieldCheck className="h-3.5 w-3.5 text-[#0EA5E9]" />
             Compromiso de claridad
           </div>
           <h3 className="mt-4 text-h3 text-slate-900">{pricingGuarantee.title}</h3>
