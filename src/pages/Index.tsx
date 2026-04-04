@@ -247,10 +247,10 @@ export default function Index() {
           </Link>
 
           <nav className="hidden items-center gap-10 md:flex">
-            <a href="#problema" className="text-sm font-bold text-slate-600 transition-colors hover:text-[#0EA5E9]">Problema</a>
-            <a href="#servicios" className="text-sm font-bold text-slate-600 transition-colors hover:text-[#0EA5E9]">Servicios</a>
-            <a href="#testimonios" className="text-sm font-bold text-slate-600 transition-colors hover:text-[#0EA5E9]">Testimonios</a>
-            <a href="#sobre-mi" className="text-sm font-bold text-slate-600 transition-colors hover:text-[#0EA5E9]">Sobre Mí</a>
+            <a href="#problema" className="text-sm font-bold text-slate-500 transition-all duration-200 hover:text-[#0EA5E9] hover:translate-y-[-1px]">Problema</a>
+            <a href="#servicios" className="text-sm font-bold text-slate-500 transition-all duration-200 hover:text-[#0EA5E9] hover:translate-y-[-1px]">Servicios</a>
+            <a href="#testimonios" className="text-sm font-bold text-slate-500 transition-all duration-200 hover:text-[#0EA5E9] hover:translate-y-[-1px]">Testimonios</a>
+            <a href="#sobre-mi" className="text-sm font-bold text-slate-500 transition-all duration-200 hover:text-[#0EA5E9] hover:translate-y-[-1px]">Sobre Mí</a>
             <a href="#contacto" className="btn-primary !px-8 !py-3.5 !text-xs">Quiero más clientes</a>
           </nav>
 
