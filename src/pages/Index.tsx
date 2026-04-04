@@ -303,7 +303,7 @@ export default function Index() {
       <div className="glow-separator" />
 
       {/* 2. PROBLEMA */}
-      <section id="problema" className="section-container container bg-[#111827] relative overflow-hidden">
+      <section id="problema" className="section-muted container relative overflow-hidden">
         <div className="glow-blur -right-20 top-1/2 -translate-y-1/2 opacity-20 bg-blue-500/10" />
         <SectionTitle
           eyebrow="Problema"
@@ -328,7 +328,7 @@ export default function Index() {
       <div className="glow-separator" />
 
       {/* 3. SERVICIOS (CARDS) */}
-      <section id="servicios" className="section-container container bg-[#0f172a] border-t border-white/5">
+      <section id="servicios" className="section-primary container border-t border-white/5">
         <SectionTitle
           eyebrow="Nuestras soluciones"
           title="Arquitecturas que generan ventas"
@@ -381,7 +381,7 @@ export default function Index() {
 
 
       {/* 5. SOBRE MÍ (CONVERTIDO A MODAL/POPUP) */}
-      <section id="sobre-mi" className="section-container container bg-[#111827] border-y border-white/5">
+      <section id="sobre-mi" className="section-muted container border-y border-white/5">
         <div className="mx-auto max-w-4xl rounded-[2.5rem] bg-slate-900 p-12 lg:p-20 text-center overflow-hidden relative shadow-2xl">
           {/* Decorative background circle */}
           <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-cyan-500/10 blur-3xl" />

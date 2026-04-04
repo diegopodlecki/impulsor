@@ -108,9 +108,17 @@
     @apply rounded-full border border-transparent bg-transparent px-8 py-4 text-xs font-black uppercase tracking-widest text-white/70 transition-all duration-200 active:scale-95 hover:bg-white/5 hover:text-white;
   }
 
-  /* Spacing System */
+  /* Spacing & Focus System */
   .section-container {
     @apply py-24 sm:py-32 lg:py-40;
+  }
+
+  .section-primary {
+    @apply py-32 sm:py-40 lg:py-48 bg-[#0f172a];
+  }
+
+  .section-muted {
+    @apply py-16 sm:py-24 lg:py-28 bg-[#111827] opacity-80;
   }
 
   /* Card System */
