@@ -317,71 +317,60 @@
     height: 100%;
   }
 
-  .container-cards {
+  .cards-section {
+    padding: 80px 0;
+  }
+
+  .cards-container {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
   }
 
-  @media (min-width: 640px) {
-    .container-cards {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .container-cards {
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-  }
-
   .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: white;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: all 0.25s ease;
+    border: 1px solid #f1f5f9;
     height: 100%;
-    min-height: 100%;
-    cursor: pointer;
-    position: relative;
-    z-index: 1;
-    transition: all 0.3s ease;
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    @apply border border-slate-200 overflow-hidden;
   }
 
   .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    border-color: #0ea5e9;
   }
 
-  .card-image {
-    @apply mb-5 relative overflow-hidden rounded-lg border border-slate-100 bg-slate-50;
-    height: 180px; /* Standard height for consistency */
-  }
-
-  .card-content {
-    flex-grow: 1;
+  .card-inner {
     display: flex;
     flex-direction: column;
-    @apply gap-2;
+    height: 100%;
   }
 
   .card-title {
-    @apply text-lg font-bold text-slate-900 tracking-tight;
-    margin: 0 !important;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #0f172a;
   }
 
-  .card-description {
-    @apply text-sm leading-relaxed text-slate-600 line-clamp-2;
-    min-height: 2.8em; /* Reserve space for 2 lines */
+  .card-text {
+    font-size: 14px;
+    color: #64748b;
+    flex-grow: 1;
+    line-height: 1.6;
   }
 
-  .card-footer {
-    @apply mt-5 pt-5 border-t border-slate-100;
-    @apply flex items-center gap-2 text-sm font-semibold text-[#0EA5E9];
+  .card-cta {
+    margin-top: 16px;
+    font-weight: 600;
+    color: #0ea5e9;
+    font-size: 14px;
   }
 }
 

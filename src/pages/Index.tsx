@@ -323,25 +323,13 @@ export default function Index() {
           description="Cuando la web no convierte, el negocio sigue online pero no despega."
         />
 
-        <div className="mt-10 container-cards">
+        <div className="mt-10 cards-container">
           {problems.map((item) => (
-            <a href="#contacto" key={item.title} className="card-link">
-              <div className="card">
-                <div className="card-image flex items-center justify-center p-6">
-                  <svg className="h-16 w-16 text-[#0EA5E9]/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                  </svg>
-                </div>
-                <div className="card-content">
-                  <h3 className="card-title">{item.title}</h3>
-                  <p className="card-description">{item.text}</p>
-                </div>
-                <div className="card-footer">
-                  <span>Quiero este sistema</span>
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </div>
+            <a href="#contacto" key={item.title} className="card">
+              <div className="card-inner">
+                <h3 className="card-title">{item.title}</h3>
+                <p className="card-text">{item.text}</p>
+                <div className="card-cta">Solucionar esto →</div>
               </div>
             </a>
           ))}
@@ -382,15 +370,35 @@ export default function Index() {
           description="Cada rubro tiene una solución específica pensada para atraer clientes y facilitar el contacto."
         />
 
-        <div className="mt-10 container-cards">
-          {exampleCards.map((card) => (
-            <LandingPreviewCard
-              key={card.name}
-              config={landingPages[card.configKey as keyof typeof landingPages]}
-              href={card.href}
-              rubric={card.rubro}
-            />
-          ))}
+        <div className="mt-10 cards-container">
+          <a href="#contacto" className="card">
+            <div className="card-inner">
+              <h3 className="card-title">Web para generar consultas</h3>
+              <p className="card-text">Diseño optimizado para que profesionales reciban contactos calificados todos los días.</p>
+              <div className="card-cta">Quiero este sistema →</div>
+            </div>
+          </a>
+          <a href="#contacto" className="card">
+            <div className="card-inner">
+              <h3 className="card-title">Web para negocios locales</h3>
+              <p className="card-text">Posicioná tu comercio con una web que facilite encontrarte y visitarte físicamente.</p>
+              <div className="card-cta">Quiero este sistema →</div>
+            </div>
+          </a>
+          <a href="#contacto" className="card">
+            <div className="card-inner">
+              <h3 className="card-title">Sistema con WhatsApp</h3>
+              <p className="card-text">Integración directa para que tus clientes te escriban con un solo clic desde su móvil.</p>
+              <div className="card-cta">Quiero este sistema →</div>
+            </div>
+          </a>
+          <a href="#contacto" className="card">
+            <div className="card-inner">
+              <h3 className="card-title">Landing de ventas</h3>
+              <p className="card-text">Páginas de aterrizaje enfocadas en un solo producto para maximizar tu retorno de inversión.</p>
+              <div className="card-cta">Quiero este sistema →</div>
+            </div>
+          </a>
         </div>
       </section>
 
@@ -439,25 +447,13 @@ export default function Index() {
           description="La web está pensada para ayudarte a conseguir más resultados y menos fricción en la venta."
         />
 
-        <div className="mt-10 container-cards">
+        <div className="mt-10 cards-container">
           {benefits.map((item) => (
-            <a href="#contacto" key={item.title} className="card-link">
-              <div className="card">
-                <div className="card-image flex items-center justify-center p-6">
-                  <svg className="h-16 w-16 text-[#0EA5E9]/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div className="card-content">
-                  <h3 className="card-title">{item.title}</h3>
-                  <p className="card-description">{item.text}</p>
-                </div>
-                <div className="card-footer">
-                  <span>Quiero este sistema</span>
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </div>
+            <a href="#contacto" key={item.title} className="card">
+              <div className="card-inner">
+                <h3 className="card-title">{item.title}</h3>
+                <p className="card-text">{item.text}</p>
+                <div className="card-cta">Quiero estos beneficios →</div>
               </div>
             </a>
           ))}
