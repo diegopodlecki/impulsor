@@ -4,6 +4,7 @@ import { ChevronDown, MessageCircle, ShieldCheck, Star, Target, TrendingUp, User
 import { analytics } from "@/components/analytics/analytics";
 import { Badge } from "@/components/ui/badge";
 import { TESTIMONIOS, RUBROS_ATENDIDOS, getTestimonialsJsonLd } from "@/lib/testimonios";
+import { TestimonialModal } from "../TestimonialModal";
 
 type CredibilityMetric = {
   label: string;
@@ -45,7 +46,7 @@ const credibilityNumbers: CredibilityMetric[] = [
   },
 ];
 
-function StarRow({ stars }: { stars: number }) {
+export function StarRow({ stars }: { stars: number }) {
   return (
     <div className="flex items-center gap-1 text-amber-400" aria-label={`${stars} estrellas`}>
       {Array.from({ length: stars }).map((_, index) => (
@@ -55,7 +56,7 @@ function StarRow({ stars }: { stars: number }) {
   );
 }
 
-function TestimonialAvatar({ testimonial }: { testimonial: (typeof TESTIMONIOS)[number] }) {
+export function TestimonialAvatar({ testimonial }: { testimonial: (typeof TESTIMONIOS)[number] }) {
   const [imageError, setImageError] = useState(false);
   const shouldShowImage = Boolean(testimonial.foto) && !imageError;
 
@@ -125,29 +126,31 @@ export function Testimonials() {
 
       <div className="mt-16 grid gap-8 md:grid-cols-3">
         {featuredTestimonials.map((item) => (
-          <article key={item.id} className="card !p-8 flex flex-col">
-            <div className="flex items-center gap-4 mb-6">
-              <TestimonialAvatar testimonial={item} />
-              <div>
-                <h3 className="font-bold text-slate-900 leading-tight">{item.nombre}</h3>
-                <div className="flex items-center gap-2 mt-1">
-                  <StarRow stars={item.rating} />
+          <TestimonialModal key={item.id} testimonial={item}>
+            <article className="card !p-8 flex flex-col cursor-pointer transition-transform hover:scale-[1.03]">
+              <div className="flex items-center gap-4 mb-6">
+                <TestimonialAvatar testimonial={item} />
+                <div>
+                  <h3 className="font-bold text-slate-900 leading-tight">{item.nombre}</h3>
+                  <div className="flex items-center gap-2 mt-1">
+                    <StarRow stars={item.rating} />
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            <p className="card-text italic leading-relaxed">
-              "{item.texto}"
-            </p>
+              
+              <p className="card-text italic leading-relaxed line-clamp-3">
+                "{item.texto}"
+              </p>
 
-            <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
-               <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">{item.rubro}</span>
-               <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#0EA5E9]">
-                  <Target className="h-3 w-3" />
-                  Caso verificado
-               </div>
-            </div>
-          </article>
+              <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">{item.rubro}</span>
+                <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#0EA5E9]">
+                    <Target className="h-3 w-3" />
+                    Caso verificado
+                </div>
+              </div>
+            </article>
+          </TestimonialModal>
         ))}
       </div>
 

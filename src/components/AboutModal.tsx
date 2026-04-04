@@ -17,7 +17,7 @@ export function AboutModalTrigger() {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[600px] rounded-[2rem] p-0 overflow-hidden border-none shadow-2xl">
-        <div className="bg-slate-900 p-8 lg:p-12 text-white">
+        <div className="bg-slate-950 p-8 lg:p-12 text-white">
           <DialogHeader>
             <div className="flex items-center gap-4 mb-6">
               <div className="h-16 w-16 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 p-0.5 shadow-lg">
