@@ -114,15 +114,15 @@
   }
 
   .card-image {
-    @apply -mx-8 -mt-8 mb-8 h-56 overflow-hidden border-b border-white/5 bg-slate-900;
+    @apply -mx-4 -mt-4 mb-6 aspect-video overflow-hidden rounded-xl border border-white/10 bg-slate-900 shadow-inner;
   }
 
   .card-image img {
-    @apply h-full w-full object-cover transition-transform duration-700;
+    @apply h-full w-full object-cover transition-transform duration-300;
   }
 
   .card:hover .card-image img {
-    @apply scale-110 opacity-70;
+    @apply scale-105 opacity-90;
   }
 
   .card-title {

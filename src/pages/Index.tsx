@@ -20,6 +20,7 @@ import { LandingPreviewCard } from "@/components/landing/LandingPreviewCard";
 import { defaultWhatsappLink, profileSvg } from "@/components/landing/landingVisuals";
 import { landingPages } from "@/data/landings";
 import { AboutModalTrigger } from "@/components/AboutModal";
+import { ServiceCard, BadgeChip } from "@/components/design-system/components";
 const TrustSection = lazy(() =>
   import("@/components/trust/TrustSection").then((mod) => ({ default: mod.TrustSection })),
 );
@@ -34,18 +35,22 @@ const problems = [
   {
     title: "Tenés redes pero no recibís consultas",
     text: "Publicás contenido, pero eso no siempre se transforma en mensajes o reservas.",
+    image: "/lovable-uploads/ebbed6e4-41d1-443b-beed-4c026027aefe.png"
   },
   {
     title: "Tu competencia se ve más profesional",
     text: "Cuando una web transmite más valor, es más fácil que el cliente se incline por ellos.",
+    image: "/og-gimnasio.png"
   },
   {
     title: "Dependés del boca a boca",
     text: "Sin una web que convierta, cada consulta depende de una recomendación aislada.",
+    image: "/og-emprendedor.png"
   },
   {
     title: "Tu web no genera resultados",
     text: "Si no guía a una acción, termina siendo una presencia online que no vende.",
+    image: "/og-psicologo.png"
   },
 ];
 
@@ -308,6 +313,9 @@ export default function Index() {
         <div className="mt-20 cards-container">
           {problems.map((item) => (
             <a href="#contacto" key={item.title} className="card">
+              <div className="card-image">
+                <img src={item.image} alt={item.title} loading="lazy" />
+              </div>
               <h3 className="card-title">{item.title}</h3>
               <p className="card-text">{item.text}</p>
               <div className="card-cta">Empezar ahora →</div>

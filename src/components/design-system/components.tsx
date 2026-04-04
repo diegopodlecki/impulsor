@@ -45,18 +45,24 @@ export function ButtonGhost({
   );
 }
 
-type ServiceCardProps = {
+interface ServiceCardProps {
   title: string;
   description: string;
-  icon?: LucideIcon;
+  icon?: any;
   badge?: string;
+  image?: string;
   className?: string;
   children?: React.ReactNode;
-};
+}
 
-export function ServiceCard({ title, description, icon: Icon, badge, className = "", children }: ServiceCardProps) {
+export function ServiceCard({ title, description, icon: Icon, badge, image, className = "", children }: ServiceCardProps) {
   return (
     <article className="card">
+      {image ? (
+        <div className="card-image">
+          <img src={image} alt={title} loading="lazy" />
+        </div>
+      ) : null}
       <div className="flex items-start justify-between gap-4">
         <div>
           {badge ? <BadgeChip>{badge}</BadgeChip> : null}
