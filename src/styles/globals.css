@@ -6,62 +6,20 @@
 @layer base {
   :root {
     --color-primary: #0ea5e9;
-    --color-secondary: #10b981;
-    --color-surface: #0b1423;
-    --color-surface-2: #101c31;
-    --color-text: #f8fafc;
-    --color-muted: #94a3b8;
-    --color-border: #23324a;
-    --color-success: #22c55e;
-    --color-warning: #f59e0b;
-    --color-error: #ef4444;
-    --font-body: "Inter", system-ui, sans-serif;
+    --color-secondary: #64748b;
+    --color-text: #0f172a;
+    --color-bg: #ffffff;
     --font-heading: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
-    --background: 230 20% 7%;
-    --foreground: 210 20% 98%;
-
-    --card: 230 20% 10%;
-    --card-foreground: 210 20% 98%;
-
-    --popover: 222 45% 10%;
-    --popover-foreground: 210 40% 98%;
-
-    --radius: 0.75rem;
-
-    --primary: 197 97% 48%;
+    --font-body: "Inter", system-ui, sans-serif;
+    --radius: 9999px; /* For buttons and pills */
+    --radius-card: 16px;
+    
+    /* Shadcn/UI compatibility if needed, but strictly following the system */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --primary: 199 89% 48%; /* #0ea5e9 */
     --primary-foreground: 210 40% 98%;
-
-    --secondary: 222 34% 13%;
-    --secondary-foreground: 210 40% 92%;
-
-    --muted: 222 28% 11%;
-    --muted-foreground: 215 18% 72%;
-
-    --accent: 161 84% 40%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 223 24% 19%;
-    --input: 223 24% 19%;
-    --ring: 197 97% 48%;
-
-    --radius: 0.75rem;
-
-    --gradient-primary: linear-gradient(135deg, hsl(197 97% 48%), hsl(161 84% 40%), hsl(248 95% 65%));
-    --gradient-hero: radial-gradient(circle at 50% 0%, hsl(230 20% 12%) 0%, hsl(230 20% 7%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(230 20% 13%), hsl(230 20% 8%));
-    --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
-
-    --sidebar-background: 220 18% 6%;
-    --sidebar-foreground: 210 20% 85%;
-    --sidebar-primary: 200 100% 55%;
-    --sidebar-primary-foreground: 220 20% 4%;
-    --sidebar-accent: 220 14% 12%;
-    --sidebar-accent-foreground: 210 20% 85%;
-    --sidebar-border: 220 14% 16%;
-    --sidebar-ring: 200 100% 55%;
+    --border: 214.3 31.8% 91.4%;
   }
 }
 
@@ -71,306 +29,122 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    background-color: var(--color-bg);
+    color: var(--color-text);
     font-family: var(--font-body);
-    background:
-      radial-gradient(circle at top center, hsl(197 97% 48% / 0.05), transparent 60%),
-      hsl(var(--background));
+    -webkit-font-smoothing: antialiased;
   }
 
   html {
     scroll-behavior: smooth;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    letter-spacing: -0.03em;
-  }
-}
-
-@layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-primary);
-  }
-
-  .bg-gradient-primary {
-    background-image: var(--gradient-primary);
-  }
-
-  .bg-gradient-hero {
-    background-image: var(--gradient-hero);
-  }
-
-  .bg-gradient-card {
-    background-image: var(--gradient-card);
-  }
-
-  .shadow-card {
-    box-shadow: var(--shadow-card);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reveal {
-      opacity: 1;
-      transform: none;
-      filter: none;
-      transition: none;
-    }
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
   }
 }
 
 @layer components {
-  .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-[var(--color-primary)] px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_50px_-22px_rgba(14,165,233,0.5)] transition-all duration-200 hover:translate-y-[-1px] hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-surface)];
-  }
-
-  .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl border px-5 py-3 text-sm font-semibold transition-all duration-200 hover:translate-y-[-1px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-surface)];
-    border-color: color-mix(in srgb, var(--color-border) 86%, transparent);
-    background: color-mix(in srgb, var(--color-surface) 72%, transparent);
-    color: var(--color-text);
-  }
-
-  .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold transition-colors duration-200 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-surface)];
-    color: var(--color-text);
-  }
-
-  .card-service {
-    @apply card cursor-default; /* Inherit base card styles but remove pointer for non-links */
-  }
-
-  .badge-chip {
-    @apply inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em];
-    border-color: color-mix(in srgb, var(--color-border) 86%, transparent);
-    background: color-mix(in srgb, var(--color-surface) 82%, transparent);
-    color: var(--color-text);
-  }
-
-  .input-shell {
-    @apply h-11 rounded-2xl border px-4 text-sm text-foreground placeholder:text-muted-foreground backdrop-blur;
-    border-color: hsl(var(--border));
-    background: color-mix(in srgb, var(--color-surface) 78%, transparent);
-    transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
-  }
-
-  .input-shell:focus,
-  .input-shell:focus-visible {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 22%, transparent);
-  }
-
-  .input-shell[data-state="error"] {
-    border-color: var(--color-error);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-error) 18%, transparent);
-  }
-
-  .input-shell[data-state="success"] {
-    border-color: var(--color-success);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-success) 16%, transparent);
-  }
-
-  .textarea-shell {
-    @apply min-h-32 rounded-2xl border px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground backdrop-blur;
-    border-color: hsl(var(--border));
-    background: color-mix(in srgb, var(--color-surface) 78%, transparent);
-    transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
-  }
-
-  .textarea-shell:focus,
-  .textarea-shell:focus-visible {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 22%, transparent);
-  }
-
-  .textarea-shell[data-state="error"] {
-    border-color: var(--color-error);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-error) 18%, transparent);
-  }
-
-  .textarea-shell[data-state="success"] {
-    border-color: var(--color-success);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-success) 16%, transparent);
-  }
-
-  .heading-font {
-    font-family: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
-  }
-
+  /* Typographic System */
   .text-h1 {
-    font-family: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    line-height: 0.98;
-    letter-spacing: -0.045em;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    line-height: 1.1;
     font-weight: 800;
   }
 
   .text-h2 {
-    font-family: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
-    font-size: clamp(2rem, 4vw, 3.25rem);
-    line-height: 1.05;
-    letter-spacing: -0.04em;
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    line-height: 1.2;
     font-weight: 700;
   }
 
   .text-h3 {
-    font-family: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    font-weight: 700;
-  }
-
-  .text-h4 {
-    font-family: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
-    font-size: 1.25rem;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    font-weight: 700;
-  }
-
-  .text-h5 {
-    font-family: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
-    font-size: 1.125rem;
-    line-height: 1.25;
-    letter-spacing: -0.02em;
-    font-weight: 700;
-  }
-
-  .text-h6 {
-    font-family: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
-    font-size: 1rem;
+    font-size: 1.5rem;
     line-height: 1.3;
-    letter-spacing: -0.01em;
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .text-body {
     font-size: 1rem;
-    line-height: 1.7;
-    letter-spacing: -0.01em;
-  }
-
-  .text-small {
-    font-size: 0.875rem;
-    line-height: 1.5;
+    line-height: 1.6;
+    color: #475569; /* Slate-600 for readability */
   }
 
   .text-label {
-    font-size: 0.75rem;
-    line-height: 1.2;
+    font-size: 0.875rem;
     font-weight: 700;
-    letter-spacing: 0.14em;
+    color: var(--color-primary);
     text-transform: uppercase;
-  }
-}
-
-@layer base {
-  .hero-critical {
-    position: relative;
-    isolation: isolate;
-    padding-block: clamp(3rem, 7vw, 5rem);
+    letter-spacing: 0.1em;
   }
 
-  .hero-critical .hero-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    line-height: 0.98;
-    letter-spacing: -0.045em;
-    font-weight: 800;
+  /* Universal Button System */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-bold transition-all duration-200 hover:scale-[1.02] active:scale-[0.98];
   }
 
-  .hero-critical .hero-subtitle {
-    font-size: clamp(1rem, 2vw, 1.125rem);
-    line-height: 1.7;
+  .btn-primary {
+    @apply btn bg-[#0ea5e9] text-white shadow-lg shadow-cyan-500/20 hover:bg-[#0284c7];
   }
 
-  .hero-critical .hero-actions {
-    min-height: 3.5rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-@layer components {
-  .card-link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    height: 100%;
+  .btn-secondary {
+    @apply btn bg-slate-100 text-slate-900 hover:bg-slate-200;
   }
 
-  .cards-section {
-    padding: 80px 0;
+  /* Spacing System */
+  .section-container {
+    @apply py-20 lg:py-32;
   }
 
-  .cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-  }
-
+  /* Card System */
   .card {
-    display: block;
-    text-decoration: none;
-    color: inherit;
     background: white;
-    border-radius: 14px;
-    padding: 24px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    transition: all 0.25s ease;
+    border-radius: var(--radius-card);
+    padding: 32px;
     border: 1px solid #f1f5f9;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
     height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
-    border-color: #0ea5e9;
-  }
-
-  .card-inner {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+    border-color: var(--color-primary);
   }
 
   .card-title {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #0f172a;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
   }
 
   .card-text {
-    font-size: 14px;
+    font-size: 0.9375rem;
+    line-height: 1.6;
     color: #64748b;
     flex-grow: 1;
-    line-height: 1.6;
   }
 
   .card-cta {
-    margin-top: 16px;
-    font-weight: 600;
-    color: #0ea5e9;
-    font-size: 14px;
+    margin-top: 20px;
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto max-w-7xl px-6 lg:px-8;
   }
 }
 
