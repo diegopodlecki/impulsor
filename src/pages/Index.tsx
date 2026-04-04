@@ -1,5 +1,15 @@
 import { lazy, Suspense, useEffect, useRef } from "react";
-import { MessageCircle, Clock, CheckCircle } from "lucide-react";
+import { 
+  ArrowRight, 
+  ExternalLink,
+  Laptop,
+  Maximize2,
+  Play,
+  Zap,
+  MessageCircle, 
+  Clock, 
+  CheckCircle 
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { analytics } from "@/components/analytics/analytics";
@@ -163,6 +173,58 @@ function SectionTitle({
   );
 }
 
+/**
+ * Hero Mockup - Represents a high-end web delivery
+ */
+function HeroMockup() {
+  return (
+    <div className="relative mx-auto mt-20 max-w-5xl animate-float lg:mt-24">
+      {/* Glow behind the mockup */}
+      <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-tr from-blue-600/20 to-purple-600/20 blur-2xl opacity-50" />
+      
+      {/* Browser Shell */}
+      <div className="relative overflow-hidden rounded-[1.5rem] lg:rounded-[2.5rem] border border-white/10 bg-[#0f172a] shadow-2xl">
+        {/* Browser Top Bar */}
+        <div className="flex items-center justify-between border-b border-white/5 bg-white/5 px-6 py-4">
+          <div className="flex gap-2">
+            <div className="h-3 w-3 rounded-full bg-red-500/50" />
+            <div className="h-3 w-3 rounded-full bg-amber-500/50" />
+            <div className="h-3 w-3 rounded-full bg-emerald-500/50" />
+          </div>
+          <div className="hidden h-6 w-64 rounded-lg bg-white/5 md:block" />
+          <div className="flex gap-4">
+            <div className="h-2 w-2 rounded-full bg-white/10" />
+            <div className="h-2 w-2 rounded-full bg-white/10" />
+          </div>
+        </div>
+        
+        {/* Preview Content - Using a service card mockup style */}
+        <div className="aspect-[16/9] lg:aspect-[21/9] overflow-hidden bg-slate-900 p-2 sm:p-4">
+           <div className="relative h-full w-full overflow-hidden rounded-xl border border-white/5 bg-[#0b1120]">
+              <img 
+                src="/lovable-uploads/ebbed6e4-41d1-443b-beed-4c026027aefe.png" 
+                alt="Web Delivery Preview"
+                className="h-full w-full object-cover opacity-90 transition-opacity hover:opacity-100"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0b1120] via-transparent to-transparent opacity-60" />
+              
+              {/* Floating UI Element inside mockup */}
+              <div className="absolute bottom-6 left-6 hidden sm:flex items-center gap-4 rounded-2xl border border-white/10 bg-black/40 p-4 backdrop-blur-md">
+                 <div className="h-10 w-10 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/40">
+                    <Zap className="h-5 w-5 text-white" />
+                 </div>
+                 <div>
+                    <p className="text-xs font-black uppercase tracking-widest text-[#3b82f6]">Performance</p>
+                    <p className="text-sm font-bold text-white">99/100 Core Web Vitals</p>
+                 </div>
+              </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Index() {
   return (
     <main className="min-h-screen">
@@ -194,38 +256,43 @@ export default function Index() {
       </header>
 
       {/* 1. HERO */}
-      <section className="section-container container pb-20 lg:pb-32 bg-[#0f172a]">
-        <div className="mx-auto max-w-5xl text-center relative">
-          {/* Ambient Glow Blob */}
-          <div className="glow-blur top-0 left-1/2 -translate-x-1/2 opacity-30" />
-          
+      <section className="section-container container relative pb-0 pt-32 lg:pt-48 bg-hero-glow overflow-hidden">
+        {/* Background Blobs */}
+        <div className="glow-blur -top-24 -left-20 opacity-20" />
+        <div className="glow-blur top-1/2 -right-40 opacity-10 bg-purple-500/10" />
+
+        <div className="mx-auto max-w-5xl text-center relative z-10">
           <div className="mb-10 inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-5 py-2.5 text-sm font-bold text-[#3b82f6] shadow-xl shadow-blue-500/10">
             <span className="h-2.5 w-2.5 rounded-full bg-[#3b82f6] animate-pulse" />
-            Diseño SaaS de alto rendimiento
+            <span className="uppercase tracking-[0.1em] text-[10px]">Silicon Valley Style Design</span>
           </div>
 
-          <h1 className="text-h1">
+          <h1 className="text-h1 mb-8">
             Tu web debería traerle <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6]">clientes reales</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3b82f6] via-[#6366f1] to-[#a855f7]">clientes reales</span>
           </h1>
 
-          <p className="mt-12 text-subtitle mx-auto">
-            Diseñamos sitios para profesionales y negocios de servicios que necesitan autoridad, claridad y un flujo constante de consultas.
+          <p className="mt-8 text-subtitle mx-auto max-w-3xl">
+            No diseñamos webs, creamos sistemas de autoridad que transforman visitas en consultas constantes. Diseño premium orientado 100% a la conversión.
           </p>
 
-          <div className="mt-14 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Button asChild className="btn-primary">
-              <a href="#contacto" data-analytics-cta="hero-primary">
+          <div className="mt-12 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
+            <Button asChild className="btn-primary group h-16 px-12">
+              <a href="#contacto" className="flex items-center gap-3">
                 Quiero más clientes
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
-            <Button asChild variant="outline" className="btn-secondary">
-              <a href="#servicios" data-analytics-cta="hero-secondary">
-                Analizar mi web
+            <Button asChild variant="outline" className="btn-secondary h-16 px-12">
+              <a href="#servicios">
+                Ver soluciones
               </a>
             </Button>
           </div>
         </div>
+
+        {/* Hero Visual Extra (Mockup) */}
+        <HeroMockup />
       </section>
 
 
