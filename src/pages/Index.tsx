@@ -195,15 +195,18 @@ export default function Index() {
 
       {/* 1. HERO */}
       <section className="section-container container pb-20 lg:pb-32 bg-[#0f172a]">
-        <div className="mx-auto max-w-5xl text-center">
-          <div className="mb-10 inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-5 py-2.5 text-sm font-bold text-[#3b82f6]">
-            <span className="h-2 w-2 rounded-full bg-[#3b82f6]" />
+        <div className="mx-auto max-w-5xl text-center relative">
+          {/* Ambient Glow Blob */}
+          <div className="glow-blur top-0 left-1/2 -translate-x-1/2 opacity-30" />
+          
+          <div className="mb-10 inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-5 py-2.5 text-sm font-bold text-[#3b82f6] shadow-xl shadow-blue-500/10">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#3b82f6] animate-pulse" />
             Diseño SaaS de alto rendimiento
           </div>
 
           <h1 className="text-h1">
             Tu web debería traerle <br className="hidden md:block" />
-            <span className="text-[#3b82f6]">clientes reales</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6]">clientes reales</span>
           </h1>
 
           <p className="mt-12 text-subtitle mx-auto">
@@ -227,7 +230,8 @@ export default function Index() {
 
 
       {/* 2. PROBLEMA */}
-      <section id="problema" className="section-container container bg-[#111827]">
+      <section id="problema" className="section-container container bg-[#111827] relative overflow-hidden">
+        <div className="glow-blur -right-20 top-1/2 -translate-y-1/2 opacity-20 bg-blue-500/10" />
         <SectionTitle
           eyebrow="Problema"
           title="¿Tu web actual es solo un gasto?"

@@ -30,6 +30,10 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-black tracking-tight text-white;
   }
+
+  .glow-blur {
+    @apply pointer-events-none absolute -z-10 h-64 w-64 rounded-full bg-blue-500/20 blur-[100px];
+  }
 }
 
 @layer components {
@@ -63,7 +67,17 @@
 
   /* Universal Button System */
   .btn-primary {
-    @apply rounded-full bg-[#3b82f6] px-10 py-5 text-sm font-black uppercase tracking-widest text-white shadow-lg transition-all hover:bg-[#2563eb] hover:scale-105 active:scale-95;
+    @apply relative overflow-hidden rounded-full bg-[#3b82f6] px-10 py-5 text-sm font-black uppercase tracking-widest text-white transition-all duration-300;
+    box-shadow: 0 0 20px -5px rgba(59, 130, 246, 0.5);
+  }
+
+  .btn-primary:hover {
+    @apply -translate-y-1 bg-[#2563eb] scale-105;
+    box-shadow: 0 0 30px 2px rgba(59, 130, 246, 0.6);
+  }
+
+  .btn-primary:active {
+    @apply scale-95 translate-y-0 shadow-inner;
   }
 
   .btn-secondary {
@@ -77,12 +91,12 @@
 
   /* Card System */
   .card {
-    @apply relative flex flex-col overflow-hidden rounded-[2.5rem] bg-[#1e293b] p-8 transition-all duration-500 border border-white/5;
+    @apply relative flex flex-col overflow-hidden rounded-[2.5rem] bg-[#1e293b]/90 p-8 transition-all duration-500 border border-white/5 backdrop-blur-sm;
   }
 
   .card:hover {
     @apply -translate-y-3 bg-[#273549] border-white/10;
-    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 0 0 20px 0px rgba(59, 130, 246, 0.1);
   }
 
   .card-image {

@@ -63,7 +63,7 @@ export function ServiceCard({ title, description, icon: Icon, badge, className =
           <h3 className="mt-4 text-h3">{title}</h3>
         </div>
         {Icon ? (
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 text-[#3b82f6] border border-white/10 shadow-xl shadow-blue-500/10">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 text-[#3b82f6] border border-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.2)]">
             <Icon className="h-6 w-6" />
           </div>
         ) : null}
