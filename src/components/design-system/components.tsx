@@ -56,20 +56,20 @@ type ServiceCardProps = {
 
 export function ServiceCard({ title, description, icon: Icon, badge, className = "", children }: ServiceCardProps) {
   return (
-    <article className={`card-service ${className}`.trim()}>
+    <article className="card">
       <div className="flex items-start justify-between gap-4">
         <div>
-          {badge ? <span className="badge-chip">{badge}</span> : null}
-          <h3 className="mt-4 text-h4 text-white">{title}</h3>
+          {badge ? <BadgeChip>{badge}</BadgeChip> : null}
+          <h3 className="mt-4 text-h3">{title}</h3>
         </div>
         {Icon ? (
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--color-primary)_12%,transparent)] text-[var(--color-primary)]">
-            <Icon className="h-5 w-5" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 text-[#3b82f6] border border-white/10 shadow-xl shadow-blue-500/10">
+            <Icon className="h-6 w-6" />
           </div>
         ) : null}
       </div>
 
-      <p className="mt-4 text-body text-white/70">{description}</p>
+      <p className="mt-4 text-slate-400 leading-relaxed">{description}</p>
       {children ? <div className="mt-6">{children}</div> : null}
     </article>
   );

@@ -168,7 +168,7 @@ export default function Index() {
     <main className="min-h-screen">
       <div className="hidden" />
 
-      <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/5 bg-slate-950/80 backdrop-blur-xl">
         <div className="container flex h-20 items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0EA5E9]">
@@ -194,16 +194,16 @@ export default function Index() {
       </header>
 
       {/* 1. HERO */}
-      <section className="section-container container text-slate-900 pb-20 lg:pb-32 bg-white">
+      <section className="section-container container pb-20 lg:pb-32 bg-[#0f172a]">
         <div className="mx-auto max-w-5xl text-center">
-          <div className="mb-10 inline-flex items-center gap-2 rounded-full bg-slate-50 border border-slate-100 px-5 py-2.5 text-sm font-bold text-[#0EA5E9]">
-            <span className="h-2 w-2 rounded-full bg-[#0EA5E9]" />
+          <div className="mb-10 inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-5 py-2.5 text-sm font-bold text-[#3b82f6]">
+            <span className="h-2 w-2 rounded-full bg-[#3b82f6]" />
             Diseño SaaS de alto rendimiento
           </div>
 
           <h1 className="text-h1">
             Tu web debería traerle <br className="hidden md:block" />
-            <span className="text-[#0EA5E9]">clientes reales</span>
+            <span className="text-[#3b82f6]">clientes reales</span>
           </h1>
 
           <p className="mt-12 text-subtitle mx-auto">
@@ -227,7 +227,7 @@ export default function Index() {
 
 
       {/* 2. PROBLEMA */}
-      <section id="problema" className="section-container container bg-slate-50/50">
+      <section id="problema" className="section-container container bg-[#111827]">
         <SectionTitle
           eyebrow="Problema"
           title="¿Tu web actual es solo un gasto?"
@@ -247,7 +247,7 @@ export default function Index() {
 
 
       {/* 3. SERVICIOS (CARDS) */}
-      <section id="servicios" className="section-container container bg-white border-t border-slate-100">
+      <section id="servicios" className="section-container container bg-[#0f172a] border-t border-white/5">
         <SectionTitle
           eyebrow="Nuestras soluciones"
           title="Arquitecturas que generan ventas"
@@ -300,7 +300,7 @@ export default function Index() {
 
 
       {/* 5. SOBRE MÍ (CONVERTIDO A MODAL/POPUP) */}
-      <section id="sobre-mi" className="section-container container bg-white border-t border-slate-100">
+      <section id="sobre-mi" className="section-container container bg-[#111827] border-y border-white/5">
         <div className="mx-auto max-w-4xl rounded-[2.5rem] bg-slate-900 p-12 lg:p-20 text-center overflow-hidden relative shadow-2xl">
           {/* Decorative background circle */}
           <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-cyan-500/10 blur-3xl" />
@@ -394,7 +394,7 @@ export default function Index() {
         </div>
       </section>
 
-      <footer className="border-t border-slate-100 bg-white py-14">
+      <footer className="border-t border-white/5 bg-[#0f172a] py-14">
         <div className="container text-center text-slate-500 text-sm">
           © 2024 WebAppImpulsor · Diego Podlecki
         </div>

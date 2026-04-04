@@ -113,12 +113,12 @@ export function Testimonials() {
   const featuredTestimonials = TESTIMONIOS.slice(0, 3);
 
   return (
-    <section id="testimonios" className="section-container container bg-slate-50/50 border-y border-slate-100">
+    <section id="testimonios" className="section-container container bg-[#111827] border-y border-white/5">
       <TestimonialsJsonLd />
 
       <div className="mx-auto max-w-4xl text-center">
-        <span className="text-label">Prueba social</span>
-        <h2 className="text-h2 mt-2 text-slate-900">La confianza de quienes ya escalaron</h2>
+        <span className="text-label !text-[#3b82f6]">Prueba social</span>
+        <h2 className="text-h2 mt-2 text-white">La confianza de quienes ya escalaron</h2>
         <p className="text-subtitle mt-6 mx-auto">
           No lo decimos nosotros, lo dicen profesionales que ya transformaron su presencia digital.
         </p>
@@ -131,20 +131,20 @@ export function Testimonials() {
               <div className="flex items-center gap-4 mb-6">
                 <TestimonialAvatar testimonial={item} />
                 <div>
-                  <h3 className="font-bold text-slate-900 leading-tight">{item.nombre}</h3>
+                  <h3 className="font-bold text-white leading-tight">{item.nombre}</h3>
                   <div className="flex items-center gap-2 mt-1">
                     <StarRow stars={item.rating} />
                   </div>
                 </div>
               </div>
               
-              <p className="card-text italic leading-relaxed line-clamp-3">
+              <p className="text-slate-400 italic leading-relaxed line-clamp-3">
                 "{item.texto}"
               </p>
 
-              <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">{item.rubro}</span>
-                <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#0EA5E9]">
+              <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+                <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.1em]">{item.rubro}</span>
+                <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#3b82f6]">
                     <Target className="h-3 w-3" />
                     Caso verificado
                 </div>

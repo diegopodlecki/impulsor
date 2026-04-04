@@ -16,11 +16,11 @@ export function AboutModalTrigger() {
           Conocé mi historia
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px] rounded-[2rem] p-0 overflow-hidden border-none shadow-2xl">
-        <div className="bg-slate-950 p-8 lg:p-12 text-white">
+      <DialogContent className="sm:max-w-[600px] rounded-[2.5rem] p-0 overflow-hidden border border-white/5 shadow-2xl shadow-black/50">
+        <div className="bg-[#0b1120] p-8 lg:p-12 text-white">
           <DialogHeader>
             <div className="flex items-center gap-4 mb-6">
-              <div className="h-16 w-16 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 p-0.5 shadow-lg">
+              <div className="h-16 w-16 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 p-0.5 shadow-lg">
                 <img
                   src="/lovable-uploads/6007e543-982c-473d-82d2-ca49d47343e0.png"
                   alt="Diego Podlecki"

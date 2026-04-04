@@ -25,8 +25,8 @@ export function TestimonialModal({
           {children}
         </div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[550px] rounded-[2rem] p-0 overflow-hidden border-none shadow-2xl">
-        <div className="bg-slate-950 p-8 lg:p-12 text-white relative">
+      <DialogContent className="sm:max-w-[550px] rounded-[2.5rem] p-0 overflow-hidden border border-white/5 shadow-2xl shadow-black/50">
+        <div className="bg-[#0b1120] p-8 lg:p-12 text-white relative">
           {/* Decorative Quote Icon */}
           <Quote className="absolute top-8 right-8 h-20 w-20 text-white/5 -rotate-12" />
           
@@ -49,7 +49,7 @@ export function TestimonialModal({
             </p>
             
             <div className="mt-10 p-6 rounded-2xl bg-white/5 border border-white/10">
-              <div className="flex items-center gap-3 text-[#0EA5E9] mb-2">
+              <div className="flex items-center gap-3 text-[#3b82f6] mb-2">
                 <Target className="h-5 w-5" />
                 <span className="text-sm font-black uppercase tracking-widest">Resultado Real</span>
               </div>
