@@ -9,6 +9,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { LandingPreviewCard } from "@/components/landing/LandingPreviewCard";
 import { defaultWhatsappLink, profileSvg } from "@/components/landing/landingVisuals";
 import { landingPages } from "@/data/landings";
+import { AboutModalTrigger } from "@/components/AboutModal";
 const TrustSection = lazy(() =>
   import("@/components/trust/TrustSection").then((mod) => ({ default: mod.TrustSection })),
 );
@@ -142,284 +143,205 @@ function SectionTitle({
   eyebrow,
   title,
   description,
+  className = "",
 }: {
   eyebrow: string;
   title: string;
   description: string;
+  className?: string;
 }) {
   return (
-    <div className="mx-auto max-w-3xl text-center">
-      <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">{eyebrow}</p>
-      <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
-      <p className="mt-4 text-pretty text-muted-foreground">{description}</p>
+    <div className={`mx-auto max-w-4xl text-center ${className}`}>
+      <span className="text-label !text-[#0EA5E9] font-black uppercase tracking-[0.2em]">{eyebrow}</span>
+      <h2 className="text-h2 mt-4 text-slate-900">
+        {title}
+      </h2>
+      <p className="text-subtitle mt-8 mx-auto !text-slate-500 !max-w-2xl">
+        {description}
+      </p>
     </div>
   );
 }
 
 export default function Index() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <div className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-hero opacity-80" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.16),transparent_32%),radial-gradient(circle_at_84%_12%,rgba(59,130,246,0.12),transparent_30%),radial-gradient(circle_at_60%_88%,rgba(16,185,129,0.1),transparent_28%)]" />
-      </div>
+    <main className="min-h-screen">
+      <div className="hidden" />
 
-      <header className="sticky top-0 z-50 border-b border-white/5 bg-slate-950/60 backdrop-blur-2xl transition-all duration-300">
-        <div className="container flex h-16 items-center justify-between">
-          <Link to="/" className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-[#0EA5E9] to-[#10B981]">
-              <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/80 backdrop-blur-xl">
+        <div className="container flex h-20 items-center justify-between">
+          <Link to="/" className="flex items-center gap-2">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0EA5E9]">
+              <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <span className="text-lg font-bold tracking-tight text-white">WebApp<span className="text-[#0EA5E9]">Impulsor</span></span>
+            <span className="text-xl font-extrabold tracking-tight text-slate-900">WebApp<span className="text-[#0EA5E9]">Impulsor</span></span>
           </Link>
 
-          <nav className="hidden items-center gap-8 md:flex">
-            <a href="#problema" className="text-sm font-medium text-white/70 transition-colors hover:text-white">Problema</a>
-            <a href="#servicios" className="text-sm font-medium text-white/70 transition-colors hover:text-white">Servicios</a>
-            <a href="#testimonios" className="text-sm font-medium text-white/70 transition-colors hover:text-white">Testimonios</a>
-            <a href="#sobre-mi" className="text-sm font-medium text-white/70 transition-colors hover:text-white">Sobre Mí</a>
-            <a href="#contacto" className="text-sm font-medium text-white/70 transition-colors hover:text-white">Contacto</a>
+          <nav className="hidden items-center gap-10 md:flex">
+            <a href="#problema" className="text-sm font-bold text-slate-600 transition-colors hover:text-[#0EA5E9]">Problema</a>
+            <a href="#servicios" className="text-sm font-bold text-slate-600 transition-colors hover:text-[#0EA5E9]">Servicios</a>
+            <a href="#testimonios" className="text-sm font-bold text-slate-600 transition-colors hover:text-[#0EA5E9]">Testimonios</a>
+            <a href="#sobre-mi" className="text-sm font-bold text-slate-600 transition-colors hover:text-[#0EA5E9]">Sobre Mí</a>
+            <a href="#contacto" className="btn-primary !px-8 !py-3.5 !text-xs">Quiero más clientes</a>
           </nav>
 
-          <Button asChild size="sm" className="bg-[#25D366] text-white hover:bg-[#20bd5a]">
-            <a
-              href="https://wa.me/541166448389"
-              target="_blank"
-              rel="noreferrer"
-              data-whatsapp-origin="header"
-              data-analytics-cta="header-whatsapp"
-              onClick={() => analytics.whatsappClick("header")}
-            >
-              <svg className="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-              </svg>
-              Consultá ahora
-            </a>
-          </Button>
+          <div className="md:hidden">
+            {/* Mobile menu logic could go here, but keeping it simple for now */}
+          </div>
         </div>
       </header>
 
-      <section className="container hero-critical py-12 sm:py-16 lg:py-20">
-        <div className="mx-auto max-w-3xl text-center">
-          {/* Badge */}
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-emerald-300 shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)] backdrop-blur-md">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-            Sitios pensados para generar consultas mejor calificadas
+      {/* 1. HERO */}
+      <section className="section-container container text-slate-900 pb-20 lg:pb-32 bg-white">
+        <div className="mx-auto max-w-5xl text-center">
+          <div className="mb-10 inline-flex items-center gap-2 rounded-full bg-slate-50 border border-slate-100 px-5 py-2.5 text-sm font-bold text-[#0EA5E9]">
+            <span className="h-2 w-2 rounded-full bg-[#0EA5E9]" />
+            Diseño SaaS de alto rendimiento
           </div>
 
-          {/* H1 */}
-          <h1 className="hero-title text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-            Tu web debería traerte clientes
+          <h1 className="text-h1">
+            Tu web debería traerle <br className="hidden md:block" />
+            <span className="text-[#0EA5E9]">clientes reales</span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="hero-subtitle mt-6 text-pretty text-lg leading-relaxed text-slate-300/90 sm:text-xl">
-            Diseñamos sitios para psicólogos, abogados, consultores y coaches que necesitan autoridad, claridad y más consultas reales.
+          <p className="mt-12 text-subtitle mx-auto">
+            Diseñamos sitios para profesionales y negocios de servicios que necesitan autoridad, claridad y un flujo constante de consultas.
           </p>
 
-          {/* Benefits */}
-          <div className="hero-actions mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <div className="flex items-center gap-2">
-              <span className="text-[#0EA5E9]">✓</span>
-              <span className="text-sm">Atraé consultas sin depender solo de redes</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-[#0EA5E9]">✓</span>
-              <span className="text-sm">Transmití autoridad desde el primer vistazo</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-[#0EA5E9]">✓</span>
-              <span className="text-sm">Convertí visitas en mensajes reales</span>
-            </div>
-          </div>
-
-          {/* CTAs */}
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Button asChild size="lg" className="bg-[#0EA5E9] text-white hover:bg-[#0284C7]">
+          <div className="mt-14 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <Button asChild className="btn-primary">
               <a href="#contacto" data-analytics-cta="hero-primary">
-                Quiero una propuesta
+                Quiero más clientes
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="outline" className="btn-secondary">
               <a href="#servicios" data-analytics-cta="hero-secondary">
-                Ver servicios
+                Analizar mi web
               </a>
             </Button>
-          </div>
-
-          {/* Microcopy */}
-          <p className="mt-4 text-sm text-muted-foreground">
-            Respuesta en menos de 24 hs hábiles
-          </p>
-
-          {/* Social proof */}
-          <div className="mt-8 flex items-center justify-center gap-2">
-            <span className="text-yellow-500">★★★★★</span>
-            <span className="text-sm text-muted-foreground">Trabajo enfocado en negocios de servicios en Argentina</span>
-          </div>
-
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            {heroStats.map((item) => (
-              <div key={item.value} className="surface-card rounded-3xl p-4 text-left">
-                <p className="text-lg font-semibold text-white">{item.value}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{item.label}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
 
-      <section id="problema" className="container py-20 sm:py-24">
+      {/* 2. PROBLEMA */}
+      <section id="problema" className="section-container container bg-slate-50/50">
         <SectionTitle
           eyebrow="Problema"
-          title="¿Te pasa esto?"
-          description="Cuando la web no convierte, el negocio sigue online pero no despega."
+          title="¿Tu web actual es solo un gasto?"
+          description="Si tenés visitas pero nadie te escribe, el problema no es tu tráfico, es tu capacidad de conversión."
         />
 
-        <div className="mt-10 cards-container">
+        <div className="mt-20 cards-container">
           {problems.map((item) => (
             <a href="#contacto" key={item.title} className="card">
-              <div className="card-inner">
-                <h3 className="card-title">{item.title}</h3>
-                <p className="card-text">{item.text}</p>
-                <div className="card-cta">Solucionar esto →</div>
-              </div>
+              <h3 className="card-title">{item.title}</h3>
+              <p className="card-text">{item.text}</p>
+              <div className="card-cta">Empezar ahora →</div>
             </a>
           ))}
         </div>
-
-        <p className="mt-8 text-center text-sm font-medium text-foreground/90">
-          Si te identificás con alguno, estás perdiendo clientes todos los días.
-        </p>
       </section>
 
 
-      <section id="servicios" className="container py-20 sm:py-24">
+      {/* 3. SERVICIOS (CARDS) */}
+      <section id="servicios" className="section-container container bg-white border-t border-slate-100">
         <SectionTitle
-          eyebrow="Servicios"
-          title="Lo que podemos construir juntos"
-          description="Elegí la solución que mejor se adapte a tu momento actual y empezá a generar consultas reales."
+          eyebrow="Nuestras soluciones"
+          title="Arquitecturas que generan ventas"
+          description="Cada proyecto está diseñado con un solo objetivo: que tus visitantes se conviertan en clientes recurrentes."
         />
 
-        <div className="mt-10 cards-container">
+        <div className="mt-20 cards-container">
           <a href="#contacto" className="card">
-            <div className="card-inner">
-              <h3 className="card-title">Web para generar consultas</h3>
-              <p className="card-text">Diseño optimizado para que profesionales reciban contactos calificados todos los días.</p>
-              <div className="card-cta">Quiero este sistema →</div>
+            <div className="card-image">
+              <img src="/og-psicologo.png" alt="Web para profesionales" />
             </div>
+            <h3 className="card-title">Sitio para profesionales</h3>
+            <p className="card-text">Diseño optimizado para que profesionales (psicólogos, nutricionistas) reciban contactos calificados.</p>
+            <div className="card-cta">Analizar mi web →</div>
           </a>
           <a href="#contacto" className="card">
-            <div className="card-inner">
-              <h3 className="card-title">Web para negocios locales</h3>
-              <p className="card-text">Posicioná tu comercio con una web que facilite encontrarte y visitarte físicamente.</p>
-              <div className="card-cta">Quiero este sistema →</div>
+            <div className="card-image">
+              <img src="/og-gimnasio.png" alt="Web para negocios locales" />
             </div>
+            <h3 className="card-title">Escala para negocios locales</h3>
+            <p className="card-text">Posicioná tu comercio con una web que facilite encontrarte, visitarte y reservar online.</p>
+            <div className="card-cta">Analizar mi web →</div>
           </a>
           <a href="#contacto" className="card">
-            <div className="card-inner">
-              <h3 className="card-title">Sistema con WhatsApp</h3>
-              <p className="card-text">Integración directa para que tus clientes te escriban con un solo clic desde su móvil.</p>
-              <div className="card-cta">Quiero este sistema →</div>
+            <div className="card-image">
+              <img src="/og-image.png" alt="Sistema con WhatsApp" />
             </div>
+            <h3 className="card-title">Venta por WhatsApp</h3>
+            <p className="card-text">Integración directa para que tus clientes te escriban con un clic. Ideal para cierres rápidos.</p>
+            <div className="card-cta">Analizar mi web →</div>
           </a>
           <a href="#contacto" className="card">
-            <div className="card-inner">
-              <h3 className="card-title">Landing de ventas</h3>
-              <p className="card-text">Páginas de aterrizaje enfocadas en un solo producto para maximizar tu retorno de inversión.</p>
-              <div className="card-cta">Quiero este sistema →</div>
+            <div className="card-image">
+              <img src="/og-emprendedor.png" alt="Landing de ventas" />
             </div>
+            <h3 className="card-title">High-Ticket Landings</h3>
+            <p className="card-text">Páginas de aterrizaje enfocadas en un solo producto de alto valor para maximizar tu retorno.</p>
+            <div className="card-cta">Analizar mi web →</div>
           </a>
         </div>
       </section>
 
 
-      <Suspense
-        fallback={
-          <section className="container py-16 sm:py-20">
-            <div className="mx-auto max-w-3xl rounded-[2rem] border border-white/10 bg-white/5 p-8 text-center">
-              <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">Prueba social</p>
-              <p className="mt-3 text-lg text-white/70">Cargando testimonios y casos reales…</p>
-            </div>
-          </section>
-        }
-      >
-        <section id="testimonios">
+      {/* 4. PRUEBA SOCIAL */}
+      <Suspense fallback={<div className="py-20 text-center">Cargando confianza...</div>}>
+        <section id="testimonios" className="section-container bg-slate-50/50">
           <TrustSection />
         </section>
       </Suspense>
 
 
-      <section id="sobre-mi" className="container py-20 sm:py-24">
-        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="card rounded-[2rem] p-6 sm:p-8">
-            <img
-              src="/lovable-uploads/6007e543-982c-473d-82d2-ca49d47343e0.png"
-              alt="Diego Podlecki"
-              className="mx-auto h-48 w-48 rounded-full border-4 border-white object-cover shadow-xl sm:h-64 sm:w-64"
-            />
-          </div>
-
-          <div className="card rounded-[2rem] p-6 sm:p-8 flex flex-col">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0EA5E9]">Quién está detrás</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Diego Podlecki</h2>
-            <p className="mt-2 text-sm font-bold text-slate-600">No hago páginas web. Creo herramientas que generan clientes.</p>
-            <div className="mt-4 space-y-4">
-              <p className="text-sm leading-7 text-slate-600">
-                No diseño por estética. Diseño por conversión. Cada elemento de tu web está pensado para que el visitante
-                se convierta en cliente: desde el botón de WhatsApp hasta el testimonio que cierra la venta.
-              </p>
-              <p className="text-sm leading-7 text-slate-600">
-                Trabajo con negocios de servicios que necesitan resultados reales. Gimnasios, entrenadores, psicólogos...
-                No me importa que tu web sea "linda" si no te trae clientes.
-              </p>
+      {/* 5. SOBRE MÍ (CONVERTIDO A MODAL/POPUP) */}
+      <section id="sobre-mi" className="section-container container bg-white border-t border-slate-100">
+        <div className="mx-auto max-w-4xl rounded-[2.5rem] bg-slate-900 p-12 lg:p-20 text-center overflow-hidden relative shadow-2xl">
+          {/* Decorative background circle */}
+          <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-cyan-500/10 blur-3xl" />
+          
+          <div className="relative z-10 flex flex-col items-center">
+            <div className="h-24 w-24 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 p-1 mb-8 shadow-xl">
+              <img
+                src="/lovable-uploads/6007e543-982c-473d-82d2-ca49d47343e0.png"
+                alt="Diego Podlecki"
+                className="h-full w-full rounded-[0.8rem] object-cover"
+              />
             </div>
-
-            <div className="mt-auto pt-8">
-              <a
-                href="#contacto"
-                className="btn-primary inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-bold shadow-lg"
-              >
-                Quiero una propuesta
-              </a>
+            
+            <span className="text-label !text-cyan-400">Quién está detrás</span>
+            <h2 className="text-h2 text-white mt-4">Diego Podlecki</h2>
+            <p className="text-subtitle !text-slate-400 mt-6 max-w-2xl">
+              "No diseño por estética. Diseño por conversión. Ayudo a negocios a transformar su presencia online en una herramienta real de ventas."
+            </p>
+            
+            <div className="mt-12 flex flex-wrap justify-center gap-4">
+              <AboutModalTrigger />
+              <Button asChild variant="outline" className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white rounded-full px-8 py-4 font-bold">
+                <a href="#contacto">Hablemos ahora</a>
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="contacto" className="container py-12 sm:py-16">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
-          <div className="lg:col-span-5">
-          <div className="card rounded-[2rem] p-6 sm:p-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0EA5E9]">Contacto directo</p>
-            <h2 className="mt-3 text-2xl font-bold text-slate-900 leading-tight">Recibí una propuesta pensada para convertir mejor</h2>
-            <p className="mt-4 text-sm leading-6 text-slate-600">
-              Completá tus datos y te respondo con una propuesta concreta en menos de 24 hs hábiles.
-            </p>
-            
-            <div className="mt-6 space-y-3">
-              {[
-                { label: "WhatsApp visible", text: "Respuesta rápida y directa" },
-                { label: "Propuesta técnica", text: "Sin vueltas ni tecnicismos" },
-                { label: "Foco total", text: "En generar más consultas" }
-              ].map((item) => (
-                <div key={item.label} className="flex gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
-                  <div className="h-2 w-2 mt-1.5 rounded-full bg-[#0EA5E9]" />
-                  <div>
-                    <p className="text-xs font-bold text-slate-900 uppercase tracking-widest">{item.label}</p>
-                    <p className="text-xs text-slate-500 mt-0.5">{item.text}</p>
-                  </div>
-                </div>
-              ))}
+      <section id="contacto" className="section-container container my-20">
+        <div className="bg-slate-900 rounded-[3rem] overflow-hidden">
+          <div className="grid gap-20 lg:grid-cols-2 lg:items-center p-12 lg:p-24">
+            <div>
+              <span className="text-label !text-cyan-400">Contacto directo</span>
+              <h2 className="text-h2 mt-2 text-white">Recibí una propuesta pensada para vender</h2>
+              <p className="text-subtitle mt-8 text-slate-300 max-w-md">
+                Completá tus datos y te respondo con una propuesta concreta en menos de 24 hs hábiles.
+              </p>
             </div>
-          </div>
-          </div>
 
-          <div className="lg:col-span-7">
-            <div className="card rounded-[2rem] p-6 sm:p-8 shadow-2xl relative z-10">
+            <div className="bg-white rounded-3xl p-10 shadow-2xl">
               <ContactForm />
             </div>
           </div>
@@ -433,7 +355,7 @@ export default function Index() {
         dataWaSource="floating"
         dataWaOnline="true"
         onClick={() => analytics.whatsappClick("floating_button")}
-        className="animate-wa-pulse fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(142_70%_45%)] text-white shadow-[0_18px_50px_-18px_rgba(34,197,94,0.7)] transition-transform duration-300 hover:scale-110"
+        className="animate-wa-pulse fixed bottom-8 right-8 z-50 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-green-500/30 transition-transform duration-300 hover:scale-110"
       >
         <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -472,51 +394,9 @@ export default function Index() {
         </div>
       </section>
 
-      <footer className="border-t border-white/10 bg-slate-950">
-        <div className="container py-12">
-          <div className="flex flex-col items-center gap-6 text-center">
-            <p className="text-xl font-semibold text-white sm:text-2xl">
-              Tu web debería explicar mejor tu valor, no solo presentarte
-            </p>
-            
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" className="bg-[#25D366] text-white hover:bg-[#20bd5a]">
-                <a
-                  href="https://wa.me/541166448389"
-                  target="_blank"
-                  rel="noreferrer"
-                  data-whatsapp-origin="footer"
-                  data-analytics-cta="footer-secondary-whatsapp"
-                  onClick={() => analytics.whatsappClick("footer")}
-                >
-                  <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Quiero más clientes
-                </a>
-              </Button>
-              
-              <Button asChild variant="outline" size="lg" className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white">
-                <a
-                  href="https://wa.me/541166448389"
-                  target="_blank"
-                  rel="noreferrer"
-                  data-whatsapp-origin="footer"
-                  data-analytics-cta="footer-contact"
-                  onClick={() => analytics.whatsappClick("footer")}
-                >
-                  <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Contacto rápido
-                </a>
-              </Button>
-            </div>
-            
-            <div className="mt-4 text-sm text-white/50">
-              © 2024 WebAppImpulsor · Diego Podlecki
-            </div>
-          </div>
+      <footer className="border-t border-slate-100 bg-white py-14">
+        <div className="container text-center text-slate-500 text-sm">
+          © 2024 WebAppImpulsor · Diego Podlecki
         </div>
       </footer>
     </main>

@@ -73,9 +73,9 @@ function validateAll(values: ContactValues) {
 export function ContactForm({
   title = "Pedí una propuesta pensada para tu negocio",
   description = "Dejanos tus datos y te respondo con una propuesta clara, sin vueltas y alineada a tu tipo de servicio.",
-  buttonLabel = "Quiero una propuesta",
+  buttonLabel = "Quiero más clientes",
   trustText = "Te respondo en menos de 24 hs hábiles.",
-  eyebrow = "Formulario de contacto",
+  eyebrow = "Propuesta personalizada",
   sourceLabel = "sitio principal",
 }: ContactFormProps) {
   const location = useLocation();
@@ -353,7 +353,7 @@ export function ContactForm({
               data-analytics-cta="contact-form-submit"
               disabled={submitting || !values.nombre.trim() || !values.email.trim() || !values.negocio.trim() || !values.problema.trim() || !values.presupuesto.trim()}
             >
-              {submitting ? "Enviando..." : buttonLabel}
+              {submitting ? "Analizando..." : buttonLabel}
             </Button>
             <p className="text-xs text-muted-foreground">
               {apiError || trustText}
