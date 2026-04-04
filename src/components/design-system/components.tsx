@@ -57,7 +57,7 @@ interface ServiceCardProps {
 
 export function ServiceCard({ title, description, icon: Icon, badge, image, className = "", children }: ServiceCardProps) {
   return (
-    <article className="card">
+    <article className={`card border-glow ${className}`.trim()}>
       {image ? (
         <div className="card-image">
           <img src={image} alt={title} loading="lazy" />
@@ -88,7 +88,7 @@ export function BadgeChip({
   children: React.ReactNode;
   className?: string;
 }) {
-  return <span className={`badge-chip ${className}`.trim()}>{children}</span>;
+  return <span className={`badge-chip glass-glow !border-blue-500/20 !text-blue-300 shadow-[0_0_15px_rgba(59,130,246,0.1)] ${className}`.trim()}>{children}</span>;
 }
 
 type FieldProps = {

@@ -300,6 +300,7 @@ export default function Index() {
         <HeroMockup />
       </section>
 
+      <div className="glow-separator" />
 
       {/* 2. PROBLEMA */}
       <section id="problema" className="section-container container bg-[#111827] relative overflow-hidden">
@@ -324,6 +325,7 @@ export default function Index() {
         </div>
       </section>
 
+      <div className="glow-separator" />
 
       {/* 3. SERVICIOS (CARDS) */}
       <section id="servicios" className="section-container container bg-[#0f172a] border-t border-white/5">
