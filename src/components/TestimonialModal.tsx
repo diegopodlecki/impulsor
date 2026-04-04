@@ -25,8 +25,8 @@ export function TestimonialModal({
           {children}
         </div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[550px] rounded-[2.5rem] p-0 overflow-hidden border border-white/5 shadow-2xl shadow-black/50">
-        <div className="bg-[#0b1120] p-8 lg:p-12 text-white relative">
+      <DialogContent className="sm:max-w-[550px] p-0">
+        <div className="p-8 lg:p-12 text-white relative">
           {/* Decorative Quote Icon */}
           <Quote className="absolute top-8 right-8 h-20 w-20 text-white/5 -rotate-12" />
           
