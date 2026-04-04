@@ -40,51 +40,51 @@ export function PricingSection() {
 
           return (
             <a href="#contacto" key={plan.name} className="card-link">
-              <article
-                className={`card-service relative h-all ${recommended ? "ring-1 ring-[#0EA5E9]/30" : ""}`}
-              >
-                {recommended ? (
-                  <div className="absolute -top-3 left-6 badge-chip border-transparent bg-[#0EA5E9] text-white">
-                    <Sparkles className="h-3.5 w-3.5" />
-                    Más elegido
+              <article className="card shadow-lg ring-1 ring-slate-100 h-full p-0">
+                <div className="card-image flex flex-col justify-center p-6 bg-slate-50 border-b border-slate-100">
+                  {recommended && (
+                    <div className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-[#0EA5E9] px-2.5 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider w-fit">
+                      <Sparkles className="h-3 w-3" />
+                      Más elegido
+                    </div>
+                  )}
+                  {!recommended && (
+                    <div className="mb-3 inline-flex items-center rounded-full border border-slate-200 bg-white px-2.5 py-0.5 text-[10px] font-bold text-slate-500 uppercase tracking-wider w-fit">
+                      {plan.badge}
+                    </div>
+                  )}
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-3xl font-bold text-slate-900">{plan.price}</span>
                   </div>
-                ) : (
-                  <div className="absolute -top-3 left-6 badge-chip text-slate-500 border-slate-100">{plan.badge}</div>
-                )}
-
-                <div className="mt-3">
-                  <p className="text-label text-[#0EA5E9] font-semibold">{plan.name}</p>
-                  <p className="mt-3 text-sm leading-6 text-slate-600">{plan.audience}</p>
-                  <p className="mt-5 text-3xl font-semibold tracking-tight text-slate-900">{plan.price}</p>
-                  <p className="mt-1 text-sm text-slate-500">{plan.delivery}</p>
+                  <p className="mt-1 text-sm font-semibold text-[#0EA5E9]">{plan.name}</p>
                 </div>
 
-                <div className="mt-6">
-                  <p className="text-h6 text-slate-900">Incluye</p>
-                  <ul className="mt-4 space-y-3">
-                    {plan.includes.map((item) => (
-                      <li key={item} className="flex items-start gap-3 text-small text-slate-600">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="card-content p-6 flex-1">
+                  <h3 className="card-title text-base">{plan.audience}</h3>
+                  <div className="mt-4 space-y-3">
+                    <p className="text-xs font-bold text-slate-900 uppercase tracking-widest">Incluye:</p>
+                    <ul className="space-y-2">
+                      {plan.includes.slice(0, 3).map((item) => (
+                        <li key={item} className="flex items-start gap-2 text-xs text-slate-600">
+                          <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-emerald-500" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                      {plan.includes.length > 3 && (
+                        <li className="text-[10px] text-slate-400 italic text-center pt-1">+ y mucho más</li>
+                      )}
+                    </ul>
+                  </div>
                 </div>
 
-                <div className="mt-6 rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                  <p className="text-h6 text-slate-900">No incluye</p>
-                  <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-600">
-                    {plan.excludes.map((item) => (
-                      <li key={item}>• {item}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div 
-                  className="btn-primary mt-6 w-full py-3 text-center rounded-xl font-semibold text-white bg-[#0EA5E9] hover:bg-[#0284C7] transition-colors"
-                  onClick={() => analytics.pricingInterest(pricingSource)}
-                >
-                  {plan.cta}
+                <div className="card-footer flex flex-col gap-3 p-6 border-t border-slate-100 bg-slate-50/50">
+                  <p className="text-[10px] text-center text-slate-500">{plan.delivery}</p>
+                  <div 
+                    className="btn-primary w-full py-2.5 text-xs text-center rounded-xl font-bold"
+                    onClick={() => analytics.pricingInterest(pricingSource)}
+                  >
+                    {plan.cta}
+                  </div>
                 </div>
               </article>
             </a>

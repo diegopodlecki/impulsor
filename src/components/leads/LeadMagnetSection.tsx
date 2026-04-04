@@ -112,11 +112,20 @@ export function LeadMagnetSection() {
           <div className="mt-8 container-cards">
             {leadMagnetOffer.bullets.map((item) => (
               <a href="#recurso-gratuito" key={item} className="card-link">
-                <div className="card-service p-4">
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[#0EA5E9]/10 text-[#0EA5E9]">
-                    <Sparkles className="h-4 w-4" />
+                <div className="card">
+                  <div className="card-image flex items-center justify-center p-6 bg-slate-50">
+                    <Sparkles className="h-8 w-8 text-[#0EA5E9]" />
                   </div>
-                  <p className="mt-3 text-small text-slate-600">{item}</p>
+                  <div className="card-content">
+                    <h3 className="card-title">Recurso</h3>
+                    <p className="card-description">{item}</p>
+                  </div>
+                  <div className="card-footer">
+                    <span>Quiero este sistema</span>
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </div>
                 </div>
               </a>
             ))}

@@ -571,27 +571,25 @@ export default function Index() {
             />
           </div>
 
-          <div className="surface-card hover-card rounded-[2rem] p-6 sm:p-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Quién está detrás</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Diego Podlecki</h2>
-            <p className="mt-2 text-sm text-muted-foreground">No hago páginas web. Creo herramientas que generan clientes.</p>
-            <p className="mt-4 text-sm leading-7 text-muted-foreground">
-              No diseño por estética. Diseño por conversión. Cada elemento de tu web está pensado para que el visitante
-              se convierta en cliente: desde el botón de WhatsApp hasta el testimonio que cierra la venta.
-            </p>
-            <p className="mt-4 text-sm leading-7 text-muted-foreground">
-              Trabajo con negocios reales que necesitan resultados reales. Gimnasios que quieren más socios,
-              entrenadores que buscan alumnos, profesionales que necesitan pacientes. No me importa que tu web sea
-              "linda" si no te trae clientes.
-            </p>
-            <p className="mt-4 text-sm leading-7 text-muted-foreground">
-              Si tu web no vende, la cambiamos. Así de simple.
-            </p>
+          <div className="card rounded-[2rem] p-6 sm:p-8 flex flex-col">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0EA5E9]">Quién está detrás</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Diego Podlecki</h2>
+            <p className="mt-2 text-sm font-bold text-slate-600">No hago páginas web. Creo herramientas que generan clientes.</p>
+            <div className="mt-4 space-y-4">
+              <p className="text-sm leading-7 text-slate-600">
+                No diseño por estética. Diseño por conversión. Cada elemento de tu web está pensado para que el visitante
+                se convierta en cliente: desde el botón de WhatsApp hasta el testimonio que cierra la venta.
+              </p>
+              <p className="text-sm leading-7 text-slate-600">
+                Trabajo con negocios de servicios que necesitan resultados reales. Gimnasios, entrenadores, psicólogos...
+                No me importa que tu web sea "linda" si no te trae clientes.
+              </p>
+            </div>
 
-            <div className="mt-6">
+            <div className="mt-auto pt-8">
               <a
                 href="#contacto"
-                className="inline-flex items-center gap-2 rounded-full bg-[#0EA5E9] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0284C7]"
+                className="btn-primary inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-bold shadow-lg"
               >
                 Quiero una propuesta
               </a>
@@ -603,30 +601,33 @@ export default function Index() {
       <section id="contacto" className="container py-12 sm:py-16">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-5">
-            <div className="surface-card hover-card rounded-[2rem] p-6 sm:p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Contacto directo</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight">Recibí una propuesta pensada para convertir mejor</h2>
-              <p className="mt-4 text-sm leading-6 text-muted-foreground">
-                Completá tus datos y te respondo con una propuesta concreta. Te respondo en menos de 24 hs hábiles.
-              </p>
-              <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-600 dark:text-emerald-300">
-                WhatsApp visible y respuesta rápida
-              </div>
-
-              <div className="mt-6 space-y-3">
-                {["Respuesta rápida y clara", "Ideal para presupuestos, reservas y consultas", "Te respondo en menos de 24 hs hábiles"].map(
-                  (item) => (
-                    <div key={item} className="px-4 py-4 text-sm">
-                      {item}
-                    </div>
-                  ),
-                )}
-              </div>
+          <div className="card rounded-[2rem] p-6 sm:p-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0EA5E9]">Contacto directo</p>
+            <h2 className="mt-3 text-2xl font-bold text-slate-900 leading-tight">Recibí una propuesta pensada para convertir mejor</h2>
+            <p className="mt-4 text-sm leading-6 text-slate-600">
+              Completá tus datos y te respondo con una propuesta concreta en menos de 24 hs hábiles.
+            </p>
+            
+            <div className="mt-6 space-y-3">
+              {[
+                { label: "WhatsApp visible", text: "Respuesta rápida y directa" },
+                { label: "Propuesta técnica", text: "Sin vueltas ni tecnicismos" },
+                { label: "Foco total", text: "En generar más consultas" }
+              ].map((item) => (
+                <div key={item.label} className="flex gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                  <div className="h-2 w-2 mt-1.5 rounded-full bg-[#0EA5E9]" />
+                  <div>
+                    <p className="text-xs font-bold text-slate-900 uppercase tracking-widest">{item.label}</p>
+                    <p className="text-xs text-slate-500 mt-0.5">{item.text}</p>
+                  </div>
+                </div>
+              ))}
             </div>
+          </div>
           </div>
 
           <div className="lg:col-span-7">
-            <div className="card-neon glow-soft surface-card hover-card rounded-[2rem] p-6 sm:p-8">
+            <div className="card rounded-[2rem] p-6 sm:p-8 shadow-2xl relative z-10">
               <ContactForm />
             </div>
           </div>

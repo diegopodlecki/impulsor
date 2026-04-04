@@ -126,56 +126,40 @@ export function Testimonials() {
           <div className="grid gap-5">
             {TESTIMONIOS.map((item) => (
               <a href="#contacto" key={item.id} className="card-link">
-                <article className="card-service p-5 sm:p-6 h-full">
-                  <div className="flex items-start gap-4">
+                <article className="card shadow-md p-0">
+                  <div className="card-image flex items-center gap-4 p-6 bg-slate-50 border-b border-slate-100 h-auto">
                     <TestimonialAvatar testimonial={item} />
-
-                    <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="text-h5 text-slate-900">{item.nombre}</h3>
-                        <span className="badge-chip border-white/10 bg-black/20 text-white/60">{item.rubro}</span>
-                      </div>
-
-                      <div className="mt-2 flex flex-wrap items-center gap-2">
+                    <div>
+                      <h3 className="card-title text-base">{item.nombre}</h3>
+                      <div className="mt-1 flex items-center gap-2">
                         <StarRow stars={item.rating} />
-                        <div className="inline-flex items-center rounded-full border border-slate-100 bg-slate-50 px-2 py-0.5 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
-                          {item.plan}
-                        </div>
-                        <span className="text-xs text-slate-500">{formatTestimonialDate(item.fecha)}</span>
+                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{item.rubro}</span>
                       </div>
+                    </div>
+                  </div>
 
-                      {item.resultado ? (
-                        <div className="mt-4 inline-flex items-center rounded-full border border-slate-100 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-[#0EA5E9]">
-                          🎯 Resultado: {item.resultado}
-                        </div>
-                      ) : null}
+                  <div className="card-content p-6">
+                    <p className="card-description line-clamp-3 italic text-slate-600">"{item.texto}"</p>
+                    
+                    <details
+                      className="mt-4 rounded-xl border border-slate-100 bg-white p-3 text-xs"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <summary className="cursor-pointer font-bold text-slate-400 hover:text-slate-600 transition-colors uppercase tracking-widest list-none flex justify-between items-center">
+                        Detalles técnicos
+                        <ChevronDown className="h-3 w-3" />
+                      </summary>
+                      <div className="mt-2 space-y-1 text-slate-500">
+                        <p>Plan: {item.plan}</p>
+                        <p>Fecha: {formatTestimonialDate(item.fecha)}</p>
+                      </div>
+                    </details>
+                  </div>
 
-                      <p className="mt-4 text-small text-slate-600">{item.texto}</p>
-
-                      <details
-                        className="group mt-4 rounded-2xl border border-slate-100 bg-slate-50 p-4"
-                        onClick={(e) => e.stopPropagation()} /* Prevent card click when clicking details */
-                        onToggle={(event) => {
-                          if (event.currentTarget.open) {
-                            analytics.faqOpen(`Testimonio: ${item.nombre}`);
-                          }
-                        }}
-                      >
-                        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-h6 text-slate-900">
-                          Ver detalle
-                          <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" />
-                        </summary>
-                        <div className="mt-3 space-y-3 text-small text-slate-600">
-                          <p>
-                            <span className="font-semibold text-slate-900">Plan contratado: </span>
-                            {item.plan}
-                          </p>
-                          <p>
-                            <span className="font-semibold text-slate-900">Mes y año: </span>
-                            {formatTestimonialDate(item.fecha)}
-                          </p>
-                        </div>
-                      </details>
+                  <div className="card-footer p-6 border-t border-slate-100 bg-slate-50/50">
+                    <div className="flex items-center gap-2 text-xs font-bold text-[#0EA5E9]">
+                      <Target className="h-3.5 w-3.5" />
+                      {item.resultado ? `Resultado: ${item.resultado}` : "Caso de éxito verificado"}
                     </div>
                   </div>
                 </article>
@@ -189,88 +173,43 @@ export function Testimonials() {
               <h3 className="text-h4 text-white">Casos que ya están activos</h3>
             </div>
 
-            <div className="mt-6 grid gap-4 lg:grid-cols-[0.88fr_1.12fr]">
-              <div className="space-y-4">
-                <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0EA5E9]">Cliente</p>
-                  <p className="mt-2 text-h5 text-white">WebAppImpulsor</p>
-                  <p className="mt-1 text-small text-muted-foreground">Prueba social real con foco en conversión</p>
-                </div>
-
-                <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0EA5E9]">Antes</p>
-                  <p className="mt-2 text-small text-white/75">
-                    Negocios de servicio que necesitaban una presencia digital más clara para generar consultas.
-                  </p>
-                </div>
-
-                <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0EA5E9]">Solución</p>
-                  <p className="mt-2 text-small text-white/75">
-                    Mensaje jerarquizado, prueba social visible y llamadas a la acción ubicadas donde realmente ayudan
-                    a decidir.
-                  </p>
-                </div>
-
-                <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">Resultado</p>
-                  <p className="mt-2 text-small font-semibold text-white">Más consultas mejor calificadas</p>
-                </div>
-              </div>
-
-              <div className="rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,#0f172a,#020617)] p-4 shadow-[0_20px_70px_-36px_rgba(14,165,233,0.35)]">
-                <div className="overflow-hidden rounded-[1.4rem] border border-white/10 bg-white/5">
-                  <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3">
+            <div className="mt-6 grid gap-6">
+              <div className="card p-0">
+                <div className="card-image bg-slate-900 p-8 flex flex-col justify-center">
+                  <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-[11px] uppercase tracking-[0.22em] text-white/45">Mockup entregado</p>
-                      <p className="mt-1 text-h6 text-white">Vista previa de la propuesta final</p>
+                      <p className="text-[11px] uppercase tracking-[0.22em] text-[#0EA5E9] font-bold">Caso de éxito real</p>
+                      <h4 className="mt-2 text-2xl font-bold text-white tracking-tight">WebAppImpulsor</h4>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-white/50" aria-hidden="true">
-                      <span className="h-2.5 w-2.5 rounded-full bg-rose-400/90" />
-                      <span className="h-2.5 w-2.5 rounded-full bg-amber-300/90" />
-                      <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/90" />
-                    </div>
-                  </div>
-
-                  <div className="p-4">
-                    <div className="rounded-[1.25rem] border border-white/10 bg-black/30 p-4">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#0EA5E9]">
-                        Arquitectura de conversión
-                      </p>
-                      <h4 className="mt-2 text-xl font-semibold text-white">Más claridad, mejores consultas</h4>
-                      <p className="mt-2 text-small text-white/70">
-                        Mensaje jerarquizado, prueba social visible y llamadas a la acción ubicadas donde realmente
-                        ayudan a decidir.
-                      </p>
-
-                      <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                        {["Contactar sin fricción", "Entender el valor rápido", "Confiar antes de escribir"].map((item) => (
-                          <div key={item} className="rounded-2xl border border-white/10 bg-white/5 px-3 py-2.5">
-                            <p className="text-[11px] uppercase tracking-[0.18em] text-white/45">Bloque</p>
-                            <p className="mt-1 text-small font-semibold text-white">{item}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                      <div className="rounded-[1rem] border border-white/10 bg-white/5 p-3">
-                        <p className="text-[11px] uppercase tracking-[0.18em] text-white/45">Contacto</p>
-                        <p className="mt-1 text-small font-semibold text-white">WhatsApp y formulario simples</p>
-                      </div>
-                      <div className="rounded-[1rem] border border-white/10 bg-white/5 p-3">
-                        <p className="text-[11px] uppercase tracking-[0.18em] text-white/45">Señal</p>
-                        <p className="mt-1 text-small font-semibold text-white">Testimonios y contexto real</p>
-                      </div>
+                    <div className="hidden sm:flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full bg-slate-700" />
+                      <span className="h-2 w-2 rounded-full bg-slate-700" />
+                      <span className="h-2 w-2 rounded-full bg-[#0EA5E9]" />
                     </div>
                   </div>
+                </div>
 
-                  <div className="border-t border-white/10 px-4 py-3">
-                    <div className="flex items-center gap-2 text-sm text-white/70">
-                      <MessageCircle className="h-4 w-4 text-[#0EA5E9]" />
-                      Consultas online, prueba social y CTA visibles en la primera pantalla.
+                <div className="card-content p-6">
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <h3 className="card-title text-xs uppercase tracking-widest text-[#0EA5E9]">Problema</h3>
+                      <p className="card-description mt-2">Negocios que necesitaban una presencia digital más clara.</p>
+                    </div>
+                    <div>
+                      <h3 className="card-title text-xs uppercase tracking-widest text-[#0EA5E9]">Solución</h3>
+                      <p className="card-description mt-2">Mensaje jerarquizado y arquitectura de conversión.</p>
                     </div>
                   </div>
+                  
+                  <div className="mt-6 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                    <p className="text-xs font-bold text-slate-900">🎯 Resultado final:</p>
+                    <p className="mt-1 text-sm text-slate-600">Más consultas calificadas eliminando la fricción de contacto inicial.</p>
+                  </div>
+                </div>
+
+                <div className="card-footer p-6">
+                  <span>Implementado en menos de 15 días</span>
+                  <TrendingUp className="h-4 w-4" />
                 </div>
               </div>
             </div>
@@ -289,17 +228,17 @@ export function Testimonials() {
                 const Icon = item.icon;
 
                 return (
-                  <div key={item.label} className="rounded-2xl border border-white/10 bg-black/20 p-4">
-                    <div className="flex items-center justify-between gap-3">
-                      <div>
-                        <p className="text-small text-muted-foreground">{item.label}</p>
-                        <p className="mt-1 text-h3 text-white">{item.value}</p>
-                      </div>
-                      <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#0EA5E9]/10">
-                        <Icon className="h-5 w-5 text-[#0EA5E9]" />
-                      </div>
+                  <div key={item.label} className="card p-0 overflow-hidden">
+                    <div className="card-image flex items-center justify-center p-4 bg-slate-50 border-b border-slate-100 h-16">
+                      <Icon className="h-5 w-5 text-[#0EA5E9]" />
                     </div>
-                    <p className="mt-3 text-small text-muted-foreground">{item.caption}</p>
+                    <div className="card-content p-4">
+                      <h3 className="card-title text-sm">{item.label}</h3>
+                      <p className="card-description text-2xl font-bold text-slate-900 mt-1">{item.value}</p>
+                    </div>
+                    <div className="card-footer p-4 border-t border-slate-100 bg-slate-50/50">
+                      <p className="text-[10px] text-slate-500 leading-tight">{item.caption}</p>
+                    </div>
                   </div>
                 );
               })}
