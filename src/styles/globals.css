@@ -122,8 +122,18 @@
   }
 
   /* Card System */
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    width: 100%;
+  }
+
   .card {
     @apply relative flex flex-col overflow-hidden rounded-[2.5rem] bg-[#1e293b]/90 p-8 transition-all duration-300 border border-white/5 backdrop-blur-sm;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
   }
 
   .card:hover {
