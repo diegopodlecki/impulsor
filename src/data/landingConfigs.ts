@@ -18,7 +18,7 @@ import { landingConfigsV2 } from "./landingsTemplateV2";
 export const landingConfigs: Record<string, LandingPageConfig> = {
   "personal-trainer": landingConfigsV2["personal-trainer"],
   psicologo: landingConfigsV2.psicologo,
-  nutricionista: landingConfigsV2.nutricionista,
+  nutricionista: landingConfigsV2.nutritionist,
   gimnasio: landingConfigsV2.gimnasio,
   "casa-de-comidas": landingConfigsV2["casa-de-comidas"],
   "estetica-corporal": landingConfigsV2["estetica-corporal"],
