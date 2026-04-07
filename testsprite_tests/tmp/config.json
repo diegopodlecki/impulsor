@@ -1,0 +1,13 @@
+{
+  "status": "init",
+  "executionArgs": {
+    "projectName": "wepp",
+    "projectPath": "d:\\wepp",
+    "testIds": [],
+    "additionalInstruction": "Verify that Index.tsx renders correctly and that the 'diagnostico' links and buttons are functional.",
+    "serverMode": "development",
+    "envs": {
+      "API_KEY": "sk-user-XsS5aNVRKsR8tRu7nUAT3Sobna2ca3eAXkOzpwzGhJuJm062b40kUN-nyswP__ORFH0Fc5HdebjfvmwWLOwGP5rqMxrf18mpz41oPY_tKEvxxqkjxYVy2wldP-tH1DNldqY"
+    }
+  }
+}

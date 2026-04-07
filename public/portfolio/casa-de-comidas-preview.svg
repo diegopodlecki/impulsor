@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Gradient Background -->
+  <defs>
+    <linearGradient id="gradRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#991b1b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="600" fill="url(#gradRed)"/>
+  
+  <!-- Food bowl icon -->
+  <g transform="translate(330, 180)">
+    <path d="M 40 30 Q 40 60 50 80 Q 60 60 60 30" fill="#fff" opacity="0.9"/>
+    <path d="M 40 30 Q 50 25 60 30" stroke="#fbbf24" stroke-width="2" fill="none"/>
+    <!-- Noodles -->
+    <path d="M 45 50 Q 52 55 48 65" stroke="#fbbf24" stroke-width="2" fill="none"/>
+    <path d="M 55 50 Q 52 60 56 70" stroke="#fbbf24" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="400" y="380" font-size="48" font-weight="bold" text-anchor="middle" fill="white" font-family="Arial">
+    Casa de Comidas
+  </text>
+  <text x="400" y="440" font-size="24" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Arial">
+    Comida deliciosa y fresca
+  </text>
+</svg>

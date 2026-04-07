@@ -1,0 +1,43 @@
+<IfModule mod_mime.c>
+  # Fix: algunos hostings sirven .js como text/plain si no está el MIME correcto
+  RemoveType .js
+  RemoveType .mjs
+  AddType application/javascript .js .mjs
+  AddType text/javascript .js
+  AddType text/css .css
+  AddType application/wasm .wasm
+  AddType application/json .json
+  AddType image/svg+xml .svg
+</IfModule>
+
+DirectoryIndex index.html
+
+# Evita que el navegador se quede con un index.html viejo cuando se sube un build nuevo
+<IfModule mod_headers.c>
+  <FilesMatch "(?i)^(index\.html|.*\.html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # No reescribir archivos/carpetas reales
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # SPA fallback (React Router)
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Bloquear acceso a archivos sensibles
+<FilesMatch "^(enviar\\.php|config\\.php|schema\\.sql|README\\.md)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Deny from all
+  </IfModule>
+</FilesMatch>
