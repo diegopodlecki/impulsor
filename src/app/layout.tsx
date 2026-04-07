@@ -212,17 +212,34 @@ function Footer() {
   );
 }
 
-function WhatsAppButton() {
+function FloatingButtons() {
   return (
-    <a
-      href={WHATSAPP_URL}
-      target="_blank"
-      rel="noreferrer"
-      aria-label="Hablar por WhatsApp"
-      className="fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_18px_50px_-18px_rgba(34,197,94,0.7)] transition-transform duration-300 hover:scale-110"
-    >
-      <MessageCircle className="h-6 w-6" />
-    </a>
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+      {/* Botón de formulario de contacto */}
+      <a
+        href="#contact-form"
+        className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/20"
+        aria-label="Contactar por formulario"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <span className="hidden sm:inline">Contactar</span>
+      </a>
+      
+      {/* Botón de WhatsApp */}
+      <a
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Hablar por WhatsApp"
+        className="flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-sm font-medium text-white shadow-[0_10px_30px_-12px_rgba(34,197,94,0.5)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_-8px_rgba(34,197,94,0.6)]"
+      >
+        <MessageCircle className="h-5 w-5" />
+        <span className="hidden sm:inline">WhatsApp</span>
+      </a>
+    </div>
   );
 }
 
@@ -243,7 +260,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
-        <WhatsAppButton />
+        <FloatingButtons />
       </body>
     </html>
   );

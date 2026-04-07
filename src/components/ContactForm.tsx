@@ -21,6 +21,7 @@ type ContactFormProps = {
   trustText?: string;
   eyebrow?: string;
   sourceLabel?: string;
+  id?: string;
 };
 
 type ContactValues = {
@@ -77,6 +78,7 @@ export function ContactForm({
   trustText = "Te respondo en menos de 24 hs hábiles.",
   eyebrow = "Propuesta personalizada",
   sourceLabel = "sitio principal",
+  id = "contact-form",
 }: ContactFormProps) {
   const location = useLocation();
   const [values, setValues] = React.useState<ContactValues>(initialValues);
@@ -260,7 +262,7 @@ export function ContactForm({
           También podés escribir por WhatsApp, pero este formulario me ayuda a responderte con una propuesta más precisa y mejor alineada a tu negocio.
         </p>
 
-        <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
+        <form onSubmit={handleSubmit} id={id} className="mt-6 grid gap-4">
           <div className="grid gap-4 md:grid-cols-2">
             <TextField
               label="Tu nombre"

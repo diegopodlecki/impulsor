@@ -154,7 +154,7 @@ export const resultadosTemplates = {
       description: 'Ejecutivo, 35 años',
       resultado: '-14kg',
       duracion: '3 meses',
-      antesImage: 'https://images.pexels.com/photos/6551127/pexels-photo-6551127.jpeg?w=600&h=800&fit=crop',
+      antesImage: 'https://images.pexels.com/photos/5327523/pexels-photo-5327523.jpeg?w=600&h=800&fit=crop',
       despuesImage: 'https://images.pexels.com/photos/4720776/pexels-photo-4720776.jpeg?w=600&h=800&fit=crop',
     },
     {
@@ -163,8 +163,8 @@ export const resultadosTemplates = {
       description: 'Arquitecta, 28 años',
       resultado: '+5kg músculo',
       duracion: '4 meses',
-      antesImage: 'https://images.pexels.com/photos/414029/pexels-photo-414029.jpeg?w=600&h=800&fit=crop',
-      despuesImage: 'https://images.pexels.com/photos/6456138/pexels-photo-6456138.jpeg?w=600&h=800&fit=crop',
+      antesImage: 'https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?w=600&h=800&fit=crop',
+      despuesImage: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?w=600&h=800&fit=crop',
     },
     {
       id: 3,
@@ -172,8 +172,8 @@ export const resultadosTemplates = {
       description: 'Ingeniero, 42 años',
       resultado: '-18kg',
       duracion: '5 meses',
-      antesImage: 'https://images.pexels.com/photos/5327523/pexels-photo-5327523.jpeg?w=600&h=800&fit=crop',
-      despuesImage: 'https://images.pexels.com/photos/3888342/pexels-photo-3888342.jpeg?w=600&h=800&fit=crop',
+      antesImage: 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?w=600&h=800&fit=crop',
+      despuesImage: 'https://images.pexels.com/photos/3621196/pexels-photo-3621196.jpeg?w=600&h=800&fit=crop',
     },
     {
       id: 4,
@@ -182,7 +182,7 @@ export const resultadosTemplates = {
       resultado: '-8kg + definición',
       duracion: '3 meses',
       antesImage: 'https://images.pexels.com/photos/6389854/pexels-photo-6389854.jpeg?w=600&h=800&fit=crop',
-      despuesImage: 'https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?w=600&h=800&fit=crop',
+      despuesImage: 'https://images.pexels.com/photos/6456138/pexels-photo-6456138.jpeg?w=600&h=800&fit=crop',
     },
     {
       id: 5,
@@ -190,8 +190,8 @@ export const resultadosTemplates = {
       description: 'Emprendedor, 45 años',
       resultado: '-22kg',
       duracion: '6 meses',
-      antesImage: 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?w=600&h=800&fit=crop',
-      despuesImage: 'https://images.pexels.com/photos/3621196/pexels-photo-3621196.jpeg?w=600&h=800&fit=crop',
+      antesImage: 'https://images.pexels.com/photos/3888342/pexels-photo-3888342.jpeg?w=600&h=800&fit=crop',
+      despuesImage: 'https://images.pexels.com/photos/6551127/pexels-photo-6551127.jpeg?w=600&h=800&fit=crop',
     },
     {
       id: 6,
@@ -199,8 +199,8 @@ export const resultadosTemplates = {
       description: 'Abogada, 29 años',
       resultado: '+3kg músculo',
       duracion: '2 meses',
-      antesImage: 'https://images.pexels.com/photos/1638336/pexels-photo-1638336.jpeg?w=600&h=800&fit=crop',
-      despuesImage: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?w=600&h=800&fit=crop',
+      antesImage: 'https://images.pexels.com/photos/414029/pexels-photo-414029.jpeg?w=600&h=800&fit=crop',
+      despuesImage: 'https://images.pexels.com/photos/1638336/pexels-photo-1638336.jpeg?w=600&h=800&fit=crop',
     },
   ],
 };
