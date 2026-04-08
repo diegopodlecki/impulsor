@@ -1,5 +1,6 @@
 import { MessageCircle, CheckCircle, ArrowRight, Target, TrendingUp, Zap, Award, Dumbbell, Flame, Play, Clock, Shield, Star, Users } from 'lucide-react';
 import BeforeAfterSection from '@/components/landings/BeforeAfterSection';
+import PricingSection from '@/components/landings/PricingSection';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -101,6 +102,52 @@ const TESTIMONIALS = [
     role: "Trainer Funcional · Zona Norte",
     result: "+80% conversiones",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&q=80",
+  },
+];
+
+const PRICING_PT = [
+  {
+    name: "Básico",
+    price: "$247 USD",
+    description: "Para empezar",
+    features: [
+      "Perfil profesional",
+      "Tu especialización",
+      "Galería de resultados",
+      "Planes de entrenamiento",
+      "WhatsApp integrado",
+      "1 mes de hosting",
+    ],
+    cta: "Elegir Básico",
+  },
+  {
+    name: "Profesional",
+    price: "$397 USD",
+    description: "El más elegido",
+    features: [
+      "Todo lo de Básico",
+      "SEO optimizado",
+      "Google Analytics",
+      "Dominio propio",
+      "Testimonios destacados",
+      "6 meses de hosting",
+    ],
+    cta: "Elegir Profesional",
+    popular: true,
+  },
+  {
+    name: "Premium",
+    price: "$647 USD",
+    description: "Máximo alcance",
+    features: [
+      "Todo lo de Profesional",
+      "Blog de contenido",
+      "Sistema de reservas",
+      "Programa de referidos",
+      "Copywriting especializado",
+      "12 meses de hosting",
+    ],
+    cta: "Elegir Premium",
   },
 ];
 
@@ -417,6 +464,13 @@ export default function PersonalTrainers() {
           </div>
         </div>
       </section>
+
+      <PricingSection
+        title="Planes para tu carrera"
+        subtitle="Elegí el que mejor se adapte a tu perfil"
+        plans={PRICING_PT}
+        accentColor="cyan"
+      />
 
       {/* CTA */}
       <section id="contacto" className="relative py-40 lg:py-52 bg-gradient-to-b from-slate-950 via-cyan-950/20 to-slate-950">

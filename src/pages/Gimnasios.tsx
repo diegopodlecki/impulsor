@@ -1,5 +1,6 @@
 import { MessageCircle, CheckCircle, ArrowRight, Dumbbell, Users, Flame, TrendingUp, Target, Zap, Play, Clock, Shield, Star, Award } from 'lucide-react';
 import BeforeAfterSection from '@/components/landings/BeforeAfterSection';
+import PricingSection from '@/components/landings/PricingSection';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -42,6 +43,52 @@ const WHY_CHOOSE_US = [
   { icon: Award, title: "Soporte incluido", desc: "Mantengo tu web actualizada. Vos te enfocás en tus socios." },
   { icon: TrendingUp, title: "Resultados medibles", desc: "Dashboard con estadísticas de visitas y conversiones." },
   { icon: MessageCircle, title: "WhatsApp directo", desc: "Integración perfecta para que te contacten al instante." },
+];
+
+const PRICING_GIMNASIOS = [
+  {
+    name: "Básico",
+    price: "$297 USD",
+    description: "Ideal para empezar",
+    features: [
+      "Landing page profesional",
+      "Diseño responsive",
+      "WhatsApp integrado",
+      "Galería de fotos",
+      "Horarios y precios",
+      "1 mes de hosting",
+    ],
+    cta: "Elegir Básico",
+  },
+  {
+    name: "Profesional",
+    price: "$497 USD",
+    description: "El más elegido",
+    features: [
+      "Todo lo de Básico",
+      "SEO optimizado",
+      "Google Analytics",
+      "Dominio propio",
+      "Formulario de contacto",
+      "6 meses de hosting",
+    ],
+    cta: "Elegir Profesional",
+    popular: true,
+  },
+  {
+    name: "Premium",
+    price: "$797 USD",
+    description: "Máximo impacto",
+    features: [
+      "Todo lo de Profesional",
+      "Blog integrado",
+      "Sistema de reservas",
+      "CRM de clientes",
+      "Copywriting profesional",
+      "12 meses de hosting",
+    ],
+    cta: "Elegir Premium",
+  },
 ];
 
 const STATS = [
@@ -417,6 +464,13 @@ export default function Gimnasios() {
           </div>
         </div>
       </section>
+
+      <PricingSection
+        title="Planes simples para tu gimnasio"
+        subtitle="Elegí el que mejor se adapte a tus necesidades"
+        plans={PRICING_GIMNASIOS}
+        accentColor="orange"
+      />
 
       {/* CTA */}
       <section id="contacto" className="relative py-40 lg:py-52 bg-gradient-to-b from-slate-950 via-red-950/15 to-slate-950">

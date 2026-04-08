@@ -1,5 +1,6 @@
 import { MessageCircle, CheckCircle, ArrowRight, Sparkles, Droplet, Flower2, Star, Gem, Play, Clock, Shield, Award } from 'lucide-react';
 import BeforeAfterSection from '@/components/landings/BeforeAfterSection';
+import PricingSection from '@/components/landings/PricingSection';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -102,6 +103,52 @@ const TESTIMONIALS = [
     role: "Centro de Estética · Palermo",
     result: "+90% conversiones",
     avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&h=200&fit=crop&q=80",
+  },
+];
+
+const PRICING_ESTETICA = [
+  {
+    name: "Básico",
+    price: "$297 USD",
+    description: "Para comenzar",
+    features: [
+      "Landing page elegante",
+      "Tratamientos destacados",
+      "Galería de resultados",
+      "WhatsApp integrado",
+      "Horarios de atención",
+      "1 mes de hosting",
+    ],
+    cta: "Elegir Básico",
+  },
+  {
+    name: "Profesional",
+    price: "$497 USD",
+    description: "El más elegido",
+    features: [
+      "Todo lo de Básico",
+      "SEO para centros de estética",
+      "Google Analytics",
+      "Dominio propio",
+      "Sistema de reservas",
+      "6 meses de hosting",
+    ],
+    cta: "Elegir Profesional",
+    popular: true,
+  },
+  {
+    name: "Premium",
+    price: "$797 USD",
+    description: "Centro completo",
+    features: [
+      "Todo lo de Profesional",
+      "Blog de tratamientos",
+      "CRM de clientas",
+      "Programa de fidelización",
+      "Copywriting premium",
+      "12 meses de hosting",
+    ],
+    cta: "Elegir Premium",
   },
 ];
 
@@ -389,6 +436,13 @@ export default function EsteticaCorporal() {
           </div>
         </div>
       </section>
+
+      <PricingSection
+        title="Planes para tu centro"
+        subtitle="Elegí el que mejor se adapte a tu estética"
+        plans={PRICING_ESTETICA}
+        accentColor="rose"
+      />
 
       {/* CTA */}
       <section id="contacto" className="relative py-40 lg:py-52 bg-gradient-to-br from-rose-400 via-pink-500 to-rose-500 relative overflow-hidden">

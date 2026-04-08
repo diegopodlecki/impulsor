@@ -1,4 +1,5 @@
 import { MessageCircle, CheckCircle, ArrowRight, Brain, Heart, User, Clock, Shield, Sparkles, Play, Star, Award, MessageSquare } from 'lucide-react';
+import PricingSection from '@/components/landings/PricingSection';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -77,6 +78,52 @@ const TESTIMONIALS = [
     role: "Psicóloga · Belgrano",
     result: "-80% consultas repetidas",
     avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&q=80",
+  },
+];
+
+const PRICING_PSICO = [
+  {
+    name: "Básico",
+    price: "$247 USD",
+    description: "Para comenzar",
+    features: [
+      "Perfil profesional",
+      "Enfoques terapéuticos",
+      "Modalidades de atención",
+      "WhatsApp integrado",
+      "Galería de consultorio",
+      "1 mes de hosting",
+    ],
+    cta: "Elegir Básico",
+  },
+  {
+    name: "Profesional",
+    price: "$397 USD",
+    description: "El más elegido",
+    features: [
+      "Todo lo de Básico",
+      "SEO para psicólogos",
+      "Google Analytics",
+      "Dominio propio",
+      "Testimonios de pacientes",
+      "6 meses de hosting",
+    ],
+    cta: "Elegir Profesional",
+    popular: true,
+  },
+  {
+    name: "Premium",
+    price: "$647 USD",
+    description: "Consultorio completo",
+    features: [
+      "Todo lo de Profesional",
+      "Sistema de citas",
+      "Blog de artículos",
+      "CRM de pacientes",
+      "Copywriting especializado",
+      "12 meses de hosting",
+    ],
+    cta: "Elegir Premium",
   },
 ];
 
@@ -366,6 +413,13 @@ export default function Psicologos() {
           </div>
         </div>
       </section>
+
+      <PricingSection
+        title="Planes para tu consultorio"
+        subtitle="Elegí el que mejor se adapte a tu práctica"
+        plans={PRICING_PSICO}
+        accentColor="indigo"
+      />
 
       {/* CTA */}
       <section id="contacto" className="relative py-40 lg:py-52 bg-gradient-to-br from-indigo-600 via-violet-600 to-indigo-700 relative overflow-hidden">

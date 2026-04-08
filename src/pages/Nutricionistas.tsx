@@ -1,4 +1,5 @@
 import { MessageCircle, CheckCircle, ArrowRight, Leaf, Salad, Apple, TrendingUp, Users, Play, Clock, Shield, Star, Award } from 'lucide-react';
+import PricingSection from '@/components/landings/PricingSection';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -77,6 +78,52 @@ const TESTIMONIALS = [
     role: "Nutricionista · Belgrano",
     result: "-70% tiempo admin",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&q=80",
+  },
+];
+
+const PRICING_NUTRI = [
+  {
+    name: "Básico",
+    price: "$247 USD",
+    description: "Para comenzar",
+    features: [
+      "Perfil profesional",
+      "Tu metodología",
+      "Planes nutricionales",
+      "WhatsApp integrado",
+      "Galería de resultados",
+      "1 mes de hosting",
+    ],
+    cta: "Elegir Básico",
+  },
+  {
+    name: "Profesional",
+    price: "$397 USD",
+    description: "El más elegido",
+    features: [
+      "Todo lo de Básico",
+      "SEO para nutricionistas",
+      "Google Analytics",
+      "Dominio propio",
+      "Testimonios de pacientes",
+      "6 meses de hosting",
+    ],
+    cta: "Elegir Profesional",
+    popular: true,
+  },
+  {
+    name: "Premium",
+    price: "$647 USD",
+    description: "Práctica completa",
+    features: [
+      "Todo lo de Profesional",
+      "Sistema de citas",
+      "Blog de recetas",
+      "CRM de pacientes",
+      "Copywriting especializado",
+      "12 meses de hosting",
+    ],
+    cta: "Elegir Premium",
   },
 ];
 
@@ -354,6 +401,13 @@ export default function Nutricionistas() {
           </div>
         </div>
       </section>
+
+      <PricingSection
+        title="Planes para tu práctica"
+        subtitle="Elegí el que mejor se adapte a tu consultorio"
+        plans={PRICING_NUTRI}
+        accentColor="emerald"
+      />
 
       {/* CTA */}
       <section id="contacto" className="relative py-40 lg:py-52 bg-gradient-to-br from-emerald-500 via-teal-500 to-emerald-600 relative overflow-hidden">
