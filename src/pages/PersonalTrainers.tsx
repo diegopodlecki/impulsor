@@ -82,21 +82,24 @@ const BEFORE_AFTER_PT = [
 
 const TESTIMONIALS = [
   {
-    quote: "Pasé de depender del boca a boca a recibir 8 consultas por semana. Mi agenda se llenó sola en 30 días.",
+    quote: "Llené mi agenda en 3 semanas. Pasé de 4 a 12 alumnos sin hacer publicidad.",
     author: "Carlos Vega",
     role: "Personal Trainer · Palermo",
+    result: "12 alumnos nuevos",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&q=80",
   },
   {
-    quote: "No aparecía en Google cuando alguien buscaba trainer. Ahora sí. Y llegan solos.",
+    quote: "Ahora me encuentran por Google. No sabia que podia aparecer en las busquedas de mi zona.",
     author: "Martín Díaz",
     role: "Coach Online · CABA",
+    result: "#1 en Google local",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&q=80",
   },
   {
-    quote: "Mi web explica mi método mejor que yo en un mensaje. Llegan sabiendo qué quiero.",
+    quote: "Mis transformaciones hablan por mi. La gente llega convencida y se anotan directo.",
     author: "Laura Pérez",
     role: "Trainer Funcional · Zona Norte",
+    result: "+80% conversiones",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&q=80",
   },
 ];
@@ -380,25 +383,33 @@ export default function PersonalTrainers() {
       <section className="relative py-32 lg:py-40">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 to-slate-900" />
         <div className="container relative">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
-              Trainers con agenda llena
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+              Entrenadores con <span className="text-cyan-400">resultados</span>
             </h2>
+            <p className="text-xl text-slate-400">
+              Personal trainers que transformaron su carrera
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8">
             {TESTIMONIALS.map((item, idx) => (
-              <div key={idx} className="p-10 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 hover:border-cyan-500/20 transition-all">
-                <p className="text-slate-300 text-lg italic leading-relaxed mb-8">&ldquo;{item.quote}&rdquo;</p>
-                <div className="flex items-center gap-5">
+              <div key={idx} className="group relative p-8 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 hover:border-cyan-500/30 hover:-translate-y-1 transition-all">
+                <div className="absolute top-4 right-4">
+                  <span className="px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold">
+                    {item.result}
+                  </span>
+                </div>
+                <p className="text-slate-300 text-lg leading-relaxed mb-8">&ldquo;{item.quote}&rdquo;</p>
+                <div className="flex items-center gap-4">
                   <img 
                     src={item.avatar} 
                     alt={item.author} 
-                    className="w-14 h-14 rounded-full object-cover border-2 border-cyan-500/30"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-cyan-500/30"
                   />
                   <div>
-                    <p className="font-bold text-white text-lg">{item.author}</p>
-                    <p className="text-slate-400">{item.role}</p>
+                    <p className="font-bold text-white">{item.author}</p>
+                    <p className="text-slate-400 text-sm">{item.role}</p>
                   </div>
                 </div>
               </div>

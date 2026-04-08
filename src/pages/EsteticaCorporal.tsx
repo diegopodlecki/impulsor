@@ -83,21 +83,24 @@ const BEFORE_AFTER_ESTETICA = [
 
 const TESTIMONIALS = [
   {
-    quote: "Las clientas llegan sabiendo qué tratamiento quieren. Ya no explico todo desde cero por WhatsApp.",
+    quote: "Mi agenda se llenó en 8 semanas. Las clientas llegan sabiendo qué tratamiento quieren y se reservan directo.",
     author: "Patricia Solís",
     role: "Directora · Bella Piel",
+    result: "+150% reservas",
     avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&q=80",
   },
   {
-    quote: "Mi centro se ve premium. Las clientas llegan convencidas, no comparando precios.",
+    quote: "Mi centro se ve de lujo en las fotos. Las clientas llegan convencidas, no comparando precios.",
     author: "Valeria Moyano",
     role: "Esteticista · Núñez",
+    result: "Ticket promedio +40%",
     avatar: "https://images.unsplash.com/photo-1541823709867-1b206113eafd?w=200&h=200&fit=crop&q=80",
   },
   {
-    quote: "Mis tratamientos están clarísimos en la web. Las clientas reservan directo por WhatsApp.",
+    quote: "Cada tratamiento con su resultado visible. Las clientas eligen según lo que buscan y se animan más.",
     author: "Catalina Reyes",
     role: "Centro de Estética · Palermo",
+    result: "+90% conversiones",
     avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&h=200&fit=crop&q=80",
   },
 ];
@@ -352,25 +355,33 @@ export default function EsteticaCorporal() {
       {/* TESTIMONIALS */}
       <section className="relative py-32 lg:py-40 bg-white">
         <div className="container">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
-              Centros con agenda llena
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+              Centros con <span className="text-rose-500">resultados</span>
             </h2>
+            <p className="text-xl text-slate-600">
+              Centros de estética que transformaron su negocio
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8">
             {TESTIMONIALS.map((item, idx) => (
-              <div key={idx} className="p-10 rounded-3xl bg-gradient-to-br from-rose-50/50 to-pink-50/30 border border-rose-100 hover:border-rose-200 hover:shadow-xl hover:shadow-rose-500/10 transition-all">
-                <p className="text-slate-700 text-lg italic leading-relaxed mb-8">&ldquo;{item.quote}&rdquo;</p>
-                <div className="flex items-center gap-5">
+              <div key={idx} className="group relative p-8 rounded-3xl bg-gradient-to-br from-rose-50/50 to-pink-50/30 border border-rose-100 hover:border-rose-200 hover:shadow-xl hover:shadow-rose-500/10 transition-all">
+                <div className="absolute top-4 right-4">
+                  <span className="px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-600 text-xs font-bold">
+                    {item.result}
+                  </span>
+                </div>
+                <p className="text-slate-700 text-lg leading-relaxed mb-8">&ldquo;{item.quote}&rdquo;</p>
+                <div className="flex items-center gap-4">
                   <img 
                     src={item.avatar} 
                     alt={item.author} 
-                    className="w-14 h-14 rounded-full object-cover border-2 border-rose-200"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-rose-200"
                   />
                   <div>
-                    <p className="font-bold text-slate-800 text-lg">{item.author}</p>
-                    <p className="text-slate-500">{item.role}</p>
+                    <p className="font-bold text-slate-800">{item.author}</p>
+                    <p className="text-slate-500 text-sm">{item.role}</p>
                   </div>
                 </div>
               </div>

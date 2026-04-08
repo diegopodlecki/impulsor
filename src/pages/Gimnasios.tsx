@@ -83,16 +83,25 @@ const BEFORE_AFTER = [
 
 const TESTIMONIALS = [
   {
-    quote: "Pasé de que me pregunten todo por Instagram a que se inscriban solos. Mi web hace el trabajo mientras yo entreno a mis socios.",
+    quote: "Pasé de 45 a 120 socios en 6 meses. La web trajo gente que buscaba exactamente lo que ofrezco.",
     author: "Marcelo Gómez",
     role: "Dueño · Gym Zone",
+    result: "+167% socios",
     avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&q=80",
   },
   {
-    quote: "Mis horarios y precios son claros en la web. Ya no respondo 50 mensajes por día preguntando lo mismo.",
+    quote: "Dejé de responder WhatsApps preguntando precios. Ahora llegan sabiendo cuánto sale y se inscriben.",
     author: "Carlos Ruiz",
     role: "Gerente · Fit Center",
+    result: "-60% consultas",
     avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&q=80",
+  },
+  {
+    quote: "Mi web tiene mejores fotos que las de mi competencia. La primera impresión cuenta y se nota.",
+    author: "Ana Martínez",
+    role: "Propietaria · Pulse Fitness",
+    result: "Top 3 en Google",
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&q=80",
   },
 ];
 
@@ -374,25 +383,33 @@ export default function Gimnasios() {
       <section className="relative py-32 lg:py-40">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 to-slate-900" />
         <div className="container relative">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
-              Propietarios que ya lo usan
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+              Resultados que <span className="text-orange-400">hablan solos</span>
             </h2>
+            <p className="text-xl text-slate-400">
+              Gimnasios que transformaron su presencia online
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {TESTIMONIALS.map((item, idx) => (
-              <div key={idx} className="p-10 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 hover:border-orange-500/20 transition-all">
-                <p className="text-slate-300 text-lg italic leading-relaxed mb-8">&ldquo;{item.quote}&rdquo;</p>
-                <div className="flex items-center gap-5">
+              <div key={idx} className="group relative p-8 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 hover:border-orange-500/30 hover:-translate-y-1 transition-all">
+                <div className="absolute top-4 right-4">
+                  <span className="px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold">
+                    {item.result}
+                  </span>
+                </div>
+                <p className="text-slate-300 text-lg leading-relaxed mb-8">&ldquo;{item.quote}&rdquo;</p>
+                <div className="flex items-center gap-4">
                   <img 
                     src={item.avatar} 
                     alt={item.author} 
-                    className="w-14 h-14 rounded-full object-cover border-2 border-orange-500/30"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-orange-500/30"
                   />
                   <div>
-                    <p className="font-bold text-white text-lg">{item.author}</p>
-                    <p className="text-slate-400">{item.role}</p>
+                    <p className="font-bold text-white">{item.author}</p>
+                    <p className="text-slate-400 text-sm">{item.role}</p>
                   </div>
                 </div>
               </div>

@@ -58,21 +58,24 @@ const GALLERY = [
 
 const TESTIMONIALS = [
   {
-    quote: "Pasé de 1 consulta cada 2 semanas a recibir 6 semanales. La mayoría llegan por Google buscando terapia.",
+    quote: "Mi agenda se llenó en 6 semanas. Pasé de consultar 2 veces por mes a 6 pacientes nuevos por semana.",
     author: "Luciana Pérez",
     role: "Psicóloga · CABA",
+    result: "+200% consultas",
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&q=80",
   },
   {
-    quote: "Mi web transmite la confianza que mis pacientes necesitan. Ya no explico todo en el primer mensaje de WhatsApp.",
+    quote: "Los pacientes que llegan ya saben cómo trabajo. El primer encuentro es mucho más productivo.",
     author: "Roberto Sánchez",
     role: "Psicoterapeuta · Recoleta",
+    result: "Pacientes calificados",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&q=80",
   },
   {
-    quote: "El tema de modalidad presencial/online lo tengo clarísimo en la web. Pacientes que llegan sabiendo qué ofrezco.",
+    quote: "Online y presencial claros en la web. Ya no respondo las mismas preguntas de modalidad todos los días.",
     author: "Ana García",
     role: "Psicóloga · Belgrano",
+    result: "-80% consultas repetidas",
     avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&q=80",
   },
 ];
@@ -329,25 +332,33 @@ export default function Psicologos() {
       {/* TESTIMONIALS */}
       <section className="relative py-32 lg:py-40 bg-gradient-to-b from-indigo-50/30 to-white">
         <div className="container">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
-              Psicólogos con agenda llena
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+              Consultorios con <span className="text-indigo-600">resultados</span>
             </h2>
+            <p className="text-xl text-slate-600">
+              Psicólogos que transformaron su presencia online
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8">
             {TESTIMONIALS.map((item, idx) => (
-              <div key={idx} className="p-10 rounded-3xl bg-white shadow-lg shadow-slate-200/50 border border-slate-100 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/10 transition-all">
-                <p className="text-slate-700 text-lg italic leading-relaxed mb-8">&ldquo;{item.quote}&rdquo;</p>
-                <div className="flex items-center gap-5">
+              <div key={idx} className="group relative p-8 rounded-3xl bg-white shadow-lg shadow-slate-200/50 border border-slate-100 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/10 transition-all">
+                <div className="absolute top-4 right-4">
+                  <span className="px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-600 text-xs font-bold">
+                    {item.result}
+                  </span>
+                </div>
+                <p className="text-slate-700 text-lg leading-relaxed mb-8">&ldquo;{item.quote}&rdquo;</p>
+                <div className="flex items-center gap-4">
                   <img 
                     src={item.avatar} 
                     alt={item.author} 
-                    className="w-14 h-14 rounded-full object-cover border-2 border-indigo-200"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-indigo-200"
                   />
                   <div>
-                    <p className="font-bold text-slate-800 text-lg">{item.author}</p>
-                    <p className="text-slate-500">{item.role}</p>
+                    <p className="font-bold text-slate-800">{item.author}</p>
+                    <p className="text-slate-500 text-sm">{item.role}</p>
                   </div>
                 </div>
               </div>
