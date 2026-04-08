@@ -1,4 +1,5 @@
 import { MessageCircle, CheckCircle, ArrowRight, Target, TrendingUp, Zap, Award, Dumbbell, Flame, Play } from 'lucide-react';
+import BeforeAfterSection from '@/components/landings/BeforeAfterSection';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -24,6 +25,30 @@ const TRANSFORMATIONS = [
   { img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=400&fit=crop", name: "Transformación Carlos", result: "-8kg en 60 días" },
   { img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=400&fit=crop", name: "Transformación María", result: "+5kg músculo" },
   { img: "https://images.unsplash.com/photo-1581009146145-b5ef050c149a?w=600&h=400&fit=crop", name: "Transformación Luca", result: "Bodyfat 18%" },
+];
+
+const BEFORE_AFTER_PT = [
+  {
+    before: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=800&fit=crop&q=80",
+    after: "https://images.unsplash.com/photo-1581009146145-b5ef050c149a?w=600&h=800&fit=crop&q=80",
+    name: "Carlos M.",
+    result: "From zero online presence to 12 new clients in the first month",
+    timeframe: "30 días",
+  },
+  {
+    before: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=800&fit=crop&q=80",
+    after: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=800&fit=crop&q=80",
+    name: "María G.",
+    result: "Transformed coaching business with 3x more qualified leads",
+    timeframe: "45 días",
+  },
+  {
+    before: "https://images.unsplash.com/photo-1550345332-09e3ac987658?w=600&h=800&fit=crop&q=80",
+    after: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=800&fit=crop&q=80",
+    name: "Lucas R.",
+    result: "Booked solid for 3 months with clients from Google searches",
+    timeframe: "60 días",
+  },
 ];
 
 const TESTIMONIALS = [
@@ -276,6 +301,13 @@ export default function PersonalTrainers() {
           </div>
         </div>
       </section>
+
+      <BeforeAfterSection
+        title="Tu negocio también puede transformarse"
+        subtitle="Casos reales de personal trainers que encontraron nuevos alumnos"
+        items={BEFORE_AFTER_PT}
+        accentColor="cyan"
+      />
 
       {/* TESTIMONIALS */}
       <section className="relative py-32 lg:py-40">

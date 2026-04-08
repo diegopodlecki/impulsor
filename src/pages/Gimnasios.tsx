@@ -1,4 +1,5 @@
 import { MessageCircle, CheckCircle, ArrowRight, Dumbbell, Users, Flame, TrendingUp, Target, Zap, Play } from 'lucide-react';
+import BeforeAfterSection from '@/components/landings/BeforeAfterSection';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -25,6 +26,30 @@ const GALLERY = [
   { img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=600&fit=crop", title: "Zona cardio" },
   { img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=600&fit=crop", title: "Clases grupales" },
   { img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop", title: "Entrenamiento" },
+];
+
+const BEFORE_AFTER = [
+  {
+    before: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=800&fit=crop&q=80",
+    after: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=800&fit=crop&q=80",
+    name: "FitLife Centro Fitness",
+    result: "+180% increase in membership inquiries within 30 days of launch",
+    timeframe: "30 días",
+  },
+  {
+    before: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600&h=800&fit=crop&q=80",
+    after: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=800&fit=crop&q=80",
+    name: "Iron Club Gym",
+    result: "Website became the #1 source of new member acquisition",
+    timeframe: "60 días",
+  },
+  {
+    before: "https://images.unsplash.com/photo-1517960019194-c5c2e6e2e9b5?w=600&h=800&fit=crop&q=80",
+    after: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=800&fit=crop&q=80",
+    name: "PowerFlex Academia",
+    result: "Reduced phone inquiries by 60% while doubling overall leads",
+    timeframe: "45 días",
+  },
 ];
 
 const TESTIMONIALS = [
@@ -270,6 +295,13 @@ export default function Gimnasios() {
           </div>
         </div>
       </section>
+
+      <BeforeAfterSection
+        title="Resultados que hablan por sí solos"
+        subtitle="Negocios como el tuyo que ya transformaron su presencia online"
+        items={BEFORE_AFTER}
+        accentColor="orange"
+      />
 
       {/* TESTIMONIALS */}
       <section className="relative py-32 lg:py-40">

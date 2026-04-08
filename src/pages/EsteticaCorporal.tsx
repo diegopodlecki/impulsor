@@ -1,4 +1,5 @@
 import { MessageCircle, CheckCircle, ArrowRight, Sparkles, Droplet, Flower2, Star, Gem, Play } from 'lucide-react';
+import BeforeAfterSection from '@/components/landings/BeforeAfterSection';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -27,9 +28,28 @@ const GALLERY = [
   { img: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&h=600&fit=crop", title: "Antes y después" },
 ];
 
-const BEFORE_AFTER = [
-  { img: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&h=400&fit=crop", treatment: "Lipoescultura", result: "3 sesiones" },
-  { img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&h=400&fit=crop", treatment: "Tratamiento facial", result: "5 sesiones" },
+const BEFORE_AFTER_ESTETICA = [
+  {
+    before: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&h=800&fit=crop&q=80",
+    after: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&h=800&fit=crop&q=80",
+    name: "Bella Piel Centro",
+    result: "Doubled monthly appointments within 60 days of launching their new website",
+    timeframe: "60 días",
+  },
+  {
+    before: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&h=800&fit=crop&q=80",
+    after: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=800&fit=crop&q=80",
+    name: "Glow Estética",
+    result: "Premium positioning increased average ticket value by 40%",
+    timeframe: "45 días",
+  },
+  {
+    before: "https://images.unsplash.com/photo-1598524374912-6f40a6c4b22e?w=600&h=800&fit=crop&q=80",
+    after: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&h=800&fit=crop&q=80",
+    name: "DermaCare Plus",
+    result: "85% of new clients now come from Google searches",
+    timeframe: "30 días",
+  },
 ];
 
 const TESTIMONIALS = [
@@ -258,44 +278,12 @@ export default function EsteticaCorporal() {
         </div>
       </section>
 
-      {/* BEFORE / AFTER */}
-      <section className="relative py-32 lg:py-40 bg-gradient-to-b from-white to-rose-50/30">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
-              Resultados que <span className="text-rose-500">generan deseo</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-            {BEFORE_AFTER.map((item, idx) => (
-              <div key={idx} className="group rounded-3xl overflow-hidden bg-slate-100 border border-rose-100 hover:shadow-xl hover:shadow-rose-500/10 transition-all">
-                <div className="relative overflow-hidden">
-                  <img 
-                    src={item.img} 
-                    alt={item.treatment} 
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700" 
-                  />
-                  <div className="absolute top-4 right-4 bg-rose-500 text-white text-xs font-semibold px-4 py-2 rounded-full backdrop-blur-sm">
-                    DESPUÉS
-                  </div>
-                </div>
-                <div className="p-6 bg-white border-t border-rose-100">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Sparkles className="h-5 w-5 text-rose-500" />
-                      <p className="font-semibold text-slate-800 text-lg">{item.treatment}</p>
-                    </div>
-                    <div className="px-4 py-1 rounded-full bg-emerald-100">
-                      <p className="text-xs font-semibold text-emerald-600">{item.result}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <BeforeAfterSection
+        title="Resultados que generan deseo"
+        subtitle="Centros de estética que transformaron su presencia online"
+        items={BEFORE_AFTER_ESTETICA}
+        accentColor="rose"
+      />
 
       {/* TESTIMONIALS */}
       <section className="relative py-32 lg:py-40 bg-white">
