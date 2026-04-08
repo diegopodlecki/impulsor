@@ -1,4 +1,4 @@
-import { MessageCircle, CheckCircle, ArrowRight, Target, TrendingUp, Zap, Award, Dumbbell, Flame, Play } from 'lucide-react';
+import { MessageCircle, CheckCircle, ArrowRight, Target, TrendingUp, Zap, Award, Dumbbell, Flame, Play, Clock, Shield, Star, Users } from 'lucide-react';
 import BeforeAfterSection from '@/components/landings/BeforeAfterSection';
 import type { Metadata } from "next";
 
@@ -33,6 +33,15 @@ const SERVICES = [
     desc: "Botón de WhatsApp visible. El alumno te escribe directo, sin rodeos.",
     highlight: "Conversiones inmediatas"
   },
+];
+
+const WHY_CHOOSE_US_PT = [
+  { icon: Clock, title: "Listo en 7 días", desc: "Tu web online rápidamente. Sin esperas interminables." },
+  { icon: Target, title: "Perfil especializado", desc: "Tu nicho y método destacados. Te diferencia de otros trainers." },
+  { icon: TrendingUp, title: "Resultados visibles", desc: "Galería de transformaciones reales que convencen." },
+  { icon: Shield, title: "Sin costos ocultos", desc: "Precio claro. Todo incluido, sin sorpresas." },
+  { icon: Star, title: "Diseño que impacta", desc: "Tu autoridad profesional reflejada en cada pixel." },
+  { icon: Users, title: "Alumnos calificados", desc: "Llegan sabiendo qué ofrecés. Cierras más rápido." },
 ];
 
 const STATS = [
@@ -260,6 +269,39 @@ export default function PersonalTrainers() {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
                 <p className="text-slate-400 leading-relaxed">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="relative py-24 lg:py-32 bg-gradient-to-b from-slate-950 via-slate-900/50 to-slate-950">
+        <div className="absolute inset-0">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-cyan-500/10 to-blue-500/5 rounded-full blur-[150px]" />
+        </div>
+        <div className="container relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/15 border border-cyan-500/25 text-cyan-400 text-sm font-semibold mb-6">
+              <Award className="w-4 h-4" />
+              Por qué elegirnos
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+              Tu carrera profesional merece una web profesional
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Construimos tu presencia online para que te encuentren y confíen
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
+            {WHY_CHOOSE_US_PT.map((item, idx) => (
+              <div key={idx} className="group text-center p-6 rounded-2xl bg-slate-800/40 border border-slate-700/30 hover:border-cyan-500/30 hover:bg-slate-800/60 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-500/20 transition-all">
+                  <item.icon className="h-6 w-6 text-cyan-400" />
+                </div>
+                <h3 className="font-bold text-white text-sm mb-2">{item.title}</h3>
+                <p className="text-slate-400 text-xs leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>

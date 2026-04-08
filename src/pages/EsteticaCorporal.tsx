@@ -1,4 +1,4 @@
-import { MessageCircle, CheckCircle, ArrowRight, Sparkles, Droplet, Flower2, Star, Gem, Play } from 'lucide-react';
+import { MessageCircle, CheckCircle, ArrowRight, Sparkles, Droplet, Flower2, Star, Gem, Play, Clock, Shield, Award } from 'lucide-react';
 import BeforeAfterSection from '@/components/landings/BeforeAfterSection';
 import type { Metadata } from "next";
 
@@ -33,6 +33,15 @@ const TREATMENTS = [
     desc: "Celulitis, estrías y tonificación. Tratamientos que tus clientas recomiendan.",
     highlight: "99% satisfacción"
   },
+];
+
+const WHY_CHOOSE_US_ESTETICA = [
+  { icon: Clock, title: "Web en 7 días", desc: "Tu centro online rápidamente." },
+  { icon: Sparkles, title: "Diseño premium", desc: "Tu centro se ve de lujo." },
+  { icon: Shield, title: "Sin costos ocultos", desc: "Precio claro, todo incluido." },
+  { icon: Star, title: "Galería stunning", desc: "Fotos de tratamientos que venden." },
+  { icon: Gem, title: "Tratamientos claros", desc: "Cada servicio con resultado." },
+  { icon: Award, title: "Soporte incluido", desc: "Mantengo todo actualizado." },
 ];
 
 const STATS = [
@@ -244,6 +253,36 @@ export default function EsteticaCorporal() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-800 mb-3">{treatment.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{treatment.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="relative py-24 lg:py-32 bg-gradient-to-b from-rose-50/20 via-white to-rose-50/10">
+        <div className="container">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-100 border border-rose-200 text-rose-600 text-sm font-semibold mb-6">
+              <Award className="w-4 h-4" />
+              Por qué elegirnos
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+              Tu centro de belleza merece ser encontrado
+            </h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Construimos tu presencia online para que te encuentren clientas que buscan tus tratamientos
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
+            {WHY_CHOOSE_US_ESTETICA.map((item, idx) => (
+              <div key={idx} className="group text-center p-6 rounded-2xl bg-white border border-slate-100 hover:border-rose-200 hover:shadow-lg hover:shadow-rose-500/10 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-100 to-pink-100 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-rose-500/20 transition-all">
+                  <item.icon className="h-6 w-6 text-rose-500" />
+                </div>
+                <h3 className="font-bold text-slate-800 text-sm mb-2">{item.title}</h3>
+                <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>

@@ -1,4 +1,4 @@
-import { MessageCircle, CheckCircle, ArrowRight, Leaf, Salad, Apple, TrendingUp, Users, Play } from 'lucide-react';
+import { MessageCircle, CheckCircle, ArrowRight, Leaf, Salad, Apple, TrendingUp, Users, Play, Clock, Shield, Star, Award } from 'lucide-react';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -32,6 +32,15 @@ const SERVICES = [
     desc: "Reservas online 24/7. Pacientes que se autogestionan, vos solo atendés.",
     highlight: "0 llamadas por turnos"
   },
+];
+
+const WHY_CHOOSE_US_NUTRI = [
+  { icon: Clock, title: "Listo en 7 días", desc: "Tu web online rápidamente." },
+  { icon: Leaf, title: "Enfoque personalizado", desc: "Tu método nutricional destacado." },
+  { icon: Star, title: "Imagen premium", desc: "Tu consultorio se ve profesional." },
+  { icon: Shield, title: "Sin costos ocultos", desc: "Precio claro, todo incluido." },
+  { icon: TrendingUp, title: "Resultados visibles", desc: "Testimonios que convencen." },
+  { icon: Award, title: "Soporte incluido", desc: "Mantengo todo actualizado." },
 ];
 
 const STATS = [
@@ -216,6 +225,36 @@ export default function Nutricionistas() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-800 mb-3">{service.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="relative py-24 lg:py-32 bg-gradient-to-b from-emerald-50/20 via-white to-emerald-50/10">
+        <div className="container">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-600 text-sm font-semibold mb-6">
+              <Award className="w-4 h-4" />
+              Por qué elegirnos
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+              Tu práctica nutricional merece ser visible
+            </h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Construimos tu presencia online para que te encuentren pacientes que buscan tu ayuda
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
+            {WHY_CHOOSE_US_NUTRI.map((item, idx) => (
+              <div key={idx} className="group text-center p-6 rounded-2xl bg-white border border-slate-100 hover:border-emerald-200 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-emerald-500/20 transition-all">
+                  <item.icon className="h-6 w-6 text-emerald-600" />
+                </div>
+                <h3 className="font-bold text-slate-800 text-sm mb-2">{item.title}</h3>
+                <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>

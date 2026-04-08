@@ -1,4 +1,4 @@
-import { MessageCircle, CheckCircle, ArrowRight, Brain, Heart, User, Clock, Shield, Sparkles, Play } from 'lucide-react';
+import { MessageCircle, CheckCircle, ArrowRight, Brain, Heart, User, Clock, Shield, Sparkles, Play, Star, Award, MessageSquare } from 'lucide-react';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -32,6 +32,15 @@ const APPROACHES = [
     desc: "Terapia Sistémica. Mejorá la comunicación en parejas y familias.",
     highlight: "Armonía familiar"
   },
+];
+
+const WHY_CHOOSE_US_PSICO = [
+  { icon: Clock, title: "Web en 7 días", desc: "Tu presencia online lista rápidamente." },
+  { icon: Shield, title: "Confidencialidad", desc: "Tu espacio seguro. Sin filtraciones ni riesgos." },
+  { icon: Brain, title: "Especialización", desc: "Tu nicho destacado. Pacientes que buscan tu enfoque." },
+  { icon: Star, title: "Imagen profesional", desc: "Tu consultorio se ve de alta gama." },
+  { icon: MessageSquare, title: "Contacto directo", desc: "WhatsApp integrado para consultas rápidas." },
+  { icon: Award, title: "Soporte continuo", desc: "Mantengo todo actualizado por vos." },
 ];
 
 const STATS = [
@@ -228,6 +237,36 @@ export default function Psicologos() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-800 mb-3">{approach.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{approach.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="relative py-24 lg:py-32 bg-gradient-to-b from-indigo-50/20 via-white to-indigo-50/10">
+        <div className="container">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 border border-indigo-200 text-indigo-600 text-sm font-semibold mb-6">
+              <Award className="w-4 h-4" />
+              Por qué elegirnos
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+              Tu consultorio merece ser encontrado
+            </h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Construimos tu presencia online para que te encuentren pacientes que buscan ayuda
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
+            {WHY_CHOOSE_US_PSICO.map((item, idx) => (
+              <div key={idx} className="group text-center p-6 rounded-2xl bg-white border border-slate-100 hover:border-indigo-200 hover:shadow-lg hover:shadow-indigo-500/10 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-100 to-violet-100 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-indigo-500/20 transition-all">
+                  <item.icon className="h-6 w-6 text-indigo-600" />
+                </div>
+                <h3 className="font-bold text-slate-800 text-sm mb-2">{item.title}</h3>
+                <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>

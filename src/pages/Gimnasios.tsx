@@ -1,4 +1,4 @@
-import { MessageCircle, CheckCircle, ArrowRight, Dumbbell, Users, Flame, TrendingUp, Target, Zap, Play } from 'lucide-react';
+import { MessageCircle, CheckCircle, ArrowRight, Dumbbell, Users, Flame, TrendingUp, Target, Zap, Play, Clock, Shield, Star, Award } from 'lucide-react';
 import BeforeAfterSection from '@/components/landings/BeforeAfterSection';
 import type { Metadata } from "next";
 
@@ -33,6 +33,15 @@ const FEATURES = [
     desc: "Yoga, spinning, funcional. Cada clase visible con su horario y descripción.",
     highlight: "Agenda siempre llena"
   },
+];
+
+const WHY_CHOOSE_US = [
+  { icon: Clock, title: "Web en 7 días", desc: "Desde el primer contacto hasta tu web online, en una semana." },
+  { icon: Shield, title: "Sin costos ocultos", desc: "Precio claro desde el inicio. Sin sorpresas ni letra pequeña." },
+  { icon: Star, title: "Diseño profesional", desc: "Tu gimnasio se ve premium, no genérico. Generamos confianza." },
+  { icon: Award, title: "Soporte incluido", desc: "Mantengo tu web actualizada. Vos te enfocás en tus socios." },
+  { icon: TrendingUp, title: "Resultados medibles", desc: "Dashboard con estadísticas de visitas y conversiones." },
+  { icon: MessageCircle, title: "WhatsApp directo", desc: "Integración perfecta para que te contacten al instante." },
 ];
 
 const STATS = [
@@ -261,6 +270,39 @@ export default function Gimnasios() {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
                 <p className="text-slate-400 leading-relaxed">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="relative py-24 lg:py-32 bg-gradient-to-b from-slate-950 via-slate-900/50 to-slate-950">
+        <div className="absolute inset-0">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-orange-500/10 to-red-500/5 rounded-full blur-[150px]" />
+        </div>
+        <div className="container relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/15 border border-orange-500/25 text-orange-400 text-sm font-semibold mb-6">
+              <Award className="w-4 h-4" />
+              Por qué elegirnos
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+              Tu éxito es nuestro objetivo
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Más que una web, construimos una máquina de generar socios
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
+            {WHY_CHOOSE_US.map((item, idx) => (
+              <div key={idx} className="group text-center p-6 rounded-2xl bg-slate-800/40 border border-slate-700/30 hover:border-orange-500/30 hover:bg-slate-800/60 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500/20 to-red-500/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all">
+                  <item.icon className="h-6 w-6 text-orange-400" />
+                </div>
+                <h3 className="font-bold text-white text-sm mb-2">{item.title}</h3>
+                <p className="text-slate-400 text-xs leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
