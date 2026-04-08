@@ -10,7 +10,6 @@ const RUBROS_ORDER = [
   'psicologo',
   'nutricionista',
   'estetica-corporal',
-  'casa-de-comidas',
 ];
 
 const TRUST_POINTS = [
