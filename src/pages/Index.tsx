@@ -123,6 +123,49 @@ export default function Index() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
+      {/* HEADER STICKY */}
+      <header className="fixed top-0 left-0 right-0 z-50">
+        <div className="backdrop-blur-xl bg-slate-950/80 border-b border-white/10">
+          <div className="container">
+            <div className="flex items-center justify-between h-16">
+              {/* Logo */}
+              <a href="/" className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">W</span>
+                </div>
+                <span className="text-white font-bold text-lg hidden sm:block">Impulsor</span>
+              </a>
+
+              {/* Nav - Desktop */}
+              <nav className="hidden md:flex items-center gap-8">
+                <a href="#solucion" className="text-sm text-white/70 hover:text-white transition-colors">
+                  Soluciones
+                </a>
+                <a href="#metodo" className="text-sm text-white/70 hover:text-white transition-colors">
+                  Cómo funciona
+                </a>
+                <a href="#casos" className="text-sm text-white/70 hover:text-white transition-colors">
+                  Casos
+                </a>
+                <a href="#faq" className="text-sm text-white/70 hover:text-white transition-colors">
+                  FAQ
+                </a>
+              </nav>
+
+              {/* CTA */}
+              <a
+                href="https://wa.me/5491234567890"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-full bg-primary text-white hover:bg-primary/90 transition-colors"
+              >
+                <MessageCircle className="h-4 w-4" />
+                <span className="hidden sm:inline">Quiero más clientes</span>
+                <span className="sm:hidden">WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
       {/* 1. HERO */}
       <section className="relative min-h-[70vh] w-full flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900/80 to-background">
         <div className="absolute top-20 left-1/4 w-96 h-96 bg-gradient-to-br from-purple-600/20 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" />
@@ -235,7 +278,7 @@ export default function Index() {
       </section>
 
       {/* 3. SOLUCIÓN - RESULTADOS POR RUBRO */}
-      <section id="solucion" ref={catalogRef} className="relative section-padding overflow-hidden">
+      <section id="solucion" className="pt-20" ref={catalogRef} className="relative section-padding overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/20 to-transparent pointer-events-none" />
         
         <div className="section-container relative z-10">
@@ -311,7 +354,7 @@ export default function Index() {
       </section>
 
       {/* 4. MÉTODO */}
-      <section className="relative section-padding bg-gradient-to-b from-slate-950 via-slate-900/40 to-background border-t border-white/5 overflow-hidden">
+      <section id="metodo" className="relative section-padding bg-gradient-to-b from-slate-950 via-slate-900/40 to-background border-t border-white/5 overflow-hidden">
         <div className="absolute top-1/2 -left-96 w-96 h-96 bg-gradient-to-br from-blue-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -right-96 w-96 h-96 bg-gradient-to-tl from-purple-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
         
@@ -357,7 +400,7 @@ export default function Index() {
       </section>
 
       {/* 5. CASOS DE ÉXITO */}
-      <section className="relative section-padding bg-gradient-to-b from-slate-900/60 to-slate-950/40 overflow-hidden">
+      <section id="casos" className="relative section-padding bg-gradient-to-b from-slate-900/60 to-slate-950/40 overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-emerald-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-40 left-1/3 w-96 h-96 bg-gradient-to-tr from-blue-600/5 to-transparent rounded-full blur-3xl pointer-events-none" />
         
@@ -441,7 +484,7 @@ export default function Index() {
       </section>
 
       {/* 7. FAQ */}
-      <section className="relative section-padding bg-gradient-to-b from-slate-950/60 to-background overflow-hidden">
+      <section id="faq" className="relative section-padding bg-gradient-to-b from-slate-950/60 to-background overflow-hidden">
         <div className="container relative z-10">
           <div className="mx-auto max-w-2xl text-center mb-12">
             <h2 className="text-2xl font-bold">Preguntas frecuentes sobre nuestra página web</h2>
