@@ -1,6 +1,7 @@
 import { MessageCircle, CheckCircle, ArrowRight, Target, TrendingUp, Zap, Award, Dumbbell, Flame, Play, Clock, Shield, Star, Users } from 'lucide-react';
 import BeforeAfterSection from '@/components/landings/BeforeAfterSection';
 import PricingSection from '@/components/landings/PricingSection';
+import ClosingSection from '@/components/landings/ClosingSection';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -472,33 +473,12 @@ export default function PersonalTrainers() {
         accentColor="cyan"
       />
 
-      {/* CTA */}
-      <section id="contacto" className="relative py-40 lg:py-52 bg-gradient-to-b from-slate-950 via-cyan-950/20 to-slate-950">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-cyan-500/15 to-transparent rounded-full blur-[180px]" />
-        </div>
-
-        <div className="container relative z-10 text-center max-w-3xl mx-auto space-y-8">
-          <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-cyan-500/15 border border-cyan-500/25 text-cyan-400 text-sm font-semibold">
-            <Zap className="w-5 h-5" />
-            Online en 7 días
-          </div>
-          <h2 className="text-5xl sm:text-6xl font-black tracking-tight">
-            Tu web, <span className="text-cyan-400">lista en 7 días</span>
-          </h2>
-          <p className="text-2xl text-slate-400">
-            Primera consulta sin cargo. Sin compromiso.
-          </p>
-          <a href="https://wa.me/5491234567890" className="inline-flex items-center gap-4 px-12 py-5 text-xl font-bold rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-2xl shadow-cyan-500/40 hover:scale-[1.02] hover:shadow-cyan-500/60 transition-all">
-            <MessageCircle className="h-7 w-7" />
-            Quiero más alumnos
-          </a>
-          <div className="flex items-center justify-center gap-8 pt-6 text-slate-500">
-            <div className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-emerald-500" /> Sin costo inicial</div>
-            <div className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-emerald-500" /> Soporte incluido</div>
-          </div>
-        </div>
-      </section>
+      <ClosingSection
+        title="Tu carrera merece ser visible"
+        subtitle="Dejá de depender del boca a boca. Una web profesional te trae alumnos constantemente"
+        ctaText="Empezar hoy"
+        accentColor="cyan"
+      />
 
       {/* FOOTER */}
       <footer className="py-12 border-t border-slate-800 bg-slate-950">

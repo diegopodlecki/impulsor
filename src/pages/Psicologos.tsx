@@ -1,5 +1,6 @@
 import { MessageCircle, CheckCircle, ArrowRight, Brain, Heart, User, Clock, Shield, Sparkles, Play, Star, Award, MessageSquare } from 'lucide-react';
 import PricingSection from '@/components/landings/PricingSection';
+import ClosingSection from '@/components/landings/ClosingSection';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -421,30 +422,12 @@ export default function Psicologos() {
         accentColor="indigo"
       />
 
-      {/* CTA */}
-      <section id="contacto" className="relative py-40 lg:py-52 bg-gradient-to-br from-indigo-600 via-violet-600 to-indigo-700 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-white/10 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-violet-400/20 rounded-full blur-[100px]" />
-        </div>
-
-        <div className="container relative z-10 text-center max-w-3xl mx-auto space-y-8">
-          <h2 className="text-5xl sm:text-6xl font-bold tracking-tight text-white">
-            Empezá a recibir consultas
-          </h2>
-          <p className="text-2xl text-white/80">
-            Primera consulta sin cargo. Sin compromiso.
-          </p>
-          <a href="https://wa.me/5491234567890" className="inline-flex items-center gap-4 px-12 py-5 text-xl font-bold rounded-2xl bg-white text-indigo-600 shadow-2xl hover:scale-[1.02] transition-all">
-            <MessageCircle className="h-7 w-7" />
-            Quiero más pacientes
-          </a>
-          <div className="flex items-center justify-center gap-8 pt-6 text-white/60">
-            <div className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-white/80" /> Sin costo inicial</div>
-            <div className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-white/80" /> Soporte incluido</div>
-          </div>
-        </div>
-      </section>
+      <ClosingSection
+        title="Tu consultorio merece ser encontrado"
+        subtitle="Pacientes que buscan ayuda terapéutica te van a encontrar. Es hora de estar visible"
+        ctaText="Empezar hoy"
+        accentColor="indigo"
+      />
 
       {/* FOOTER */}
       <footer className="py-12 border-t border-slate-200 bg-slate-50">
