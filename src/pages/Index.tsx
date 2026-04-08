@@ -168,10 +168,12 @@ export default function Index() {
 
       {/* 1. HERO */}
       <section className="relative min-h-[70vh] w-full flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900/80 to-background">
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-gradient-to-br from-purple-600/20 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" />
-        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-gradient-to-tl from-blue-600/15 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/3 right-10 w-72 h-72 bg-gradient-to-bl from-indigo-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px)] bg-[size:80px_80px] pointer-events-none opacity-50" />
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-gradient-to-br from-purple-600/20 to-transparent rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-gradient-to-tl from-blue-600/15 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/3 right-10 w-72 h-72 bg-gradient-to-bl from-indigo-600/10 to-transparent rounded-full blur-3xl" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px)] bg-[size:80px_80px] opacity-50" />
+        </div>
         
         <div className="container relative z-10 text-center px-4 py-16 sm:py-20">
           <div className="space-y-8 max-w-4xl mx-auto">
@@ -236,7 +238,7 @@ export default function Index() {
 
       {/* 2. EL PROBLEMA */}
       <section className="relative section-padding bg-gradient-to-b from-slate-900/80 to-slate-950/60 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none opacity-30" />
+        <div className="absolute inset-0 z-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:60px_60px] opacity-30" />
         
         <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center mb-12">
@@ -278,8 +280,8 @@ export default function Index() {
       </section>
 
       {/* 3. SOLUCIÓN - RESULTADOS POR RUBRO */}
-      <section id="solucion" className="pt-20" ref={catalogRef} className="relative section-padding overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/20 to-transparent pointer-events-none" />
+      <section id="solucion" className="relative pt-20" ref={catalogRef}>
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-slate-900/20 to-transparent" />
         
         <div className="section-container relative z-10">
           <div className="mx-auto max-w-2xl text-center mb-12">
@@ -355,8 +357,10 @@ export default function Index() {
 
       {/* 4. MÉTODO */}
       <section id="metodo" className="relative section-padding bg-gradient-to-b from-slate-950 via-slate-900/40 to-background border-t border-white/5 overflow-hidden">
-        <div className="absolute top-1/2 -left-96 w-96 h-96 bg-gradient-to-br from-blue-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 -right-96 w-96 h-96 bg-gradient-to-tl from-purple-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-1/2 -left-96 w-96 h-96 bg-gradient-to-br from-blue-600/10 to-transparent rounded-full blur-3xl" />
+          <div className="absolute bottom-0 -right-96 w-96 h-96 bg-gradient-to-tl from-purple-600/10 to-transparent rounded-full blur-3xl" />
+        </div>
         
         <div className="section-container relative z-10">
           <div className="mx-auto max-w-3xl text-center mb-12">
@@ -401,8 +405,10 @@ export default function Index() {
 
       {/* 5. CASOS DE ÉXITO */}
       <section id="casos" className="relative section-padding bg-gradient-to-b from-slate-900/60 to-slate-950/40 overflow-hidden">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-emerald-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-40 left-1/3 w-96 h-96 bg-gradient-to-tr from-blue-600/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-emerald-600/10 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -bottom-40 left-1/3 w-96 h-96 bg-gradient-to-tr from-blue-600/5 to-transparent rounded-full blur-3xl" />
+        </div>
         
         <div className="section-container relative z-10">
           <div className="mx-auto max-w-2xl text-center mb-14">
@@ -441,9 +447,11 @@ export default function Index() {
 
       {/* 6. CTA FINAL */}
       <section className="relative section-padding border-t border-white/5 bg-gradient-to-b from-slate-900/40 to-slate-950/60 overflow-hidden">
-        <div className="absolute -top-40 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-40 right-1/4 w-96 h-96 bg-gradient-to-tl from-purple-600/15 to-transparent rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:50px_50px] pointer-events-none opacity-30" />
+        <div className="absolute inset-0 z-0">
+          <div className="absolute -top-40 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -bottom-40 right-1/4 w-96 h-96 bg-gradient-to-tl from-purple-600/15 to-transparent rounded-full blur-3xl" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:50px_50px] opacity-30" />
+        </div>
         
         <div className="container relative z-10">
           <div className="mx-auto max-w-2xl text-center">
