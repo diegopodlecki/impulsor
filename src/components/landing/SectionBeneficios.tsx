@@ -24,59 +24,71 @@ export function SectionBeneficios({
   variant = 'grid',
 }: SectionBeneficiosProps) {
   return (
-    <section className="section-container section-padding section-premium bg-gradient-to-b from-slate-900/50 to-transparent rounded-3xl">
-      <div className="mb-16">
-        {subtitle && (
-          <p className="text-caption text-emerald-400 mb-2">
-            {subtitle}
-          </p>
-        )}
-        <h2 className="title-h2 mb-6">{title}</h2>
-        {description && (
-          <p className="text-body-lg max-w-3xl">{description}</p>
+    <section className="relative py-32 bg-gradient-to-b from-slate-950/50 to-transparent">
+      <div className="container relative z-10">
+        <div className="mx-auto max-w-2xl text-center mb-16">
+          {subtitle && (
+            <span className="inline-block text-xs font-bold text-blue-400 uppercase tracking-[0.2em] mb-4 px-4 py-1.5 bg-blue-500/10 rounded-full border border-blue-500/20">
+              {subtitle}
+            </span>
+          )}
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight">
+            {title}
+          </h2>
+          {description && (
+            <p className="mt-6 text-xl text-white/60">
+              {description}
+            </p>
+          )}
+        </div>
+
+        {variant === 'grid' ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {beneficios.map((beneficio, index) => (
+              <div
+                key={index}
+                className="relative p-8 rounded-2xl bg-slate-900/60 border border-white/5 hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 group"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-blue-500/0 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="flex gap-5">
+                    <div className="flex-shrink-0 text-4xl transform group-hover:scale-110 transition-transform duration-300">
+                      {beneficio.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-white mb-3">{beneficio.title}</h3>
+                      <p className="text-white/60 leading-relaxed mb-3">{beneficio.description}</p>
+                      {beneficio.highlight && (
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                          <span className="text-sm font-semibold text-emerald-400">{beneficio.highlight}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="space-y-6 max-w-3xl mx-auto">
+            {beneficios.map((beneficio, index) => (
+              <div
+                key={index}
+                className="flex gap-5 items-start p-6 rounded-2xl bg-slate-900/40 border border-white/5 hover:border-white/10 transition-all duration-300"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="flex-shrink-0 text-3xl mt-1">{beneficio.icon}</div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-white mb-2">{beneficio.title}</h3>
+                  <p className="text-white/60 leading-relaxed">{beneficio.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         )}
       </div>
-
-      {variant === 'grid' ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {beneficios.map((beneficio, index) => (
-            <div
-              key={index}
-              className="card-premium shadow-premium p-8 micro-fade-up group hover-lift"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 text-4xl icon-hover">
-                  {beneficio.icon}
-                </div>
-                <div className="flex-1">
-                  <h3 className="title-h3 mb-3">{beneficio.title}</h3>
-                  <p className="text-body mb-3">{beneficio.description}</p>
-                  {beneficio.highlight && (
-                    <p className="text-sm font-semibold text-emerald-400">{beneficio.highlight}</p>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="space-y-6 max-w-3xl">
-          {beneficios.map((beneficio, index) => (
-            <div
-              key={index}
-              className="flex gap-4 items-start micro-fade-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="flex-shrink-0 text-2xl mt-1">{beneficio.icon}</div>
-              <div className="flex-1">
-                <h3 className="text-lg font-semibold text-white mb-2">{beneficio.title}</h3>
-                <p className="text-body">{beneficio.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
     </section>
   );
 }

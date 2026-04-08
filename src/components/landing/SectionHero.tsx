@@ -29,119 +29,100 @@ export function SectionHero({
 }: SectionHeroProps) {
   if (layout === 'split') {
     return (
-      <section className="relative min-h-[90vh] overflow-hidden">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 -z-10" />
-        
-        {/* Background image con overlay si existe */}
-        {backgroundImage && (
-          <div 
-            className="absolute inset-0 opacity-30"
-            style={{
-              backgroundImage: `url(${backgroundImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          />
-        )}
+      <section className="relative min-h-[85vh] overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900/60 to-slate-950">
+        <div className="absolute inset-0 z-0">
+          {backgroundImage && (
+            <div 
+              className="absolute inset-0 opacity-20"
+              style={{
+                backgroundImage: `url(${backgroundImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/80 via-slate-900/60 to-slate-950/80" />
+          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-[120px]" />
+          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-gradient-to-tl from-purple-600/15 to-transparent rounded-full blur-[100px]" />
+        </div>
 
-        {/* Grid pattern overlay */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.08)_0%,transparent_50%)]" />
-
-        <div className="section-container relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[90vh]">
-            {/* Left Content */}
+        <div className="container relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[85vh] py-24">
             <div className="max-w-2xl">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium micro-fade-up border border-blue-500/30 bg-blue-500/10 text-blue-300 mb-6">
-                <span className="inline-block h-2 w-2 rounded-full bg-blue-400 animate-pulse" />
+              <div className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs font-bold text-primary uppercase tracking-[0.15em] bg-primary/10 border border-primary/20 mb-8">
                 {badge}
               </div>
 
-              {/* Title */}
-              <h1 className="mt-6 text-balance title-h1 micro-fade-up leading-tight" style={{ animationDelay: '100ms' }}>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[0.95] mb-8">
                 {title.split('\n').map((line, i) => (
-                  <div key={i} className="block">
-                    {line}
-                  </div>
+                  <span key={i} className="block">{line}</span>
                 ))}
               </h1>
 
-              {/* Subtitle */}
-              <p className="mt-6 text-body-lg micro-fade-up max-w-xl" style={{ animationDelay: '200ms' }}>
+              <p className="text-xl text-white/70 font-light leading-relaxed max-w-xl mb-10">
                 {subtitle}
               </p>
 
-              {/* CTA Buttons */}
-              <div className="mt-10 flex flex-col sm:flex-row gap-4 micro-fade-up" style={{ animationDelay: '300ms' }}>
+              <div className="flex flex-col sm:flex-row gap-5">
                 <button
                   onClick={onCtaClick}
-                  className="group relative inline-flex items-center justify-center px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold btn-hover-primary"
+                  className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-bold rounded-2xl bg-gradient-to-r from-primary to-purple-600 text-white shadow-2xl shadow-primary/30 hover:shadow-[0_25px_50px_-12px_rgba(168,85,247,0.5)] hover:scale-105 hover:-translate-y-1 transition-all duration-500 overflow-hidden"
                 >
-                  {ctaText}
-                  <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <span className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent" />
+                  <span className="relative z-10">{ctaText}</span>
+                  <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
                 </button>
                 {ctaSecondaryText && (
                   <button
                     onClick={onSecondaryClick}
-                    className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/30 text-white font-semibold backdrop-blur-sm bg-white/5 btn-hover-secondary"
+                    className="group inline-flex items-center justify-center gap-2 px-10 py-5 text-lg font-semibold rounded-2xl border-2 border-white/20 text-white/90 hover:border-white/40 hover:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:scale-105"
                   >
                     {ctaSecondaryText}
+                    <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
                   </button>
                 )}
               </div>
 
-              {/* Stats Grid */}
               {stats && stats.length > 0 && (
-                <div className="mt-16 grid grid-cols-3 gap-8 micro-fade-up" style={{ animationDelay: '400ms' }}>
+                <div className="mt-16 grid grid-cols-3 gap-8">
                   {stats.map((stat, i) => (
-                    <div key={i} className="card-premium shadow-premium p-4 text-center lg:text-left">
-                      <p className="text-2xl sm:text-3xl font-bold text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text">
+                    <div key={i} className="p-4 rounded-2xl bg-slate-900/60 border border-white/5 text-center lg:text-left">
+                      <p className="text-2xl sm:text-3xl font-bold text-transparent bg-gradient-to-r from-primary to-purple-400 bg-clip-text">
                         {stat.value}
                       </p>
-                      <p className="mt-1 text-xs sm:text-sm text-white/60">{stat.label}</p>
+                      <p className="mt-1 text-xs sm:text-sm text-white/50">{stat.label}</p>
                     </div>
                   ))}
                 </div>
               )}
             </div>
 
-            {/* Right Image */}
-            <div className="relative hidden lg:block micro-fade-up" style={{ animationDelay: '250ms' }}>
-              <div className="relative">
-                {/* Image container con glow */}
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/20">
-                  <img
-                    src={heroImage || backgroundImage}
-                    alt="Entrenamiento"
-                    className="w-full h-[600px] object-cover"
-                  />
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
-                </div>
-                
-                {/* Decorative elements */}
-                <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl" />
-                <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-purple-500/10 rounded-full blur-3xl" />
+            <div className="relative hidden lg:block">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/20">
+                <img
+                  src={heroImage || backgroundImage}
+                  alt="Entrenamiento"
+                  className="w-full h-[600px] object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
               </div>
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
+              <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-purple-600/10 rounded-full blur-3xl" />
             </div>
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 micro-fade-up" style={{ animationDelay: '600ms' }}>
-          <div className="animate-bounce">
-            <ArrowDown className="w-6 h-6 text-white/40" />
-          </div>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <ArrowDown className="w-6 h-6 text-white/30" />
         </div>
       </section>
     );
   }
 
-  // Center layout (existing)
   return (
     <section
-      className="relative min-h-[80vh] flex items-center justify-center py-20 overflow-hidden"
+      className="relative min-h-[85vh] flex items-center justify-center py-24 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900/60 to-slate-950"
       style={
         backgroundImage
           ? {
@@ -152,60 +133,56 @@ export function SectionHero({
           : {}
       }
     >
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/20 to-slate-950" />
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-gradient-to-tl from-purple-600/15 to-transparent rounded-full blur-[100px]" />
       </div>
 
-      <div className="section-container">
-        <div className="max-w-3xl">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium micro-fade-up border border-blue-500/30 bg-blue-500/10 text-blue-300 mb-6">
-            <span className="inline-block h-2 w-2 rounded-full bg-blue-400 animate-pulse" />
+      <div className="container relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs font-bold text-primary uppercase tracking-[0.15em] bg-primary/10 border border-primary/20 mb-8">
             {badge}
           </div>
 
-          {/* Title */}
-          <h1 className="mt-6 text-balance title-h1 micro-fade-up" style={{ animationDelay: '100ms' }}>
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-[0.95] mb-8">
             {title.split('\n').map((line, i) => (
-              <div key={i} className="block">
-                {line}
-              </div>
+              <span key={i} className="block">{line}</span>
             ))}
           </h1>
 
-          {/* Subtitle */}
-          <p className="mt-8 text-body-lg micro-fade-up" style={{ animationDelay: '200ms' }}>
+          <p className="text-xl text-white/70 font-light leading-relaxed mb-12">
             {subtitle}
           </p>
 
-          {/* CTA Buttons */}
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 micro-fade-up" style={{ animationDelay: '300ms' }}>
+          <div className="flex flex-col sm:flex-row gap-5 justify-center">
             <button
               onClick={onCtaClick}
-              className="group relative inline-flex items-center justify-center px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold btn-hover-primary"
+              className="group relative inline-flex items-center justify-center gap-3 px-12 py-5 text-lg font-bold rounded-2xl bg-gradient-to-r from-primary to-purple-600 text-white shadow-2xl shadow-primary/30 hover:shadow-[0_25px_50px_-12px_rgba(168,85,247,0.5)] hover:scale-105 hover:-translate-y-1 transition-all duration-500 overflow-hidden"
             >
-              {ctaText}
-              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+              <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <span className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent" />
+              <span className="relative z-10">{ctaText}</span>
+              <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
             </button>
             {ctaSecondaryText && (
               <button
                 onClick={onSecondaryClick}
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/20 text-white font-semibold backdrop-blur-sm btn-hover-secondary"
+                className="group inline-flex items-center justify-center gap-2 px-10 py-5 text-lg font-semibold rounded-2xl border-2 border-white/20 text-white/90 hover:border-white/40 hover:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:scale-105"
               >
                 {ctaSecondaryText}
+                <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
               </button>
             )}
           </div>
 
-          {/* Stats Grid */}
           {stats && stats.length > 0 && (
-            <div className="mt-20 grid grid-cols-3 gap-6 micro-fade-up" style={{ animationDelay: '400ms' }}>
+            <div className="mt-20 grid grid-cols-3 gap-6 max-w-2xl mx-auto">
               {stats.map((stat, i) => (
-                <div key={i} className="card-premium shadow-premium">
-                  <p className="text-2xl sm:text-4xl font-bold text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text">
+                <div key={i} className="p-6 rounded-2xl bg-slate-900/60 border border-white/5">
+                  <p className="text-3xl sm:text-4xl font-bold text-transparent bg-gradient-to-r from-primary to-purple-400 bg-clip-text">
                     {stat.value}
                   </p>
-                  <p className="mt-2 text-xs sm:text-sm text-white/60">{stat.label}</p>
+                  <p className="mt-2 text-sm text-white/50">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -213,11 +190,8 @@ export function SectionHero({
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 micro-fade-up" style={{ animationDelay: '600ms' }}>
-        <div className="animate-bounce">
-          <ArrowDown className="w-6 h-6 text-white/40" />
-        </div>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <ArrowDown className="w-6 h-6 text-white/30" />
       </div>
     </section>
   );

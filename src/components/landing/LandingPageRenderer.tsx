@@ -157,7 +157,47 @@ export function LandingPageRenderer({
   };
 
   return (
-    <main className="overflow-hidden">
+    <main className="min-h-screen bg-background text-foreground overflow-hidden">
+      {/* HEADER STICKY - Premium Glassmorphism */}
+      <header className="fixed top-0 left-0 right-0 z-50">
+        <div className="backdrop-blur-2xl bg-slate-950/70 border-b border-white/5 shadow-lg shadow-black/20">
+          <div className="container">
+            <div className="flex items-center justify-between h-18 py-4">
+              <a href="/" className="flex items-center gap-3 group">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary via-purple-500 to-blue-600 flex items-center justify-center shadow-lg shadow-primary/30 group-hover:shadow-primary/50 transition-shadow duration-300">
+                  <span className="text-white font-bold text-lg">W</span>
+                </div>
+                <span className="text-white font-bold text-xl tracking-tight hidden sm:block">Impulsor</span>
+              </a>
+
+              <nav className="hidden md:flex items-center gap-10">
+                <a href="#servicios" className="text-sm font-medium text-white/60 hover:text-white transition-colors duration-200 relative group">
+                  Servicios
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                </a>
+                <a href="#metodo" className="text-sm font-medium text-white/60 hover:text-white transition-colors duration-200 relative group">
+                  Método
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                </a>
+                <a href="#casos" className="text-sm font-medium text-white/60 hover:text-white transition-colors duration-200 relative group">
+                  Casos
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                </a>
+              </nav>
+
+              <a
+                href="https://wa.me/5491234567890"
+                className="group relative inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-full bg-gradient-to-r from-primary to-purple-600 text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-105 transition-all duration-300 overflow-hidden"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <span className="relative hidden sm:inline">Quiero más clientes</span>
+                <span className="relative sm:hidden">WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
       {/* 1. Hero Section - Impacto */}
       <SectionHero
         badge={config.hero.badge}
@@ -185,52 +225,58 @@ export function LandingPageRenderer({
 
       {/* 3. Servicios */}
       {config.servicios.items.length > 0 && (
-        <SectionServicios
-          title={config.servicios.title}
-          subtitle={config.servicios.subtitle}
-          description={config.servicios.description}
-          servicios={config.servicios.items}
-        />
+        <section id="servicios">
+          <SectionServicios
+            title={config.servicios.title}
+            subtitle={config.servicios.subtitle}
+            description={config.servicios.description}
+            servicios={config.servicios.items}
+          />
+        </section>
       )}
 
-      {/* 4. Por qué no es una web común */}
+      {/* 4. Por qué no es una web común - Premium Design */}
       {config.diferencial && config.diferencial.items.length > 0 && (
-        <section className="section-padding bg-gradient-to-b from-slate-900 to-slate-950">
-          <div className="container">
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-sm font-semibold mb-4">
-                <XCircle className="h-4 w-4" />
+        <section id="metodo" className="relative py-32 bg-gradient-to-b from-slate-950 via-slate-900/50 to-slate-950/30 border-t border-white/[0.02] overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute top-1/2 -left-64 w-[500px] h-[500px] bg-gradient-to-br from-blue-600/15 to-transparent rounded-full blur-[120px]" />
+            <div className="absolute bottom-0 -right-64 w-[400px] h-[400px] bg-gradient-to-tl from-purple-600/15 to-transparent rounded-full blur-[100px]" />
+          </div>
+
+          <div className="container relative z-10">
+            <div className="mx-auto max-w-3xl text-center mb-20">
+              <span className="inline-block text-xs font-bold text-red-400 uppercase tracking-[0.2em] mb-4 px-4 py-1.5 bg-red-500/10 rounded-full border border-red-500/20">
                 Esto NO es una web común
-              </div>
-              <h2 className="title-h2">
+              </span>
+              <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight">
                 {config.diferencial.title || 'Por qué esto no es una web común'}
               </h2>
               {config.diferencial.description && (
-                <p className="text-body-lg text-white/70 mt-4">
+                <p className="mt-6 text-xl text-white/60">
                   {config.diferencial.description}
                 </p>
               )}
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
               {config.diferencial.items.map((item, idx) => (
-                <div 
-                  key={idx} 
-                  className="card-base p-6 hover:border-white/20 transition-colors"
-                >
-                  <div className="flex items-start gap-3 mb-4">
-                    <div className="p-2 rounded-lg bg-emerald-500/20">
-                      <CheckCircle className="h-5 w-5 text-emerald-400" />
+                <div key={idx} className="relative p-8 rounded-2xl bg-slate-900/80 border border-white/5 hover:border-white/15 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/5 group">
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-emerald-500/0 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="p-3 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 border border-emerald-500/20">
+                        <CheckCircle className="h-6 w-6 text-emerald-400" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                        <p className="text-base text-white/60 leading-relaxed">{item.description}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-white">{item.title}</h3>
-                      <p className="mt-1 text-sm text-white/70">{item.description}</p>
-                    </div>
-                  </div>
-                  <div className="pt-4 border-t border-white/10">
-                    <div className="flex items-start gap-2">
-                      <XCircle className="h-4 w-4 text-red-400/60 flex-shrink-0 mt-0.5" />
-                      <p className="text-xs text-white/50 italic">{item.wrong}</p>
+                    <div className="pt-6 border-t border-white/5">
+                      <div className="flex items-start gap-3">
+                        <XCircle className="h-5 w-5 text-red-400/60 flex-shrink-0 mt-0.5" />
+                        <p className="text-sm text-white/40 italic leading-relaxed">{item.wrong}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -238,18 +284,23 @@ export function LandingPageRenderer({
             </div>
 
             {config.diferencial.resultadoPromesa && (
-              <div className="max-w-3xl mx-auto">
-                <div className="card-base p-8 border-emerald-500/30 bg-emerald-500/5 text-center">
-                  <div className="flex justify-center gap-3 mb-4">
-                    <Target className="h-8 w-8 text-emerald-400" />
+              <div className="mx-auto max-w-3xl text-center">
+                <div className="relative p-10 rounded-3xl bg-gradient-to-b from-emerald-500/10 to-emerald-500/5 border border-emerald-500/30 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-transparent to-emerald-500/5" />
+                  <div className="relative z-10">
+                    <div className="flex justify-center mb-6">
+                      <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 border border-emerald-500/20">
+                        <Target className="h-10 w-10 text-emerald-400" />
+                      </div>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">{config.diferencial.resultadoPromesa}</h3>
+                    {config.diferencial.resultadoValor && (
+                      <p className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-300 mb-6 tracking-tight">
+                        {config.diferencial.resultadoValor}
+                      </p>
+                    )}
+                    <p className="text-lg text-white/60">Medido, no promesses. Así lo conseguimos.</p>
                   </div>
-                  <h3 className="title-h3 text-white mb-2">{config.diferencial.resultadoPromesa}</h3>
-                  {config.diferencial.resultadoValor && (
-                    <p className="text-2xl font-bold text-emerald-400 mb-2">
-                      {config.diferencial.resultadoValor}
-                    </p>
-                  )}
-                  <p className="text-white/70">Medido, no promesses. Así lo conseguimos.</p>
                 </div>
               </div>
             )}
@@ -259,14 +310,16 @@ export function LandingPageRenderer({
 
       {/* 5. Testimonios */}
       {config.testimonios.items.length > 0 && (
-        <SectionTestimonios
-          title={config.testimonios.title}
-          subtitle={config.testimonios.subtitle}
-          description={config.testimonios.description}
-          testimonios={config.testimonios.items}
-          featuredIndex={config.testimonios.featuredIndex || 0}
-          variant="featured"
-        />
+        <section id="casos">
+          <SectionTestimonios
+            title={config.testimonios.title}
+            subtitle={config.testimonios.subtitle}
+            description={config.testimonios.description}
+            testimonios={config.testimonios.items}
+            featuredIndex={config.testimonios.featuredIndex || 0}
+            variant="featured"
+          />
+        </section>
       )}
 
       {/* 6. Sobre el Entrenador */}
