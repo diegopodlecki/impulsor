@@ -70,104 +70,110 @@ export default function Gimnasios() {
         </div>
       </header>
 
-      {/* HERO */}
-      <section className="relative min-h-screen flex items-center pt-28 pb-20">
+      {/* HERO - FULLSCREEN IMPACTANTE */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-red-950/10 to-slate-950" />
-          <div className="absolute top-0 right-0 w-[900px] h-[900px] bg-gradient-to-br from-orange-500/15 via-red-500/10 to-transparent rounded-full blur-[180px]" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-red-600/10 to-transparent rounded-full blur-[120px]" />
+          <img 
+            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&h=1080&fit=crop&q=85" 
+            alt="Gimnasio" 
+            className="w-full h-full object-cover"
+          />
+          {/* Multiple overlays for contrast */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-950/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50" />
+          {/* Accent glow */}
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-orange-500/20 to-red-600/10 rounded-full blur-[200px]" />
+          <div className="absolute bottom-1/4 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-red-600/15 to-transparent rounded-full blur-[150px]" />
         </div>
 
         <div className="container relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-            {/* Content */}
-            <div className="space-y-8">
-              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-orange-500/15 border border-orange-500/25 text-orange-400 text-sm font-semibold">
-                <Dumbbell className="w-5 h-5" />
-                Web para Gimnasios
-              </div>
-
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.02]">
-                <span className="text-white">Tu gimnasio merece</span>
-                <br />
-                <span className="bg-gradient-to-r from-orange-400 via-red-400 to-orange-500 bg-clip-text text-transparent">
-                  más socios
-                </span>
-              </h1>
-
-              <p className="text-xl text-slate-400 max-w-xl leading-relaxed">
-                Tu web trabaja 24/7 inscribiendo gente. Mostrá tus clases, precios e instalaciones. 
-                <span className="text-orange-400 font-medium"> Dejá que la web haga el trabajo pesado.</span>
-              </p>
-
-              {/* Stats */}
-              <div className="flex flex-wrap gap-8 py-4">
-                {STATS.map((stat, idx) => (
-                  <div key={idx} className="flex items-center gap-3">
-                    <span className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
-                      {stat.value}
-                    </span>
-                    <span className="text-base text-slate-500">{stat.label}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <a href="#contacto" className="inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-bold rounded-2xl bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-2xl shadow-orange-500/25 hover:scale-[1.02] hover:shadow-orange-500/40 transition-all">
-                  Quiero más socios <ArrowRight className="h-5 w-5" />
-                </a>
-                <a href="#ver-ejemplo" className="inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-semibold rounded-2xl border border-slate-700 text-slate-300 hover:border-orange-500/50 hover:bg-orange-500/10 transition-all">
-                  <Play className="w-5 h-5" /> Ver ejemplo
-                </a>
-              </div>
+          <div className="max-w-3xl">
+            {/* Badge superior */}
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-orange-500/20 border border-orange-500/40 text-orange-400 text-sm font-bold mb-8 backdrop-blur-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+              </span>
+              Web para Gimnasios
             </div>
 
-            {/* Image */}
-            <div className="relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-red-500/20 border border-orange-500/10">
-                <img 
-                  src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900&h=1000&fit=crop&q=85" 
-                  alt="Gimnasio con máquinas" 
-                  className="w-full h-[550px] lg:h-[620px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                <div className="absolute bottom-8 left-8 right-8">
-                  <div className="flex gap-4">
-                    <div className="px-5 py-3 rounded-xl bg-orange-500/95 backdrop-blur-sm">
-                      <p className="text-base font-bold">+20 socios/mes</p>
-                    </div>
-                    <div className="px-5 py-3 rounded-xl bg-slate-900/95 backdrop-blur-sm border border-slate-700">
-                      <p className="text-base font-bold text-emerald-400">24/7 online</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Título impactante */}
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.95] mb-6">
+              <span className="text-white">Tu gimnasio,</span>
+              <br />
+              <span className="bg-gradient-to-r from-orange-400 via-red-400 to-orange-500 bg-clip-text text-transparent">
+                más fuerte que nunca
+              </span>
+            </h1>
 
-              {/* Floating cards */}
-              <div className="absolute -top-6 -left-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-5 shadow-2xl border border-orange-500/20">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500/30 to-red-500/20 flex items-center justify-center">
-                    <Dumbbell className="h-7 w-7 text-orange-400" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-white text-lg">Área completa</p>
-                    <p className="text-sm text-slate-400">Pesas y cardio</p>
-                  </div>
-                </div>
-              </div>
+            {/* Subtítulo con beneficio */}
+            <p className="text-xl sm:text-2xl text-slate-300 max-w-xl mb-10 leading-relaxed">
+              Tu web trabaja <span className="text-orange-400 font-bold">24/7</span> inscribiendo socios. 
+              <br className="hidden sm:block" />
+              Mostrá tu espacio, clases y precios. 
+              <span className="text-white font-semibold"> La web hace el trabajo pesado.</span>
+            </p>
 
-              <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-5 shadow-2xl border border-red-500/20">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500/30 to-orange-500/20 flex items-center justify-center">
-                    <Users className="h-7 w-7 text-red-400" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-white text-lg">+500 socios</p>
-                    <p className="text-sm text-slate-400">Tu potencial</p>
-                  </div>
+            {/* Stats badges */}
+            <div className="flex flex-wrap gap-4 mb-10">
+              {STATS.map((stat, idx) => (
+                <div key={idx} className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-slate-900/60 backdrop-blur-sm border border-white/10">
+                  <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
+                    {stat.value}
+                  </span>
+                  <span className="text-sm text-slate-400">{stat.label}</span>
                 </div>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              <a href="#contacto" className="group inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-bold rounded-2xl bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-2xl shadow-orange-500/30 hover:scale-[1.02] hover:shadow-orange-500/50 transition-all">
+                Empezar ahora
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a href="#planes" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-bold rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:border-white/30 transition-all">
+                Ver planes
+              </a>
+            </div>
+
+            {/* Mini prueba social */}
+            <div className="flex items-center gap-4">
+              <div className="flex -space-x-3">
+                {[
+                  "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop",
+                  "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop",
+                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+                ].map((src, idx) => (
+                  <img 
+                    key={idx}
+                    src={src}
+                    alt="Cliente"
+                    className="w-12 h-12 rounded-full border-2 border-slate-950 object-cover"
+                  />
+                ))}
               </div>
+              <div>
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 text-orange-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-sm text-slate-400">+100 gimnasios nos eligieron</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-xs text-slate-500 uppercase tracking-wider">Scroll</span>
+            <div className="w-6 h-10 rounded-full border-2 border-white/20 flex justify-center pt-2">
+              <div className="w-1 h-3 bg-white/50 rounded-full animate-pulse" />
             </div>
           </div>
         </div>
