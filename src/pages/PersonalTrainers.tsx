@@ -9,10 +9,30 @@ export const metadata: Metadata = {
 };
 
 const SERVICES = [
-  { icon: Target, title: "Tu perfil de entrenador", desc: "Credenciales, especialización y método. La gente te elige antes de contactarte." },
-  { icon: TrendingUp, title: "Transformaciones reales", desc: "Galería de antes/después con permiso. Prueba social que convince." },
-  { icon: Zap, title: "Planes claros", desc: "No más WhatsApps preguntando precios. Todo visible y claro." },
-  { icon: Award, title: "WhatsApp directo", desc: "Botón de contacto visible. El alumno te escribe directo." },
+  { 
+    icon: Target, 
+    title: "Tu perfil, tu autoridad", 
+    desc: "Credenciales, especialización y método. Los alumnos te eligen antes de contactarte.",
+    highlight: "Profesionalismo visible"
+  },
+  { 
+    icon: TrendingUp, 
+    title: "Transformaciones que convencen", 
+    desc: "Galería de antes/después con permiso. Prueba social que genera confianza.",
+    highlight: "Resultados reales"
+  },
+  { 
+    icon: Dumbbell, 
+    title: "Plan de entrenamiento", 
+    desc: "Mostrá tu método y programas. El alumno llega sabiendo qué esperar.",
+    highlight: "Sin explicaciones"
+  },
+  { 
+    icon: MessageCircle, 
+    title: "Contacto directo", 
+    desc: "Botón de WhatsApp visible. El alumno te escribe directo, sin rodeos.",
+    highlight: "Conversiones inmediatas"
+  },
 ];
 
 const STATS = [
@@ -220,20 +240,25 @@ export default function PersonalTrainers() {
         <div className="container relative">
           <div className="text-center mb-20">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              Todo lo que necesitás en <span className="text-cyan-400">una web</span>
+              Tu web, <span className="text-cyan-400">tu máquina de alumnos</span>
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Tu entrenamiento, digitalizado y listo para captar alumnos
+              Cada feature diseñada para que te contacten, no que te pregunten
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {SERVICES.map((service, idx) => (
-              <div key={idx} className="group p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 hover:border-cyan-500/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-500">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-500/20 transition-all">
+              <div key={idx} className="group relative p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 hover:border-cyan-500/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-500">
+                <div className="absolute top-4 right-4">
+                  <span className="px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold">
+                    {service.highlight}
+                  </span>
+                </div>
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-500/20 transition-all">
                   <service.icon className="h-8 w-8 text-cyan-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
+                <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
                 <p className="text-slate-400 leading-relaxed">{service.desc}</p>
               </div>
             ))}

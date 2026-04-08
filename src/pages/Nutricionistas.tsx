@@ -8,10 +8,30 @@ export const metadata: Metadata = {
 };
 
 const SERVICES = [
-  { icon: Apple, title: "Planes personalizados", desc: "Consultas, controles y seguimiento nutricional adaptado a cada paciente." },
-  { icon: Salad, title: "Metodología clara", desc: "Tu enfoque: paleo, keto, intuitivo. Los pacientes eligen según su objetivo." },
-  { icon: TrendingUp, title: "Resultados", desc: "Testimonios de pacientes reales que lograron sus metas alimentarias." },
-  { icon: Users, title: "Turnos online", desc: "Agenda directa, sin fricción. Pacientes que reservan ellos mismos." },
+  { 
+    icon: Apple, 
+    title: "Plan a tu medida", 
+    desc: "Consultas, controles y seguimiento. Cada paciente con su plan alimentario personalizado.",
+    highlight: " -5kg en 8 semanas"
+  },
+  { 
+    icon: Salad, 
+    title: "Tu método, claro", 
+    desc: "Paleo, keto, intuitivo. Mostrá tu enfoque y llegan pacientes que lo buscan.",
+    highlight: "Pacientes calificados"
+  },
+  { 
+    icon: TrendingUp, 
+    title: "Logros que inspiran", 
+    desc: "Testimonios de pacientes que lograron sus metas. Prueba social que convince.",
+    highlight: "Resultados comprobados"
+  },
+  { 
+    icon: Users, 
+    title: "Agenda siempre llena", 
+    desc: "Reservas online 24/7. Pacientes que se autogestionan, vos solo atendés.",
+    highlight: "0 llamadas por turnos"
+  },
 ];
 
 const STATS = [
@@ -176,20 +196,25 @@ export default function Nutricionistas() {
         <div className="container">
           <div className="text-center mb-20">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              Tu web para <span className="text-emerald-600">nutricionistas</span>
+              Tu web genera <span className="text-emerald-600">resultados</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Todo lo que necesitás para que te encuentren y elijan
+              Cada servicio mostrado con el beneficio que el paciente busca
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {SERVICES.map((service, idx) => (
-              <div key={idx} className="group p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-emerald-50/50 to-teal-50/30 border border-emerald-100 hover:border-emerald-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-500">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-emerald-500/20 transition-all">
+              <div key={idx} className="group relative p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-emerald-50/50 to-teal-50/30 border border-emerald-100 hover:border-emerald-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-500">
+                <div className="absolute top-4 right-4">
+                  <span className="px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-600 text-xs font-bold">
+                    {service.highlight}
+                  </span>
+                </div>
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-emerald-500/20 transition-all">
                   <service.icon className="h-8 w-8 text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-4">{service.title}</h3>
+                <h3 className="text-xl font-bold text-slate-800 mb-3">{service.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{service.desc}</p>
               </div>
             ))}

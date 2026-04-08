@@ -8,10 +8,30 @@ export const metadata: Metadata = {
 };
 
 const APPROACHES = [
-  { icon: Brain, title: "Terapia Cognitivo-Conductual", desc: "Enfoque estructurado con resultados medibles y técnicas basadas en evidencia." },
-  { icon: Heart, title: "Terapia Psicodinámica", desc: "Exploración profunda de patrones inconscientes y raíces de comportamientos." },
-  { icon: Sparkles, title: "Mindfulness y ACT", desc: "Técnicas de aceptación y presencia plena para reducir el sufrimiento emocional." },
-  { icon: Shield, title: "Terapia Sistémica", desc: "Trabajo con familias, parejas y sistemas relacionales complejos." },
+  { 
+    icon: Brain, 
+    title: "Resultados concretos", 
+    desc: "Terapia Cognitivo-Conductual. Técnicas estructuradas con resultados que se miden.",
+    highlight: "Cambio en 12 semanas"
+  },
+  { 
+    icon: Heart, 
+    title: "Entenderte a vos mismo", 
+    desc: "Terapia Psicodinámica. Explorá patrones inconscientes que te limitan.",
+    highlight: "Autoconocimiento profundo"
+  },
+  { 
+    icon: Sparkles, 
+    title: "Paz mental", 
+    desc: "Mindfulness y ACT. Técnicas de aceptación para reducir el sufrimiento emocional.",
+    highlight: "Reduce ansiedad 60%"
+  },
+  { 
+    icon: Shield, 
+    title: "Relaciones sanas", 
+    desc: "Terapia Sistémica. Mejorá la comunicación en parejas y familias.",
+    highlight: "Armonía familiar"
+  },
 ];
 
 const STATS = [
@@ -188,20 +208,25 @@ export default function Psicologos() {
         <div className="container">
           <div className="text-center mb-20">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              Tu web muestra tu <span className="text-indigo-600">enfoque terapéutico</span>
+              Lo que tus pacientes <span className="text-indigo-600">buscan</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Los pacientes buscan según su necesidad. Mostrales cómo los vas a ayudar.
+              Mostrá cómo los vas a ayudar con cada enfoque terapéutico
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {APPROACHES.map((approach, idx) => (
-              <div key={idx} className="group p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-indigo-50/50 to-violet-50/30 border border-indigo-100 hover:border-indigo-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-500">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-violet-500/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-indigo-500/20 transition-all">
+              <div key={idx} className="group relative p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-indigo-50/50 to-violet-50/30 border border-indigo-100 hover:border-indigo-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-500">
+                <div className="absolute top-4 right-4">
+                  <span className="px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-600 text-xs font-bold">
+                    {approach.highlight}
+                  </span>
+                </div>
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-violet-500/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-indigo-500/20 transition-all">
                   <approach.icon className="h-8 w-8 text-indigo-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-4">{approach.title}</h3>
+                <h3 className="text-xl font-bold text-slate-800 mb-3">{approach.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{approach.desc}</p>
               </div>
             ))}

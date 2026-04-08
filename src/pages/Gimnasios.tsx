@@ -9,10 +9,30 @@ export const metadata: Metadata = {
 };
 
 const FEATURES = [
-  { icon: Dumbbell, title: "Máquinas y pesas", desc: "Mostrá tus instalaciones con fotos profesionales que generan confianza." },
-  { icon: Target, title: "Clases dirigidas", desc: "Yoga, spinning, funcional. Cada clase con su horario y descripción." },
-  { icon: Flame, title: "Zona de cardio", desc: "Cinta, bicis, elípticas. Tu espacio completo visible para todos." },
-  { icon: TrendingUp, title: "Planes claros", desc: "Precios y beneficios sin misterio. El socio se anota sin preguntas." },
+  { 
+    icon: Users, 
+    title: "Inscripciones 24/7", 
+    desc: "Tu web trabaja mientras vos descansás. Nuevos socios se anotan a cualquier hora.",
+    highlight: "+40% inscripciones"
+  },
+  { 
+    icon: Dumbbell, 
+    title: "Tu espacio en fotos", 
+    desc: "Mostrá cada rincón de tu gimnasio con imágenes profesionales que generan confianza.",
+    highlight: "Primera impresión perfecta"
+  },
+  { 
+    icon: TrendingUp, 
+    title: "Precios sin misterio", 
+    desc: "Planes y beneficios claros. El socio llega sabiendo qué incluye y se anota directo.",
+    highlight: "0 preguntas por WhatsApp"
+  },
+  { 
+    icon: Flame, 
+    title: "Clases y horarios", 
+    desc: "Yoga, spinning, funcional. Cada clase visible con su horario y descripción.",
+    highlight: "Agenda siempre llena"
+  },
 ];
 
 const STATS = [
@@ -221,20 +241,25 @@ export default function Gimnasios() {
         <div className="container relative">
           <div className="text-center mb-20">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              Tu web muestra <span className="text-orange-400">todo tu gimnasio</span>
+              Resultados que <span className="text-orange-400">tu web genera</span>
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Cada rincón de tu espacio, visible para futuros socios
+              Cada feature está diseñada para atraer y convertir socios
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {FEATURES.map((feature, idx) => (
-              <div key={idx} className="group p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 hover:border-orange-500/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500/20 to-red-500/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all">
+              <div key={idx} className="group relative p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 hover:border-orange-500/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500">
+                <div className="absolute top-4 right-4">
+                  <span className="px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold">
+                    {feature.highlight}
+                  </span>
+                </div>
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500/20 to-red-500/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all">
                   <feature.icon className="h-8 w-8 text-orange-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">{feature.title}</h3>
+                <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
                 <p className="text-slate-400 leading-relaxed">{feature.desc}</p>
               </div>
             ))}

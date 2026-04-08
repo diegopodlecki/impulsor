@@ -9,10 +9,30 @@ export const metadata: Metadata = {
 };
 
 const TREATMENTS = [
-  { icon: Droplet, title: "Lipoescultura", desc: "Reducción no invasiva de grasa localizada con resultados visibles." },
-  { icon: Flower2, title: "Tratamientos faciales", desc: "Limpieza, hidratación y rejuvenecimiento para tu piel." },
-  { icon: Sparkles, title: "Radiofrecuencia", desc: "Tensado y firmeza de la piel con tecnología avanzada." },
-  { icon: Gem, title: "Tratamientos corporales", desc: "Celulitis, estrías y tonificación para sentirte bien." },
+  { 
+    icon: Droplet, 
+    title: "Cuerpo esculpido", 
+    desc: "Lipoescultura y reducción de grasa localizada. Resultados que tus clientas quieren mostrar.",
+    highlight: " -8cm en 4 semanas"
+  },
+  { 
+    icon: Flower2, 
+    title: "Piel radiante", 
+    desc: "Limpieza, hidratación y rejuvenecimiento. Tratamientos que cambian cómo te sentís.",
+    highlight: "Efecto glow inmediato"
+  },
+  { 
+    icon: Sparkles, 
+    title: "Firmeza visible", 
+    desc: "Radiofrecuencia y tensado. Tu tecnología, visible para quien busca resultados.",
+    highlight: "Piel 5 años más joven"
+  },
+  { 
+    icon: Gem, 
+    title: "Confianza plena", 
+    desc: "Celulitis, estrías y tonificación. Tratamientos que tus clientas recomiendan.",
+    highlight: "99% satisfacción"
+  },
 ];
 
 const STATS = [
@@ -204,20 +224,25 @@ export default function EsteticaCorporal() {
         <div className="container">
           <div className="text-center mb-20">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              Tu web para <span className="text-rose-500">estética</span>
+              Tratamientos que <span className="text-rose-500">venden solos</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Todo lo que necesitás para que te encuentren y reserven
+              Cada tratamiento mostrado con el resultado que tus clientas buscan
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {TREATMENTS.map((treatment, idx) => (
-              <div key={idx} className="group p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-rose-50/50 to-pink-50/30 border border-rose-100 hover:border-rose-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-rose-500/10 transition-all duration-500">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-500/20 to-pink-500/20 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-rose-500/20 transition-all">
+              <div key={idx} className="group relative p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-rose-50/50 to-pink-50/30 border border-rose-100 hover:border-rose-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-rose-500/10 transition-all duration-500">
+                <div className="absolute top-4 right-4">
+                  <span className="px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-600 text-xs font-bold">
+                    {treatment.highlight}
+                  </span>
+                </div>
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-500/20 to-pink-500/20 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-rose-500/20 transition-all">
                   <treatment.icon className="h-8 w-8 text-rose-500" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-4">{treatment.title}</h3>
+                <h3 className="text-xl font-bold text-slate-800 mb-3">{treatment.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{treatment.desc}</p>
               </div>
             ))}
