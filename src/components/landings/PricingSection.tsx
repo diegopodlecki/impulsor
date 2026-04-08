@@ -68,13 +68,13 @@ export default function PricingSection({
   const colors = colorClasses[accentColor as keyof typeof colorClasses] || colorClasses.orange;
 
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
+    <section className="relative py-24 lg:py-40 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900" />
-      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r ${colors.text}/5 to-transparent rounded-full blur-[150px]`} />
+      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-r ${colors.text}/8 to-transparent rounded-full blur-[180px]`} />
 
       <div className="container relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4">
             {title}
           </h2>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto">
@@ -82,54 +82,56 @@ export default function PricingSection({
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 lg:gap-10 max-w-5xl mx-auto">
           {plans.map((plan, idx) => (
             <div
               key={idx}
-              className={`group relative rounded-3xl transition-all duration-500 hover:-translate-y-2 ${
+              className={`group relative rounded-3xl transition-all duration-500 hover:-translate-y-3 ${
                 plan.popular
-                  ? `bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-2 ${colors.border} scale-105 shadow-2xl shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/20 hover:shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/30`
-                  : `bg-slate-800/50 border border-slate-700/30 hover:border-slate-600/50 hover:bg-slate-800/70 hover:shadow-xl hover:shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/10`
+                  ? `bg-gradient-to-br from-slate-800/90 via-slate-900/80 to-slate-950/90 border-2 ${colors.border} scale-105 shadow-soft-xl shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/25 hover:shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/40`
+                  : `glass-card hover:glass-card-hover bg-slate-800/40`
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full ${colors.badge} text-white text-sm font-bold shadow-lg badge-shine`}>
-                    <Sparkles className="w-4 h-4 animate-pulse" />
+                <div className="absolute -top-5 left-1/2 -translate-x-1/2">
+                  <div className={`inline-flex items-center gap-2 px-5 py-2 rounded-full ${colors.badge} text-white text-sm font-bold shadow-soft-lg badge-shine`}>
+                    <Sparkles className="w-4 h-4" />
                     Recomendado
                   </div>
                 </div>
               )}
 
-              <div className="p-8">
-                <h3 className={`text-xl font-bold transition-colors duration-300 ${plan.popular ? 'text-white group-hover:text-orange-200' : 'text-slate-300 group-hover:text-white'} mb-2`}>
+              <div className="p-8 lg:p-10">
+                <h3 className={`text-2xl font-bold transition-colors duration-300 ${plan.popular ? 'text-white' : 'text-slate-200'} mb-2`}>
                   {plan.name}
                 </h3>
-                <p className="text-slate-400 text-sm mb-6 transition-colors duration-300 group-hover:text-slate-300">
+                <p className="text-slate-400 text-base mb-8">
                   {plan.description}
                 </p>
 
-                <div className="mb-8">
-                  <span className={`text-4xl font-black transition-all duration-300 ${plan.popular ? 'text-white group-hover:text-orange-100' : 'text-slate-200 group-hover:text-white'}`}>
+                <div className="mb-10">
+                  <span className={`text-5xl font-black ${plan.popular ? 'text-white' : 'text-slate-100'}`}>
                     {plan.price}
                   </span>
                 </div>
 
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-5 mb-10">
                   {plan.features.map((feature, fIdx) => (
-                    <li key={fIdx} className="flex items-start gap-3">
-                      <CheckCircle className={`w-5 h-5 ${colors.text} flex-shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110`} />
-                      <span className="text-slate-300 text-sm leading-relaxed transition-colors duration-300 group-hover:text-slate-200">{feature}</span>
+                    <li key={fIdx} className="flex items-start gap-4">
+                      <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${colors.gradient} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                        <CheckCircle className="w-4 h-4 text-white" />
+                      </div>
+                      <span className="text-slate-300 text-base leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 <a
                   href="#contacto"
-                  className={`block w-full py-4 px-6 text-center font-bold rounded-xl transition-all duration-300 btn-premium ${
+                  className={`block w-full py-5 px-6 text-center font-bold rounded-2xl transition-all duration-300 btn-premium ${
                     plan.popular
-                      ? `bg-gradient-to-r ${colors.gradient} text-white shadow-lg shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/30 hover:shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/50`
-                      : `bg-slate-700/50 text-slate-200 hover:bg-slate-700 hover:text-white hover:shadow-lg hover:shadow-slate-900/20`
+                      ? `bg-gradient-to-r ${colors.gradient} text-white shadow-soft-lg hover:shadow-soft-xl`
+                      : `glass-card text-slate-200 hover:text-white hover:bg-white/10`
                   }`}
                 >
                   {plan.cta}
@@ -139,7 +141,7 @@ export default function PricingSection({
           ))}
         </div>
 
-        <p className="text-center text-slate-500 text-sm mt-12">
+        <p className="text-center text-slate-500 text-base mt-16">
           ¿No sabés qué plan elegir? <a href="#contacto" className={`${colors.text} font-semibold hover:underline`}>Hablamos sin cargo</a>
         </p>
       </div>

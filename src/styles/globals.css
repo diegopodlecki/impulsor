@@ -571,4 +571,145 @@
       box-shadow: 0 0 20px -5px currentColor;
     }
   }
+
+  /* ============================================
+     MODERN APP FITNESS UI
+     ============================================ */
+  
+  /* Soft gradient backgrounds */
+  .bg-soft-gradient {
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  }
+  
+  /* Glass morphism cards */
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+    box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .glass-card-hover:hover {
+    @apply bg-white/10 border-white/20;
+    box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Soft shadow utilities */
+  .shadow-soft {
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.15);
+  }
+  
+  .shadow-soft-lg {
+    box-shadow: 0 8px 40px -8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .shadow-soft-xl {
+    box-shadow: 0 16px 60px -16px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Rounded corners for app feel */
+  .rounded-app {
+    border-radius: 1rem;
+  }
+  
+  .rounded-app-lg {
+    border-radius: 1.5rem;
+  }
+  
+  .rounded-app-xl {
+    border-radius: 2rem;
+  }
+
+  /* Premium section spacing */
+  .section-spacing {
+    @apply py-20 sm:py-24 lg:py-32;
+  }
+  
+  .section-spacing-lg {
+    @apply py-24 sm:py-32 lg:py-40;
+  }
+
+  /* Subtle gradient overlays */
+  .gradient-overlay-subtle {
+    background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.5) 100%);
+  }
+  
+  .gradient-overlay-soft {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.6) 100%);
+  }
+
+  /* Card modern styling */
+  .card-modern {
+    @apply rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm;
+    box-shadow: 0 4px 24px -8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .card-modern:hover {
+    @apply border-white/20 bg-gradient-to-br from-white/8 to-white/5;
+    box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);
+  }
+
+  /* Feature card with gradient icon */
+  .feature-card {
+    @apply rounded-2xl p-6 lg:p-8 border border-white/5 bg-gradient-to-br from-slate-800/50 to-slate-900/50;
+    box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .feature-card:hover {
+    @apply border-white/10 bg-gradient-to-br from-slate-800/70 to-slate-900/70;
+    box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+  }
+
+  /* Premium stats display */
+  .stat-card {
+    @apply rounded-2xl p-5 bg-white/5 border border-white/10 backdrop-blur-sm;
+    box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Icon container with gradient */
+  .icon-container {
+    @apply w-14 h-14 rounded-2xl flex items-center justify-center;
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(220, 38, 38, 0.1) 100%);
+  }
+
+  /* Testimonial card modern */
+  .testimonial-card {
+    @apply rounded-3xl p-8 border border-white/10 bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm;
+    box-shadow: 0 4px 24px -8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .testimonial-card:hover {
+    @apply border-white/15 bg-gradient-to-br from-white/8 to-white/3;
+    box-shadow: 0 8px 40px -12px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+  }
+
+  /* Gallery item modern */
+  .gallery-item {
+    @apply rounded-2xl overflow-hidden;
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .gallery-item:hover {
+    box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
+  }
+
+  /* Hero badge */
+  .hero-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border;
+    background: rgba(249, 115, 22, 0.1);
+    border-color: rgba(249, 115, 22, 0.3);
+    box-shadow: 0 4px 16px -4px rgba(249, 115, 22, 0.2);
+  }
+
+  /* Premium divider */
+  .divider-gradient {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  }
 }

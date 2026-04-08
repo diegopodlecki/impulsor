@@ -78,37 +78,37 @@ export default function ClosingSection({
     <section 
       ref={sectionRef}
       id="contacto" 
-      className="relative py-24 lg:py-32 overflow-hidden"
+      className="relative py-24 lg:py-40 overflow-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900" />
-      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-r ${colors.glow} to-transparent rounded-full blur-[150px] transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} />
+      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r ${colors.glow} to-transparent rounded-full blur-[200px] transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} />
 
       <div className="container relative z-10">
-        <div className="max-w-3xl mx-auto text-center space-y-8">
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50 text-slate-400 text-sm transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '0ms' }}>
-            <Clock className="w-4 h-4 animate-pulse" />
+        <div className="max-w-4xl mx-auto text-center space-y-10">
+          <div className={`inline-flex items-center gap-3 px-5 py-2.5 rounded-full backdrop-blur-xl border glass-card text-slate-300 text-base transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '0ms' }}>
+            <Clock className="w-5 h-5" />
             Solo toma 7 días
           </div>
 
-          <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
+          <h2 className={`text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-tight transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
             {title}
           </h2>
 
-          <p className={`text-xl text-slate-400 max-w-xl mx-auto transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
+          <p className={`text-2xl text-slate-400 max-w-2xl mx-auto transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
             {subtitle}
           </p>
 
-          <div className={`pt-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '300ms' }}>
+          <div className={`pt-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '300ms' }}>
             <a
               href="#contacto"
-              className={`group inline-flex items-center justify-center gap-3 px-12 py-5 text-xl font-bold rounded-2xl bg-gradient-to-r ${colors.gradient} text-white shadow-2xl shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/30 hover:shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/50 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.98]`}
+              className={`group inline-flex items-center justify-center gap-4 px-16 py-6 text-2xl font-bold rounded-2xl bg-gradient-to-r ${colors.gradient} text-white shadow-soft-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03] active:scale-[0.98]`}
             >
               {ctaText}
-              <ArrowRight className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="h-7 w-7 transition-transform duration-300 group-hover:translate-x-2" />
             </a>
           </div>
 
-          <p className={`text-sm text-slate-500 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '400ms' }}>
+          <p className={`text-base text-slate-500 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '400ms' }}>
             Sin compromiso. Primera consulta sin cargo.
           </p>
         </div>
