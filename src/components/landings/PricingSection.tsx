@@ -86,31 +86,31 @@ export default function PricingSection({
           {plans.map((plan, idx) => (
             <div
               key={idx}
-              className={`relative rounded-3xl transition-all duration-500 ${
+              className={`group relative rounded-3xl transition-all duration-500 hover:-translate-y-2 ${
                 plan.popular
-                  ? `bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-2 ${colors.border} scale-105 shadow-2xl shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/20`
-                  : `bg-slate-800/50 border border-slate-700/30 ${colors.hover}`
+                  ? `bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-2 ${colors.border} scale-105 shadow-2xl shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/20 hover:shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/30`
+                  : `bg-slate-800/50 border border-slate-700/30 hover:border-slate-600/50 hover:bg-slate-800/70 hover:shadow-xl hover:shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/10`
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full ${colors.badge} text-white text-sm font-bold shadow-lg`}>
-                    <Sparkles className="w-4 h-4" />
+                  <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full ${colors.badge} text-white text-sm font-bold shadow-lg badge-shine`}>
+                    <Sparkles className="w-4 h-4 animate-pulse" />
                     Recomendado
                   </div>
                 </div>
               )}
 
               <div className="p-8">
-                <h3 className={`text-xl font-bold ${plan.popular ? 'text-white' : 'text-slate-300'} mb-2`}>
+                <h3 className={`text-xl font-bold transition-colors duration-300 ${plan.popular ? 'text-white group-hover:text-orange-200' : 'text-slate-300 group-hover:text-white'} mb-2`}>
                   {plan.name}
                 </h3>
-                <p className="text-slate-400 text-sm mb-6">
+                <p className="text-slate-400 text-sm mb-6 transition-colors duration-300 group-hover:text-slate-300">
                   {plan.description}
                 </p>
 
                 <div className="mb-8">
-                  <span className={`text-4xl font-black ${plan.popular ? 'text-white' : 'text-slate-200'}`}>
+                  <span className={`text-4xl font-black transition-all duration-300 ${plan.popular ? 'text-white group-hover:text-orange-100' : 'text-slate-200 group-hover:text-white'}`}>
                     {plan.price}
                   </span>
                 </div>
@@ -118,18 +118,18 @@ export default function PricingSection({
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feature, fIdx) => (
                     <li key={fIdx} className="flex items-start gap-3">
-                      <CheckCircle className={`w-5 h-5 ${colors.text} flex-shrink-0 mt-0.5`} />
-                      <span className="text-slate-300 text-sm leading-relaxed">{feature}</span>
+                      <CheckCircle className={`w-5 h-5 ${colors.text} flex-shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110`} />
+                      <span className="text-slate-300 text-sm leading-relaxed transition-colors duration-300 group-hover:text-slate-200">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 <a
                   href="#contacto"
-                  className={`block w-full py-4 px-6 text-center font-bold rounded-xl transition-all duration-300 ${
+                  className={`block w-full py-4 px-6 text-center font-bold rounded-xl transition-all duration-300 btn-premium ${
                     plan.popular
-                      ? `bg-gradient-to-r ${colors.gradient} text-white shadow-lg shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/30 hover:scale-[1.02]`
-                      : `bg-slate-700/50 text-slate-200 hover:bg-slate-700 hover:text-white`
+                      ? `bg-gradient-to-r ${colors.gradient} text-white shadow-lg shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/30 hover:shadow-${accentColor === 'orange' ? 'orange' : accentColor}-500/50`
+                      : `bg-slate-700/50 text-slate-200 hover:bg-slate-700 hover:text-white hover:shadow-lg hover:shadow-slate-900/20`
                   }`}
                 >
                   {plan.cta}
