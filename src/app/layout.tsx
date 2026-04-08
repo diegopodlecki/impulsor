@@ -23,10 +23,10 @@ const SITE_NAME = site.name ?? "WebAppImpulsor";
 const SITE_URL = (site.url ?? "https://webappimpulsor.com").replace(/\/+$/, "");
 const SITE_DESCRIPTION =
   site.description ??
-  "Creación de páginas web profesionales para entrenadores, psicólogos, nutricionistas y profesionales independientes en Argentina. Webs diseñadas para recibir consultas por WhatsApp.";
+  "Creamos tu página web profesional que convierte visitas en clientes. Diseños optimizados para gimnasios, entrenadores, psicólogos y más. Recibe consultas por WhatsApp.";
 const WHATSAPP_NUMBER = (site.phone ?? site.whatsapp ?? "+541166448389").replace(/\D/g, "");
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
-const SITE_TITLE = "WebAppImpulsor | Tu web profesional en 72 horas";
+const SITE_TITLE = "Página web que convierte clientes | WebAppImpulsor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -52,6 +52,18 @@ export const metadata: Metadata = {
     template: "%s | WebAppImpulsor",
   },
   description: SITE_DESCRIPTION,
+  keywords: [
+    "pagina web que convierte clientes",
+    "web para profesionales que convierte",
+    "pagina web consultas whatsapp",
+    "web para gimnasios",
+    "web para personal trainers",
+    "web para psicólogos",
+    "web para nutricionistas",
+    "pagina web para negocios",
+    "web profesional argentina",
+    "landing page que convierte"
+  ],
   alternates: {
     canonical: "/",
   },
@@ -67,7 +79,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "WebAppImpulsor | Tu web profesional en 72 horas",
+        alt: "Página web que convierte clientes | WebAppImpulsor",
       },
     ],
   },

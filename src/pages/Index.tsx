@@ -1,318 +1,307 @@
 import React, { useRef } from 'react';
-import { ArrowDown, TrendingUp, Zap, Award, MessageCircle, Clock, Flame } from 'lucide-react';
+import { ArrowDown, MessageCircle, Clock, Flame, CheckCircle, XCircle } from 'lucide-react';
 import { RUBROS } from '@/lib/rubros';
 import { TESTIMONIOS } from '@/lib/testimonios';
 import { cn } from '@/lib/utils';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function Index() {
   const catalogRef = useRef<HTMLDivElement>(null);
 
-  const scrollToCatalog = () => {
-    catalogRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const benefits = [
+  const noEsComun = [
     {
-      icon: TrendingUp,
-      title: "Más consultas",
-      description: "Aumentá leads en semanas, no meses"
+      title: "No es una plantilla",
+      description: "Diseños específicos para cada rubro, no templates de $5",
+      incorrect: "Te venden el mismo diseño que 5000 sitios más"
     },
     {
-      icon: Zap,
-      title: "Conversión optimizada",
-      description: "Diseño que convierte visitantes en clientes"
+      title: "No es solo estética",
+      description: "Cada elemento está pensado para convertir, no solo para verse bien",
+      incorrect: "Una web bonita que nadie contacta"
     },
     {
-      icon: Award,
-      title: "Imagen profesional",
-      description: "Primera impresión que abre puertas"
-    },
-    {
-      icon: MessageCircle,
-      title: "Soporte local",
-      description: "Equipo que entiende tu negocio"
+      title: "No te abandonamos",
+      description: "Ajustes incluidos. Tu web evoluciona con tu negocio",
+      incorrect: "Te entregan el archivo y chau"
     }
   ];
 
-  const desireMessages: Record<string, string> = {
-    "estetica-corporal": "Ideal para llenar la agenda",
-    "psicologo": "Ideal para conseguir consultas",
-    "nutricionista": "Ideal para retener clientes",
-    "personal-trainer": "Listo para captar alumnos",
-    "gimnasio": "Optimizado para membresías",
-    "casa-de-comidas": "Listo para pedidos online"
+  const problemas = [
+    {
+      emoji: "😔",
+      title: "Tu web recibe visitas pero nadie te escribe",
+      description: "Tenés estadísticas de Google Analytics pero cero consultas reales"
+    },
+    {
+      emoji: "🤷",
+      title: "No sabés si tu web funciona o no",
+      description: "Pusiste la web y esperás. Pero no pasa nada."
+    },
+    {
+      emoji: "😓",
+      title: "Invertiste en una web que no convierte",
+      description: "Pagaste por algo bonito pero que no te trajo ni un solo cliente"
+    },
+    {
+      emoji: "😤",
+      title: "Dependés 100% de Instagram y el boca a boca",
+      description: "Si no publicás, no existís. Eso te limita y te agota."
+    },
+    {
+      emoji: "😰",
+      title: "Tu competencia se ve mejor que vos online",
+      description: "Sabés que tu propuesta es mejor, pero tu web no lo muestra"
+    },
+    {
+      emoji: "🤯",
+      title: "El tema técnico te supera",
+      description: "Hosting, dominio, SEO... Terminás evitando el tema completo"
+    }
+  ];
+
+  const resultados = {
+    "personal-trainer": {
+      resultado: "Más alumnos que te encuentren por Google",
+      incluye: [
+        "Tu perfil de entrenador con credenciales",
+        "Planes y precios claros",
+        "Galería de transformaciones",
+        "Botón de WhatsApp directo"
+      ],
+      beneficio: "Dejá de depender solo del boca a boca"
+    },
+    "psicologo": {
+      resultado: "Más pacientes que confíen en vos",
+      incluye: [
+        "Tu formación y especialidades",
+        "Modalidades de atención",
+        "Preguntas frecuentes",
+        "Formulario de contacto simple"
+      ],
+      beneficio: "La gente te elige antes de la primera sesión"
+    },
+    "nutricionista": {
+      resultado: "Más pacientes que consulten online",
+      incluye: [
+        "Planes y metodología",
+        "Testimonios de pacientes",
+        "Antes y después",
+        "Agenda de turnos directa"
+      ],
+      beneficio: "Reducí el tiempo en responder consultas básicas"
+    },
+    "gimnasio": {
+      resultado: "Más socios que se inscriban solos",
+      incluye: [
+        "Clases y horarios claros",
+        "Planes y precios",
+        "Galería de instalaciones",
+        "Formulario de inscripción"
+      ],
+      beneficio: "Tu web trabaja 24/7 inscribiendo gente"
+    },
+    "casa-de-comidas": {
+      resultado: "Más pedidos sin pagar comisiones",
+      incluye: [
+        "Menú digital actualizado",
+        "Zona de entrega visible",
+        "Pedidos por WhatsApp",
+        "Fotos de platos profesionales"
+      ],
+      beneficio: "Cero comisión. El 100% es tuyo"
+    },
+    "estetica-corporal": {
+      resultado: "Más clientas que reserven directo",
+      incluye: [
+        "Tratamientos con precios",
+        "Galería de resultados",
+        "Antes y después",
+        "Reserva de turno online"
+      ],
+      beneficio: "Clientas que ya saben qué quieren"
+    }
   };
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      {/* HERO - IMPACTANTE Y MODERNO */}
+      {/* 1. HERO */}
       <section className="relative min-h-[70vh] w-full flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900/80 to-background">
-        {/* Blur blobs decorativos */}
         <div className="absolute top-20 left-1/4 w-96 h-96 bg-gradient-to-br from-purple-600/20 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" />
         <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-gradient-to-tl from-blue-600/15 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '1s' }} />
         <div className="absolute top-1/3 right-10 w-72 h-72 bg-gradient-to-bl from-indigo-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
-        
-        {/* Grid pattern sutil */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px)] bg-[size:80px_80px] pointer-events-none opacity-50" />
         
-        {/* Contenido */}
         <div className="container relative z-10 text-center px-4 py-16 sm:py-20">
           <div className="space-y-8 max-w-4xl mx-auto">
-            {/* Etiqueta intro */}
             <div className="flex items-center justify-center gap-2">
               <div className="h-1 w-8 bg-gradient-to-r from-primary to-transparent rounded-full" />
               <span className="text-xs font-semibold text-primary uppercase tracking-widest">Soluciones web</span>
               <div className="h-1 w-8 bg-gradient-to-l from-primary to-transparent rounded-full" />
             </div>
             
-            {/* Título principal */}
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] animate-fadeIn">
-              <span className="bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
-                Webs que convierten
+              <span className="bg-gradient-to-r from-primary via-purple-400 to-blue-400 bg-clip-text text-transparent">
+                Página web
               </span>
               <br />
-              <span className="bg-gradient-to-r from-primary via-purple-400 to-blue-400 bg-clip-text text-transparent">
-                visitas en clientes
+              <span className="bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
+                que convierte clientes
               </span>
             </h1>
             
-            {/* Subtítulo */}
             <p className="text-xl sm:text-2xl text-white/80 font-light leading-relaxed max-w-2xl mx-auto animate-fadeIn" style={{ animationDelay: '0.2s' }}>
-              Diseños listos para vender en cada rubro
+              Tu web trabaja 24/7 para conseguir consultas mientras vos hacés lo que sabés. Diseños que realmente venden.
             </p>
             
-            {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8 animate-fadeIn" style={{ animationDelay: '0.4s' }}>
               <a
-                href="/#demo-catalog"
-                onClick={(e) => {
-                  e.preventDefault();
-                  catalogRef.current?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                href="https://wa.me/5491234567890"
                 className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-bold rounded-full bg-gradient-to-r from-primary to-primary/80 text-white shadow-2xl shadow-primary/40 hover:scale-110 hover:shadow-3xl transition-all duration-300 overflow-hidden"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <span className="relative">Explorar webs por rubro</span>
-                <ArrowDown className="h-5 w-5 relative" />
+                <MessageCircle className="h-5 w-5 relative" />
+                <span className="relative">Quiero más clientes</span>
               </a>
               
               <a
-                href="https://wa.me/5491234567890"
+                href="#solucion"
                 className="group inline-flex items-center justify-center gap-2 px-10 py-5 text-lg font-bold rounded-full border-2 border-white/30 text-white hover:border-white/60 hover:bg-white/10 backdrop-blur-sm transition-all duration-300"
               >
-                <MessageCircle className="h-5 w-5" />
-                <span>Hablar por WhatsApp</span>
+                <span>Ver cómo</span>
+                <ArrowDown className="h-5 w-5" />
               </a>
             </div>
             
-            {/* Highlight stats */}
             <div className="flex items-center justify-center gap-8 pt-12 text-sm text-white/70 animate-fadeIn" style={{ animationDelay: '0.6s' }}>
               <div className="flex items-center gap-2">
-                <div className="w-2.5 h-2.5 rounded-full bg-primary" />
-                <span>+50 webs live</span>
+                <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+                <span>+50 negocios facturando más</span>
               </div>
               <div className="w-px h-6 bg-white/20" />
               <div className="flex items-center gap-2">
-                <div className="w-2.5 h-2.5 rounded-full bg-primary" />
+                <div className="w-2.5 h-2.5 rounded-full bg-blue-400" />
+                <span>Primera consulta sin cargo</span>
+              </div>
+              <div className="w-px h-6 bg-white/20" />
+              <div className="flex items-center gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
                 <span>Respuesta en &lt;2h</span>
               </div>
-              <div className="w-px h-6 bg-white/20" />
-              <div className="flex items-center gap-2">
-                <div className="w-2.5 h-2.5 rounded-full bg-primary" />
-                <span>Garantía de resultados</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. EL PROBLEMA */}
+      <section className="relative section-padding bg-gradient-to-b from-slate-900/80 to-slate-950/60 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none opacity-30" />
+        
+        <div className="container relative z-10">
+          <div className="mx-auto max-w-3xl text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold">
+              Por qué tu página web no convierte visitas en clientes
+            </h2>
+            <p className="mt-4 text-lg text-white/70">
+              Conocemos estas situaciones. Pasamos por ahí.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {problemas.map((problema, idx) => (
+              <div 
+                key={idx} 
+                className="group card-base p-6 hover:border-red-500/30 transition-all duration-300 hover:bg-red-500/5"
+                style={{ animationDelay: `${idx * 0.1}s` }}
+              >
+                <div className="text-4xl mb-4">{problema.emoji}</div>
+                <h3 className="font-semibold text-white mb-2 leading-snug">
+                  {problema.title}
+                </h3>
+                <p className="text-sm text-white/60 leading-relaxed">
+                  {problema.description}
+                </p>
               </div>
-            </div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-white/50 text-sm">
+              Si reconocés aunque sea una de estas situaciones...
+            </p>
+            <p className="mt-2 text-lg font-semibold text-white">
+              <span className="text-primary">Tenemos la solución.</span> Sigamos hablando.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* SOCIAL PROOF */}
-      <section className="relative section-padding-tight border-b border-white/5">
-        <div className="container">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            {/* Contador */}
-            <div className="flex-shrink-0 text-center md:text-left">
-              <div className="text-5xl font-bold text-primary mb-2">+50</div>
-              <p className="text-sm text-white/70">webs creadas y funcionando</p>
-            </div>
-
-            {/* Mini Testimonios */}
-            <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {[
-                {
-                  quote: "En 2 semanas ya tenía clientes desde la web",
-                  author: "Martín G.",
-                  role: "Trainer"
-                },
-                {
-                  quote: "La diferencia fue la claridad. Leads mejor calificados",
-                  author: "Luciana P.",
-                  role: "Psicóloga"
-                },
-                {
-                  quote: "Web profesional a fracción del costo tradicional",
-                  author: "Micaela T.",
-                  role: "Consultora"
-                }
-              ].map((testimonial, idx) => (
-                <div key={idx} className="card-base p-4 hover:border-white/20">
-                  <p className="text-sm text-white/90 font-medium italic mb-3">"{testimonial.quote}"</p>
-                  <div className="flex items-center gap-2">
-                    <div className="h-8 w-8 rounded-full bg-primary/30 flex items-center justify-center text-xs font-bold text-primary">
-                      {testimonial.author.charAt(0)}
-                    </div>
-                    <div className="text-xs">
-                      <p className="text-white font-semibold">{testimonial.author}</p>
-                      <p className="text-white/60">{testimonial.role}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. CARDS (PROTAGONISTAS) */}
-      <section ref={catalogRef} className="relative section-padding overflow-hidden">
-        {/* Subtle background gradient */}
+      {/* 3. SOLUCIÓN - RESULTADOS POR RUBRO */}
+      <section id="solucion" ref={catalogRef} className="relative section-padding overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/20 to-transparent pointer-events-none" />
         
         <div className="section-container relative z-10">
           <div className="mx-auto max-w-2xl text-center mb-12">
-            <h2 className="text-2xl font-bold">Soluciones por rubro</h2>
+            <h2 className="text-2xl font-bold">Páginas web profesionales que convierten consultas en clientes</h2>
             <p className="mt-2 text-sm text-white/70">
-              Elige tu tipo de negocio y mira cómo se vería tu web
+              Diseños específicos para cada rubro. Cada elemento está pensado para vender, no solo para verse bien.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-cards max-w-7xl mx-auto">
-            {RUBROS.map((rubro) => (
-              <a
-                key={rubro.slug}
-                href={rubro.demoUrl}
-                className="card-base card-hover group flex flex-col"
-              >
-                <div className={`h-1 bg-gradient-to-r ${rubro.color}`} />
-
-                <div className="flex items-start justify-between gap-3 p-5">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl">{rubro.emoji}</span>
-                      <h3 className="text-lg font-semibold text-white">Web para {rubro.nombre}</h3>
-                    </div>
-                    <p className="mt-1 text-sm text-white/55">{rubro.precioSugerido}</p>
-                  </div>
-                  {rubro.badge && (
-                    <div className={cn("rounded-full px-2.5 py-0.5 text-[11px] font-semibold border", 
-                      rubro.badge === "Más elegido" && "border-amber-400/30 bg-amber-400/10 text-amber-300",
-                      rubro.badge === "Nuevo" && "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
-                      rubro.badge === "Ideal para empezar" && "border-blue-400/30 bg-blue-400/10 text-blue-300"
-                    )}>
-                      {rubro.badge}
-                    </div>
-                  )}
-                </div>
-
-                <div className="px-6">
-                  <div className="image-container shadow-lg shadow-black/20">
-                    <div className="relative aspect-video bg-gradient-to-br from-slate-800 to-slate-900 group-hover:border-white/20 transition-all duration-300 overflow-hidden">
-                      <img
-                        src={rubro.previewImage || `/portfolio/${rubro.slug}-preview.svg`}
-                        alt={`Preview de web para ${rubro.nombre}`}
-                        className="w-full h-full object-cover image-hover"
-                        loading="lazy"
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                        }}
-                      />
-                      {/* Fallback gradient si no carga la imagen */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-slate-700/40 to-slate-950/60 flex items-center justify-center pointer-events-none">
-                        <span className="text-5xl opacity-30">{rubro.emoji}</span>
-                      </div>
-                      
-                      {/* Overlay oscuro en hover con "Ver demo" */}
-                      <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
-                        <div className="flex flex-col items-center gap-2">
-                          <span className="text-white font-semibold text-sm">Ver demo</span>
-                          <ArrowDown className="h-4 w-4 text-primary animate-bounce" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="px-6 pt-4">
-                  {desireMessages[rubro.slug] && (
-                    <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1.5">
-                      <span className="text-xs font-semibold text-primary">{desireMessages[rubro.slug]}</span>
-                    </div>
-                  )}
-                </div>
-
-                <div className="flex-1" />
-
-                <div className="px-6 pb-6 space-y-4">
-                  <p className="text-sm text-white/70 leading-relaxed">{rubro.cardDescription || rubro.descripcion}</p>
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      window.location.href = rubro.demoUrl;
-                    }}
-                    className="w-full rounded-full bg-primary/90 px-4 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary hover:scale-105 flex items-center justify-center gap-2"
-                  >
-                    Quiero esta web para mi negocio
-                  </button>
-                  {rubro.badge === "Más elegido" && (
-                    <div className="flex items-center justify-center gap-1.5 text-xs text-amber-300/80 font-medium pt-2">
-                      <Flame className="h-3.5 w-3.5" />
-                      <span>Solo 3 cupos disponibles esta semana</span>
-                    </div>
-                  )}
-                  {rubro.badge === "Nuevo" && (
-                    <div className="flex items-center justify-center gap-1.5 text-xs text-emerald-300/80 font-medium pt-2">
-                      <Clock className="h-3.5 w-3.5" />
-                      <span>Entrega en 5 días laborales</span>
-                    </div>
-                  )}
-                  {!rubro.badge && (
-                    <div className="flex items-center justify-center gap-1.5 text-xs text-white/60 font-medium pt-2">
-                      <TrendingUp className="h-3.5 w-3.5" />
-                      <span>Alta demanda este mes</span>
-                    </div>
-                  )}
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. BENEFICIOS */}
-      <section className="relative section-padding bg-gradient-to-b from-slate-950 via-slate-900/40 to-background border-t border-white/5 overflow-hidden">
-        {/* Decorative gradient orb */}
-        <div className="absolute top-1/2 -left-96 w-96 h-96 bg-gradient-to-br from-blue-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 -right-96 w-96 h-96 bg-gradient-to-tl from-purple-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
-        
-        <div className="section-container relative z-10">
-          <div className="mx-auto max-w-2xl text-center mb-14">
-            <h2 className="text-2xl font-bold">¿Por qué elegirnos?</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-cards max-w-3xl mx-auto">
-            {benefits.map((benefit, idx) => {
-              const Icon = benefit.icon;
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {RUBROS.map((rubro) => {
+              const info = resultados[rubro.slug as keyof typeof resultados];
+              if (!info) return null;
+              
               return (
-                <div key={idx} className="group card-base card-hover flex gap-4 p-6">
-                  <div className="flex-shrink-0">
-                    <div className="p-2 rounded-lg bg-primary/20 group-hover:bg-primary/30 transition-colors">
-                      <Icon className="h-6 w-6 text-primary" />
+                <div
+                  key={rubro.slug}
+                  className="card-base card-hover group flex flex-col overflow-hidden"
+                >
+                  <div className={`h-1.5 bg-gradient-to-r ${rubro.color}`} />
+                  
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex items-start justify-between gap-3 mb-4">
+                      <div className="flex items-center gap-2">
+                        <span className="text-3xl">{rubro.emoji}</span>
+                        <span className="text-sm text-white/60">para {rubro.nombre}</span>
+                      </div>
+                      {rubro.badge && (
+                        <div className={cn("rounded-full px-2.5 py-0.5 text-[10px] font-semibold border", 
+                          rubro.badge === "Más elegido" && "border-amber-400/30 bg-amber-400/10 text-amber-300",
+                          rubro.badge === "Nuevo" && "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
+                          rubro.badge === "Ideal para empezar" && "border-blue-400/30 bg-blue-400/10 text-blue-300"
+                        )}>
+                          {rubro.badge}
+                        </div>
+                      )}
                     </div>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-white">{benefit.title}</h3>
-                    <p className="mt-1 text-sm text-white/70">{benefit.description}</p>
+
+                    <h3 className="text-xl font-bold text-white mb-4 leading-tight">
+                      {info.resultado}
+                    </h3>
+
+                    <div className="space-y-2 mb-4 flex-1">
+                      <p className="text-xs text-white/50 uppercase tracking-wide font-semibold mb-2">Qué incluye:</p>
+                      {info.incluye.map((item, idx) => (
+                        <div key={idx} className="flex items-start gap-2">
+                          <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-white/80">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-4 pt-4 border-t border-white/10">
+                      <p className="text-sm text-emerald-400 font-medium">
+                        {info.beneficio}
+                      </p>
+                    </div>
+
+                    <a
+                      href={rubro.demoUrl}
+                      className="mt-4 w-full rounded-full bg-primary/90 px-4 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary hover:scale-105 flex items-center justify-center gap-2"
+                    >
+                      Ver ejemplo
+                      <ArrowDown className="h-4 w-4" />
+                    </a>
                   </div>
                 </div>
               );
@@ -321,37 +310,84 @@ export default function Index() {
         </div>
       </section>
 
-      {/* 4. TESTIMONIOS (MINI) */}
+      {/* 4. MÉTODO */}
+      <section className="relative section-padding bg-gradient-to-b from-slate-950 via-slate-900/40 to-background border-t border-white/5 overflow-hidden">
+        <div className="absolute top-1/2 -left-96 w-96 h-96 bg-gradient-to-br from-blue-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 -right-96 w-96 h-96 bg-gradient-to-tl from-purple-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="section-container relative z-10">
+          <div className="mx-auto max-w-3xl text-center mb-12">
+            <h2 className="text-2xl font-bold">Cómo creamos una web que convierte clientes</h2>
+            <p className="mt-2 text-white/70">
+              Esto es lo que nos diferencia de una web común
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
+            {noEsComun.map((item, idx) => (
+              <div key={idx} className="card-base p-6 hover:border-white/20 transition-colors">
+                <div className="flex items-start gap-3 mb-4">
+                  <div className="p-2 rounded-lg bg-emerald-500/20">
+                    <CheckCircle className="h-5 w-5 text-emerald-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-white">{item.title}</h3>
+                    <p className="mt-1 text-sm text-white/70">{item.description}</p>
+                  </div>
+                </div>
+                <div className="pt-4 border-t border-white/10">
+                  <div className="flex items-start gap-2">
+                    <XCircle className="h-4 w-4 text-red-400/60 flex-shrink-0 mt-0.5" />
+                    <p className="text-xs text-white/50 italic">{item.incorrect}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="card-base p-8 border-emerald-500/30 bg-emerald-500/5">
+              <p className="text-5xl mb-4">📈</p>
+              <h3 className="text-xl font-bold text-white mb-2">El resultado que conseguimos</h3>
+              <p className="text-2xl font-bold text-emerald-400 mb-4">+40% más consultas en 30 días</p>
+              <p className="text-white/70">Medido, no promesses. Así lo conseguimos para cada cliente.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. CASOS DE ÉXITO */}
       <section className="relative section-padding bg-gradient-to-b from-slate-900/60 to-slate-950/40 overflow-hidden">
-        {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-emerald-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-40 left-1/3 w-96 h-96 bg-gradient-to-tr from-blue-600/5 to-transparent rounded-full blur-3xl pointer-events-none" />
         
         <div className="section-container relative z-10">
           <div className="mx-auto max-w-2xl text-center mb-14">
-            <h2 className="text-2xl font-bold">Lo que dicen nuestros clientes</h2>
+            <h2 className="text-2xl font-bold">Casos de éxito: páginas web que convirtieron clientes</h2>
             <p className="mt-2 text-xs text-white/60 flex items-center justify-center gap-1.5 mt-4">
               <Flame className="h-3.5 w-3.5 text-amber-400" />
-              <span>Promedio: comienzan en 48-72 horas</span>
+              <span>Resultados comprobables, no promesas</span>
             </p>
           </div>
 
           <div className="grid-responsive max-w-4xl mx-auto">
-            {TESTIMONIOS.slice(0, 3).map((test) => (
-              <div key={test.id} className="group card-base card-hover flex flex-col p-5">
-                <div className="flex gap-3 mb-4">
-                  <div className={cn("h-10 w-10 rounded-full flex items-center justify-center font-semibold text-white ring-2 ring-white/20", test.colorAvatar)}>
+            {TESTIMONIOS.map((test) => (
+              <div key={test.id} className="group card-base card-hover flex flex-col p-6">
+                <div className="flex gap-4 mb-4">
+                  <div className={cn("h-12 w-12 rounded-full flex items-center justify-center font-bold text-white ring-2 ring-white/20", test.colorAvatar)}>
                     {test.iniciales}
                   </div>
                   <div className="text-sm">
                     <p className="font-semibold text-white">{test.nombre.split('·')[0].trim()}</p>
-                    <p className="text-xs text-white/60">{test.rubro.split('·')[0].trim()}</p>
+                    <p className="text-white/60">{test.rubro.split('·')[0].trim()}</p>
                   </div>
                 </div>
-                <p className="text-sm text-white/80 line-clamp-3 flex-1 leading-relaxed">{test.texto}</p>
+                <p className="text-sm text-white/80 flex-1 leading-relaxed mb-4">{test.texto}</p>
                 {test.resultado && (
-                  <div className="mt-4 pt-4 border-t border-white/10">
-                    <p className="text-xs font-semibold text-primary bg-primary/10 rounded-lg px-3 py-2">{test.resultado}</p>
+                  <div className="pt-4 border-t border-white/10">
+                    <p className="text-sm font-semibold text-primary bg-primary/10 rounded-lg px-4 py-3 text-center">
+                      {test.resultado}
+                    </p>
                   </div>
                 )}
               </div>
@@ -360,39 +396,92 @@ export default function Index() {
         </div>
       </section>
 
-      {/* 5. CTA FINAL */}
+      {/* 6. CTA FINAL */}
       <section className="relative section-padding border-t border-white/5 bg-gradient-to-b from-slate-900/40 to-slate-950/60 overflow-hidden">
-        {/* Decorative gradient orbs */}
         <div className="absolute -top-40 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-40 right-1/4 w-96 h-96 bg-gradient-to-tl from-purple-600/15 to-transparent rounded-full blur-3xl pointer-events-none" />
-        
-        {/* Grid lines */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:50px_50px] pointer-events-none opacity-30" />
         
         <div className="container relative z-10">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight">¿Listo para transformar tu presencia online?</h2>
+            <h2 className="text-3xl font-bold tracking-tight">
+              Empezá a recibir más consultas esta semana
+            </h2>
             <p className="mt-4 text-lg text-white/70">
-              Exploá todas las soluciones disponibles para tu rubro
+              Primera consulta sin cargo. Sin compromiso.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="/webs"
-                className="group inline-flex justify-center rounded-full bg-gradient-to-r from-primary to-primary/90 px-8 py-4 font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/30 relative overflow-hidden"
+                href="https://wa.me/5491234567890"
+                className="group inline-flex justify-center gap-3 rounded-full bg-gradient-to-r from-primary to-primary/90 px-8 py-4 font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/30 relative overflow-hidden"
               >
-                <span className="relative z-10">Ver todas las webs</span>
+                <MessageCircle className="h-5 w-5" />
+                <span className="relative z-10">Quiero más clientes</span>
               </a>
               <a
-                href="https://wa.me/5491234567890"
+                href="#solucion"
                 className="group inline-flex justify-center rounded-full border border-white/30 px-8 py-4 font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white/50 hover:scale-105 backdrop-blur-sm"
               >
-                <span className="relative z-10">Hablar por WhatsApp</span>
+                <span className="relative z-10">Ver ejemplos</span>
               </a>
             </div>
-            <div className="mt-6 flex items-center justify-center gap-2 text-sm text-white/70 font-medium">
-              <Clock className="h-4 w-4 text-primary" />
-              <span>Respuesta en menos de 2 horas hábiles</span>
+            <div className="mt-6 flex items-center justify-center gap-4 text-sm text-white/70 font-medium">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-4 w-4 text-emerald-400" />
+                <span>Sin costo inicial</span>
+              </div>
+              <div className="w-px h-4 bg-white/20" />
+              <div className="flex items-center gap-2">
+                <Clock className="h-4 w-4 text-primary" />
+                <span>Respuesta en &lt;2h</span>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FAQ */}
+      <section className="relative section-padding bg-gradient-to-b from-slate-950/60 to-background overflow-hidden">
+        <div className="container relative z-10">
+          <div className="mx-auto max-w-2xl text-center mb-12">
+            <h2 className="text-2xl font-bold">Preguntas frecuentes sobre nuestra página web</h2>
+          </div>
+
+          <div className="space-y-4 max-w-3xl mx-auto">
+            {[
+              {
+                q: "¿Cuánto cuesta una página web que convierte clientes?",
+                a: "Depende del rubro y funcionalidades. La mayoría de nuestros clientes arrancan con planes desde $XXX. Primera consulta sin cargo para darte un presupuesto exacto."
+              },
+              {
+                q: "¿En cuánto tiempo mi web profesional está funcionando?",
+                a: "Entre 5 y 10 días hábiles, dependiendo de la complejidad. Muchas webs están funcionando en menos de una semana."
+              },
+              {
+                q: "¿Qué pasa si mi web no me trae consultas?",
+                a: "Trabajamos con vos para optimizarla. Si después de 30 días no ves resultados, ajustamos sin costo adicional."
+              },
+              {
+                q: "¿Necesito conocimientos técnicos para mantener mi web?",
+                a: "No. Nosotros manejamos todo: hosting, dominio, configuración. Vos solo tenés que revisar tu WhatsApp."
+              }
+            ].map((faq, idx) => (
+              <div key={idx} className="card-base p-6">
+                <h3 className="font-semibold text-white mb-2">{faq.q}</h3>
+                <p className="text-sm text-white/70">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-white/60 mb-4">¿Tenés otra pregunta?</p>
+            <a
+              href="https://wa.me/5491234567890"
+              className="inline-flex items-center gap-2 text-primary hover:underline"
+            >
+              <MessageCircle className="h-4 w-4" />
+              Escribinos por WhatsApp
+            </a>
           </div>
         </div>
       </section>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { XCircle, CheckCircle, Target } from 'lucide-react';
 import {
   SectionHero,
   SectionServicios,
@@ -95,6 +96,21 @@ export interface LandingPageConfig {
     highlights?: string[];
   };
 
+  // Sección Diferencial (Por qué no es una web común)
+  diferencial?: {
+    title?: string;
+    subtitle?: string;
+    description?: string;
+    items: Array<{
+      icon: string;
+      title: string;
+      description: string;
+      wrong: string;
+    }>;
+    resultadoPromesa?: string;
+    resultadoValor?: string;
+  };
+
   // Metadata
   theme?: {
     accent: string;
@@ -177,7 +193,71 @@ export function LandingPageRenderer({
         />
       )}
 
-      {/* 4. Testimonios */}
+      {/* 4. Por qué no es una web común */}
+      {config.diferencial && config.diferencial.items.length > 0 && (
+        <section className="section-padding bg-gradient-to-b from-slate-900 to-slate-950">
+          <div className="container">
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-sm font-semibold mb-4">
+                <XCircle className="h-4 w-4" />
+                Esto NO es una web común
+              </div>
+              <h2 className="title-h2">
+                {config.diferencial.title || 'Por qué esto no es una web común'}
+              </h2>
+              {config.diferencial.description && (
+                <p className="text-body-lg text-white/70 mt-4">
+                  {config.diferencial.description}
+                </p>
+              )}
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+              {config.diferencial.items.map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="card-base p-6 hover:border-white/20 transition-colors"
+                >
+                  <div className="flex items-start gap-3 mb-4">
+                    <div className="p-2 rounded-lg bg-emerald-500/20">
+                      <CheckCircle className="h-5 w-5 text-emerald-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-white">{item.title}</h3>
+                      <p className="mt-1 text-sm text-white/70">{item.description}</p>
+                    </div>
+                  </div>
+                  <div className="pt-4 border-t border-white/10">
+                    <div className="flex items-start gap-2">
+                      <XCircle className="h-4 w-4 text-red-400/60 flex-shrink-0 mt-0.5" />
+                      <p className="text-xs text-white/50 italic">{item.wrong}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {config.diferencial.resultadoPromesa && (
+              <div className="max-w-3xl mx-auto">
+                <div className="card-base p-8 border-emerald-500/30 bg-emerald-500/5 text-center">
+                  <div className="flex justify-center gap-3 mb-4">
+                    <Target className="h-8 w-8 text-emerald-400" />
+                  </div>
+                  <h3 className="title-h3 text-white mb-2">{config.diferencial.resultadoPromesa}</h3>
+                  {config.diferencial.resultadoValor && (
+                    <p className="text-2xl font-bold text-emerald-400 mb-2">
+                      {config.diferencial.resultadoValor}
+                    </p>
+                  )}
+                  <p className="text-white/70">Medido, no promesses. Así lo conseguimos.</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* 5. Testimonios */}
       {config.testimonios.items.length > 0 && (
         <SectionTestimonios
           title={config.testimonios.title}
@@ -189,7 +269,7 @@ export function LandingPageRenderer({
         />
       )}
 
-      {/* 5. Sobre el Entrenador */}
+      {/* 6. Sobre el Entrenador */}
       {config.sobre && (
         <section className="section-container section-padding section-premium">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -232,7 +312,7 @@ export function LandingPageRenderer({
         </section>
       )}
 
-      {/* 6. Beneficios (oculto si no hay) */}
+      {/* 7. Beneficios (oculto si no hay) */}
       {config.beneficios.items.length > 0 && (
         <SectionBeneficios
           title={config.beneficios.title}

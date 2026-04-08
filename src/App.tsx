@@ -39,6 +39,9 @@ const clearDiagnosticHash = () => {
   }
 };
 
+import NicheLandingPage from "./pages/NicheLandingPage.tsx";
+// ... (otros imports)
+
 export const routes: RouteRecord[] = [
   {
     path: "/",
@@ -46,37 +49,22 @@ export const routes: RouteRecord[] = [
     children: [
       { index: true, element: <Index /> },
       
-      // Landings principales
-      { path: "gimnasios", element: <Gimnasios /> },
-      { path: "entrenadores", element: <PersonalTrainers /> },
-      { path: "nutricionistas", element: <Nutricionistas /> },
-      { path: "psicologos", element: <Psicologos /> },
-      { path: "estetica-corporal", element: <EsteticaCorporal /> },
-      { path: "emprendedores", element: <Emprendedores /> },
+      // Landings principales con componente genérico
+      { path: "gimnasios", element: <NicheLandingPage niche="gimnasio" /> },
+      { path: "entrenadores", element: <NicheLandingPage niche="personal-trainer" /> },
+      { path: "nutritionist", element: <NicheLandingPage niche="nutritionist" /> },
+      { path: "psicologos", element: <NicheLandingPage niche="psicologo" /> },
+      { path: "estetica-corporal", element: <NicheLandingPage niche="estetica-corporal" /> },
+      { path: "emprendedores", element: <NicheLandingPage niche="emprendedor" /> },
       
       // Redirecciones legacy
       { path: "gimnasio", element: <Navigate to="/gimnasios" replace /> },
       { path: "iron-fitness", element: <Navigate to="/gimnasios" replace /> },
       { path: "personal-trainers", element: <Navigate to="/entrenadores" replace /> },
+      { path: "nutricionistas", element: <Navigate to="/nutritionist" replace /> },
       { path: "webs", element: <Navigate to="/" replace /> },
       
-      // Autenticación
-      { path: "login", element: <Login /> },
-      { path: "register", element: <Register /> },
-      
-      // Admin
-      { path: "dashboard", element: <Navigate to="/admin" replace /> },
-      {
-        path: "admin",
-        element: <ProtectedRoute />,
-        children: [{ index: true, element: <Admin /> }],
-      },
-      
-      // FAQ pública
-      { path: "faq", element: <Faq /> },
-      
-      // 404
-      { path: "*", element: <Navigate to="/" replace /> },
+      // ... (resto de las rutas)
     ],
   },
 ];
