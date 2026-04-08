@@ -256,6 +256,140 @@ export default function Index() {
         </div>
       </section>
 
+      {/* MINI PREVIEWS - Galería interactiva */}
+      <section id="previews" className="relative py-20 bg-gradient-to-b from-slate-950 to-slate-900/80">
+        <div className="container">
+          <ScrollReveal direction="up">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+                Elegí tu tipo de negocio
+              </h2>
+              <p className="text-white/50 text-lg">
+                Y mirá cómo se vería tu web
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Mini Previews Grid */}
+          <div className="flex flex-wrap justify-center gap-4 lg:gap-6">
+            {[
+              { 
+                slug: 'gimnasio', 
+                nombre: 'Gimnasio', 
+                emoji: '🏋️',
+                accent: 'from-orange-500 to-red-500',
+                border: 'hover:border-orange-500/40',
+                preview: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=300&fit=crop'
+              },
+              { 
+                slug: 'personal-trainer', 
+                nombre: 'Personal Trainer', 
+                emoji: '💪',
+                accent: 'from-cyan-500 to-blue-500',
+                border: 'hover:border-cyan-500/40',
+                preview: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop'
+              },
+              { 
+                slug: 'psicologo', 
+                nombre: 'Psicólogo', 
+                emoji: '🧠',
+                accent: 'from-indigo-500 to-violet-500',
+                border: 'hover:border-indigo-500/40',
+                preview: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=300&fit=crop'
+              },
+              { 
+                slug: 'nutricionista', 
+                nombre: 'Nutricionista', 
+                emoji: '🥗',
+                accent: 'from-emerald-500 to-teal-500',
+                border: 'hover:border-emerald-500/40',
+                preview: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&h=300&fit=crop'
+              },
+              { 
+                slug: 'estetica-corporal', 
+                nombre: 'Estética', 
+                emoji: '✨',
+                accent: 'from-rose-400 to-pink-500',
+                border: 'hover:border-rose-500/40',
+                preview: 'https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=400&h=300&fit=crop'
+              },
+            ].map((item, idx) => (
+              <ScrollReveal key={item.slug} direction="up" delay={idx * 80}>
+                <a
+                  href={`/${item.slug}`}
+                  className="group relative block"
+                >
+                  {/* Card */}
+                  <div className={cn(
+                    "relative w-[180px] sm:w-[220px] lg:w-[260px] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-slate-800 to-slate-900 p-3 transition-all duration-500",
+                    item.border,
+                    "hover:scale-105 hover:shadow-2xl hover:z-10"
+                  )}>
+                    {/* Image */}
+                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-3">
+                      <img
+                        src={item.preview}
+                        alt={item.nombre}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
+                      
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className={cn(
+                          "px-4 py-2 rounded-full bg-gradient-to-r text-white text-sm font-bold shadow-lg",
+                          item.accent
+                        )}>
+                          Ver demo
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Info */}
+                    <div className="flex items-center gap-2">
+                      <span className="text-2xl">{item.emoji}</span>
+                      <span className="text-white font-semibold text-sm lg:text-base">{item.nombre}</span>
+                    </div>
+                    
+                    {/* Accent line on hover */}
+                    <div className={cn(
+                      "absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r opacity-0 transition-opacity duration-300",
+                      item.accent,
+                      "group-hover:opacity-100"
+                    )} />
+                  </div>
+                  
+                  {/* Arrow indicator */}
+                  <div className={cn(
+                    "absolute -right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-gradient-to-r flex items-center justify-center opacity-0 -translate-x-2 transition-all duration-300",
+                    item.accent,
+                    "group-hover:opacity-100 group-hover:translate-x-0"
+                  )}>
+                    <ArrowRight className="w-4 h-4 text-white" />
+                  </div>
+                </a>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* CTA debajo */}
+          <ScrollReveal direction="up" delay={400}>
+            <div className="text-center mt-12">
+              <p className="text-white/50 mb-4">
+                Obicá tu rubro y te muestro opciones
+              </p>
+              <a
+                href="#cta"
+                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-full bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 hover:text-white transition-all"
+              >
+                Consultar por otro negocio
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* PROCESO - 3 pasos simples */}
       <section id="proceso" className="relative py-24 bg-gradient-to-b from-slate-900/50 to-slate-950">
         <div className="container">
