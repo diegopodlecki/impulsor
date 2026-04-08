@@ -291,7 +291,7 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {RUBROS.map((rubro) => {
               const info = resultados[rubro.slug as keyof typeof resultados];
               if (!info) return null;
@@ -300,59 +300,69 @@ export default function Index() {
                 <a
                   key={rubro.slug}
                   href={rubro.demoUrl}
-                  className="group card-base overflow-hidden hover:border-white/20 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                  className="group block"
                 >
-                  {/* Mockup/Preview Image */}
-                  <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900">
-                    <img
-                      src={rubro.previewImage || `https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop`}
-                      alt={`Landing para ${rubro.nombre}`}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
-                    
-                    {/* Badge */}
-                    {rubro.badge && (
-                      <div className={cn(
-                        "absolute top-3 left-3 rounded-full px-3 py-1 text-xs font-semibold border backdrop-blur-sm",
-                        rubro.badge === "Más elegido" && "border-amber-400/50 bg-amber-500/20 text-amber-300",
-                        rubro.badge === "Nuevo" && "border-emerald-400/50 bg-emerald-500/20 text-emerald-300",
-                        rubro.badge === "Ideal para empezar" && "border-blue-400/50 bg-blue-500/20 text-blue-300"
-                      )}>
-                        {rubro.badge}
+                  {/* Browser Mockup */}
+                  <div className="relative rounded-xl overflow-hidden shadow-2xl shadow-black/50 transition-all duration-500 group-hover:shadow-primary/20 group-hover:scale-[1.02] group-hover:-translate-y-2">
+                    {/* Browser Header */}
+                    <div className="bg-slate-800 px-4 py-3 flex items-center gap-2 border-b border-slate-700">
+                      <div className="flex gap-1.5">
+                        <div className="w-3 h-3 rounded-full bg-red-500" />
+                        <div className="w-3 h-3 rounded-full bg-amber-500" />
+                        <div className="w-3 h-3 rounded-full bg-emerald-500" />
                       </div>
-                    )}
+                      <div className="flex-1 mx-4">
+                        <div className="bg-slate-700/50 rounded-md px-3 py-1 text-xs text-slate-400 truncate">
+                          webappimpulsor.com/{rubro.slug}
+                        </div>
+                      </div>
+                    </div>
                     
-                    {/* Arrow indicator */}
-                    <div className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-primary/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                      <ArrowDown className="h-5 w-5 text-white" />
+                    {/* Preview Image */}
+                    <div className="relative aspect-[16/10] bg-slate-900 overflow-hidden">
+                      <img
+                        src={rubro.previewImage}
+                        alt={`Preview landing para ${rubro.nombre}`}
+                        className="w-full h-full object-cover"
+                      />
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60" />
+                      
+                      {/* Badge */}
+                      {rubro.badge && (
+                        <div className={cn(
+                          "absolute top-3 right-3 rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-md",
+                          rubro.badge === "Más elegido" && "bg-amber-500/90 text-amber-100",
+                          rubro.badge === "Nuevo" && "bg-emerald-500/90 text-emerald-100",
+                          rubro.badge === "Ideal para empezar" && "bg-blue-500/90 text-blue-100"
+                        )}>
+                          {rubro.badge}
+                        </div>
+                      )}
                     </div>
                   </div>
                   
                   {/* Content */}
-                  <div className="p-5 flex flex-col flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-2xl">{rubro.emoji}</span>
-                      <h3 className="text-lg font-bold text-white">
+                  <div className="mt-4 px-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xl">{rubro.emoji}</span>
+                      <h3 className="text-base font-bold text-white">
                         Landing para {rubro.nombre}
                       </h3>
                     </div>
                     
-                    <p className="text-sm text-white/70 mb-4 flex-1 leading-relaxed">
+                    <p className="text-sm text-white/60 leading-relaxed">
                       {info.resultado}
                     </p>
                     
-                    <div className="pt-4 border-t border-white/10">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-emerald-400 font-medium">
-                          {info.beneficio}
-                        </span>
-                        <span className="text-xs text-white/50 flex items-center gap-1 group-hover:text-primary transition-colors">
-                          Ver demo
-                          <ArrowDown className="h-3 w-3 rotate-[-90deg]" />
-                        </span>
-                      </div>
+                    <div className="mt-3 flex items-center justify-between">
+                      <span className="text-xs text-emerald-400 font-medium bg-emerald-500/10 px-3 py-1.5 rounded-full">
+                        {info.beneficio}
+                      </span>
+                      <span className="text-xs text-white/40 group-hover:text-primary transition-colors flex items-center gap-1">
+                        Ver demo
+                        <ArrowDown className="h-3 w-3 rotate-[-90deg]" />
+                      </span>
                     </div>
                   </div>
                 </a>
