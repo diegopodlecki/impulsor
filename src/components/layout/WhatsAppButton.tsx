@@ -162,17 +162,17 @@ export default function WhatsAppButton() {
   return (
     <div
       className={cn(
-        "fixed bottom-6 right-6 z-[80] flex flex-col items-end gap-4 transition-all duration-500 ease-out",
+        "fixed bottom-6 right-6 z-[80] flex flex-col items-end gap-3 transition-all duration-500 ease-out",
         isVisible ? "translate-x-0 translate-y-0 scale-100 opacity-100" : "pointer-events-none translate-x-6 translate-y-6 scale-95 opacity-0",
       )}
     >
       <div
         className={cn(
-          "flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-semibold shadow-[0_10px_30px_-18px_rgba(15,23,42,0.75)] backdrop-blur-sm",
+          "flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold shadow-[0_10px_30px_-18px_rgba(15,23,42,0.75)] backdrop-blur-sm",
           badgeClassName,
         )}
       >
-        <span className={cn("h-2 w-2 rounded-full", isOnline ? "bg-emerald-400" : "bg-white/40")} />
+        <span className={cn("h-2 w-2 rounded-full", isOnline ? "bg-emerald-400 animate-pulse" : "bg-white/40")} />
         {badgeText}
       </div>
 

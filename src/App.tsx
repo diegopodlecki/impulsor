@@ -9,7 +9,6 @@ import PageTracking from "@/components/analytics/PageTracking";
 import { SeoHead } from "@/components/SEO/SeoHead";
 import ProtectedRoute from "@/components/ProtectedRoute.tsx";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
-import ScrollToTopButton from "@/components/layout/ScrollToTopButton";
 const LeadCaptureSystem = lazy(() =>
   import("@/components/leads/LeadCaptureSystem").then((mod) => ({ default: mod.LeadCaptureSystem })),
 );
@@ -92,7 +91,6 @@ function SiteLayout() {
       <Suspense fallback={null}>
         <LeadCaptureSystem />
       </Suspense>
-      <ScrollToTopButton />
       <WhatsAppButton />
       <Suspense fallback={null}>
         <ExitIntentPopup />

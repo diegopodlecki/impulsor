@@ -21,9 +21,9 @@ const STATS = [
 ];
 
 const TRANSFORMATIONS = [
-  { img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=400&fit=crop", name: "Transformación Carlos", result: "-8kg en 60 días" },
-  { img: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&h=400&fit=crop", name: "Transformación María", result: "+5kg músculo" },
-  { img: "https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=600&h=400&fit=crop", name: "Transformación Luca", result: "Bodyfat 18%" },
+  { img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=400&fit=crop", name: "Transformación Carlos", result: "-8kg en 60 días" },
+  { img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=400&fit=crop", name: "Transformación María", result: "+5kg músculo" },
+  { img: "https://images.unsplash.com/photo-1581009146145-b5ef050c149a?w=600&h=400&fit=crop", name: "Transformación Luca", result: "Bodyfat 18%" },
 ];
 
 const TESTIMONIALS = [
