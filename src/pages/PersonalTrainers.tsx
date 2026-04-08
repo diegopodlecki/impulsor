@@ -1,4 +1,4 @@
-import { MessageCircle, CheckCircle, ArrowRight, Target, TrendingUp, Zap, Award, Dumbbell, Flame, Play, Clock, Shield, Star, Users } from 'lucide-react';
+import { MessageCircle, CheckCircle, ArrowRight, Target, TrendingUp, Zap, Award, Dumbbell, Flame, Play, Clock, Shield, Star, Users, Heart, Users2, Sparkles } from 'lucide-react';
 import BeforeAfterSection from '@/components/landings/BeforeAfterSection';
 import PricingSection from '@/components/landings/PricingSection';
 import ClosingSection from '@/components/landings/ClosingSection';
@@ -290,6 +290,60 @@ export default function PersonalTrainers() {
             <span className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-emerald-500" /> Sin costo inicial</span>
             <span className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-emerald-500" /> Soporte incluido</span>
             <span className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-emerald-500" /> Online en 7 días</span>
+          </div>
+        </div>
+      </section>
+
+      {/* DIFFERENTIATOR */}
+      <section className="relative py-24 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 to-slate-950" />
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-cyan-500/10 to-transparent rounded-full blur-[200px]" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-blue-600/10 to-transparent rounded-full blur-[150px]" />
+
+        <div className="container relative z-10">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 text-cyan-400 text-sm font-semibold mb-6">
+              <Sparkles className="w-4 h-4" />
+              Tu diferenciación
+            </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6">
+              No sos <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">un trainer más</span>
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Tu método, tu especialización, tu estilo. Tu web debe mostrar lo que te hace único y atraer a quienes buscan exactamente eso.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-10 max-w-5xl mx-auto">
+            <div className="group text-center p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/30 hover:border-cyan-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-500/20 transition-all">
+                <Target className="h-10 w-10 text-cyan-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">Tu método único</h3>
+              <p className="text-slate-400 text-lg leading-relaxed">
+                Mostrá tu especialización. Paleo, funcional, hiit, bodybuilding. Los alumnos que buscan tu enfoque te van a encontrar.
+              </p>
+            </div>
+
+            <div className="group text-center p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/30 hover:border-cyan-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-500/20 transition-all">
+                <TrendingUp className="h-10 w-10 text-cyan-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">Resultados comprobados</h3>
+              <p className="text-slate-400 text-lg leading-relaxed">
+                Transformaciones reales con permiso. Tu galería de antes/después habla por vos y genera confianza.
+              </p>
+            </div>
+
+            <div className="group text-center p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/30 hover:border-cyan-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-500/20 transition-all">
+                <Heart className="h-10 w-10 text-cyan-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">Tu comunidad</h3>
+              <p className="text-slate-400 text-lg leading-relaxed">
+                Tu estilo de entrenamiento, tu energía, tu filosofía. Los alumnos que conectan con tu vibe se quedan.
+              </p>
+            </div>
           </div>
         </div>
       </section>

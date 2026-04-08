@@ -1,4 +1,4 @@
-import { MessageCircle, CheckCircle, ArrowRight, Dumbbell, Users, Flame, TrendingUp, Target, Zap, Play, Clock, Shield, Star, Award } from 'lucide-react';
+import { MessageCircle, CheckCircle, ArrowRight, Dumbbell, Users, Flame, TrendingUp, Target, Zap, Play, Clock, Shield, Star, Award, Heart, Users2, Sparkles } from 'lucide-react';
 import BeforeAfterSection from '@/components/landings/BeforeAfterSection';
 import PricingSection from '@/components/landings/PricingSection';
 import ClosingSection from '@/components/landings/ClosingSection';
@@ -297,6 +297,60 @@ export default function Gimnasios() {
             <span className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-emerald-500" /> Sin costo inicial</span>
             <span className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-emerald-500" /> Soporte incluido</span>
             <span className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-emerald-500" /> Online en 7 días</span>
+          </div>
+        </div>
+      </section>
+
+      {/* DIFFERENTIATOR */}
+      <section className="relative py-24 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 to-slate-950" />
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-orange-500/10 to-transparent rounded-full blur-[200px]" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-red-600/10 to-transparent rounded-full blur-[150px]" />
+
+        <div className="container relative z-10">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 text-orange-400 text-sm font-semibold mb-6">
+              <Sparkles className="w-4 h-4" />
+              Lo que nos diferencia
+            </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6">
+              Esto no es <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">un gimnasio más</span>
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Cada gimnasio tiene su historia. Tu web debe contar la tuya y atraer a quienes buscan exactamente lo que ofrecés.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-10 max-w-5xl mx-auto">
+            <div className="group text-center p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/30 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-500/20 to-red-500/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all">
+                <Target className="h-10 w-10 text-orange-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">Enfoque personalizado</h3>
+              <p className="text-slate-400 text-lg leading-relaxed">
+                No vendés horas en una máquina. Ofrecés transformación. Mostrá tu método y atraé socios que lo buscan.
+              </p>
+            </div>
+
+            <div className="group text-center p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/30 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-500/20 to-red-500/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all">
+                <Users2 className="h-10 w-10 text-orange-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">Seguimiento real</h3>
+              <p className="text-slate-400 text-lg leading-relaxed">
+                Tus trainers, tu método de evaluación, tus controles. Todo visible para generar confianza antes de que lleguen.
+              </p>
+            </div>
+
+            <div className="group text-center p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/30 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-500/20 to-red-500/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all">
+                <Heart className="h-10 w-10 text-orange-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">Comunidad</h3>
+              <p className="text-slate-400 text-lg leading-relaxed">
+                Más que pesas, construís comunidad. Tu web debe transmitir la energía y el ambiente que tus socios viven.
+              </p>
+            </div>
           </div>
         </div>
       </section>
