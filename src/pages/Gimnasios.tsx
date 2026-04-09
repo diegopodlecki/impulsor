@@ -1,4 +1,4 @@
-import { MessageCircle, CheckCircle, ArrowRight, Dumbbell, Users, Flame, TrendingUp, Target, Zap, Play, Clock, Shield, Star, Award, Heart, Users2, Sparkles } from 'lucide-react';
+import { MessageCircle, CheckCircle, ArrowRight, Dumbbell, Users, Flame, TrendingUp, Target, Zap, Play, Clock, Shield, Star, Award, Heart, Users2, Sparkles, Zap as Lightning, Activity, Flame as Fire } from 'lucide-react';
 import BeforeAfterSection from '@/components/landings/BeforeAfterSection';
 import PricingSection from '@/components/landings/PricingSection';
 import ClosingSection from '@/components/landings/ClosingSection';
@@ -13,64 +13,62 @@ export const metadata: Metadata = {
 const FEATURES = [
   { 
     icon: Users, 
-    title: "Inscripciones 24/7", 
-    desc: "Tu web trabaja mientras vos descansás. Nuevos socios se anotan a cualquier hora.",
-    highlight: "+40% inscripciones"
+    title: "Tu gimnasio disponible 24/7", 
+    desc: "Captando clientes mientras dormís. Sin dependen de Instagram ni publicaciones.",
+    highlight: "+20 socios nuevos/mes"
   },
   { 
-    icon: Dumbbell, 
-    title: "Tu espacio en fotos", 
-    desc: "Mostrá cada rincón de tu gimnasio con imágenes profesionales que generan confianza.",
-    highlight: "Primera impresión perfecta"
+    icon: MessageCircle, 
+    title: "Leads por WhatsApp", 
+    desc: "Cada visita se convierte en un mensaje directo a tu WhatsApp. Sin fricción.",
+    highlight: "3x más consultas"
+  },
+  { 
+    icon: Star, 
+    title: "Imagen profesional", 
+    desc: "Tu gimnasio se ve premium. Los clientes llegan sabiendo que sos serio.",
+    highlight: "Primera impresión top"
   },
   { 
     icon: TrendingUp, 
-    title: "Precios sin misterio", 
-    desc: "Planes y beneficios claros. El socio llega sabiendo qué incluye y se anota directo.",
-    highlight: "0 preguntas por WhatsApp"
-  },
-  { 
-    icon: Flame, 
-    title: "Clases y horarios", 
-    desc: "Yoga, spinning, funcional. Cada clase visible con su horario y descripción.",
-    highlight: "Agenda siempre llena"
+    title: "Más consultas calificadas", 
+    desc: "Gente que ya sabe precios y servicios. Cierras más rápido.",
+    highlight: "0 preguntas repetitivas"
   },
 ];
 
 const WHY_CHOOSE_US = [
-  { icon: Clock, title: "Web en 7 días", desc: "Desde el primer contacto hasta tu web online, en una semana." },
-  { icon: Shield, title: "Sin costos ocultos", desc: "Precio claro desde el inicio. Sin sorpresas ni letra pequeña." },
-  { icon: Star, title: "Diseño profesional", desc: "Tu gimnasio se ve premium, no genérico. Generamos confianza." },
-  { icon: Award, title: "Soporte incluido", desc: "Mantengo tu web actualizada. Vos te enfocás en tus socios." },
-  { icon: TrendingUp, title: "Resultados medibles", desc: "Dashboard con estadísticas de visitas y conversiones." },
-  { icon: MessageCircle, title: "WhatsApp directo", desc: "Integración perfecta para que te contacten al instante." },
+  { icon: Clock, title: "Online en 7 días", desc: "Tu web lista para captar clientes desde el día 8." },
+  { icon: Shield, title: "Sin sorpresas", desc: "Precio fijo. Sin costos ocultos ni letra pequeña." },
+  { icon: Star, title: "Imagen premium", desc: "Tu gimnasio se ve de lujo, no genérico." },
+  { icon: Award, title: "Soporte incluido", desc: "Mantengo todo actualizado. Vos entrenás." },
+  { icon: TrendingUp, title: "Resultados medibles", desc: "Ve cuántos leads llegan por día." },
+  { icon: MessageCircle, title: "WhatsApp directo", desc: "Cada lead te llega al bolsillo." },
 ];
 
 const PRICING_GIMNASIOS = [
   {
     name: "Básico",
-    price: "$297 USD",
+    price: "$297",
     description: "Ideal para empezar",
     features: [
-      "Landing page profesional",
-      "Diseño responsive",
-      "WhatsApp integrado",
-      "Galería de fotos",
-      "Horarios y precios",
+      "Tu gimnasio disponible 24/7",
+      "Leads por WhatsApp",
+      "Galería de fotos profesional",
+      "Precios y horarios claros",
       "1 mes de hosting",
     ],
     cta: "Elegir Básico",
   },
   {
     name: "Profesional",
-    price: "$497 USD",
+    price: "$497",
     description: "El más elegido",
     features: [
       "Todo lo de Básico",
-      "SEO optimizado",
-      "Google Analytics",
-      "Dominio propio",
-      "Formulario de contacto",
+      "Aparecés en Google",
+      "Estadísticas de visitas",
+      "Dominio propio (tugym.com)",
       "6 meses de hosting",
     ],
     cta: "Elegir Profesional",
@@ -78,14 +76,13 @@ const PRICING_GIMNASIOS = [
   },
   {
     name: "Premium",
-    price: "$797 USD",
+    price: "$797",
     description: "Máximo impacto",
     features: [
       "Todo lo de Profesional",
-      "Blog integrado",
       "Sistema de reservas",
       "CRM de clientes",
-      "Copywriting profesional",
+      "Blog para SEO",
       "12 meses de hosting",
     ],
     cta: "Elegir Premium",
@@ -99,32 +96,32 @@ const STATS = [
 ];
 
 const GALLERY = [
-  { img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop", title: "Área de pesas" },
-  { img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=600&fit=crop", title: "Zona cardio" },
-  { img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=600&fit=crop", title: "Clases grupales" },
-  { img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop", title: "Entrenamiento" },
+  { img: "https://images.unsplash.com/photo-1581009146145-b5ef050c149a?w=800&h=600&fit=crop", title: "Área de pesas" },
+  { img: "https://images.unsplash.com/photo-1534367507873-d2d7e24c797f?w=800&h=600&fit=crop", title: "Entrenamiento funcional" },
+  { img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&h=600&fit=crop", title: "Clases grupales" },
+  { img: "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&h=600&fit=crop", title: "Zona cardio" },
 ];
 
 const BEFORE_AFTER = [
   {
-    before: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=800&fit=crop&q=80",
-    after: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=800&fit=crop&q=80",
+    before: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=800&fit=crop&q=80",
+    after: "https://images.unsplash.com/photo-1581009146145-b5ef050c149a?w=600&h=800&fit=crop&q=80",
     name: "FitLife Centro Fitness",
-    result: "+180% increase in membership inquiries within 30 days of launch",
+    result: "+180% más consultas de nuevos socios",
     timeframe: "30 días",
   },
   {
-    before: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600&h=800&fit=crop&q=80",
-    after: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=800&fit=crop&q=80",
+    before: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=800&fit=crop&q=80",
+    after: "https://images.unsplash.com/photo-1534367507873-d2d7e24c797f?w=600&h=800&fit=crop&q=80",
     name: "Iron Club Gym",
-    result: "Website became the #1 source of new member acquisition",
+    result: "Web se convirtió en la #1 fuente de nuevos socios",
     timeframe: "60 días",
   },
   {
     before: "https://images.unsplash.com/photo-1517960019194-c5c2e6e2e9b5?w=600&h=800&fit=crop&q=80",
-    after: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=800&fit=crop&q=80",
+    after: "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=600&h=800&fit=crop&q=80",
     name: "PowerFlex Academia",
-    result: "Reduced phone inquiries by 60% while doubling overall leads",
+    result: "Reducimos consultas repetitivas un 60%",
     timeframe: "45 días",
   },
 ];
@@ -135,6 +132,7 @@ const TESTIMONIALS = [
     author: "Marcelo Gómez",
     role: "Dueño · Gym Zone",
     result: "+167% socios",
+    metric: "De 45 a 120 socios",
     avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&q=80",
   },
   {
@@ -142,6 +140,7 @@ const TESTIMONIALS = [
     author: "Carlos Ruiz",
     role: "Gerente · Fit Center",
     result: "-60% consultas",
+    metric: "0 preguntas repetitivas",
     avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&q=80",
   },
   {
@@ -149,8 +148,15 @@ const TESTIMONIALS = [
     author: "Ana Martínez",
     role: "Propietaria · Pulse Fitness",
     result: "Top 3 en Google",
+    metric: "1er lugar local",
     avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&q=80",
   },
+];
+
+const TRUST_BADGES = [
+  { value: "50+", label: "Gimnasios confían en nosotros" },
+  { value: "4.9", label: "Calificación promedio" },
+  { value: "24h", label: "Soporte respuesta" },
 ];
 
 const PROCESS = [
@@ -168,12 +174,12 @@ export default function Gimnasios() {
           <div className="container">
             <div className="flex items-center justify-between h-20 py-5">
               <a href="/" className="flex items-center gap-3 group">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center shadow-lg shadow-orange-500/30 group-hover:scale-105 transition-transform">
-                  <span className="text-white font-bold text-2xl">W</span>
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/30 group-hover:scale-105 transition-transform">
+                  <Dumbbell className="h-6 w-6 text-white" />
                 </div>
                 <span className="text-white font-bold text-xl tracking-tight">webappimpulsor</span>
               </a>
-              <a href="#contacto" className="px-6 py-3 text-sm font-semibold rounded-full bg-gradient-to-r from-orange-500 to-red-600 text-white hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30 transition-all">
+              <a href="#contacto" className="px-6 py-3 text-sm font-semibold rounded-full bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:scale-105 hover:shadow-lg hover:shadow-green-500/30 transition-all">
                 Quiero mi web
               </a>
             </div>
@@ -181,123 +187,116 @@ export default function Gimnasios() {
         </div>
       </header>
 
-      {/* HERO - GYM STYLE: Dark, energetic, bold */}
+      {/* HERO - CLIENT ACQUISITION FOCUS */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Animated gradient background */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
           <img 
             src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&h=1080&fit=crop&q=85" 
-            alt="Gimnasio" 
-            className="w-full h-full object-cover opacity-40"
+            alt="Gimnasio moderno con equipamiento de entrenamiento" 
+            className="w-full h-full object-cover opacity-30"
             onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1920&h=1080&fit=crop'; }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/70" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/30" />
-          {/* Energy glow effects */}
-          <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-orange-500/30 to-red-600/10 rounded-full blur-[180px] animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-red-500/20 to-transparent rounded-full blur-[120px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-950/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50" />
+          {/* Energy glow effects - green theme */}
+          <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-green-500/30 to-emerald-600/10 rounded-full blur-[180px] animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-emerald-500/20 to-transparent rounded-full blur-[120px]" />
+          <div className="absolute top-1/3 left-1/4 w-[300px] h-[300px] bg-gradient-to-br from-lime-500/10 to-transparent rounded-full blur-[100px]" />
         </div>
 
         <div className="container relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="max-w-2xl">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-400 text-sm font-bold mb-8">
-                <Dumbbell className="h-4 w-4" />
-                Solución para Gimnasios
-              </div>
-
-              {/* Headline */}
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] mb-6">
-                <span className="text-white">Tu gimnasio,</span>
-                <br />
-                <span className="bg-gradient-to-r from-orange-400 via-red-400 to-amber-500 bg-clip-text text-transparent">
-                  imparable
-                </span>
-              </h1>
-
-              {/* Subtitle */}
-              <p className="text-xl text-slate-300 max-w-xl mb-8 leading-relaxed">
-                Web profesional que trabaja <span className="text-orange-400 font-bold">24/7</span> inscribiendo socios. 
-                Tu espacio, precios y clases visibles para quien busca fitness de calidad.
-              </p>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                <a href="#contacto" className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-2xl shadow-orange-500/30 hover:scale-[1.02] transition-all">
-                  <Flame className="h-5 w-5" />
-                  Empezar ahora
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </a>
-                <a href="#ver-ejemplo" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
-                  <Play className="h-5 w-5" />
-                  Ver ejemplo
-                </a>
-              </div>
+          <div className="max-w-3xl mx-auto text-center">
+            {/* Urgency badge - green style */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 border border-green-500/30 text-green-400 text-sm font-bold mb-8">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              Solo 3 lugares este mes
             </div>
 
-            {/* Stats Panel - Right side */}
-            <div className="hidden lg:block">
-              <div className="relative">
-                {/* Floating cards with energy */}
-                <div className="grid grid-cols-2 gap-4">
-                  {STATS.map((stat, idx) => (
-                    <div key={idx} className="p-6 rounded-2xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-orange-500/20 hover:border-orange-500/40 transition-all hover:scale-105">
-                      <div className="text-4xl font-black bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent mb-2">
-                        {stat.value}
-                      </div>
-                      <div className="text-sm text-slate-400">{stat.label}</div>
-                    </div>
-                  ))}
-                </div>
-                <div className="absolute -top-4 -right-4 p-4 rounded-xl bg-gradient-to-br from-orange-500 to-red-600 shadow-2xl shadow-orange-500/30 animate-bounce">
-                  <TrendingUp className="h-6 w-6 text-white" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            {/* Headline - Client acquisition focus */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] mb-6">
+              <span className="text-white">Consigue más clientes para tu gimnasio</span>
+              <br />
+              <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-lime-400 bg-clip-text text-transparent">
+                sin depender de Instagram
+              </span>
+            </h1>
+
+            {/* Subheadline - Clear value prop */}
+            <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+              Landing profesional + sistema de contacto automático por WhatsApp diseñado para convertir visitas en alumnos.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+              <a href="#contacto" className="group inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-2xl shadow-green-500/30 hover:scale-[1.02] transition-all">
+                <TrendingUp className="h-6 w-6" />
+                Quiero más clientes
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20más%20clientes%20para%20mi%20gimnasio" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
+                <MessageCircle className="h-6 w-6" />
+                Hablar por WhatsApp
               </a>
             </div>
 
-            {/* Mini prueba social */}
-            <div className="flex items-center gap-4">
-              <div className="flex -space-x-3">
-                {[
-                  "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop",
-                  "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop",
-                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-                ].map((src, idx) => (
-                  <img 
-                    key={idx}
-                    src={src}
-                    alt="Cliente"
-                    className="w-12 h-12 rounded-full border-2 border-slate-950 object-cover"
-                  />
-                ))}
-              </div>
-              <div>
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4 text-orange-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-sm text-slate-400">+100 gimnasios nos eligieron</p>
-              </div>
-            </div>
+            {/* Trust line */}
+            <p className="text-slate-400 text-sm flex items-center justify-center gap-2">
+              <CheckCircle className="h-4 w-4 text-green-400" />
+              Configuración rápida, sin conocimientos técnicos
+            </p>
           </div>
         </div>
+      </section>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-xs text-slate-500 uppercase tracking-wider">Scroll</span>
-            <div className="w-6 h-10 rounded-full border-2 border-white/20 flex justify-center pt-2">
-              <div className="w-1 h-3 bg-white/50 rounded-full animate-pulse" />
+      {/* PAIN POINTS - Owner problems */}
+      <section className="relative py-20 bg-gradient-to-b from-slate-900 to-slate-950">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              ¿Te suena familiar?
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50">
+              <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                <svg className="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-bold text-white mb-2">Publicas en Instagram pero no llegan clientes</h3>
+                <p className="text-slate-400 text-sm">El alcance baja, el algoritmo cambia. Tiempo perdido.</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50">
+              <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                <svg className="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-bold text-white mb-2">Dependes de mensajes manuales</h3>
+                <p className="text-slate-400 text-sm">Respuestas una y otra vez. "Cuánto cuesta?", "Qué incluye?"</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50">
+              <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                <svg className="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-bold text-white mb-2">No tienes presencia profesional</h3>
+                <p className="text-slate-400 text-sm">Tu negocio existe pero nadie te encuentra en Google.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -314,20 +313,40 @@ export default function Gimnasios() {
         </div>
       </section>
 
+      {/* CTA #1 - After Pain Points */}
+      <section className="py-16 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-y border-green-500/20">
+        <div className="container text-center">
+          <h3 className="text-2xl font-bold text-white mb-3">
+            Tu gimnasio merece ser encontrado
+          </h3>
+          <p className="text-slate-300 mb-6">Empezá hoy, tenés web mañana</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#contacto" className="group inline-flex items-center justify-center gap-3 px-10 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-xl shadow-green-500/30 hover:scale-[1.02] transition-all">
+              Quiero más clientes
+              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20mi%20web%20para%20gimnasio" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
+              <MessageCircle className="h-5 w-5" />
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* DIFFERENTIATOR */}
       <section className="relative py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 to-slate-950" />
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-orange-500/10 to-transparent rounded-full blur-[200px]" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-red-600/10 to-transparent rounded-full blur-[150px]" />
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-green-500/10 to-transparent rounded-full blur-[200px]" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-emerald-600/10 to-transparent rounded-full blur-[150px]" />
 
         <div className="container relative z-10">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 text-orange-400 text-sm font-semibold mb-6">
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 text-green-400 text-sm font-semibold mb-6">
               <Sparkles className="w-4 h-4" />
               Lo que nos diferencia
             </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6">
-              Esto no es <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">un gimnasio más</span>
+              Esto no es <span className="bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">un gimnasio más</span>
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
               Cada gimnasio tiene su historia. Tu web debe contar la tuya y atraer a quienes buscan exactamente lo que ofrecés.
@@ -335,9 +354,9 @@ export default function Gimnasios() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 lg:gap-10 max-w-5xl mx-auto">
-            <div className="group text-center p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/30 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-500/20 to-red-500/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all">
-                <Target className="h-10 w-10 text-orange-400" />
+            <div className="group text-center p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/30 hover:border-green-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-green-500/20 transition-all">
+                <Target className="h-10 w-10 text-green-400" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Enfoque personalizado</h3>
               <p className="text-slate-400 text-lg leading-relaxed">
@@ -345,9 +364,9 @@ export default function Gimnasios() {
               </p>
             </div>
 
-            <div className="group text-center p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/30 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-500/20 to-red-500/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all">
-                <Users2 className="h-10 w-10 text-orange-400" />
+            <div className="group text-center p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/30 hover:border-green-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-green-500/20 transition-all">
+                <Users2 className="h-10 w-10 text-green-400" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Seguimiento real</h3>
               <p className="text-slate-400 text-lg leading-relaxed">
@@ -355,9 +374,9 @@ export default function Gimnasios() {
               </p>
             </div>
 
-            <div className="group text-center p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/30 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-500/20 to-red-500/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all">
-                <Heart className="h-10 w-10 text-orange-400" />
+            <div className="group text-center p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/30 hover:border-green-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-green-500/20 transition-all">
+                <Heart className="h-10 w-10 text-green-400" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Comunidad</h3>
               <p className="text-slate-400 text-lg leading-relaxed">
@@ -368,13 +387,33 @@ export default function Gimnasios() {
         </div>
       </section>
 
+      {/* CTA #2 - After Differentiator */}
+      <section className="py-16 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-y border-green-500/20">
+        <div className="container text-center">
+          <h3 className="text-2xl font-bold text-white mb-3">
+            Tu web, tu forma de captar clientes
+          </h3>
+          <p className="text-slate-300 mb-6">Sin depender de algoritmos ni publicaciones</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#contacto" className="group inline-flex items-center justify-center gap-3 px-10 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-xl shadow-green-500/30 hover:scale-[1.02] transition-all">
+              Quiero mi web
+              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20mi%20web%20para%20gimnasio" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
+              <MessageCircle className="h-5 w-5" />
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* FEATURES */}
       <section className="relative py-32 lg:py-40">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 to-slate-900" />
         <div className="container relative">
           <div className="text-center mb-20">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              Resultados que <span className="text-orange-400">tu web genera</span>
+              Resultados que <span className="text-green-400">tu web genera</span>
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
               Cada feature está diseñada para atraer y convertir socios
@@ -383,14 +422,14 @@ export default function Gimnasios() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {FEATURES.map((feature, idx) => (
-              <div key={idx} className="group relative p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 hover:border-orange-500/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500">
+              <div key={idx} className="group relative p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 hover:border-green-500/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-500">
                 <div className="absolute top-4 right-4">
-                  <span className="px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold">
+                  <span className="px-3 py-1.5 rounded-full bg-green-500/20 text-green-400 text-xs font-bold">
                     {feature.highlight}
                   </span>
                 </div>
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500/20 to-red-500/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all">
-                  <feature.icon className="h-8 w-8 text-orange-400" />
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-green-500/20 transition-all">
+                  <feature.icon className="h-8 w-8 text-green-400" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
                 <p className="text-slate-400 leading-relaxed">{feature.desc}</p>
@@ -400,14 +439,34 @@ export default function Gimnasios() {
         </div>
       </section>
 
+      {/* CTA #3 - After Features */}
+      <section className="py-16 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-y border-green-500/20">
+        <div className="container text-center">
+          <h3 className="text-2xl font-bold text-white mb-3">
+            Empezá a captar socios automáticamente
+          </h3>
+          <p className="text-slate-300 mb-6">Tu web trabaja 24/7 mientras vos entrenás</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#contacto" className="group inline-flex items-center justify-center gap-3 px-10 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-xl shadow-green-500/30 hover:scale-[1.02] transition-all">
+              Quiero más clientes
+              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20información%20para%20mi%20gimnasio" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
+              <MessageCircle className="h-5 w-5" />
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* WHY CHOOSE US */}
       <section className="relative py-24 lg:py-32 bg-gradient-to-b from-slate-950 via-slate-900/50 to-slate-950">
         <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-orange-500/10 to-red-500/5 rounded-full blur-[150px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-green-500/10 to-emerald-500/5 rounded-full blur-[150px]" />
         </div>
         <div className="container relative z-10">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/15 border border-orange-500/25 text-orange-400 text-sm font-semibold mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/15 border border-green-500/25 text-green-400 text-sm font-semibold mb-6">
               <Award className="w-4 h-4" />
               Por qué elegirnos
             </div>
@@ -421,9 +480,9 @@ export default function Gimnasios() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
             {WHY_CHOOSE_US.map((item, idx) => (
-              <div key={idx} className="group text-center p-6 rounded-2xl bg-slate-800/40 border border-slate-700/30 hover:border-orange-500/30 hover:bg-slate-800/60 transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500/20 to-red-500/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all">
-                  <item.icon className="h-6 w-6 text-orange-400" />
+              <div key={idx} className="group text-center p-6 rounded-2xl bg-slate-800/40 border border-slate-700/30 hover:border-green-500/30 hover:bg-slate-800/60 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-green-500/20 transition-all">
+                  <item.icon className="h-6 w-6 text-green-400" />
                 </div>
                 <h3 className="font-bold text-white text-sm mb-2">{item.title}</h3>
                 <p className="text-slate-400 text-xs leading-relaxed">{item.desc}</p>
@@ -432,11 +491,11 @@ export default function Gimnasios() {
           </div>
 
           {/* Mid-page CTA */}
-          <div className="mt-16 text-center max-w-2xl mx-auto p-8 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-orange-500/20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-medium mb-4">
+          <div className="mt-16 text-center max-w-2xl mx-auto p-8 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-green-500/20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium mb-4">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
               Solo 3 lugares este mes
             </div>
@@ -446,7 +505,7 @@ export default function Gimnasios() {
             <p className="text-white/60 mb-6">
               Primera consulta gratis. Sin compromiso. Respondemos en menos de 2 horas.
             </p>
-            <a href="#contacto" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-xl shadow-orange-500/25 hover:scale-105 transition-all">
+            <a href="#contacto" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-xl shadow-green-500/25 hover:scale-105 transition-all">
               <MessageCircle className="h-5 w-5" />
               Quiero mi web
             </a>
@@ -466,7 +525,7 @@ export default function Gimnasios() {
           <div className="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
             {PROCESS.map((step, idx) => (
               <div key={idx} className="relative text-center">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-orange-500 to-red-600 text-white text-2xl font-black flex items-center justify-center mx-auto mb-8 shadow-lg shadow-orange-500/30">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 text-white text-2xl font-black flex items-center justify-center mx-auto mb-8 shadow-lg shadow-green-500/30">
                   {step.num}
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">{step.title}</h3>
@@ -483,7 +542,7 @@ export default function Gimnasios() {
         <div className="container relative">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
-              Así se ve tu <span className="text-orange-400">web</span>
+              Así se ve tu <span className="text-green-400">web</span>
             </h2>
           </div>
 
@@ -492,11 +551,11 @@ export default function Gimnasios() {
               <div key={idx} className="flex-shrink-0 w-[380px] snap-center">
                 <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-700/50 group">
                   <div className="relative overflow-hidden">
-                    <img src={item.img} alt={item.title} className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <img src={item.img} alt={item.title} className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700" onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop'; }} />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4">
                       <div className="flex items-center gap-2">
-                        <Dumbbell className="h-5 w-5 text-orange-400" />
+                        <Dumbbell className="h-5 w-5 text-green-400" />
                         <p className="font-semibold text-white text-lg">{item.title}</p>
                       </div>
                     </div>
@@ -512,36 +571,84 @@ export default function Gimnasios() {
         title="Resultados que hablan por sí solos"
         subtitle="Negocios como el tuyo que ya transformaron su presencia online"
         items={BEFORE_AFTER}
-        accentColor="orange"
+        accentColor="green"
       />
 
+      {/* CTA #4 - After Before/After */}
+      <section className="py-16 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-y border-green-500/20">
+        <div className="container text-center">
+          <h3 className="text-2xl font-bold text-white mb-3">
+            Tu gimnasio puede ser el siguiente
+          </h3>
+          <p className="text-slate-300 mb-6">Ve los resultados de otros gimansios como el tuyo</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#contacto" className="group inline-flex items-center justify-center gap-3 px-10 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-xl shadow-green-500/30 hover:scale-[1.02] transition-all">
+              Quiero resultados
+              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20mi%20web%20para%20gimnasio" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
+              <MessageCircle className="h-5 w-5" />
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* TESTIMONIALS */}
-      <section className="relative py-32 lg:py-40">
+      <section className="relative py-32 lg:py-40 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 to-slate-900" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-green-500/5 to-transparent rounded-full blur-[100px]" />
+        
         <div className="container relative">
+          {/* Trust badges */}
+          <div className="flex flex-wrap justify-center gap-8 lg:gap-16 mb-16">
+            {TRUST_BADGES.map((badge, idx) => (
+              <div key={idx} className="text-center">
+                <div className="text-4xl lg:text-5xl font-black text-green-400 mb-1">{badge.value}</div>
+                <div className="text-sm text-slate-400">{badge.label}</div>
+              </div>
+            ))}
+          </div>
+
           <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-1 mb-4">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+              ))}
+            </div>
             <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
-              Resultados que <span className="text-orange-400">hablan solos</span>
+              Lo que dicen nuestros <span className="text-green-400">clientes</span>
             </h2>
             <p className="text-xl text-slate-400">
-              Gimnasios que transformaron su presencia online
+              Dueños de gimnasios que ya transformaron su negocio
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {TESTIMONIALS.map((item, idx) => (
-              <div key={idx} className="group relative p-8 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 hover:border-orange-500/30 hover:-translate-y-1 transition-all">
-                <div className="absolute top-4 right-4">
-                  <span className="px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold">
-                    {item.result}
-                  </span>
+              <div key={idx} className="group relative p-8 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 hover:border-green-500/30 hover:-translate-y-1 transition-all">
+                {/* Quote icon */}
+                <div className="absolute top-6 right-6 opacity-20">
+                  <svg className="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                  </svg>
                 </div>
-                <p className="text-slate-300 text-lg leading-relaxed mb-8">&ldquo;{item.quote}&rdquo;</p>
-                <div className="flex items-center gap-4">
+
+                {/* Result badge */}
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/20 text-green-400 text-xs font-bold mb-4">
+                  <TrendingUp className="w-3 h-3" />
+                  {item.metric}
+                </div>
+
+                {/* Quote */}
+                <p className="text-slate-300 text-lg leading-relaxed mb-6">&ldquo;{item.quote}&rdquo;</p>
+
+                {/* Author */}
+                <div className="flex items-center gap-4 pt-4 border-t border-slate-700/50">
                   <img 
                     src={item.avatar} 
                     alt={item.author} 
-                    className="w-12 h-12 rounded-full object-cover border-2 border-orange-500/30"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-green-500/30"
                   />
                   <div>
                     <p className="font-bold text-white">{item.author}</p>
@@ -551,6 +658,33 @@ export default function Gimnasios() {
               </div>
             ))}
           </div>
+
+          {/* Social proof line */}
+          <div className="mt-12 text-center">
+            <p className="text-slate-500 text-sm">
+              <span className="text-green-400 font-semibold">+50 gimnasios</span> en Latinoamérica ya confían en webappimpulsor
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA #5 - After Testimonials */}
+      <section className="py-16 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-y border-green-500/20">
+        <div className="container text-center">
+          <h3 className="text-2xl font-bold text-white mb-3">
+            Unite a gimansios que ya están llenando
+          </h3>
+          <p className="text-slate-300 mb-6">+20 socios nuevos por mes es posible</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#planes" className="group inline-flex items-center justify-center gap-3 px-10 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-xl shadow-green-500/30 hover:scale-[1.02] transition-all">
+              Ver planes
+              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20empezar%20con%20mi%20web" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
+              <MessageCircle className="h-5 w-5" />
+              WhatsApp
+            </a>
+          </div>
         </div>
       </section>
 
@@ -559,7 +693,7 @@ export default function Gimnasios() {
           title="Planes simples para tu gimnasio"
           subtitle="Elegí el que mejor se adapte a tus necesidades"
           plans={PRICING_GIMNASIOS}
-          accentColor="orange"
+          accentColor="green"
         />
       </section>
 
@@ -567,7 +701,7 @@ export default function Gimnasios() {
         title="No esperes más para llenar tu gimnasio"
         subtitle="Tu web trabaja 24/7 inscribiendo socios mientras vos te enfocas en entrenar"
         ctaText="Empezar hoy"
-        accentColor="orange"
+        accentColor="green"
       />
 
       {/* FOOTER */}
