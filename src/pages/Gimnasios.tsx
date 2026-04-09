@@ -14,34 +14,34 @@ const FEATURES = [
   { 
     icon: Users, 
     title: "Tu gimnasio disponible 24/7", 
-    desc: "Captando clientes mientras dormís. Sin dependen de Instagram ni publicaciones.",
-    highlight: "+20 socios nuevos/mes"
+    desc: "Leads llegan solos mientras dormís.",
+    highlight: "+20 socios/mes"
   },
   { 
     icon: MessageCircle, 
     title: "Leads por WhatsApp", 
-    desc: "Cada visita se convierte en un mensaje directo a tu WhatsApp. Sin fricción.",
+    desc: "Cada visita se convierte en contacto directo.",
     highlight: "3x más consultas"
   },
   { 
     icon: Star, 
     title: "Imagen profesional", 
-    desc: "Tu gimnasio se ve premium. Los clientes llegan sabiendo que sos serio.",
-    highlight: "Primera impresión top"
+    desc: "Tu gimnasio se ve premium desde el primer click.",
+    highlight: "Top 3 Google"
   },
   { 
     icon: TrendingUp, 
     title: "Más consultas calificadas", 
-    desc: "Gente que ya sabe precios y servicios. Cierras más rápido.",
-    highlight: "0 preguntas repetitivas"
+    desc: "Gente que ya sabe precios. Cierras más rápido.",
+    highlight: "0 preguntas"
   },
 ];
 
 const WHY_CHOOSE_US = [
-  { icon: Clock, title: "Online en 7 días", desc: "Tu web lista para captar clientes desde el día 8." },
-  { icon: Shield, title: "Sin sorpresas", desc: "Precio fijo. Sin costos ocultos ni letra pequeña." },
-  { icon: Star, title: "Imagen premium", desc: "Tu gimnasio se ve de lujo, no genérico." },
-  { icon: Award, title: "Soporte incluido", desc: "Mantengo todo actualizado. Vos entrenás." },
+  { icon: Clock, title: "Online en 7 días", desc: "Tu web lista desde el día 8." },
+  { icon: Shield, title: "Sin sorpresas", desc: "Precio fijo. Sin costos ocultos." },
+  { icon: Star, title: "Imagen premium", desc: "Tu gimnasio se ve de lujo." },
+  { icon: Award, title: "Soporte incluido", desc: "Todo actualizado. Vos entrenás." },
   { icon: TrendingUp, title: "Resultados medibles", desc: "Ve cuántos leads llegan por día." },
   { icon: MessageCircle, title: "WhatsApp directo", desc: "Cada lead te llega al bolsillo." },
 ];
@@ -187,116 +187,405 @@ export default function Gimnasios() {
         </div>
       </header>
 
-      {/* HERO - CLIENT ACQUISITION FOCUS */}
+      {/* HERO - AGGRESSIVE & OUTCOME-DRIVEN */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Animated gradient background */}
+        {/* Background */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
           <img 
             src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&h=1080&fit=crop&q=85" 
             alt="Gimnasio moderno con equipamiento de entrenamiento" 
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-25"
             onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1920&h=1080&fit=crop'; }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-950/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/70" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50" />
-          {/* Energy glow effects - green theme */}
+          {/* Energy glows - green theme */}
           <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-green-500/30 to-emerald-600/10 rounded-full blur-[180px] animate-pulse" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-emerald-500/20 to-transparent rounded-full blur-[120px]" />
-          <div className="absolute top-1/3 left-1/4 w-[300px] h-[300px] bg-gradient-to-br from-lime-500/10 to-transparent rounded-full blur-[100px]" />
         </div>
 
         <div className="container relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            {/* Urgency badge - green style */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 border border-green-500/30 text-green-400 text-sm font-bold mb-8">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-              </span>
-              Solo 3 lugares este mes
-            </div>
-
-            {/* Headline - Client acquisition focus */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] mb-6">
-              <span className="text-white">Consigue más clientes para tu gimnasio</span>
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Problem headline - creates tension */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight leading-[1.1] mb-8">
+              <span className="text-white">Si tu gimnasio no consigue clientes todos los días,</span>
               <br />
-              <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-lime-400 bg-clip-text text-transparent">
-                sin depender de Instagram
+              <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+                estás perdiendo dinero
               </span>
             </h1>
 
-            {/* Subheadline - Clear value prop */}
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-              Landing profesional + sistema de contacto automático por WhatsApp diseñado para convertir visitas en alumnos.
+            {/* Solution subheadline */}
+            <p className="text-xl sm:text-2xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+              Creamos sistemas simples que convierten visitas en alumnos usando landing pages + WhatsApp automatizado
             </p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-              <a href="#contacto" className="group inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-2xl shadow-green-500/30 hover:scale-[1.02] transition-all">
+              <a href="#contacto" className="group inline-flex items-center justify-center gap-3 px-12 py-5 text-lg font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-2xl shadow-green-500/40 hover:scale-[1.02] transition-all">
                 <TrendingUp className="h-6 w-6" />
-                Quiero más clientes
+                Quiero más alumnos
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20más%20clientes%20para%20mi%20gimnasio" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
+              <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20más%20alumnos%20para%20mi%20gimnasio" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
                 <MessageCircle className="h-6 w-6" />
                 Hablar por WhatsApp
               </a>
             </div>
 
-            {/* Trust line */}
-            <p className="text-slate-400 text-sm flex items-center justify-center gap-2">
+            {/* Reassurance line */}
+            <p className="text-slate-400 text-base flex items-center justify-center gap-2">
               <CheckCircle className="h-4 w-4 text-green-400" />
-              Configuración rápida, sin conocimientos técnicos
+              Sin sistemas complicados. Sin perder tiempo.
             </p>
           </div>
         </div>
       </section>
 
-      {/* PAIN POINTS - Owner problems */}
-      <section className="relative py-20 bg-gradient-to-b from-slate-900 to-slate-950">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              ¿Te suena familiar?
+      {/* CÓMO FUNCIONA - SYSTEM OVERVIEW */}
+      <section className="relative py-32 lg:py-40 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/30 to-slate-950" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-green-500/10 to-transparent rounded-full blur-[150px]" />
+        
+        <div className="container relative z-10">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/15 border border-green-500/25 text-green-400 text-sm font-semibold mb-6">
+              <Zap className="w-4 h-4" />
+              El sistema
+            </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+              Cómo funciona el <span className="text-green-400">sistema</span>
             </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              3 pasos para conseguir alumnos en piloto automático
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="flex items-start gap-4 p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50">
-              <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center flex-shrink-0">
-                <svg className="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-12 max-w-5xl mx-auto">
+            {/* Step 1 */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-emerald-500/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 border border-slate-700/50 hover:border-green-500/30 transition-all duration-500">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/30">
+                    <span className="text-white font-black text-xl">1</span>
+                  </div>
+                  <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center">
+                    <Target className="w-6 h-6 text-green-400" />
+                  </div>
+                </div>
+                <h3 className="text-2xl font-black text-white mb-3">Atraes visitas</h3>
+                <p className="text-slate-400 leading-relaxed">
+                  Landing optimizada para Google. Sin depender de redes sociales.
+                </p>
+                <div className="mt-6 pt-6 border-t border-slate-700/50">
+                  <div className="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Tu gimnasio visible 24/7</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Connector arrow */}
+            <div className="hidden md:flex absolute top-1/2 left-1/3 items-center justify-center z-10">
+              <div className="w-24 h-0.5 bg-gradient-to-r from-green-500/50 to-transparent" />
+            </div>
+
+            {/* Step 2 */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-emerald-500/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 border border-slate-700/50 hover:border-green-500/30 transition-all duration-500">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/30">
+                    <span className="text-white font-black text-xl">2</span>
+                  </div>
+                  <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center">
+                    <MessageCircle className="w-6 h-6 text-green-400" />
+                  </div>
+                </div>
+                <h3 className="text-2xl font-black text-white mb-3">Captas contactos</h3>
+                <p className="text-slate-400 leading-relaxed">
+                  Cada visita se convierte en mensaje directo a tu WhatsApp.
+                </p>
+                <div className="mt-6 pt-6 border-t border-slate-700/50">
+                  <div className="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Leads llegan solos</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-emerald-500/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 border border-slate-700/50 hover:border-green-500/30 transition-all duration-500">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/30">
+                    <span className="text-white font-black text-xl">3</span>
+                  </div>
+                  <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center">
+                    <TrendingUp className="w-6 h-6 text-green-400" />
+                  </div>
+                </div>
+                <h3 className="text-2xl font-black text-white mb-3">Conviertes en alumnos</h3>
+                <p className="text-slate-400 leading-relaxed">
+                  Seguimiento simple. Cada lead tiene la info para anotarse.
+                </p>
+                <div className="mt-6 pt-6 border-t border-slate-700/50">
+                  <div className="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Más inscriptos</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Result highlight */}
+          <div className="mt-20 text-center">
+            <div className="inline-flex items-center gap-4 px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50">
+              <div className="text-3xl font-black text-green-400">+167%</div>
+              <div className="text-left">
+                <div className="text-white font-bold">socios nuevos en 6 meses</div>
+                <div className="text-slate-400 text-sm">Promedio de nuestros clientes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PAIN POINTS - Deep identification */}
+      <section className="relative py-32 lg:py-40 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 to-slate-900" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-b from-red-500/10 to-transparent rounded-full blur-[100px]" />
+        
+        <div className="container relative z-10">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-semibold mb-6">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              El problema real
+            </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+              ¿Te suena <span className="text-red-400">demasiado familiar</span>?
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Problemas que vemos todos los días en gimnasios sin sistema
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* Pain 1 */}
+            <div className="flex items-start gap-5 p-8 rounded-2xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-red-500/20 hover:border-red-500/40 transition-all">
+              <div className="w-14 h-14 rounded-xl bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                <svg className="w-7 h-7 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-bold text-white mb-2">Publicas en Instagram pero no llegan clientes</h3>
-                <p className="text-slate-400 text-sm">El alcance baja, el algoritmo cambia. Tiempo perdido.</p>
+                <h3 className="text-xl font-black text-white mb-2">Dependes de Instagram para clientes</h3>
+                <p className="text-slate-400">El algoritmo decide. Tu competencia sigue creciendo.</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50">
-              <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center flex-shrink-0">
-                <svg className="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            {/* Pain 2 */}
+            <div className="flex items-start gap-5 p-8 rounded-2xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-red-500/20 hover:border-red-500/40 transition-all">
+              <div className="w-14 h-14 rounded-xl bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                <svg className="w-7 h-7 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-bold text-white mb-2">Dependes de mensajes manuales</h3>
-                <p className="text-slate-400 text-sm">Respuestas una y otra vez. "Cuánto cuesta?", "Qué incluye?"</p>
+                <h3 className="text-xl font-black text-white mb-2">Respondes mensajes todo el día</h3>
+                <p className="text-slate-400">"Cuánto sale?", "Qué horarios?". Todos los días.</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50">
-              <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center flex-shrink-0">
-                <svg className="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            {/* Pain 3 */}
+            <div className="flex items-start gap-5 p-8 rounded-2xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-red-500/20 hover:border-red-500/40 transition-all">
+              <div className="w-14 h-14 rounded-xl bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                <svg className="w-7 h-7 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-bold text-white mb-2">No tienes presencia profesional</h3>
-                <p className="text-slate-400 text-sm">Tu negocio existe pero nadie te encuentra en Google.</p>
+                <h3 className="text-xl font-black text-white mb-2">Pierdes alumnos por no responder rápido</h3>
+                <p className="text-slate-400">Contestás 2 horas después. Ya se anotaron en otro lado.</p>
               </div>
+            </div>
+
+            {/* Pain 4 */}
+            <div className="flex items-start gap-5 p-8 rounded-2xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-red-500/20 hover:border-red-500/40 transition-all">
+              <div className="w-14 h-14 rounded-xl bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                <svg className="w-7 h-7 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-black text-white mb-2">Sin presencia profesional online</h3>
+                <p className="text-slate-400">No aparecés en Google. Tu negocio no se encuentra.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Emotional hook */}
+          <div className="mt-16 text-center">
+            <p className="text-2xl font-black text-slate-200">
+              Mientras más tiempo pasa, <span className="text-red-400">más dinero dejás de ganar</span>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* TRANSFORMATION - BEFORE / AFTER */}
+      <section className="relative py-32 lg:py-40 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-green-500/10 to-transparent rounded-full blur-[150px]" />
+        
+        <div className="container relative z-10">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/15 border border-green-500/25 text-green-400 text-sm font-semibold mb-6">
+              <TrendingUp className="w-4 h-4" />
+              La transformación
+            </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+              De <span className="text-red-400 line-through">cazar clientes</span> a <span className="text-green-400">recibirlos</span>
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              De luchar por clientes a que vengan solos
+            </p>
+          </div>
+
+          {/* Before / After Split */}
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+            {/* BEFORE */}
+            <div className="relative">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-red-500/20 border border-red-500/30 text-red-400 text-sm font-bold">
+                ANTES
+              </div>
+              <div className="pt-8 p-8 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-red-500/20">
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-black text-white mb-1">Pocos clientes</h4>
+                      <p className="text-slate-400 text-sm">Dependés de recomendaciones</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-black text-white mb-1">Desorden total</h4>
+                      <p className="text-slate-400 text-sm">Sin sistema ni seguimiento</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-black text-white mb-1">WhatsApp saturado</h4>
+                      <p className="text-slate-400 text-sm">Mensajes repetitivos todo el día</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-black text-white mb-1">Sin presencia online</h4>
+                      <p className="text-slate-400 text-sm">No existís en Google</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* AFTER */}
+            <div className="relative">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-green-500/20 border border-green-500/30 text-green-400 text-sm font-bold">
+                DESPUÉS
+              </div>
+              <div className="pt-8 p-8 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-green-500/30">
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-black text-white mb-1">Flujo constante de consultas</h4>
+                      <p className="text-slate-400 text-sm">Leads llegan solos todos los días</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-black text-white mb-1">Sistema organizado</h4>
+                      <p className="text-slate-400 text-sm">Todo fluye solo</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-black text-white mb-1">Leads directos al WhatsApp</h4>
+                      <p className="text-slate-400 text-sm">Gente que ya sabe precios</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-black text-white mb-1">Imagen profesional</h4>
+                      <p className="text-slate-400 text-sm">Tu gimnasio se ve premium</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Arrow indicator */}
+          <div className="flex justify-center mt-12">
+            <div className="flex items-center gap-3 text-green-400 font-semibold">
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+              <span>La transformación completa</span>
             </div>
           </div>
         </div>
@@ -684,6 +973,51 @@ export default function Gimnasios() {
               <MessageCircle className="h-5 w-5" />
               WhatsApp
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* PRICING ANCHOR - Reduce friction */}
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 to-slate-900" />
+        
+        <div className="container relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            {/* Pricing anchor */}
+            <div className="mb-8">
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-semibold mb-6">
+                <TrendingUp className="w-4 h-4" />
+                Inversión que se paga sola
+              </div>
+              
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-6">
+                <span className="text-slate-300">Planes desde</span>
+                <br />
+                <span className="text-green-400">$297 USD</span>
+              </h2>
+              
+              <p className="text-xl text-slate-400 mb-6">
+                Menos de lo que te cuesta perder <span className="text-white font-bold">1 solo cliente</span> por semana
+              </p>
+              
+              <div className="flex flex-wrap items-center justify-center gap-6 text-slate-400">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>1 cliente nuevo = ~$50/mes</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>Con 6 socios pagás la web</span>
+                </div>
+              </div>
+            </div>
+
+            {/* ROI calculator hint */}
+            <div className="p-6 rounded-2xl bg-slate-800/40 border border-slate-700/50">
+              <p className="text-slate-300">
+                <span className="text-green-400 font-bold">1 alumno nuevo al mes</span> = la inversión de tu plan básico se paga sola
+              </p>
+            </div>
           </div>
         </div>
       </section>
