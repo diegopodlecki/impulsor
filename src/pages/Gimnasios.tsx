@@ -181,71 +181,84 @@ export default function Gimnasios() {
         </div>
       </header>
 
-      {/* HERO - FULLSCREEN IMPACTANTE */}
+      {/* HERO - GYM STYLE: Dark, energetic, bold */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background Image */}
+        {/* Animated gradient background */}
         <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
           <img 
             src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&h=1080&fit=crop&q=85" 
             alt="Gimnasio" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-40"
+            onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1920&h=1080&fit=crop'; }}
           />
-          {/* Multiple overlays for contrast */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-950/60" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50" />
-          {/* Accent glow */}
-          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-orange-500/20 to-red-600/10 rounded-full blur-[200px]" />
-          <div className="absolute bottom-1/4 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-red-600/15 to-transparent rounded-full blur-[150px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/30" />
+          {/* Energy glow effects */}
+          <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-orange-500/30 to-red-600/10 rounded-full blur-[180px] animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-red-500/20 to-transparent rounded-full blur-[120px]" />
         </div>
 
         <div className="container relative z-10">
-          <div className="max-w-3xl">
-            {/* Badge superior */}
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-orange-500/20 border border-orange-500/40 text-orange-400 text-sm font-bold mb-8 backdrop-blur-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-              </span>
-              Web para Gimnasios
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-2xl">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-400 text-sm font-bold mb-8">
+                <Dumbbell className="h-4 w-4" />
+                Solución para Gimnasios
+              </div>
+
+              {/* Headline */}
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] mb-6">
+                <span className="text-white">Tu gimnasio,</span>
+                <br />
+                <span className="bg-gradient-to-r from-orange-400 via-red-400 to-amber-500 bg-clip-text text-transparent">
+                  imparable
+                </span>
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-xl text-slate-300 max-w-xl mb-8 leading-relaxed">
+                Web profesional que trabaja <span className="text-orange-400 font-bold">24/7</span> inscribiendo socios. 
+                Tu espacio, precios y clases visibles para quien busca fitness de calidad.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                <a href="#contacto" className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-2xl shadow-orange-500/30 hover:scale-[1.02] transition-all">
+                  <Flame className="h-5 w-5" />
+                  Empezar ahora
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a href="#ver-ejemplo" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
+                  <Play className="h-5 w-5" />
+                  Ver ejemplo
+                </a>
+              </div>
             </div>
 
-            {/* Título impactante */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.95] mb-6">
-              <span className="text-white">Tu gimnasio,</span>
-              <br />
-              <span className="bg-gradient-to-r from-orange-400 via-red-400 to-orange-500 bg-clip-text text-transparent">
-                más fuerte que nunca
-              </span>
-            </h1>
-
-            {/* Subtítulo con beneficio */}
-            <p className="text-xl sm:text-2xl text-slate-300 max-w-xl mb-10 leading-relaxed">
-              Tu web trabaja <span className="text-orange-400 font-bold">24/7</span> inscribiendo socios. 
-              <br className="hidden sm:block" />
-              Mostrá tu espacio, clases y precios. 
-              <span className="text-white font-semibold"> La web hace el trabajo pesado.</span>
-            </p>
-
-            {/* Stats badges */}
-            <div className="flex flex-wrap gap-4 mb-10">
-              {STATS.map((stat, idx) => (
-                <div key={idx} className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-slate-900/60 backdrop-blur-sm border border-white/10">
-                  <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
-                    {stat.value}
-                  </span>
-                  <span className="text-sm text-slate-400">{stat.label}</span>
+            {/* Stats Panel - Right side */}
+            <div className="hidden lg:block">
+              <div className="relative">
+                {/* Floating cards with energy */}
+                <div className="grid grid-cols-2 gap-4">
+                  {STATS.map((stat, idx) => (
+                    <div key={idx} className="p-6 rounded-2xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-orange-500/20 hover:border-orange-500/40 transition-all hover:scale-105">
+                      <div className="text-4xl font-black bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent mb-2">
+                        {stat.value}
+                      </div>
+                      <div className="text-sm text-slate-400">{stat.label}</div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+                <div className="absolute -top-4 -right-4 p-4 rounded-xl bg-gradient-to-br from-orange-500 to-red-600 shadow-2xl shadow-orange-500/30 animate-bounce">
+                  <TrendingUp className="h-6 w-6 text-white" />
+                </div>
+              </div>
             </div>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <a href="#contacto" className="group inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-bold rounded-2xl bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-2xl shadow-orange-500/30 hover:scale-[1.02] hover:shadow-orange-500/50 transition-all">
-                Empezar ahora
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a href="#planes" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-bold rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:border-white/30 transition-all">
-                Ver planes
+          </div>
+        </div>
+      </section>
               </a>
             </div>
 
@@ -417,6 +430,27 @@ export default function Gimnasios() {
               </div>
             ))}
           </div>
+
+          {/* Mid-page CTA */}
+          <div className="mt-16 text-center max-w-2xl mx-auto p-8 rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-orange-500/20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-medium mb-4">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+              </span>
+              Solo 3 lugares este mes
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-3">
+              ¿Listo para llenar tu gimnasio?
+            </h3>
+            <p className="text-white/60 mb-6">
+              Primera consulta gratis. Sin compromiso. Respondemos en menos de 2 horas.
+            </p>
+            <a href="#contacto" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-xl shadow-orange-500/25 hover:scale-105 transition-all">
+              <MessageCircle className="h-5 w-5" />
+              Quiero mi web
+            </a>
+          </div>
         </div>
       </section>
 
@@ -520,12 +554,14 @@ export default function Gimnasios() {
         </div>
       </section>
 
-      <PricingSection
-        title="Planes simples para tu gimnasio"
-        subtitle="Elegí el que mejor se adapte a tus necesidades"
-        plans={PRICING_GIMNASIOS}
-        accentColor="orange"
-      />
+      <section id="planes">
+        <PricingSection
+          title="Planes simples para tu gimnasio"
+          subtitle="Elegí el que mejor se adapte a tus necesidades"
+          plans={PRICING_GIMNASIOS}
+          accentColor="orange"
+        />
+      </section>
 
       <ClosingSection
         title="No esperes más para llenar tu gimnasio"

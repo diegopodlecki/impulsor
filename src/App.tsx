@@ -51,16 +51,16 @@ export const routes: RouteRecord[] = [
       // Landings principales con componente genérico
       { path: "gimnasios", element: <NicheLandingPage niche="gimnasio" /> },
       { path: "entrenadores", element: <NicheLandingPage niche="personal-trainer" /> },
-      { path: "nutritionist", element: <NicheLandingPage niche="nutritionist" /> },
+      { path: "nutricionistas", element: <NicheLandingPage niche="nutricionista" /> },
       { path: "psicologos", element: <NicheLandingPage niche="psicologo" /> },
       { path: "estetica-corporal", element: <NicheLandingPage niche="estetica-corporal" /> },
-      { path: "emprendedores", element: <NicheLandingPage niche="emprendedor" /> },
+      { path: "emprendedores", element: <NicheLandingPage niche="casa-de-comidas" /> },
       
       // Redirecciones legacy
       { path: "gimnasio", element: <Navigate to="/gimnasios" replace /> },
       { path: "iron-fitness", element: <Navigate to="/gimnasios" replace /> },
       { path: "personal-trainers", element: <Navigate to="/entrenadores" replace /> },
-      { path: "nutricionistas", element: <Navigate to="/nutritionist" replace /> },
+      { path: "nutritionist", element: <Navigate to="/nutricionistas" replace /> },
       { path: "webs", element: <Navigate to="/" replace /> },
       
       // ... (resto de las rutas)

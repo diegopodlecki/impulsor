@@ -180,97 +180,100 @@ export default function PersonalTrainers() {
         </div>
       </header>
 
-      {/* HERO */}
-      <section className="relative min-h-screen pt-28 pb-20">
+      {/* HERO - ATHLETIC STYLE: Split layout, cyan theme */}
+      <section className="relative min-h-screen pt-28 pb-20 overflow-hidden">
+        {/* Athletic gradient background */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
-          <div className="absolute top-0 left-0 w-[700px] h-[700px] bg-gradient-to-br from-cyan-500/15 to-transparent rounded-full blur-[180px]" />
-          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-tl from-blue-600/10 to-transparent rounded-full blur-[120px]" />
+          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-cyan-500/20 via-blue-600/10 to-transparent rounded-full blur-[200px] animate-pulse" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-tl from-blue-600/15 to-transparent rounded-full blur-[150px]" />
         </div>
 
         <div className="container relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center min-h-[calc(100vh-140px)]">
-            {/* Image */}
-            <div className="relative order-2 lg:order-1">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-cyan-500/20 border border-cyan-500/10">
-                <img 
-                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&h=1000&fit=crop&q=85" 
-                  alt="Entrenamiento personal" 
-                  className="w-full h-[500px] lg:h-[600px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                <div className="absolute bottom-8 left-8 right-8">
-                  <div className="flex gap-4">
-                    <div className="px-5 py-3 rounded-xl bg-cyan-500/95 backdrop-blur-sm">
-                      <p className="text-base font-bold">+8 alumnos/mes</p>
-                    </div>
-                    <div className="px-5 py-3 rounded-xl bg-slate-900/95 backdrop-blur-sm border border-slate-700">
-                      <p className="text-base font-bold text-cyan-400">30 días resultados</p>
-                    </div>
-                  </div>
-                </div>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left - Content */}
+            <div className="order-2 lg:order-1 space-y-8">
+              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 text-sm font-bold">
+                <Award className="w-4 h-4" />
+                Solución para Personal Trainers
               </div>
 
-              {/* Floating cards */}
-              <div className="absolute -top-6 -right-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-5 shadow-2xl border border-cyan-500/20">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/30 to-blue-500/20 flex items-center justify-center">
-                    <Dumbbell className="h-7 w-7 text-cyan-400" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-white text-lg">Tu perfil</p>
-                    <p className="text-sm text-slate-400">Profesional</p>
-                  </div>
-                </div>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.02]">
+                <span className="text-white">Tu método,</span>
+                <br />
+                <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-500 bg-clip-text text-transparent">
+                  más visibilidad
+                </span>
+              </h1>
+
+              <p className="text-xl text-slate-300 max-w-xl leading-relaxed">
+                Web profesional que muestra tu especialización y atrae alumnos calificados. 
+                <span className="text-cyan-400 font-medium"> Tu reputación, visible las 24 horas.</span>
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="#contacto" className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-2xl shadow-cyan-500/25 hover:scale-[1.02] transition-all">
+                  <TrendingUp className="h-5 w-5" />
+                  Quiero más alumnos
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a href="#ver-ejemplo" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 transition-all">
+                  <Play className="h-5 w-5" />
+                  Ver ejemplo
+                </a>
               </div>
 
-              <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl p-5 shadow-2xl">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center">
-                    <Flame className="h-7 w-7 text-white" />
-                  </div>
-                  <div className="text-white">
-                    <p className="font-bold text-lg">Transformaciones</p>
-                    <p className="text-sm text-white/80">Reales</p>
-                  </div>
+              {/* Trust indicators */}
+              <div className="flex flex-wrap gap-6 pt-4">
+                <div className="flex items-center gap-2 text-slate-400 text-sm">
+                  <CheckCircle className="h-4 w-4 text-emerald-400" />
+                  Sin costo inicial
+                </div>
+                <div className="flex items-center gap-2 text-slate-400 text-sm">
+                  <CheckCircle className="h-4 w-4 text-emerald-400" />
+                  Online en 7 días
                 </div>
               </div>
             </div>
 
-            {/* Content */}
-            <div className="order-1 lg:order-2 space-y-8">
-              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-cyan-500/15 border border-cyan-500/25 text-cyan-400 text-sm font-semibold">
-                <Target className="w-5 h-5" />
-                Web para Personal Trainers
-              </div>
-
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.02]">
-                <span className="text-white">Tu entrenamiento</span>
-                <br />
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  merece más alumnos
-                </span>
-              </h1>
-
-              <p className="text-xl text-slate-400 max-w-xl leading-relaxed">
-                Tu web trabaja 24/7 conseguiendo alumnos. Mostrá tu método, transformaciones y precios. 
-                <span className="text-cyan-400 font-medium"> Mientras vos entrenás, la web trabaja.</span>
-              </p>
-
-              {/* Stats */}
-              <div className="flex flex-wrap gap-8 py-4">
-                {STATS.map((stat, idx) => (
-                  <div key={idx} className="flex items-center gap-3">
-                    <span className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-                      {stat.value}
-                    </span>
-                    <span className="text-base text-slate-500">{stat.label}</span>
+            {/* Right - Visual */}
+            <div className="relative order-1 lg:order-2">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-cyan-500/20 border border-cyan-500/10">
+                <img 
+                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&h=1000&fit=crop&q=85" 
+                  alt="Entrenamiento personal" 
+                  className="w-full h-[450px] lg:h-[550px] object-cover"
+                  onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=900&h=1000&fit=crop'; }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                
+                {/* Overlay stats */}
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="grid grid-cols-3 gap-3">
+                    {STATS.map((stat, idx) => (
+                      <div key={idx} className="text-center p-3 rounded-xl bg-slate-900/80 backdrop-blur-sm border border-white/10">
+                        <div className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                          {stat.value}
+                        </div>
+                        <div className="text-xs text-slate-400">{stat.label}</div>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
 
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              {/* Floating badge */}
+              <div className="absolute -top-4 -right-4 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl px-5 py-3 shadow-2xl shadow-cyan-500/30">
+                <div className="flex items-center gap-2 text-white">
+                  <Zap className="h-5 w-5" />
+                  <span className="font-bold">Nuevos alumnos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
                 <a href="#contacto" className="inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-bold rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-2xl shadow-cyan-500/25 hover:scale-[1.02] hover:shadow-cyan-500/40 transition-all">
                   Quiero más alumnos <ArrowRight className="h-5 w-5" />
                 </a>
@@ -437,7 +440,7 @@ export default function PersonalTrainers() {
       </section>
 
       {/* TRANSFORMATIONS */}
-      <section className="relative py-32 lg:py-40 overflow-hidden">
+      <section id="ver-ejemplo" className="relative py-32 lg:py-40 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 to-slate-950" />
         <div className="container relative">
           <div className="text-center mb-16">
@@ -520,12 +523,14 @@ export default function PersonalTrainers() {
         </div>
       </section>
 
-      <PricingSection
-        title="Planes para tu carrera"
-        subtitle="Elegí el que mejor se adapte a tu perfil"
-        plans={PRICING_PT}
-        accentColor="cyan"
-      />
+      <section id="planes">
+        <PricingSection
+          title="Planes para tu carrera"
+          subtitle="Elegí el que mejor se adapte a tu perfil"
+          plans={PRICING_PT}
+          accentColor="cyan"
+        />
+      </section>
 
       <ClosingSection
         title="Tu carrera merece ser visible"

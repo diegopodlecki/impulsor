@@ -156,86 +156,109 @@ export default function Psicologos() {
         </div>
       </header>
 
-      {/* HERO */}
+      {/* HERO - CALM/THERAPEUTIC STYLE: Centered, serene, indigo theme */}
       <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
+        {/* Serene gradient background */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-indigo-50/50 via-white to-violet-50/30" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[700px] bg-gradient-to-b from-indigo-100/30 to-transparent rounded-full blur-[180px]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-violet-50" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-b from-indigo-100/30 to-transparent rounded-full blur-[200px]" />
         </div>
 
-        {/* Floating elements */}
-        <div className="absolute top-48 left-16 w-24 h-24 bg-gradient-to-br from-indigo-200/40 to-violet-200/30 rounded-3xl rotate-12 blur-sm animate-pulse" />
-        <div className="absolute top-64 right-20 w-40 h-40 bg-gradient-to-br from-violet-200/35 to-purple-200/25 rounded-full blur-sm animate-pulse" style={{ animationDelay: '0.5s' }} />
+        {/* Floating organic shapes */}
+        <div className="absolute top-40 left-20 w-32 h-32 bg-gradient-to-br from-indigo-200/30 to-violet-200/20 rounded-full blur-2xl animate-pulse" />
+        <div className="absolute top-60 right-24 w-48 h-48 bg-gradient-to-br from-violet-200/25 to-purple-200/15 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-40 left-1/4 w-24 h-24 bg-gradient-to-br from-purple-200/30 to-indigo-200/20 rounded-full blur-xl animate-pulse" style={{ animationDelay: '0.5s' }} />
 
         <div className="container relative z-10">
           <div className="max-w-5xl mx-auto text-center space-y-10">
             {/* Badge */}
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-indigo-100 border border-indigo-200 text-indigo-600 text-sm font-semibold">
-              <Brain className="w-5 h-5" />
-              Web para Psicólogos
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-indigo-100 border border-indigo-200 text-indigo-600 text-sm font-bold">
+              <Brain className="w-4 h-4" />
+              Solución para Psicólogos
             </div>
 
             {/* Headline */}
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
-              <span className="text-slate-900">Tu consultorio</span>
+              <span className="text-slate-900">Tu espacio terapéutico,</span>
               <br />
               <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-                merece ser encontrado
+                visible para quien busca ayuda
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-              Web profesional que transmite confianza. Pacientes que llegan sabiendo qué ofrecés, 
-              <span className="text-indigo-600 font-medium"> con turno ya agendado.</span>
+              Web profesional que transmite confianza y calidez. Pacientes que llegan decididos, 
+              <span className="text-indigo-600 font-medium"> listos para comenzar su proceso.</span>
             </p>
 
-            {/* Stats */}
-            <div className="flex flex-wrap justify-center gap-6 py-4">
-              {STATS.map((stat, idx) => (
-                <div key={idx} className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-white shadow-lg shadow-slate-200/50 border border-slate-100">
-                  <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-slate-500">{stat.label}</div>
-                </div>
-              ))}
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <a href="#contacto" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 text-white shadow-xl shadow-indigo-500/20 hover:scale-[1.02] transition-all">
+                <Heart className="h-5 w-5" />
+                Quiero más pacientes
+                <ArrowRight className="h-5 w-5" />
+              </a>
+              <a href="#ver-ejemplo" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl border-2 border-indigo-200 text-indigo-700 hover:bg-indigo-50 transition-all">
+                <Play className="w-5 h-5" />
+                Ver ejemplo
+              </a>
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-              <a href="#contacto" className="inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-semibold rounded-2xl bg-gradient-to-r from-indigo-500 to-violet-600 text-white shadow-xl shadow-indigo-500/25 hover:scale-[1.02] hover:shadow-indigo-500/40 transition-all">
-                Quiero más pacientes <ArrowRight className="h-5 w-5" />
-              </a>
-              <a href="#ver-ejemplo" className="inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-medium rounded-2xl border border-slate-300 text-slate-700 hover:border-indigo-300 hover:bg-indigo-50 transition-all">
-                <Play className="w-5 h-5" /> Ver ejemplo
-              </a>
+            {/* Trust indicators */}
+            <div className="flex flex-wrap justify-center gap-6 pt-4">
+              <div className="flex items-center gap-2 text-slate-500 text-sm">
+                <CheckCircle className="h-4 w-4 text-indigo-500" />
+                Sin costo inicial
+              </div>
+              <div className="flex items-center gap-2 text-slate-500 text-sm">
+                <CheckCircle className="h-4 w-4 text-indigo-500" />
+                Online en 7 días
+              </div>
             </div>
           </div>
 
-          {/* Hero Image */}
-          <div className="mt-20 relative max-w-5xl mx-auto">
+          {/* Hero Image with stats */}
+          <div className="mt-16 relative max-w-5xl mx-auto">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-indigo-500/10 border border-indigo-100">
               <img 
-                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1400&h=800&fit=crop&q=85" 
-                alt="Psicóloga profesional" 
-                className="w-full h-[450px] lg:h-[500px] object-cover"
+                src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1200&h=800&fit=crop&q=85" 
+                alt="Consultorio psicológico" 
+                className="w-full h-[400px] lg:h-[500px] object-cover"
+                onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=900&h=1000&fit=crop'; }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent" />
-            </div>
-
-            {/* Floating cards */}
-            <div className="absolute -top-8 -left-8 bg-white rounded-2xl p-6 shadow-2xl border border-slate-100">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center">
-                  <CheckCircle className="h-6 w-6 text-emerald-600" />
-                </div>
-                <div>
-                  <p className="font-bold text-slate-800 text-lg">+60%</p>
-                  <p className="text-sm text-slate-500">Consultas nuevas</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
+              
+              {/* Stats overlay */}
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="grid grid-cols-3 gap-4">
+                  {STATS.map((stat, idx) => (
+                    <div key={idx} className="text-center p-4 rounded-xl bg-white/90 backdrop-blur-sm border border-white/50">
+                      <div className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">
+                        {stat.value}
+                      </div>
+                      <div className="text-xs text-slate-600 mt-1">{stat.label}</div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
+
+            {/* Floating trust card */}
+            <div className="absolute -top-6 -right-6 bg-white rounded-2xl p-5 shadow-2xl border border-slate-100">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-100 to-violet-100 flex items-center justify-center">
+                  <Shield className="h-6 w-6 text-indigo-600" />
+                </div>
+                <div>
+                  <p className="font-bold text-slate-800 text-lg">Confidencial</p>
+                  <p className="text-sm text-slate-500">Tu espacio seguro</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
             <div className="absolute -bottom-8 -right-8 bg-white rounded-2xl p-6 shadow-2xl border border-slate-100">
               <div className="flex items-center gap-4">
@@ -321,6 +344,27 @@ export default function Psicologos() {
               </div>
             ))}
           </div>
+
+          {/* Mid-page CTA */}
+          <div className="mt-16 text-center max-w-2xl mx-auto p-8 rounded-3xl bg-gradient-to-br from-indigo-50 to-violet-50 border border-indigo-100">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 text-sm font-medium mb-4">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+              </span>
+              Solo 4 lugares este mes
+            </div>
+            <h3 className="text-2xl font-bold text-slate-900 mb-3">
+              ¿Listo para llenar tu agenda?
+            </h3>
+            <p className="text-slate-600 mb-6">
+              Primera consulta gratis. Pacientes decididos te esperan.
+            </p>
+            <a href="#contacto" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 text-white shadow-xl shadow-indigo-500/20 hover:scale-105 transition-all">
+              <MessageCircle className="h-5 w-5" />
+              Quiero más pacientes
+            </a>
+          </div>
         </div>
       </section>
 
@@ -348,7 +392,7 @@ export default function Psicologos() {
       </section>
 
       {/* GALLERY */}
-      <section className="relative py-32 lg:py-40 bg-white">
+      <section id="ver-ejemplo" className="relative py-32 lg:py-40 bg-white">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
@@ -415,12 +459,14 @@ export default function Psicologos() {
         </div>
       </section>
 
-      <PricingSection
-        title="Planes para tu consultorio"
-        subtitle="Elegí el que mejor se adapte a tu práctica"
-        plans={PRICING_PSICO}
-        accentColor="indigo"
-      />
+      <section id="planes">
+        <PricingSection
+          title="Planes para tu consultorio"
+          subtitle="Elegí el que mejor se adapte a tu práctica"
+          plans={PRICING_PSICO}
+          accentColor="indigo"
+        />
+      </section>
 
       <ClosingSection
         title="Tu consultorio merece ser encontrado"

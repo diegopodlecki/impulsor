@@ -181,89 +181,102 @@ export default function EsteticaCorporal() {
         </div>
       </header>
 
-      {/* HERO */}
+      {/* HERO - LUXURY/BEAUTY STYLE: Dark, elegant, rose theme */}
       <section className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden">
+        {/* Luxury gradient background */}
         <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-rose-950/50 to-slate-950" />
           <img 
-            src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=1920&h=1080&fit=crop&q=85" 
-            alt="Centro de estética" 
-            className="w-full h-full object-cover"
+            src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=1200&h=800&fit=crop&q=85" 
+            alt="Estética corporal" 
+            className="w-full h-full object-cover opacity-30"
+            onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=900&h=1000&fit=crop'; }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-rose-950/90 via-pink-950/80 to-slate-950/90" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-rose-950/80 to-slate-950/90" />
         </div>
 
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-rose-500/20 to-pink-500/10 rounded-full blur-[150px] animate-pulse" />
-        <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-gradient-to-tl from-pink-400/15 to-rose-300/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '0.5s' }} />
+        {/* Luxury glow effects */}
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-rose-500/25 to-pink-500/10 rounded-full blur-[180px] animate-pulse" />
+        <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-gradient-to-tl from-pink-400/20 to-rose-300/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '0.5s' }} />
 
         <div className="container relative z-10">
-          <div className="max-w-5xl mx-auto text-center space-y-10">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/10 border border-white/20 text-rose-300 text-sm font-semibold backdrop-blur-sm">
-              <Sparkles className="w-5 h-5" />
-              Web para Centros de Estética
-            </div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left - Content */}
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-rose-500/15 border border-rose-500/25 text-rose-300 text-sm font-bold">
+                <Gem className="w-4 h-4" />
+                Solución para Centros de Estética
+              </div>
 
-            {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
-              <span className="text-white">Tu centro de belleza</span>
-              <br />
-              <span className="bg-gradient-to-r from-rose-400 to-pink-400 bg-clip-text text-transparent">
-                merece ser encontrado
-              </span>
-            </h1>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.02]">
+                <span className="text-white">Tu centro,</span>
+                <br />
+                <span className="bg-gradient-to-r from-rose-400 via-pink-400 to-rose-300 bg-clip-text text-transparent">
+                  más radiante que nunca
+                </span>
+              </h1>
 
-            {/* Subtitle */}
-            <p className="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-              Web premium que muestra tratamientos y genera reservas directo. 
-              <span className="text-rose-400 font-medium"> Clientas que llegan sabiendo qué quieren.</span>
-            </p>
+              <p className="text-xl text-white/70 max-w-xl leading-relaxed">
+                Web premium que muestra tratamientos, genera confianza y reserva turnos. 
+                <span className="text-rose-400 font-medium"> Clientas que llegan decididas.</span>
+              </p>
 
-            {/* Stats */}
-            <div className="flex flex-wrap justify-center gap-6 py-4">
-              {STATS.map((stat, idx) => (
-                <div key={idx} className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10">
-                  <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-pink-400">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-white/70">{stat.label}</div>
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="#contacto" className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-rose-400 to-pink-500 text-white shadow-2xl shadow-rose-500/25 hover:scale-[1.02] transition-all">
+                  <Sparkles className="h-5 w-5" />
+                  Quiero más clientas
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a href="#ver-ejemplo" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl bg-white/5 border border-white/15 text-white/80 hover:bg-white/10 transition-all">
+                  <Play className="w-5 h-5" />
+                  Ver ejemplo
+                </a>
+              </div>
+
+              {/* Trust indicators */}
+              <div className="flex flex-wrap gap-6 pt-4">
+                <div className="flex items-center gap-2 text-white/50 text-sm">
+                  <CheckCircle className="h-4 w-4 text-rose-400" />
+                  Sin costo inicial
                 </div>
-              ))}
-            </div>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-              <a href="#contacto" className="inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-semibold rounded-2xl bg-gradient-to-r from-rose-400 to-pink-500 text-white shadow-2xl shadow-rose-500/30 hover:scale-[1.02] hover:shadow-rose-500/50 transition-all">
-                Quiero más clientas <ArrowRight className="h-5 w-5" />
-              </a>
-              <a href="#ver-ejemplo" className="inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-medium rounded-2xl border border-white/30 text-white hover:bg-white/10 backdrop-blur-sm transition-all">
-                <Play className="w-5 h-5" /> Ver ejemplo
-              </a>
-            </div>
-
-            {/* Floating testimonial */}
-            <div className="mt-12 max-w-lg mx-auto">
-              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
-                <div className="flex items-center gap-5 mb-5">
-                  <img 
-                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&q=80" 
-                    alt="Cliente" 
-                    className="w-14 h-14 rounded-full object-cover border-2 border-rose-400"
-                  />
-                  <div>
-                    <p className="font-semibold text-white text-lg">Patricia Solís</p>
-                    <p className="text-sm text-white/60">Directora · Bella Piel</p>
-                  </div>
+                <div className="flex items-center gap-2 text-white/50 text-sm">
+                  <CheckCircle className="h-4 w-4 text-rose-400" />
+                  Online en 7 días
                 </div>
-                <p className="text-white/80 italic text-lg leading-relaxed">&ldquo;Las clientas llegan sabiendo qué tratamiento quieren. Ya no explico todo desde cero.&rdquo;</p>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-8 h-12 rounded-full border-2 border-white/30 flex justify-center pt-3">
-            <div className="w-1.5 h-3 bg-white/50 rounded-full animate-pulse" />
+            {/* Right - Visual */}
+            <div className="relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-rose-500/20 border border-rose-500/10">
+                <img 
+                  src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=900&h=1000&fit=crop&q=85" 
+                  alt="Tratamientos de estética" 
+                  className="w-full h-[450px] lg:h-[550px] object-cover"
+                  onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=900&h=1000&fit=crop'; }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent" />
+              </div>
+
+              {/* Floating stat cards */}
+              <div className="absolute -top-6 -left-6 bg-gradient-to-br from-rose-500 to-pink-600 rounded-2xl px-6 py-4 shadow-2xl text-white">
+                <div className="text-3xl font-black">+150%</div>
+                <div className="text-sm text-white/80">Reservas</div>
+              </div>
+
+              <div className="absolute -bottom-6 -right-6 bg-slate-900/90 backdrop-blur-xl rounded-2xl p-5 border border-rose-500/20 shadow-2xl">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-rose-100 to-pink-100 flex items-center justify-center">
+                    <Star className="w-6 h-6 text-rose-500" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-white">{STATS[0].value}</p>
+                    <p className="text-sm text-white/60">{STATS[0].label}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -337,6 +350,27 @@ export default function EsteticaCorporal() {
               </div>
             ))}
           </div>
+
+          {/* Mid-page CTA */}
+          <div className="mt-16 text-center max-w-2xl mx-auto p-8 rounded-3xl bg-gradient-to-br from-rose-50 to-pink-50 border border-rose-100">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 text-sm font-medium mb-4">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+              </span>
+              Solo 3 lugares este mes
+            </div>
+            <h3 className="text-2xl font-bold text-slate-900 mb-3">
+              ¿Lista para llenar tu agenda?
+            </h3>
+            <p className="text-slate-600 mb-6">
+              Primera consulta gratis. Clientas decididas te esperan.
+            </p>
+            <a href="#contacto" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-rose-400 to-pink-500 text-white shadow-xl shadow-rose-500/20 hover:scale-105 transition-all">
+              <MessageCircle className="h-5 w-5" />
+              Quiero más clientas
+            </a>
+          </div>
         </div>
       </section>
 
@@ -364,7 +398,7 @@ export default function EsteticaCorporal() {
       </section>
 
       {/* GALLERY */}
-      <section className="relative py-32 lg:py-40 bg-white">
+      <section id="ver-ejemplo" className="relative py-32 lg:py-40 bg-white">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
@@ -438,12 +472,14 @@ export default function EsteticaCorporal() {
         </div>
       </section>
 
-      <PricingSection
-        title="Planes para tu centro"
-        subtitle="Elegí el que mejor se adapte a tu estética"
-        plans={PRICING_ESTETICA}
-        accentColor="rose"
-      />
+      <section id="planes">
+        <PricingSection
+          title="Planes para tu centro"
+          subtitle="Elegí el que mejor se adapte a tu estética"
+          plans={PRICING_ESTETICA}
+          accentColor="rose"
+        />
+      </section>
 
       <ClosingSection
         title="Tu centro merece ser encontrado"

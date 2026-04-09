@@ -156,84 +156,94 @@ export default function Nutricionistas() {
         </div>
       </header>
 
-      {/* HERO */}
+      {/* HERO - FRESH/ORGANIC STYLE: Light, natural, green theme */}
       <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
+        {/* Organic gradient background */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/50 via-white to-teal-50/30" />
-          <div className="absolute bottom-0 left-0 w-[700px] h-[700px] bg-gradient-to-tr from-emerald-200/30 to-teal-200/20 rounded-full blur-[150px]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-teal-50" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-emerald-200/40 to-teal-200/20 rounded-full blur-[180px]" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-teal-200/30 to-emerald-100/20 rounded-full blur-[150px]" />
         </div>
 
         <div className="container relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-            {/* Image */}
-            <div className="relative order-2 lg:order-1">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-emerald-500/10 border border-emerald-100">
-                <img 
-                  src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&h=1000&fit=crop&q=85" 
-                  alt="Alimentación saludable" 
-                  className="w-full h-[500px] lg:h-[600px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-              </div>
-
-              {/* Overlaid image */}
-              <div className="absolute -bottom-10 -right-4 lg:-right-10 w-56 h-56 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
-                <img 
-                  src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&h=500&fit=crop&q=80" 
-                  alt="Ensalada fresca" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Floating badge */}
-              <div className="absolute top-8 -left-4 lg:-left-8 bg-white rounded-2xl px-5 py-3 shadow-xl border border-emerald-100">
-                <div className="flex items-center gap-2">
-                  <Leaf className="w-5 h-5 text-emerald-600" />
-                  <p className="text-sm font-medium text-emerald-600">+5 pacientes/mes</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="order-1 lg:order-2 space-y-8">
-              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm font-semibold">
-                <Salad className="w-5 h-5" />
-                Web para Nutricionistas
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left - Content */}
+            <div className="order-2 lg:order-1 space-y-8">
+              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-700 text-sm font-bold">
+                <Apple className="w-4 h-4" />
+                Solución para Nutricionistas
               </div>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.02]">
-                <span className="text-slate-900">Tu consultorio</span>
+                <span className="text-slate-900">Tu conocimiento,</span>
                 <br />
                 <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                  saludable y visible
+                  al alcance de todos
                 </span>
               </h1>
 
               <p className="text-xl text-slate-600 max-w-xl leading-relaxed">
-                Web profesional que muestra tu metodología y genera confianza. 
-                <span className="text-emerald-600 font-medium"> Pacientes que llegan sabiendo qué ofrecés.</span>
+                Web profesional que muestra tu enfoque nutricional y genera confianza. 
+                <span className="text-emerald-600 font-medium"> Pacientes que llegan decididos.</span>
               </p>
 
-              {/* Stats */}
-              <div className="flex flex-wrap gap-4 py-4">
-                {STATS.map((stat, idx) => (
-                  <div key={idx} className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-emerald-50 border border-emerald-100">
-                    <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">
-                      {stat.value}
-                    </span>
-                    <span className="text-sm text-slate-600">{stat.label}</span>
-                  </div>
-                ))}
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="#contacto" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-xl shadow-emerald-500/20 hover:scale-[1.02] transition-all">
+                  <TrendingUp className="h-5 w-5" />
+                  Quiero más pacientes
+                  <ArrowRight className="h-5 w-5" />
+                </a>
+                <a href="#ver-ejemplo" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl border-2 border-emerald-200 text-emerald-700 hover:bg-emerald-50 transition-all">
+                  <Play className="w-5 h-5" />
+                  Ver ejemplo
+                </a>
               </div>
 
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <a href="#contacto" className="inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-semibold rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-xl shadow-emerald-500/25 hover:scale-[1.02] hover:shadow-emerald-500/40 transition-all">
-                  Quiero más pacientes <ArrowRight className="h-5 w-5" />
-                </a>
-                <a href="#ver-ejemplo" className="inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-medium rounded-2xl border border-emerald-200 text-slate-700 hover:border-emerald-400 hover:bg-emerald-50 transition-all">
-                  <Play className="w-5 h-5" /> Ver ejemplo
-                </a>
+              {/* Trust indicators */}
+              <div className="flex flex-wrap gap-6 pt-2">
+                <div className="flex items-center gap-2 text-slate-500 text-sm">
+                  <CheckCircle className="h-4 w-4 text-emerald-500" />
+                  Sin costo inicial
+                </div>
+                <div className="flex items-center gap-2 text-slate-500 text-sm">
+                  <CheckCircle className="h-4 w-4 text-emerald-500" />
+                  Online en 7 días
+                </div>
+              </div>
+            </div>
+
+            {/* Right - Visual */}
+            <div className="relative order-1 lg:order-2">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-emerald-500/10 border border-emerald-100">
+                <img 
+                  src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&h=1000&fit=crop&q=85" 
+                  alt="Nutrición saludable" 
+                  className="w-full h-[450px] lg:h-[550px] object-cover"
+                  onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=900&h=1000&fit=crop'; }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent" />
+              </div>
+
+              {/* Floating stat card */}
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-5 shadow-2xl border border-emerald-100">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center">
+                    <Leaf className="w-7 h-7 text-emerald-600" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-emerald-600">{STATS[0].value}</p>
+                    <p className="text-sm text-slate-500">{STATS[0].label}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating badge */}
+              <div className="absolute -top-4 -right-4 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl px-5 py-3 shadow-xl text-white">
+                <div className="flex items-center gap-2">
+                  <Apple className="h-5 w-5" />
+                  <span className="font-bold">Método claro</span>
+                </div>
               </div>
             </div>
           </div>
@@ -309,6 +319,27 @@ export default function Nutricionistas() {
               </div>
             ))}
           </div>
+
+          {/* Mid-page CTA */}
+          <div className="mt-16 text-center max-w-2xl mx-auto p-8 rounded-3xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 text-sm font-medium mb-4">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+              </span>
+              Solo 4 lugares este mes
+            </div>
+            <h3 className="text-2xl font-bold text-slate-900 mb-3">
+              ¿Listo para llenar tu agenda?
+            </h3>
+            <p className="text-slate-600 mb-6">
+              Primera consulta gratis. Pacientes calificados esperando.
+            </p>
+            <a href="#contacto" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-xl shadow-emerald-500/20 hover:scale-105 transition-all">
+              <MessageCircle className="h-5 w-5" />
+              Quiero más pacientes
+            </a>
+          </div>
         </div>
       </section>
 
@@ -336,7 +367,7 @@ export default function Nutricionistas() {
       </section>
 
       {/* GALLERY */}
-      <section className="relative py-32 lg:py-40 bg-white">
+      <section id="ver-ejemplo" className="relative py-32 lg:py-40 bg-white">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
@@ -403,12 +434,14 @@ export default function Nutricionistas() {
         </div>
       </section>
 
-      <PricingSection
-        title="Planes para tu práctica"
-        subtitle="Elegí el que mejor se adapte a tu consultorio"
-        plans={PRICING_NUTRI}
-        accentColor="emerald"
-      />
+      <section id="planes">
+        <PricingSection
+          title="Planes para tu práctica"
+          subtitle="Elegí el que mejor se adapte a tu consultorio"
+          plans={PRICING_NUTRI}
+          accentColor="emerald"
+        />
+      </section>
 
       <ClosingSection
         title="Tu práctica merece ser encontrada"
