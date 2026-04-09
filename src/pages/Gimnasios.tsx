@@ -177,18 +177,16 @@ export default function Gimnasios() {
           <img 
             src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&h=1080&fit=crop&q=85" 
             alt="Gimnasio" 
-            className="w-full h-full object-cover opacity-15"
+            className="w-full h-full object-cover opacity-10"
             onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1920&h=1080&fit=crop'; }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/95 to-slate-950/70" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50" />
-          <div className="absolute top-0 right-1/4 w-[700px] h-[700px] bg-gradient-to-br from-green-500/30 to-emerald-600/15 rounded-full blur-[200px] animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-emerald-500/20 to-transparent rounded-full blur-[150px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/60" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-br from-green-500/20 to-emerald-600/10 rounded-full blur-[200px]" />
         </div>
 
         <div className="container relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05] mb-8">
+          <div className="max-w-5xl mx-auto text-center">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.95] mb-10">
               <span className="text-white">Si tu gimnasio no consigue clientes todos los días,</span>
               <br />
               <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
@@ -196,46 +194,71 @@ export default function Gimnasios() {
               </span>
             </h1>
 
-            <p className="text-xl sm:text-2xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-              Te damos un sistema simple que convierte visitas en alumnos con landing + WhatsApp automatizado
+            <p className="text-2xl sm:text-3xl text-slate-300 max-w-3xl mx-auto mb-12 leading-relaxed">
+              No necesitas más seguidores. Necesitas un sistema que convierta visitas en alumnos automáticamente.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-              <a href="#planes" className="group inline-flex items-center justify-center gap-3 px-14 py-5 text-xl font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-2xl shadow-green-500/50 hover:scale-[1.02] transition-all">
-                <TrendingUp className="h-6 w-6" />
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-10">
+              <a href="#planes" className="group inline-flex items-center justify-center gap-4 px-16 py-6 text-2xl font-bold rounded-2xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-2xl shadow-green-500/50 hover:scale-[1.02] transition-all">
                 Quiero más alumnos
-                <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="h-7 w-7 group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20más%20alumnos%20para%20mi%20gimnasio" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
+              <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20más%20alumnos%20para%20mi%20gimnasio" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-xl font-semibold rounded-2xl bg-white/5 border-2 border-white/15 text-white hover:bg-white/10 transition-all">
                 <MessageCircle className="h-6 w-6" />
                 Hablar por WhatsApp
               </a>
             </div>
 
-            <p className="text-slate-400 flex items-center justify-center gap-2 text-base">
-              <CheckCircle className="h-4 w-4 text-green-400" />
-              Sin sistemas complicados. Sin perder tiempo.
+            <p className="text-lg text-green-400/80 font-medium">
+              Funciona incluso si hoy dependés solo de Instagram
             </p>
           </div>
         </div>
       </section>
 
-      {/* CTA #1 */}
-      <section className="py-20 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-y border-green-500/20">
-        <div className="container text-center">
-          <h3 className="text-2xl sm:text-3xl font-black text-white mb-3">
-            Dejá de depender del algoritmo de Instagram
-          </h3>
-          <p className="text-slate-300 mb-8">Tu sistema propio, funcionando 24/7</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#planes" className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto px-12 py-5 text-xl font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-2xl shadow-green-500/40 hover:scale-[1.02] transition-all">
-              Quiero más alumnos
-              <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a href="https://wa.me/5491234567890" className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border-2 border-white/20 text-white hover:bg-white/10 transition-all">
-              <MessageCircle className="h-6 w-6" />
-              WhatsApp
-            </a>
+      {/* REALITY CHECK */}
+      <section className="relative py-24 lg:py-32 bg-gradient-to-b from-slate-950 to-slate-900">
+        <div className="absolute inset-0" />
+        
+        <div className="container relative z-10">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white text-center mb-16">
+            La realidad de la mayoría de los gimnasios
+          </h2>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 border border-slate-700/50 text-center">
+              <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                </svg>
+              </div>
+              <p className="text-xl font-bold text-white">Publicas contenido pero no llegan clientes</p>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 border border-slate-700/50 text-center">
+              <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <p className="text-xl font-bold text-white">Pierdes consultas por no responder a tiempo</p>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 border border-slate-700/50 text-center">
+              <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-6">
+                <MessageCircle className="w-8 h-8 text-red-400" />
+              </div>
+              <p className="text-xl font-bold text-white">Tu WhatsApp es un caos</p>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 border border-slate-700/50 text-center">
+              <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <p className="text-xl font-bold text-white">Tu negocio depende de tu tiempo</p>
+            </div>
           </div>
         </div>
       </section>
