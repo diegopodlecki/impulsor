@@ -39,8 +39,8 @@ const BENEFITS = [
 const PAIN_POINTS = [
   {
     icon: Target,
-    title: "Dependés de Instagram",
-    desc: "El algoritmo decide quién ve tu negocio. Tu competencia crece mientras vos esperás likes."
+    title: "Dependés de Instagram para conseguir clientes",
+    desc: "El algoritmo decide quién ve tu negocio. Tu competencia sigue creciendo."
   },
   {
     icon: Phone,
@@ -49,13 +49,13 @@ const PAIN_POINTS = [
   },
   {
     icon: Mail,
-    title: "Perdés alumnos por lentitud",
+    title: "Pierdes alumnos por no responder rápido",
     desc: "Contestás 2 horas después. Ya se anotaron en otro gimnasio."
   },
   {
     icon: Shield,
-    title: "No aparecés en Google",
-    desc: "Tu negocio no existe para quienes te buscan online."
+    title: "Tu gimnasio no transmite profesionalismo online",
+    desc: "No aparecés en Google. Tu negocio no se encuentra."
   },
 ];
 
@@ -64,22 +64,22 @@ const STEPS = [
     num: "01",
     icon: Rocket,
     title: "Atraés",
-    subtitle: "Visitas llegan a tu landing",
-    desc: "Tu página aparece cuando alguien busca \"gimnasio cerca\" en Google. Visitas qualificadas, no tráfico random."
+    subtitle: "Visitas a tu landing",
+    desc: "Tu página aparece en Google cuando buscan \"gimnasio\" cerca."
   },
   {
     num: "02",
     icon: MessageCircle,
     title: "Captás",
-    subtitle: "Contactos caen a WhatsApp",
-    desc: "Cada visitante se convierte en mensaje directo. Sin formularios, sin fricción. El lead llega a tu bolsillo."
+    subtitle: "WhatsApp + Formulario",
+    desc: "Cada visita se convierte en contacto directo a tu WhatsApp."
   },
   {
     num: "03",
     icon: Users,
     title: "Convertís",
     subtitle: "Leads se vuelven socios",
-    desc: "Gente caliente, lista para anotarse. Tu solo cerrás. El sistema hace el trabajo pesado."
+    desc: "Gente interesada. Vos solo cerrás la venta."
   },
 ];
 
@@ -170,29 +170,24 @@ export default function Gimnasios() {
         </div>
       </header>
 
-      {/* HERO */}
+      {/* HERO - MAXIMUM URGENCY */}
       <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
           <img 
             src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&h=1080&fit=crop&q=85" 
             alt="Gimnasio" 
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-15"
             onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1920&h=1080&fit=crop'; }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/60" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/40" />
-          <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-green-500/25 to-emerald-600/10 rounded-full blur-[180px] animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-emerald-500/15 to-transparent rounded-full blur-[120px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/95 to-slate-950/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50" />
+          <div className="absolute top-0 right-1/4 w-[700px] h-[700px] bg-gradient-to-br from-green-500/30 to-emerald-600/15 rounded-full blur-[200px] animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-emerald-500/20 to-transparent rounded-full blur-[150px]" />
         </div>
 
         <div className="container relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 border border-green-500/30 text-green-400 text-sm font-bold mb-8">
-              <Zap className="w-4 h-4" />
-              Solo 3 lugares este mes
-            </div>
-
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05] mb-8">
               <span className="text-white">Si tu gimnasio no consigue clientes todos los días,</span>
               <br />
@@ -201,23 +196,23 @@ export default function Gimnasios() {
               </span>
             </h1>
 
-            <p className="text-xl sm:text-2xl text-slate-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-              Sistema simple que convierte visitas en alumnos usando landing pages + WhatsApp automatizado
+            <p className="text-xl sm:text-2xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+              Te damos un sistema simple que convierte visitas en alumnos con landing + WhatsApp automatizado
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              <a href="#planes" className="group inline-flex items-center justify-center gap-3 px-12 py-5 text-lg font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-2xl shadow-green-500/40 hover:scale-[1.02] transition-all">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+              <a href="#planes" className="group inline-flex items-center justify-center gap-3 px-14 py-5 text-xl font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-2xl shadow-green-500/50 hover:scale-[1.02] transition-all">
                 <TrendingUp className="h-6 w-6" />
-                Quiero más clientes
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                Quiero más alumnos
+                <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20más%20clientes%20para%20mi%20gimnasio" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
+              <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20más%20alumnos%20para%20mi%20gimnasio" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
                 <MessageCircle className="h-6 w-6" />
-                WhatsApp
+                Hablar por WhatsApp
               </a>
             </div>
 
-            <p className="text-slate-400 flex items-center justify-center gap-2">
+            <p className="text-slate-400 flex items-center justify-center gap-2 text-base">
               <CheckCircle className="h-4 w-4 text-green-400" />
               Sin sistemas complicados. Sin perder tiempo.
             </p>
@@ -226,28 +221,73 @@ export default function Gimnasios() {
       </section>
 
       {/* CTA #1 */}
-      <section className="py-16 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-y border-green-500/20">
+      <section className="py-20 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-y border-green-500/20">
         <div className="container text-center">
-          <h3 className="text-2xl font-bold text-white mb-3">
+          <h3 className="text-2xl sm:text-3xl font-black text-white mb-3">
             Dejá de depender del algoritmo de Instagram
           </h3>
-          <p className="text-slate-300 mb-6">Tu sistema propio, trabajando 24/7</p>
+          <p className="text-slate-300 mb-8">Tu sistema propio, funcionando 24/7</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#planes" className="group inline-flex items-center justify-center gap-3 px-10 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-xl shadow-green-500/30 hover:scale-[1.02] transition-all">
-              Quiero mi sistema
-              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <a href="#planes" className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto px-12 py-5 text-xl font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-2xl shadow-green-500/40 hover:scale-[1.02] transition-all">
+              Quiero más alumnos
+              <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="https://wa.me/5491234567890" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
-              <MessageCircle className="h-5 w-5" />
+            <a href="https://wa.me/5491234567890" className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border-2 border-white/20 text-white hover:bg-white/10 transition-all">
+              <MessageCircle className="h-6 w-6" />
               WhatsApp
             </a>
           </div>
         </div>
       </section>
 
+      {/* NOT JUST A WEBSITE */}
+      <section className="relative py-32 lg:py-40 overflow-hidden bg-gradient-to-b from-slate-950 to-slate-900">
+        <div className="absolute inset-0" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-green-500/15 to-transparent rounded-full blur-[150px]" />
+        
+        <div className="container relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-8">
+              Esto <span className="text-green-400">no es una web más</span>
+            </h2>
+            <p className="text-xl sm:text-2xl text-slate-300 mb-16 max-w-2xl mx-auto">
+              No te vendemos una página bonita. Te damos un sistema que trabaja para conseguirte socios.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-10 h-10 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">No es solo diseño</h3>
+                <p className="text-slate-400">Tu web se ve profesional, pero eso es lo menos importante. Lo que importa es que <span className="text-white font-semibold">convierte visitas en leads</span>.</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center mx-auto mb-6">
+                  <Users className="w-10 h-10 text-green-400" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Es un sistema para conseguir clientes</h3>
+                <p className="text-slate-400">Landing optimizada + WhatsApp directo + posicionamiento en Google. <span className="text-green-400 font-semibold">Un sistema completo</span>, no piezas sueltas.</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center mx-auto mb-6">
+                  <Dumbbell className="w-10 h-10 text-green-400" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Pensado para gimnasios</h3>
+                <p className="text-slate-400">No es una plantilla genérica. <span className="text-white font-semibold">Tu landing habla el idioma de tu cliente</span>: resultados, horarios, precios, ubicación.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* PAIN POINTS */}
       <section className="relative py-32 lg:py-40 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 to-slate-900" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 to-slate-950" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-b from-red-500/10 to-transparent rounded-full blur-[100px]" />
         
         <div className="container relative z-10">
@@ -294,7 +334,7 @@ export default function Gimnasios() {
               Cómo funciona
             </h2>
             <p className="text-xl text-slate-400">
-              3 pasos para conseguir alumnos en piloto automático
+              Sistema simple en 3 pasos
             </p>
           </div>
 
@@ -321,19 +361,19 @@ export default function Gimnasios() {
       </section>
 
       {/* CTA #2 */}
-      <section className="py-16 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-y border-green-500/20">
+      <section className="py-20 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-y border-green-500/20">
         <div className="container text-center">
-          <h3 className="text-2xl font-bold text-white mb-3">
+          <h3 className="text-2xl sm:text-3xl font-black text-white mb-3">
             Atraé, captá, convertí
           </h3>
-          <p className="text-slate-300 mb-6">El sistema completo para tu gimnasio</p>
+          <p className="text-slate-300 mb-8">El sistema completo para tu gimnasio</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#planes" className="group inline-flex items-center justify-center gap-3 px-10 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-xl shadow-green-500/30 hover:scale-[1.02] transition-all">
-              Ver cómo funciona
-              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <a href="#planes" className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto px-12 py-5 text-xl font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-2xl shadow-green-500/40 hover:scale-[1.02] transition-all">
+              Quiero más alumnos
+              <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="https://wa.me/5491234567890" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
-              <MessageCircle className="h-5 w-5" />
+            <a href="https://wa.me/5491234567890" className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border-2 border-white/20 text-white hover:bg-white/10 transition-all">
+              <MessageCircle className="h-6 w-6" />
               WhatsApp
             </a>
           </div>
@@ -375,19 +415,19 @@ export default function Gimnasios() {
       </section>
 
       {/* CTA #3 */}
-      <section className="py-16 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-y border-green-500/20">
+      <section className="py-20 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-y border-green-500/20">
         <div className="container text-center">
-          <h3 className="text-2xl font-bold text-white mb-3">
+          <h3 className="text-2xl sm:text-3xl font-black text-white mb-3">
             +167% más socios en 6 meses
           </h3>
-          <p className="text-slate-300 mb-6">El promedio de nuestros clientes</p>
+          <p className="text-slate-300 mb-8">El promedio de nuestros clientes</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#planes" className="group inline-flex items-center justify-center gap-3 px-10 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-xl shadow-green-500/30 hover:scale-[1.02] transition-all">
-              Quiero estos resultados
-              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <a href="#planes" className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto px-12 py-5 text-xl font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-2xl shadow-green-500/40 hover:scale-[1.02] transition-all">
+              Quiero más alumnos
+              <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="https://wa.me/5491234567890" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
-              <MessageCircle className="h-5 w-5" />
+            <a href="https://wa.me/5491234567890" className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border-2 border-white/20 text-white hover:bg-white/10 transition-all">
+              <MessageCircle className="h-6 w-6" />
               WhatsApp
             </a>
           </div>
@@ -460,19 +500,19 @@ export default function Gimnasios() {
       </section>
 
       {/* CTA #4 */}
-      <section className="py-16 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-y border-green-500/20">
+      <section className="py-20 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-y border-green-500/20">
         <div className="container text-center">
-          <h3 className="text-2xl font-bold text-white mb-3">
+          <h3 className="text-2xl sm:text-3xl font-black text-white mb-3">
             Unite a gimnasios que ya están llenando
           </h3>
-          <p className="text-slate-300 mb-6">+20 socios nuevos por mes es posible</p>
+          <p className="text-slate-300 mb-8">+20 socios nuevos por mes es posible</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#planes" className="group inline-flex items-center justify-center gap-3 px-10 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-xl shadow-green-500/30 hover:scale-[1.02] transition-all">
-              Ver planes
-              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <a href="#planes" className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto px-12 py-5 text-xl font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-2xl shadow-green-500/40 hover:scale-[1.02] transition-all">
+              Quiero más alumnos
+              <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="https://wa.me/5491234567890" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
-              <MessageCircle className="h-5 w-5" />
+            <a href="https://wa.me/5491234567890" className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border-2 border-white/20 text-white hover:bg-white/10 transition-all">
+              <MessageCircle className="h-6 w-6" />
               WhatsApp
             </a>
           </div>
