@@ -32,7 +32,7 @@ export default function Index() {
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary via-purple-500 to-blue-600 flex items-center justify-center shadow-lg shadow-primary/30">
                   <span className="text-white font-bold text-lg">W</span>
                 </div>
-                <span className="text-white font-bold text-xl tracking-tight hidden sm:block">Impulsor</span>
+                <span className="text-white font-bold text-xl tracking-tight hidden sm:block">webappimpulsor</span>
               </a>
 
               <nav className="hidden md:flex items-center gap-10">
@@ -752,23 +752,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* FLOATING WHATSAPP BUTTON - Separated from main CTA */}
-      <a
-        href="https://wa.me/5491234567890"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 group inline-flex items-center gap-3 px-4 py-3.5 rounded-full bg-[#25D366] text-white shadow-2xl shadow-[#25D366]/30 hover:shadow-[#25D366]/50 hover:scale-110 transition-all duration-300 md:opacity-0 md:translate-y-4 animate-fadeInWhatsApp"
-        style={{ animationDelay: '2s' }}
-        aria-label="Contactar por WhatsApp"
-      >
-        <MessageCircle className="h-5 w-5" />
-        <span className="hidden lg:inline font-semibold text-sm">WhatsApp</span>
-        <span className="lg:hidden relative flex h-2.5 w-2.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
-        </span>
-      </a>
-
       {/* FOOTER */}
       <footer className="py-12 border-t border-white/5 bg-slate-950">
         <div className="container">
@@ -777,10 +760,10 @@ export default function Index() {
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center">
                 <span className="text-white font-bold text-xs">W</span>
               </div>
-              <span className="text-white font-bold">Impulsor</span>
+              <span className="text-white font-bold">webappimpulsor</span>
             </div>
             <p className="text-sm text-white/40">
-              © 2024 WebAppImpulsor. Todos los derechos reservados.
+              © 2024 webappimpulsor. Todos los derechos reservados.
             </p>
           </div>
         </div>

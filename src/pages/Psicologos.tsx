@@ -144,9 +144,9 @@ export default function Psicologos() {
             <div className="flex items-center justify-between h-20 py-5">
               <a href="/" className="flex items-center gap-3 group">
                 <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
-                  <span className="text-white font-bold text-xl">W</span>
+                  <span className="text-white font-bold text-2xl">W</span>
                 </div>
-                <span className="text-slate-800 font-bold text-xl tracking-tight">Impulsor</span>
+                <span className="text-slate-800 font-bold text-xl tracking-tight">webappimpulsor</span>
               </a>
               <a href="#contacto" className="px-6 py-3 text-sm font-semibold rounded-full bg-gradient-to-r from-indigo-500 to-violet-600 text-white hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/25 transition-all">
                 Quiero más pacientes
@@ -478,7 +478,7 @@ export default function Psicologos() {
       {/* FOOTER */}
       <footer className="py-12 border-t border-slate-200 bg-slate-50">
         <div className="container text-center text-slate-500">
-          <p className="text-base">© 2024 WebAppImpulsor</p>
+          <p className="text-base">© 2024 webappimpulsor</p>
         </div>
       </footer>
     </main>

@@ -169,9 +169,9 @@ export default function Gimnasios() {
             <div className="flex items-center justify-between h-20 py-5">
               <a href="/" className="flex items-center gap-3 group">
                 <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center shadow-lg shadow-orange-500/30 group-hover:scale-105 transition-transform">
-                  <span className="text-white font-bold text-xl">W</span>
+                  <span className="text-white font-bold text-2xl">W</span>
                 </div>
-                <span className="text-white font-bold text-xl tracking-tight">Impulsor</span>
+                <span className="text-white font-bold text-xl tracking-tight">webappimpulsor</span>
               </a>
               <a href="#contacto" className="px-6 py-3 text-sm font-semibold rounded-full bg-gradient-to-r from-orange-500 to-red-600 text-white hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30 transition-all">
                 Quiero mi web
@@ -573,7 +573,7 @@ export default function Gimnasios() {
       {/* FOOTER */}
       <footer className="py-12 border-t border-slate-800 bg-slate-950">
         <div className="container text-center text-slate-500">
-          <p className="text-base">© 2024 WebAppImpulsor</p>
+          <p className="text-base">© 2024 webappimpulsor</p>
         </div>
       </footer>
     </main>
