@@ -728,7 +728,7 @@ export default function Index() {
 
           <ScrollReveal direction="up" delay={150}>
             <p className="text-center text-white/40 text-sm mt-6 mb-8">
-              o escríbenos a <a href="mailto:hola@webimpulsor.com" className="underline hover:text-white/60">hola@webimpulsor.com</a>
+              o escríbenos a <a href="mailto:info@webappimpulsor.com" className="underline hover:text-white/60">info@webappimpulsor.com</a>
             </p>
           </ScrollReveal>
           
