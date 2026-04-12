@@ -494,7 +494,7 @@ export default function Index() {
           <ScrollReveal direction="up" delay={400}>
             <div className="text-center mt-12">
               <p className="text-white/50 mb-4">
-                Obicá tu rubro y te muestro opciones
+                Ubicá tu rubro y te muestro opciones
               </p>
               <a
                 href="#cta"
