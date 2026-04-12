@@ -203,7 +203,7 @@ export default function Gimnasios() {
                 Quiero más alumnos
                 <ArrowRight className="h-7 w-7 group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20más%20alumnos%20para%20mi%20gimnasio" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-xl font-semibold rounded-2xl bg-white/5 border-2 border-white/15 text-white hover:bg-white/10 transition-all">
+              <a href="https://wa.me/541166448389?text=Hola!%20Quiero%20más%20alumnos%20para%20mi%20gimnasio" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-xl font-semibold rounded-2xl bg-white/5 border-2 border-white/15 text-white hover:bg-white/10 transition-all">
                 <MessageCircle className="h-6 w-6" />
                 Hablar por WhatsApp
               </a>
@@ -395,7 +395,7 @@ export default function Gimnasios() {
               Quiero más alumnos
               <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="https://wa.me/5491234567890" className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border-2 border-white/20 text-white hover:bg-white/10 transition-all">
+            <a href="https://wa.me/541166448389" className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border-2 border-white/20 text-white hover:bg-white/10 transition-all">
               <MessageCircle className="h-6 w-6" />
               WhatsApp
             </a>
@@ -449,7 +449,7 @@ export default function Gimnasios() {
               Quiero más alumnos
               <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="https://wa.me/5491234567890" className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border-2 border-white/20 text-white hover:bg-white/10 transition-all">
+            <a href="https://wa.me/541166448389" className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border-2 border-white/20 text-white hover:bg-white/10 transition-all">
               <MessageCircle className="h-6 w-6" />
               WhatsApp
             </a>
@@ -534,7 +534,7 @@ export default function Gimnasios() {
               Quiero más alumnos
               <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="https://wa.me/5491234567890" className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border-2 border-white/20 text-white hover:bg-white/10 transition-all">
+            <a href="https://wa.me/541166448389" className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 text-lg font-semibold rounded-xl bg-white/5 border-2 border-white/20 text-white hover:bg-white/10 transition-all">
               <MessageCircle className="h-6 w-6" />
               WhatsApp
             </a>
@@ -590,7 +590,7 @@ export default function Gimnasios() {
                 Empezar ahora
                 <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20empezar%20con%20mi%20web%20para%20gimnasio" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-xl font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
+              <a href="https://wa.me/541166448389?text=Hola!%20Quiero%20empezar%20con%20mi%20web%20para%20gimnasio" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-xl font-semibold rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
                 <MessageCircle className="h-6 w-6" />
                 Hablar por WhatsApp
               </a>

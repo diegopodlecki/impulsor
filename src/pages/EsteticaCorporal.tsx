@@ -234,7 +234,7 @@ export default function EsteticaCorporal() {
                 Quiero + clientas
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20mi%20web%20para%20estetica" className="inline-flex items-center gap-3 px-10 py-5 text-lg font-semibold rounded-2xl bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 transition-all">
+              <a href="https://wa.me/541166448389?text=Hola!%20Quiero%20mi%20web%20para%20estetica" className="inline-flex items-center gap-3 px-10 py-5 text-lg font-semibold rounded-2xl bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 transition-all">
                 <MessageCircle className="h-6 w-6" />
                 WhatsApp
               </a>
@@ -536,7 +536,7 @@ export default function EsteticaCorporal() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20mi%20web%20para%20centro%20de%20estetica" className="group inline-flex items-center gap-3 px-10 py-5 text-xl font-bold rounded-2xl bg-gradient-to-r from-rose-400 to-pink-500 text-white shadow-2xl shadow-rose-500/30 hover:scale-105 transition-all">
+            <a href="https://wa.me/541166448389?text=Hola!%20Quiero%20mi%20web%20para%20centro%20de%20estetica" className="group inline-flex items-center gap-3 px-10 py-5 text-xl font-bold rounded-2xl bg-gradient-to-r from-rose-400 to-pink-500 text-white shadow-2xl shadow-rose-500/30 hover:scale-105 transition-all">
               <MessageCircle className="h-6 w-6" />
               Escribir por WhatsApp
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />

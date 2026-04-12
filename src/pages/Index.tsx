@@ -48,7 +48,7 @@ export default function Index() {
               </nav>
 
               <a
-                href="https://wa.me/5491234567890"
+                href="https://wa.me/541166448389"
                 className="group relative inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-full bg-gradient-to-r from-primary to-purple-600 text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-105 transition-all duration-300"
               >
                 <MessageCircle className="h-4 w-4" />
@@ -574,7 +574,7 @@ export default function Index() {
                 Primera consulta gratis. Sin compromiso. Respuesta en menos de 2 horas.
               </p>
               <a
-                href="https://wa.me/5491234567890?text=Hola!%20Quiero%20mi%20web"
+                href="https://wa.me/541166448389?text=Hola!%20Quiero%20mi%20web"
                 className="inline-flex items-center gap-3 px-8 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-primary to-purple-600 text-white shadow-xl shadow-primary/25 hover:scale-105 transition-all"
               >
                 <MessageCircle className="h-5 w-5" />
@@ -717,7 +717,7 @@ export default function Index() {
           <ScrollReveal direction="up" delay={100}>
             {/* Primary CTA - Full width on mobile */}
             <a
-              href="https://wa.me/5491234567890?text=Hola!%20Quiero%20mi%20web%20en%207%20días"
+              href="https://wa.me/541166448389?text=Hola!%20Quiero%20mi%20web%20en%207%20días"
               className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto sm:w-[450px] mx-auto px-10 py-5 text-xl font-bold rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white shadow-2xl shadow-purple-500/30 hover:shadow-purple-500/50 hover:scale-[1.02] transition-all duration-300"
             >
               <MessageCircle className="h-6 w-6" />

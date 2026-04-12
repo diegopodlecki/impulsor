@@ -238,7 +238,7 @@ export default function PersonalTrainers() {
                   Quiero + alumnos
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </a>
-                <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20mi%20web%20para%20PT" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-lg font-semibold rounded-2xl bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 transition-all">
+                <a href="https://wa.me/541166448389?text=Hola!%20Quiero%20mi%20web%20para%20PT" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-lg font-semibold rounded-2xl bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 transition-all">
                   <MessageCircle className="h-6 w-6" />
                   WhatsApp
                 </a>
@@ -586,7 +586,7 @@ export default function PersonalTrainers() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20mi%20web%20para%20Personal%20Trainer" className="group inline-flex items-center gap-3 px-10 py-5 text-xl font-bold rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-2xl shadow-cyan-500/30 hover:scale-105 transition-all">
+            <a href="https://wa.me/541166448389?text=Hola!%20Quiero%20mi%20web%20para%20Personal%20Trainer" className="group inline-flex items-center gap-3 px-10 py-5 text-xl font-bold rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-2xl shadow-cyan-500/30 hover:scale-105 transition-all">
               <MessageCircle className="h-6 w-6" />
               Escribir por WhatsApp
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
