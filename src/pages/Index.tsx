@@ -69,7 +69,7 @@ export default function Index() {
       </header>
 
       {/* HERO - Premium SaaS Layout */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900/95 to-slate-950">
+      <section className="relative min-h-screen flex items-center pt-16 sm:pt-20 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900/95 to-slate-950">
         {/* Background Effects */}
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-gradient-to-br from-blue-600/20 via-purple-600/10 to-transparent rounded-full blur-[200px]" />
@@ -83,7 +83,7 @@ export default function Index() {
           backgroundSize: '60px 60px'
         }} />
 
-        <div className="container relative z-10 px-4 py-24 lg:py-32">
+        <div className="container relative z-10 px-4 py-16 lg:py-20">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* LEFT - Text Content */}
             <div className="space-y-8">
