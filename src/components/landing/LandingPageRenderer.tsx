@@ -412,7 +412,7 @@ export const landingPresets = {
       badge: 'Transforma tu vida',
       title: 'Entrena con los mejores',
       subtitle: 'Somos más que un gimnasio. Somos tu aliado en el camino hacia la mejor versión de ti.',
-      ctaText: 'Comenzar ahora',
+      ctaText: 'Quiero mi web gratis',
       ctaSecondaryText: 'Ver planes',
       stats: [
         { value: '5000+', label: 'Miembros activos' },

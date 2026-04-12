@@ -44,7 +44,7 @@ export default function Index() {
                   Cómo funciona
                 </a>
                 <a href="#cta" className="text-sm font-medium text-white/60 hover:text-white transition-colors">
-                  Empezar
+                  Empezar gratis
                 </a>
               </nav>
 
@@ -115,14 +115,14 @@ export default function Index() {
                     href="#cta"
                     className="group inline-flex items-center justify-center gap-3 px-8 py-5 text-lg font-bold rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white shadow-2xl shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-[1.02] transition-all duration-300"
                   >
-                    Comenzar ahora
+                    quiero mi web gratis
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </a>
                   <a
                     href="#catalogo"
                     className="inline-flex items-center justify-center gap-3 px-8 py-5 text-lg font-semibold rounded-2xl bg-white/5 border border-white/10 text-white/90 hover:bg-white/10 hover:border-white/20 backdrop-blur-sm transition-all duration-300"
                   >
-                    Ver ejemplos
+                    Ver demos
                   </a>
                 </div>
               </ScrollReveal>
@@ -441,7 +441,7 @@ export default function Index() {
                 className="inline-flex items-center gap-3 px-8 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-primary to-purple-600 text-white shadow-xl shadow-primary/25 hover:scale-105 transition-all"
               >
                 <MessageCircle className="h-5 w-5" />
-                Consultar ahora por WhatsApp
+                quiero mi web gratis
               </a>
             </div>
           </ScrollReveal>
@@ -586,7 +586,7 @@ export default function Index() {
               className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto sm:w-[450px] mx-auto px-10 py-5 text-xl font-bold rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white shadow-2xl shadow-purple-500/30 hover:shadow-purple-500/50 hover:scale-[1.02] transition-all duration-300"
             >
               <MessageCircle className="h-6 w-6" />
-              <span>Comenzar ahora - Es gratis</span>
+              <span>quiero mi web gratis</span>
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </ScrollReveal>
