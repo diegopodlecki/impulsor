@@ -453,7 +453,7 @@ export default function Nutricionistas() {
       {/* FOOTER */}
       <footer className="py-12 border-t border-slate-200 bg-slate-50">
         <div className="container text-center text-slate-500">
-          <p className="text-base">© 2024 webappimpulsor</p>
+          <p className="text-base">© {new Date().getFullYear()} webappimpulsor</p>
         </div>
       </footer>
     </main>

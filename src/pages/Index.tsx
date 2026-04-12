@@ -763,7 +763,7 @@ export default function Index() {
               <span className="text-white font-bold">webappimpulsor</span>
             </div>
             <p className="text-sm text-white/40">
-              © 2024 webappimpulsor. Todos los derechos reservados.
+              © {new Date().getFullYear()} webappimpulsor. Todos los derechos reservados.
             </p>
           </div>
         </div>
