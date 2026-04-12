@@ -14,9 +14,9 @@ const RUBROS_ORDER = [
 ];
 
 const TRUST_INDICATORS = [
-  { icon: Users, text: '+50 negocios creados' },
-  { icon: TrendingUp, text: 'Leads en 7 días' },
-  { icon: Zap, text: 'Setup en 48hs' },
+  { icon: Users, text: '+50 negocios activos' },
+  { icon: TrendingUp, text: 'Primeros leads en 7 días' },
+  { icon: Zap, text: 'Web online en 7 días' },
 ];
 
 export default function Index() {
@@ -82,30 +82,26 @@ export default function Index() {
             <div className="space-y-8">
               <ScrollReveal direction="left">
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 backdrop-blur-sm">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                  </span>
-                  <span className="text-sm font-medium text-white/80">Nueva versión disponible</span>
+                  <span className="text-sm font-medium text-white/80">Diseño web para servicios en Argentina</span>
                 </div>
               </ScrollReveal>
 
               <ScrollReveal direction="left" delay={100}>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95]">
                   <span className="bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
-                    Tu negocio
+                    Más clientes para tu negocio,
                   </span>
                   <br />
                   <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    merece ser visto
+                    con una web que realmente vende
                   </span>
                 </h1>
               </ScrollReveal>
 
               <ScrollReveal direction="left" delay={200}>
                 <p className="text-xl lg:text-2xl text-white/60 leading-relaxed max-w-xl">
-                  Landing pages profesionales para tu rubro. 
-                  <span className="text-white/80 font-medium"> Atrae clientes, genera leads, escala tu negocio.</span>
+                  Creamos landing pages diseñadas específicamente para tu rubro: gyms, psicólogos, nutricionistas y más. 
+                  <span className="text-white/80 font-medium"> Tu web online en 7 días, con resultados desde el primer mes.</span>
                 </p>
               </ScrollReveal>
 
@@ -200,8 +196,8 @@ export default function Index() {
                       <div className="text-xs text-white/40">Leads nuevos</div>
                     </div>
                     <div className="text-center border-x border-white/5">
-                      <div className="text-2xl font-bold text-blue-400">89%</div>
-                      <div className="text-xs text-white/40">Tasa conversión</div>
+                      <div className="text-2xl font-bold text-blue-400">78%</div>
+                      <div className="text-xs text-white/40">Tasa de contacto</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-purple-400">7 días</div>
@@ -217,8 +213,8 @@ export default function Index() {
                       <TrendingUp className="h-5 w-5 text-emerald-400" />
                     </div>
                     <div>
-                      <div className="text-sm font-semibold text-white">+340%</div>
-                      <div className="text-xs text-white/40">Leads este mes</div>
+                      <div className="text-sm font-semibold text-white">+127%</div>
+                      <div className="text-xs text-white/40">Consultas vs mes anterior</div>
                     </div>
                   </div>
                 </div>
@@ -226,7 +222,7 @@ export default function Index() {
                 <div className="absolute -bottom-4 -left-4 p-3 rounded-xl bg-slate-800/90 backdrop-blur-xl border border-white/10 shadow-xl animate-float" style={{ animationDelay: '1s' }}>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-emerald-400" />
-                    <span className="text-xs font-medium text-white">Pagado por cliente</span>
+                    <span className="text-xs font-medium text-white">Retorno real del cliente</span>
                   </div>
                 </div>
               </div>
