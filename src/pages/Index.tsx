@@ -416,15 +416,15 @@ export default function Index() {
                 benefit: 'Resultados desde el día 1'
               },
             ].map((step, idx) => (
-              <div key={idx} className="relative text-center p-8 rounded-2xl bg-gradient-to-b from-slate-900/80 to-slate-900/40 border border-white/5 hover:border-primary/30 transition-all">
-                <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500 mb-4">
-                  {step.num}
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-                <p className="text-white/50 mb-4">{step.desc}</p>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-                  <CheckCircle className="h-4 w-4 text-emerald-400" />
-                  <span className="text-xs text-emerald-400 font-medium">{step.benefit}</span>
+              <div key={idx} className="relative text-center p-8 rounded-2xl bg-gradient-to-b from-slate-900/80 to-slate-900/40 border border-white/5 hover:border-primary/30 transition-all overflow-hidden">
+                <div className="absolute top-4 left-4 text-7xl font-black text-white/10 select-none">{step.num}</div>
+                <div className="relative z-10">
+                  <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
+                  <p className="text-white/50 mb-4">{step.desc}</p>
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                    <CheckCircle className="h-4 w-4 text-emerald-400" />
+                    <span className="text-xs text-emerald-400 font-medium">{step.benefit}</span>
+                  </div>
                 </div>
               </div>
             ))}
