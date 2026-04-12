@@ -1,6 +1,6 @@
 export const SITE_URL = "https://webappimpulsor.com";
 export const SITE_NAME = "WebAppImpulsor";
-export const DEFAULT_TITLE = "WebAppImpulsor | Tu web profesional en 72 horas";
+export const DEFAULT_TITLE = "WebAppImpulsor | Tu web profesional en 7 días";
 export const DEFAULT_DESCRIPTION =
   "Diseño web para negocios de servicios en Argentina. Landing pages enfocadas en consultas, confianza y contacto directo por WhatsApp.";
 export const DEFAULT_OG_IMAGE = "https://webappimpulsor.com/og-image.png";

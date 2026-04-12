@@ -710,7 +710,7 @@ export default function Index() {
             </h2>
             <p className="text-xl text-white/60 max-w-2xl mx-auto mb-4">
               <span className="text-white font-medium">Primera consulta gratis.</span> Sin compromiso. 
-              Empezá hoy y tenés web mañana.
+              Empezá hoy y tu web lista en 7 días.
             </p>
           </ScrollReveal>
           

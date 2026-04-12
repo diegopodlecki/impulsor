@@ -171,7 +171,7 @@ function getPopupCopy(pathname: string, sectionId?: string) {
 
   return {
     title: "¡Espera! Antes de irte...",
-    subtitle: "Podrias tener una web lista en 72 horas y empezar a recibir consultas mejores.",
+    subtitle: "Podrias tener una web lista en 7 días y empezar a recibir consultas mejores.",
     bullets: [
       "Mas consultas por WhatsApp",
       "Diseño profesional y claro",

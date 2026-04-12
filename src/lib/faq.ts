@@ -17,7 +17,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
       {
         q: "¿Cuánto tarda en estar lista mi web?",
         a: [
-          "La respuesta honesta es: depende del alcance y de qué tan pronto tengamos el contenido listo. Para una landing simple y bien enfocada, solemos trabajar con una ventana de 72 horas a algunos días hábiles.",
+          "La respuesta honesta es: depende del alcance y de qué tan pronto tengamos el contenido listo. Para una landing simple y bien enfocada, solemos trabajar con una ventana de 7 días hábiles.",
           "Si el proyecto incluye más secciones, ajustes de marca, redacción o integraciones, el plazo se estira un poco. Lo importante es que no te prometemos una fecha irreal: preferimos decirte con claridad qué entra y qué no, y avanzar con un ritmo que nos deje entregar algo sólido.",
         ],
       },
