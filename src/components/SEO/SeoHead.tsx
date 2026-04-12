@@ -63,10 +63,12 @@ export function SeoHead({
     <Head>
       <title>{pageTitle}</title>
       <meta name="description" content={pageDescription} />
+      <meta name="keywords" content="diseño web argentina, landing page gimnasio, web para psicólogo, web para nutricionista, landing page servicios, web profesional rápida" />
+      <meta name="author" content="WebAppImpulsor" />
       <link rel="canonical" href={pageCanonical} />
 
-      <meta property="og:title" content={pageTitle} />
-      <meta property="og:description" content={pageDescription} />
+      <meta property="og:title" content="WebAppImpulsor | Tu web en 7 días" />
+      <meta property="og:description" content="Landing pages para negocios de servicios en Argentina. Más clientes desde el primer mes." />
       <meta property="og:url" content={pageCanonical} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:type" content={ogType} />

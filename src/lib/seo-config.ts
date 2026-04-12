@@ -1,8 +1,8 @@
-export const SITE_URL = "https://webappimpulsor.com";
+export const SITE_URL = "https://www.webappimpulsor.com";
 export const SITE_NAME = "WebAppImpulsor";
-export const DEFAULT_TITLE = "WebAppImpulsor | Tu web profesional en 7 días";
+export const DEFAULT_TITLE = "WebAppImpulsor | Diseño web para gimnasios, psicólogos y servicios en Argentina";
 export const DEFAULT_DESCRIPTION =
-  "Diseño web para negocios de servicios en Argentina. Landing pages enfocadas en consultas, confianza y contacto directo por WhatsApp.";
+  "Creamos landing pages profesionales para gimnasios, personal trainers, psicólogos, nutricionistas y más. Tu web online en 7 días. Primera consulta gratis. Argentina.";
 export const DEFAULT_OG_IMAGE = "https://webappimpulsor.com/og-image.png";
 export const WHATSAPP_NUMBER = "541166448389";
 
