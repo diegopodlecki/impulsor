@@ -22,7 +22,7 @@ const PLANS = [
   {
     name: "Pro",
     badge: "Para crecer",
-    description: "Para negocios que querem escalar con más funcionalidades y presencia digital completa",
+    description: "Para negocios que quieren escalar con más funcionalidades y presencia digital completa",
     features: [
       { text: "Todo lo del plan Starter", included: true },
       { text: "Sección de testimonios editable", included: true },

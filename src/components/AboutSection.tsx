@@ -51,7 +51,12 @@ export default function AboutSection() {
 
             <div className="p-5 rounded-xl bg-slate-800/40 border border-slate-700/50">
               <div className="flex items-start gap-4">
-                <span className="text-2xl">🇦🇷</span>
+                <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="28" height="6.67" fill="#74ACDF"/>
+                  <rect y="6.67" width="28" height="6.67" fill="white"/>
+                  <rect y="13.33" width="28" height="6.67" fill="#74ACDF"/>
+                  <circle cx="14" cy="10" r="2.5" fill="#F6B40E"/>
+                </svg>
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-2">100% local</h3>
                   <p className="text-sm text-white/50">
