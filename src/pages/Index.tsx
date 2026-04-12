@@ -157,7 +157,7 @@ export default function Index() {
                     </div>
                     <div className="flex-1 mx-4">
                       <div className="px-4 py-1.5 rounded-lg bg-slate-700/50 text-xs text-white/40 text-center">
-                        wepimpulsor.com/gimnasios
+                        webappimpulsor.com/gimnasios
                       </div>
                     </div>
                   </div>
