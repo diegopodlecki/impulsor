@@ -1,6 +1,7 @@
 export default function AboutSection() {
   return (
-    <section id="nosotros" className="relative py-24 bg-slate-900/50">
+    <section id="nosotros" className="relative py-24 bg-slate-800/30 border-y border-white/5">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent pointer-events-none" />
       <div className="container">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
           {/* Left - Text Content */}
