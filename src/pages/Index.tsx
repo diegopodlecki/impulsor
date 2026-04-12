@@ -471,43 +471,66 @@ export default function Index() {
           </ScrollReveal>
 
           {/* Testimonials Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {[
               {
                 quote: "Mi gimnasio pasó de 45 a 120 socios en 6 meses. La web trajo exactamente el tipo de cliente que buscaba.",
                 author: "Marcelo G.",
                 role: "Dueño de Gym Zone",
+                city: "Buenos Aires",
                 result: "+167% socios",
-                emoji: "🏋️"
+                initials: "MG",
+                bgColor: "#1e3a5f"
               },
               {
                 quote: "Llené mi agenda de alumnos en 3 semanas. Pasé de 4 a 12 sin hacer publicidad.",
                 author: "Carlos V.",
                 role: "Personal Trainer",
+                city: "Córdoba",
                 result: "+200% alumnos",
-                emoji: "💪"
+                initials: "CV",
+                bgColor: "#1a4731"
               },
               {
                 quote: "Mi agenda se llenó en 6 semanas. Los pacientes llegan sabiendo cómo trabajo.",
                 author: "Luciana P.",
                 role: "Psicóloga",
+                city: "Rosario",
                 result: "+200% consultas",
-                emoji: "🧠"
+                initials: "LP",
+                bgColor: "#3d1a6b"
+              },
+              {
+                quote: "Tenía miedo de invertir en una web sin saber si iba a funcionar. En el primer mes recuperé la inversión con creces.",
+                author: "Sofía R.",
+                role: "Nutricionista",
+                city: "Mendoza",
+                result: "+85% consultas",
+                initials: "SR",
+                bgColor: "#8b3a2a"
               },
             ].map((testimonial, idx) => (
               <ScrollReveal key={idx} direction="up" delay={idx * 100}>
                 <div className="relative p-8 rounded-2xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 border border-white/10 hover:border-primary/30 transition-all">
-                  <div className="absolute -top-4 left-8 text-5xl">{testimonial.emoji}</div>
-                  <div className="flex items-center gap-1 mb-4 mt-4">
+                  <div className="flex items-center gap-1 mb-4">
                     {[1,2,3,4,5].map(i => (
                       <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
                   <p className="text-white/80 text-lg mb-6 leading-relaxed">&ldquo;{testimonial.quote}&rdquo;</p>
                   <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-bold text-white">{testimonial.author}</p>
-                      <p className="text-sm text-white/50">{testimonial.role}</p>
+                    <div className="flex items-center gap-3">
+                      <div 
+                        className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold"
+                        style={{ backgroundColor: testimonial.bgColor }}
+                      >
+                        {testimonial.initials}
+                      </div>
+                      <div>
+                        <p className="font-bold text-white">{testimonial.author}</p>
+                        <p className="text-sm text-white/50">{testimonial.role}</p>
+                        <p className="text-xs text-white/40">{testimonial.city}</p>
+                      </div>
                     </div>
                     <div className="px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold">
                       {testimonial.result}
