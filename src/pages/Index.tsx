@@ -429,10 +429,6 @@ export default function Index() {
           {/* CTA Mid-page */}
           <ScrollReveal direction="up" delay={300}>
             <div className="text-center mt-16 max-w-2xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-medium mb-6">
-                <Clock className="h-4 w-4" />
-                Solo 5 lugares disponibles este mes
-              </div>
               <h3 className="text-2xl font-bold text-white mb-4">
                 ¿Listo para empezar?
               </h3>
