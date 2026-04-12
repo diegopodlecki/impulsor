@@ -29,7 +29,12 @@ import EsteticaCorporal from "./pages/EsteticaCorporal.tsx";
 import Emprendedores from "./pages/Emprendedores.tsx";
 import Register from "./pages/Register.tsx";
 import { AuthProvider } from "./contexts/AuthContext";
-import { DemoGimnasios, DemoEntrenadores, DemoNutricionistas, DemoPsicologos, DemoEstetica } from "./pages/DemoPage.tsx";
+
+const GimnasiosPage = lazy(() => import("./pages/rubros/gimnasios").then(mod => ({ default: mod.default })));
+const EntrenadoresPage = lazy(() => import("./pages/rubros/entrenadores").then(mod => ({ default: mod.default })));
+const PsicologosPage = lazy(() => import("./pages/rubros/psicologos").then(mod => ({ default: mod.default })));
+const NutricionistasPage = lazy(() => import("./pages/rubros/nutricionistas").then(mod => ({ default: mod.default })));
+const EsteticaPage = lazy(() => import("./pages/rubros/estetica-corporal").then(mod => ({ default: mod.default })));
 
 const clearDiagnosticHash = () => {
   if (typeof window === "undefined") return;
@@ -40,7 +45,14 @@ const clearDiagnosticHash = () => {
 };
 
 import NicheLandingPage from "./pages/NicheLandingPage.tsx";
-import { demoRoutes } from "./pages/DemoPage.tsx";
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-slate-950">
+      <div className="text-white/50">Cargando...</div>
+    </div>
+  );
+}
 
 export const routes: RouteRecord[] = [
   {
@@ -49,12 +61,12 @@ export const routes: RouteRecord[] = [
     children: [
       { index: true, element: <Index /> },
       
-      // Demos de páginas
-      { path: "gimnasios", element: <DemoGimnasios /> },
-      { path: "entrenadores", element: <DemoEntrenadores /> },
-      { path: "nutricionistas", element: <DemoNutricionistas /> },
-      { path: "psicologos", element: <DemoPsicologos /> },
-      { path: "estetica-corporal", element: <DemoEstetica /> },
+      // Páginas de rubros con lazy loading
+      { path: "gimnasios", element: <Suspense fallback={<LoadingFallback />}><GimnasiosPage /></Suspense> },
+      { path: "entrenadores", element: <Suspense fallback={<LoadingFallback />}><EntrenadoresPage /></Suspense> },
+      { path: "nutricionistas", element: <Suspense fallback={<LoadingFallback />}><NutricionistasPage /></Suspense> },
+      { path: "psicologos", element: <Suspense fallback={<LoadingFallback />}><PsicologosPage /></Suspense> },
+      { path: "estetica-corporal", element: <Suspense fallback={<LoadingFallback />}><EsteticaPage /></Suspense> },
       { path: "emprendedores", element: <NicheLandingPage niche="casa-de-comidas" /> },
       
       // Redirecciones legacy
