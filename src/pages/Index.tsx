@@ -4,6 +4,7 @@ import { RUBROS } from '@/lib/rubros';
 import { cn } from '@/lib/utils';
 import { ScrollReveal, StaggeredReveal } from '@/components/ScrollReveal';
 import PricingSection from '@/components/PricingSection';
+import AboutSection from '@/components/AboutSection';
 
 const RUBROS_ORDER = [
   'gimnasio',
@@ -42,6 +43,9 @@ export default function Index() {
                 </a>
                 <a href="#proceso" className="text-sm font-medium text-white/60 hover:text-white transition-colors">
                   Cómo funciona
+                </a>
+                <a href="#nosotros" className="text-sm font-medium text-white/60 hover:text-white transition-colors">
+                  Nosotros
                 </a>
                 <a href="#cta" className="text-sm font-medium text-white/60 hover:text-white transition-colors">
                   Empezar gratis
@@ -445,6 +449,8 @@ export default function Index() {
       </section>
 
       <PricingSection />
+
+      <AboutSection />
 
       {/* SOCIAL PROOF - Testimonios */}
       <section className="relative py-24 bg-gradient-to-b from-slate-950 to-slate-900/50">
