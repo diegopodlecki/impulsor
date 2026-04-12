@@ -1,0 +1,9 @@
+export { default as RubroLandingPage } from "./RubroLandingPage";
+export { default as RubroHero } from "./RubroHero";
+export { default as RubroServices } from "./RubroServices";
+export { default as RubroHowItWorks } from "./RubroHowItWorks";
+export { default as RubroPricing } from "./RubroPricing";
+export { default as RubroTestimonials } from "./RubroTestimonials";
+export { default as RubroFaq } from "./RubroFaq";
+export { default as RubroContact } from "./RubroContact";
+export { default as DemoBanner } from "./DemoBanner";
