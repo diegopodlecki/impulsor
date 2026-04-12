@@ -44,6 +44,9 @@ export default function Index() {
                 <a href="#proceso" className="text-sm font-medium text-white/60 hover:text-white transition-colors">
                   Cómo funciona
                 </a>
+                <a href="#precios" className="text-sm font-medium text-white/60 hover:text-white transition-colors">
+                  Precios
+                </a>
                 <a href="#nosotros" className="text-sm font-medium text-white/60 hover:text-white transition-colors">
                   Nosotros
                 </a>
