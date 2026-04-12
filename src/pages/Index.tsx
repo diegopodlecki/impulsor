@@ -3,6 +3,7 @@ import { MessageCircle, CheckCircle, ArrowRight, Zap, TrendingUp, Users, Clock, 
 import { RUBROS } from '@/lib/rubros';
 import { cn } from '@/lib/utils';
 import { ScrollReveal, StaggeredReveal } from '@/components/ScrollReveal';
+import PricingSection from '@/components/PricingSection';
 
 const RUBROS_ORDER = [
   'gimnasio',
@@ -446,6 +447,8 @@ export default function Index() {
           </ScrollReveal>
         </div>
       </section>
+
+      <PricingSection />
 
       {/* SOCIAL PROOF - Testimonios */}
       <section className="relative py-24 bg-gradient-to-b from-slate-950 to-slate-900/50">
