@@ -29,6 +29,7 @@ import EsteticaCorporal from "./pages/EsteticaCorporal.tsx";
 import Emprendedores from "./pages/Emprendedores.tsx";
 import Register from "./pages/Register.tsx";
 import { AuthProvider } from "./contexts/AuthContext";
+import { DemoGimnasios, DemoEntrenadores, DemoNutricionistas, DemoPsicologos, DemoEstetica } from "./pages/DemoPage.tsx";
 
 const clearDiagnosticHash = () => {
   if (typeof window === "undefined") return;
@@ -39,7 +40,7 @@ const clearDiagnosticHash = () => {
 };
 
 import NicheLandingPage from "./pages/NicheLandingPage.tsx";
-// ... (otros imports)
+import { demoRoutes } from "./pages/DemoPage.tsx";
 
 export const routes: RouteRecord[] = [
   {
@@ -48,12 +49,12 @@ export const routes: RouteRecord[] = [
     children: [
       { index: true, element: <Index /> },
       
-      // Landings principales con componente genérico
-      { path: "gimnasios", element: <NicheLandingPage niche="gimnasio" /> },
-      { path: "entrenadores", element: <NicheLandingPage niche="personal-trainer" /> },
-      { path: "nutricionistas", element: <NicheLandingPage niche="nutricionista" /> },
-      { path: "psicologos", element: <NicheLandingPage niche="psicologo" /> },
-      { path: "estetica-corporal", element: <NicheLandingPage niche="estetica-corporal" /> },
+      // Demos de páginas
+      { path: "gimnasios", element: <DemoGimnasios /> },
+      { path: "entrenadores", element: <DemoEntrenadores /> },
+      { path: "nutricionistas", element: <DemoNutricionistas /> },
+      { path: "psicologos", element: <DemoPsicologos /> },
+      { path: "estetica-corporal", element: <DemoEstetica /> },
       { path: "emprendedores", element: <NicheLandingPage niche="casa-de-comidas" /> },
       
       // Redirecciones legacy
