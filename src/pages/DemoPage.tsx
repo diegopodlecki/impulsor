@@ -107,6 +107,48 @@ function DemoPage({
         </div>
       </section>
 
+      {/* How it works - 3 steps */}
+      <section className="py-20 bg-slate-950">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
+              Así de simple
+            </h2>
+            <p className="text-white/50 text-lg">
+              Tu web lista sin vueltas
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                num: '01',
+                title: 'Nos contactás',
+                desc: 'Escribinos por WhatsApp y contanos sobre tu negocio. Sin formularios, sin burocracia.'
+              },
+              {
+                num: '02',
+                title: 'Diseñamos tu web',
+                desc: 'Creamos tu landing específica para tu rubro en menos de 7 días, con tu info y tu identidad.'
+              },
+              {
+                num: '03',
+                title: 'Empezás a recibir clientes',
+                desc: 'Tu web online, optimizada y lista para convertir visitantes en consultas reales.'
+              },
+            ].map((step, idx) => (
+              <div key={idx} className="relative text-center p-8 rounded-2xl bg-slate-900/50 border border-white/5 overflow-hidden">
+                <div className="absolute top-4 left-4 text-6xl font-black text-white/10 select-none">{step.num}</div>
+                <div className="relative z-10">
+                  <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
+                  <p className="text-white/50 text-sm">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Final */}
       <section className="py-20">
         <div className="container text-center">
