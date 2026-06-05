@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Gradient Background -->
+  <defs>
+    <linearGradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="600" fill="url(#gradBlue)"/>
+  
+  <!-- Dumbbell icon -->
+  <g transform="translate(350, 200)">
+    <rect x="-60" y="-8" width="20" height="16" fill="#fff" rx="2"/>
+    <rect x="-30" y="-15" width="60" height="30" fill="#fbbf24" rx="3"/>
+    <rect x="40" y="-8" width="20" height="16" fill="#fff" rx="2"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="400" y="380" font-size="48" font-weight="bold" text-anchor="middle" fill="white" font-family="Arial">
+    Personal Trainer
+  </text>
+  <text x="400" y="440" font-size="24" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Arial">
+    Transformaciones que inspiran
+  </text>
+</svg>

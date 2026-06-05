@@ -1,0 +1,6 @@
+{
+    "hero": ["titulo", "subtitulo", "cta"],
+    "beneficios": ["item1", "item2", "item3"],
+    "social_proof": ["testimonios"],
+    "cta_final": ["mensaje", "boton"]
+  }

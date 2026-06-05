@@ -1,123 +1,129 @@
-export type PricingPlan = {
-  name: string;
-  badge: string;
-  audience: string;
-  includes: string[];
-  excludes: string[];
-  delivery: string;
-  price: string;
-  cta: string;
-};
-
-export type PricingFaq = {
-  question: string;
-  answer: string;
-};
-
 export const pricingPlans: PricingPlan[] = [
   {
-    name: "Consulta Clara",
-    badge: "Entrada inteligente",
+    name: "Starter",
+    badge: "Perfecta para empezar",
     audience:
-      "Para profesionales que quieren una primera presencia comercial sólida, clara y pensada para convertir visitas en consultas.",
+      "Para personal trainers que quieren automatizar consultas básicas y agendar clientes sin intermediarios.",
     includes: [
-      "Mensaje principal orientado a consultas reales, no a decorar la página",
-      "Estructura clara para explicar qué hacés y por qué elegirte",
-      "Botones de WhatsApp y contacto ubicados donde más ayudan a decidir",
-      "Formulario simple para capturar consultas sin fricción innecesaria",
-      "Secciones de confianza para reforzar seriedad desde el primer impacto",
-      "Texto base con tono profesional y foco comercial",
+      "Respuestas automáticas a preguntas frecuentes",
+      "Envío automático de tarifas y especialidades",
+      "Agendamiento directo a Google Calendar",
+      "Confirmación automática de turnos",
+      "Estadísticas básicas de consultas recibidas",
+      "Soporte por email",
     ],
     excludes: [
-      "No incluye branding desde cero ni redefinición completa de identidad visual",
-      "No incluye pauta paga ni gestión de campañas",
-      "No incluye blog, automatizaciones complejas ni e-commerce",
-      "No incluye carga masiva de contenido ni producción fotográfica",
+      "No incluye recordatorios automáticos",
+      "No incluye múltiples bots o gimnasios",
+      "No incluye integraciones avanzadas",
+      "No incluye API personalizada",
     ],
-    delivery: "Entrega estimada: 7 a 10 días hábiles",
-    price: "AR$ 690.000",
-    cta: "Quiero ordenar mis consultas",
+    delivery: "Activo en menos de 1 hora",
+    price: "$40/mes",
+    cta: "Empezar gratis 7 días",
   },
   {
-    name: "Agenda Activa",
+    name: "Pro",
     badge: "Más elegido",
     audience:
-      "Para negocios de servicios que ya venden y necesitan una web más robusta para elevar la calidad de las consultas.",
+      "Para trainers con más clientes que necesitan automatización completa + recordatorios + estadísticas detalladas.",
     includes: [
-      "Home estratégica con propuesta clara y foco comercial",
-      "Hasta 5 secciones o páginas diseñadas para explicar, convencer y cerrar",
-      "Redacción de beneficios y objeciones frecuentes en lenguaje simple",
-      "Bloques de prueba social para aumentar confianza y bajar fricción",
-      "Optimización SEO on-page base para empezar a posicionar bien",
-      "Integración visible con WhatsApp, formulario y llamados a la acción",
-      "Revisión guiada para ajustar el mensaje antes de salir online",
+      "Todo de Starter +",
+      "Recordatorios automáticos 24h antes",
+      "Seguimiento de no-shows",
+      "Estadísticas detalladas (conversión, horarios populares, etc)",
+      "Múltiples consultas simultaneas",
+      "Soporte prioritario por WhatsApp",
+      "Actualizaciones sin costo",
     ],
     excludes: [
-      "No incluye posicionamiento SEO mensual ni link building",
-      "No incluye fotografía profesional ni producción audiovisual",
-      "No incluye blog continuo con calendario editorial",
-      "No incluye funcionalidades avanzadas como reservas o área privada",
+      "No incluye integración con sistemas de pago",
+      "No incluye múltiples gimnasios (1 bot por plan)",
+      "No incluye API custom",
     ],
-    delivery: "Entrega estimada: 12 a 18 días hábiles",
-    price: "AR$ 1.290.000",
-    cta: "Quiero una web que convierta",
+    delivery: "Activo en menos de 1 hora",
+    price: "$70/mes",
+    cta: "Prueba Pro 7 días gratis",
   },
   {
-    name: "Autoridad que Cierra",
-    badge: "Recomendado para escalar",
+    name: "Enterprise",
+    badge: "Para cadenas y gimnasios",
     audience:
-      "Para profesionales y negocios de servicios que necesitan una presencia premium, más autoridad y una propuesta difícil de comparar por precio.",
+      "Para gimnasios, cadenas de PTs o emprendimientos que necesitan múltiples bots, integraciones complejas y soporte dedicado.",
     includes: [
-      "Estrategia de contenido y estructura comercial antes del diseño",
-      "Landing o sitio multipágina con narrativa de venta completa",
-      "Copywriting persuasivo para servicios, casos y preguntas frecuentes",
-      "Sistema de confianza con testimonios, garantías y objeciones resueltas",
-      "SEO on-page más profundo para competir en búsquedas más exigentes",
-      "Ajustes de conversión post-publicación para afinar el mensaje",
-      "Soporte de lanzamiento para salir online con mayor control",
+      "Todo de Pro +",
+      "Múltiples bots/gimnasios",
+      "Integración con sistemas de pago",
+      "API personalizada",
+      "Dashboard personalizado",
+      "Soporte 24/7 dedicado",
+      "Entrenamiento del equipo",
+      "Funcionalidades custom bajo demanda",
     ],
     excludes: [
-      "No incluye campañas de anuncios ni gestión mensual de pauta",
-      "No incluye mantenimiento continuo ni soporte ilimitado",
-      "No incluye desarrollo de funcionalidades tipo SaaS o producto complejo",
-      "No incluye carga constante de contenidos nuevos",
+      "No incluye garantías de uptime por debajo de 99.5%",
     ],
-    delivery: "Entrega estimada: 20 a 30 días hábiles",
-    price: "AR$ 2.390.000",
-    cta: "Quiero una propuesta premium",
+    delivery: "Consulta personalizada",
+    price: "$120/mes",
+    cta: "Solicitar demo Enterprise",
   },
 ];
+
+/**
+ * PREGUNTAS FRECUENTES - SaaS BOT
+ * Reemplaza el array pricingFaq COMPLETO con este
+ */
 
 export const pricingFaq: PricingFaq[] = [
   {
-    question: "¿Puedo editar la web yo solo?",
+    question: "¿Cuánto tarda en estar funcionando?",
     answer:
-      "Sí, cuando el alcance lo permite dejamos una estructura simple para que puedas cambiar textos básicos sin depender de nadie. Si necesitás autonomía total, se define desde el inicio.",
+      "Menos de 1 hora. Conectas tu WhatsApp, configuras respuestas y tus horarios. Listo. El bot empieza a trabajar inmediatamente.",
   },
   {
-    question: "¿Qué pasa si no me gusta?",
+    question: "¿Necesito saber de programación?",
     answer:
-      "Trabajamos con una instancia de validación antes de avanzar. Si algo no encaja, ajustamos el rumbo en esa etapa para evitar llegar a una entrega que no represente tu negocio.",
+      "No. Interfaz simple y visual. Si puedes usar WhatsApp, puedes configurar el bot. Cualquier duda, nuestro equipo te guía.",
   },
   {
-    question: "¿Cuánto tarda en estar lista?",
+    question: "¿Puedo cambiar de plan cuando quiera?",
     answer:
-      "Depende del plan y de qué tan ordenado tengas el contenido. En general, una landing sale en 7 a 10 días hábiles y un sitio más completo entre 12 y 30 días.",
+      "Sí. Cambias en cualquier momento. Si subes de plan, se prorratea. Si bajas, el cambio aplica la próxima facturación.",
   },
   {
-    question: "¿Incluye textos e imágenes?",
+    question: "¿Qué pasa si cancelo?",
     answer:
-      "Incluye la redacción comercial base y la estructura del mensaje. Las imágenes pueden salir de tu material, de bancos licenciados o de una selección curada según el plan.",
+      "Cancelas sin problema. Sin penalidad, sin contrato atrapado. Tu bot sigue funcionando hasta fin de mes. Tus datos quedan disponibles.",
   },
   {
-    question: "¿El precio incluye dominio, hosting y mantenimiento?",
+    question: "¿Los datos de mis clientes están seguros?",
     answer:
-      "No por defecto. Preferimos separar el desarrollo del costo operativo para que sepas exactamente qué estás pagando. Si querés, lo cotizamos como parte del paquete.",
+      "100% seguros. Cumplimos con LGPD y normas de privacidad. Tus datos no se venden ni comparten. Está entre vos y nosotros.",
+  },
+  {
+    question: "¿Incluye agendamiento en Google Calendar?",
+    answer:
+      "Sí, en todos los planes. El cliente elige horario → Se agrega automáticamente a tu calendario → Vos ves el turno confirmado.",
+  },
+  {
+    question: "¿Puedo usar el bot en múltiples números de WhatsApp?",
+    answer:
+      "Depende del plan. Starter y Pro son 1 bot. Enterprise permite múltiples bots/gimnasios.",
+  },
+  {
+    question: "¿Cómo me contactan los clientes?",
+    answer:
+      "Directo a tu número de WhatsApp personal. El bot responde desde tu número, así que tu cliente ve que le escribiste vos.",
   },
 ];
 
+/**
+ * GARANTÍA
+ * Reemplaza pricingGuarantee COMPLETO con este
+ */
+
 export const pricingGuarantee = {
-  title: "Garantía de claridad comercial",
+  title: "Garantía: Funciona o dinero devuelto",
   body:
-    "Si dentro de los 15 días posteriores a la entrega sentís que la web no comunica con claridad lo que hacés, hacemos una ronda extra de ajustes sin costo para alinear mensaje, jerarquía y conversión.",
+    "Prueba gratis 7 días. Si en ese tiempo el bot no te ahorra 2+ horas de WhatsApp, devolvemos tu dinero. Sin preguntas.",
 };
