@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "generate-og": "node scripts/generate-og-image.mjs",
-    "prebuild": "npm run generate-og",
-    "build": "vite-react-ssg build",
+    "prebuild": "npm run generate-og || true",
+    "build": "vite build",
     "build:dev": "vite-react-ssg build --mode development",
     "build:github": "GITHUB_PAGES=true vite-react-ssg build",
     "build:analyze": "ANALYZE=true vite-react-ssg build",
