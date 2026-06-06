@@ -68,6 +68,7 @@ export const routes: RouteRecord[] = [
       { path: "psicologos", element: <Suspense fallback={<LoadingFallback />}><PsicologosPage /></Suspense> },
       { path: "estetica-corporal", element: <Suspense fallback={<LoadingFallback />}><EsteticaPage /></Suspense> },
       { path: "emprendedores", element: <NicheLandingPage niche="casa-de-comidas" /> },
+      { path: "bot-whatsapp", element: <NicheLandingPage niche="personal-trainer" /> },
       
       // Redirecciones legacy
       { path: "gimnasio", element: <Navigate to="/gimnasios" replace /> },
