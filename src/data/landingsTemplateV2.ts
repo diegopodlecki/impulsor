@@ -176,7 +176,6 @@ export const landingConfigsV2: Record<string, LandingPageConfig> = {
       subtitle: 'Gratis los primeros 7 días',
       description: 'Sin tarjeta de crédito. Sin compromiso. Prueba que funciona en tu negocio.',
       ctaText: 'Activar ahora',
-      ctaSecondaryText: 'Hablar con nosotros',
       highlights: [
         '✓ 7 días gratis sin tarjeta',
         '✓ Sin compromiso, cancela cuando quieras',
