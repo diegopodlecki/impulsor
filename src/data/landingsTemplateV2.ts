@@ -133,10 +133,10 @@ export const landingConfigsV2: Record<string, LandingPageConfig> = {
       subtitle: 'Casos reales de uso',
       description: 'Tu cliente → Tu bot → Turno confirmado automáticamente',
       images: [
-        { src: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=800&fit=crop', alt: 'Chat', caption: 'Cliente consulta' },
-        { src: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=800&fit=crop', alt: 'Respuesta', caption: 'Bot responde' },
-        { src: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=800&fit=crop', alt: 'Agendado', caption: 'Turno confirmado' },
-        { src: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&h=800&fit=crop', alt: 'Recordatorio', caption: 'Recordatorio 24h' },
+        { src: 'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=800&h=800&fit=crop', alt: 'Chat', caption: 'Cliente consulta por WhatsApp' },
+        { src: 'https://images.unsplash.com/photo-1577563908292-e90a4c6b4da0?w=800&h=800&fit=crop', alt: 'Respuesta', caption: 'Bot responde automáticamente' },
+        { src: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&h=800&fit=crop', alt: 'Calendario', caption: 'Turno confirmado en Google Calendar' },
+        { src: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&h=800&fit=crop', alt: 'Notificación', caption: 'Recordatorio 24h antes del turno' },
       ],
     },
     testimonios: {
