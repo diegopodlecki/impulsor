@@ -59,7 +59,7 @@ export const routes: RouteRecord[] = [
     path: "/",
     element: <SiteLayout />,
     children: [
-      { index: true, element: <Index /> },
+      { index: true, element: <NicheLandingPage niche="personal-trainer" /> },
       
       // Páginas de rubros con lazy loading
       { path: "gimnasios", element: <Suspense fallback={<LoadingFallback />}><GimnasiosPage /></Suspense> },
