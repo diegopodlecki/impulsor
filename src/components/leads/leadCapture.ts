@@ -34,15 +34,15 @@ export const leadMagnetOffer = {
 };
 
 const homeSectionMessages: Record<string, string> = {
-  hero: "Hola, vi la propuesta de WebAppImpulsor y quiero una web para mi negocio.",
-  problema: "Hola, tengo una web que no convierte y quiero ordenarla para generar más consultas.",
-  solucion: "Hola, quiero una web clara y profesional para captar más clientes.",
+  hero: "Hola, vi la propuesta de WebAppImpulsor y quiero automatizar WhatsApp y turnos.",
+  problema: "Hola, tengo muchos mensajes manuales y quiero ordenarlos para generar más consultas.",
+  solucion: "Hola, quiero automatizar mi atención y captar más turnos.",
   rubros: "Hola, quiero ver una propuesta para mi rubro y entender qué me conviene.",
   pruebaSocial: "Hola, me interesó lo que muestran de resultados y quiero avanzar con una propuesta.",
   precios: "Hola, quiero conocer planes y precios para mi negocio.",
-  "recurso-gratuito": "Hola, vi la mini-guía y quiero que revisen mi web.",
-  contacto: "Hola, quiero que me envíen una propuesta concreta para mi negocio.",
-  cierre: "Hola, quiero hablar y ver cómo sería mi web.",
+  "recurso-gratuito": "Hola, vi la mini-guía y quiero que revisen mi caso.",
+  contacto: "Hola, quiero que me envíen una propuesta concreta para automatizar WhatsApp y turnos.",
+  cierre: "Hola, quiero hablar y ver cómo sería mi sistema.",
 };
 
 const routeMessages: Record<string, string> = {
@@ -71,10 +71,10 @@ export function getContextualWhatsappMessage(pathname: string, sectionId?: strin
   }
 
   if (pathname === "/") {
-    return "Hola, vi WebAppImpulsor y quiero una web que me ayude a conseguir más clientes.";
+    return "Hola, vi WebAppImpulsor y quiero automatizar WhatsApp y turnos para mi negocio.";
   }
 
-  return "Hola, quiero una propuesta para mi web y necesito más consultas online.";
+  return "Hola, quiero una propuesta para automatizar mi atención y necesito más consultas online.";
 }
 
 export function normalizeLeadSectionId(sectionId: string | null | undefined) {

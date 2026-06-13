@@ -36,16 +36,16 @@ export function AboutModalTrigger() {
           
           <div className="space-y-6 text-slate-300 text-lg leading-relaxed">
             <p className="font-bold text-white text-xl">
-              "No hago páginas web. Creo herramientas de venta."
+              "No hago páginas web genéricas. Creo automatización de WhatsApp y turnos."
             </p>
             <p>
-              Empecé en el mundo digital entendiendo que una web "linda" no sirve de nada si no genera resultados. Mi enfoque es 100% pragmático: diseño para que tu cliente te encuentre, confíe en vos y te escriba.
+              Empecé en el mundo digital entendiendo que una web "linda" no sirve de nada si no genera resultados. Mi enfoque es 100% pragmático: diseño para que tu cliente te escriba, reserve y vuelva sin fricción.
             </p>
             <p>
-              He ayudado a más de 40 profesionales y negocios de servicios a profesionalizar su imagen y, lo más importante, a tener un flujo constante de consultas calificadas.
+              He ayudado a más de 40 profesionales y negocios de servicios a profesionalizar su operación y, lo más importante, a tener un flujo constante de consultas y turnos.
             </p>
             <p>
-              Mi compromiso es simple: una web que comunique tu valor real y trabaje por vos las 24 horas del día.
+              Mi compromiso es simple: un sistema que comunique tu valor real y trabaje por vos las 24 horas del día.
             </p>
           </div>
 

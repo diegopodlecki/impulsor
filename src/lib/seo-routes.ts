@@ -28,7 +28,7 @@ function buildLandingSeoConfig(path: string, landingKey: keyof typeof landingPag
     console.error(`[SEO] Landing not found for key: ${landingKey} at path: ${path}`);
     return {
       title: "WebAppImpulsor",
-      description: "Diseño web para profesionales",
+      description: "Automatización de WhatsApp y turnos para negocios de servicios",
       canonical: `${SITE_URL}${path}`,
       ogImage: DEFAULT_OG_IMAGE,
       schema: null,
@@ -48,7 +48,7 @@ function buildFaqSeoConfig(): SeoRouteConfig {
   return {
     title: "Preguntas Frecuentes | WebAppImpulsor",
     description:
-      "Respondemos todas tus dudas sobre diseño web para profesionales en Argentina. Precios, plazos, proceso y garantías.",
+      "Respondemos todas tus dudas sobre automatización de WhatsApp, turnos, precios, plazos, proceso y garantías.",
     canonical: `${SITE_URL}/faq`,
     ogImage: DEFAULT_OG_IMAGE,
     schema: [

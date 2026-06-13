@@ -21,7 +21,7 @@ export default function Index() {
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 via-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-green-500/30">
                   <MessageSquare className="h-6 w-6 text-white" />
                 </div>
-                <span className="text-white font-bold text-xl tracking-tight hidden sm:block">TuAsistente</span>
+                <span className="text-white font-bold text-xl tracking-tight hidden sm:block">WebAppImpulsor</span>
               </a>
 
               <nav className="hidden md:flex items-center gap-10">
@@ -64,14 +64,14 @@ export default function Index() {
             <div className="space-y-8">
                <ScrollReveal direction="left">
                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 backdrop-blur-sm">
-                   <span className="text-sm font-medium text-white/80">Para profesionales independientes</span>
+                   <span className="text-sm font-medium text-white/80">Para profesionales y negocios de servicios</span>
                  </div>
                </ScrollReveal>
 
                <ScrollReveal direction="left" delay={100}>
                  <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95]">
                    <span className="bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
-                     Tu asistente de WhatsApp
+                     Automatización de WhatsApp
                    </span>
                    <br />
                    <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
@@ -82,20 +82,20 @@ export default function Index() {
 
                <ScrollReveal direction="left" delay={200}>
                  <p className="text-xl lg:text-2xl text-white/60 leading-relaxed max-w-xl">
-                   Responde consultas, muestra tus precios, gestiona turnos y envía recordatorios automáticamente. 
-                   <span className="text-white/80 font-medium"> Dedica tu tiempo a lo que mejor sabes hacer.</span>
+                   Responde consultas, agenda turnos y envía recordatorios automáticamente. 
+                   <span className="text-white/80 font-medium"> Dedica tu tiempo a atender mejor y vender más.</span>
                  </p>
                </ScrollReveal>
 
                <ScrollReveal direction="left" delay={300}>
                  <div className="flex flex-col sm:flex-row gap-4 pt-4">
                    <a
-                     href="https://wa.me/541166448389?text=Hola!%20Quiero%20probar%20el%20asistente%20de%20WhatsApp%20gratis"
+                     href="https://wa.me/541166448389?text=Hola!%20Quiero%20automatizar%20mi%20WhatsApp%20y%20mis%20turnos"
                      target="_blank"
                      rel="noopener noreferrer"
                      className="group inline-flex items-center justify-center gap-3 px-8 py-5 text-lg font-bold rounded-2xl bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 text-white shadow-2xl shadow-green-500/25 hover:shadow-green-500/40 hover:scale-[1.02] transition-all duration-300"
                    >
-                     Quiero probarlo gratis
+                     Quiero automatizar WhatsApp
                      <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                    </a>
                    <a
@@ -136,7 +136,7 @@ export default function Index() {
                     <div className="flex-1 mx-4">
                       <div className="px-4 py-1.5 rounded-lg bg-slate-700/50 text-xs text-white/40 text-center flex items-center justify-center gap-2">
                         <MessageSquare className="h-3 w-3" />
-                        WhatsApp Asistente
+                        WhatsApp automatizado
                       </div>
                     </div>
                   </div>
@@ -145,7 +145,7 @@ export default function Index() {
                     <div className="flex gap-3">
                       <div className="w-8 h-8 rounded-full bg-slate-700 flex-shrink-0" />
                       <div className="bg-slate-700/50 rounded-2xl rounded-tl-none p-3 text-sm text-white/80 max-w-[80%]">
-                        Hola, quisiera saber los precios y disponibilidad para la próxima semana.
+                        Hola, quisiera saber disponibilidad para la próxima semana y reservar un turno.
                       </div>
                     </div>
                     <div className="flex gap-3 flex-row-reverse">
@@ -153,13 +153,13 @@ export default function Index() {
                         <MessageSquare className="h-4 w-4 text-white" />
                       </div>
                       <div className="bg-green-600/20 border border-green-500/30 rounded-2xl rounded-tr-none p-3 text-sm text-white max-w-[80%]">
-                        ¡Hola! 👋 Claro que sí. Nuestros servicios comienzan desde $X. Te paso los horarios disponibles para la próxima semana:
+                        ¡Hola! 👋 Claro que sí. Te paso los horarios disponibles para la próxima semana:
                         <br/><br/>
                         📅 Lunes 10:00hs o 16:00hs
                         <br/>
                         📅 Miércoles 14:00hs
                         <br/><br/>
-                        ¿Te gustaría reservar alguno?
+                        ¿Te gustaría que te lo deje confirmado?
                       </div>
                     </div>
                     <div className="flex gap-3">
@@ -173,9 +173,9 @@ export default function Index() {
                         <CheckCircle className="h-4 w-4 text-white" />
                       </div>
                       <div className="bg-green-600/20 border border-green-500/30 rounded-2xl rounded-tr-none p-3 text-sm text-white max-w-[80%]">
-                        ¡Listo! ✅ Tu turno queda confirmado para el Miércoles a las 14:00hs. 
+                        ¡Listo! ✅ Tu turno queda confirmado para el Miércoles a las 14:00hs.
                         <br/>
-                        Te enviaremos un recordatorio el martes por la mañana. ¡Nos vemos!
+                        Te enviaremos un recordatorio automático antes de la cita.
                       </div>
                     </div>
                   </div>
@@ -221,8 +221,8 @@ export default function Index() {
             {[
               { 
                 icon: MessageSquare,
-                title: 'Pierdes clientes por no contestar a tiempo', 
-                desc: 'Estás trabajando con un cliente y no puedes atender el celular. Cuando quieres responder, ya eligieron a otro profesional.',
+                title: 'Pierdes consultas por no responder a tiempo', 
+                desc: 'Estás atendiendo, no podés contestar y la persona termina escribiéndole a otro negocio que responde más rápido.',
                 color: 'text-red-400',
                 bg: 'bg-red-500/10',
                 border: 'border-red-500/20'
@@ -230,7 +230,7 @@ export default function Index() {
               { 
                 icon: Clock,
                 title: 'Horas perdidas respondiendo lo mismo', 
-                desc: 'Pasas gran parte de tu día contestando las mismas preguntas de siempre: "¿cuánto cuesta?", "¿dónde estás?", "¿tenés lugar?".',
+                desc: 'Pasás gran parte del día contestando las mismas preguntas: horarios, precios, ubicación y disponibilidad.',
                 color: 'text-amber-400',
                 bg: 'bg-amber-500/10',
                 border: 'border-amber-500/20'
@@ -238,7 +238,7 @@ export default function Index() {
               { 
                 icon: Calendar,
                 title: 'Tus clientes faltan a las citas', 
-                desc: 'Se les olvida la hora o el día, y tú pierdes ese dinero y el tiempo que reservaste para ellos.',
+                desc: 'Se les olvida la hora o el día. Sin recordatorios automáticos, perdés tiempo y facturación.',
                 color: 'text-orange-400',
                 bg: 'bg-orange-500/10',
                 border: 'border-orange-500/20'
@@ -246,7 +246,7 @@ export default function Index() {
               { 
                 icon: Users,
                 title: 'Tu teléfono te controla', 
-                desc: 'Sientes que no puedes desconectarte nunca porque si no respondes rápido, pierdes oportunidades de trabajo.',
+                desc: 'Sentís que no podés desconectarte porque si no respondés rápido, se enfría la oportunidad.',
                 color: 'text-purple-400',
                 bg: 'bg-purple-500/10',
                 border: 'border-purple-500/20'
@@ -271,13 +271,13 @@ export default function Index() {
             <ScrollReveal direction="left">
               <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-b from-green-900/20 to-slate-900/50 backdrop-blur-xl shadow-2xl p-8 lg:p-12">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-3xl" />
-                <h3 className="text-3xl font-bold text-white mb-6 relative z-10">Imagina tener un ayudante que:</h3>
+                <h3 className="text-3xl font-bold text-white mb-6 relative z-10">Imaginá tener un sistema que:</h3>
                 <ul className="space-y-6 relative z-10">
                   {[
-                    'Atiende a tus clientes en cuanto escriben, a cualquier hora.',
-                    'Les pasa tu lista de precios y servicios al instante.',
-                    'Les agenda una cita en tus horarios disponibles sin que tú intervengas.',
-                    'Les envía un recordatorio el día anterior para que no falten.'
+                    'Responde automáticamente apenas escriben por WhatsApp.',
+                    'Comparte servicios, precios y disponibilidad sin que tengas que repetirlo.',
+                    'Agenda turnos en tus horarios disponibles sin intervención manual.',
+                    'Envía recordatorios automáticos para reducir ausencias.'
                   ].map((text, idx) => (
                     <li key={idx} className="flex items-start gap-4">
                       <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -296,11 +296,10 @@ export default function Index() {
                   <span className="text-sm font-medium text-green-400">La solución</span>
                 </div>
                 <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-                  Un ayudante que nunca duerme y nunca se cansa
+                  Un asistente que nunca duerme y no deja consultas sin responder
                 </h2>
                 <p className="text-xl text-white/60 leading-relaxed">
-                  Eso es lo que hacemos por ti, de forma sencilla y sin que tengas que aprender nada complicado. 
-                  Tú te encargas de hacer lo que mejor sabes hacer, y nosotros nos encargamos de la atención al cliente.
+                  Eso es lo que hacemos por tu negocio: automatizamos el primer contacto, ordenamos la agenda y reducimos el ida y vuelta manual.
                 </p>
                 <a
                   href="https://wa.me/541166448389?text=Hola!%20Quiero%20saber%20más%20sobre%20el%20asistente%20de%20WhatsApp"
@@ -309,7 +308,7 @@ export default function Index() {
                   className="group inline-flex items-center gap-3 px-8 py-4 text-lg font-bold rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-xl shadow-green-500/25 hover:scale-105 transition-all mt-4"
                 >
                   <MessageCircle className="h-5 w-5" />
-                  Quiero este ayudante
+                  Quiero automatizar mi agenda
                 </a>
               </div>
             </ScrollReveal>
@@ -338,20 +337,20 @@ export default function Index() {
             {[
               { 
                 num: '01', 
-                title: 'Nos cuentas cómo trabajas', 
-                desc: 'Nos dices tus horarios, precios y cómo te gusta que te agenden las citas.',
+                title: 'Nos contás cómo trabajás', 
+                desc: 'Nos decís tus horarios, servicios, reglas de agenda y qué preguntas querés automatizar.',
                 icon: MessageSquare
               },
               { 
                 num: '02', 
                 title: 'Conectamos tu WhatsApp', 
-                desc: 'Lo dejamos listo por ti, sin que tengas que cambiar tu número actual ni aprender nada nuevo.',
+                desc: 'Lo dejamos listo sin que tengas que cambiar tu número actual ni aprender algo complejo.',
                 icon: CheckCircle
               },
               { 
                 num: '03', 
-                title: 'Tú descansas, él trabaja', 
-                desc: 'Tu asistente empieza a responder y organizar tus citas automáticamente desde el primer día.',
+                title: 'Tu negocio responde solo', 
+                desc: 'El sistema empieza a responder y organizar turnos automáticamente desde el primer día.',
                 icon: Clock
               },
             ].map((step, idx) => (
@@ -375,11 +374,11 @@ export default function Index() {
         <div className="container">
           <ScrollReveal direction="up">
             <div className="text-center mb-16">
-              <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4 text-white">
-                Todo lo que necesitas para dejar de preocuparte
+                <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4 text-white">
+                Todo lo que necesitás para reducir carga operativa
               </h2>
               <p className="text-white/50 text-lg max-w-2xl mx-auto">
-                Un servicio completo pensado para tu tranquilidad.
+                Un sistema pensado para ahorrar tiempo, ordenar consultas y vender mejor.
               </p>
             </div>
           </ScrollReveal>
@@ -389,32 +388,32 @@ export default function Index() {
               {
                 icon: MessageSquare,
                 title: 'Respuestas al instante',
-                desc: 'Tu asistente contesta preguntas frecuentes (precios, horarios, ubicación) en segundos.'
+                desc: 'Contesta preguntas frecuentes en segundos para que nadie espere una devolución manual.'
               },
               {
                 icon: Calendar,
                 title: 'Agenda de turnos sin esfuerzo',
-                desc: 'Los clientes eligen sus horarios y el sistema los organiza por ti, evitando superposiciones.'
+                desc: 'Las personas eligen un horario y el sistema lo ordena evitando superposiciones.'
               },
               {
                 icon: Clock,
                 title: 'Recordatorios automáticos',
-                desc: 'Avisos previos a la cita para que tus clientes no falten y aproveches tu tiempo al máximo.'
+                desc: 'Avisos previos a la cita para que bajen las ausencias y suba la asistencia.'
               },
               {
                 icon: Shield,
                 title: 'Panel de control muy simple',
-                desc: 'Una pantalla fácil de usar para que veas tus citas del día sin complicaciones técnicas.'
+                desc: 'Una pantalla clara para ver consultas, turnos y estado del día sin complejidad.'
               },
               {
                 icon: Users,
                 title: 'Soporte humano real',
-                desc: 'Si necesitas ayuda con algo, siempre hay una persona real lista para asistirte rápidamente.'
+                desc: 'Si necesitás ayuda, siempre hay una persona real lista para acompañarte.'
               },
               {
                 icon: CheckCircle,
                 title: 'Sin cambiar tu número',
-                desc: 'Funciona perfectamente con tu número de WhatsApp actual, personal o Business.'
+                desc: 'Funciona con tu WhatsApp actual, personal o Business.'
               }
             ].map((item, idx) => (
               <ScrollReveal key={idx} direction="up" delay={idx * 100}>
@@ -453,7 +452,7 @@ export default function Index() {
               </div>
               
               <blockquote className="text-2xl md:text-3xl font-medium text-white text-center leading-relaxed mb-8 pt-8">
-                "Antes perdía muchas consultas porque estaba atendiendo a un cliente y no podía contestar el celular. Ahora, mi asistente responde al instante, agenda las citas y yo solo me preocupo de hacer mi trabajo. Mis ingresos aumentaron y yo estoy mucho más tranquila."
+                "Antes perdía consultas porque estaba atendiendo y no podía contestar. Ahora, WhatsApp responde solo, agenda los turnos y me deja más tiempo para atender bien. Bajaron los no-shows y la agenda está mucho más ordenada."
               </blockquote>
               
               <div className="flex flex-col items-center text-center">
@@ -492,15 +491,15 @@ export default function Index() {
             {[
               {
                 q: '¿Necesito saber de tecnología?',
-                a: 'No. Nosotros nos encargamos de toda la configuración inicial. Tú solo nos cuentas cómo trabajas y nosotros lo hacemos funcionar.'
+                a: 'No. Nosotros nos encargamos de la configuración inicial. Vos solo nos contás cómo trabajás y lo dejamos funcionando.'
               },
               {
                 q: '¿Tengo que cambiar mi número de WhatsApp?',
-                a: 'No, funciona perfectamente con tu número de WhatsApp actual (personal o Business).'
+                a: 'No, funciona con tu número actual de WhatsApp, personal o Business.'
               },
               {
                 q: '¿Qué pasa si el asistente no sabe responder una pregunta?',
-                a: 'Te avisa inmediatamente para que tú puedas contestar, y así "aprende" para responderla solo la próxima vez.'
+                a: 'Te avisa inmediatamente para que puedas responder y ajustar la automatización la próxima vez.'
               },
               {
                 q: '¿Puedo cancelar cuando quiera?',
@@ -543,13 +542,13 @@ export default function Index() {
               Recupera tu tiempo y haz crecer tu negocio
             </h2>
             <p className="text-xl text-white/60 max-w-2xl mx-auto mb-4">
-              Deja de perder clientes por no contestar a tiempo. Prueba nuestro asistente de WhatsApp hoy mismo y nota la diferencia desde el primer día.
+              Dejá de perder consultas por no contestar a tiempo. Automatizá WhatsApp y turnos para notar la diferencia desde el primer día.
             </p>
           </ScrollReveal>
           
           <ScrollReveal direction="up" delay={100}>
             <a
-              href="https://wa.me/541166448389?text=Hola!%20Quiero%20agendar%20una%20demostración%20gratis%20del%20asistente"
+              href="https://wa.me/541166448389?text=Hola!%20Quiero%20agendar%20una%20demostraci%C3%B3n%20gratis%20de%20automatizaci%C3%B3n%20de%20WhatsApp%20y%20turnos"
               className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto sm:w-[450px] mx-auto px-10 py-5 text-xl font-bold rounded-2xl bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 text-white shadow-2xl shadow-green-500/30 hover:shadow-green-500/50 hover:scale-[1.02] transition-all duration-300"
             >
               <MessageCircle className="h-6 w-6" />
@@ -585,10 +584,10 @@ export default function Index() {
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
                 <MessageSquare className="h-4 w-4 text-white" />
               </div>
-              <span className="text-white font-bold">TuAsistente</span>
+              <span className="text-white font-bold">WebAppImpulsor</span>
             </div>
             <p className="text-sm text-white/40">
-              © {new Date().getFullYear()} TuAsistente. Todos los derechos reservados.
+              © {new Date().getFullYear()} WebAppImpulsor. Todos los derechos reservados.
             </p>
           </div>
         </div>

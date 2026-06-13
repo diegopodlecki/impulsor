@@ -72,9 +72,9 @@ function validateAll(values: ContactValues) {
 }
 
 export function ContactForm({
-  title = "Pedí una propuesta pensada para tu negocio",
+  title = "Pedí una propuesta para automatizar tu negocio",
   description = "Dejanos tus datos y te respondo con una propuesta clara, sin vueltas y alineada a tu tipo de servicio.",
-  buttonLabel = "Quiero más clientes",
+  buttonLabel = "Quiero automatizar WhatsApp",
   trustText = "Te respondo en menos de 24 hs hábiles.",
   eyebrow = "Propuesta personalizada",
   sourceLabel = "sitio principal",
@@ -146,7 +146,7 @@ export function ContactForm({
       formData.append("page", location.pathname);
       formData.append(
         "_subject",
-        `Nueva consulta desde WebAppImpulsor - ${values.negocio.trim() || "sin rubro"}`
+        `Nueva consulta desde WebAppImpulsor - automatización WhatsApp - ${values.negocio.trim() || "sin rubro"}`
       );
       formData.append("_replyto", values.email.trim());
 
@@ -258,7 +258,7 @@ export function ContactForm({
         </div>
 
         <p className="mt-4 text-sm leading-6 text-muted-foreground">{description}</p>
-        <p className="mt-3 text-sm font-medium text-foreground/90">
+          <p className="mt-3 text-sm font-medium text-foreground/90">
           También podés escribir por WhatsApp, pero este formulario me ayuda a responderte con una propuesta más precisa y mejor alineada a tu negocio.
         </p>
 

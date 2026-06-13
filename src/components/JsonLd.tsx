@@ -36,14 +36,14 @@ const LOCAL_BUSINESS_SCHEMA = {
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Servicios de diseño web",
+    name: "Automatización de WhatsApp y turnos",
     itemListElement: [
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Web que convierte clientes",
-          description: "Página web profesional optimizada para convertir visitas en consultas y clientes",
+          name: "Sistema que convierte consultas",
+          description: "Sistema profesional optimizado para responder mensajes, ordenar turnos y convertir visitas en clientes",
         },
       },
     ],
@@ -56,10 +56,10 @@ const FAQ_SCHEMA = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "¿Cuánto cuesta una página web que convierte clientes?",
+      name: "¿Cuánto cuesta automatizar WhatsApp y turnos?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Depende del rubro y funcionalidades. La mayoría de nuestros clientes arrancan con planes desde $XXX. Primera consulta sin cargo para darte un presupuesto exacto."
+        text: "Depende del rubro y funcionalidades. La mayoría de nuestros clientes arrancan con planes personalizados. Primera consulta sin cargo para darte un presupuesto exacto."
       }
     },
     {

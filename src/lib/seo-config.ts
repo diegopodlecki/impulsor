@@ -1,8 +1,8 @@
 export const SITE_URL = "https://www.webappimpulsor.com";
 export const SITE_NAME = "WebAppImpulsor";
-export const DEFAULT_TITLE = "WebAppImpulsor | Diseño web para gimnasios, psicólogos y servicios en Argentina";
+export const DEFAULT_TITLE = "WebAppImpulsor | Automatización de WhatsApp y turnos para negocios de servicios";
 export const DEFAULT_DESCRIPTION =
-  "Creamos landing pages profesionales para gimnasios, personal trainers, psicólogos, nutricionistas y más. Tu web online en 7 días. Primera consulta gratis. Argentina.";
+  "Automatizamos WhatsApp, turnos y seguimiento de clientes para profesionales y negocios de servicios en Argentina. Menos trabajo manual, más consultas atendidas.";
 export const DEFAULT_OG_IMAGE = "https://webappimpulsor.com/og-image.png";
 export const WHATSAPP_NUMBER = "541166448389";
 
@@ -65,7 +65,7 @@ export const BASE_SCHEMA = {
   url: SITE_URL,
   logo: `${SITE_URL}/favicon.svg`,
   description:
-    "Creación de páginas web profesionales para entrenadores, psicólogos, nutricionistas y profesionales independientes en Argentina. Webs diseñadas para recibir consultas por WhatsApp.",
+    "Automatización de WhatsApp, gestión de turnos y seguimiento de clientes para profesionales y negocios de servicios en Argentina.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Buenos Aires",

@@ -12,13 +12,13 @@ export default function AboutSection() {
               </h2>
               <div className="space-y-4 text-lg text-white/60 leading-relaxed">
                 <p>
-                  Somos un equipo especializado en diseño web para negocios de servicios en Argentina. 
-                  No hacemos webs genéricas: cada landing está pensada para el rubro de nuestro cliente, 
-                  con foco en generar consultas reales.
+                  Somos un equipo especializado en automatización de WhatsApp, turnos y seguimiento para negocios de servicios en Argentina. 
+                  No hacemos propuestas genéricas: cada sistema está pensado para el rubro de nuestro cliente, 
+                  con foco en generar consultas reales y ahorrar tiempo.
                 </p>
                 <p>
                   Trabajamos con gimnasios, profesionales de la salud, entrenadores y emprendedores que 
-                  necesitan una presencia digital que funcione, no una tarjeta personal online.
+                  necesitan una operación más ordenada, no solo una presencia digital.
                 </p>
               </div>
             </div>
@@ -32,7 +32,7 @@ export default function AboutSection() {
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-2">Foco en resultados</h3>
                   <p className="text-sm text-white/50">
-                    Cada decisión de diseño apunta a convertir visitantes en consultas. Nada es decorativo.
+                    Cada decisión apunta a reducir carga operativa y convertir mensajes en turnos. Nada es decorativo.
                   </p>
                 </div>
               </div>
@@ -44,7 +44,7 @@ export default function AboutSection() {
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-2">Velocidad real</h3>
                   <p className="text-sm text-white/50">
-                    7 días desde el primer contacto hasta tu web online. Sin burocracia ni esperas.
+                    7 días desde el primer contacto hasta tu sistema online. Sin burocracia ni esperas.
                   </p>
                 </div>
               </div>
