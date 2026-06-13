@@ -5,7 +5,7 @@ import type { RouteRecord } from "vite-react-ssg";
 import { SeoHead } from "@/components/SEO/SeoHead";
 import { Toaster } from "@/components/ui/sonner.tsx";
 
-const webhookUrl = "TU_URL_DE_WEBHOOK_EN_MAKE";
+const webhookUrl = "https://hook.us2.make.com/5c7xu0k7crcpkg1eeclb395duigmvn14";
 
 export const routes: RouteRecord[] = [
   {
