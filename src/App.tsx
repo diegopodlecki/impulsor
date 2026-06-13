@@ -85,7 +85,7 @@ function WhatsAppAutomationLanding() {
                   {["Respuestas automáticas", "Presupuestos instantáneos", "Agenda sin fricción"].map((item) => (
                     <div
                       key={item}
-                      className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/75 backdrop-blur"
+                      className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white/80 backdrop-blur shadow-[0_12px_30px_-18px_rgba(255,255,255,0.2)]"
                     >
                       {item}
                     </div>
@@ -93,7 +93,7 @@ function WhatsAppAutomationLanding() {
                 </div>
               </div>
 
-              <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl sm:p-8">
+              <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-8">
                 <div className="mb-6">
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300/80">
                     Solicitar diagnóstico gratuito
@@ -114,7 +114,7 @@ function WhatsAppAutomationLanding() {
                       value={nombre}
                       onChange={(event) => setNombre(event.target.value)}
                       placeholder="Tu nombre completo"
-                      className="w-full rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-4 text-white outline-none transition placeholder:text-white/30 focus:border-emerald-400/60 focus:ring-2 focus:ring-emerald-400/20"
+                    className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-4 text-white outline-none transition placeholder:text-white/30 focus:border-emerald-400/60 focus:ring-2 focus:ring-emerald-400/20"
                       required
                     />
                   </label>
@@ -126,7 +126,7 @@ function WhatsAppAutomationLanding() {
                       value={whatsapp}
                       onChange={(event) => setWhatsapp(event.target.value)}
                       placeholder="+54 11 1234 5678"
-                      className="w-full rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-4 text-white outline-none transition placeholder:text-white/30 focus:border-emerald-400/60 focus:ring-2 focus:ring-emerald-400/20"
+                      className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-4 text-white outline-none transition placeholder:text-white/30 focus:border-emerald-400/60 focus:ring-2 focus:ring-emerald-400/20"
                       required
                     />
                     <span className="text-xs text-white/45">Incluí el código de país y tu característica de área.</span>
@@ -157,6 +157,106 @@ function WhatsAppAutomationLanding() {
                   </p>
                 </form>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-white/5 bg-[#0a0a0a]">
+          <div className="container py-16 sm:py-20">
+            <div className="mb-10 max-w-2xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
+                Problemas reales
+              </p>
+              <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+                Lo que te hace perder consultas todos los días
+              </h2>
+              <div className="mt-5 h-px w-24 bg-gradient-to-r from-emerald-400/60 to-transparent" />
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-3">
+              {[
+                {
+                  title: "El cliente no espera",
+                  description:
+                    "Si tardás más de 5 minutos en responder por WhatsApp, muchas veces la consulta ya terminó en manos de la competencia.",
+                  icon: "01",
+                },
+                {
+                  title: "Respuestas repetitivas",
+                  description:
+                    "Perdés tiempo contestando siempre los mismos precios, horarios, ubicaciones y dudas básicas que podrían automatizarse.",
+                  icon: "02",
+                },
+                {
+                  title: "Pérdida de control",
+                  description:
+                    "Olvidar responder un chat o dejar una consulta para después puede hacerte perder ventas que ya estaban casi cerradas.",
+                  icon: "03",
+                },
+              ].map((item) => (
+                <article
+                  key={item.title}
+                  className="group rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
+                >
+                  <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-sm font-bold text-white/60 transition-transform duration-300 group-hover:scale-105">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold tracking-tight">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-white/60">
+                    {item.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-white/5 bg-[#0a0a0a]">
+          <div className="container py-16 sm:py-20">
+            <div className="mb-10 max-w-2xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
+                Cómo funciona la demo
+              </p>
+              <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+                Tres pasos para ver el sistema en acción
+              </h2>
+              <div className="mt-5 h-px w-24 bg-gradient-to-r from-cyan-400/60 to-transparent" />
+            </div>
+
+            <div className="grid gap-4 lg:grid-cols-3">
+              {[
+                {
+                  step: "01",
+                  title: "Completás el formulario",
+                  description: "Dejás tu nombre y WhatsApp arriba para pedir el diagnóstico.",
+                },
+                {
+                  step: "02",
+                  title: "Recibís el mensaje",
+                  description: "Nuestro asistente te contacta automáticamente en menos de 10 segundos.",
+                },
+                {
+                  step: "03",
+                  title: "Probás el sistema",
+                  description: "Experimentás en vivo cómo atenderíamos a tus propios clientes las 24 horas.",
+                },
+              ].map((item) => (
+                <article
+                  key={item.step}
+                  className="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
+                >
+                  <div className="mb-6 flex items-center gap-3">
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-500/10 text-sm font-bold text-emerald-200 shadow-[0_0_24px_-12px_rgba(52,211,153,0.8)]">
+                      {item.step}
+                    </div>
+                    <div className="h-px flex-1 bg-white/10" />
+                  </div>
+                  <h3 className="text-xl font-bold tracking-tight">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-white/60">
+                    {item.description}
+                  </p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
