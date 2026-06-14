@@ -231,6 +231,45 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
             </div>
           </div>
         </section>
+
+        <section id="landings-seo" className="border-t border-white/5 bg-[#0a0a0a]">
+          <div className="container py-16 sm:py-20">
+            <div className="mb-10 max-w-2xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
+                Landings SEO
+              </p>
+              <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+                Páginas específicas por rubro para captar búsquedas con intención
+              </h2>
+              <div className="mt-5 h-px w-24 bg-gradient-to-r from-emerald-400/60 to-transparent" />
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {[
+                { href: "/odontologos", label: "Odontólogos", text: "Automatización de WhatsApp para clínicas dentales." },
+                { href: "/medicos", label: "Médicos", text: "Turnos, consultas y seguimiento para consultorios." },
+                { href: "/fonoaudiologos", label: "Fonoaudiólogos", text: "Respuestas automáticas y agenda de sesiones." },
+                { href: "/abogados", label: "Abogados", text: "Filtrado de consultas y primer contacto profesional." },
+                { href: "/inmobiliarias", label: "Inmobiliarias", text: "Más consultas atendidas y visitas agendadas." },
+              ].map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="group rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
+                >
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-200/80">
+                    {item.label}
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-white/60">{item.text}</p>
+                  <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-emerald-200 transition-transform group-hover:translate-x-1">
+                    Ver landing
+                    <span aria-hidden="true">→</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
     </>
   );
@@ -303,6 +342,9 @@ function WhatsAppAutomationLanding() {
                   </a>
                   <a href="#casos-de-uso" className="transition hover:text-white">
                     Casos de uso
+                  </a>
+                  <a href="#landings-seo" className="transition hover:text-white">
+                    Landings
                   </a>
                   <a href="#contacto" className="transition hover:text-white">
                     Contacto
