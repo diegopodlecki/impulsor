@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "vite",
     "prebuild": "node -e \"console.log('skip og generation')\"",
-    "build": "vite build",
+    "build": "vite-react-ssg build --mode development",
     "build:dev": "vite-react-ssg build --mode development",
-    "build:github": "GITHUB_PAGES=true vite-react-ssg build",
-    "build:analyze": "ANALYZE=true vite-react-ssg build",
+    "build:github": "GITHUB_PAGES=true vite-react-ssg build --mode development",
+    "build:analyze": "ANALYZE=true vite-react-ssg build --mode development",
     "build:hostinger": "node scripts/build-hostinger.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
