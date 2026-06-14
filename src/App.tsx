@@ -459,6 +459,10 @@ function WhatsAppAutomationLanding() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const homeTheme = {
+    accentBorder: "border-emerald-400/20",
+    accentSoft: "bg-emerald-500/10",
+  };
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -1016,7 +1020,7 @@ function WhatsAppAutomationLanding() {
                 </div>
               </div>
 
-              <div className={`rounded-[1.75rem] border ${theme.accentBorder} bg-white/[0.04] p-6 sm:p-7`}>
+              <div className={`rounded-[1.75rem] border ${homeTheme.accentBorder} bg-white/[0.04] p-6 sm:p-7`}>
                 <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1.5 text-sm font-semibold text-emerald-200">
                   <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
                   Resultados con automatización
