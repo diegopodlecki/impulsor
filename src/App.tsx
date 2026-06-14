@@ -90,8 +90,8 @@ const nicheData: Record<
 > = {
   odontologos: {
     title: "Automatización de WhatsApp para odontólogos en Argentina",
-    description: "Respondé consultas, coordiná turnos y enviá recordatorios con un asistente de WhatsApp pensado para consultorios odontológicos y clínicas dentales en Argentina.",
-    problem: "Las consultas por WhatsApp suelen llegar entre tratamientos, llamadas y pacientes en silla. Si nadie responde a tiempo, el interés se enfría y el turno se pierde.",
+    description: "Respondé consultas, coordiná turnos y enviá recordatorios con un asistente de WhatsApp diseñado para consultorios odontológicos y clínicas dentales en Argentina.",
+    problem: "Las consultas por WhatsApp suelen llegar entre tratamientos, llamadas y pacientes en sala. Si nadie responde a tiempo, el interés se enfría y el turno se pierde.",
     benefits: [
       "Respuestas automáticas para primeras consultas, urgencias y derivaciones.",
       "Confirmación de turnos y recordatorios automáticos antes de la cita.",
@@ -99,7 +99,7 @@ const nicheData: Record<
     ],
     conversation: {
       client: "Hola, ¿tienen turno para una limpieza dental esta semana?",
-      assistant: "Sí, claro. Te paso los horarios disponibles y te dejo el más cómodo para vos.",
+      assistant: "Sí, claro. Te paso los horarios disponibles y te dejo el que mejor encaje con tu agenda.",
       followUp: "Te quedó confirmado el jueves a las 16:00. También te llega un recordatorio automático.",
       close: "Perfecto, así no tengo que estar pendiente del chat.",
     },
@@ -125,11 +125,11 @@ const nicheData: Record<
       badgeText: "Consultorios dentales",
       image: "/assets/whatsapp-demo-bot.png",
       imageAlt: "Odontóloga atendiendo una consulta mientras responde WhatsApp en un consultorio moderno",
-      imageCaption: "Una consulta clara, un turno confirmado y menos mensajes manuales.",
+      imageCaption: "Una experiencia premium para ordenar consultas, transmitir confianza y reducir fricción.",
     },
     showcase: {
       eyebrow: "Recepción premium",
-      title: "Una clínica que ordena la atención con una experiencia más cuidada",
+      title: "Una clínica que ordena la atención con una experiencia más cuidada y premium",
       description:
         "Pensado para consultorios que quieren transmitir más calidad visual, menos fricción y una atención más precisa desde el primer contacto.",
       bullets: [
@@ -139,13 +139,13 @@ const nicheData: Record<
       ],
       image: "https://images.unsplash.com/photo-1629909615191-09a4b6c1b78b?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Consultorio odontológico moderno con recepción digital",
-      caption: "Una versión premium para reforzar confianza, precisión y calma.",
+      caption: "Una referencia premium para reforzar confianza, precisión y calma.",
     },
   },
   medicos: {
     title: "Automatización de WhatsApp para médicos y consultorios en Argentina",
-    description: "Centralizá consultas, turnos y seguimientos con una landing y un asistente automático para pacientes y consultorios médicos.",
-    problem: "La recepción atiende llamados, WhatsApp y agenda al mismo tiempo; cuando todo entra junto, las respuestas tardan y se pierden consultas.",
+    description: "Centralizá consultas, turnos y seguimientos con un asistente automático pensado para pacientes y consultorios médicos.",
+    problem: "La recepción atiende llamados, WhatsApp y agenda al mismo tiempo; cuando todo entra junto, las respuestas tardan y se pierden consultas valiosas.",
     benefits: [
       "Filtro inicial de consultas y derivación automática.",
       "Agenda ordenada con turnos confirmados.",
