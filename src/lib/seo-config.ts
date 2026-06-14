@@ -84,10 +84,11 @@ export const BASE_SCHEMA = {
     name: "Argentina",
   },
   serviceType: [
-    "Diseño web",
-    "Desarrollo web",
-    "Páginas web para profesionales",
-    "Integración con WhatsApp",
+    "Automatización de WhatsApp",
+    "IA para negocios",
+    "Landing pages",
+    "Gestión de turnos",
+    "Integraciones",
   ],
   priceRange: "$$",
   openingHoursSpecification: [
