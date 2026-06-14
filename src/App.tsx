@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useState } from "react";
 import type { RouteRecord } from "vite-react-ssg";
 
 import { SeoHead } from "@/components/SEO/SeoHead";
@@ -150,7 +150,6 @@ const nicheData: Record<
 
 function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
   const content = nicheData[nicheKey];
-  const localTitle = useMemo(() => content.title, [content.title]);
   const canonicalPath = `/${nicheKey}`;
   const theme = content.theme ?? {
     hero: "bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.16),transparent_35%)]",
@@ -162,7 +161,7 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
 
   return (
     <>
-      <SeoHead title={localTitle} description={content.description} canonical={canonicalPath} />
+      <SeoHead title={content.title} description={content.description} canonical={canonicalPath} />
       <main className="min-h-screen bg-slate-950 text-white">
         <section className={`border-b border-white/5 ${theme.hero}`}>
           <div className="container py-16 sm:py-20">
@@ -853,10 +852,10 @@ function WhatsAppAutomationLanding() {
                     Prueba social
                   </p>
                   <p className="mt-3 text-lg font-bold text-white">
-                    “Pasamos de responder tarde a confirmar turnos incluso fuera del horario de atención.”
+                    "Pasamos de responder tarde a confirmar turnos incluso fuera del horario de atencion."
                   </p>
                   <p className="mt-3 text-sm leading-7 text-white/60">
-                    Ideal para profesionales que quieren menos fricción en el primer contacto, más turnos confirmados y seguimiento automático sin depender de estar mirando el celular todo el día.
+                    Ideal para profesionales que quieren menos friccion en el primer contacto, mas turnos confirmados y seguimiento automatico sin depender de estar mirando el celular todo el dia.
                   </p>
                 </div>
 
@@ -867,15 +866,15 @@ function WhatsAppAutomationLanding() {
                   <div className="mt-4 space-y-3 text-sm leading-7 text-white/70">
                     <p className="flex items-start gap-3">
                       <span className="mt-2 h-2 w-2 rounded-full bg-sky-400" />
-                      Primera respuesta inmediata, aunque el negocio esté cerrado.
+                      Primera respuesta inmediata, aunque el negocio este cerrado.
                     </p>
                     <p className="flex items-start gap-3">
                       <span className="mt-2 h-2 w-2 rounded-full bg-sky-400" />
-                      Reserva de turnos con confirmación clara y seguimiento posterior.
+                      Reserva de turnos con confirmacion clara y seguimiento posterior.
                     </p>
                     <p className="flex items-start gap-3">
                       <span className="mt-2 h-2 w-2 rounded-full bg-sky-400" />
-                      Menos mensajes repetidos y más tiempo para atender de verdad.
+                      Menos mensajes repetidos y mas tiempo para atender de verdad.
                     </p>
                   </div>
                 </div>
@@ -1203,6 +1202,3 @@ function WhatsAppAutomationLanding() {
 export default function App() {
   return null;
 }
-
-
-
