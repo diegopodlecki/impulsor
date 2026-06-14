@@ -193,51 +193,285 @@ function WhatsAppAutomationLanding() {
           </div>
         </section>
 
-        <section id="casos-de-uso" className="border-t border-white/5 bg-[#0a0a0a]">
+        <section className="border-t border-white/5 bg-[#090909]">
           <div className="container py-16 sm:py-20">
             <div className="mb-10 max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
-                Problemas reales
+                Ver una conversación real
               </p>
               <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-                Lo que te hace perder consultas todos los días
+                Así se ve una atención automática en WhatsApp
               </h2>
               <div className="mt-5 h-px w-24 bg-gradient-to-r from-emerald-400/60 to-transparent" />
             </div>
 
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="mx-auto max-w-3xl">
+              <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#111111] shadow-[0_24px_80px_-32px_rgba(0,0,0,0.9)]">
+                <div className="flex items-center gap-3 border-b border-white/5 bg-[#111827] px-5 py-4">
+                  <div className="relative flex h-11 w-11 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300">
+                    <span className="text-sm font-black">WA</span>
+                    <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-[#111827] bg-emerald-400" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-semibold text-white">Asistente de WhatsApp</p>
+                    <p className="text-xs text-emerald-300/80">en línea ahora · respuesta automática</p>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-white/30">
+                    <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+                  </div>
+                </div>
+
+                <div className="bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.08),transparent_40%)] p-4 sm:p-6">
+                  <div className="space-y-4">
+                    <div className="flex justify-start animate-[fadeUp_.6s_ease-out_both] [animation-delay:0ms]">
+                      <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
+                        <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white/70">
+                          CL
+                        </div>
+                        <div className="space-y-1">
+                          <div className="rounded-[1.25rem] rounded-bl-md border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
+                            Hola, vi tu web y quiero saber si tienen turnos para esta semana.
+                          </div>
+                          <div className="px-1 text-[11px] text-white/35">10:41</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-end animate-[fadeUp_.6s_ease-out_both] [animation-delay:140ms]">
+                      <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
+                        <div className="space-y-1 text-right">
+                          <div className="rounded-[1.25rem] rounded-br-md border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
+                            ¡Hola! Sí, claro. Te comparto los turnos disponibles y te ayudo a reservar el que mejor te quede.
+                          </div>
+                          <div className="flex items-center justify-end gap-1 px-1 text-[11px] text-emerald-200/60">
+                            <span>10:41</span>
+                            <span>•</span>
+                            <span className="inline-flex items-center gap-1">
+                              <span>✓</span>
+                              <span>✓</span>
+                            </span>
+                          </div>
+                        </div>
+                        <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] font-bold text-emerald-200">
+                          WA
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-end animate-[fadeUp_.6s_ease-out_both] [animation-delay:280ms]">
+                      <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
+                        <div className="space-y-1 text-right">
+                          <div className="rounded-[1.25rem] rounded-br-md border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
+                            Tengo disponibles el martes 10:00, miércoles 14:30 y viernes 18:00. ¿Cuál preferís?
+                          </div>
+                          <div className="px-1 text-[11px] text-emerald-200/60">10:42</div>
+                        </div>
+                        <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] font-bold text-emerald-200">
+                          WA
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-start animate-[fadeUp_.6s_ease-out_both] [animation-delay:420ms]">
+                      <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
+                        <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white/70">
+                          CL
+                        </div>
+                        <div className="space-y-1">
+                          <div className="rounded-[1.25rem] rounded-bl-md border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
+                            El miércoles a las 14:30 me sirve.
+                          </div>
+                          <div className="px-1 text-[11px] text-white/35">10:42</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-end animate-[fadeUp_.6s_ease-out_both] [animation-delay:560ms]">
+                      <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
+                        <div className="space-y-1 text-right">
+                          <div className="rounded-[1.25rem] rounded-br-md border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
+                            Perfecto. Ya te lo dejé reservado para el miércoles a las 14:30 y te envío un recordatorio antes del turno.
+                          </div>
+                          <div className="flex items-center justify-end gap-1 px-1 text-[11px] text-emerald-200/60">
+                            <span>10:42</span>
+                            <span>•</span>
+                            <span className="inline-flex items-center gap-1">
+                              <span>✓</span>
+                              <span>✓</span>
+                            </span>
+                          </div>
+                        </div>
+                        <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] font-bold text-emerald-200">
+                          WA
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-end animate-[fadeUp_.6s_ease-out_both] [animation-delay:700ms]">
+                      <div className="inline-flex items-center gap-3 rounded-[1.25rem] rounded-br-md border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
+                        <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-400 text-[11px] font-black text-slate-950">
+                          ✓
+                        </span>
+                        <span>
+                          Confirmación enviada
+                          <span className="ml-2 text-white/45">· calendario actualizado</span>
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-start animate-[fadeUp_.6s_ease-out_both] [animation-delay:840ms]">
+                      <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
+                        <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white/70">
+                          CL
+                        </div>
+                        <div className="space-y-1">
+                          <div className="rounded-[1.25rem] rounded-bl-md border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
+                            Genial, así no tengo que estar pendiente de responder yo mismo.
+                          </div>
+                          <div className="px-1 text-[11px] text-white/35">10:42</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 border-t border-white/5 pt-4">
+                    <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/35">
+                      <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_16px_rgba(52,211,153,0.8)]" />
+                      Escribí tu consulta y el sistema responde por vos
+                      <span className="ml-auto flex items-center gap-1">
+                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white/35 [animation-delay:0ms]" />
+                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white/35 [animation-delay:180ms]" />
+                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white/35 [animation-delay:360ms]" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+                <div className="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 sm:p-7">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
+                    Prueba social
+                  </p>
+                  <p className="mt-3 text-lg font-bold text-white">
+                    “Pasamos de responder tarde a confirmar turnos incluso fuera del horario de atención.”
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-white/60">
+                    Ideal para profesionales que quieren menos fricción en el primer contacto, más turnos confirmados y seguimiento automático sin depender de estar mirando el celular todo el día.
+                  </p>
+                </div>
+
+                <div className="rounded-[1.75rem] border border-emerald-500/15 bg-emerald-500/[0.04] p-6 sm:p-7">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200/70">
+                    Resultado esperado
+                  </p>
+                  <div className="mt-4 space-y-3 text-sm leading-7 text-white/70">
+                    <p className="flex items-start gap-3">
+                      <span className="mt-2 h-2 w-2 rounded-full bg-emerald-400" />
+                      Primer respuesta inmediata, aunque el negocio esté cerrado.
+                    </p>
+                    <p className="flex items-start gap-3">
+                      <span className="mt-2 h-2 w-2 rounded-full bg-emerald-400" />
+                      Reserva de turnos con confirmación clara y seguimiento posterior.
+                    </p>
+                    <p className="flex items-start gap-3">
+                      <span className="mt-2 h-2 w-2 rounded-full bg-emerald-400" />
+                      Menos mensajes repetidos y más tiempo para atender de verdad.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="casos-de-uso" className="border-t border-white/5 bg-[#0a0a0a]">
+          <div className="container py-16 sm:py-20">
+            <div className="mb-10 max-w-2xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
+                Casos de uso
+              </p>
+              <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+                Cada rubro tiene un problema distinto
+              </h2>
+              <div className="mt-5 h-px w-24 bg-gradient-to-r from-emerald-400/60 to-transparent" />
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {[
                 {
-                  title: "El cliente no espera",
-                  description:
-                    "Si tardás más de 5 minutos en responder por WhatsApp, muchas veces la consulta ya terminó en manos de la competencia.",
-                  icon: "01",
+                  label: "Odontólogos",
+                  problem: "Consultas urgentes, turnos cruzados y demasiados mensajes repetidos.",
+                  result: "Respuestas automáticas y agenda ordenada en pocos segundos.",
+                  href: "/psicologos",
+                  accent: "from-cyan-500/20 to-sky-500/10",
                 },
                 {
-                  title: "Respuestas repetitivas",
-                  description:
-                    "Perdés tiempo contestando siempre los mismos precios, horarios, ubicaciones y dudas básicas que podrían automatizarse.",
-                  icon: "02",
+                  label: "Psicólogos",
+                  problem: "Necesitás transmitir confianza y filtrar consultas con delicadeza.",
+                  result: "Primer contacto claro, turnos simples y seguimiento sin fricción.",
+                  href: "/psicologos",
+                  accent: "from-violet-500/20 to-fuchsia-500/10",
                 },
                 {
-                  title: "Pérdida de control",
-                  description:
-                    "Olvidar responder un chat o dejar una consulta para después puede hacerte perder ventas que ya estaban casi cerradas.",
-                  icon: "03",
+                  label: "Fonoaudiólogos",
+                  problem: "Pacientes que preguntan horarios, modalidades y disponibilidad todo el tiempo.",
+                  result: "Automatizás respuestas frecuentes y reducís trabajo manual.",
+                  href: "/emprendedores",
+                  accent: "from-amber-500/20 to-orange-500/10",
                 },
-              ].map((item) => (
-                <article
-                  key={item.title}
-                  className="group rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
+                {
+                  label: "Nutricionistas",
+                  problem: "Seguimiento constante, consultas repetitivas y mucha coordinación por WhatsApp.",
+                  result: "Agenda de controles, recordatorios y atención más ordenada.",
+                  href: "/nutricionistas",
+                  accent: "from-lime-500/20 to-emerald-500/10",
+                },
+                {
+                  label: "Entrenadores",
+                  problem: "Muchos mensajes sobre precios, clases y horarios antes de cerrar una venta.",
+                  result: "Respondés más rápido y convertís más interesados en alumnos.",
+                  href: "/entrenadores",
+                  accent: "from-blue-500/20 to-cyan-500/10",
+                },
+                {
+                  label: "Centros de estética",
+                  problem: "Reservas, reprogramaciones y consultas que se pierden por demora.",
+                  result: "Más turnos confirmados, menos cancelaciones y mejor seguimiento.",
+                  href: "/estetica-corporal",
+                  accent: "from-pink-500/20 to-rose-500/10",
+                },
+              ].map((item, index) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="group block rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
                 >
-                  <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-sm font-bold text-white/60 transition-transform duration-300 group-hover:scale-105">
-                    {item.icon}
+                  <div className={`mb-5 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br ${item.accent} text-sm font-bold text-white/80 transition-transform duration-300 group-hover:scale-105`}>
+                    {String(index + 1).padStart(2, "0")}
                   </div>
-                  <h3 className="text-xl font-bold tracking-tight">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-white/60">
-                    {item.description}
-                  </p>
-                </article>
+                  <h3 className="text-xl font-bold tracking-tight">{item.label}</h3>
+                  <div className="mt-4 space-y-3">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35">
+                        Problema principal
+                      </p>
+                      <p className="mt-1 text-sm leading-7 text-white/60">{item.problem}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35">
+                        Resultado esperado
+                      </p>
+                      <p className="mt-1 text-sm leading-7 text-white/60">{item.result}</p>
+                    </div>
+                  </div>
+                  <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-emerald-200 transition-transform group-hover:translate-x-1">
+                    Ver landing
+                    <span aria-hidden="true">→</span>
+                  </div>
+                </a>
               ))}
             </div>
           </div>
