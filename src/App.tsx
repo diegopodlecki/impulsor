@@ -48,8 +48,8 @@ const nicheData: Record<
 > = {
   odontologos: {
     title: "Automatización de WhatsApp para odontólogos en Argentina",
-    description: "Respondé consultas, confirmá turnos y reducí mensajes repetidos con un asistente de WhatsApp pensado para clínicas dentales.",
-    problem: "Las consultas entran por WhatsApp, pero entre tratamientos, urgencias y agenda, muchas veces se responden tarde y se pierden turnos.",
+    description: "Respondé consultas, confirmá turnos y reducí mensajes repetidos con un asistente de WhatsApp pensado para consultorios odontológicos y clínicas dentales en Argentina.",
+    problem: "Las consultas por WhatsApp llegan todo el tiempo, pero entre tratamientos, urgencias y agenda, muchas veces se responden tarde y se pierden turnos en el consultorio.",
     benefits: [
       "Respuestas automáticas para primeras consultas y urgencias.",
       "Confirmación de turnos y recordatorios automáticos.",
@@ -63,9 +63,9 @@ const nicheData: Record<
     },
   },
   medicos: {
-    title: "Automatización de WhatsApp para médicos y consultorios",
-    description: "Centralizá consultas, turnos y seguimientos con una landing y un asistente automático para pacientes.",
-    problem: "El equipo atiende llamados, WhatsApp y agenda al mismo tiempo, lo que genera demoras y consultas sin responder.",
+    title: "Automatización de WhatsApp para médicos y consultorios en Argentina",
+    description: "Centralizá consultas, turnos y seguimientos con una landing y un asistente automático para pacientes y consultorios médicos.",
+    problem: "El equipo atiende llamados, WhatsApp y agenda al mismo tiempo, lo que genera demoras y consultas sin responder en consultorios médicos.",
     benefits: [
       "Filtro inicial de consultas y derivación automática.",
       "Agenda ordenada con turnos confirmados.",
@@ -79,9 +79,9 @@ const nicheData: Record<
     },
   },
   fonoaudiologos: {
-    title: "Automatización de WhatsApp para fonoaudiólogos",
-    description: "Respondé consultas frecuentes, coordiná sesiones y simplificá el seguimiento con automatización.",
-    problem: "Muchas consultas se repiten sobre horarios, modalidad y duración de sesiones, consumiendo tiempo todos los días.",
+    title: "Automatización de WhatsApp para fonoaudiólogos en Argentina",
+    description: "Respondé consultas frecuentes, coordiná sesiones y simplificá el seguimiento con automatización para consultorios de fonoaudiología.",
+    problem: "Muchas consultas se repiten sobre horarios, modalidad y duración de sesiones, consumiendo tiempo todos los días en el consultorio.",
     benefits: [
       "Respuestas automáticas sobre modalidad y disponibilidad.",
       "Gestión simple de turnos y reprogramaciones.",
@@ -96,8 +96,8 @@ const nicheData: Record<
   },
   abogados: {
     title: "Automatización de WhatsApp para abogados en Argentina",
-    description: "Filtrá consultas, ordená casos y hacé seguimiento inicial sin perder tiempo en mensajes repetidos.",
-    problem: "Llegan muchas consultas que necesitan una primera respuesta clara, pero la demora hace que el potencial cliente siga buscando.",
+    description: "Filtrá consultas, ordená casos y hacé seguimiento inicial sin perder tiempo en mensajes repetidos para estudios jurídicos y abogados particulares.",
+    problem: "Llegan muchas consultas legales que necesitan una primera respuesta clara, pero la demora hace que el potencial cliente siga buscando otro abogado.",
     benefits: [
       "Primer contacto profesional y automático.",
       "Captura de consultas desde una landing de servicios legales.",
@@ -111,9 +111,9 @@ const nicheData: Record<
     },
   },
   inmobiliarias: {
-    title: "Automatización de WhatsApp para inmobiliarias",
-    description: "Respondé consultas de propiedades, agendá visitas y seguí leads sin perder velocidad de respuesta.",
-    problem: "Las consultas llegan por muchos canales y, si no se responde rápido, el cliente agenda visita con otra inmobiliaria.",
+    title: "Automatización de WhatsApp para inmobiliarias en Argentina",
+    description: "Respondé consultas de propiedades, agendá visitas y seguí leads sin perder velocidad de respuesta en inmobiliarias argentinas.",
+    problem: "Las consultas llegan por muchos canales y, si no se responde rápido, el cliente agenda visita con otra inmobiliaria de Argentina.",
     benefits: [
       "Respuestas automáticas para propiedades y zonas.",
       "Agendado de visitas y seguimiento de interesados.",
@@ -131,10 +131,11 @@ const nicheData: Record<
 function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
   const content = nicheData[nicheKey];
   const localTitle = useMemo(() => content.title, [content.title]);
+  const canonicalPath = `/${nicheKey}`;
 
   return (
     <>
-      <SeoHead title={localTitle} description={content.description} />
+      <SeoHead title={localTitle} description={content.description} canonical={canonicalPath} />
       <main className="min-h-screen bg-slate-950 text-white">
         <section className="border-b border-white/5 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.16),transparent_35%)]">
           <div className="container py-16 sm:py-20">
@@ -263,6 +264,46 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                   <p className="mt-3 text-sm leading-7 text-white/60">{item.text}</p>
                   <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-emerald-200 transition-transform group-hover:translate-x-1">
                     Ver landing
+                    <span aria-hidden="true">→</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-white/5 bg-[#0a0a0a]">
+          <div className="container py-16 sm:py-20">
+            <div className="mb-10 max-w-2xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
+                Más soluciones
+              </p>
+              <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+                Otras páginas pensadas para automatizar consultas y turnos
+              </h2>
+              <div className="mt-5 h-px w-24 bg-gradient-to-r from-emerald-400/60 to-transparent" />
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {[
+                { href: "/odontologos", label: "Odontólogos", text: "Consultorios odontológicos en Argentina." },
+                { href: "/medicos", label: "Médicos", text: "Consultorios médicos y atención de pacientes." },
+                { href: "/fonoaudiologos", label: "Fonoaudiólogos", text: "Sesiones, horarios y seguimiento." },
+                { href: "/abogados", label: "Abogados", text: "Estudios jurídicos y consultas iniciales." },
+                { href: "/inmobiliarias", label: "Inmobiliarias", text: "Leads de propiedades y visitas." },
+                { href: "/#contacto", label: "Home", text: "Diagnóstico gratuito para automatizar WhatsApp." },
+              ].map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="group rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
+                >
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-200/80">
+                    {item.label}
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-white/60">{item.text}</p>
+                  <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-emerald-200 transition-transform group-hover:translate-x-1">
+                    Ver página
                     <span aria-hidden="true">→</span>
                   </div>
                 </a>
