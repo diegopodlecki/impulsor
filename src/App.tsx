@@ -462,6 +462,7 @@ function WhatsAppAutomationLanding() {
   const homeTheme = {
     accentBorder: "border-emerald-400/20",
     accentSoft: "bg-emerald-500/10",
+    accent: "text-emerald-200",
   };
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -864,7 +865,7 @@ function WhatsAppAutomationLanding() {
                 </div>
 
                 <div className={`rounded-[1.75rem] border ${homeTheme.accentBorder} bg-white/[0.04] p-6 sm:p-7`}>
-                  <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
+                  <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${homeTheme.accent}`}>
                     Resultado esperado
                   </p>
                   <div className="mt-4 space-y-3 text-sm leading-7 text-white/70">
