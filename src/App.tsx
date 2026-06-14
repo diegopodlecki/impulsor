@@ -44,22 +44,42 @@ const nicheData: Record<
     problem: string;
     benefits: string[];
     conversation: { client: string; assistant: string; followUp: string; close: string };
+    theme?: {
+      hero: string;
+      accent: string;
+      accentSoft: string;
+      accentBorder: string;
+      badgeText: string;
+      image: string;
+      imageAlt: string;
+      imageCaption: string;
+    };
   }
 > = {
   odontologos: {
     title: "Automatización de WhatsApp para odontólogos en Argentina",
-    description: "Respondé consultas, confirmá turnos y reducí mensajes repetidos con un asistente de WhatsApp pensado para consultorios odontológicos y clínicas dentales en Argentina.",
-    problem: "Las consultas por WhatsApp llegan todo el tiempo, pero entre tratamientos, urgencias y agenda, muchas veces se responden tarde y se pierden turnos en el consultorio.",
+    description: "Respondé consultas, coordiná turnos y enviá recordatorios con un asistente de WhatsApp pensado para consultorios odontológicos y clínicas dentales en Argentina.",
+    problem: "Las consultas por WhatsApp suelen llegar entre tratamientos, llamadas y pacientes en silla. Si nadie responde a tiempo, el interés se enfría y el turno se pierde.",
     benefits: [
-      "Respuestas automáticas para primeras consultas y urgencias.",
-      "Confirmación de turnos y recordatorios automáticos.",
-      "Menos tiempo respondiendo precios, horarios y cobertura.",
+      "Respuestas automáticas para primeras consultas, urgencias y derivaciones.",
+      "Confirmación de turnos y recordatorios automáticos antes de la cita.",
+      "Menos tiempo respondiendo precios, cobertura, dirección y horarios.",
     ],
     conversation: {
-      client: "Hola, ¿tienen turno para limpieza esta semana?",
-      assistant: "Sí, claro. Te paso disponibilidad y, si querés, te lo dejo confirmado ahora mismo.",
-      followUp: "Perfecto, te agendo para el jueves a las 15:30 y te envío recordatorio automático.",
-      close: "Genial, así no tengo que estar persiguiendo el chat.",
+      client: "Hola, ¿tienen turno para una limpieza dental esta semana?",
+      assistant: "Sí, claro. Te paso los horarios disponibles y te dejo el más cómodo para vos.",
+      followUp: "Te quedó confirmado el jueves a las 16:00. También te llega un recordatorio automático.",
+      close: "Perfecto, así no tengo que estar pendiente del chat.",
+    },
+    theme: {
+      hero: "bg-[radial-gradient(circle_at_top,rgba(14,165,233,0.14),transparent_35%)]",
+      accent: "text-sky-200",
+      accentSoft: "bg-sky-500/10",
+      accentBorder: "border-sky-400/20",
+      badgeText: "Consultorios dentales",
+      image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Odontóloga atendiendo una consulta mientras responde WhatsApp en un consultorio moderno",
+      imageCaption: "Una consulta clara, un turno confirmado y menos mensajes manuales.",
     },
   },
   medicos: {
@@ -132,30 +152,58 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
   const content = nicheData[nicheKey];
   const localTitle = useMemo(() => content.title, [content.title]);
   const canonicalPath = `/${nicheKey}`;
+  const theme = content.theme ?? {
+    hero: "bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.16),transparent_35%)]",
+    accent: "text-emerald-200/80",
+    accentSoft: "bg-emerald-500/10",
+    accentBorder: "border-emerald-400/20",
+    badgeText: "Automatización de WhatsApp",
+  };
 
   return (
     <>
       <SeoHead title={localTitle} description={content.description} canonical={canonicalPath} />
       <main className="min-h-screen bg-slate-950 text-white">
-        <section className="border-b border-white/5 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.16),transparent_35%)]">
+        <section className={`border-b border-white/5 ${theme.hero}`}>
           <div className="container py-16 sm:py-20">
-            <div className="mx-auto max-w-4xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300/80">
-                Argentina · Automatización de WhatsApp
-              </p>
-              <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
-                {content.title}
-              </h1>
-              <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/70">
-                {content.description}
-              </p>
-              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <a href="#contacto" className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-500 to-green-500 px-6 py-4 text-base font-bold text-white">
-                  Solicitar diagnóstico gratuito
-                </a>
-                <a href="#conversacion" className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-base font-semibold text-white/85">
-                  Ver conversación real
-                </a>
+            <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+              <div className="text-center lg:text-left">
+                <p className={`text-sm font-semibold uppercase tracking-[0.22em] ${theme.accent}`}>
+                  Argentina · {theme.badgeText}
+                </p>
+                <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
+                  {content.title}
+                </h1>
+                <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/70 lg:mx-0">
+                  {content.description}
+                </p>
+                <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+                  <a href="#contacto" className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-sky-500 to-cyan-500 px-6 py-4 text-base font-bold text-white shadow-lg shadow-sky-500/20">
+                    Solicitar diagnóstico gratuito
+                  </a>
+                  <a href="#conversacion" className={`inline-flex items-center justify-center rounded-2xl border ${theme.accentBorder} bg-white/5 px-6 py-4 text-base font-semibold text-white/85`}>
+                    Ver conversación real
+                  </a>
+                </div>
+              </div>
+
+              <div className={`overflow-hidden rounded-[2rem] border ${theme.accentBorder} bg-white/[0.03] shadow-[0_28px_80px_-40px_rgba(14,165,233,0.5)]`}>
+                <div className="relative aspect-[4/3]">
+                  <img
+                    src={content.theme?.image ?? "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80"}
+                    alt={content.theme?.imageAlt ?? "Consultorio odontológico moderno"}
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.08),rgba(2,6,23,0.56))]" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
+                    <div className={`inline-flex rounded-full border ${theme.accentBorder} ${theme.accentSoft} px-3 py-1 text-xs font-semibold ${theme.accent}`}>
+                      Atención realista para odontología
+                    </div>
+                    <p className="mt-3 max-w-md text-sm leading-6 text-white/85">
+                      {content.theme?.imageCaption ?? "Una consulta clara, un turno confirmado y menos mensajes manuales."}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -172,14 +220,14 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                   {content.problem}
                 </p>
               </div>
-              <div className="rounded-[1.75rem] border border-emerald-500/15 bg-emerald-500/[0.04] p-6 sm:p-7">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200/70">
+              <div className={`rounded-[1.75rem] border ${theme.accentBorder} bg-white/[0.04] p-6 sm:p-7`}>
+                <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
                   Beneficios de automatizar
                 </p>
                 <div className="mt-4 space-y-3">
                   {content.benefits.map((benefit) => (
                     <p key={benefit} className="flex items-start gap-3 text-sm leading-7 text-white/70">
-                      <span className="mt-2 h-2 w-2 rounded-full bg-emerald-400" />
+                      <span className="mt-2 h-2 w-2 rounded-full bg-sky-400" />
                       {benefit}
                     </p>
                   ))}
@@ -188,6 +236,96 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
             </div>
           </div>
         </section>
+
+        {nicheKey === "odontologos" && (
+          <section className="border-t border-white/5 bg-[#0a0f16]">
+            <div className="container py-16 sm:py-20">
+              <div className="mb-10 max-w-2xl">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-200/80">
+                  Servicios que suele atender el consultorio
+                </p>
+                <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+                  Automatización pensada para la operación diaria de una clínica dental
+                </h2>
+                <div className="mt-5 h-px w-24 bg-gradient-to-r from-sky-400/60 to-transparent" />
+              </div>
+
+              <div className="grid gap-4 lg:grid-cols-3">
+                {[
+                  {
+                    title: "Primera consulta",
+                    text: "Responde motivo de consulta, cobertura, ubicación y disponibilidad sin que alguien tenga que estar mirando WhatsApp todo el tiempo.",
+                  },
+                  {
+                    title: "Turnos y recordatorios",
+                    text: "Confirma la cita, reenvía la dirección y manda un aviso previo para bajar ausencias y reprogramaciones de último momento.",
+                  },
+                  {
+                    title: "Seguimiento posterior",
+                    text: "Después del tratamiento, mantiene el vínculo con controles, indicaciones y nuevas consultas sin dejar chats pendientes.",
+                  },
+                ].map((item) => (
+                  <article
+                    key={item.title}
+                    className="rounded-[1.75rem] border border-sky-400/15 bg-white/[0.035] p-6 sm:p-7"
+                  >
+                    <p className={`text-sm font-semibold uppercase tracking-[0.18em] ${theme.accent}`}>
+                      {item.title}
+                    </p>
+                    <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {nicheKey === "odontologos" && (
+          <section className="border-t border-white/5 bg-[#08131c]">
+            <div className="container py-16 sm:py-20">
+              <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-200/80">
+                    Caso real de uso
+                  </p>
+                  <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+                    Una paciente escribe, el sistema responde y el turno queda confirmado
+                  </h2>
+                  <p className="mt-4 max-w-xl text-base leading-8 text-white/65">
+                    Así se ve un flujo más creíble para odontología: la consulta entra desde WhatsApp, la respuesta es inmediata y la agenda queda ordenada sin ir y venir de mensajes.
+                  </p>
+                </div>
+
+                <div className="overflow-hidden rounded-[2rem] border border-sky-400/15 bg-white/[0.03] shadow-[0_24px_80px_-36px_rgba(14,165,233,0.32)]">
+                  <div className="grid gap-0 md:grid-cols-[0.9fr_1.1fr]">
+                    <div className="relative min-h-[240px]">
+                      <img
+                        src="https://images.unsplash.com/photo-1622737133809-d95047b9e673?auto=format&fit=crop&w=900&q=80"
+                        alt="Consultorio odontológico con recepción y pantalla de agenda"
+                        className="h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.02),rgba(2,6,23,0.5))]" />
+                    </div>
+                    <div className="space-y-3 p-5 sm:p-6">
+                      <div className="rounded-2xl border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
+                        Hola, ¿hacen limpieza dental y tienen turno para esta semana?
+                      </div>
+                      <div className="rounded-2xl border border-sky-400/20 bg-sky-500/10 px-4 py-3 text-sm leading-6 text-white/90">
+                        Sí, claro. Te paso horarios disponibles y te confirmo el que te quede mejor.
+                      </div>
+                      <div className="rounded-2xl border border-sky-400/20 bg-sky-500/10 px-4 py-3 text-sm leading-6 text-white/90">
+                        Perfecto, te quedó el jueves a las 16:00. También te llega recordatorio automático.
+                      </div>
+                      <div className="rounded-2xl border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
+                        Genial, me resolvieron todo por WhatsApp.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         <section id="conversacion" className="border-t border-white/5 bg-[#0a0a0a]">
           <div className="container py-16 sm:py-20">
@@ -202,10 +340,10 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                 <div className="rounded-2xl border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
                   {content.conversation.client}
                 </div>
-                <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
+                <div className={`rounded-2xl border ${theme.accentBorder} ${theme.accentSoft} px-4 py-3 text-sm leading-6 text-white/90`}>
                   {content.conversation.assistant}
                 </div>
-                <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
+                <div className={`rounded-2xl border ${theme.accentBorder} ${theme.accentSoft} px-4 py-3 text-sm leading-6 text-white/90`}>
                   {content.conversation.followUp}
                 </div>
                 <div className="rounded-2xl border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
@@ -218,15 +356,15 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
 
         <section className="border-t border-white/5 bg-[#090909]">
           <div className="container py-16 sm:py-20">
-            <div className="mx-auto max-w-4xl rounded-[2rem] border border-emerald-400/12 bg-[linear-gradient(180deg,rgba(16,185,129,0.08),rgba(255,255,255,0.02))] p-6 text-center shadow-[0_20px_60px_-36px_rgba(16,185,129,0.45)] sm:p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200/80">
+            <div className={`mx-auto max-w-4xl rounded-[2rem] border ${theme.accentBorder} bg-[linear-gradient(180deg,rgba(14,165,233,0.08),rgba(255,255,255,0.02))] p-6 text-center shadow-[0_20px_60px_-36px_rgba(14,165,233,0.35)] sm:p-8`}>
+              <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
                 Diagnóstico gratuito
               </p>
               <h2 className="mt-3 text-3xl font-black tracking-tight">Quiero mi diagnóstico gratuito</h2>
               <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-white/65">
                 Analizamos cómo llegar más rápido a tus consultas, cómo ordenar tu agenda y qué automatizar para vender mejor en Argentina.
               </p>
-              <a href="/#contacto" className="mt-6 inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-500 to-green-500 px-6 py-4 text-base font-bold text-white">
+              <a href="/#contacto" className="mt-6 inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-sky-500 to-cyan-500 px-6 py-4 text-base font-bold text-white">
                 Solicitar diagnóstico gratuito
               </a>
             </div>
@@ -722,21 +860,21 @@ function WhatsAppAutomationLanding() {
                   </p>
                 </div>
 
-                <div className="rounded-[1.75rem] border border-emerald-500/15 bg-emerald-500/[0.04] p-6 sm:p-7">
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200/70">
+                <div className={`rounded-[1.75rem] border ${theme.accentBorder} bg-white/[0.04] p-6 sm:p-7`}>
+                  <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
                     Resultado esperado
                   </p>
                   <div className="mt-4 space-y-3 text-sm leading-7 text-white/70">
                     <p className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 rounded-full bg-emerald-400" />
+                      <span className="mt-2 h-2 w-2 rounded-full bg-sky-400" />
                       Primera respuesta inmediata, aunque el negocio esté cerrado.
                     </p>
                     <p className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 rounded-full bg-emerald-400" />
+                      <span className="mt-2 h-2 w-2 rounded-full bg-sky-400" />
                       Reserva de turnos con confirmación clara y seguimiento posterior.
                     </p>
                     <p className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 rounded-full bg-emerald-400" />
+                      <span className="mt-2 h-2 w-2 rounded-full bg-sky-400" />
                       Menos mensajes repetidos y más tiempo para atender de verdad.
                     </p>
                   </div>
@@ -879,7 +1017,7 @@ function WhatsAppAutomationLanding() {
                 </div>
               </div>
 
-              <div className="rounded-[1.75rem] border border-emerald-500/15 bg-emerald-500/[0.04] p-6 sm:p-7">
+              <div className={`rounded-[1.75rem] border ${theme.accentBorder} bg-white/[0.04] p-6 sm:p-7`}>
                 <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1.5 text-sm font-semibold text-emerald-200">
                   <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
                   Resultados con automatización
@@ -1065,3 +1203,6 @@ function WhatsAppAutomationLanding() {
 export default function App() {
   return null;
 }
+
+
+
