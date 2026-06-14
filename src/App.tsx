@@ -65,17 +65,17 @@ function WhatsAppAutomationLanding() {
       <main className="min-h-screen bg-slate-950 text-white">
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.18),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.16),transparent_30%)]" />
-          <header className="relative z-20 border-b border-white/5 bg-slate-950/70 backdrop-blur-xl">
+          <header className="relative z-20 border-b border-white/5 bg-slate-950/75 backdrop-blur-2xl">
             <div className="container">
-              <div className="flex h-20 items-center justify-between gap-4">
+              <div className="flex h-18 items-center justify-between gap-3 py-3 sm:h-20 sm:gap-4 sm:py-0">
                 <a href="/" className="inline-flex items-center gap-3">
                   <div className="h-10 w-10 rounded-2xl border border-emerald-400/20 bg-emerald-500/10 shadow-[0_0_30px_-18px_rgba(16,185,129,0.9)]" />
-                  <span className="text-sm font-semibold tracking-[0.16em] text-white/90 uppercase">
+                  <span className="text-xs font-semibold tracking-[0.18em] text-white/90 uppercase sm:text-sm">
                     WebAppImpulsor
                   </span>
                 </a>
 
-                <nav className="hidden items-center gap-8 text-sm text-white/60 md:flex">
+                <nav className="hidden items-center gap-6 text-sm text-white/60 lg:flex xl:gap-8">
                   <a href="#como-funciona" className="transition hover:text-white">
                     Cómo funciona
                   </a>
@@ -89,7 +89,7 @@ function WhatsAppAutomationLanding() {
 
                 <a
                   href="#contacto"
-                  className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-green-500 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-emerald-500/20 transition hover:scale-[1.01] hover:shadow-emerald-500/30"
+                  className="inline-flex items-center justify-center rounded-full border border-emerald-300/20 bg-gradient-to-r from-emerald-500 to-green-500 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-emerald-500/20 transition hover:scale-[1.01] hover:shadow-emerald-500/30 sm:px-5"
                 >
                   Solicitar diagnóstico gratuito
                 </a>
