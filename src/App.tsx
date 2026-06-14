@@ -43,6 +43,9 @@ type NicheKey = "odontologos" | "medicos" | "fonoaudiologos" | "abogados" | "inm
 type NicheTheme = {
   pageBg: string;
   hero: string;
+  font: string;
+  title: string;
+  body: string;
   accent: string;
   accentSoft: string;
   accentBorder: string;
@@ -102,7 +105,10 @@ const nicheData: Record<
     },
     theme: {
       pageBg: "bg-[#06111b]",
-      hero: "bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.16),transparent_32%),linear-gradient(180deg,rgba(3,7,18,0.98),rgba(3,7,18,1))]",
+      hero: "bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.14),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(125,211,252,0.09),transparent_22%),linear-gradient(180deg,rgba(3,7,18,0.98),rgba(3,7,18,1))]",
+      font: "font-sans",
+      title: "font-extrabold tracking-[-0.04em]",
+      body: "font-normal",
       accent: "text-sky-200",
       accentSoft: "bg-sky-500/10",
       accentBorder: "border-sky-400/20",
@@ -131,9 +137,9 @@ const nicheData: Record<
         "Turnos confirmados y mejor seguimiento",
         "Más orden sin perder cercanía",
       ],
-      image: "https://images.unsplash.com/photo-1622737133809-d95047b9e673?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1629909615191-09a4b6c1b78b?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Consultorio odontológico moderno con recepción digital",
-      caption: "Una versión más premium para reforzar confianza y precisión.",
+      caption: "Una versión premium para reforzar confianza, precisión y calma.",
     },
   },
   medicos: {
@@ -154,6 +160,9 @@ const nicheData: Record<
     theme: {
       pageBg: "bg-[#070b16]",
       hero: "bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.15),transparent_32%),linear-gradient(180deg,rgba(5,8,19,0.98),rgba(5,8,19,1))]",
+      font: "font-sans",
+      title: "font-black tracking-tight",
+      body: "font-normal",
       accent: "text-indigo-200",
       accentSoft: "bg-indigo-500/10",
       accentBorder: "border-indigo-400/20",
@@ -206,6 +215,9 @@ const nicheData: Record<
     theme: {
       pageBg: "bg-[#05130f]",
       hero: "bg-[radial-gradient(circle_at_top,rgba(52,211,153,0.15),transparent_32%),linear-gradient(180deg,rgba(2,6,23,0.98),rgba(2,6,23,1))]",
+      font: "font-sans",
+      title: "font-black tracking-tight",
+      body: "font-normal",
       accent: "text-emerald-200",
       accentSoft: "bg-emerald-500/10",
       accentBorder: "border-emerald-400/20",
@@ -257,6 +269,9 @@ const nicheData: Record<
     theme: {
       pageBg: "bg-[#080604]",
       hero: "bg-[radial-gradient(circle_at_top,rgba(245,158,11,0.12),transparent_30%),linear-gradient(180deg,rgba(8,5,2,0.99),rgba(8,5,2,1))]",
+      font: "font-serif",
+      title: "font-bold tracking-tight",
+      body: "font-normal",
       accent: "text-amber-200",
       accentSoft: "bg-amber-500/10",
       accentBorder: "border-amber-400/20",
@@ -309,6 +324,9 @@ const nicheData: Record<
     theme: {
       pageBg: "bg-[#11050b]",
       hero: "bg-[radial-gradient(circle_at_top,rgba(244,114,182,0.14),transparent_30%),linear-gradient(180deg,rgba(13,6,10,0.99),rgba(13,6,10,1))]",
+      font: "font-sans",
+      title: "font-black tracking-tight",
+      body: "font-light",
       accent: "text-rose-200",
       accentSoft: "bg-rose-500/10",
       accentBorder: "border-rose-400/20",
@@ -360,6 +378,9 @@ const nicheData: Record<
     theme: {
       pageBg: "bg-[#07110d]",
       hero: "bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.14),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(250,204,21,0.10),transparent_28%),linear-gradient(180deg,rgba(3,6,14,0.98),rgba(3,6,14,1))]",
+      font: "font-sans",
+      title: "font-black tracking-tight",
+      body: "font-normal",
       accent: "text-lime-200",
       accentSoft: "bg-lime-500/10",
       accentBorder: "border-lime-400/20",
@@ -398,6 +419,9 @@ const nicheData: Record<
 const defaultNicheTheme: NicheTheme = {
   pageBg: "bg-slate-950",
   hero: "bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.16),transparent_35%)]",
+  font: "font-sans",
+  title: "font-black tracking-tight",
+  body: "font-normal",
   accent: "text-emerald-200/80",
   accentSoft: "bg-emerald-500/10",
   accentBorder: "border-emerald-400/20",
@@ -425,7 +449,7 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
   return (
     <>
       <SeoHead title={content.title} description={content.description} canonical={canonicalPath} />
-      <main className={`min-h-screen ${theme.pageBg} text-white`}>
+      <main className={`min-h-screen ${theme.pageBg} ${theme.font} text-white`}>
         <section className={`border-b border-white/5 ${theme.hero}`}>
           <div className="container py-16 sm:py-20">
             <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -433,10 +457,10 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                 <p className={`text-sm font-semibold uppercase tracking-[0.22em] ${theme.accent}`}>
                   Argentina · {theme.badgeText}
                 </p>
-                <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
+                <h1 className={`mt-4 text-4xl sm:text-5xl lg:text-6xl ${theme.title}`}>
                   {content.title}
                 </h1>
-                <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/70 lg:mx-0">
+                <p className={`mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/70 lg:mx-0 ${theme.body}`}>
                   {content.description}
                 </p>
                 <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
@@ -511,10 +535,10 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                   <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
                     {content.showcase.eyebrow}
                   </p>
-                  <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+                  <h2 className={`mt-3 text-3xl sm:text-4xl ${theme.title}`}>
                     {content.showcase.title}
                   </h2>
-                  <p className="mt-4 max-w-xl text-base leading-8 text-white/65">
+                  <p className={`mt-4 max-w-xl text-base leading-8 text-white/65 ${theme.body}`}>
                     {content.showcase.description}
                   </p>
 
@@ -598,10 +622,10 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-200/80">
                     Caso real de uso
                   </p>
-                  <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+                  <h2 className={`mt-3 text-3xl sm:text-4xl ${theme.title}`}>
                     Una paciente escribe, el sistema responde y el turno queda confirmado
                   </h2>
-                  <p className="mt-4 max-w-xl text-base leading-8 text-white/65">
+                  <p className={`mt-4 max-w-xl text-base leading-8 text-white/65 ${theme.body}`}>
                     Así se ve un flujo más creíble para odontología: la consulta entra desde WhatsApp, la respuesta es inmediata y la agenda queda ordenada sin ir y venir de mensajes.
                   </p>
                 </div>
