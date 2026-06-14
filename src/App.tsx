@@ -36,6 +36,39 @@ export const routes: RouteRecord[] = [
 
 type NicheKey = "odontologos" | "medicos" | "fonoaudiologos" | "abogados" | "inmobiliarias";
 
+type NicheTheme = {
+  pageBg: string;
+  hero: string;
+  accent: string;
+  accentSoft: string;
+  accentBorder: string;
+  accentLine: string;
+  dot: string;
+  sectionBg: string;
+  sectionBgAlt: string;
+  sectionBgMuted: string;
+  surface: string;
+  surfaceStrong: string;
+  ctaFrom: string;
+  ctaTo: string;
+  ctaPanel: string;
+  badgeText: string;
+  image: string;
+  imageAlt: string;
+  imageCaption: string;
+};
+
+type NicheShowcase = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  bullets: string[];
+  image: string;
+  imageAlt: string;
+  caption: string;
+  reverse?: boolean;
+};
+
 const nicheData: Record<
   NicheKey,
   {
@@ -44,16 +77,8 @@ const nicheData: Record<
     problem: string;
     benefits: string[];
     conversation: { client: string; assistant: string; followUp: string; close: string };
-    theme?: {
-      hero: string;
-      accent: string;
-      accentSoft: string;
-      accentBorder: string;
-      badgeText: string;
-      image: string;
-      imageAlt: string;
-      imageCaption: string;
-    };
+    theme?: Partial<NicheTheme>;
+    showcase?: NicheShowcase;
   }
 > = {
   odontologos: {
@@ -72,20 +97,45 @@ const nicheData: Record<
       close: "Perfecto, así no tengo que estar pendiente del chat.",
     },
     theme: {
-      hero: "bg-[radial-gradient(circle_at_top,rgba(14,165,233,0.14),transparent_35%)]",
+      pageBg: "bg-[#06111b]",
+      hero: "bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.16),transparent_32%),linear-gradient(180deg,rgba(3,7,18,0.98),rgba(3,7,18,1))]",
       accent: "text-sky-200",
       accentSoft: "bg-sky-500/10",
       accentBorder: "border-sky-400/20",
+      accentLine: "bg-gradient-to-r from-sky-400/60 to-transparent",
+      dot: "bg-sky-400",
+      sectionBg: "bg-[#081520]",
+      sectionBgAlt: "bg-[#0b1723]",
+      sectionBgMuted: "bg-[#09111a]",
+      surface: "bg-white/[0.035]",
+      surfaceStrong: "bg-white/[0.045]",
+      ctaFrom: "from-sky-500",
+      ctaTo: "to-cyan-500",
+      ctaPanel: "bg-[linear-gradient(180deg,rgba(14,165,233,0.09),rgba(255,255,255,0.02))]",
       badgeText: "Consultorios dentales",
-      image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
+      image: "/assets/whatsapp-demo-bot.png",
       imageAlt: "Odontóloga atendiendo una consulta mientras responde WhatsApp en un consultorio moderno",
       imageCaption: "Una consulta clara, un turno confirmado y menos mensajes manuales.",
+    },
+    showcase: {
+      eyebrow: "Recepción y agenda",
+      title: "Una clínica con respuestas inmediatas y turnos confirmados",
+      description:
+        "Pensado para consultorios que reciben muchas consultas entre pacientes, llamados y tratamientos en curso.",
+      bullets: [
+        "Consulta inicial sin esperas",
+        "Turnos y recordatorios automáticos",
+        "Seguimiento posterior al tratamiento",
+      ],
+      image: "https://images.unsplash.com/photo-1622737133809-d95047b9e673?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Consultorio odontológico moderno con recepción digital",
+      caption: "Un estilo moderno para ordenar la atención y bajar ausencias.",
     },
   },
   medicos: {
     title: "Automatización de WhatsApp para médicos y consultorios en Argentina",
     description: "Centralizá consultas, turnos y seguimientos con una landing y un asistente automático para pacientes y consultorios médicos.",
-    problem: "El equipo atiende llamados, WhatsApp y agenda al mismo tiempo, lo que genera demoras y consultas sin responder en consultorios médicos.",
+    problem: "La recepción atiende llamados, WhatsApp y agenda al mismo tiempo; cuando todo entra junto, las respuestas tardan y se pierden consultas.",
     benefits: [
       "Filtro inicial de consultas y derivación automática.",
       "Agenda ordenada con turnos confirmados.",
@@ -94,14 +144,50 @@ const nicheData: Record<
     conversation: {
       client: "Buen día, ¿atienden por obra social y tienen turno esta semana?",
       assistant: "Sí, te ayudo con la consulta y te comparto los turnos disponibles.",
-      followUp: "Te quedó reservado el martes 11:00 y te llega recordatorio antes del turno.",
-      close: "Excelente, me ahorra estar llamando por cada consulta.",
+      followUp: "Te quedó reservado el martes a las 11:00 y te llega recordatorio antes del turno.",
+      close: "Excelente, me evita estar llamando varias veces.",
+    },
+    theme: {
+      pageBg: "bg-[#070b16]",
+      hero: "bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.15),transparent_32%),linear-gradient(180deg,rgba(5,8,19,0.98),rgba(5,8,19,1))]",
+      accent: "text-indigo-200",
+      accentSoft: "bg-indigo-500/10",
+      accentBorder: "border-indigo-400/20",
+      accentLine: "bg-gradient-to-r from-indigo-400/60 to-transparent",
+      dot: "bg-indigo-400",
+      sectionBg: "bg-[#090f1d]",
+      sectionBgAlt: "bg-[#0b1220]",
+      sectionBgMuted: "bg-[#0a1020]",
+      surface: "bg-white/[0.03]",
+      surfaceStrong: "bg-white/[0.04]",
+      ctaFrom: "from-indigo-500",
+      ctaTo: "to-violet-500",
+      ctaPanel: "bg-[linear-gradient(180deg,rgba(99,102,241,0.09),rgba(255,255,255,0.02))]",
+      badgeText: "Consultorios médicos",
+      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Médico revisando una agenda digital en un consultorio moderno",
+      imageCaption: "Un estilo minimalista, limpio y clínico para ordenar consultas.",
+    },
+    showcase: {
+      eyebrow: "Triage y turnos",
+      title: "Un primer filtro que ordena consultas y evita idas y vueltas",
+      description:
+        "Pensado para consultorios con mucho volumen, donde la recepción necesita responder rápido y con criterio.",
+      bullets: [
+        "Filtro de motivo de consulta",
+        "Disponibilidad y obra social",
+        "Recordatorio automático antes del turno",
+      ],
+      image: "https://images.unsplash.com/photo-1580281657527-47c5f1bf8fb5?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Profesional de salud revisando una agenda en tablet",
+      caption: "Un diseño más sobrio para transmitir orden y confianza.",
+      reverse: true,
     },
   },
   fonoaudiologos: {
     title: "Automatización de WhatsApp para fonoaudiólogos en Argentina",
     description: "Respondé consultas frecuentes, coordiná sesiones y simplificá el seguimiento con automatización para consultorios de fonoaudiología.",
-    problem: "Muchas consultas se repiten sobre horarios, modalidad y duración de sesiones, consumiendo tiempo todos los días en el consultorio.",
+    problem: "Se repiten consultas sobre horarios, modalidad, duración y cambios de turno, y eso termina consumiendo tiempo todos los días en el consultorio.",
     benefits: [
       "Respuestas automáticas sobre modalidad y disponibilidad.",
       "Gestión simple de turnos y reprogramaciones.",
@@ -113,11 +199,46 @@ const nicheData: Record<
       followUp: "Perfecto, te agendo el miércoles a las 10:00 y te queda confirmado.",
       close: "Súper, así no tengo que insistir por respuesta.",
     },
+    theme: {
+      pageBg: "bg-[#05130f]",
+      hero: "bg-[radial-gradient(circle_at_top,rgba(52,211,153,0.15),transparent_32%),linear-gradient(180deg,rgba(2,6,23,0.98),rgba(2,6,23,1))]",
+      accent: "text-emerald-200",
+      accentSoft: "bg-emerald-500/10",
+      accentBorder: "border-emerald-400/20",
+      accentLine: "bg-gradient-to-r from-emerald-400/60 to-transparent",
+      dot: "bg-emerald-400",
+      sectionBg: "bg-[#071813]",
+      sectionBgAlt: "bg-[#091b16]",
+      sectionBgMuted: "bg-[#06120f]",
+      surface: "bg-white/[0.03]",
+      surfaceStrong: "bg-white/[0.04]",
+      ctaFrom: "from-emerald-500",
+      ctaTo: "to-lime-500",
+      ctaPanel: "bg-[linear-gradient(180deg,rgba(52,211,153,0.09),rgba(255,255,255,0.02))]",
+      badgeText: "Consultorios de fonoaudiología",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Profesional de fonoaudiología trabajando con un paciente",
+      imageCaption: "Un diseño más calmo y cercano, ideal para familias y pacientes.",
+    },
+    showcase: {
+      eyebrow: "Sesiones y seguimiento",
+      title: "Una agenda suave, clara y sin mensajes repetidos",
+      description:
+        "Para profesionales que necesitan coordinar sesiones, reprogramaciones y seguimiento entre familias y pacientes.",
+      bullets: [
+        "Horarios y modalidad",
+        "Cambios de turno simples",
+        "Recordatorios automáticos",
+      ],
+      image: "https://images.unsplash.com/photo-1519542537078-4f7b7e1b8b6a?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Sesión de fonoaudiología en consultorio cálido y minimalista",
+      caption: "Un estilo más amable y minimalista para una atención cercana.",
+    },
   },
   abogados: {
     title: "Automatización de WhatsApp para abogados en Argentina",
     description: "Filtrá consultas, ordená casos y hacé seguimiento inicial sin perder tiempo en mensajes repetidos para estudios jurídicos y abogados particulares.",
-    problem: "Llegan muchas consultas legales que necesitan una primera respuesta clara, pero la demora hace que el potencial cliente siga buscando otro abogado.",
+    problem: "Llegan consultas legales que necesitan una primera respuesta clara; si se demoran, el posible cliente sigue buscando otro estudio.",
     benefits: [
       "Primer contacto profesional y automático.",
       "Captura de consultas desde una landing de servicios legales.",
@@ -126,14 +247,50 @@ const nicheData: Record<
     conversation: {
       client: "Hola, necesito asesoramiento por un alquiler, ¿puedo coordinar una consulta?",
       assistant: "Sí, claro. Te comparto disponibilidad y te explico cómo es la primera entrevista.",
-      followUp: "Te reservé un turno para mañana a las 17:00 y te envio la confirmación.",
+      followUp: "Te reservé un turno para mañana a las 17:00 y te envío la confirmación.",
       close: "Perfecto, así no pierdo tiempo escribiendo varias veces.",
+    },
+    theme: {
+      pageBg: "bg-[#080604]",
+      hero: "bg-[radial-gradient(circle_at_top,rgba(245,158,11,0.12),transparent_30%),linear-gradient(180deg,rgba(8,5,2,0.99),rgba(8,5,2,1))]",
+      accent: "text-amber-200",
+      accentSoft: "bg-amber-500/10",
+      accentBorder: "border-amber-400/20",
+      accentLine: "bg-gradient-to-r from-amber-400/60 to-transparent",
+      dot: "bg-amber-400",
+      sectionBg: "bg-[#110b07]",
+      sectionBgAlt: "bg-[#160f0a]",
+      sectionBgMuted: "bg-[#0d0804]",
+      surface: "bg-white/[0.025]",
+      surfaceStrong: "bg-white/[0.035]",
+      ctaFrom: "from-amber-500",
+      ctaTo: "to-orange-500",
+      ctaPanel: "bg-[linear-gradient(180deg,rgba(245,158,11,0.09),rgba(255,255,255,0.02))]",
+      badgeText: "Estudios jurídicos",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Abogada revisando un caso en un estudio jurídico moderno",
+      imageCaption: "Una estética sobria para transmitir seriedad y confianza.",
+    },
+    showcase: {
+      eyebrow: "Primer contacto",
+      title: "Un ingreso prolijo para consultas legales que requieren rapidez",
+      description:
+        "El tono visual es más sobrio y elegante, ideal para transmitir seriedad desde el primer mensaje.",
+      bullets: [
+        "Clasificación de consultas",
+        "Agenda de entrevista",
+        "Seguimiento de prospectos",
+      ],
+      image: "https://images.unsplash.com/photo-1528747045269-390fe33c19a2?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Estudio jurídico elegante con escritorio y documentos",
+      caption: "Más formal, más sobrio y con foco en confianza.",
+      reverse: true,
     },
   },
   inmobiliarias: {
     title: "Automatización de WhatsApp para inmobiliarias en Argentina",
     description: "Respondé consultas de propiedades, agendá visitas y seguí leads sin perder velocidad de respuesta en inmobiliarias argentinas.",
-    problem: "Las consultas llegan por muchos canales y, si no se responde rápido, el cliente agenda visita con otra inmobiliaria de Argentina.",
+    problem: "Las consultas llegan por muchos canales y, si no se responde rápido, el interesado sigue mirando otras opciones.",
     benefits: [
       "Respuestas automáticas para propiedades y zonas.",
       "Agendado de visitas y seguimiento de interesados.",
@@ -145,24 +302,75 @@ const nicheData: Record<
       followUp: "Listo, te agendé para el sábado a las 12:00 y te llega la confirmación.",
       close: "Genial, me resolvió todo por WhatsApp.",
     },
+    theme: {
+      pageBg: "bg-[#11050b]",
+      hero: "bg-[radial-gradient(circle_at_top,rgba(244,114,182,0.14),transparent_30%),linear-gradient(180deg,rgba(13,6,10,0.99),rgba(13,6,10,1))]",
+      accent: "text-rose-200",
+      accentSoft: "bg-rose-500/10",
+      accentBorder: "border-rose-400/20",
+      accentLine: "bg-gradient-to-r from-rose-400/60 to-transparent",
+      dot: "bg-rose-400",
+      sectionBg: "bg-[#1a0910]",
+      sectionBgAlt: "bg-[#14080d]",
+      sectionBgMuted: "bg-[#12060d]",
+      surface: "bg-white/[0.03]",
+      surfaceStrong: "bg-white/[0.04]",
+      ctaFrom: "from-rose-500",
+      ctaTo: "to-fuchsia-500",
+      ctaPanel: "bg-[linear-gradient(180deg,rgba(244,114,182,0.09),rgba(255,255,255,0.02))]",
+      badgeText: "Inmobiliarias",
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Asesor inmobiliario mostrando una propiedad a un cliente",
+      imageCaption: "Más energía comercial, más visitas coordinadas y menos leads fríos.",
+    },
+    showcase: {
+      eyebrow: "Leads y visitas",
+      title: "Consultas que no se enfrían y visitas que quedan agendadas",
+      description:
+        "Pensado para equipos comerciales que responden varios canales y necesitan velocidad sin perder contexto.",
+      bullets: [
+        "Disponibilidad de propiedades",
+        "Coordinación de visitas",
+        "Seguimiento de interesados",
+      ],
+      image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Reunión inmobiliaria con una pareja interesada en una propiedad",
+      caption: "Un look más vibrante para una experiencia comercial ágil.",
+    },
   },
+};
+
+const defaultNicheTheme: NicheTheme = {
+  pageBg: "bg-slate-950",
+  hero: "bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.16),transparent_35%)]",
+  accent: "text-emerald-200/80",
+  accentSoft: "bg-emerald-500/10",
+  accentBorder: "border-emerald-400/20",
+  accentLine: "bg-gradient-to-r from-emerald-400/60 to-transparent",
+  dot: "bg-emerald-400",
+  sectionBg: "bg-[#090909]",
+  sectionBgAlt: "bg-[#0a0a0a]",
+  sectionBgMuted: "bg-[#0b0b0b]",
+  surface: "bg-white/[0.03]",
+  surfaceStrong: "bg-white/[0.04]",
+  ctaFrom: "from-emerald-500",
+  ctaTo: "to-green-500",
+  ctaPanel: "bg-[linear-gradient(180deg,rgba(16,185,129,0.08),rgba(255,255,255,0.02))]",
+  badgeText: "Automatización de WhatsApp",
+  image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
+  imageAlt: "Consultorio moderno",
+  imageCaption: "Una consulta clara, un turno confirmado y menos mensajes manuales.",
 };
 
 function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
   const content = nicheData[nicheKey];
   const canonicalPath = `/${nicheKey}`;
-  const theme = content.theme ?? {
-    hero: "bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.16),transparent_35%)]",
-    accent: "text-emerald-200/80",
-    accentSoft: "bg-emerald-500/10",
-    accentBorder: "border-emerald-400/20",
-    badgeText: "Automatización de WhatsApp",
-  };
+  const theme: NicheTheme = { ...defaultNicheTheme, ...(content.theme ?? {}) };
 
   return (
     <>
       <SeoHead title={content.title} description={content.description} canonical={canonicalPath} />
-      <main className="min-h-screen bg-slate-950 text-white">
+      <main className={`min-h-screen ${theme.pageBg} text-white`}>
         <section className={`border-b border-white/5 ${theme.hero}`}>
           <div className="container py-16 sm:py-20">
             <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -177,7 +385,7 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                   {content.description}
                 </p>
                 <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
-                  <a href="#contacto" className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-sky-500 to-cyan-500 px-6 py-4 text-base font-bold text-white shadow-lg shadow-sky-500/20">
+                  <a href="#contacto" className={`inline-flex items-center justify-center rounded-2xl bg-gradient-to-r ${theme.ctaFrom} ${theme.ctaTo} px-6 py-4 text-base font-bold text-white shadow-lg shadow-black/30`}>
                     Solicitar diagnóstico gratuito
                   </a>
                   <a href="#conversacion" className={`inline-flex items-center justify-center rounded-2xl border ${theme.accentBorder} bg-white/5 px-6 py-4 text-base font-semibold text-white/85`}>
@@ -186,20 +394,20 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                 </div>
               </div>
 
-              <div className={`overflow-hidden rounded-[2rem] border ${theme.accentBorder} bg-white/[0.03] shadow-[0_28px_80px_-40px_rgba(14,165,233,0.5)]`}>
+              <div className={`overflow-hidden rounded-[2rem] border ${theme.accentBorder} ${theme.surface} shadow-[0_28px_80px_-40px_rgba(14,165,233,0.5)]`}>
                 <div className="relative aspect-[4/3]">
                   <img
-                    src={content.theme?.image ?? "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80"}
-                    alt={content.theme?.imageAlt ?? "Consultorio odontológico moderno"}
+                    src={theme.image}
+                    alt={theme.imageAlt}
                     className="h-full w-full object-cover"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.08),rgba(2,6,23,0.56))]" />
                   <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
                     <div className={`inline-flex rounded-full border ${theme.accentBorder} ${theme.accentSoft} px-3 py-1 text-xs font-semibold ${theme.accent}`}>
-                      Atención realista para odontología
+                      {theme.badgeText}
                     </div>
                     <p className="mt-3 max-w-md text-sm leading-6 text-white/85">
-                      {content.theme?.imageCaption ?? "Una consulta clara, un turno confirmado y menos mensajes manuales."}
+                      {theme.imageCaption}
                     </p>
                   </div>
                 </div>
@@ -208,25 +416,25 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
           </div>
         </section>
 
-        <section className="border-t border-white/5 bg-[#090909]">
+        <section className={`border-t border-white/5 ${theme.sectionBg}`}>
           <div className="container py-16 sm:py-20">
             <div className="grid gap-4 lg:grid-cols-2">
-              <div className="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 sm:p-7">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
+              <div className={`rounded-[1.75rem] border ${theme.accentBorder} ${theme.surface} p-6 sm:p-7`}>
+                <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
                   Problema principal
                 </p>
                 <p className="mt-3 text-lg leading-8 text-white/75">
                   {content.problem}
                 </p>
               </div>
-              <div className={`rounded-[1.75rem] border ${theme.accentBorder} bg-white/[0.04] p-6 sm:p-7`}>
+              <div className={`rounded-[1.75rem] border ${theme.accentBorder} ${theme.surfaceStrong} p-6 sm:p-7`}>
                 <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
                   Beneficios de automatizar
                 </p>
                 <div className="mt-4 space-y-3">
                   {content.benefits.map((benefit) => (
                     <p key={benefit} className="flex items-start gap-3 text-sm leading-7 text-white/70">
-                      <span className="mt-2 h-2 w-2 rounded-full bg-sky-400" />
+                      <span className={`mt-2 h-2 w-2 rounded-full ${theme.dot}`} />
                       {benefit}
                     </p>
                   ))}
@@ -235,6 +443,54 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
             </div>
           </div>
         </section>
+
+        {content.showcase ? (
+          <section className={`border-t border-white/5 ${theme.sectionBgAlt}`}>
+            <div className="container py-16 sm:py-20">
+              <div
+                className={`grid gap-8 lg:items-center ${
+                  content.showcase.reverse ? "lg:grid-cols-[0.95fr_1.05fr]" : "lg:grid-cols-[1.05fr_0.95fr]"
+                }`}
+              >
+                <div className={content.showcase.reverse ? "lg:order-2" : ""}>
+                  <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
+                    {content.showcase.eyebrow}
+                  </p>
+                  <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+                    {content.showcase.title}
+                  </h2>
+                  <p className="mt-4 max-w-xl text-base leading-8 text-white/65">
+                    {content.showcase.description}
+                  </p>
+
+                  <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                    {content.showcase.bullets.map((bullet) => (
+                      <div key={bullet} className={`rounded-2xl border ${theme.accentBorder} ${theme.surface} px-4 py-3 text-sm leading-6 text-white/80`}>
+                        {bullet}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={`overflow-hidden rounded-[2rem] border ${theme.accentBorder} ${theme.surface} shadow-[0_24px_80px_-36px_rgba(0,0,0,0.6)]`}>
+                  <div className="relative aspect-[4/3]">
+                    <img
+                      src={content.showcase.image}
+                      alt={content.showcase.imageAlt}
+                      className="h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.05),rgba(2,6,23,0.58))]" />
+                    <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
+                      <div className={`inline-flex rounded-full border ${theme.accentBorder} ${theme.accentSoft} px-3 py-1 text-xs font-semibold ${theme.accent}`}>
+                        {content.showcase.caption}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         {nicheKey === "odontologos" && (
           <section className="border-t border-white/5 bg-[#0a0f16]">
@@ -326,11 +582,11 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
           </section>
         )}
 
-        <section id="conversacion" className="border-t border-white/5 bg-[#0a0a0a]">
+        <section id="conversacion" className={`border-t border-white/5 ${theme.sectionBgMuted}`}>
           <div className="container py-16 sm:py-20">
-            <div className="mx-auto max-w-3xl rounded-[2rem] border border-white/10 bg-[#111111] p-6 shadow-[0_24px_80px_-32px_rgba(0,0,0,0.9)] sm:p-8">
+            <div className={`mx-auto max-w-3xl rounded-[2rem] border ${theme.accentBorder} ${theme.surfaceStrong} p-6 shadow-[0_24px_80px_-32px_rgba(0,0,0,0.9)] sm:p-8`}>
               <div className="mb-6">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
+                <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
                   Ejemplo real de conversación
                 </p>
                 <h2 className="mt-3 text-3xl font-black tracking-tight">Cómo se ve una consulta automatizada</h2>
@@ -353,9 +609,9 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
           </div>
         </section>
 
-        <section className="border-t border-white/5 bg-[#090909]">
+        <section className={`border-t border-white/5 ${theme.sectionBg}`}>
           <div className="container py-16 sm:py-20">
-            <div className={`mx-auto max-w-4xl rounded-[2rem] border ${theme.accentBorder} bg-[linear-gradient(180deg,rgba(14,165,233,0.08),rgba(255,255,255,0.02))] p-6 text-center shadow-[0_20px_60px_-36px_rgba(14,165,233,0.35)] sm:p-8`}>
+            <div className={`mx-auto max-w-4xl rounded-[2rem] border ${theme.accentBorder} ${theme.ctaPanel} p-6 text-center shadow-[0_20px_60px_-36px_rgba(14,165,233,0.35)] sm:p-8`}>
               <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
                 Diagnóstico gratuito
               </p>
@@ -363,23 +619,23 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
               <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-white/65">
                 Analizamos cómo llegar más rápido a tus consultas, cómo ordenar tu agenda y qué automatizar para vender mejor en Argentina.
               </p>
-              <a href="/#contacto" className="mt-6 inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-sky-500 to-cyan-500 px-6 py-4 text-base font-bold text-white">
+              <a href="/#contacto" className={`mt-6 inline-flex items-center justify-center rounded-2xl bg-gradient-to-r ${theme.ctaFrom} ${theme.ctaTo} px-6 py-4 text-base font-bold text-white`}>
                 Solicitar diagnóstico gratuito
               </a>
             </div>
           </div>
         </section>
 
-        <section id="landings-seo" className="border-t border-white/5 bg-[#0a0a0a]">
+        <section id="landings-seo" className={`border-t border-white/5 ${theme.sectionBgAlt}`}>
           <div className="container py-16 sm:py-20">
             <div className="mb-10 max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
+              <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
                 Landings SEO
               </p>
               <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
                 Páginas específicas por rubro para captar búsquedas con intención
               </h2>
-              <div className="mt-5 h-px w-24 bg-gradient-to-r from-emerald-400/60 to-transparent" />
+              <div className={`mt-5 h-px w-24 ${theme.accentLine}`} />
             </div>
 
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -393,13 +649,13 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="group rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
+                  className={`group rounded-[1.75rem] border ${theme.accentBorder} ${theme.surface} p-6 transition-all duration-300 hover:bg-white/[0.05] sm:p-7`}
                 >
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-200/80">
+                  <p className={`text-sm font-semibold uppercase tracking-[0.18em] ${theme.accent}`}>
                     {item.label}
                   </p>
                   <p className="mt-3 text-sm leading-7 text-white/60">{item.text}</p>
-                  <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-emerald-200 transition-transform group-hover:translate-x-1">
+                  <div className={`mt-5 inline-flex items-center gap-2 text-sm font-semibold ${theme.accent} transition-transform group-hover:translate-x-1`}>
                     Ver landing
                     <span aria-hidden="true">→</span>
                   </div>
@@ -409,16 +665,16 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
           </div>
         </section>
 
-        <section className="border-t border-white/5 bg-[#0a0a0a]">
+        <section className={`border-t border-white/5 ${theme.sectionBgAlt}`}>
           <div className="container py-16 sm:py-20">
             <div className="mb-10 max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
+              <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
                 Más soluciones
               </p>
               <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
                 Otras páginas pensadas para automatizar consultas y turnos
               </h2>
-              <div className="mt-5 h-px w-24 bg-gradient-to-r from-emerald-400/60 to-transparent" />
+              <div className={`mt-5 h-px w-24 ${theme.accentLine}`} />
             </div>
 
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -433,13 +689,13 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="group rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
+                  className={`group rounded-[1.75rem] border ${theme.accentBorder} ${theme.surface} p-6 transition-all duration-300 hover:bg-white/[0.05] sm:p-7`}
                 >
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-200/80">
+                  <p className={`text-sm font-semibold uppercase tracking-[0.18em] ${theme.accent}`}>
                     {item.label}
                   </p>
                   <p className="mt-3 text-sm leading-7 text-white/60">{item.text}</p>
-                  <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-emerald-200 transition-transform group-hover:translate-x-1">
+                  <div className={`mt-5 inline-flex items-center gap-2 text-sm font-semibold ${theme.accent} transition-transform group-hover:translate-x-1`}>
                     Ver página
                     <span aria-hidden="true">→</span>
                   </div>
