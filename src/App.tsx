@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { FormEvent, useState } from "react";
+import { FormEvent, useMemo, useState } from "react";
 import type { RouteRecord } from "vite-react-ssg";
 
 import { SeoHead } from "@/components/SEO/SeoHead";
@@ -12,7 +12,229 @@ export const routes: RouteRecord[] = [
     path: "/",
     element: <WhatsAppAutomationLanding />,
   },
+  {
+    path: "/odontologos",
+    element: <NicheLanding nicheKey="odontologos" />,
+  },
+  {
+    path: "/medicos",
+    element: <NicheLanding nicheKey="medicos" />,
+  },
+  {
+    path: "/fonoaudiologos",
+    element: <NicheLanding nicheKey="fonoaudiologos" />,
+  },
+  {
+    path: "/abogados",
+    element: <NicheLanding nicheKey="abogados" />,
+  },
+  {
+    path: "/inmobiliarias",
+    element: <NicheLanding nicheKey="inmobiliarias" />,
+  },
 ];
+
+type NicheKey = "odontologos" | "medicos" | "fonoaudiologos" | "abogados" | "inmobiliarias";
+
+const nicheData: Record<
+  NicheKey,
+  {
+    title: string;
+    description: string;
+    problem: string;
+    benefits: string[];
+    conversation: { client: string; assistant: string; followUp: string; close: string };
+  }
+> = {
+  odontologos: {
+    title: "Automatización de WhatsApp para odontólogos en Argentina",
+    description: "Respondé consultas, confirmá turnos y reducí mensajes repetidos con un asistente de WhatsApp pensado para clínicas dentales.",
+    problem: "Las consultas entran por WhatsApp, pero entre tratamientos, urgencias y agenda, muchas veces se responden tarde y se pierden turnos.",
+    benefits: [
+      "Respuestas automáticas para primeras consultas y urgencias.",
+      "Confirmación de turnos y recordatorios automáticos.",
+      "Menos tiempo respondiendo precios, horarios y cobertura.",
+    ],
+    conversation: {
+      client: "Hola, ¿tienen turno para limpieza esta semana?",
+      assistant: "Sí, claro. Te paso disponibilidad y, si querés, te lo dejo confirmado ahora mismo.",
+      followUp: "Perfecto, te agendo para el jueves a las 15:30 y te envío recordatorio automático.",
+      close: "Genial, así no tengo que estar persiguiendo el chat.",
+    },
+  },
+  medicos: {
+    title: "Automatización de WhatsApp para médicos y consultorios",
+    description: "Centralizá consultas, turnos y seguimientos con una landing y un asistente automático para pacientes.",
+    problem: "El equipo atiende llamados, WhatsApp y agenda al mismo tiempo, lo que genera demoras y consultas sin responder.",
+    benefits: [
+      "Filtro inicial de consultas y derivación automática.",
+      "Agenda ordenada con turnos confirmados.",
+      "Seguimiento y recordatorios sin carga manual.",
+    ],
+    conversation: {
+      client: "Buen día, ¿atienden por obra social y tienen turno esta semana?",
+      assistant: "Sí, te ayudo con la consulta y te comparto los turnos disponibles.",
+      followUp: "Te quedó reservado el martes 11:00 y te llega recordatorio antes del turno.",
+      close: "Excelente, me ahorra estar llamando por cada consulta.",
+    },
+  },
+  fonoaudiologos: {
+    title: "Automatización de WhatsApp para fonoaudiólogos",
+    description: "Respondé consultas frecuentes, coordiná sesiones y simplificá el seguimiento con automatización.",
+    problem: "Muchas consultas se repiten sobre horarios, modalidad y duración de sesiones, consumiendo tiempo todos los días.",
+    benefits: [
+      "Respuestas automáticas sobre modalidad y disponibilidad.",
+      "Gestión simple de turnos y reprogramaciones.",
+      "Seguimiento más ordenado con menos chats pendientes.",
+    ],
+    conversation: {
+      client: "Hola, quería saber si hacen atención infantil y cómo son los turnos.",
+      assistant: "Sí, te comparto cómo trabajamos y te paso los horarios disponibles.",
+      followUp: "Perfecto, te agendo el miércoles a las 10:00 y te queda confirmado.",
+      close: "Súper, así no tengo que insistir por respuesta.",
+    },
+  },
+  abogados: {
+    title: "Automatización de WhatsApp para abogados en Argentina",
+    description: "Filtrá consultas, ordená casos y hacé seguimiento inicial sin perder tiempo en mensajes repetidos.",
+    problem: "Llegan muchas consultas que necesitan una primera respuesta clara, pero la demora hace que el potencial cliente siga buscando.",
+    benefits: [
+      "Primer contacto profesional y automático.",
+      "Captura de consultas desde una landing de servicios legales.",
+      "Seguimiento de prospectos sin perder oportunidades.",
+    ],
+    conversation: {
+      client: "Hola, necesito asesoramiento por un alquiler, ¿puedo coordinar una consulta?",
+      assistant: "Sí, claro. Te comparto disponibilidad y te explico cómo es la primera entrevista.",
+      followUp: "Te reservé un turno para mañana a las 17:00 y te envio la confirmación.",
+      close: "Perfecto, así no pierdo tiempo escribiendo varias veces.",
+    },
+  },
+  inmobiliarias: {
+    title: "Automatización de WhatsApp para inmobiliarias",
+    description: "Respondé consultas de propiedades, agendá visitas y seguí leads sin perder velocidad de respuesta.",
+    problem: "Las consultas llegan por muchos canales y, si no se responde rápido, el cliente agenda visita con otra inmobiliaria.",
+    benefits: [
+      "Respuestas automáticas para propiedades y zonas.",
+      "Agendado de visitas y seguimiento de interesados.",
+      "Más consultas atendidas sin aumentar equipo.",
+    ],
+    conversation: {
+      client: "Hola, vi un depto en Palermo. ¿Sigue disponible?",
+      assistant: "Sí, sigue disponible. Te comparto detalles y puedo agendarte visita.",
+      followUp: "Listo, te agendé para el sábado a las 12:00 y te llega la confirmación.",
+      close: "Genial, me resolvió todo por WhatsApp.",
+    },
+  },
+};
+
+function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
+  const content = nicheData[nicheKey];
+  const localTitle = useMemo(() => content.title, [content.title]);
+
+  return (
+    <>
+      <SeoHead title={localTitle} description={content.description} />
+      <main className="min-h-screen bg-slate-950 text-white">
+        <section className="border-b border-white/5 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.16),transparent_35%)]">
+          <div className="container py-16 sm:py-20">
+            <div className="mx-auto max-w-4xl text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300/80">
+                Argentina · Automatización de WhatsApp
+              </p>
+              <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
+                {content.title}
+              </h1>
+              <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/70">
+                {content.description}
+              </p>
+              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                <a href="#contacto" className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-500 to-green-500 px-6 py-4 text-base font-bold text-white">
+                  Solicitar diagnóstico gratuito
+                </a>
+                <a href="#conversacion" className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-base font-semibold text-white/85">
+                  Ver conversación real
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-white/5 bg-[#090909]">
+          <div className="container py-16 sm:py-20">
+            <div className="grid gap-4 lg:grid-cols-2">
+              <div className="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 sm:p-7">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
+                  Problema principal
+                </p>
+                <p className="mt-3 text-lg leading-8 text-white/75">
+                  {content.problem}
+                </p>
+              </div>
+              <div className="rounded-[1.75rem] border border-emerald-500/15 bg-emerald-500/[0.04] p-6 sm:p-7">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200/70">
+                  Beneficios de automatizar
+                </p>
+                <div className="mt-4 space-y-3">
+                  {content.benefits.map((benefit) => (
+                    <p key={benefit} className="flex items-start gap-3 text-sm leading-7 text-white/70">
+                      <span className="mt-2 h-2 w-2 rounded-full bg-emerald-400" />
+                      {benefit}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="conversacion" className="border-t border-white/5 bg-[#0a0a0a]">
+          <div className="container py-16 sm:py-20">
+            <div className="mx-auto max-w-3xl rounded-[2rem] border border-white/10 bg-[#111111] p-6 shadow-[0_24px_80px_-32px_rgba(0,0,0,0.9)] sm:p-8">
+              <div className="mb-6">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
+                  Ejemplo real de conversación
+                </p>
+                <h2 className="mt-3 text-3xl font-black tracking-tight">Cómo se ve una consulta automatizada</h2>
+              </div>
+              <div className="space-y-4">
+                <div className="rounded-2xl border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
+                  {content.conversation.client}
+                </div>
+                <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
+                  {content.conversation.assistant}
+                </div>
+                <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
+                  {content.conversation.followUp}
+                </div>
+                <div className="rounded-2xl border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
+                  {content.conversation.close}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-white/5 bg-[#090909]">
+          <div className="container py-16 sm:py-20">
+            <div className="mx-auto max-w-4xl rounded-[2rem] border border-emerald-400/12 bg-[linear-gradient(180deg,rgba(16,185,129,0.08),rgba(255,255,255,0.02))] p-6 text-center shadow-[0_20px_60px_-36px_rgba(16,185,129,0.45)] sm:p-8">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200/80">
+                Diagnóstico gratuito
+              </p>
+              <h2 className="mt-3 text-3xl font-black tracking-tight">Quiero mi diagnóstico gratuito</h2>
+              <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-white/65">
+                Analizamos cómo llegar más rápido a tus consultas, cómo ordenar tu agenda y qué automatizar para vender mejor en Argentina.
+              </p>
+              <a href="/#contacto" className="mt-6 inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-500 to-green-500 px-6 py-4 text-base font-bold text-white">
+                Solicitar diagnóstico gratuito
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
+  );
+}
 
 function WhatsAppAutomationLanding() {
   const [nombre, setNombre] = useState("");
@@ -58,7 +280,7 @@ function WhatsAppAutomationLanding() {
     <>
       <SeoHead
         title="Automatización de WhatsApp y turnos"
-        description="Automatizá tus respuestas, enviá presupuestos y agendá clientes 24/7 sin mover un dedo."
+        description="Automatizá WhatsApp con IA, captá leads desde landing pages y conectá integraciones para responder, agendar y hacer seguimiento 24/7."
       />
       <Toaster position="top-right" />
 
@@ -71,7 +293,7 @@ function WhatsAppAutomationLanding() {
                 <a href="/" className="inline-flex items-center gap-3">
                   <div className="h-10 w-10 rounded-2xl border border-emerald-400/20 bg-emerald-500/10 shadow-[0_0_30px_-18px_rgba(16,185,129,0.9)]" />
                   <span className="text-xs font-semibold tracking-[0.18em] text-white/90 uppercase sm:text-sm">
-                    WebAppImpulsor
+                    WhatsApp AI
                   </span>
                 </a>
 
@@ -102,10 +324,10 @@ function WhatsAppAutomationLanding() {
               <div className="space-y-8">
                 <div className="space-y-5">
                   <h1 className="max-w-3xl text-balance text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl">
-                    Automatizá WhatsApp y conseguí más clientes sin trabajar más horas
+                    Automatizá WhatsApp con IA y conseguí más clientes sin sumar horas de trabajo
                   </h1>
                   <p className="max-w-2xl text-lg leading-8 text-white/70 sm:text-xl">
-                    Implementamos asistentes automáticos para profesionales y negocios que responden consultas, gestionan turnos y hacen seguimiento de clientes.
+                    Implementamos automatizaciones con IA para negocios que responden consultas, gestionan turnos, hacen seguimiento y conectan con landing pages e integraciones.
                   </p>
                 </div>
 
@@ -120,7 +342,7 @@ function WhatsAppAutomationLanding() {
                     href="#como-funciona"
                     className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-base font-semibold text-white/85 transition hover:border-white/15 hover:bg-white/10"
                   >
-                    Ver demostración
+                    Ver flujo automatizado
                   </a>
                 </div>
               </div>
@@ -131,11 +353,65 @@ function WhatsAppAutomationLanding() {
                     Solicitar diagnóstico gratuito
                   </p>
                   <h2 className="mt-3 text-3xl font-black tracking-tight text-white">
-                    Completá tus datos y te mostramos cómo automatizar tu WhatsApp
+                    Completá tus datos y te mostramos cómo vender más con WhatsApp e IA
                   </h2>
                   <p className="mt-3 text-sm leading-6 text-white/60">
-                    Te enviamos una revisión breve para detectar oportunidades de automatización, seguimiento y agenda.
+                    Te enviamos una revisión breve para detectar oportunidades de automatización, landing pages e integraciones.
                   </p>
+                </div>
+
+                <div className="relative mb-6 overflow-hidden rounded-[1.75rem] border border-emerald-400/12 bg-[linear-gradient(180deg,rgba(16,185,129,0.08),rgba(255,255,255,0.02))] p-5 shadow-[0_20px_60px_-36px_rgba(16,185,129,0.45)]">
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.16),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(34,197,94,0.08),transparent_35%)]" />
+                  <div className="relative">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[11px] font-semibold tracking-[0.18em] text-emerald-200 uppercase">
+                      Diagnóstico comercial
+                    </div>
+                    <h3 className="mt-4 text-2xl font-black tracking-tight text-white sm:text-[2rem]">
+                      Solicitá tu diagnóstico gratuito
+                    </h3>
+                    <p className="mt-3 max-w-2xl text-sm leading-7 text-white/65 sm:text-base">
+                      Analizamos cómo llegan tus consultas, cómo gestionás tus turnos y qué tareas podés automatizar.
+                    </p>
+                  </div>
+
+                  <div className="relative mt-5 grid gap-3 sm:grid-cols-3">
+                    {[
+                      {
+                        title: "Cómo llegan tus consultas",
+                        text: "Revisamos el punto de entrada para ver si perdés oportunidades.",
+                      },
+                      {
+                        title: "Cómo gestionás tus turnos",
+                        text: "Detectamos fricciones, demoras y tareas manuales.",
+                      },
+                      {
+                        title: "Qué podés automatizar",
+                        text: "Marcamos mensajes, seguimientos y recordatorios.",
+                      },
+                    ].map((item) => (
+                      <div
+                        key={item.title}
+                        className="rounded-2xl border border-white/5 bg-white/[0.03] p-4"
+                      >
+                        <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-xl border border-emerald-400/20 bg-emerald-500/10 text-xs font-black text-emerald-200">
+                          ✓
+                        </div>
+                        <h4 className="text-sm font-semibold text-white">{item.title}</h4>
+                        <p className="mt-2 text-sm leading-6 text-white/55">{item.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="relative mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+                    <a
+                      href="#contacto"
+                      className="inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-500 to-green-500 px-5 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/25 transition hover:scale-[1.01] hover:shadow-emerald-500/35 sm:w-auto sm:min-w-64"
+                    >
+                      Quiero mi diagnóstico
+                    </a>
+                    <p className="text-sm leading-6 text-white/45">
+                      Sin compromiso. Te devolvemos un mapa claro de oportunidades.
+                    </p>
+                  </div>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4" id="contacto">
@@ -185,7 +461,7 @@ function WhatsAppAutomationLanding() {
                   ) : null}
 
                   <p className="text-xs leading-5 text-white/45">
-                    Sin spam. Solo usamos tus datos para coordinar el diagnóstico.
+                    Sin spam. Solo usamos tus datos para coordinar el diagnóstico de automatización.
                   </p>
                 </form>
               </div>
@@ -200,7 +476,7 @@ function WhatsAppAutomationLanding() {
                 Ver una conversación real
               </p>
               <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-                Así se ve una atención automática en WhatsApp
+                Así se ve una atención automática en WhatsApp con IA
               </h2>
               <div className="mt-5 h-px w-24 bg-gradient-to-r from-emerald-400/60 to-transparent" />
             </div>
@@ -232,7 +508,7 @@ function WhatsAppAutomationLanding() {
                         </div>
                         <div className="space-y-1">
                           <div className="rounded-[1.25rem] rounded-bl-md border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
-                            Hola, vi tu web y quiero saber si tienen turnos para esta semana.
+                            Hola, vi su landing y quiero saber si tienen turnos para esta semana.
                           </div>
                           <div className="px-1 text-[11px] text-white/35">10:41</div>
                         </div>
@@ -370,7 +646,7 @@ function WhatsAppAutomationLanding() {
                   <div className="mt-4 space-y-3 text-sm leading-7 text-white/70">
                     <p className="flex items-start gap-3">
                       <span className="mt-2 h-2 w-2 rounded-full bg-emerald-400" />
-                      Primer respuesta inmediata, aunque el negocio esté cerrado.
+                      Primera respuesta inmediata, aunque el negocio esté cerrado.
                     </p>
                     <p className="flex items-start gap-3">
                       <span className="mt-2 h-2 w-2 rounded-full bg-emerald-400" />
@@ -403,44 +679,37 @@ function WhatsAppAutomationLanding() {
               {[
                 {
                   label: "Odontólogos",
-                  problem: "Consultas urgentes, turnos cruzados y demasiados mensajes repetidos.",
-                  result: "Respuestas automáticas y agenda ordenada en pocos segundos.",
-                  href: "/psicologos",
+                  problem: "Consultas por turnos, urgencias y mensajes que llegan fuera de horario.",
+                  result: "Respuestas automáticas y confirmación de turnos sin fricción.",
+                  href: "/odontologos",
                   accent: "from-cyan-500/20 to-sky-500/10",
                 },
                 {
-                  label: "Psicólogos",
-                  problem: "Necesitás transmitir confianza y filtrar consultas con delicadeza.",
-                  result: "Primer contacto claro, turnos simples y seguimiento sin fricción.",
-                  href: "/psicologos",
+                  label: "Médicos",
+                  problem: "Consultas dispersas entre WhatsApp, llamados y agenda manual.",
+                  result: "Primer contacto claro, turnos simples y seguimiento automático.",
+                  href: "/medicos",
                   accent: "from-violet-500/20 to-fuchsia-500/10",
                 },
                 {
                   label: "Fonoaudiólogos",
-                  problem: "Pacientes que preguntan horarios, modalidades y disponibilidad todo el tiempo.",
-                  result: "Automatizás respuestas frecuentes y reducís trabajo manual.",
-                  href: "/emprendedores",
-                  accent: "from-amber-500/20 to-orange-500/10",
-                },
-                {
-                  label: "Nutricionistas",
-                  problem: "Seguimiento constante, consultas repetitivas y mucha coordinación por WhatsApp.",
-                  result: "Agenda de controles, recordatorios y atención más ordenada.",
-                  href: "/nutricionistas",
+                  problem: "Consultas repetidas sobre horarios, modalidad y duración de las sesiones.",
+                  result: "Respuestas frecuentes automatizadas y agenda más ordenada.",
+                  href: "/fonoaudiologos",
                   accent: "from-lime-500/20 to-emerald-500/10",
                 },
                 {
-                  label: "Entrenadores",
-                  problem: "Muchos mensajes sobre precios, clases y horarios antes de cerrar una venta.",
-                  result: "Respondés más rápido y convertís más interesados en alumnos.",
-                  href: "/entrenadores",
+                  label: "Abogados",
+                  problem: "Consultas legales que requieren una primera respuesta profesional y rápida.",
+                  result: "Filtrado inicial, contacto ordenado y seguimiento de prospectos.",
+                  href: "/abogados",
                   accent: "from-blue-500/20 to-cyan-500/10",
                 },
                 {
-                  label: "Centros de estética",
-                  problem: "Reservas, reprogramaciones y consultas que se pierden por demora.",
-                  result: "Más turnos confirmados, menos cancelaciones y mejor seguimiento.",
-                  href: "/estetica-corporal",
+                  label: "Inmobiliarias",
+                  problem: "Consultas de propiedades que se enfrían si no respondés rápido.",
+                  result: "Más visitas agendadas y seguimiento automático de interesados.",
+                  href: "/inmobiliarias",
                   accent: "from-pink-500/20 to-rose-500/10",
                 },
               ].map((item, index) => (
@@ -468,7 +737,7 @@ function WhatsAppAutomationLanding() {
                     </div>
                   </div>
                   <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-emerald-200 transition-transform group-hover:translate-x-1">
-                    Ver landing
+                    Ver solución
                     <span aria-hidden="true">→</span>
                   </div>
                 </a>
@@ -567,14 +836,14 @@ function WhatsAppAutomationLanding() {
           </div>
         </section>
 
-        <section id="como-funciona" className="border-t border-white/5 bg-[#0a0a0a]">
+        <section className="border-t border-white/5 bg-[#090909]">
           <div className="container py-16 sm:py-20">
             <div className="mb-10 max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
-                Cómo funciona la demo
+                Testimonios
               </p>
               <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-                Tres pasos para ver el sistema en acción
+                Casos reales de automatización que liberan tiempo y venden más
               </h2>
               <div className="mt-5 h-px w-24 bg-gradient-to-r from-cyan-400/60 to-transparent" />
             </div>
@@ -582,64 +851,126 @@ function WhatsAppAutomationLanding() {
             <div className="grid gap-4 lg:grid-cols-3">
               {[
                 {
+                  name: "Dra. Lucía Ferreyra",
+                  role: "Odontóloga",
+                  problem: "Respondía consultas manualmente después de cada turno y perdía pacientes por demora.",
+                  result: "Con la automatización, los mensajes entran, se responden y los turnos quedan preconfirmados sin perseguir cada chat.",
+                  initials: "LF",
+                  accent: "from-cyan-500/20 to-sky-500/10",
+                },
+                {
+                  name: "Martín Rivas",
+                  role: "Nutricionista",
+                  problem: "Gastaba demasiado tiempo repitiendo horarios, precios y seguimiento de controles por WhatsApp.",
+                  result: "Ahora recibe consultas, agenda controles y envía recordatorios automáticos sin tener que responder lo mismo todo el día.",
+                  initials: "MR",
+                  accent: "from-emerald-500/20 to-green-500/10",
+                },
+                {
+                  name: "Sofía Castro",
+                  role: "Centro de estética",
+                  problem: "Las reservas y reprogramaciones se le mezclaban con mensajes de interés que se enfriaban rápido.",
+                  result: "Con el flujo automatizado, cada consulta recibe respuesta inmediata y los turnos quedan más ordenados y confirmados.",
+                  initials: "SC",
+                  accent: "from-pink-500/20 to-rose-500/10",
+                },
+              ].map((item) => (
+                <article
+                  key={item.name}
+                  className="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 sm:p-7"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br ${item.accent} text-sm font-black text-white/80`}>
+                      {item.initials}
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="text-lg font-bold tracking-tight">{item.name}</h3>
+                      <p className="text-sm text-emerald-200/80">{item.role}</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 space-y-4">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35">
+                        Problema
+                      </p>
+                      <p className="mt-1 text-sm leading-7 text-white/60">{item.problem}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35">
+                        Resultado obtenido
+                      </p>
+                      <p className="mt-1 text-sm leading-7 text-white/60">{item.result}</p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="como-funciona" className="border-t border-white/5 bg-[#0a0a0a]">
+          <div className="container py-16 sm:py-20">
+            <div className="mb-10 max-w-2xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
+                Cómo funciona
+              </p>
+              <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+                Un proceso simple para automatizar sin incertidumbre
+              </h2>
+              <div className="mt-5 h-px w-24 bg-gradient-to-r from-cyan-400/60 to-transparent" />
+            </div>
+
+            <div className="grid gap-4 lg:grid-cols-4">
+              {[
+                {
                   step: "01",
-                  title: "Completás el formulario",
-                  description: "Dejás tu nombre y WhatsApp arriba para pedir el diagnóstico.",
+                  icon: "?",
+                  title: "Diagnóstico",
+                  description: "Revisamos tu flujo actual y detectamos dónde se pierden consultas y turnos.",
                 },
                 {
                   step: "02",
-                  title: "Recibís el mensaje",
-                  description: "Nuestro asistente te contacta automáticamente en menos de 10 segundos.",
+                  icon: "⚙",
+                  title: "Configuración",
+                  description: "Armamos mensajes, reglas y conexiones según tu negocio.",
                 },
                 {
                   step: "03",
-                  title: "Probás el sistema",
-                  description: "Experimentás en vivo cómo atenderíamos a tus propios clientes las 24 horas.",
+                  icon: "⚡",
+                  title: "Automatización",
+                  description: "El asistente responde, agenda y hace seguimiento por WhatsApp.",
+                },
+                {
+                  step: "04",
+                  icon: "→",
+                  title: "Puesta en marcha",
+                  description: "Lo dejamos funcionando y listo para recibir consultas reales.",
                 },
               ].map((item) => (
                 <article
                   key={item.step}
-                  className="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
+                  className="relative rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
                 >
+                  {item.step !== "04" ? (
+                    <div className="absolute right-[-0.75rem] top-10 hidden h-px w-4 bg-gradient-to-r from-emerald-400/60 to-transparent lg:block" />
+                  ) : null}
                   <div className="mb-6 flex items-center gap-3">
                     <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-500/10 text-sm font-bold text-emerald-200 shadow-[0_0_24px_-12px_rgba(52,211,153,0.8)]">
-                      {item.step}
+                      {item.icon}
                     </div>
                     <div className="h-px flex-1 bg-white/10" />
+                    <span className="text-xs font-semibold tracking-[0.2em] text-white/35">
+                      {item.step}
+                    </span>
                   </div>
+                  <div className="mb-5 h-px w-full bg-white/5 lg:hidden" />
                   <h3 className="text-xl font-bold tracking-tight">{item.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-white/60">
                     {item.description}
                   </p>
                 </article>
               ))}
-            </div>
-
-            <div className="mt-8 grid gap-4 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-              <div className="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 sm:p-7">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
-                  Vista previa
-                </p>
-                <h3 className="mt-3 text-2xl font-black tracking-tight">
-                  Tu agenda confirmada en automático
-                </h3>
-                <p className="mt-3 max-w-xl text-sm leading-7 text-white/60">
-                  Esta demo muestra el flujo ideal: el cliente pregunta, el sistema responde, propone horarios y deja la cita confirmada sin fricción.
-                </p>
-              </div>
-
-              <div className="relative mx-auto w-full max-w-sm">
-                <div className="absolute -inset-6 rounded-full bg-emerald-500/10 blur-3xl" />
-                <div className="absolute -right-2 top-6 h-24 w-24 rounded-full bg-cyan-400/10 blur-2xl" />
-                <div className="group relative animate-float rounded-[2rem] border border-white/10 bg-white/[0.04] p-4 shadow-[0_24px_80px_-32px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-transform duration-500 ease-out hover:-translate-y-2 hover:rotate-[-1deg] hover:scale-[1.01]">
-                  <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_30%,transparent_70%,rgba(16,185,129,0.08))] opacity-60" />
-                  <img
-                    src="/assets/whatsapp-demo-bot.png"
-                    alt="Demo de automatización de WhatsApp con agenda confirmada"
-                    className="relative z-10 h-auto w-full rounded-[1.5rem] object-contain transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                  />
-                </div>
-              </div>
             </div>
           </div>
         </section>
