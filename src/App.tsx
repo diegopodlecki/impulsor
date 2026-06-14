@@ -32,9 +32,13 @@ export const routes: RouteRecord[] = [
     path: "/inmobiliarias",
     element: <NicheLanding nicheKey="inmobiliarias" />,
   },
+  {
+    path: "/nutricionistas",
+    element: <NicheLanding nicheKey="nutricionistas" />,
+  },
 ];
 
-type NicheKey = "odontologos" | "medicos" | "fonoaudiologos" | "abogados" | "inmobiliarias";
+type NicheKey = "odontologos" | "medicos" | "fonoaudiologos" | "abogados" | "inmobiliarias" | "nutricionistas";
 
 type NicheTheme = {
   pageBg: string;
@@ -118,18 +122,18 @@ const nicheData: Record<
       imageCaption: "Una consulta clara, un turno confirmado y menos mensajes manuales.",
     },
     showcase: {
-      eyebrow: "Recepción y agenda",
-      title: "Una clínica con respuestas inmediatas y turnos confirmados",
+      eyebrow: "Recepción premium",
+      title: "Una clínica que ordena la atención con una experiencia más cuidada",
       description:
-        "Pensado para consultorios que reciben muchas consultas entre pacientes, llamados y tratamientos en curso.",
+        "Pensado para consultorios que quieren transmitir más calidad visual, menos fricción y una atención más precisa desde el primer contacto.",
       bullets: [
-        "Consulta inicial sin esperas",
-        "Turnos y recordatorios automáticos",
-        "Seguimiento posterior al tratamiento",
+        "Consulta inicial con respuesta rápida",
+        "Turnos confirmados y mejor seguimiento",
+        "Más orden sin perder cercanía",
       ],
       image: "https://images.unsplash.com/photo-1622737133809-d95047b9e673?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Consultorio odontológico moderno con recepción digital",
-      caption: "Un estilo moderno para ordenar la atención y bajar ausencias.",
+      caption: "Una versión más premium para reforzar confianza y precisión.",
     },
   },
   medicos: {
@@ -336,6 +340,57 @@ const nicheData: Record<
       image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Reunión inmobiliaria con una pareja interesada en una propiedad",
       caption: "Un look más vibrante para una experiencia comercial ágil.",
+    },
+  },
+  nutricionistas: {
+    title: "Automatización de WhatsApp para nutricionistas en Argentina",
+    description: "Respondé consultas, coordiná primeras entrevistas y acompañá seguimientos con una experiencia digital más cálida y ordenada.",
+    problem: "Las consultas de nutrición suelen llegar con preguntas sobre planes, horarios, modalidad y seguimiento; si se demora la respuesta, baja el interés.",
+    benefits: [
+      "Primer contacto amable y rápido.",
+      "Agenda simple para entrevistas y controles.",
+      "Seguimiento automático entre consultas.",
+    ],
+    conversation: {
+      client: "Hola, quería saber cómo trabajan las primeras consultas y si hacen seguimiento.",
+      assistant: "Sí, claro. Te explico cómo es la primera entrevista y te comparto los horarios disponibles.",
+      followUp: "Listo, te reservé el jueves a las 18:00 y te llega un recordatorio antes del turno.",
+      close: "Perfecto, así puedo ordenarme mejor sin escribir varias veces.",
+    },
+    theme: {
+      pageBg: "bg-[#07110d]",
+      hero: "bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.14),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(250,204,21,0.10),transparent_28%),linear-gradient(180deg,rgba(3,6,14,0.98),rgba(3,6,14,1))]",
+      accent: "text-lime-200",
+      accentSoft: "bg-lime-500/10",
+      accentBorder: "border-lime-400/20",
+      accentLine: "bg-gradient-to-r from-lime-400/60 to-transparent",
+      dot: "bg-lime-400",
+      sectionBg: "bg-[#0b130f]",
+      sectionBgAlt: "bg-[#0d1711]",
+      sectionBgMuted: "bg-[#09110d]",
+      surface: "bg-white/[0.03]",
+      surfaceStrong: "bg-white/[0.04]",
+      ctaFrom: "from-lime-500",
+      ctaTo: "to-emerald-500",
+      ctaPanel: "bg-[linear-gradient(180deg,rgba(132,204,22,0.09),rgba(255,255,255,0.02))]",
+      badgeText: "Nutricionistas",
+      image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Nutricionista trabajando con una paciente en consultorio luminoso",
+      imageCaption: "Una estética más cálida y editorial para un servicio cercano.",
+    },
+    showcase: {
+      eyebrow: "Seguimiento y hábitos",
+      title: "Una experiencia más cálida para acompañar cada proceso",
+      description:
+        "La propuesta visual busca transmitir bienestar, claridad y un trato más humano, ideal para nutrición y acompañamiento.",
+      bullets: [
+        "Primera entrevista guiada",
+        "Recordatorios de seguimiento",
+        "Orden para hábitos y controles",
+      ],
+      image: "https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Profesional de nutrición revisando una planificación junto a una paciente",
+      caption: "Más suave, más cercana y pensada para el largo plazo.",
     },
   },
 };
@@ -643,6 +698,7 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                 { href: "/odontologos", label: "Odontólogos", text: "Automatización de WhatsApp para clínicas dentales." },
                 { href: "/medicos", label: "Médicos", text: "Turnos, consultas y seguimiento para consultorios." },
                 { href: "/fonoaudiologos", label: "Fonoaudiólogos", text: "Respuestas automáticas y agenda de sesiones." },
+                { href: "/nutricionistas", label: "Nutricionistas", text: "Seguimiento, consultas y recordatorios de control." },
                 { href: "/abogados", label: "Abogados", text: "Filtrado de consultas y primer contacto profesional." },
                 { href: "/inmobiliarias", label: "Inmobiliarias", text: "Más consultas atendidas y visitas agendadas." },
               ].map((item) => (
@@ -682,6 +738,7 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                 { href: "/odontologos", label: "Odontólogos", text: "Consultorios odontológicos en Argentina." },
                 { href: "/medicos", label: "Médicos", text: "Consultorios médicos y atención de pacientes." },
                 { href: "/fonoaudiologos", label: "Fonoaudiólogos", text: "Sesiones, horarios y seguimiento." },
+                { href: "/nutricionistas", label: "Nutricionistas", text: "Planes, controles y hábitos." },
                 { href: "/abogados", label: "Abogados", text: "Estudios jurídicos y consultas iniciales." },
                 { href: "/inmobiliarias", label: "Inmobiliarias", text: "Leads de propiedades y visitas." },
                 { href: "/#contacto", label: "Home", text: "Diagnóstico gratuito para automatizar WhatsApp." },
