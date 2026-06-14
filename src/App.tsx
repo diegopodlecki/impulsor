@@ -159,10 +159,10 @@ const nicheData: Record<
     },
     theme: {
       pageBg: "bg-[#070b16]",
-      hero: "bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.15),transparent_32%),linear-gradient(180deg,rgba(5,8,19,0.98),rgba(5,8,19,1))]",
+      hero: "bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.16),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(56,189,248,0.08),transparent_24%),linear-gradient(180deg,rgba(5,8,19,0.98),rgba(5,8,19,1))]",
       font: "font-sans",
-      title: "font-black tracking-tight",
-      body: "font-normal",
+      title: "font-semibold tracking-[-0.04em]",
+      body: "font-normal tracking-[-0.01em]",
       accent: "text-indigo-200",
       accentSoft: "bg-indigo-500/10",
       accentBorder: "border-indigo-400/20",
@@ -177,24 +177,23 @@ const nicheData: Record<
       ctaTo: "to-violet-500",
       ctaPanel: "bg-[linear-gradient(180deg,rgba(99,102,241,0.09),rgba(255,255,255,0.02))]",
       badgeText: "Consultorios médicos",
-      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Médico revisando una agenda digital en un consultorio moderno",
-      imageCaption: "Un estilo minimalista, limpio y clínico para ordenar consultas.",
+      image: "https://images.unsplash.com/photo-1579684453423-f84349ef60b8?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Médica revisando una historia clínica digital en consultorio",
+      imageCaption: "Un estilo clínico y editorial para transmitir claridad, precisión y profesionalismo.",
     },
     showcase: {
-      eyebrow: "Triage y turnos",
-      title: "Un primer filtro que ordena consultas y evita idas y vueltas",
+      eyebrow: "Intake clínico",
+      title: "Una recepción más ordenada para consultas, estudios y turnos",
       description:
-        "Pensado para consultorios con mucho volumen, donde la recepción necesita responder rápido y con criterio.",
+        "Pensado para consultorios médicos donde conviven llamados, derivaciones y pacientes que necesitan respuestas claras sin fricción.",
       bullets: [
-        "Filtro de motivo de consulta",
-        "Disponibilidad y obra social",
-        "Recordatorio automático antes del turno",
+        "Clasificación de motivo de consulta",
+        "Derivación según especialidad",
+        "Confirmación y recordatorio de turno",
       ],
-      image: "https://images.unsplash.com/photo-1580281657527-47c5f1bf8fb5?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Profesional de salud revisando una agenda en tablet",
-      caption: "Un diseño más sobrio para transmitir orden y confianza.",
-      reverse: true,
+      image: "https://images.unsplash.com/photo-1586773860416-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Equipo médico revisando una agenda de pacientes en una sala luminosa",
+      caption: "Más sobrio, más clínico y con foco en continuidad de atención.",
     },
   },
   fonoaudiologos: {
@@ -270,8 +269,8 @@ const nicheData: Record<
       pageBg: "bg-[#080604]",
       hero: "bg-[radial-gradient(circle_at_top,rgba(245,158,11,0.12),transparent_30%),linear-gradient(180deg,rgba(8,5,2,0.99),rgba(8,5,2,1))]",
       font: "font-serif",
-      title: "font-bold tracking-tight",
-      body: "font-normal",
+      title: "font-semibold tracking-[-0.05em]",
+      body: "font-normal tracking-[-0.01em]",
       accent: "text-amber-200",
       accentSoft: "bg-amber-500/10",
       accentBorder: "border-amber-400/20",
@@ -286,24 +285,23 @@ const nicheData: Record<
       ctaTo: "to-orange-500",
       ctaPanel: "bg-[linear-gradient(180deg,rgba(245,158,11,0.09),rgba(255,255,255,0.02))]",
       badgeText: "Estudios jurídicos",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Abogada revisando un caso en un estudio jurídico moderno",
-      imageCaption: "Una estética sobria para transmitir seriedad y confianza.",
+      image: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Abogada en un estudio jurídico con documentos y notebook",
+      imageCaption: "Una estética formal, editorial y más cercana al universo jurídico.",
     },
     showcase: {
-      eyebrow: "Primer contacto",
-      title: "Un ingreso prolijo para consultas legales que requieren rapidez",
+      eyebrow: "Dossier inicial",
+      title: "Una puerta de entrada más seria para consultas legales",
       description:
-        "El tono visual es más sobrio y elegante, ideal para transmitir seriedad desde el primer mensaje.",
+        "Pensado para estudios que necesitan filtrar casos, ordenar urgencias y sostener una primera impresión de confianza desde el minuto uno.",
       bullets: [
-        "Clasificación de consultas",
-        "Agenda de entrevista",
-        "Seguimiento de prospectos",
+        "Filtro por tipo de consulta",
+        "Toma de datos inicial",
+        "Agenda de entrevista y seguimiento",
       ],
-      image: "https://images.unsplash.com/photo-1528747045269-390fe33c19a2?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Estudio jurídico elegante con escritorio y documentos",
-      caption: "Más formal, más sobrio y con foco en confianza.",
-      reverse: true,
+      image: "https://images.unsplash.com/photo-1569525365647-5d6e1b4d3cc8?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Estudio jurídico con biblioteca, expediente y luz cálida",
+      caption: "Más sobrio, más clásico y con presencia de estudio profesional.",
     },
   },
   inmobiliarias: {
@@ -661,6 +659,94 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
           </section>
         )}
 
+        {nicheKey === "medicos" && (
+          <section className="border-t border-white/5 bg-[#08101c]">
+            <div className="container py-16 sm:py-20">
+              <div className="grid gap-6 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-200/80">
+                    Flujo clínico
+                  </p>
+                  <h2 className={`mt-3 text-3xl sm:text-4xl ${theme.title}`}>
+                    Menos caos en recepción, más orden en cada consulta
+                  </h2>
+                  <p className={`mt-4 max-w-xl text-base leading-8 text-white/65 ${theme.body}`}>
+                    La agenda médica suele mezclar consultas, estudios y derivaciones. Esta vista le da prioridad a la velocidad y a la claridad operativa.
+                  </p>
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-3">
+                  {[
+                    {
+                      title: "Triage",
+                      text: "El sistema identifica el motivo de consulta y deriva sin frenar la atención.",
+                    },
+                    {
+                      title: "Agenda",
+                      text: "La coordinación de turnos se vuelve más simple y con menos intercambio de mensajes.",
+                    },
+                    {
+                      title: "Seguimiento",
+                      text: "Recordatorios y confirmaciones ayudan a sostener continuidad y menos ausencias.",
+                    },
+                  ].map((item) => (
+                    <article key={item.title} className="rounded-[1.5rem] border border-indigo-400/15 bg-white/[0.03] p-5">
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-200/80">{item.title}</p>
+                      <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {nicheKey === "abogados" && (
+          <section className="border-t border-white/5 bg-[#120b08]">
+            <div className="container py-16 sm:py-20">
+              <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+                <div className="rounded-[2rem] border border-amber-400/15 bg-white/[0.03] p-6 sm:p-7">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200/80">
+                    Intake jurídico
+                  </p>
+                  <h2 className={`mt-3 text-3xl sm:text-4xl ${theme.title}`}>
+                    Una primera impresión más seria para cada consulta
+                  </h2>
+                  <p className={`mt-4 max-w-xl text-base leading-8 text-white/65 ${theme.body}`}>
+                    El objetivo no es vender más texto, sino mostrar orden, criterio y confianza desde el primer contacto con el estudio.
+                  </p>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {[
+                    {
+                      title: "Filtro",
+                      text: "Clasifica el tipo de caso antes de agendar una entrevista.",
+                    },
+                    {
+                      title: "Confianza",
+                      text: "El tono visual transmite seriedad y cercanía profesional.",
+                    },
+                    {
+                      title: "Seguimiento",
+                      text: "Menos consultas perdidas y más prospectos bien atendidos.",
+                    },
+                    {
+                      title: "Orden",
+                      text: "La recepción trabaja con un flujo más claro y menos ida y vuelta.",
+                    },
+                  ].map((item) => (
+                    <article key={item.title} className="rounded-[1.5rem] border border-amber-400/15 bg-white/[0.025] p-5">
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-200/80">{item.title}</p>
+                      <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
         <section id="conversacion" className={`border-t border-white/5 ${theme.sectionBgMuted}`}>
           <div className="container py-16 sm:py-20">
             <div className={`mx-auto max-w-3xl rounded-[2rem] border ${theme.accentBorder} ${theme.surfaceStrong} p-6 shadow-[0_24px_80px_-32px_rgba(0,0,0,0.9)] sm:p-8`}>
@@ -705,86 +791,47 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
           </div>
         </section>
 
-        <section id="landings-seo" className={`border-t border-white/5 ${theme.sectionBgAlt}`}>
-          <div className="container py-16 sm:py-20">
-            <div className="mb-10 max-w-2xl">
-              <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
-                Landings SEO
-              </p>
-              <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-                Páginas específicas por rubro para captar búsquedas con intención
-              </h2>
-              <div className={`mt-5 h-px w-24 ${theme.accentLine}`} />
-            </div>
+        {nicheKey !== "medicos" && nicheKey !== "abogados" ? (
+          <section className={`border-t border-white/5 ${theme.sectionBgAlt}`}>
+            <div className="container py-16 sm:py-20">
+              <div className="mb-10 max-w-2xl">
+                <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
+                  Landings SEO
+                </p>
+                <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+                  Páginas específicas por rubro para captar búsquedas con intención
+                </h2>
+                <div className={`mt-5 h-px w-24 ${theme.accentLine}`} />
+              </div>
 
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {[
-                { href: "/odontologos", label: "Odontólogos", text: "Automatización de WhatsApp para clínicas dentales." },
-                { href: "/medicos", label: "Médicos", text: "Turnos, consultas y seguimiento para consultorios." },
-                { href: "/fonoaudiologos", label: "Fonoaudiólogos", text: "Respuestas automáticas y agenda de sesiones." },
-                { href: "/nutricionistas", label: "Nutricionistas", text: "Seguimiento, consultas y recordatorios de control." },
-                { href: "/abogados", label: "Abogados", text: "Filtrado de consultas y primer contacto profesional." },
-                { href: "/inmobiliarias", label: "Inmobiliarias", text: "Más consultas atendidas y visitas agendadas." },
-              ].map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className={`group rounded-[1.75rem] border ${theme.accentBorder} ${theme.surface} p-6 transition-all duration-300 hover:bg-white/[0.05] sm:p-7`}
-                >
-                  <p className={`text-sm font-semibold uppercase tracking-[0.18em] ${theme.accent}`}>
-                    {item.label}
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-white/60">{item.text}</p>
-                  <div className={`mt-5 inline-flex items-center gap-2 text-sm font-semibold ${theme.accent} transition-transform group-hover:translate-x-1`}>
-                    Ver landing
-                    <span aria-hidden="true">→</span>
-                  </div>
-                </a>
-              ))}
+              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {[
+                  { href: "/odontologos", label: "Odontólogos", text: "Automatización de WhatsApp para clínicas dentales." },
+                  { href: "/medicos", label: "Médicos", text: "Turnos, consultas y seguimiento para consultorios." },
+                  { href: "/fonoaudiologos", label: "Fonoaudiólogos", text: "Respuestas automáticas y agenda de sesiones." },
+                  { href: "/nutricionistas", label: "Nutricionistas", text: "Seguimiento, consultas y recordatorios de control." },
+                  { href: "/abogados", label: "Abogados", text: "Filtrado de consultas y primer contacto profesional." },
+                  { href: "/inmobiliarias", label: "Inmobiliarias", text: "Más consultas atendidas y visitas agendadas." },
+                ].map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className={`group rounded-[1.75rem] border ${theme.accentBorder} ${theme.surface} p-6 transition-all duration-300 hover:bg-white/[0.05] sm:p-7`}
+                  >
+                    <p className={`text-sm font-semibold uppercase tracking-[0.18em] ${theme.accent}`}>
+                      {item.label}
+                    </p>
+                    <p className="mt-3 text-sm leading-7 text-white/60">{item.text}</p>
+                    <div className={`mt-5 inline-flex items-center gap-2 text-sm font-semibold ${theme.accent} transition-transform group-hover:translate-x-1`}>
+                      Ver landing
+                      <span aria-hidden="true">→</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-
-        <section className={`border-t border-white/5 ${theme.sectionBgAlt}`}>
-          <div className="container py-16 sm:py-20">
-            <div className="mb-10 max-w-2xl">
-              <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
-                Más soluciones
-              </p>
-              <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-                Otras páginas pensadas para automatizar consultas y turnos
-              </h2>
-              <div className={`mt-5 h-px w-24 ${theme.accentLine}`} />
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {[
-                { href: "/odontologos", label: "Odontólogos", text: "Consultorios odontológicos en Argentina." },
-                { href: "/medicos", label: "Médicos", text: "Consultorios médicos y atención de pacientes." },
-                { href: "/fonoaudiologos", label: "Fonoaudiólogos", text: "Sesiones, horarios y seguimiento." },
-                { href: "/nutricionistas", label: "Nutricionistas", text: "Planes, controles y hábitos." },
-                { href: "/abogados", label: "Abogados", text: "Estudios jurídicos y consultas iniciales." },
-                { href: "/inmobiliarias", label: "Inmobiliarias", text: "Leads de propiedades y visitas." },
-                { href: "/#contacto", label: "Home", text: "Diagnóstico gratuito para automatizar WhatsApp." },
-              ].map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className={`group rounded-[1.75rem] border ${theme.accentBorder} ${theme.surface} p-6 transition-all duration-300 hover:bg-white/[0.05] sm:p-7`}
-                >
-                  <p className={`text-sm font-semibold uppercase tracking-[0.18em] ${theme.accent}`}>
-                    {item.label}
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-white/60">{item.text}</p>
-                  <div className={`mt-5 inline-flex items-center gap-2 text-sm font-semibold ${theme.accent} transition-transform group-hover:translate-x-1`}>
-                    Ver página
-                    <span aria-hidden="true">→</span>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
+          </section>
+        ) : null}
       </main>
     </>
   );
