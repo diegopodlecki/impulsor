@@ -258,6 +258,33 @@ function WhatsAppAutomationLanding() {
                 </article>
               ))}
             </div>
+
+            <div className="mt-8 grid gap-4 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+              <div className="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 sm:p-7">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
+                  Vista previa
+                </p>
+                <h3 className="mt-3 text-2xl font-black tracking-tight">
+                  Tu agenda confirmada en automático
+                </h3>
+                <p className="mt-3 max-w-xl text-sm leading-7 text-white/60">
+                  Esta demo muestra el flujo ideal: el cliente pregunta, el sistema responde, propone horarios y deja la cita confirmada sin fricción.
+                </p>
+              </div>
+
+              <div className="relative mx-auto w-full max-w-sm">
+                <div className="absolute -inset-6 rounded-full bg-emerald-500/10 blur-3xl" />
+                <div className="absolute -right-2 top-6 h-24 w-24 rounded-full bg-cyan-400/10 blur-2xl" />
+                <div className="group relative animate-float rounded-[2rem] border border-white/10 bg-white/[0.04] p-4 shadow-[0_24px_80px_-32px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-transform duration-500 ease-out hover:-translate-y-2 hover:rotate-[-1deg] hover:scale-[1.01]">
+                  <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_30%,transparent_70%,rgba(16,185,129,0.08))] opacity-60" />
+                  <img
+                    src="/assets/whatsapp-demo-bot.png"
+                    alt="Demo de automatización de WhatsApp con agenda confirmada"
+                    className="relative z-10 h-auto w-full rounded-[1.5rem] object-contain transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </main>
