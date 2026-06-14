@@ -863,7 +863,7 @@ function WhatsAppAutomationLanding() {
                   </p>
                 </div>
 
-                <div className={`rounded-[1.75rem] border ${theme.accentBorder} bg-white/[0.04] p-6 sm:p-7`}>
+                <div className={`rounded-[1.75rem] border ${homeTheme.accentBorder} bg-white/[0.04] p-6 sm:p-7`}>
                   <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
                     Resultado esperado
                   </p>
