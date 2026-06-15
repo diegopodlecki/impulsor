@@ -954,123 +954,131 @@ function WhatsAppAutomationLanding() {
             </div>
           </header>
 
-                    <div className="container relative z-10 flex min-h-[calc(100vh-5rem)] items-center py-16">
-            <div className="grid w-full gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+          <div className="container relative z-10 flex min-h-[calc(100vh-5rem)] items-center py-16 sm:py-20">
+            <div className="grid w-full gap-12 lg:grid-cols-[1.04fr_0.96fr] lg:items-start">
               <motion.div
-                initial={{ opacity: 0, y: 28 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: "easeOut" }}
-                className="space-y-8"
+                className="space-y-8 pt-2"
               >
-                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-4 py-2 text-xs font-semibold tracking-[0.18em] text-emerald-200 uppercase">
-                  Automatizaci�n de WhatsApp
+                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-300/15 bg-emerald-500/10 px-4 py-2 text-[11px] font-semibold tracking-[0.22em] text-emerald-200 uppercase shadow-[0_0_0_1px_rgba(16,185,129,0.04)]">
+                  MVP de automatización de WhatsApp
                 </div>
-                <div className="space-y-5">
-                  <h1 className="font-heading max-w-3xl text-balance text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl">
-                    Automatiz� WhatsApp y consegu� m�s clientes sin trabajar m�s horas
+
+                <div className="space-y-6">
+                  <h1 className="font-heading max-w-3xl text-balance text-5xl font-black leading-[0.95] tracking-[-0.05em] sm:text-6xl lg:text-[4.6rem]">
+                    Automatizá WhatsApp y conseguí más clientes sin trabajar más horas
                   </h1>
-                  <p className="max-w-2xl text-lg leading-8 text-white/70 sm:text-xl">
-                    Implementamos asistentes autom�ticos para profesionales y negocios de servicios que responden consultas, gestionan turnos y hacen seguimiento de clientes 24/7.
+                  <p className="max-w-2xl text-lg leading-8 text-white/68 sm:text-xl">
+                    Implementamos asistentes automáticos para profesionales y negocios de servicios que responden consultas, gestionan turnos y hacen seguimiento de clientes 24/7.
                   </p>
                 </div>
 
                 <div className="flex flex-col gap-3 sm:flex-row">
                   <a
                     href="#contacto"
-                    className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-500 to-green-500 px-6 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/25 transition hover:scale-[1.01] hover:shadow-emerald-500/35"
+                    className="group inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-green-500 px-6 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/25 transition hover:translate-y-[-1px] hover:shadow-emerald-500/35"
                   >
-                    Solicitar diagn�stico gratuito
+                    Solicitar diagnóstico gratuito
                   </a>
                   <a
                     href="#como-funciona"
-                    className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-base font-semibold text-white/85 transition hover:border-white/15 hover:bg-white/10"
+                    className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-6 py-4 text-base font-semibold text-white/85 transition hover:border-white/15 hover:bg-white/10"
                   >
-                    Ver demostraci�n
+                    Ver demostración
                   </a>
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-3">
-                  {["Respuesta inmediata", "Turnos confirmados", "Seguimiento autom�tico"].map((item) => (
+                  {["Respuesta inmediata", "Turnos confirmados", "Seguimiento automático"].map((item) => (
                     <div key={item} className="rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3 text-sm font-medium text-white/75">
                       {item}
                     </div>
                   ))}
                 </div>
+
+                <div className="flex flex-wrap items-center gap-4 pt-2 text-sm text-white/55">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_0_6px_rgba(16,185,129,0.12)]" />
+                    Respuesta en menos de 10 segundos
+                  </div>
+                  <div className="hidden h-5 w-px bg-white/10 sm:block" />
+                  <div className="flex items-center gap-2">
+                    <span className="h-2.5 w-2.5 rounded-full bg-cyan-400 shadow-[0_0_0_6px_rgba(34,211,238,0.12)]" />
+                    Turnos, presupuestos y seguimiento
+                  </div>
+                </div>
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 28, scale: 0.98 }}
+                initial={{ opacity: 0, y: 28, scale: 0.97 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.08 }}
-                className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-8"
+                className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-[0_24px_80px_-36px_rgba(0,0,0,0.6)] backdrop-blur-xl sm:p-6 lg:sticky lg:top-8"
               >
-                <div className="mb-6">
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300/80">
-                    Solicitar diagn�stico gratuito
-                  </p>
-                  <h2 className="font-heading mt-3 text-3xl font-black tracking-tight text-white">
-                    Complet� tus datos y te mostramos d�nde automatizar primero
-                  </h2>
-                  <p className="mt-3 text-sm leading-6 text-white/60">
-                    Te enviamos una revisi�n breve para detectar oportunidades de automatizaci�n, landing pages e integraciones.
+                <div className="mb-5 rounded-[1.5rem] border border-emerald-400/12 bg-[linear-gradient(180deg,rgba(16,185,129,0.08),rgba(255,255,255,0.02))] p-5">
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-300/85">
+                        Diagnóstico comercial
+                      </p>
+                      <h2 className="font-heading mt-2 text-2xl font-black tracking-[-0.04em] text-white sm:text-[2rem]">
+                        Solicitá tu diagnóstico gratuito
+                      </h2>
+                    </div>
+                    <div className="hidden rounded-full border border-emerald-400/15 bg-emerald-500/10 px-3 py-1 text-[11px] font-semibold text-emerald-200 sm:inline-flex">
+                      24/7 activo
+                    </div>
+                  </div>
+                  <p className="mt-3 max-w-2xl text-sm leading-7 text-white/65 sm:text-base">
+                    Analizamos cómo llegan tus consultas, cómo gestionás tus turnos y qué tareas podés automatizar primero.
                   </p>
                 </div>
 
-                <div className="relative mb-6 overflow-hidden rounded-[1.75rem] border border-emerald-400/12 bg-[linear-gradient(180deg,rgba(16,185,129,0.08),rgba(255,255,255,0.02))] p-5 shadow-[0_20px_60px_-36px_rgba(16,185,129,0.45)]">
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.16),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(34,197,94,0.08),transparent_35%)]" />
-                  <div className="relative">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[11px] font-semibold tracking-[0.18em] text-emerald-200 uppercase">
-                      Diagn�stico comercial
-                    </div>
-                    <h3 className="mt-4 text-2xl font-black tracking-tight text-white sm:text-[2rem]">
-                      Solicit� tu diagn�stico gratuito
-                    </h3>
-                    <p className="mt-3 max-w-2xl text-sm leading-7 text-white/65 sm:text-base">
-                      Analizamos c�mo llegan tus consultas, c�mo gestion�s tus turnos y qu� tareas pod�s automatizar.
-                    </p>
-                  </div>
-
-                  <div className="relative mt-5 grid gap-3 sm:grid-cols-3">
-                    {[
-                      {
-                        title: "C�mo llegan tus consultas",
-                        text: "Revisamos el punto de entrada para ver si perd�s oportunidades.",
-                      },
-                      {
-                        title: "C�mo gestion�s tus turnos",
-                        text: "Detectamos fricciones, demoras y tareas manuales.",
-                      },
-                      {
-                        title: "Qu� pod�s automatizar",
-                        text: "Marcamos mensajes, seguimientos y recordatorios.",
-                      },
-                    ].map((item) => (
-                      <div
-                        key={item.title}
-                        className="rounded-2xl border border-white/5 bg-white/[0.03] p-4"
-                      >
-                        <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-xl border border-emerald-400/20 bg-emerald-500/10 text-xs font-black text-emerald-200">
-                          ?
-                        </div>
-                        <h4 className="text-sm font-semibold text-white">{item.title}</h4>
-                        <p className="mt-2 text-sm leading-6 text-white/55">{item.text}</p>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {[
+                    {
+                      title: "Entrada de consultas",
+                      text: "Detectamos si llegan tarde, desordenadas o por canales sueltos.",
+                    },
+                    {
+                      title: "Agenda y seguimiento",
+                      text: "Vemos dónde se traban turnos, recordatorios y confirmaciones.",
+                    },
+                    {
+                      title: "Automatización prioritaria",
+                      text: "Marcamos qué se puede delegar a WhatsApp e IA ya mismo.",
+                    },
+                  ].map((item, index) => (
+                    <div
+                      key={item.title}
+                      className="rounded-2xl border border-white/5 bg-white/[0.03] p-4"
+                    >
+                      <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-xl border border-emerald-400/20 bg-emerald-500/10 text-[11px] font-black text-emerald-200">
+                        0{index + 1}
                       </div>
-                    ))}
-                  </div>
-                  <div className="relative mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+                      <h4 className="text-sm font-semibold text-white">{item.title}</h4>
+                      <p className="mt-2 text-sm leading-6 text-white/55">{item.text}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="relative mt-5 overflow-hidden rounded-[1.5rem] border border-emerald-400/15 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.14),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-5">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <a
                       href="#contacto"
-                      className="inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-500 to-green-500 px-5 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/25 transition hover:scale-[1.01] hover:shadow-emerald-500/35 sm:w-auto sm:min-w-64"
+                      className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-green-500 px-5 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/25 transition hover:translate-y-[-1px] hover:shadow-emerald-500/35 sm:w-auto sm:min-w-64"
                     >
-                      Quiero mi diagn�stico
+                      Quiero mi diagnóstico
                     </a>
-                    <p className="text-sm leading-6 text-white/45">
+                    <p className="text-sm leading-6 text-white/45 sm:max-w-[220px]">
                       Sin compromiso. Te devolvemos un mapa claro de oportunidades.
                     </p>
                   </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4" id="contacto">
+                <form onSubmit={handleSubmit} className="mt-5 space-y-4" id="contacto">
                   <label className="block space-y-2">
                     <span className="text-sm font-medium text-white/80">Nombre</span>
                     <input
