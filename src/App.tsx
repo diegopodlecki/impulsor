@@ -123,7 +123,7 @@ const nicheData: Record<
       ctaTo: "to-cyan-500",
       ctaPanel: "bg-[linear-gradient(180deg,rgba(14,165,233,0.09),rgba(255,255,255,0.02))]",
       badgeText: "Consultorios dentales",
-      image: "/assets/whatsapp-demo-bot.png",
+      image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Odontóloga atendiendo una consulta mientras responde WhatsApp en un consultorio moderno",
       imageCaption: "Una experiencia premium para ordenar consultas, transmitir confianza y reducir fricción.",
     },
@@ -207,9 +207,9 @@ const nicheData: Record<
     ],
     conversation: {
       client: "Hola, quería saber si hacen atención infantil y cómo son los turnos.",
-      assistant: "Sí, te comparto cómo trabajamos y te paso los horarios disponibles.",
-      followUp: "Perfecto, te agendo el miércoles a las 10:00 y te queda confirmado.",
-      close: "Súper, así no tengo que insistir por respuesta.",
+      assistant: "Sí, te comparto cómo trabajamos, edades de atención y los horarios disponibles.",
+      followUp: "Perfecto, te agendo el miércoles a las 10:00 y te llega la confirmación por WhatsApp.",
+      close: "Genial, así no tengo que insistir por respuesta.",
     },
     theme: {
       pageBg: "bg-[#05130f]",
@@ -233,17 +233,17 @@ const nicheData: Record<
       badgeText: "Consultorios de fonoaudiología",
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Profesional de fonoaudiología trabajando con un paciente",
-      imageCaption: "Un diseño más calmo y cercano, ideal para familias y pacientes.",
+      imageCaption: "Un diseño más calmo y cercano, pensado para acompañar familias y procesos de seguimiento.",
     },
     showcase: {
       eyebrow: "Sesiones y seguimiento",
       title: "Una agenda suave, clara y sin mensajes repetidos",
       description:
-        "Para profesionales que necesitan coordinar sesiones, reprogramaciones y seguimiento entre familias y pacientes.",
+        "Para profesionales que coordinan sesiones, reprogramaciones y seguimiento con familias y pacientes sin perder tiempo en chats repetidos.",
       bullets: [
-        "Horarios y modalidad",
-        "Cambios de turno simples",
-        "Recordatorios automáticos",
+        "Horarios, modalidad y edades de atención",
+        "Cambios de turno sin fricción",
+        "Recordatorios automáticos a familias",
       ],
       image: "https://images.unsplash.com/photo-1519542537078-4f7b7e1b8b6a?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Sesión de fonoaudiología en consultorio cálido y minimalista",
@@ -295,8 +295,8 @@ const nicheData: Record<
       description:
         "Pensado para estudios que necesitan filtrar casos, ordenar urgencias y sostener una primera impresión de confianza desde el minuto uno.",
       bullets: [
-        "Filtro por tipo de consulta",
-        "Toma de datos inicial",
+        "Primer filtro por tipo de caso",
+        "Toma de datos inicial ordenada",
         "Agenda de entrevista y seguimiento",
       ],
       image: "https://images.unsplash.com/photo-1569525365647-5d6e1b4d3cc8?auto=format&fit=crop&w=1200&q=80",
