@@ -444,6 +444,9 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
   const content = nicheData[nicheKey];
   const canonicalPath = `/${nicheKey}`;
   const theme: NicheTheme = { ...defaultNicheTheme, ...(content.theme ?? {}) };
+  const heroReverse = nicheKey === "abogados" || nicheKey === "inmobiliarias";
+  const showcaseReverse = nicheKey === "fonoaudiologos" || nicheKey === "abogados";
+  const heroGridClass = heroReverse ? "lg:grid-cols-[0.95fr_1.05fr]" : "lg:grid-cols-[1.05fr_0.95fr]";
 
   return (
     <>
@@ -451,8 +454,13 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
       <main className={`min-h-screen ${theme.pageBg} ${theme.font} text-white`}>
         <section className={`border-b border-white/5 ${theme.hero}`}>
           <div className="container py-16 sm:py-20">
-            <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-              <div className="text-center lg:text-left">
+            <div className={`mx-auto grid max-w-6xl gap-10 lg:items-center ${heroGridClass}`}>
+              <motion.div
+                initial={{ opacity: 0, x: heroReverse ? 20 : -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                className={`text-center ${heroReverse ? "lg:order-2 lg:text-left" : "lg:text-left"}`}
+              >
                 <p className={`text-sm font-semibold uppercase tracking-[0.22em] ${theme.accent}`}>
                   Argentina Â· {theme.badgeText}
                 </p>
@@ -470,9 +478,14 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                     Ver conversaciÃ³n real
                   </a>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className={`overflow-hidden rounded-[2rem] border ${theme.accentBorder} ${theme.surface} shadow-[0_28px_80px_-40px_rgba(14,165,233,0.5)]`}>
+              <motion.div
+                initial={{ opacity: 0, x: heroReverse ? -20 : 20, scale: 0.98 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.08 }}
+                className={`overflow-hidden rounded-[2rem] border ${theme.accentBorder} ${theme.surface} shadow-[0_28px_80px_-40px_rgba(14,165,233,0.5)] ${heroReverse ? "lg:order-1" : ""}`}
+              >
                 <div className="relative aspect-[4/3]">
                   <img
                     src={theme.image}
@@ -489,7 +502,7 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -497,15 +510,27 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
         <section className={`border-t border-white/5 ${theme.sectionBg}`}>
           <div className="container py-16 sm:py-20">
             <div className="grid gap-4 lg:grid-cols-2">
-              <div className={`rounded-[1.75rem] border ${theme.accentBorder} ${theme.surface} p-6 sm:p-7`}>
+              <motion.div
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.5 }}
+                className={`rounded-[1.75rem] border ${theme.accentBorder} ${theme.surface} p-6 sm:p-7`}
+              >
                 <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
                   Problema principal
                 </p>
                 <p className="mt-3 text-lg leading-8 text-white/75">
                   {content.problem}
                 </p>
-              </div>
-              <div className={`rounded-[1.75rem] border ${theme.accentBorder} ${theme.surfaceStrong} p-6 sm:p-7`}>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.5, delay: 0.06 }}
+                className={`rounded-[1.75rem] border ${theme.accentBorder} ${theme.surfaceStrong} p-6 sm:p-7`}
+              >
                 <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
                   Beneficios de automatizar
                 </p>
@@ -517,7 +542,7 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                     </p>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -527,10 +552,10 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
             <div className="container py-16 sm:py-20">
               <div
                 className={`grid gap-8 lg:items-center ${
-                  content.showcase.reverse ? "lg:grid-cols-[0.95fr_1.05fr]" : "lg:grid-cols-[1.05fr_0.95fr]"
+                  showcaseReverse ? "lg:grid-cols-[0.95fr_1.05fr]" : "lg:grid-cols-[1.05fr_0.95fr]"
                 }`}
               >
-                <div className={content.showcase.reverse ? "lg:order-2" : ""}>
+                <div className={showcaseReverse ? "lg:order-2" : ""}>
                   <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
                     {content.showcase.eyebrow}
                   </p>
