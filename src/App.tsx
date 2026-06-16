@@ -6,6 +6,7 @@ import type { RouteRecord } from "vite-react-ssg";
 import { SeoHead } from "@/components/SEO/SeoHead";
 import { Toaster } from "@/components/ui/sonner.tsx";
 import { WhatsAppDemo, type WhatsAppDemoMessage } from "@/components/WhatsAppDemo";
+import { HomePage } from "@/components/home/HomePage";
 
 const webhookUrl = "https://hook.us2.make.com/5c7xu0k7crcpkg1eeclb395duigmvn14";
 
@@ -41,7 +42,7 @@ const heroWhatsAppMessages: WhatsAppDemoMessage[] = [
 export const routes: RouteRecord[] = [
   {
     path: "/",
-    element: <WhatsAppAutomationLanding />,
+    element: <HomePage webhookUrl={webhookUrl} messages={heroWhatsAppMessages} />,
   },
   {
     path: "/odontologos",
