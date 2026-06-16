@@ -918,7 +918,8 @@ function WhatsAppAutomationLanding() {
 
       <main className="min-h-screen bg-slate-950 text-white">
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.18),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.16),transparent_30%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.18),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(34,197,94,0.14),transparent_30%),radial-gradient(circle_at_left,rgba(14,165,233,0.08),transparent_28%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.25),rgba(2,6,23,0.55))]" />
           <header className="relative z-20 border-b border-white/5 bg-slate-950/75 backdrop-blur-2xl">
             <div className="container">
               <div className="flex h-18 items-center justify-between gap-3 py-3 sm:h-20 sm:gap-4 sm:py-0">
@@ -955,7 +956,7 @@ function WhatsAppAutomationLanding() {
           </header>
 
           <div className="container relative z-10 flex min-h-[calc(100vh-5rem)] items-center py-16 sm:py-20">
-            <div className="grid w-full gap-12 lg:grid-cols-[1.04fr_0.96fr] lg:items-start">
+            <div className="grid w-full gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -1012,73 +1013,136 @@ function WhatsAppAutomationLanding() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 28, scale: 0.97 }}
+                initial={{ opacity: 0, y: 28, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.08 }}
-                className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-[0_24px_80px_-36px_rgba(0,0,0,0.6)] backdrop-blur-xl sm:p-6 lg:sticky lg:top-8"
+                className="relative lg:sticky lg:top-8"
               >
-                <div className="mb-5 rounded-[1.5rem] border border-emerald-400/12 bg-[linear-gradient(180deg,rgba(16,185,129,0.08),rgba(255,255,255,0.02))] p-5">
-                  <div className="flex items-center justify-between gap-3">
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-300/85">
-                        Diagnóstico comercial
-                      </p>
-                      <h2 className="font-heading mt-2 text-2xl font-black tracking-[-0.04em] text-white sm:text-[2rem]">
-                        Solicitá tu diagnóstico gratuito
-                      </h2>
-                    </div>
-                    <div className="hidden rounded-full border border-emerald-400/15 bg-emerald-500/10 px-3 py-1 text-[11px] font-semibold text-emerald-200 sm:inline-flex">
-                      24/7 activo
-                    </div>
-                  </div>
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-white/65 sm:text-base">
-                    Analizamos cómo llegan tus consultas, cómo gestionás tus turnos y qué tareas podés automatizar primero.
-                  </p>
-                </div>
+                <div className="absolute -inset-8 -z-10 rounded-[3rem] bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.18),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(34,197,94,0.10),transparent_28%)] blur-3xl" />
 
-                <div className="grid gap-3 sm:grid-cols-3">
-                  {[
-                    {
-                      title: "Entrada de consultas",
-                      text: "Detectamos si llegan tarde, desordenadas o por canales sueltos.",
-                    },
-                    {
-                      title: "Agenda y seguimiento",
-                      text: "Vemos dónde se traban turnos, recordatorios y confirmaciones.",
-                    },
-                    {
-                      title: "Automatización prioritaria",
-                      text: "Marcamos qué se puede delegar a WhatsApp e IA ya mismo.",
-                    },
-                  ].map((item, index) => (
-                    <div
-                      key={item.title}
-                      className="rounded-2xl border border-white/5 bg-white/[0.03] p-4"
-                    >
-                      <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-xl border border-emerald-400/20 bg-emerald-500/10 text-[11px] font-black text-emerald-200">
-                        0{index + 1}
+                <div className="relative mx-auto max-w-[520px] rounded-[2.5rem] border border-white/10 bg-white/[0.03] p-5 shadow-[0_30px_120px_-48px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:p-6">
+                  <div className="absolute left-1/2 top-0 z-20 h-6 w-32 -translate-x-1/2 rounded-b-2xl bg-slate-950" />
+                  <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#0b1220] shadow-[0_24px_80px_-36px_rgba(0,0,0,0.75)]">
+                    <div className="flex items-center justify-between border-b border-white/5 bg-[#111827] px-5 py-4">
+                      <div className="flex items-center gap-3">
+                        <div className="relative flex h-11 w-11 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300">
+                          <span className="text-sm font-black">WA</span>
+                          <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-[#111827] bg-emerald-400" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-white">WebAppImpulsor</p>
+                          <p className="text-xs text-emerald-300/80">en línea · respuesta automática</p>
+                        </div>
                       </div>
-                      <h4 className="text-sm font-semibold text-white">{item.title}</h4>
-                      <p className="mt-2 text-sm leading-6 text-white/55">{item.text}</p>
+                      <div className="flex items-center gap-2 text-white/30">
+                        <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+                      </div>
                     </div>
-                  ))}
-                </div>
 
-                <div className="relative mt-5 overflow-hidden rounded-[1.5rem] border border-emerald-400/15 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.14),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-5">
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <a
-                      href="#contacto"
-                      className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-green-500 px-5 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/25 transition hover:translate-y-[-1px] hover:shadow-emerald-500/35 sm:w-auto sm:min-w-64"
-                    >
-                      Quiero mi diagnóstico
-                    </a>
-                    <p className="text-sm leading-6 text-white/45 sm:max-w-[220px]">
-                      Sin compromiso. Te devolvemos un mapa claro de oportunidades.
-                    </p>
+                    <div className="bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.08),transparent_40%)] p-4 sm:p-6">
+                      <div className="space-y-4">
+                        <div className="flex justify-start">
+                          <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
+                            <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white/70">
+                              CL
+                            </div>
+                            <div className="space-y-1">
+                              <div className="rounded-[1.25rem] rounded-bl-md border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
+                                Hola, vi la web y quiero saber si automatizan WhatsApp para turnos y seguimiento.
+                              </div>
+                              <div className="px-1 text-[11px] text-white/35">10:41</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex justify-end">
+                          <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
+                            <div className="space-y-1 text-right">
+                              <div className="rounded-[1.25rem] rounded-br-md border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
+                                Sí, claro. Automatizamos respuestas, presupuestos y turnos para que no pierdas consultas.
+                              </div>
+                              <div className="flex items-center justify-end gap-1 px-1 text-[11px] text-emerald-200/60">
+                                <span>10:41</span>
+                                <span>•</span>
+                                <span className="inline-flex items-center gap-1">
+                                  <span>✓</span>
+                                  <span>✓</span>
+                                </span>
+                              </div>
+                            </div>
+                            <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] font-bold text-emerald-200">
+                              WA
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex justify-end">
+                          <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
+                            <div className="space-y-1 text-right">
+                              <div className="rounded-[1.25rem] rounded-br-md border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
+                                Tengo disponibles martes, miércoles y viernes. ¿Cuál te queda mejor?
+                              </div>
+                              <div className="px-1 text-[11px] text-emerald-200/60">10:42</div>
+                            </div>
+                            <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] font-bold text-emerald-200">
+                              WA
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex justify-start">
+                          <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
+                            <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white/70">
+                              CL
+                            </div>
+                            <div className="space-y-1">
+                              <div className="rounded-[1.25rem] rounded-bl-md border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
+                                Perfecto, el miércoles me sirve.
+                              </div>
+                              <div className="px-1 text-[11px] text-white/35">10:42</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex justify-end">
+                          <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
+                            <div className="space-y-1 text-right">
+                              <div className="rounded-[1.25rem] rounded-br-md border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
+                                Listo. Ya quedó reservado y te enviamos recordatorio automático.
+                              </div>
+                              <div className="flex items-center justify-end gap-1 px-1 text-[11px] text-emerald-200/60">
+                                <span>10:42</span>
+                                <span>•</span>
+                                <span className="inline-flex items-center gap-1">
+                                  <span>✓</span>
+                                  <span>✓</span>
+                                </span>
+                              </div>
+                            </div>
+                            <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] font-bold text-emerald-200">
+                              WA
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 bg-[#0f172a] px-3 py-3">
+                      <div className="flex h-11 flex-1 items-center rounded-full bg-white/5 px-4 text-[12px] text-white/35">
+                        Escribí un mensaje
+                      </div>
+                      <div className="grid h-11 w-11 place-items-center rounded-full bg-[#075E54] shadow-lg shadow-emerald-500/20">
+                        <svg viewBox="0 0 24 24" className="h-4 w-4 text-white" fill="currentColor">
+                          <path d="M2 21l21-9L2 3v7l15 2-15 2z" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="mt-5 space-y-4" id="contacto">
+                <form onSubmit={handleSubmit} className="mt-5 space-y-4 rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-[0_24px_80px_-36px_rgba(0,0,0,0.45)] backdrop-blur-xl" id="contacto">
                   <label className="block space-y-2">
                     <span className="text-sm font-medium text-white/80">Nombre</span>
                     <input
