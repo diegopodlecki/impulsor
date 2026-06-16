@@ -73,7 +73,7 @@ export function WhatsAppDemo({ messages, title, subtitle, accentLabel = "Demo en
   }, [step, typing]);
 
   return (
-    <div className={`relative mx-auto w-full max-w-[520px] ${className}`}>
+    <div className={`relative mx-auto w-full max-w-[380px] sm:max-w-[400px] ${className}`}>
       <motion.div
         animate={{ opacity: [0.55, 0.9, 0.55], scale: [1, 1.05, 1] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -91,10 +91,10 @@ export function WhatsAppDemo({ messages, title, subtitle, accentLabel = "Demo en
         </div>
       </div>
 
-      <div className="relative overflow-hidden rounded-[2.5rem] border-[10px] border-slate-950 bg-slate-950 shadow-[0_30px_100px_-42px_rgba(0,0,0,0.85)]">
+      <div className="relative overflow-hidden rounded-[2.5rem] border-[10px] border-slate-950 bg-slate-950 shadow-[0_24px_80px_-38px_rgba(0,0,0,0.82)]">
         <div className="absolute left-1/2 top-0 z-20 h-6 w-32 -translate-x-1/2 rounded-b-2xl bg-slate-950" />
 
-        <div className="flex items-center justify-between bg-slate-950 px-6 pt-2 pb-1 text-[10px] font-semibold text-white">
+        <div className="flex items-center justify-between bg-slate-950 px-5 pt-2 pb-1 text-[10px] font-semibold text-white">
           <span>9:41</span>
           <div className="flex items-center gap-1">
             <span>5G</span>
@@ -127,7 +127,7 @@ export function WhatsAppDemo({ messages, title, subtitle, accentLabel = "Demo en
 
         <div
           ref={scrollRef}
-          className="relative h-[440px] overflow-y-auto px-3 py-4"
+          className="relative h-[396px] overflow-y-auto px-3 py-4 sm:h-[420px]"
           style={{
             backgroundColor: "#ECE5DD",
             backgroundImage:
@@ -135,9 +135,9 @@ export function WhatsAppDemo({ messages, title, subtitle, accentLabel = "Demo en
           }}
         >
           <div className="mb-3 flex justify-center">
-            <span className="rounded-full bg-amber-100/90 px-3 py-1 text-[10px] font-medium text-amber-900 shadow-sm">
-              Mensajes cifrados de extremo a extremo
-            </span>
+              <span className="rounded-full bg-amber-100/90 px-3 py-1 text-[10px] font-medium text-amber-900 shadow-sm">
+                Mensajes cifrados de extremo a extremo
+              </span>
           </div>
 
           <AnimatePresence mode="popLayout">
