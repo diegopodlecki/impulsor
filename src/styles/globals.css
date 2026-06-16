@@ -103,7 +103,7 @@ a {
   }
 
   .ds-card-soft {
-    @apply rounded-[1.5rem] border border-white/8 bg-white/[0.03] shadow-[0_20px_60px_-36px_rgba(0,0,0,0.35)];
+    @apply rounded-[1.5rem] border border-white/10 bg-white/[0.03] shadow-[0_20px_60px_-36px_rgba(0,0,0,0.35)];
   }
 
   .ds-badge {
@@ -116,5 +116,16 @@ a {
 
   .ds-button-secondary {
     @apply inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-6 py-4 font-semibold text-white/85 transition hover:border-white/15 hover:bg-white/10;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

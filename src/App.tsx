@@ -5,8 +5,38 @@ import type { RouteRecord } from "vite-react-ssg";
 
 import { SeoHead } from "@/components/SEO/SeoHead";
 import { Toaster } from "@/components/ui/sonner.tsx";
+import { WhatsAppDemo, type WhatsAppDemoMessage } from "@/components/WhatsAppDemo";
 
 const webhookUrl = "https://hook.us2.make.com/5c7xu0k7crcpkg1eeclb395duigmvn14";
+
+const heroWhatsAppMessages: WhatsAppDemoMessage[] = [
+  {
+    from: "user",
+    text: "Hola, vi la web y quiero saber si automatizan WhatsApp para turnos y seguimiento.",
+    delay: 1600,
+  },
+  {
+    from: "bot",
+    text: "Sí, claro. Automatizamos respuestas, presupuestos y turnos para que no pierdas consultas.",
+    delay: 1900,
+  },
+  {
+    from: "bot",
+    text: "Tengo disponibles martes, miércoles y viernes. ¿Cuál te queda mejor?",
+    delay: 1700,
+    options: ["Miércoles 14:30", "Viernes 18:00"],
+  },
+  {
+    from: "user",
+    text: "Perfecto, el miércoles me sirve.",
+    delay: 1500,
+  },
+  {
+    from: "bot",
+    text: "Listo. Ya quedó reservado y te enviamos recordatorio automático.",
+    delay: 2000,
+  },
+];
 
 export const routes: RouteRecord[] = [
   {
@@ -869,6 +899,7 @@ function WhatsAppAutomationLanding() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
   const homeTheme = {
     accentBorder: "border-emerald-400/20",
     accentSoft: "bg-emerald-500/10",
@@ -920,37 +951,87 @@ function WhatsAppAutomationLanding() {
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.18),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(34,197,94,0.14),transparent_30%),radial-gradient(circle_at_left,rgba(14,165,233,0.08),transparent_28%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.25),rgba(2,6,23,0.55))]" />
-          <header className="relative z-20 border-b border-white/5 bg-slate-950/75 backdrop-blur-2xl">
+          <header className="relative z-20 border-b border-white/5 bg-slate-950/70 backdrop-blur-2xl">
             <div className="container">
               <div className="flex h-18 items-center justify-between gap-3 py-3 sm:h-20 sm:gap-4 sm:py-0">
-                <a href="/" className="inline-flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-2xl border border-emerald-400/20 bg-emerald-500/10 shadow-[0_0_30px_-18px_rgba(16,185,129,0.9)]" />
-                  <span className="text-xs font-semibold tracking-[0.18em] text-white/90 uppercase sm:text-sm">
-                    WhatsApp AI
-                  </span>
+                <a href="#top" className="inline-flex items-center gap-3">
+                  <div className="relative grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 shadow-[0_0_30px_-18px_rgba(16,185,129,0.8)]">
+                    <span className="text-[10px] font-black tracking-[0.16em] text-white">WA</span>
+                    <span className="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-emerald-300 ring-2 ring-slate-950" />
+                  </div>
+                  <div className="leading-none">
+                    <span className="font-heading text-lg font-extrabold tracking-tight text-white">
+                      WebAppImpulsor
+                    </span>
+                    <span className="mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.18em] text-white/45">
+                      Automatización con IA
+                    </span>
+                  </div>
                 </a>
 
-                <nav className="hidden items-center gap-6 text-sm text-white/60 lg:flex xl:gap-8">
+                <nav className="hidden items-center gap-6 text-sm text-white/60 md:flex xl:gap-8">
                   <a href="#como-funciona" className="transition hover:text-white">
                     Cómo funciona
                   </a>
                   <a href="#casos-de-uso" className="transition hover:text-white">
                     Casos de uso
                   </a>
-                  <a href="#landings-seo" className="transition hover:text-white">
-                    Landings
-                  </a>
-                  <a href="#contacto" className="transition hover:text-white">
-                    Contacto
+                  <a href="#faq" className="transition hover:text-white">
+                    FAQ
                   </a>
                 </nav>
 
-                <a
-                  href="#contacto"
-                  className="inline-flex items-center justify-center rounded-full border border-emerald-300/20 bg-gradient-to-r from-emerald-500 to-green-500 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-emerald-500/20 transition hover:scale-[1.01] hover:shadow-emerald-500/30 sm:px-5"
+                <div className="hidden items-center gap-2.5 md:flex">
+                  <a
+                    href="#contacto"
+                    className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-green-500 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-emerald-500/20 transition hover:translate-y-[-1px] hover:shadow-emerald-500/30"
+                  >
+                    Solicitar diagnóstico
+                  </a>
+                </div>
+
+                <button
+                  aria-label="Abrir menú"
+                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white md:hidden"
+                  onClick={() => setMenuOpen((value) => !value)}
                 >
-                  Solicitar diagnóstico gratuito
-                </a>
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    {menuOpen ? (
+                      <path d="M6 6l12 12M18 6L6 18" />
+                    ) : (
+                      <>
+                        <path d="M4 7h16" />
+                        <path d="M4 12h16" />
+                        <path d="M4 17h16" />
+                      </>
+                    )}
+                  </svg>
+                </button>
+              </div>
+
+              <div
+                className={`overflow-hidden border-t border-white/5 md:hidden ${
+                  menuOpen ? "max-h-64 pb-4 opacity-100" : "max-h-0 opacity-0"
+                } transition-all duration-300`}
+              >
+                <div className="flex flex-col gap-2 pt-4 text-sm text-white/70">
+                  <a href="#como-funciona" onClick={() => setMenuOpen(false)} className="rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3">
+                    Cómo funciona
+                  </a>
+                  <a href="#casos-de-uso" onClick={() => setMenuOpen(false)} className="rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3">
+                    Casos de uso
+                  </a>
+                  <a href="#faq" onClick={() => setMenuOpen(false)} className="rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3">
+                    FAQ
+                  </a>
+                  <a
+                    href="#contacto"
+                    onClick={() => setMenuOpen(false)}
+                    className="mt-1 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-green-500 px-4 py-3 font-bold text-white"
+                  >
+                    Solicitar diagnóstico
+                  </a>
+                </div>
               </div>
             </div>
           </header>
@@ -993,7 +1074,7 @@ function WhatsAppAutomationLanding() {
 
                 <div className="grid gap-3 sm:grid-cols-3">
                   {["Respuesta inmediata", "Turnos confirmados", "Seguimiento automático"].map((item) => (
-                    <div key={item} className="rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3 text-sm font-medium text-white/75">
+                    <div key={item} className="ds-card-soft px-4 py-3 text-sm font-medium text-white/75">
                       {item}
                     </div>
                   ))}
@@ -1018,129 +1099,12 @@ function WhatsAppAutomationLanding() {
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.08 }}
                 className="relative lg:sticky lg:top-8"
               >
-                <div className="absolute -inset-8 -z-10 rounded-[3rem] bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.18),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(34,197,94,0.10),transparent_28%)] blur-3xl" />
-
-                <div className="relative mx-auto max-w-[520px] rounded-[2.5rem] border border-white/10 bg-white/[0.03] p-5 shadow-[0_30px_120px_-48px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:p-6">
-                  <div className="absolute left-1/2 top-0 z-20 h-6 w-32 -translate-x-1/2 rounded-b-2xl bg-slate-950" />
-                  <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#0b1220] shadow-[0_24px_80px_-36px_rgba(0,0,0,0.75)]">
-                    <div className="flex items-center justify-between border-b border-white/5 bg-[#111827] px-5 py-4">
-                      <div className="flex items-center gap-3">
-                        <div className="relative flex h-11 w-11 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300">
-                          <span className="text-sm font-black">WA</span>
-                          <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-[#111827] bg-emerald-400" />
-                        </div>
-                        <div>
-                          <p className="text-sm font-semibold text-white">WebAppImpulsor</p>
-                          <p className="text-xs text-emerald-300/80">en línea · respuesta automática</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2 text-white/30">
-                        <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-                      </div>
-                    </div>
-
-                    <div className="bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.08),transparent_40%)] p-4 sm:p-6">
-                      <div className="space-y-4">
-                        <div className="flex justify-start">
-                          <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
-                            <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white/70">
-                              CL
-                            </div>
-                            <div className="space-y-1">
-                              <div className="rounded-[1.25rem] rounded-bl-md border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
-                                Hola, vi la web y quiero saber si automatizan WhatsApp para turnos y seguimiento.
-                              </div>
-                              <div className="px-1 text-[11px] text-white/35">10:41</div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="flex justify-end">
-                          <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
-                            <div className="space-y-1 text-right">
-                              <div className="rounded-[1.25rem] rounded-br-md border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
-                                Sí, claro. Automatizamos respuestas, presupuestos y turnos para que no pierdas consultas.
-                              </div>
-                              <div className="flex items-center justify-end gap-1 px-1 text-[11px] text-emerald-200/60">
-                                <span>10:41</span>
-                                <span>•</span>
-                                <span className="inline-flex items-center gap-1">
-                                  <span>✓</span>
-                                  <span>✓</span>
-                                </span>
-                              </div>
-                            </div>
-                            <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] font-bold text-emerald-200">
-                              WA
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="flex justify-end">
-                          <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
-                            <div className="space-y-1 text-right">
-                              <div className="rounded-[1.25rem] rounded-br-md border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
-                                Tengo disponibles martes, miércoles y viernes. ¿Cuál te queda mejor?
-                              </div>
-                              <div className="px-1 text-[11px] text-emerald-200/60">10:42</div>
-                            </div>
-                            <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] font-bold text-emerald-200">
-                              WA
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="flex justify-start">
-                          <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
-                            <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white/70">
-                              CL
-                            </div>
-                            <div className="space-y-1">
-                              <div className="rounded-[1.25rem] rounded-bl-md border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
-                                Perfecto, el miércoles me sirve.
-                              </div>
-                              <div className="px-1 text-[11px] text-white/35">10:42</div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="flex justify-end">
-                          <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
-                            <div className="space-y-1 text-right">
-                              <div className="rounded-[1.25rem] rounded-br-md border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
-                                Listo. Ya quedó reservado y te enviamos recordatorio automático.
-                              </div>
-                              <div className="flex items-center justify-end gap-1 px-1 text-[11px] text-emerald-200/60">
-                                <span>10:42</span>
-                                <span>•</span>
-                                <span className="inline-flex items-center gap-1">
-                                  <span>✓</span>
-                                  <span>✓</span>
-                                </span>
-                              </div>
-                            </div>
-                            <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] font-bold text-emerald-200">
-                              WA
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-2 bg-[#0f172a] px-3 py-3">
-                      <div className="flex h-11 flex-1 items-center rounded-full bg-white/5 px-4 text-[12px] text-white/35">
-                        Escribí un mensaje
-                      </div>
-                      <div className="grid h-11 w-11 place-items-center rounded-full bg-[#075E54] shadow-lg shadow-emerald-500/20">
-                        <svg viewBox="0 0 24 24" className="h-4 w-4 text-white" fill="currentColor">
-                          <path d="M2 21l21-9L2 3v7l15 2-15 2z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <WhatsAppDemo
+                  title="WebAppImpulsor"
+                  subtitle="en línea · respuesta automática"
+                  accentLabel="DEMO EN VIVO"
+                  messages={heroWhatsAppMessages}
+                />
 
                 <form onSubmit={handleSubmit} className="mt-5 space-y-4 rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-[0_24px_80px_-36px_rgba(0,0,0,0.45)] backdrop-blur-xl" id="contacto">
                   <label className="block space-y-2">
@@ -1198,7 +1162,7 @@ function WhatsAppAutomationLanding() {
         </section>
 
         <section className="border-t border-white/5 bg-[#090909]">
-          <div className="container py-16 sm:py-20">
+          <div className="container py-20 sm:py-24">
             <div className="mb-10 max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
                 Ver una conversación real
@@ -1210,7 +1174,7 @@ function WhatsAppAutomationLanding() {
             </div>
 
             <div className="mx-auto max-w-3xl">
-              <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#111111] shadow-[0_24px_80px_-32px_rgba(0,0,0,0.9)]">
+              <div className="overflow-hidden rounded-[2.25rem] border border-white/10 bg-[#111111] shadow-[0_24px_80px_-32px_rgba(0,0,0,0.9)]">
                 <div className="flex items-center gap-3 border-b border-white/5 bg-[#111827] px-5 py-4">
                   <div className="relative flex h-11 w-11 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300">
                     <span className="text-sm font-black">WA</span>
@@ -1340,8 +1304,8 @@ function WhatsAppAutomationLanding() {
                     </div>
                   </div>
 
-                  <div className="mt-6 border-t border-white/5 pt-4">
-                    <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/35">
+                <div className="mt-6 border-t border-white/5 pt-4">
+                  <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/35">
                       <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_16px_rgba(52,211,153,0.8)]" />
                       Escribí tu consulta y el sistema responde por vos
                       <span className="ml-auto flex items-center gap-1">
@@ -1354,8 +1318,8 @@ function WhatsAppAutomationLanding() {
                 </div>
               </div>
 
-              <div className="mt-6 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
-                <div className="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 sm:p-7">
+              <div className="mt-8 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+                <div className="ds-card p-6 sm:p-7">
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
                     Prueba social
                   </p>
@@ -1367,7 +1331,7 @@ function WhatsAppAutomationLanding() {
                   </p>
                 </div>
 
-                <div className={`rounded-[1.75rem] border ${homeTheme.accentBorder} bg-white/[0.04] p-6 sm:p-7`}>
+                <div className={`ds-card ${homeTheme.accentBorder} bg-white/[0.04] p-6 sm:p-7`}>
                   <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${homeTheme.accent}`}>
                     Resultado esperado
                   </p>
@@ -1392,7 +1356,7 @@ function WhatsAppAutomationLanding() {
         </section>
 
         <section id="casos-de-uso" className="border-t border-white/5 bg-[#0a0a0a]">
-          <div className="container py-16 sm:py-20">
+          <div className="container py-20 sm:py-24">
             <div className="mb-10 max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
                 Casos de uso
@@ -1444,7 +1408,7 @@ function WhatsAppAutomationLanding() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="group block rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
+                  className="group block ds-card p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
                 >
                   <div className={`mb-5 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br ${item.accent} text-sm font-bold text-white/80 transition-transform duration-300 group-hover:scale-105`}>
                     {String(index + 1).padStart(2, "0")}
@@ -1475,7 +1439,7 @@ function WhatsAppAutomationLanding() {
         </section>
 
         <section className="border-t border-white/5 bg-[#0a0a0a]">
-          <div className="container py-16 sm:py-20">
+          <div className="container py-20 sm:py-24">
             <div className="mb-10 max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
                 Problema vs solución
@@ -1487,7 +1451,7 @@ function WhatsAppAutomationLanding() {
             </div>
 
             <div className="grid gap-4 lg:grid-cols-2">
-              <div className="rounded-[1.75rem] border border-rose-500/15 bg-rose-500/[0.04] p-6 sm:p-7">
+              <div className="ds-card border-rose-500/15 bg-rose-500/[0.04] p-6 sm:p-7">
                 <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-rose-400/20 bg-rose-500/10 px-3 py-1.5 text-sm font-semibold text-rose-200">
                   <span className="inline-flex h-2.5 w-2.5 rounded-full bg-rose-400" />
                   Problemas actuales del negocio
@@ -1524,7 +1488,7 @@ function WhatsAppAutomationLanding() {
                 </div>
               </div>
 
-              <div className={`rounded-[1.75rem] border ${homeTheme.accentBorder} bg-white/[0.04] p-6 sm:p-7`}>
+              <div className={`ds-card ${homeTheme.accentBorder} bg-white/[0.04] p-6 sm:p-7`}>
                 <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1.5 text-sm font-semibold text-emerald-200">
                   <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
                   Resultados con automatización
@@ -1565,7 +1529,7 @@ function WhatsAppAutomationLanding() {
         </section>
 
         <section className="border-t border-white/5 bg-[#090909]">
-          <div className="container py-16 sm:py-20">
+          <div className="container py-20 sm:py-24">
             <div className="mb-10 max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
                 Testimonios
@@ -1605,7 +1569,7 @@ function WhatsAppAutomationLanding() {
               ].map((item) => (
                 <article
                   key={item.name}
-                  className="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 sm:p-7"
+                  className="ds-card p-6 sm:p-7"
                 >
                   <div className="flex items-start gap-4">
                     <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br ${item.accent} text-sm font-black text-white/80`}>
@@ -1638,7 +1602,7 @@ function WhatsAppAutomationLanding() {
         </section>
 
         <section id="como-funciona" className="border-t border-white/5 bg-[#0a0a0a]">
-          <div className="container py-16 sm:py-20">
+          <div className="container py-20 sm:py-24">
             <div className="mb-10 max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
                 Cómo funciona
@@ -1678,7 +1642,7 @@ function WhatsAppAutomationLanding() {
               ].map((item) => (
                 <article
                   key={item.step}
-                  className="relative rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
+                  className="relative ds-card p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
                 >
                   {item.step !== "04" ? (
                     <div className="absolute right-[-0.75rem] top-10 hidden h-px w-4 bg-gradient-to-r from-emerald-400/60 to-transparent lg:block" />
@@ -1702,6 +1666,89 @@ function WhatsAppAutomationLanding() {
             </div>
           </div>
         </section>
+
+        <footer className="border-t border-white/5 bg-[#05070d]">
+          <div className="container py-16 sm:py-20">
+            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.95fr_0.95fr_0.95fr]">
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-3">
+                  <div className="relative grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 shadow-[0_0_30px_-18px_rgba(16,185,129,0.8)]">
+                    <span className="text-[10px] font-black tracking-[0.16em] text-white">WA</span>
+                  </div>
+                  <div className="leading-none">
+                    <span className="font-heading text-lg font-extrabold tracking-tight text-white">
+                      WebAppImpulsor
+                    </span>
+                    <span className="mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.18em] text-white/45">
+                      Automatización con IA
+                    </span>
+                  </div>
+                </div>
+                <p className="max-w-sm text-sm leading-7 text-white/55">
+                  Automatización de WhatsApp, IA para negocios, landing pages e integraciones para profesionales y servicios.
+                </p>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
+                  Contacto
+                </p>
+                <div className="mt-4 space-y-3 text-sm text-white/70">
+                  <a href="#contacto" className="block transition hover:text-white">Solicitar diagnóstico</a>
+                  <a href="https://wa.me/541166448389" className="block transition hover:text-white">WhatsApp</a>
+                  <a href="mailto:hola@webappimpulsor.com.ar" className="block transition hover:text-white">hola@webappimpulsor.com.ar</a>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
+                  Servicios
+                </p>
+                <div className="mt-4 space-y-3 text-sm text-white/70">
+                  <a href="#contacto" className="block transition hover:text-white">Automatización de WhatsApp</a>
+                  <a href="#contacto" className="block transition hover:text-white">IA para negocios</a>
+                  <a href="#contacto" className="block transition hover:text-white">Landing pages</a>
+                  <a href="#contacto" className="block transition hover:text-white">Integraciones</a>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
+                  Casos de uso
+                </p>
+                <div className="mt-4 space-y-3 text-sm text-white/70">
+                  <a href="/odontologos" className="block transition hover:text-white">Odontólogos</a>
+                  <a href="/medicos" className="block transition hover:text-white">Médicos</a>
+                  <a href="/fonoaudiologos" className="block transition hover:text-white">Fonoaudiólogos</a>
+                  <a href="/inmobiliarias" className="block transition hover:text-white">Inmobiliarias</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-12 grid gap-4 border-t border-white/5 pt-6 sm:grid-cols-[1fr_auto] sm:items-center">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
+                  Redes
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <a href="https://wa.me/541166448389" className="ds-badge">WhatsApp</a>
+                  <a href="mailto:hola@webappimpulsor.com.ar" className="ds-badge">Email</a>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
+                  Información legal
+                </p>
+                <div className="mt-3 flex flex-wrap gap-4 text-sm text-white/55">
+                  <span>Privacidad</span>
+                  <span>Términos</span>
+                  <span>Datos de contacto</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
       </main>
     </>
   );
