@@ -1,4 +1,8 @@
+﻿import { WHATSAPP_NUMBER } from "@/lib/seo-config";
+
 export function Footer() {
+  const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}`;
+
   return (
     <footer className="border-t border-white/5 bg-[#05070d]">
       <div className="container py-16 sm:py-20">
@@ -24,7 +28,7 @@ export function Footer() {
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/40">Contacto</p>
             <div className="mt-4 space-y-3 text-sm text-white/70">
               <a href="#contacto" className="block transition hover:text-white">Solicitar diagnóstico</a>
-              <a href="https://wa.me/541166448389" className="block transition hover:text-white">WhatsApp</a>
+              <a href={whatsappHref} className="block transition hover:text-white">WhatsApp</a>
               <a href="mailto:hola@webappimpulsor.com.ar" className="block transition hover:text-white">hola@webappimpulsor.com.ar</a>
             </div>
           </div>
@@ -54,7 +58,7 @@ export function Footer() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/40">Redes</p>
             <div className="mt-3 flex flex-wrap gap-2">
-              <a href="https://wa.me/541166448389" className="ds-badge">WhatsApp</a>
+              <a href={whatsappHref} className="ds-badge">WhatsApp</a>
               <a href="mailto:hola@webappimpulsor.com.ar" className="ds-badge">Email</a>
             </div>
           </div>

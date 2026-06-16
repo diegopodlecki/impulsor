@@ -1,4 +1,5 @@
-import { FormEvent, useState } from "react";
+﻿import { FormEvent, useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 type ContactFormProps = {
   webhookUrl: string;
@@ -18,6 +19,18 @@ export function ContactForm({ webhookUrl }: ContactFormProps) {
     setMessage("");
 
     try {
+      if (supabase) {
+        const { error: supabaseError } = await supabase.from("contactos").insert({
+          nombre: nombre.trim(),
+          whatsapp: whatsapp.trim(),
+          origen: "landing_principal",
+        });
+
+        if (supabaseError) {
+          throw new Error("No pudimos guardar tu solicitud.");
+        }
+      }
+
       const response = await fetch(webhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
