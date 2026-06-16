@@ -76,9 +76,16 @@ export default {
         },
       },
       borderRadius: {
+        xl: "1.4rem",
+        "2xl": "1.75rem",
+        "3xl": "2rem",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        soft: "0 24px 80px -36px rgba(0,0,0,0.45)",
+        glow: "0 20px 60px -28px rgba(16,185,129,0.35)",
       },
       keyframes: {
         "accordion-down": {
@@ -93,11 +100,17 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-8px)" },
         },
+        blob: {
+          "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
+          "33%": { transform: "translate(18px, -24px) scale(1.05)" },
+          "66%": { transform: "translate(-12px, 16px) scale(0.96)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "float": "float 3s ease-in-out infinite",
+        blob: "blob 14s ease-in-out infinite",
       },
     },
   },
