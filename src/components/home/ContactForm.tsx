@@ -12,6 +12,19 @@ export function ContactForm({ webhookUrl }: ContactFormProps) {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
+  const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
+  const searchParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
+  const leadPayload = {
+    nombre: nombre.trim(),
+    whatsapp: whatsapp.trim(),
+    origen: "landing_principal",
+    path: pathname,
+    created_at: new Date().toISOString(),
+    utm_source: searchParams?.get("utm_source") ?? "",
+    utm_medium: searchParams?.get("utm_medium") ?? "",
+    utm_campaign: searchParams?.get("utm_campaign") ?? "",
+  };
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setLoading(true);
@@ -20,11 +33,7 @@ export function ContactForm({ webhookUrl }: ContactFormProps) {
 
     try {
       if (supabase) {
-        const { error: supabaseError } = await supabase.from("contactos").insert({
-          nombre: nombre.trim(),
-          whatsapp: whatsapp.trim(),
-          origen: "landing_principal",
-        });
+        const { error: supabaseError } = await supabase.from("contactos").insert(leadPayload);
 
         if (supabaseError) {
           throw new Error("No pudimos guardar tu solicitud.");
@@ -34,11 +43,7 @@ export function ContactForm({ webhookUrl }: ContactFormProps) {
       const response = await fetch(webhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nombre: nombre.trim(),
-          whatsapp: whatsapp.trim(),
-          origen: "landing_principal",
-        }),
+        body: JSON.stringify(leadPayload),
       });
 
       if (!response.ok) throw new Error("No pudimos enviar tu solicitud.");
@@ -89,9 +94,17 @@ export function ContactForm({ webhookUrl }: ContactFormProps) {
       </button>
 
       {message ? (
-        <p className="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">
-          {message}
-        </p>
+        <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">
+          <div className="flex items-start gap-3">
+            <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-400 text-[11px] font-black text-slate-950">
+              ✓
+            </span>
+            <div>
+              <p className="font-semibold text-emerald-100">Solicitud enviada</p>
+              <p className="mt-1 leading-6 text-emerald-200/90">{message}</p>
+            </div>
+          </div>
+        </div>
       ) : null}
 
       {error ? (
