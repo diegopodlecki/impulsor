@@ -1,4 +1,4 @@
-Ôªø/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react-refresh/only-export-components */
 import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
 import type { RouteRecord } from "vite-react-ssg";
@@ -18,23 +18,23 @@ const heroWhatsAppMessages: WhatsAppDemoMessage[] = [
   },
   {
     from: "bot",
-    text: "S√≠, claro. Automatizamos respuestas, presupuestos y turnos para que no pierdas consultas.",
+    text: "SÌ, claro. Automatizamos respuestas, presupuestos y turnos para que no pierdas consultas.",
     delay: 1900,
   },
   {
     from: "bot",
-    text: "Tengo disponibles martes, mi√©rcoles y viernes. ¬øCu√°l te queda mejor?",
+    text: "Tengo disponibles martes, miÈrcoles y viernes. øCu·l te queda mejor?",
     delay: 1700,
-    options: ["Mi√©rcoles 14:30", "Viernes 18:00"],
+    options: ["MiÈrcoles 14:30", "Viernes 18:00"],
   },
   {
     from: "user",
-    text: "Perfecto, el mi√©rcoles me sirve.",
+    text: "Perfecto, el miÈrcoles me sirve.",
     delay: 1500,
   },
   {
     from: "bot",
-    text: "Listo. Ya qued√≥ reservado y te enviamos recordatorio autom√°tico.",
+    text: "Listo. Ya quedÛ reservado y te enviamos recordatorio autom·tico.",
     delay: 2000,
   },
 ];
@@ -121,19 +121,19 @@ const nicheData: Record<
   }
 > = {
   odontologos: {
-    title: "Automatizaci√≥n de WhatsApp para odont√≥logos en Argentina",
-    description: "Respond√© consultas, coordin√° turnos y envi√° recordatorios con un asistente de WhatsApp dise√±ado para consultorios odontol√≥gicos y cl√≠nicas dentales en Argentina.",
-    problem: "Las consultas por WhatsApp suelen llegar entre tratamientos, llamadas y pacientes en sala. Si nadie responde a tiempo, el inter√©s se enfr√≠a y el turno se pierde.",
+    title: "AutomatizaciÛn de WhatsApp para odontÛlogos en Argentina",
+    description: "RespondÈ consultas, coordin· turnos y envi· recordatorios con un asistente de WhatsApp diseÒado para consultorios odontolÛgicos y clÌnicas dentales en Argentina.",
+    problem: "Las consultas por WhatsApp suelen llegar entre tratamientos, llamadas y pacientes en sala. Si nadie responde a tiempo, el interÈs se enfrÌa y el turno se pierde.",
     benefits: [
-      "Respuestas autom√°ticas para primeras consultas, urgencias y derivaciones.",
-      "Confirmaci√≥n de turnos y recordatorios autom√°ticos antes de la cita.",
-      "Menos tiempo respondiendo precios, cobertura, direcci√≥n y horarios.",
+      "Respuestas autom·ticas para primeras consultas, urgencias y derivaciones.",
+      "ConfirmaciÛn de turnos y recordatorios autom·ticos antes de la cita.",
+      "Menos tiempo respondiendo precios, cobertura, direcciÛn y horarios.",
     ],
     conversation: {
-      client: "Hola, ¬øtienen turno para una limpieza dental esta semana?",
-      assistant: "S√≠, claro. Te paso los horarios disponibles y te dejo el que mejor encaje con tu agenda.",
-      followUp: "Te qued√≥ confirmado el jueves a las 16:00. Tambi√©n te llega un recordatorio autom√°tico.",
-      close: "Perfecto, as√≠ no tengo que estar pendiente del chat.",
+      client: "Hola, øtienen turno para una limpieza dental esta semana?",
+      assistant: "SÌ, claro. Te paso los horarios disponibles y te dejo el que mejor encaje con tu agenda.",
+      followUp: "Te quedÛ confirmado el jueves a las 16:00. TambiÈn te llega un recordatorio autom·tico.",
+      close: "Perfecto, asÌ no tengo que estar pendiente del chat.",
     },
     theme: {
       pageBg: "bg-[#06111b]",
@@ -156,37 +156,37 @@ const nicheData: Record<
       ctaPanel: "bg-[linear-gradient(180deg,rgba(14,165,233,0.09),rgba(255,255,255,0.02))]",
       badgeText: "Consultorios dentales",
       image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Odont√≥loga atendiendo una consulta mientras responde WhatsApp en un consultorio moderno",
-      imageCaption: "Una experiencia premium para ordenar consultas, transmitir confianza y reducir fricci√≥n.",
+      imageAlt: "OdontÛloga atendiendo una consulta mientras responde WhatsApp en un consultorio moderno",
+      imageCaption: "Una experiencia premium para ordenar consultas, transmitir confianza y reducir fricciÛn.",
     },
     showcase: {
-      eyebrow: "Recepci√≥n premium",
-      title: "Una cl√≠nica que ordena la atenci√≥n con una experiencia m√°s cuidada y premium",
+      eyebrow: "RecepciÛn premium",
+      title: "Una clÌnica que ordena la atenciÛn con una experiencia m·s cuidada y premium",
       description:
-        "Pensado para consultorios que quieren transmitir m√°s calidad visual, menos fricci√≥n y una atenci√≥n m√°s precisa desde el primer contacto.",
+        "Pensado para consultorios que quieren transmitir m·s calidad visual, menos fricciÛn y una atenciÛn m·s precisa desde el primer contacto.",
       bullets: [
-        "Consulta inicial con respuesta r√°pida",
+        "Consulta inicial con respuesta r·pida",
         "Turnos confirmados y mejor seguimiento",
-        "M√°s orden sin perder cercan√≠a",
+        "M·s orden sin perder cercanÌa",
       ],
       image: "https://images.unsplash.com/photo-1629909615191-09a4b6c1b78b?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Consultorio odontol√≥gico moderno con recepci√≥n digital",
-      caption: "Una referencia premium para reforzar confianza, precisi√≥n y calma.",
+      imageAlt: "Consultorio odontolÛgico moderno con recepciÛn digital",
+      caption: "Una referencia premium para reforzar confianza, precisiÛn y calma.",
     },
   },
   medicos: {
-    title: "Automatizaci√≥n de WhatsApp para m√©dicos y consultorios en Argentina",
-    description: "Centraliz√° consultas, turnos y seguimientos con un asistente autom√°tico pensado para pacientes y consultorios m√©dicos.",
-    problem: "La recepci√≥n atiende llamados, WhatsApp y agenda al mismo tiempo; cuando todo entra junto, las respuestas tardan y se pierden consultas valiosas.",
+    title: "AutomatizaciÛn de WhatsApp para mÈdicos y consultorios en Argentina",
+    description: "Centraliz· consultas, turnos y seguimientos con un asistente autom·tico pensado para pacientes y consultorios mÈdicos.",
+    problem: "La recepciÛn atiende llamados, WhatsApp y agenda al mismo tiempo; cuando todo entra junto, las respuestas tardan y se pierden consultas valiosas.",
     benefits: [
-      "Filtro inicial de consultas y derivaci√≥n autom√°tica.",
+      "Filtro inicial de consultas y derivaciÛn autom·tica.",
       "Agenda ordenada con turnos confirmados.",
       "Seguimiento y recordatorios sin carga manual.",
     ],
     conversation: {
-      client: "Buen d√≠a, ¬øatienden por obra social y tienen turno esta semana?",
-      assistant: "S√≠, te ayudo con la consulta y te comparto los turnos disponibles.",
-      followUp: "Te qued√≥ reservado el martes a las 11:00 y te llega recordatorio antes del turno.",
+      client: "Buen dÌa, øatienden por obra social y tienen turno esta semana?",
+      assistant: "SÌ, te ayudo con la consulta y te comparto los turnos disponibles.",
+      followUp: "Te quedÛ reservado el martes a las 11:00 y te llega recordatorio antes del turno.",
       close: "Excelente, me evita estar llamando varias veces.",
     },
     theme: {
@@ -208,40 +208,40 @@ const nicheData: Record<
       ctaFrom: "from-indigo-500",
       ctaTo: "to-violet-500",
       ctaPanel: "bg-[linear-gradient(180deg,rgba(99,102,241,0.09),rgba(255,255,255,0.02))]",
-      badgeText: "Consultorios m√©dicos",
+      badgeText: "Consultorios mÈdicos",
       image: "https://images.unsplash.com/photo-1579684453423-f84349ef60b8?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "M√©dica revisando una historia cl√≠nica digital en consultorio",
-      imageCaption: "Un estilo cl√≠nico y editorial para transmitir claridad, precisi√≥n y profesionalismo.",
+      imageAlt: "MÈdica revisando una historia clÌnica digital en consultorio",
+      imageCaption: "Un estilo clÌnico y editorial para transmitir claridad, precisiÛn y profesionalismo.",
     },
     showcase: {
-      eyebrow: "Intake cl√≠nico",
-      title: "Una recepci√≥n m√°s ordenada para consultas, estudios y turnos",
+      eyebrow: "Intake clÌnico",
+      title: "Una recepciÛn m·s ordenada para consultas, estudios y turnos",
       description:
-        "Pensado para consultorios m√©dicos donde conviven llamados, derivaciones y pacientes que necesitan respuestas claras sin fricci√≥n.",
+        "Pensado para consultorios mÈdicos donde conviven llamados, derivaciones y pacientes que necesitan respuestas claras sin fricciÛn.",
       bullets: [
-        "Clasificaci√≥n de motivo de consulta",
-        "Derivaci√≥n seg√∫n especialidad",
-        "Confirmaci√≥n y recordatorio de turno",
+        "ClasificaciÛn de motivo de consulta",
+        "DerivaciÛn seg˙n especialidad",
+        "ConfirmaciÛn y recordatorio de turno",
       ],
       image: "https://images.unsplash.com/photo-1586773860416-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Equipo m√©dico revisando una agenda de pacientes en una sala luminosa",
-      caption: "M√°s sobrio, m√°s cl√≠nico y con foco en continuidad de atenci√≥n.",
+      imageAlt: "Equipo mÈdico revisando una agenda de pacientes en una sala luminosa",
+      caption: "M·s sobrio, m·s clÌnico y con foco en continuidad de atenciÛn.",
     },
   },
   fonoaudiologos: {
-    title: "Automatizaci√≥n de WhatsApp para fonoaudi√≥logos en Argentina",
-    description: "Respond√© consultas frecuentes, coordin√° sesiones y simplific√° el seguimiento con automatizaci√≥n para consultorios de fonoaudiolog√≠a.",
-    problem: "Se repiten consultas sobre horarios, modalidad, duraci√≥n y cambios de turno, y eso termina consumiendo tiempo todos los d√≠as en el consultorio.",
+    title: "AutomatizaciÛn de WhatsApp para fonoaudiÛlogos en Argentina",
+    description: "RespondÈ consultas frecuentes, coordin· sesiones y simplific· el seguimiento con automatizaciÛn para consultorios de fonoaudiologÌa.",
+    problem: "Se repiten consultas sobre horarios, modalidad, duraciÛn y cambios de turno, y eso termina consumiendo tiempo todos los dÌas en el consultorio.",
     benefits: [
-      "Respuestas autom√°ticas sobre modalidad y disponibilidad.",
-      "Gesti√≥n simple de turnos y reprogramaciones.",
-      "Seguimiento m√°s ordenado con menos chats pendientes.",
+      "Respuestas autom·ticas sobre modalidad y disponibilidad.",
+      "GestiÛn simple de turnos y reprogramaciones.",
+      "Seguimiento m·s ordenado con menos chats pendientes.",
     ],
     conversation: {
-      client: "Hola, quer√≠a saber si hacen atenci√≥n infantil y c√≥mo son los turnos.",
-      assistant: "S√≠, te comparto c√≥mo trabajamos, edades de atenci√≥n y los horarios disponibles.",
-      followUp: "Perfecto, te agendo el mi√©rcoles a las 10:00 y te llega la confirmaci√≥n por WhatsApp.",
-      close: "Genial, as√≠ no tengo que insistir por respuesta.",
+      client: "Hola, querÌa saber si hacen atenciÛn infantil y cÛmo son los turnos.",
+      assistant: "SÌ, te comparto cÛmo trabajamos, edades de atenciÛn y los horarios disponibles.",
+      followUp: "Perfecto, te agendo el miÈrcoles a las 10:00 y te llega la confirmaciÛn por WhatsApp.",
+      close: "Genial, asÌ no tengo que insistir por respuesta.",
     },
     theme: {
       pageBg: "bg-[#05130f]",
@@ -262,10 +262,10 @@ const nicheData: Record<
       ctaFrom: "from-emerald-500",
       ctaTo: "to-lime-500",
       ctaPanel: "bg-[linear-gradient(180deg,rgba(52,211,153,0.09),rgba(255,255,255,0.02))]",
-      badgeText: "Consultorios de fonoaudiolog√≠a",
+      badgeText: "Consultorios de fonoaudiologÌa",
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Profesional de fonoaudiolog√≠a trabajando con un paciente",
-      imageCaption: "Un dise√±o m√°s calmo y cercano, pensado para acompa√±ar familias y procesos de seguimiento.",
+      imageAlt: "Profesional de fonoaudiologÌa trabajando con un paciente",
+      imageCaption: "Un diseÒo m·s calmo y cercano, pensado para acompaÒar familias y procesos de seguimiento.",
     },
     showcase: {
       eyebrow: "Sesiones y seguimiento",
@@ -273,29 +273,29 @@ const nicheData: Record<
       description:
         "Para profesionales que coordinan sesiones, reprogramaciones y seguimiento con familias y pacientes sin perder tiempo en chats repetidos.",
       bullets: [
-        "Horarios, modalidad y edades de atenci√≥n",
-        "Cambios de turno sin fricci√≥n",
-        "Recordatorios autom√°ticos a familias",
+        "Horarios, modalidad y edades de atenciÛn",
+        "Cambios de turno sin fricciÛn",
+        "Recordatorios autom·ticos a familias",
       ],
       image: "https://images.unsplash.com/photo-1519542537078-4f7b7e1b8b6a?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Sesi√≥n de fonoaudiolog√≠a en consultorio c√°lido y minimalista",
-      caption: "Un estilo m√°s amable y minimalista para una atenci√≥n cercana.",
+      imageAlt: "SesiÛn de fonoaudiologÌa en consultorio c·lido y minimalista",
+      caption: "Un estilo m·s amable y minimalista para una atenciÛn cercana.",
     },
   },
   abogados: {
-    title: "Automatizaci√≥n de WhatsApp para abogados en Argentina",
-    description: "Filtr√° consultas, orden√° casos y hac√© seguimiento inicial sin perder tiempo en mensajes repetidos para estudios jur√≠dicos y abogados particulares.",
+    title: "AutomatizaciÛn de WhatsApp para abogados en Argentina",
+    description: "Filtr· consultas, orden· casos y hacÈ seguimiento inicial sin perder tiempo en mensajes repetidos para estudios jurÌdicos y abogados particulares.",
     problem: "Llegan consultas legales que necesitan una primera respuesta clara; si se demoran, el posible cliente sigue buscando otro estudio.",
     benefits: [
-      "Primer contacto profesional y autom√°tico.",
+      "Primer contacto profesional y autom·tico.",
       "Captura de consultas desde una landing de servicios legales.",
       "Seguimiento de prospectos sin perder oportunidades.",
     ],
     conversation: {
-      client: "Hola, necesito asesoramiento por un alquiler, ¬øpuedo coordinar una consulta?",
-      assistant: "S√≠, claro. Te comparto disponibilidad y te explico c√≥mo es la primera entrevista.",
-      followUp: "Te reserv√© un turno para ma√±ana a las 17:00 y te env√≠o la confirmaci√≥n.",
-      close: "Perfecto, as√≠ no pierdo tiempo escribiendo varias veces.",
+      client: "Hola, necesito asesoramiento por un alquiler, øpuedo coordinar una consulta?",
+      assistant: "SÌ, claro. Te comparto disponibilidad y te explico cÛmo es la primera entrevista.",
+      followUp: "Te reservÈ un turno para maÒana a las 17:00 y te envÌo la confirmaciÛn.",
+      close: "Perfecto, asÌ no pierdo tiempo escribiendo varias veces.",
     },
     theme: {
       pageBg: "bg-[#080604]",
@@ -316,40 +316,40 @@ const nicheData: Record<
       ctaFrom: "from-amber-500",
       ctaTo: "to-orange-500",
       ctaPanel: "bg-[linear-gradient(180deg,rgba(245,158,11,0.09),rgba(255,255,255,0.02))]",
-      badgeText: "Estudios jur√≠dicos",
+      badgeText: "Estudios jurÌdicos",
       image: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Abogada en un estudio jur√≠dico con documentos y notebook",
-      imageCaption: "Una est√©tica formal, editorial y m√°s cercana al universo jur√≠dico.",
+      imageAlt: "Abogada en un estudio jurÌdico con documentos y notebook",
+      imageCaption: "Una estÈtica formal, editorial y m·s cercana al universo jurÌdico.",
     },
     showcase: {
       eyebrow: "Dossier inicial",
-      title: "Una puerta de entrada m√°s seria para consultas legales",
+      title: "Una puerta de entrada m·s seria para consultas legales",
       description:
-        "Pensado para estudios que necesitan filtrar casos, ordenar urgencias y sostener una primera impresi√≥n de confianza desde el minuto uno.",
+        "Pensado para estudios que necesitan filtrar casos, ordenar urgencias y sostener una primera impresiÛn de confianza desde el minuto uno.",
       bullets: [
         "Primer filtro por tipo de caso",
         "Toma de datos inicial ordenada",
         "Agenda de entrevista y seguimiento",
       ],
       image: "https://images.unsplash.com/photo-1569525365647-5d6e1b4d3cc8?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Estudio jur√≠dico con biblioteca, expediente y luz c√°lida",
-      caption: "M√°s sobrio, m√°s cl√°sico y con presencia de estudio profesional.",
+      imageAlt: "Estudio jurÌdico con biblioteca, expediente y luz c·lida",
+      caption: "M·s sobrio, m·s cl·sico y con presencia de estudio profesional.",
     },
   },
   inmobiliarias: {
-    title: "Automatizaci√≥n de WhatsApp para inmobiliarias en Argentina",
-    description: "Respond√© consultas de propiedades, agend√° visitas y segu√≠ leads sin perder velocidad de respuesta en inmobiliarias argentinas.",
-    problem: "Las consultas llegan por muchos canales y, si no se responde r√°pido, el interesado sigue mirando otras opciones.",
+    title: "AutomatizaciÛn de WhatsApp para inmobiliarias en Argentina",
+    description: "RespondÈ consultas de propiedades, agend· visitas y seguÌ leads sin perder velocidad de respuesta en inmobiliarias argentinas.",
+    problem: "Las consultas llegan por muchos canales y, si no se responde r·pido, el interesado sigue mirando otras opciones.",
     benefits: [
-      "Respuestas autom√°ticas para propiedades y zonas.",
+      "Respuestas autom·ticas para propiedades y zonas.",
       "Agendado de visitas y seguimiento de interesados.",
-      "M√°s consultas atendidas sin aumentar equipo.",
+      "M·s consultas atendidas sin aumentar equipo.",
     ],
     conversation: {
-      client: "Hola, vi un depto en Palermo. ¬øSigue disponible?",
-      assistant: "S√≠, sigue disponible. Te comparto detalles y puedo agendarte visita.",
-      followUp: "Listo, te agend√© para el s√°bado a las 12:00 y te llega la confirmaci√≥n.",
-      close: "Genial, me resolvi√≥ todo por WhatsApp.",
+      client: "Hola, vi un depto en Palermo. øSigue disponible?",
+      assistant: "SÌ, sigue disponible. Te comparto detalles y puedo agendarte visita.",
+      followUp: "Listo, te agendÈ para el s·bado a las 12:00 y te llega la confirmaciÛn.",
+      close: "Genial, me resolviÛ todo por WhatsApp.",
     },
     theme: {
       pageBg: "bg-[#11050b]",
@@ -373,37 +373,37 @@ const nicheData: Record<
       badgeText: "Inmobiliarias",
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Asesor inmobiliario mostrando una propiedad a un cliente",
-      imageCaption: "M√°s energ√≠a comercial, m√°s visitas coordinadas y menos leads fr√≠os.",
+      imageCaption: "M·s energÌa comercial, m·s visitas coordinadas y menos leads frÌos.",
     },
     showcase: {
       eyebrow: "Leads y visitas",
-      title: "Consultas que no se enfr√≠an y visitas que quedan agendadas",
+      title: "Consultas que no se enfrÌan y visitas que quedan agendadas",
       description:
         "Pensado para equipos comerciales que responden varios canales y necesitan velocidad sin perder contexto.",
       bullets: [
         "Disponibilidad de propiedades",
-        "Coordinaci√≥n de visitas",
+        "CoordinaciÛn de visitas",
         "Seguimiento de interesados",
       ],
       image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Reuni√≥n inmobiliaria con una pareja interesada en una propiedad",
-      caption: "Un look m√°s vibrante para una experiencia comercial √°gil.",
+      imageAlt: "ReuniÛn inmobiliaria con una pareja interesada en una propiedad",
+      caption: "Un look m·s vibrante para una experiencia comercial ·gil.",
     },
   },
   nutricionistas: {
-    title: "Automatizaci√≥n de WhatsApp para nutricionistas en Argentina",
-    description: "Respond√© consultas, coordin√° primeras entrevistas y acompa√±√° seguimientos con una experiencia digital m√°s c√°lida y ordenada.",
-    problem: "Las consultas de nutrici√≥n suelen llegar con preguntas sobre planes, horarios, modalidad y seguimiento; si se demora la respuesta, baja el inter√©s.",
+    title: "AutomatizaciÛn de WhatsApp para nutricionistas en Argentina",
+    description: "RespondÈ consultas, coordin· primeras entrevistas y acompaÒ· seguimientos con una experiencia digital m·s c·lida y ordenada.",
+    problem: "Las consultas de nutriciÛn suelen llegar con preguntas sobre planes, horarios, modalidad y seguimiento; si se demora la respuesta, baja el interÈs.",
     benefits: [
-      "Primer contacto amable y r√°pido.",
+      "Primer contacto amable y r·pido.",
       "Agenda simple para entrevistas y controles.",
-      "Seguimiento autom√°tico entre consultas.",
+      "Seguimiento autom·tico entre consultas.",
     ],
     conversation: {
-      client: "Hola, quer√≠a saber c√≥mo trabajan las primeras consultas y si hacen seguimiento.",
-      assistant: "S√≠, claro. Te explico c√≥mo es la primera entrevista y te comparto los horarios disponibles.",
-      followUp: "Listo, te reserv√© el jueves a las 18:00 y te llega un recordatorio antes del turno.",
-      close: "Perfecto, as√≠ puedo ordenarme mejor sin escribir varias veces.",
+      client: "Hola, querÌa saber cÛmo trabajan las primeras consultas y si hacen seguimiento.",
+      assistant: "SÌ, claro. Te explico cÛmo es la primera entrevista y te comparto los horarios disponibles.",
+      followUp: "Listo, te reservÈ el jueves a las 18:00 y te llega un recordatorio antes del turno.",
+      close: "Perfecto, asÌ puedo ordenarme mejor sin escribir varias veces.",
     },
     theme: {
       pageBg: "bg-[#07110d]",
@@ -427,21 +427,21 @@ const nicheData: Record<
       badgeText: "Nutricionistas",
       image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Nutricionista trabajando con una paciente en consultorio luminoso",
-      imageCaption: "Una est√©tica m√°s c√°lida y editorial para un servicio cercano.",
+      imageCaption: "Una estÈtica m·s c·lida y editorial para un servicio cercano.",
     },
     showcase: {
-      eyebrow: "Seguimiento y h√°bitos",
-      title: "Una experiencia m√°s c√°lida para acompa√±ar cada proceso",
+      eyebrow: "Seguimiento y h·bitos",
+      title: "Una experiencia m·s c·lida para acompaÒar cada proceso",
       description:
-        "La propuesta visual busca transmitir bienestar, claridad y un trato m√°s humano, ideal para nutrici√≥n y acompa√±amiento.",
+        "La propuesta visual busca transmitir bienestar, claridad y un trato m·s humano, ideal para nutriciÛn y acompaÒamiento.",
       bullets: [
         "Primera entrevista guiada",
         "Recordatorios de seguimiento",
-        "Orden para h√°bitos y controles",
+        "Orden para h·bitos y controles",
       ],
       image: "https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Profesional de nutrici√≥n revisando una planificaci√≥n junto a una paciente",
-      caption: "M√°s suave, m√°s cercana y pensada para el largo plazo.",
+      imageAlt: "Profesional de nutriciÛn revisando una planificaciÛn junto a una paciente",
+      caption: "M·s suave, m·s cercana y pensada para el largo plazo.",
     },
   },
 };
@@ -465,7 +465,7 @@ const defaultNicheTheme: NicheTheme = {
   ctaFrom: "from-emerald-500",
   ctaTo: "to-green-500",
   ctaPanel: "bg-[linear-gradient(180deg,rgba(16,185,129,0.08),rgba(255,255,255,0.02))]",
-  badgeText: "Automatizaci√≥n de WhatsApp",
+  badgeText: "AutomatizaciÛn de WhatsApp",
   image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
   imageAlt: "Consultorio moderno",
   imageCaption: "Una consulta clara, un turno confirmado y menos mensajes manuales.",
@@ -493,7 +493,7 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                 className={`text-center ${heroReverse ? "lg:order-2 lg:text-left" : "lg:text-left"}`}
               >
                 <p className={`text-sm font-semibold uppercase tracking-[0.22em] ${theme.accent}`}>
-                  Argentina ¬∑ {theme.badgeText}
+                  Argentina ∑ {theme.badgeText}
                 </p>
                 <h1 className={`mt-4 text-4xl sm:text-5xl lg:text-6xl ${theme.title}`}>
                   {content.title}
@@ -503,10 +503,10 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                 </p>
                 <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
                   <a href="#contacto" className={`inline-flex items-center justify-center rounded-2xl bg-gradient-to-r ${theme.ctaFrom} ${theme.ctaTo} px-6 py-4 text-base font-bold text-white shadow-lg shadow-black/30`}>
-                    Solicitar diagn√≥stico gratuito
+                    Solicitar diagnÛstico gratuito
                   </a>
                   <a href="#conversacion" className={`inline-flex items-center justify-center rounded-2xl border ${theme.accentBorder} bg-white/5 px-6 py-4 text-base font-semibold text-white/85`}>
-                    Ver conversaci√≥n real
+                    Ver conversaciÛn real
                   </a>
                 </div>
               </motion.div>
@@ -634,7 +634,7 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                   Servicios que suele atender el consultorio
                 </p>
                 <h2 className="font-heading mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-                  Automatizaci√≥n pensada para la operaci√≥n diaria de una cl√≠nica dental
+                  AutomatizaciÛn pensada para la operaciÛn diaria de una clÌnica dental
                 </h2>
                 <div className="mt-5 h-px w-24 bg-gradient-to-r from-sky-400/60 to-transparent" />
               </div>
@@ -643,15 +643,15 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                 {[
                   {
                     title: "Primera consulta",
-                    text: "Responde motivo de consulta, cobertura, ubicaci√≥n y disponibilidad sin que alguien tenga que estar mirando WhatsApp todo el tiempo.",
+                    text: "Responde motivo de consulta, cobertura, ubicaciÛn y disponibilidad sin que alguien tenga que estar mirando WhatsApp todo el tiempo.",
                   },
                   {
                     title: "Turnos y recordatorios",
-                    text: "Confirma la cita, reenv√≠a la direcci√≥n y manda un aviso previo para bajar ausencias y reprogramaciones de √∫ltimo momento.",
+                    text: "Confirma la cita, reenvÌa la direcciÛn y manda un aviso previo para bajar ausencias y reprogramaciones de ˙ltimo momento.",
                   },
                   {
                     title: "Seguimiento posterior",
-                    text: "Despu√©s del tratamiento, mantiene el v√≠nculo con controles, indicaciones y nuevas consultas sin dejar chats pendientes.",
+                    text: "DespuÈs del tratamiento, mantiene el vÌnculo con controles, indicaciones y nuevas consultas sin dejar chats pendientes.",
                   },
                 ].map((item) => (
                   <article
@@ -681,7 +681,7 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                     Una paciente escribe, el sistema responde y el turno queda confirmado
                   </h2>
                   <p className={`mt-4 max-w-xl text-base leading-8 text-white/65 ${theme.body}`}>
-                    As√≠ se ve un flujo m√°s cre√≠ble para odontolog√≠a: la consulta entra desde WhatsApp, la respuesta es inmediata y la agenda queda ordenada sin ir y venir de mensajes.
+                    AsÌ se ve un flujo m·s creÌble para odontologÌa: la consulta entra desde WhatsApp, la respuesta es inmediata y la agenda queda ordenada sin ir y venir de mensajes.
                   </p>
                 </div>
 
@@ -690,20 +690,20 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                     <div className="relative min-h-[240px]">
                       <img
                         src="https://images.unsplash.com/photo-1622737133809-d95047b9e673?auto=format&fit=crop&w=900&q=80"
-                        alt="Consultorio odontol√≥gico con recepci√≥n y pantalla de agenda"
+                        alt="Consultorio odontolÛgico con recepciÛn y pantalla de agenda"
                         className="h-full w-full object-cover"
                       />
                       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.02),rgba(2,6,23,0.5))]" />
                     </div>
                     <div className="space-y-3 p-5 sm:p-6">
                       <div className="rounded-2xl border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
-                        Hola, ¬øhacen limpieza dental y tienen turno para esta semana?
+                        Hola, øhacen limpieza dental y tienen turno para esta semana?
                       </div>
                       <div className="rounded-2xl border border-sky-400/20 bg-sky-500/10 px-4 py-3 text-sm leading-6 text-white/90">
-                        S√≠, claro. Te paso horarios disponibles y te confirmo el que te quede mejor.
+                        SÌ, claro. Te paso horarios disponibles y te confirmo el que te quede mejor.
                       </div>
                       <div className="rounded-2xl border border-sky-400/20 bg-sky-500/10 px-4 py-3 text-sm leading-6 text-white/90">
-                        Perfecto, te qued√≥ el jueves a las 16:00. Tambi√©n te llega recordatorio autom√°tico.
+                        Perfecto, te quedÛ el jueves a las 16:00. TambiÈn te llega recordatorio autom·tico.
                       </div>
                       <div className="rounded-2xl border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
                         Genial, me resolvieron todo por WhatsApp.
@@ -722,13 +722,13 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
               <div className="grid gap-6 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-200/80">
-                    Flujo cl√≠nico
+                    Flujo clÌnico
                   </p>
                   <h2 className={`mt-3 text-3xl sm:text-4xl ${theme.title}`}>
-                    Menos caos en recepci√≥n, m√°s orden en cada consulta
+                    Menos caos en recepciÛn, m·s orden en cada consulta
                   </h2>
                   <p className={`mt-4 max-w-xl text-base leading-8 text-white/65 ${theme.body}`}>
-                    La agenda m√©dica suele mezclar consultas, estudios y derivaciones. Esta vista le da prioridad a la velocidad y a la claridad operativa.
+                    La agenda mÈdica suele mezclar consultas, estudios y derivaciones. Esta vista le da prioridad a la velocidad y a la claridad operativa.
                   </p>
                 </div>
 
@@ -736,11 +736,11 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                   {[
                     {
                       title: "Triage",
-                      text: "El sistema identifica el motivo de consulta y deriva sin frenar la atenci√≥n.",
+                      text: "El sistema identifica el motivo de consulta y deriva sin frenar la atenciÛn.",
                     },
                     {
                       title: "Agenda",
-                      text: "La coordinaci√≥n de turnos se vuelve m√°s simple y con menos intercambio de mensajes.",
+                      text: "La coordinaciÛn de turnos se vuelve m·s simple y con menos intercambio de mensajes.",
                     },
                     {
                       title: "Seguimiento",
@@ -764,13 +764,13 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
               <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
                 <div className="rounded-[2rem] border border-amber-400/15 bg-white/[0.03] p-6 sm:p-7">
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200/80">
-                    Intake jur√≠dico
+                    Intake jurÌdico
                   </p>
                   <h2 className={`mt-3 text-3xl sm:text-4xl ${theme.title}`}>
-                    Una primera impresi√≥n m√°s seria para cada consulta
+                    Una primera impresiÛn m·s seria para cada consulta
                   </h2>
                   <p className={`mt-4 max-w-xl text-base leading-8 text-white/65 ${theme.body}`}>
-                    El objetivo no es vender m√°s texto, sino mostrar orden, criterio y confianza desde el primer contacto con el estudio.
+                    El objetivo no es vender m·s texto, sino mostrar orden, criterio y confianza desde el primer contacto con el estudio.
                   </p>
                 </div>
 
@@ -782,15 +782,15 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                     },
                     {
                       title: "Confianza",
-                      text: "El tono visual transmite seriedad y cercan√≠a profesional.",
+                      text: "El tono visual transmite seriedad y cercanÌa profesional.",
                     },
                     {
                       title: "Seguimiento",
-                      text: "Menos consultas perdidas y m√°s prospectos bien atendidos.",
+                      text: "Menos consultas perdidas y m·s prospectos bien atendidos.",
                     },
                     {
                       title: "Orden",
-                      text: "La recepci√≥n trabaja con un flujo m√°s claro y menos ida y vuelta.",
+                      text: "La recepciÛn trabaja con un flujo m·s claro y menos ida y vuelta.",
                     },
                   ].map((item) => (
                     <article key={item.title} className="rounded-[1.5rem] border border-amber-400/15 bg-white/[0.025] p-5">
@@ -809,9 +809,9 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
             <div className={`mx-auto max-w-3xl rounded-[2rem] border ${theme.accentBorder} ${theme.surfaceStrong} p-6 shadow-[0_24px_80px_-32px_rgba(0,0,0,0.9)] sm:p-8`}>
               <div className="mb-6">
                 <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
-                  Ejemplo real de conversaci√≥n
+                  Ejemplo real de conversaciÛn
                 </p>
-                <h2 className="font-heading mt-3 text-3xl font-black tracking-tight">C√≥mo se ve una consulta automatizada</h2>
+                <h2 className="font-heading mt-3 text-3xl font-black tracking-tight">CÛmo se ve una consulta automatizada</h2>
               </div>
               <div className="space-y-4">
                 <div className="rounded-2xl border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
@@ -835,14 +835,14 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
           <div className="container py-16 sm:py-20">
             <div className={`mx-auto max-w-4xl rounded-[2rem] border ${theme.accentBorder} ${theme.ctaPanel} p-6 text-center shadow-[0_20px_60px_-36px_rgba(14,165,233,0.35)] sm:p-8`}>
               <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
-                Diagn√≥stico gratuito
+                DiagnÛstico gratuito
               </p>
-              <h2 className="font-heading mt-3 text-3xl font-black tracking-tight">Quiero mi diagn√≥stico gratuito</h2>
+              <h2 className="font-heading mt-3 text-3xl font-black tracking-tight">Quiero mi diagnÛstico gratuito</h2>
               <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-white/65">
-                Analizamos c√≥mo llegar m√°s r√°pido a tus consultas, c√≥mo ordenar tu agenda y qu√© automatizar para vender mejor en Argentina.
+                Analizamos cÛmo llegar m·s r·pido a tus consultas, cÛmo ordenar tu agenda y quÈ automatizar para vender mejor en Argentina.
               </p>
               <a href="/#contacto" className={`mt-6 inline-flex items-center justify-center rounded-2xl bg-gradient-to-r ${theme.ctaFrom} ${theme.ctaTo} px-6 py-4 text-base font-bold text-white`}>
-                Solicitar diagn√≥stico gratuito
+                Solicitar diagnÛstico gratuito
               </a>
             </div>
           </div>
@@ -856,19 +856,19 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                   Landings SEO
                 </p>
                 <h2 className="font-heading mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-                  P√°ginas espec√≠ficas por rubro para captar b√∫squedas con intenci√≥n
+                  P·ginas especÌficas por rubro para captar b˙squedas con intenciÛn
                 </h2>
                 <div className={`mt-5 h-px w-24 ${theme.accentLine}`} />
               </div>
 
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                 {[
-                  { href: "/odontologos", label: "Odont√≥logos", text: "Automatizaci√≥n de WhatsApp para cl√≠nicas dentales." },
-                  { href: "/medicos", label: "M√©dicos", text: "Turnos, consultas y seguimiento para consultorios." },
-                  { href: "/fonoaudiologos", label: "Fonoaudi√≥logos", text: "Respuestas autom√°ticas y agenda de sesiones." },
+                  { href: "/odontologos", label: "OdontÛlogos", text: "AutomatizaciÛn de WhatsApp para clÌnicas dentales." },
+                  { href: "/medicos", label: "MÈdicos", text: "Turnos, consultas y seguimiento para consultorios." },
+                  { href: "/fonoaudiologos", label: "FonoaudiÛlogos", text: "Respuestas autom·ticas y agenda de sesiones." },
                   { href: "/nutricionistas", label: "Nutricionistas", text: "Seguimiento, consultas y recordatorios de control." },
                   { href: "/abogados", label: "Abogados", text: "Filtrado de consultas y primer contacto profesional." },
-                  { href: "/inmobiliarias", label: "Inmobiliarias", text: "M√°s consultas atendidas y visitas agendadas." },
+                  { href: "/inmobiliarias", label: "Inmobiliarias", text: "M·s consultas atendidas y visitas agendadas." },
                 ].map((item) => (
                   <a
                     key={item.href}
@@ -881,7 +881,7 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                     <p className="mt-3 text-sm leading-7 text-white/60">{item.text}</p>
                     <div className={`mt-5 inline-flex items-center gap-2 text-sm font-semibold ${theme.accent} transition-transform group-hover:translate-x-1`}>
                       Ver landing
-                      <span aria-hidden="true">‚Üí</span>
+                      <span aria-hidden="true">?</span>
                     </div>
                   </a>
                 ))}
@@ -889,867 +889,6 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
             </div>
           </section>
         ) : null}
-      </main>
-    </>
-  );
-}
-
-function WhatsAppAutomationLanding() {
-  const [nombre, setNombre] = useState("");
-  const [whatsapp, setWhatsapp] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
-  const [menuOpen, setMenuOpen] = useState(false);
-  const homeTheme = {
-    accentBorder: "border-emerald-400/20",
-    accentSoft: "bg-emerald-500/10",
-    accent: "text-emerald-200",
-  };
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setLoading(true);
-    setError("");
-    setMessage("");
-
-    try {
-      const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nombre: nombre.trim(),
-          whatsapp: whatsapp.trim(),
-          origen: "landing_principal",
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("No pudimos enviar tu solicitud.");
-      }
-
-      setMessage("Listo. Recibimos tu solicitud y te contactaremos pronto para coordinar la demo.");
-      setNombre("");
-      setWhatsapp("");
-    } catch (submitError) {
-      setError(submitError instanceof Error ? submitError.message : "Ocurri√≥ un error inesperado.");
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  return (
-    <>
-      <SeoHead
-        title="Automatizaci√≥n de WhatsApp y turnos"
-        description="Automatiz√° WhatsApp con IA, capt√° leads desde landing pages y conect√° integraciones para responder, agendar y hacer seguimiento 24/7."
-      />
-      <Toaster position="top-right" />
-
-      <main className="min-h-screen bg-slate-950 text-white">
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.18),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(34,197,94,0.14),transparent_30%),radial-gradient(circle_at_left,rgba(14,165,233,0.08),transparent_28%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.25),rgba(2,6,23,0.55))]" />
-          <header className="relative z-20 border-b border-white/5 bg-slate-950/70 backdrop-blur-2xl">
-            <div className="container">
-              <div className="flex h-18 items-center justify-between gap-3 py-3 sm:h-20 sm:gap-4 sm:py-0">
-                <a href="#top" className="inline-flex items-center gap-3">
-                  <div className="relative grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 shadow-[0_0_30px_-18px_rgba(16,185,129,0.8)]">
-                    <span className="text-[10px] font-black tracking-[0.16em] text-white">WA</span>
-                    <span className="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-emerald-300 ring-2 ring-slate-950" />
-                  </div>
-                  <div className="leading-none">
-                    <span className="font-heading text-lg font-extrabold tracking-tight text-white">
-                      WebAppImpulsor
-                    </span>
-                    <span className="mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.18em] text-white/45">
-                      Automatizaci√≥n con IA
-                    </span>
-                  </div>
-                </a>
-
-                <nav className="hidden items-center gap-6 text-sm text-white/60 md:flex xl:gap-8">
-                  <a href="#como-funciona" className="transition hover:text-white">
-                    C√≥mo funciona
-                  </a>
-                  <a href="#casos-de-uso" className="transition hover:text-white">
-                    Casos de uso
-                  </a>
-                  <a href="#faq" className="transition hover:text-white">
-                    FAQ
-                  </a>
-                </nav>
-
-                <div className="hidden items-center gap-2.5 md:flex">
-                  <a
-                    href="#contacto"
-                    className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-green-500 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-emerald-500/20 transition hover:translate-y-[-1px] hover:shadow-emerald-500/30"
-                  >
-                    Solicitar diagn√≥stico
-                  </a>
-                </div>
-
-                <button
-                  aria-label="Abrir men√∫"
-                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white md:hidden"
-                  onClick={() => setMenuOpen((value) => !value)}
-                >
-                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                    {menuOpen ? (
-                      <path d="M6 6l12 12M18 6L6 18" />
-                    ) : (
-                      <>
-                        <path d="M4 7h16" />
-                        <path d="M4 12h16" />
-                        <path d="M4 17h16" />
-                      </>
-                    )}
-                  </svg>
-                </button>
-              </div>
-
-              <div
-                className={`overflow-hidden border-t border-white/5 md:hidden ${
-                  menuOpen ? "max-h-64 pb-4 opacity-100" : "max-h-0 opacity-0"
-                } transition-all duration-300`}
-              >
-                <div className="flex flex-col gap-2 pt-4 text-sm text-white/70">
-                  <a href="#como-funciona" onClick={() => setMenuOpen(false)} className="rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3">
-                    C√≥mo funciona
-                  </a>
-                  <a href="#casos-de-uso" onClick={() => setMenuOpen(false)} className="rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3">
-                    Casos de uso
-                  </a>
-                  <a href="#faq" onClick={() => setMenuOpen(false)} className="rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3">
-                    FAQ
-                  </a>
-                  <a
-                    href="#contacto"
-                    onClick={() => setMenuOpen(false)}
-                    className="mt-1 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-green-500 px-4 py-3 font-bold text-white"
-                  >
-                    Solicitar diagn√≥stico
-                  </a>
-                </div>
-              </div>
-            </div>
-          </header>
-
-          <div className="container relative z-10 flex min-h-[calc(100vh-5rem)] items-center py-16 sm:py-20">
-            <div className="grid w-full gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, ease: "easeOut" }}
-                className="space-y-8 pt-2"
-              >
-                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-300/15 bg-emerald-500/10 px-4 py-2 text-[11px] font-semibold tracking-[0.22em] text-emerald-200 uppercase shadow-[0_0_0_1px_rgba(16,185,129,0.04)]">
-                  MVP de automatizaci√≥n de WhatsApp
-                </div>
-
-                <div className="space-y-6">
-                  <h1 className="font-heading max-w-3xl text-balance text-5xl font-black leading-[0.95] tracking-[-0.05em] sm:text-6xl lg:text-[4.6rem]">
-                    Automatiz√° WhatsApp y consegu√≠ m√°s clientes sin trabajar m√°s horas
-                  </h1>
-                  <p className="max-w-2xl text-lg leading-8 text-white/68 sm:text-xl">
-                    Implementamos asistentes autom√°ticos para profesionales y negocios de servicios que responden consultas, gestionan turnos y hacen seguimiento de clientes 24/7.
-                  </p>
-                </div>
-
-                <div className="flex flex-col gap-3 sm:flex-row">
-                  <a
-                    href="#contacto"
-                    className="group inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-green-500 px-6 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/25 transition hover:translate-y-[-1px] hover:shadow-emerald-500/35"
-                  >
-                    Solicitar diagn√≥stico gratuito
-                  </a>
-                  <a
-                    href="#como-funciona"
-                    className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-6 py-4 text-base font-semibold text-white/85 transition hover:border-white/15 hover:bg-white/10"
-                  >
-                    Ver demostraci√≥n
-                  </a>
-                </div>
-
-                <div className="grid gap-3 sm:grid-cols-3">
-                  {["Respuesta inmediata", "Turnos confirmados", "Seguimiento autom√°tico"].map((item) => (
-                    <div key={item} className="ds-card-soft px-4 py-3 text-sm font-medium text-white/75">
-                      {item}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap items-center gap-4 pt-2 text-sm text-white/55">
-                  <div className="flex items-center gap-2">
-                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_0_6px_rgba(16,185,129,0.12)]" />
-                    Respuesta en menos de 10 segundos
-                  </div>
-                  <div className="hidden h-5 w-px bg-white/10 sm:block" />
-                  <div className="flex items-center gap-2">
-                    <span className="h-2.5 w-2.5 rounded-full bg-cyan-400 shadow-[0_0_0_6px_rgba(34,211,238,0.12)]" />
-                    Turnos, presupuestos y seguimiento
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 28, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.08 }}
-                className="relative lg:sticky lg:top-8"
-              >
-                <WhatsAppDemo
-                  title="WebAppImpulsor"
-                  subtitle="en l√≠nea ¬∑ respuesta autom√°tica"
-                  accentLabel="DEMO EN VIVO"
-                  messages={heroWhatsAppMessages}
-                />
-
-                <form onSubmit={handleSubmit} className="mt-5 space-y-4 rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-[0_24px_80px_-36px_rgba(0,0,0,0.45)] backdrop-blur-xl" id="contacto">
-                  <label className="block space-y-2">
-                    <span className="text-sm font-medium text-white/80">Nombre</span>
-                    <input
-                      type="text"
-                      value={nombre}
-                      onChange={(event) => setNombre(event.target.value)}
-                      placeholder="Tu nombre completo"
-                      className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-4 text-white outline-none transition placeholder:text-white/30 focus:border-emerald-400/60 focus:ring-2 focus:ring-emerald-400/20"
-                      required
-                    />
-                  </label>
-
-                  <label className="block space-y-2">
-                    <span className="text-sm font-medium text-white/80">WhatsApp</span>
-                    <input
-                      type="tel"
-                      value={whatsapp}
-                      onChange={(event) => setWhatsapp(event.target.value)}
-                      placeholder="+54 11 1234 5678"
-                      className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-4 text-white outline-none transition placeholder:text-white/30 focus:border-emerald-400/60 focus:ring-2 focus:ring-emerald-400/20"
-                      required
-                    />
-                    <span className="text-xs text-white/45">IncluÔøΩ el cÔøΩdigo de paÔøΩs y tu caracterÔøΩstica de ÔøΩrea.</span>
-                  </label>
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-500 to-green-500 px-5 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/25 transition hover:scale-[1.01] hover:shadow-emerald-500/35 disabled:cursor-not-allowed disabled:opacity-70"
-                  >
-                    {loading ? "Enviando..." : "SolicitÔøΩ una Demo Gratuita"}
-                  </button>
-
-                  {message ? (
-                    <p className="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">
-                      {message}
-                    </p>
-                  ) : null}
-
-                  {error ? (
-                    <p className="rounded-2xl border border-rose-400/20 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">
-                      {error}
-                    </p>
-                  ) : null}
-
-                  <p className="text-xs leading-5 text-white/45">
-                    Sin spam. Solo usamos tus datos para coordinar el diagnÔøΩstico de automatizaciÔøΩn.
-                  </p>
-                </form>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        <section className="border-t border-white/5 bg-[#090909]">
-          <div className="container py-20 sm:py-24">
-            <div className="mb-10 max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
-                Ver una conversaci√≥n real
-              </p>
-              <h2 className="font-heading mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-                As√≠ se ve una atenci√≥n autom√°tica en WhatsApp con IA
-              </h2>
-              <div className="mt-5 h-px w-24 bg-gradient-to-r from-emerald-400/60 to-transparent" />
-            </div>
-
-            <div className="mx-auto max-w-3xl">
-              <div className="overflow-hidden rounded-[2.25rem] border border-white/10 bg-[#111111] shadow-[0_24px_80px_-32px_rgba(0,0,0,0.9)]">
-                <div className="flex items-center gap-3 border-b border-white/5 bg-[#111827] px-5 py-4">
-                  <div className="relative flex h-11 w-11 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300">
-                    <span className="text-sm font-black">WA</span>
-                    <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-[#111827] bg-emerald-400" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="truncate text-sm font-semibold text-white">Asistente de WhatsApp</p>
-                    <p className="text-xs text-emerald-300/80">en l√≠nea ahora ¬∑ respuesta autom√°tica</p>
-                  </div>
-                  <div className="ml-auto flex items-center gap-2 text-white/30">
-                    <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-                  </div>
-                </div>
-
-                <div className="bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.08),transparent_40%)] p-4 sm:p-6">
-                  <div className="space-y-4">
-                    <div className="flex justify-start animate-[fadeUp_.6s_ease-out_both] [animation-delay:0ms]">
-                      <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
-                        <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white/70">
-                          CL
-                        </div>
-                        <div className="space-y-1">
-                          <div className="rounded-[1.25rem] rounded-bl-md border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
-                            Hola, vi su landing y quiero saber si tienen turnos para esta semana.
-                          </div>
-                          <div className="px-1 text-[11px] text-white/35">10:41</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex justify-end animate-[fadeUp_.6s_ease-out_both] [animation-delay:140ms]">
-                      <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
-                        <div className="space-y-1 text-right">
-                          <div className="rounded-[1.25rem] rounded-br-md border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
-                            ¬°Hola! S√≠, claro. Te comparto los turnos disponibles y te ayudo a reservar el que mejor te quede.
-                          </div>
-                          <div className="flex items-center justify-end gap-1 px-1 text-[11px] text-emerald-200/60">
-                            <span>10:41</span>
-                            <span>‚Ä¢</span>
-                            <span className="inline-flex items-center gap-1">
-                              <span>‚úì</span>
-                              <span>‚úì</span>
-                            </span>
-                          </div>
-                        </div>
-                        <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] font-bold text-emerald-200">
-                          WA
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex justify-end animate-[fadeUp_.6s_ease-out_both] [animation-delay:280ms]">
-                      <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
-                        <div className="space-y-1 text-right">
-                          <div className="rounded-[1.25rem] rounded-br-md border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
-                            Tengo disponibles el martes 10:00, mi√©rcoles 14:30 y viernes 18:00. ¬øCu√°l prefer√≠s?
-                          </div>
-                          <div className="px-1 text-[11px] text-emerald-200/60">10:42</div>
-                        </div>
-                        <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] font-bold text-emerald-200">
-                          WA
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex justify-start animate-[fadeUp_.6s_ease-out_both] [animation-delay:420ms]">
-                      <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
-                        <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white/70">
-                          CL
-                        </div>
-                        <div className="space-y-1">
-                          <div className="rounded-[1.25rem] rounded-bl-md border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
-                            El mi√©rcoles a las 14:30 me sirve.
-                          </div>
-                          <div className="px-1 text-[11px] text-white/35">10:42</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex justify-end animate-[fadeUp_.6s_ease-out_both] [animation-delay:560ms]">
-                      <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
-                        <div className="space-y-1 text-right">
-                          <div className="rounded-[1.25rem] rounded-br-md border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
-                            Perfecto. Ya te lo dej√© reservado para el mi√©rcoles a las 14:30 y te env√≠o un recordatorio antes del turno.
-                          </div>
-                          <div className="flex items-center justify-end gap-1 px-1 text-[11px] text-emerald-200/60">
-                            <span>10:42</span>
-                            <span>‚Ä¢</span>
-                            <span className="inline-flex items-center gap-1">
-                              <span>‚úì</span>
-                              <span>‚úì</span>
-                            </span>
-                          </div>
-                        </div>
-                        <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] font-bold text-emerald-200">
-                          WA
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex justify-end animate-[fadeUp_.6s_ease-out_both] [animation-delay:700ms]">
-                      <div className="inline-flex items-center gap-3 rounded-[1.25rem] rounded-br-md border border-emerald-400/20 bg-emerald-500/15 px-4 py-3 text-sm leading-6 text-white/90">
-                        <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-400 text-[11px] font-black text-slate-950">
-                          ‚úì
-                        </span>
-                        <span>
-                          Confirmaci√≥n enviada
-                          <span className="ml-2 text-white/45">¬∑ calendario actualizado</span>
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex justify-start animate-[fadeUp_.6s_ease-out_both] [animation-delay:840ms]">
-                      <div className="flex max-w-[85%] gap-3 sm:max-w-[72%]">
-                        <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white/70">
-                          CL
-                        </div>
-                        <div className="space-y-1">
-                          <div className="rounded-[1.25rem] rounded-bl-md border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
-                            Genial, as√≠ no tengo que estar pendiente de responder yo mismo.
-                          </div>
-                          <div className="px-1 text-[11px] text-white/35">10:42</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                <div className="mt-6 border-t border-white/5 pt-4">
-                  <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/35">
-                      <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_16px_rgba(52,211,153,0.8)]" />
-                      Escrib√≠ tu consulta y el sistema responde por vos
-                      <span className="ml-auto flex items-center gap-1">
-                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white/35 [animation-delay:0ms]" />
-                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white/35 [animation-delay:180ms]" />
-                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white/35 [animation-delay:360ms]" />
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
-                <div className="ds-card p-6 sm:p-7">
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
-                    Prueba social
-                  </p>
-                  <p className="mt-3 text-lg font-bold text-white">
-                    "Pasamos de responder tarde a confirmar turnos incluso fuera del horario de atencion."
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-white/60">
-                    Ideal para profesionales que quieren menos friccion en el primer contacto, mas turnos confirmados y seguimiento automatico sin depender de estar mirando el celular todo el dia.
-                  </p>
-                </div>
-
-                <div className={`ds-card ${homeTheme.accentBorder} bg-white/[0.04] p-6 sm:p-7`}>
-                  <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${homeTheme.accent}`}>
-                    Resultado esperado
-                  </p>
-                  <div className="mt-4 space-y-3 text-sm leading-7 text-white/70">
-                    <p className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 rounded-full bg-sky-400" />
-                      Primera respuesta inmediata, aunque el negocio este cerrado.
-                    </p>
-                    <p className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 rounded-full bg-sky-400" />
-                      Reserva de turnos con confirmacion clara y seguimiento posterior.
-                    </p>
-                    <p className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 rounded-full bg-sky-400" />
-                      Menos mensajes repetidos y mas tiempo para atender de verdad.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="casos-de-uso" className="border-t border-white/5 bg-[#0a0a0a]">
-          <div className="container py-20 sm:py-24">
-            <div className="mb-10 max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
-                Casos de uso
-              </p>
-              <h2 className="font-heading mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-                Cada rubro tiene un problema distinto
-              </h2>
-              <div className="mt-5 h-px w-24 bg-gradient-to-r from-emerald-400/60 to-transparent" />
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {[
-                {
-                  label: "Odont√≥logos",
-                  problem: "Consultas por turnos, urgencias y mensajes que llegan fuera de horario.",
-                  result: "Respuestas autom√°ticas y confirmaci√≥n de turnos sin fricci√≥n.",
-                  href: "/odontologos",
-                  accent: "from-cyan-500/20 to-sky-500/10",
-                },
-                {
-                  label: "M√©dicos",
-                  problem: "Consultas dispersas entre WhatsApp, llamados y agenda manual.",
-                  result: "Primer contacto claro, turnos simples y seguimiento autom√°tico.",
-                  href: "/medicos",
-                  accent: "from-violet-500/20 to-fuchsia-500/10",
-                },
-                {
-                  label: "Fonoaudi√≥logos",
-                  problem: "Consultas repetidas sobre horarios, modalidad y duraci√≥n de las sesiones.",
-                  result: "Respuestas frecuentes automatizadas y agenda m√°s ordenada.",
-                  href: "/fonoaudiologos",
-                  accent: "from-lime-500/20 to-emerald-500/10",
-                },
-                {
-                  label: "Abogados",
-                  problem: "Consultas legales que requieren una primera respuesta profesional y r√°pida.",
-                  result: "Filtrado inicial, contacto ordenado y seguimiento de prospectos.",
-                  href: "/abogados",
-                  accent: "from-blue-500/20 to-cyan-500/10",
-                },
-                {
-                  label: "Inmobiliarias",
-                  problem: "Consultas de propiedades que se enfr√≠an si no respond√©s r√°pido.",
-                  result: "M√°s visitas agendadas y seguimiento autom√°tico de interesados.",
-                  href: "/inmobiliarias",
-                  accent: "from-pink-500/20 to-rose-500/10",
-                },
-              ].map((item, index) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="group block ds-card p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
-                >
-                  <div className={`mb-5 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br ${item.accent} text-sm font-bold text-white/80 transition-transform duration-300 group-hover:scale-105`}>
-                    {String(index + 1).padStart(2, "0")}
-                  </div>
-                  <h3 className="text-xl font-bold tracking-tight">{item.label}</h3>
-                  <div className="mt-4 space-y-3">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35">
-                        Problema principal
-                      </p>
-                      <p className="mt-1 text-sm leading-7 text-white/60">{item.problem}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35">
-                        Resultado esperado
-                      </p>
-                      <p className="mt-1 text-sm leading-7 text-white/60">{item.result}</p>
-                    </div>
-                  </div>
-                  <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-emerald-200 transition-transform group-hover:translate-x-1">
-                    Ver soluci√≥n
-                    <span aria-hidden="true">‚Üí</span>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="border-t border-white/5 bg-[#0a0a0a]">
-          <div className="container py-20 sm:py-24">
-            <div className="mb-10 max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
-                Problema vs soluci√≥n
-              </p>
-              <h2 className="font-heading mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-                De responder tarde a atender 24/7
-              </h2>
-              <div className="mt-5 h-px w-24 bg-gradient-to-r from-emerald-400/60 to-transparent" />
-            </div>
-
-            <div className="grid gap-4 lg:grid-cols-2">
-              <div className="ds-card border-rose-500/15 bg-rose-500/[0.04] p-6 sm:p-7">
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-rose-400/20 bg-rose-500/10 px-3 py-1.5 text-sm font-semibold text-rose-200">
-                  <span className="inline-flex h-2.5 w-2.5 rounded-full bg-rose-400" />
-                  Problemas actuales del negocio
-                </div>
-
-                <div className="space-y-4">
-                  {[
-                    {
-                      icon: "‚úï",
-                      title: "Consultas que se enfr√≠an",
-                      text: "La persona escribe, espera y termina compr√°ndole a quien responde primero.",
-                    },
-                    {
-                      icon: "‚úï",
-                      title: "Tiempo perdido repitiendo lo mismo",
-                      text: "Precios, horarios, ubicaci√≥n y disponibilidad una y otra vez por WhatsApp.",
-                    },
-                    {
-                      icon: "‚úï",
-                      title: "Seguimiento manual y desordenado",
-                      text: "Chats olvidados, turnos sin confirmar y ventas que se caen antes de cerrar.",
-                    },
-                  ].map((item) => (
-                    <article key={item.title} className="flex gap-4 rounded-2xl border border-white/5 bg-black/20 p-4">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-rose-400/20 bg-rose-500/10 text-sm font-black text-rose-200">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <h3 className="text-base font-bold">{item.title}</h3>
-                        <p className="mt-1 text-sm leading-6 text-white/60">{item.text}</p>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </div>
-
-              <div className={`ds-card ${homeTheme.accentBorder} bg-white/[0.04] p-6 sm:p-7`}>
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1.5 text-sm font-semibold text-emerald-200">
-                  <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
-                  Resultados con automatizaci√≥n
-                </div>
-
-                <div className="space-y-4">
-                  {[
-                    {
-                      icon: "‚úì",
-                      title: "Respuestas inmediatas",
-                      text: "Cada consulta recibe atenci√≥n al instante, incluso fuera de horario.",
-                    },
-                    {
-                      icon: "‚úì",
-                      title: "Agenda y presupuestos autom√°ticos",
-                      text: "El sistema responde, propone turnos y env√≠a presupuestos sin fricci√≥n.",
-                    },
-                    {
-                      icon: "‚úì",
-                      title: "Seguimiento que no se olvida",
-                      text: "Recordatorios y seguimiento para cerrar m√°s citas con menos esfuerzo.",
-                    },
-                  ].map((item) => (
-                    <article key={item.title} className="flex gap-4 rounded-2xl border border-white/5 bg-black/20 p-4">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-500/10 text-sm font-black text-emerald-200">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <h3 className="text-base font-bold">{item.title}</h3>
-                        <p className="mt-1 text-sm leading-6 text-white/60">{item.text}</p>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="border-t border-white/5 bg-[#090909]">
-          <div className="container py-20 sm:py-24">
-            <div className="mb-10 max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
-                Testimonios
-              </p>
-              <h2 className="font-heading mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-                Casos reales de automatizaci√≥n que liberan tiempo y venden m√°s
-              </h2>
-              <div className="mt-5 h-px w-24 bg-gradient-to-r from-cyan-400/60 to-transparent" />
-            </div>
-
-            <div className="grid gap-4 lg:grid-cols-3">
-              {[
-                {
-                  name: "Dra. Luc√≠a Ferreyra",
-                  role: "Odont√≥loga",
-                  problem: "Respond√≠a consultas manualmente despu√©s de cada turno y perd√≠a pacientes por demora.",
-                  result: "Con la automatizaci√≥n, los mensajes entran, se responden y los turnos quedan preconfirmados sin perseguir cada chat.",
-                  initials: "LF",
-                  accent: "from-cyan-500/20 to-sky-500/10",
-                },
-                {
-                  name: "Mart√≠n Rivas",
-                  role: "Nutricionista",
-                  problem: "Gastaba demasiado tiempo repitiendo horarios, precios y seguimiento de controles por WhatsApp.",
-                  result: "Ahora recibe consultas, agenda controles y env√≠a recordatorios autom√°ticos sin tener que responder lo mismo todo el d√≠a.",
-                  initials: "MR",
-                  accent: "from-emerald-500/20 to-green-500/10",
-                },
-                {
-                  name: "Sof√≠a Castro",
-                  role: "Centro de est√©tica",
-                  problem: "Las reservas y reprogramaciones se le mezclaban con mensajes de inter√©s que se enfriaban r√°pido.",
-                  result: "Con el flujo automatizado, cada consulta recibe respuesta inmediata y los turnos quedan m√°s ordenados y confirmados.",
-                  initials: "SC",
-                  accent: "from-pink-500/20 to-rose-500/10",
-                },
-              ].map((item) => (
-                <article
-                  key={item.name}
-                  className="ds-card p-6 sm:p-7"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br ${item.accent} text-sm font-black text-white/80`}>
-                      {item.initials}
-                    </div>
-                    <div className="min-w-0">
-                      <h3 className="text-lg font-bold tracking-tight">{item.name}</h3>
-                      <p className="text-sm text-emerald-200/80">{item.role}</p>
-                    </div>
-                  </div>
-
-                  <div className="mt-5 space-y-4">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35">
-                        Problema
-                      </p>
-                      <p className="mt-1 text-sm leading-7 text-white/60">{item.problem}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35">
-                        Resultado obtenido
-                      </p>
-                      <p className="mt-1 text-sm leading-7 text-white/60">{item.result}</p>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="como-funciona" className="border-t border-white/5 bg-[#0a0a0a]">
-          <div className="container py-20 sm:py-24">
-            <div className="mb-10 max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
-                C√≥mo funciona
-              </p>
-              <h2 className="font-heading mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-                Un proceso simple para automatizar sin incertidumbre
-              </h2>
-              <div className="mt-5 h-px w-24 bg-gradient-to-r from-cyan-400/60 to-transparent" />
-            </div>
-
-            <div className="grid gap-4 lg:grid-cols-4">
-              {[
-                {
-                  step: "01",
-                  icon: "?",
-                  title: "Diagn√≥stico",
-                  description: "Revisamos tu flujo actual y detectamos d√≥nde se pierden consultas y turnos.",
-                },
-                {
-                  step: "02",
-                  icon: "‚öô",
-                  title: "Configuraci√≥n",
-                  description: "Armamos mensajes, reglas y conexiones seg√∫n tu negocio.",
-                },
-                {
-                  step: "03",
-                  icon: "‚ö°",
-                  title: "Automatizaci√≥n",
-                  description: "El asistente responde, agenda y hace seguimiento por WhatsApp.",
-                },
-                {
-                  step: "04",
-                  icon: "‚Üí",
-                  title: "Puesta en marcha",
-                  description: "Lo dejamos funcionando y listo para recibir consultas reales.",
-                },
-              ].map((item) => (
-                <article
-                  key={item.step}
-                  className="relative ds-card p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] sm:p-7"
-                >
-                  {item.step !== "04" ? (
-                    <div className="absolute right-[-0.75rem] top-10 hidden h-px w-4 bg-gradient-to-r from-emerald-400/60 to-transparent lg:block" />
-                  ) : null}
-                  <div className="mb-6 flex items-center gap-3">
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-500/10 text-sm font-bold text-emerald-200 shadow-[0_0_24px_-12px_rgba(52,211,153,0.8)]">
-                      {item.icon}
-                    </div>
-                    <div className="h-px flex-1 bg-white/10" />
-                    <span className="text-xs font-semibold tracking-[0.2em] text-white/35">
-                      {item.step}
-                    </span>
-                  </div>
-                  <div className="mb-5 h-px w-full bg-white/5 lg:hidden" />
-                  <h3 className="text-xl font-bold tracking-tight">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-white/60">
-                    {item.description}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <footer className="border-t border-white/5 bg-[#05070d]">
-          <div className="container py-16 sm:py-20">
-            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.95fr_0.95fr_0.95fr]">
-              <div className="space-y-4">
-                <div className="inline-flex items-center gap-3">
-                  <div className="relative grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 shadow-[0_0_30px_-18px_rgba(16,185,129,0.8)]">
-                    <span className="text-[10px] font-black tracking-[0.16em] text-white">WA</span>
-                  </div>
-                  <div className="leading-none">
-                    <span className="font-heading text-lg font-extrabold tracking-tight text-white">
-                      WebAppImpulsor
-                    </span>
-                    <span className="mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.18em] text-white/45">
-                      Automatizaci√≥n con IA
-                    </span>
-                  </div>
-                </div>
-                <p className="max-w-sm text-sm leading-7 text-white/55">
-                  Automatizaci√≥n de WhatsApp, IA para negocios, landing pages e integraciones para profesionales y servicios.
-                </p>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
-                  Contacto
-                </p>
-                <div className="mt-4 space-y-3 text-sm text-white/70">
-                  <a href="#contacto" className="block transition hover:text-white">Solicitar diagn√≥stico</a>
-                  <a href="https://wa.me/541166448389" className="block transition hover:text-white">WhatsApp</a>
-                  <a href="mailto:hola@webappimpulsor.com.ar" className="block transition hover:text-white">hola@webappimpulsor.com.ar</a>
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
-                  Servicios
-                </p>
-                <div className="mt-4 space-y-3 text-sm text-white/70">
-                  <a href="#contacto" className="block transition hover:text-white">Automatizaci√≥n de WhatsApp</a>
-                  <a href="#contacto" className="block transition hover:text-white">IA para negocios</a>
-                  <a href="#contacto" className="block transition hover:text-white">Landing pages</a>
-                  <a href="#contacto" className="block transition hover:text-white">Integraciones</a>
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
-                  Casos de uso
-                </p>
-                <div className="mt-4 space-y-3 text-sm text-white/70">
-                  <a href="/odontologos" className="block transition hover:text-white">Odont√≥logos</a>
-                  <a href="/medicos" className="block transition hover:text-white">M√©dicos</a>
-                  <a href="/fonoaudiologos" className="block transition hover:text-white">Fonoaudi√≥logos</a>
-                  <a href="/inmobiliarias" className="block transition hover:text-white">Inmobiliarias</a>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-12 grid gap-4 border-t border-white/5 pt-6 sm:grid-cols-[1fr_auto] sm:items-center">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
-                  Redes
-                </p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <a href="https://wa.me/541166448389" className="ds-badge">WhatsApp</a>
-                  <a href="mailto:hola@webappimpulsor.com.ar" className="ds-badge">Email</a>
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
-                  Informaci√≥n legal
-                </p>
-                <div className="mt-3 flex flex-wrap gap-4 text-sm text-white/55">
-                  <span>Privacidad</span>
-                  <span>T√©rminos</span>
-                  <span>Datos de contacto</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
       </main>
     </>
   );
