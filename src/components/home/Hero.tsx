@@ -11,26 +11,31 @@ type HeroProps = {
 export function Hero({ messages, webhookUrl }: HeroProps) {
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.18),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(34,197,94,0.14),transparent_30%),radial-gradient(circle_at_left,rgba(14,165,233,0.08),transparent_28%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.25),rgba(2,6,23,0.55))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.18),transparent_28%),radial-gradient(circle_at_top_right,rgba(14,165,233,0.1),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(34,197,94,0.14),transparent_30%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.14),rgba(2,6,23,0.62))]" />
 
       <div className="container relative z-10 flex min-h-[calc(100vh-5rem)] items-center py-16 sm:py-20">
-        <div className="grid w-full gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+        <div className="grid w-full gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="space-y-8 pt-2"
+            className="space-y-8 pt-2 lg:pr-8"
           >
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-300/15 bg-emerald-500/10 px-4 py-2 text-[11px] font-semibold tracking-[0.22em] text-emerald-200 uppercase shadow-[0_0_0_1px_rgba(16,185,129,0.04)]">
-              MVP de automatización de WhatsApp
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-300/15 bg-emerald-500/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-200 shadow-[0_0_0_1px_rgba(16,185,129,0.04)]">
+                MVP de automatización de WhatsApp
+              </div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/60">
+                Para profesionales y negocios de servicios
+              </div>
             </div>
 
             <div className="space-y-6">
               <h1 className="font-heading max-w-3xl text-balance text-5xl font-black leading-[0.95] tracking-[-0.05em] sm:text-6xl lg:text-[4.6rem]">
                 Automatizá WhatsApp y conseguí más clientes sin trabajar más horas
               </h1>
-              <p className="max-w-2xl text-lg leading-8 text-white/68 sm:text-xl">
+              <p className="max-w-2xl text-lg leading-8 text-white/72 sm:text-xl">
                 Implementamos asistentes automáticos para profesionales y negocios de servicios que responden consultas, gestionan turnos y hacen seguimiento de clientes 24/7.
               </p>
             </div>
@@ -69,6 +74,21 @@ export function Hero({ messages, webhookUrl }: HeroProps) {
                 Turnos, presupuestos y seguimiento
               </div>
             </div>
+
+            <div className="grid gap-3 sm:grid-cols-3">
+              {[
+                { label: "Respuesta", value: "< 10 s" },
+                { label: "Conversión", value: "+ leads" },
+                { label: "Cobertura", value: "24/7" },
+              ].map((item) => (
+                <div key={item.label} className="rounded-[1.35rem] border border-white/10 bg-white/[0.04] p-4">
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">
+                    {item.label}
+                  </div>
+                  <div className="mt-2 text-lg font-bold text-white">{item.value}</div>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           <motion.div
@@ -77,6 +97,25 @@ export function Hero({ messages, webhookUrl }: HeroProps) {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.08 }}
             className="relative lg:sticky lg:top-8"
           >
+            <div className="mb-5 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] shadow-[0_24px_80px_-36px_rgba(0,0,0,0.55)]">
+              <img
+                src="/images/professional-woman.jpg"
+                alt="Profesional atendiendo mientras usa WhatsApp"
+                width={1200}
+                height={800}
+                loading="lazy"
+                className="h-44 w-full object-cover sm:h-52"
+              />
+              <div className="border-t border-white/5 p-4">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">
+                  Atención asistida
+                </p>
+                <p className="mt-2 text-sm leading-6 text-white/70">
+                  Más orden, menos tiempos muertos y una experiencia visual más premium.
+                </p>
+              </div>
+            </div>
+
             <WhatsAppDemo
               title="WebAppImpulsor"
               subtitle="en línea · respuesta automática"

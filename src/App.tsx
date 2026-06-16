@@ -1,4 +1,4 @@
-/* eslint-disable react-refresh/only-export-components */
+Ôªø/* eslint-disable react-refresh/only-export-components */
 import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
 import type { RouteRecord } from "vite-react-ssg";
@@ -18,23 +18,23 @@ const heroWhatsAppMessages: WhatsAppDemoMessage[] = [
   },
   {
     from: "bot",
-    text: "SÌ, claro. Automatizamos respuestas, presupuestos y turnos para que no pierdas consultas.",
+    text: "S√≠, claro. Automatizamos respuestas, presupuestos y turnos para que no pierdas consultas.",
     delay: 1900,
   },
   {
     from: "bot",
-    text: "Tengo disponibles martes, miÈrcoles y viernes. øCu·l te queda mejor?",
+    text: "Tengo disponibles martes, mi√©rcoles y viernes. ¬øCu√°l te queda mejor?",
     delay: 1700,
-    options: ["MiÈrcoles 14:30", "Viernes 18:00"],
+    options: ["Mi√©rcoles 14:30", "Viernes 18:00"],
   },
   {
     from: "user",
-    text: "Perfecto, el miÈrcoles me sirve.",
+    text: "Perfecto, el mi√©rcoles me sirve.",
     delay: 1500,
   },
   {
     from: "bot",
-    text: "Listo. Ya quedÛ reservado y te enviamos recordatorio autom·tico.",
+    text: "Listo. Ya qued√≥ reservado y te enviamos recordatorio autom√°tico.",
     delay: 2000,
   },
 ];
@@ -121,19 +121,19 @@ const nicheData: Record<
   }
 > = {
   odontologos: {
-    title: "AutomatizaciÛn de WhatsApp para odontÛlogos en Argentina",
-    description: "RespondÈ consultas, coordin· turnos y envi· recordatorios con un asistente de WhatsApp diseÒado para consultorios odontolÛgicos y clÌnicas dentales en Argentina.",
-    problem: "Las consultas por WhatsApp suelen llegar entre tratamientos, llamadas y pacientes en sala. Si nadie responde a tiempo, el interÈs se enfrÌa y el turno se pierde.",
+    title: "Automatizaci√≥n de WhatsApp para odont√≥logos en Argentina",
+    description: "Respond√© consultas, coordin√° turnos y envi√° recordatorios con un asistente de WhatsApp dise√±ado para consultorios odontol√≥gicos y cl√≠nicas dentales en Argentina.",
+    problem: "Las consultas por WhatsApp suelen llegar entre tratamientos, llamadas y pacientes en sala. Si nadie responde a tiempo, el inter√©s se enfr√≠a y el turno se pierde.",
     benefits: [
-      "Respuestas autom·ticas para primeras consultas, urgencias y derivaciones.",
-      "ConfirmaciÛn de turnos y recordatorios autom·ticos antes de la cita.",
-      "Menos tiempo respondiendo precios, cobertura, direcciÛn y horarios.",
+      "Respuestas autom√°ticas para primeras consultas, urgencias y derivaciones.",
+      "Confirmaci√≥n de turnos y recordatorios autom√°ticos antes de la cita.",
+      "Menos tiempo respondiendo precios, cobertura, direcci√≥n y horarios.",
     ],
     conversation: {
-      client: "Hola, øtienen turno para una limpieza dental esta semana?",
-      assistant: "SÌ, claro. Te paso los horarios disponibles y te dejo el que mejor encaje con tu agenda.",
-      followUp: "Te quedÛ confirmado el jueves a las 16:00. TambiÈn te llega un recordatorio autom·tico.",
-      close: "Perfecto, asÌ no tengo que estar pendiente del chat.",
+      client: "Hola, ¬øtienen turno para una limpieza dental esta semana?",
+      assistant: "S√≠, claro. Te paso los horarios disponibles y te dejo el que mejor encaje con tu agenda.",
+      followUp: "Te qued√≥ confirmado el jueves a las 16:00. Tambi√©n te llega un recordatorio autom√°tico.",
+      close: "Perfecto, as√≠ no tengo que estar pendiente del chat.",
     },
     theme: {
       pageBg: "bg-[#06111b]",
@@ -156,37 +156,37 @@ const nicheData: Record<
       ctaPanel: "bg-[linear-gradient(180deg,rgba(14,165,233,0.09),rgba(255,255,255,0.02))]",
       badgeText: "Consultorios dentales",
       image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "OdontÛloga atendiendo una consulta mientras responde WhatsApp en un consultorio moderno",
-      imageCaption: "Una experiencia premium para ordenar consultas, transmitir confianza y reducir fricciÛn.",
+      imageAlt: "Odont√≥loga atendiendo una consulta mientras responde WhatsApp en un consultorio moderno",
+      imageCaption: "Una experiencia premium para ordenar consultas, transmitir confianza y reducir fricci√≥n.",
     },
     showcase: {
-      eyebrow: "RecepciÛn premium",
-      title: "Una clÌnica que ordena la atenciÛn con una experiencia m·s cuidada y premium",
+      eyebrow: "Recepci√≥n premium",
+      title: "Una cl√≠nica que ordena la atenci√≥n con una experiencia m√°s cuidada y premium",
       description:
-        "Pensado para consultorios que quieren transmitir m·s calidad visual, menos fricciÛn y una atenciÛn m·s precisa desde el primer contacto.",
+        "Pensado para consultorios que quieren transmitir m√°s calidad visual, menos fricci√≥n y una atenci√≥n m√°s precisa desde el primer contacto.",
       bullets: [
-        "Consulta inicial con respuesta r·pida",
+        "Consulta inicial con respuesta r√°pida",
         "Turnos confirmados y mejor seguimiento",
-        "M·s orden sin perder cercanÌa",
+        "M√°s orden sin perder cercan√≠a",
       ],
       image: "https://images.unsplash.com/photo-1629909615191-09a4b6c1b78b?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Consultorio odontolÛgico moderno con recepciÛn digital",
-      caption: "Una referencia premium para reforzar confianza, precisiÛn y calma.",
+      imageAlt: "Consultorio odontol√≥gico moderno con recepci√≥n digital",
+      caption: "Una referencia premium para reforzar confianza, precisi√≥n y calma.",
     },
   },
   medicos: {
-    title: "AutomatizaciÛn de WhatsApp para mÈdicos y consultorios en Argentina",
-    description: "Centraliz· consultas, turnos y seguimientos con un asistente autom·tico pensado para pacientes y consultorios mÈdicos.",
-    problem: "La recepciÛn atiende llamados, WhatsApp y agenda al mismo tiempo; cuando todo entra junto, las respuestas tardan y se pierden consultas valiosas.",
+    title: "Automatizaci√≥n de WhatsApp para m√©dicos y consultorios en Argentina",
+    description: "Centraliz√° consultas, turnos y seguimientos con un asistente autom√°tico pensado para pacientes y consultorios m√©dicos.",
+    problem: "La recepci√≥n atiende llamados, WhatsApp y agenda al mismo tiempo; cuando todo entra junto, las respuestas tardan y se pierden consultas valiosas.",
     benefits: [
-      "Filtro inicial de consultas y derivaciÛn autom·tica.",
+      "Filtro inicial de consultas y derivaci√≥n autom√°tica.",
       "Agenda ordenada con turnos confirmados.",
       "Seguimiento y recordatorios sin carga manual.",
     ],
     conversation: {
-      client: "Buen dÌa, øatienden por obra social y tienen turno esta semana?",
-      assistant: "SÌ, te ayudo con la consulta y te comparto los turnos disponibles.",
-      followUp: "Te quedÛ reservado el martes a las 11:00 y te llega recordatorio antes del turno.",
+      client: "Buen d√≠a, ¬øatienden por obra social y tienen turno esta semana?",
+      assistant: "S√≠, te ayudo con la consulta y te comparto los turnos disponibles.",
+      followUp: "Te qued√≥ reservado el martes a las 11:00 y te llega recordatorio antes del turno.",
       close: "Excelente, me evita estar llamando varias veces.",
     },
     theme: {
@@ -208,40 +208,40 @@ const nicheData: Record<
       ctaFrom: "from-indigo-500",
       ctaTo: "to-violet-500",
       ctaPanel: "bg-[linear-gradient(180deg,rgba(99,102,241,0.09),rgba(255,255,255,0.02))]",
-      badgeText: "Consultorios mÈdicos",
+      badgeText: "Consultorios m√©dicos",
       image: "https://images.unsplash.com/photo-1579684453423-f84349ef60b8?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "MÈdica revisando una historia clÌnica digital en consultorio",
-      imageCaption: "Un estilo clÌnico y editorial para transmitir claridad, precisiÛn y profesionalismo.",
+      imageAlt: "M√©dica revisando una historia cl√≠nica digital en consultorio",
+      imageCaption: "Un estilo cl√≠nico y editorial para transmitir claridad, precisi√≥n y profesionalismo.",
     },
     showcase: {
-      eyebrow: "Intake clÌnico",
-      title: "Una recepciÛn m·s ordenada para consultas, estudios y turnos",
+      eyebrow: "Intake cl√≠nico",
+      title: "Una recepci√≥n m√°s ordenada para consultas, estudios y turnos",
       description:
-        "Pensado para consultorios mÈdicos donde conviven llamados, derivaciones y pacientes que necesitan respuestas claras sin fricciÛn.",
+        "Pensado para consultorios m√©dicos donde conviven llamados, derivaciones y pacientes que necesitan respuestas claras sin fricci√≥n.",
       bullets: [
-        "ClasificaciÛn de motivo de consulta",
-        "DerivaciÛn seg˙n especialidad",
-        "ConfirmaciÛn y recordatorio de turno",
+        "Clasificaci√≥n de motivo de consulta",
+        "Derivaci√≥n seg√∫n especialidad",
+        "Confirmaci√≥n y recordatorio de turno",
       ],
       image: "https://images.unsplash.com/photo-1586773860416-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Equipo mÈdico revisando una agenda de pacientes en una sala luminosa",
-      caption: "M·s sobrio, m·s clÌnico y con foco en continuidad de atenciÛn.",
+      imageAlt: "Equipo m√©dico revisando una agenda de pacientes en una sala luminosa",
+      caption: "M√°s sobrio, m√°s cl√≠nico y con foco en continuidad de atenci√≥n.",
     },
   },
   fonoaudiologos: {
-    title: "AutomatizaciÛn de WhatsApp para fonoaudiÛlogos en Argentina",
-    description: "RespondÈ consultas frecuentes, coordin· sesiones y simplific· el seguimiento con automatizaciÛn para consultorios de fonoaudiologÌa.",
-    problem: "Se repiten consultas sobre horarios, modalidad, duraciÛn y cambios de turno, y eso termina consumiendo tiempo todos los dÌas en el consultorio.",
+    title: "Automatizaci√≥n de WhatsApp para fonoaudi√≥logos en Argentina",
+    description: "Respond√© consultas frecuentes, coordin√° sesiones y simplific√° el seguimiento con automatizaci√≥n para consultorios de fonoaudiolog√≠a.",
+    problem: "Se repiten consultas sobre horarios, modalidad, duraci√≥n y cambios de turno, y eso termina consumiendo tiempo todos los d√≠as en el consultorio.",
     benefits: [
-      "Respuestas autom·ticas sobre modalidad y disponibilidad.",
-      "GestiÛn simple de turnos y reprogramaciones.",
-      "Seguimiento m·s ordenado con menos chats pendientes.",
+      "Respuestas autom√°ticas sobre modalidad y disponibilidad.",
+      "Gesti√≥n simple de turnos y reprogramaciones.",
+      "Seguimiento m√°s ordenado con menos chats pendientes.",
     ],
     conversation: {
-      client: "Hola, querÌa saber si hacen atenciÛn infantil y cÛmo son los turnos.",
-      assistant: "SÌ, te comparto cÛmo trabajamos, edades de atenciÛn y los horarios disponibles.",
-      followUp: "Perfecto, te agendo el miÈrcoles a las 10:00 y te llega la confirmaciÛn por WhatsApp.",
-      close: "Genial, asÌ no tengo que insistir por respuesta.",
+      client: "Hola, quer√≠a saber si hacen atenci√≥n infantil y c√≥mo son los turnos.",
+      assistant: "S√≠, te comparto c√≥mo trabajamos, edades de atenci√≥n y los horarios disponibles.",
+      followUp: "Perfecto, te agendo el mi√©rcoles a las 10:00 y te llega la confirmaci√≥n por WhatsApp.",
+      close: "Genial, as√≠ no tengo que insistir por respuesta.",
     },
     theme: {
       pageBg: "bg-[#05130f]",
@@ -262,10 +262,10 @@ const nicheData: Record<
       ctaFrom: "from-emerald-500",
       ctaTo: "to-lime-500",
       ctaPanel: "bg-[linear-gradient(180deg,rgba(52,211,153,0.09),rgba(255,255,255,0.02))]",
-      badgeText: "Consultorios de fonoaudiologÌa",
+      badgeText: "Consultorios de fonoaudiolog√≠a",
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Profesional de fonoaudiologÌa trabajando con un paciente",
-      imageCaption: "Un diseÒo m·s calmo y cercano, pensado para acompaÒar familias y procesos de seguimiento.",
+      imageAlt: "Profesional de fonoaudiolog√≠a trabajando con un paciente",
+      imageCaption: "Un dise√±o m√°s calmo y cercano, pensado para acompa√±ar familias y procesos de seguimiento.",
     },
     showcase: {
       eyebrow: "Sesiones y seguimiento",
@@ -273,29 +273,29 @@ const nicheData: Record<
       description:
         "Para profesionales que coordinan sesiones, reprogramaciones y seguimiento con familias y pacientes sin perder tiempo en chats repetidos.",
       bullets: [
-        "Horarios, modalidad y edades de atenciÛn",
-        "Cambios de turno sin fricciÛn",
-        "Recordatorios autom·ticos a familias",
+        "Horarios, modalidad y edades de atenci√≥n",
+        "Cambios de turno sin fricci√≥n",
+        "Recordatorios autom√°ticos a familias",
       ],
       image: "https://images.unsplash.com/photo-1519542537078-4f7b7e1b8b6a?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "SesiÛn de fonoaudiologÌa en consultorio c·lido y minimalista",
-      caption: "Un estilo m·s amable y minimalista para una atenciÛn cercana.",
+      imageAlt: "Sesi√≥n de fonoaudiolog√≠a en consultorio c√°lido y minimalista",
+      caption: "Un estilo m√°s amable y minimalista para una atenci√≥n cercana.",
     },
   },
   abogados: {
-    title: "AutomatizaciÛn de WhatsApp para abogados en Argentina",
-    description: "Filtr· consultas, orden· casos y hacÈ seguimiento inicial sin perder tiempo en mensajes repetidos para estudios jurÌdicos y abogados particulares.",
+    title: "Automatizaci√≥n de WhatsApp para abogados en Argentina",
+    description: "Filtr√° consultas, orden√° casos y hac√© seguimiento inicial sin perder tiempo en mensajes repetidos para estudios jur√≠dicos y abogados particulares.",
     problem: "Llegan consultas legales que necesitan una primera respuesta clara; si se demoran, el posible cliente sigue buscando otro estudio.",
     benefits: [
-      "Primer contacto profesional y autom·tico.",
+      "Primer contacto profesional y autom√°tico.",
       "Captura de consultas desde una landing de servicios legales.",
       "Seguimiento de prospectos sin perder oportunidades.",
     ],
     conversation: {
-      client: "Hola, necesito asesoramiento por un alquiler, øpuedo coordinar una consulta?",
-      assistant: "SÌ, claro. Te comparto disponibilidad y te explico cÛmo es la primera entrevista.",
-      followUp: "Te reservÈ un turno para maÒana a las 17:00 y te envÌo la confirmaciÛn.",
-      close: "Perfecto, asÌ no pierdo tiempo escribiendo varias veces.",
+      client: "Hola, necesito asesoramiento por un alquiler, ¬øpuedo coordinar una consulta?",
+      assistant: "S√≠, claro. Te comparto disponibilidad y te explico c√≥mo es la primera entrevista.",
+      followUp: "Te reserv√© un turno para ma√±ana a las 17:00 y te env√≠o la confirmaci√≥n.",
+      close: "Perfecto, as√≠ no pierdo tiempo escribiendo varias veces.",
     },
     theme: {
       pageBg: "bg-[#080604]",
@@ -316,40 +316,40 @@ const nicheData: Record<
       ctaFrom: "from-amber-500",
       ctaTo: "to-orange-500",
       ctaPanel: "bg-[linear-gradient(180deg,rgba(245,158,11,0.09),rgba(255,255,255,0.02))]",
-      badgeText: "Estudios jurÌdicos",
+      badgeText: "Estudios jur√≠dicos",
       image: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Abogada en un estudio jurÌdico con documentos y notebook",
-      imageCaption: "Una estÈtica formal, editorial y m·s cercana al universo jurÌdico.",
+      imageAlt: "Abogada en un estudio jur√≠dico con documentos y notebook",
+      imageCaption: "Una est√©tica formal, editorial y m√°s cercana al universo jur√≠dico.",
     },
     showcase: {
       eyebrow: "Dossier inicial",
-      title: "Una puerta de entrada m·s seria para consultas legales",
+      title: "Una puerta de entrada m√°s seria para consultas legales",
       description:
-        "Pensado para estudios que necesitan filtrar casos, ordenar urgencias y sostener una primera impresiÛn de confianza desde el minuto uno.",
+        "Pensado para estudios que necesitan filtrar casos, ordenar urgencias y sostener una primera impresi√≥n de confianza desde el minuto uno.",
       bullets: [
         "Primer filtro por tipo de caso",
         "Toma de datos inicial ordenada",
         "Agenda de entrevista y seguimiento",
       ],
       image: "https://images.unsplash.com/photo-1569525365647-5d6e1b4d3cc8?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Estudio jurÌdico con biblioteca, expediente y luz c·lida",
-      caption: "M·s sobrio, m·s cl·sico y con presencia de estudio profesional.",
+      imageAlt: "Estudio jur√≠dico con biblioteca, expediente y luz c√°lida",
+      caption: "M√°s sobrio, m√°s cl√°sico y con presencia de estudio profesional.",
     },
   },
   inmobiliarias: {
-    title: "AutomatizaciÛn de WhatsApp para inmobiliarias en Argentina",
-    description: "RespondÈ consultas de propiedades, agend· visitas y seguÌ leads sin perder velocidad de respuesta en inmobiliarias argentinas.",
-    problem: "Las consultas llegan por muchos canales y, si no se responde r·pido, el interesado sigue mirando otras opciones.",
+    title: "Automatizaci√≥n de WhatsApp para inmobiliarias en Argentina",
+    description: "Respond√© consultas de propiedades, agend√° visitas y segu√≠ leads sin perder velocidad de respuesta en inmobiliarias argentinas.",
+    problem: "Las consultas llegan por muchos canales y, si no se responde r√°pido, el interesado sigue mirando otras opciones.",
     benefits: [
-      "Respuestas autom·ticas para propiedades y zonas.",
+      "Respuestas autom√°ticas para propiedades y zonas.",
       "Agendado de visitas y seguimiento de interesados.",
-      "M·s consultas atendidas sin aumentar equipo.",
+      "M√°s consultas atendidas sin aumentar equipo.",
     ],
     conversation: {
-      client: "Hola, vi un depto en Palermo. øSigue disponible?",
-      assistant: "SÌ, sigue disponible. Te comparto detalles y puedo agendarte visita.",
-      followUp: "Listo, te agendÈ para el s·bado a las 12:00 y te llega la confirmaciÛn.",
-      close: "Genial, me resolviÛ todo por WhatsApp.",
+      client: "Hola, vi un depto en Palermo. ¬øSigue disponible?",
+      assistant: "S√≠, sigue disponible. Te comparto detalles y puedo agendarte visita.",
+      followUp: "Listo, te agend√© para el s√°bado a las 12:00 y te llega la confirmaci√≥n.",
+      close: "Genial, me resolvi√≥ todo por WhatsApp.",
     },
     theme: {
       pageBg: "bg-[#11050b]",
@@ -373,37 +373,37 @@ const nicheData: Record<
       badgeText: "Inmobiliarias",
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Asesor inmobiliario mostrando una propiedad a un cliente",
-      imageCaption: "M·s energÌa comercial, m·s visitas coordinadas y menos leads frÌos.",
+      imageCaption: "M√°s energ√≠a comercial, m√°s visitas coordinadas y menos leads fr√≠os.",
     },
     showcase: {
       eyebrow: "Leads y visitas",
-      title: "Consultas que no se enfrÌan y visitas que quedan agendadas",
+      title: "Consultas que no se enfr√≠an y visitas que quedan agendadas",
       description:
         "Pensado para equipos comerciales que responden varios canales y necesitan velocidad sin perder contexto.",
       bullets: [
         "Disponibilidad de propiedades",
-        "CoordinaciÛn de visitas",
+        "Coordinaci√≥n de visitas",
         "Seguimiento de interesados",
       ],
       image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "ReuniÛn inmobiliaria con una pareja interesada en una propiedad",
-      caption: "Un look m·s vibrante para una experiencia comercial ·gil.",
+      imageAlt: "Reuni√≥n inmobiliaria con una pareja interesada en una propiedad",
+      caption: "Un look m√°s vibrante para una experiencia comercial √°gil.",
     },
   },
   nutricionistas: {
-    title: "AutomatizaciÛn de WhatsApp para nutricionistas en Argentina",
-    description: "RespondÈ consultas, coordin· primeras entrevistas y acompaÒ· seguimientos con una experiencia digital m·s c·lida y ordenada.",
-    problem: "Las consultas de nutriciÛn suelen llegar con preguntas sobre planes, horarios, modalidad y seguimiento; si se demora la respuesta, baja el interÈs.",
+    title: "Automatizaci√≥n de WhatsApp para nutricionistas en Argentina",
+    description: "Respond√© consultas, coordin√° primeras entrevistas y acompa√±√° seguimientos con una experiencia digital m√°s c√°lida y ordenada.",
+    problem: "Las consultas de nutrici√≥n suelen llegar con preguntas sobre planes, horarios, modalidad y seguimiento; si se demora la respuesta, baja el inter√©s.",
     benefits: [
-      "Primer contacto amable y r·pido.",
+      "Primer contacto amable y r√°pido.",
       "Agenda simple para entrevistas y controles.",
-      "Seguimiento autom·tico entre consultas.",
+      "Seguimiento autom√°tico entre consultas.",
     ],
     conversation: {
-      client: "Hola, querÌa saber cÛmo trabajan las primeras consultas y si hacen seguimiento.",
-      assistant: "SÌ, claro. Te explico cÛmo es la primera entrevista y te comparto los horarios disponibles.",
-      followUp: "Listo, te reservÈ el jueves a las 18:00 y te llega un recordatorio antes del turno.",
-      close: "Perfecto, asÌ puedo ordenarme mejor sin escribir varias veces.",
+      client: "Hola, quer√≠a saber c√≥mo trabajan las primeras consultas y si hacen seguimiento.",
+      assistant: "S√≠, claro. Te explico c√≥mo es la primera entrevista y te comparto los horarios disponibles.",
+      followUp: "Listo, te reserv√© el jueves a las 18:00 y te llega un recordatorio antes del turno.",
+      close: "Perfecto, as√≠ puedo ordenarme mejor sin escribir varias veces.",
     },
     theme: {
       pageBg: "bg-[#07110d]",
@@ -427,21 +427,21 @@ const nicheData: Record<
       badgeText: "Nutricionistas",
       image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Nutricionista trabajando con una paciente en consultorio luminoso",
-      imageCaption: "Una estÈtica m·s c·lida y editorial para un servicio cercano.",
+      imageCaption: "Una est√©tica m√°s c√°lida y editorial para un servicio cercano.",
     },
     showcase: {
-      eyebrow: "Seguimiento y h·bitos",
-      title: "Una experiencia m·s c·lida para acompaÒar cada proceso",
+      eyebrow: "Seguimiento y h√°bitos",
+      title: "Una experiencia m√°s c√°lida para acompa√±ar cada proceso",
       description:
-        "La propuesta visual busca transmitir bienestar, claridad y un trato m·s humano, ideal para nutriciÛn y acompaÒamiento.",
+        "La propuesta visual busca transmitir bienestar, claridad y un trato m√°s humano, ideal para nutrici√≥n y acompa√±amiento.",
       bullets: [
         "Primera entrevista guiada",
         "Recordatorios de seguimiento",
-        "Orden para h·bitos y controles",
+        "Orden para h√°bitos y controles",
       ],
       image: "https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Profesional de nutriciÛn revisando una planificaciÛn junto a una paciente",
-      caption: "M·s suave, m·s cercana y pensada para el largo plazo.",
+      imageAlt: "Profesional de nutrici√≥n revisando una planificaci√≥n junto a una paciente",
+      caption: "M√°s suave, m√°s cercana y pensada para el largo plazo.",
     },
   },
 };
@@ -465,7 +465,7 @@ const defaultNicheTheme: NicheTheme = {
   ctaFrom: "from-emerald-500",
   ctaTo: "to-green-500",
   ctaPanel: "bg-[linear-gradient(180deg,rgba(16,185,129,0.08),rgba(255,255,255,0.02))]",
-  badgeText: "AutomatizaciÛn de WhatsApp",
+  badgeText: "Automatizaci√≥n de WhatsApp",
   image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
   imageAlt: "Consultorio moderno",
   imageCaption: "Una consulta clara, un turno confirmado y menos mensajes manuales.",
@@ -493,7 +493,7 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                 className={`text-center ${heroReverse ? "lg:order-2 lg:text-left" : "lg:text-left"}`}
               >
                 <p className={`text-sm font-semibold uppercase tracking-[0.22em] ${theme.accent}`}>
-                  Argentina ∑ {theme.badgeText}
+                  Argentina ¬∑ {theme.badgeText}
                 </p>
                 <h1 className={`mt-4 text-4xl sm:text-5xl lg:text-6xl ${theme.title}`}>
                   {content.title}
@@ -503,11 +503,28 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                 </p>
                 <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
                   <a href="#contacto" className={`inline-flex items-center justify-center rounded-2xl bg-gradient-to-r ${theme.ctaFrom} ${theme.ctaTo} px-6 py-4 text-base font-bold text-white shadow-lg shadow-black/30`}>
-                    Solicitar diagnÛstico gratuito
+                    Solicitar diagn√≥stico gratuito
                   </a>
                   <a href="#conversacion" className={`inline-flex items-center justify-center rounded-2xl border ${theme.accentBorder} bg-white/5 px-6 py-4 text-base font-semibold text-white/85`}>
-                    Ver conversaciÛn real
+                    Ver conversaci√≥n real
                   </a>
+                </div>
+                <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                  {[
+                    { label: "Respuesta", value: "Autom√°tica" },
+                    { label: "Agenda", value: "Ordenada" },
+                    { label: "Seguimiento", value: "Sin fricci√≥n" },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className={`rounded-[1.35rem] border ${theme.accentBorder} ${theme.surface} px-4 py-4 text-left shadow-[0_20px_45px_-34px_rgba(0,0,0,0.5)]`}
+                    >
+                      <div className={`text-[10px] font-semibold uppercase tracking-[0.22em] ${theme.accent}`}>
+                        {item.label}
+                      </div>
+                      <div className="mt-2 text-sm font-semibold text-white/80">{item.value}</div>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
 
@@ -634,7 +651,7 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                   Servicios que suele atender el consultorio
                 </p>
                 <h2 className="font-heading mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-                  AutomatizaciÛn pensada para la operaciÛn diaria de una clÌnica dental
+                  Automatizaci√≥n pensada para la operaci√≥n diaria de una cl√≠nica dental
                 </h2>
                 <div className="mt-5 h-px w-24 bg-gradient-to-r from-sky-400/60 to-transparent" />
               </div>
@@ -643,15 +660,15 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                 {[
                   {
                     title: "Primera consulta",
-                    text: "Responde motivo de consulta, cobertura, ubicaciÛn y disponibilidad sin que alguien tenga que estar mirando WhatsApp todo el tiempo.",
+                    text: "Responde motivo de consulta, cobertura, ubicaci√≥n y disponibilidad sin que alguien tenga que estar mirando WhatsApp todo el tiempo.",
                   },
                   {
                     title: "Turnos y recordatorios",
-                    text: "Confirma la cita, reenvÌa la direcciÛn y manda un aviso previo para bajar ausencias y reprogramaciones de ˙ltimo momento.",
+                    text: "Confirma la cita, reenv√≠a la direcci√≥n y manda un aviso previo para bajar ausencias y reprogramaciones de √∫ltimo momento.",
                   },
                   {
                     title: "Seguimiento posterior",
-                    text: "DespuÈs del tratamiento, mantiene el vÌnculo con controles, indicaciones y nuevas consultas sin dejar chats pendientes.",
+                    text: "Despu√©s del tratamiento, mantiene el v√≠nculo con controles, indicaciones y nuevas consultas sin dejar chats pendientes.",
                   },
                 ].map((item) => (
                   <article
@@ -681,7 +698,7 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                     Una paciente escribe, el sistema responde y el turno queda confirmado
                   </h2>
                   <p className={`mt-4 max-w-xl text-base leading-8 text-white/65 ${theme.body}`}>
-                    AsÌ se ve un flujo m·s creÌble para odontologÌa: la consulta entra desde WhatsApp, la respuesta es inmediata y la agenda queda ordenada sin ir y venir de mensajes.
+                    As√≠ se ve un flujo m√°s cre√≠ble para odontolog√≠a: la consulta entra desde WhatsApp, la respuesta es inmediata y la agenda queda ordenada sin ir y venir de mensajes.
                   </p>
                 </div>
 
@@ -690,20 +707,20 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                     <div className="relative min-h-[240px]">
                       <img
                         src="https://images.unsplash.com/photo-1622737133809-d95047b9e673?auto=format&fit=crop&w=900&q=80"
-                        alt="Consultorio odontolÛgico con recepciÛn y pantalla de agenda"
+                        alt="Consultorio odontol√≥gico con recepci√≥n y pantalla de agenda"
                         className="h-full w-full object-cover"
                       />
                       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.02),rgba(2,6,23,0.5))]" />
                     </div>
                     <div className="space-y-3 p-5 sm:p-6">
                       <div className="rounded-2xl border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
-                        Hola, øhacen limpieza dental y tienen turno para esta semana?
+                        Hola, ¬øhacen limpieza dental y tienen turno para esta semana?
                       </div>
                       <div className="rounded-2xl border border-sky-400/20 bg-sky-500/10 px-4 py-3 text-sm leading-6 text-white/90">
-                        SÌ, claro. Te paso horarios disponibles y te confirmo el que te quede mejor.
+                        S√≠, claro. Te paso horarios disponibles y te confirmo el que te quede mejor.
                       </div>
                       <div className="rounded-2xl border border-sky-400/20 bg-sky-500/10 px-4 py-3 text-sm leading-6 text-white/90">
-                        Perfecto, te quedÛ el jueves a las 16:00. TambiÈn te llega recordatorio autom·tico.
+                        Perfecto, te qued√≥ el jueves a las 16:00. Tambi√©n te llega recordatorio autom√°tico.
                       </div>
                       <div className="rounded-2xl border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
                         Genial, me resolvieron todo por WhatsApp.
@@ -722,13 +739,13 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
               <div className="grid gap-6 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-200/80">
-                    Flujo clÌnico
+                    Flujo cl√≠nico
                   </p>
                   <h2 className={`mt-3 text-3xl sm:text-4xl ${theme.title}`}>
-                    Menos caos en recepciÛn, m·s orden en cada consulta
+                    Menos caos en recepci√≥n, m√°s orden en cada consulta
                   </h2>
                   <p className={`mt-4 max-w-xl text-base leading-8 text-white/65 ${theme.body}`}>
-                    La agenda mÈdica suele mezclar consultas, estudios y derivaciones. Esta vista le da prioridad a la velocidad y a la claridad operativa.
+                    La agenda m√©dica suele mezclar consultas, estudios y derivaciones. Esta vista le da prioridad a la velocidad y a la claridad operativa.
                   </p>
                 </div>
 
@@ -736,11 +753,11 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                   {[
                     {
                       title: "Triage",
-                      text: "El sistema identifica el motivo de consulta y deriva sin frenar la atenciÛn.",
+                      text: "El sistema identifica el motivo de consulta y deriva sin frenar la atenci√≥n.",
                     },
                     {
                       title: "Agenda",
-                      text: "La coordinaciÛn de turnos se vuelve m·s simple y con menos intercambio de mensajes.",
+                      text: "La coordinaci√≥n de turnos se vuelve m√°s simple y con menos intercambio de mensajes.",
                     },
                     {
                       title: "Seguimiento",
@@ -764,13 +781,13 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
               <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
                 <div className="rounded-[2rem] border border-amber-400/15 bg-white/[0.03] p-6 sm:p-7">
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200/80">
-                    Intake jurÌdico
+                    Intake jur√≠dico
                   </p>
                   <h2 className={`mt-3 text-3xl sm:text-4xl ${theme.title}`}>
-                    Una primera impresiÛn m·s seria para cada consulta
+                    Una primera impresi√≥n m√°s seria para cada consulta
                   </h2>
                   <p className={`mt-4 max-w-xl text-base leading-8 text-white/65 ${theme.body}`}>
-                    El objetivo no es vender m·s texto, sino mostrar orden, criterio y confianza desde el primer contacto con el estudio.
+                    El objetivo no es vender m√°s texto, sino mostrar orden, criterio y confianza desde el primer contacto con el estudio.
                   </p>
                 </div>
 
@@ -782,15 +799,15 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                     },
                     {
                       title: "Confianza",
-                      text: "El tono visual transmite seriedad y cercanÌa profesional.",
+                      text: "El tono visual transmite seriedad y cercan√≠a profesional.",
                     },
                     {
                       title: "Seguimiento",
-                      text: "Menos consultas perdidas y m·s prospectos bien atendidos.",
+                      text: "Menos consultas perdidas y m√°s prospectos bien atendidos.",
                     },
                     {
                       title: "Orden",
-                      text: "La recepciÛn trabaja con un flujo m·s claro y menos ida y vuelta.",
+                      text: "La recepci√≥n trabaja con un flujo m√°s claro y menos ida y vuelta.",
                     },
                   ].map((item) => (
                     <article key={item.title} className="rounded-[1.5rem] border border-amber-400/15 bg-white/[0.025] p-5">
@@ -809,9 +826,9 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
             <div className={`mx-auto max-w-3xl rounded-[2rem] border ${theme.accentBorder} ${theme.surfaceStrong} p-6 shadow-[0_24px_80px_-32px_rgba(0,0,0,0.9)] sm:p-8`}>
               <div className="mb-6">
                 <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
-                  Ejemplo real de conversaciÛn
+                  Ejemplo real de conversaci√≥n
                 </p>
-                <h2 className="font-heading mt-3 text-3xl font-black tracking-tight">CÛmo se ve una consulta automatizada</h2>
+                <h2 className="font-heading mt-3 text-3xl font-black tracking-tight">C√≥mo se ve una consulta automatizada</h2>
               </div>
               <div className="space-y-4">
                 <div className="rounded-2xl border border-white/5 bg-white/10 px-4 py-3 text-sm leading-6 text-white/90">
@@ -835,14 +852,14 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
           <div className="container py-16 sm:py-20">
             <div className={`mx-auto max-w-4xl rounded-[2rem] border ${theme.accentBorder} ${theme.ctaPanel} p-6 text-center shadow-[0_20px_60px_-36px_rgba(14,165,233,0.35)] sm:p-8`}>
               <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.accent}`}>
-                DiagnÛstico gratuito
+                Diagn√≥stico gratuito
               </p>
-              <h2 className="font-heading mt-3 text-3xl font-black tracking-tight">Quiero mi diagnÛstico gratuito</h2>
+              <h2 className="font-heading mt-3 text-3xl font-black tracking-tight">Quiero mi diagn√≥stico gratuito</h2>
               <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-white/65">
-                Analizamos cÛmo llegar m·s r·pido a tus consultas, cÛmo ordenar tu agenda y quÈ automatizar para vender mejor en Argentina.
+                Analizamos c√≥mo llegar m√°s r√°pido a tus consultas, c√≥mo ordenar tu agenda y qu√© automatizar para vender mejor en Argentina.
               </p>
               <a href="/#contacto" className={`mt-6 inline-flex items-center justify-center rounded-2xl bg-gradient-to-r ${theme.ctaFrom} ${theme.ctaTo} px-6 py-4 text-base font-bold text-white`}>
-                Solicitar diagnÛstico gratuito
+                Solicitar diagn√≥stico gratuito
               </a>
             </div>
           </div>
@@ -856,19 +873,19 @@ function NicheLanding({ nicheKey }: { nicheKey: NicheKey }) {
                   Landings SEO
                 </p>
                 <h2 className="font-heading mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-                  P·ginas especÌficas por rubro para captar b˙squedas con intenciÛn
+                  P√°ginas espec√≠ficas por rubro para captar b√∫squedas con intenci√≥n
                 </h2>
                 <div className={`mt-5 h-px w-24 ${theme.accentLine}`} />
               </div>
 
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                 {[
-                  { href: "/odontologos", label: "OdontÛlogos", text: "AutomatizaciÛn de WhatsApp para clÌnicas dentales." },
-                  { href: "/medicos", label: "MÈdicos", text: "Turnos, consultas y seguimiento para consultorios." },
-                  { href: "/fonoaudiologos", label: "FonoaudiÛlogos", text: "Respuestas autom·ticas y agenda de sesiones." },
+                  { href: "/odontologos", label: "Odont√≥logos", text: "Automatizaci√≥n de WhatsApp para cl√≠nicas dentales." },
+                  { href: "/medicos", label: "M√©dicos", text: "Turnos, consultas y seguimiento para consultorios." },
+                  { href: "/fonoaudiologos", label: "Fonoaudi√≥logos", text: "Respuestas autom√°ticas y agenda de sesiones." },
                   { href: "/nutricionistas", label: "Nutricionistas", text: "Seguimiento, consultas y recordatorios de control." },
                   { href: "/abogados", label: "Abogados", text: "Filtrado de consultas y primer contacto profesional." },
-                  { href: "/inmobiliarias", label: "Inmobiliarias", text: "M·s consultas atendidas y visitas agendadas." },
+                  { href: "/inmobiliarias", label: "Inmobiliarias", text: "M√°s consultas atendidas y visitas agendadas." },
                 ].map((item) => (
                   <a
                     key={item.href}
