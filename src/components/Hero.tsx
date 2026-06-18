@@ -26,7 +26,7 @@ export default function Hero() {
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
               </span>
               <MapPin className="h-3.5 w-3.5" />
-              Hecho para profesionales de Buenos Aires
+              Hecho para profesionales de Buenos Aires, CABA y GBA
             </motion.div>
 
             <motion.h1
@@ -65,10 +65,10 @@ export default function Hero() {
               className="mt-5 max-w-xl text-lg leading-relaxed text-ink-600"
             >
               En <strong className="font-semibold text-ink-800">WebApp Impulsor</strong> hacemos que
-              tu WhatsApp venda por vos: responde consultas, agenda turnos, cobra seÃ±as y hace
-              seguimiento sin que tengas que estar mirando el telÃ©fono todo el dÃ­a. GanÃ¡s tiempo y{" "}
-              atendÃ©s mÃ¡s clientes sin sumar personal, en{" "}
-              <strong className="font-semibold text-ink-800">CABA y GBA</strong>.
+              tu WhatsApp venda por vos: responde consultas, agenda turnos, cobra señas y hace
+              seguimiento sin que tengas que estar mirando el teléfono todo el día. Ganás tiempo y{" "}
+              atendés más clientes sin sumar personal, ya sea que trabajes en Buenos Aires, CABA,
+              GBA o Zona Sur.
             </motion.p>
 
             <motion.div
@@ -90,7 +90,9 @@ export default function Hero() {
                 href="#como-funciona"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 bg-white px-6 py-3.5 text-sm font-semibold text-ink-700 transition hover:border-ink-300 hover:bg-ink-50"
               >
-                <span className="grid h-5 w-5 place-items-center rounded-full bg-emerald-100 text-emerald-600">▶</span>
+                <span className="grid h-5 w-5 place-items-center rounded-full bg-emerald-100 text-emerald-600">
+                  ▶
+                </span>
                 Ver cómo funciona
               </a>
             </motion.div>
@@ -141,7 +143,7 @@ export default function Hero() {
             >
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="h-4 w-4 text-emerald-500" />
-                Configuración orientada a ventas
+                Configuración orientada a ventas en Argentina
               </span>
               <span className="flex items-center gap-1.5">
                 <BadgeCheck className="h-4 w-4 text-emerald-500" />
@@ -156,7 +158,12 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="relative"
           >
-            <WhatsAppMockup />
+            <div className="mb-4 inline-flex rounded-full border border-emerald-200 bg-white px-3 py-1 text-xs font-semibold text-emerald-700 shadow-sm lg:hidden">
+              Simulación WhatsApp en vivo
+            </div>
+            <div className="mx-auto max-w-[540px] lg:max-w-none">
+              <WhatsAppMockup />
+            </div>
           </motion.div>
         </div>
       </div>

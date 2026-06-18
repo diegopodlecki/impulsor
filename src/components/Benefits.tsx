@@ -34,7 +34,7 @@ const stats = [
 
 export default function Benefits() {
   return (
-    <section className="relative py-24 sm:py-32">
+    <section id="benefits" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

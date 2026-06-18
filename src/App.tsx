@@ -9,10 +9,31 @@ import Benefits from "./components/Benefits";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
+import MobileStickyCTA from "./components/MobileStickyCTA";
+import StructuredData from "./components/StructuredData";
+import AutomatizacionWhatsapp from "./pages/AutomatizacionWhatsapp";
+import TurnosPorWhatsapp from "./pages/TurnosPorWhatsapp";
+import AsistenteVirtualWhatsapp from "./pages/AsistenteVirtualWhatsapp";
+import RecordatoriosAutomaticosWhatsapp from "./pages/RecordatoriosAutomaticosWhatsapp";
+import SeguimientoDeClientes from "./pages/SeguimientoDeClientes";
 
 export default function App() {
+  const pathname = window.location.pathname.replace(/\/+$/, "") || "/";
+  const seoRoutes: Record<string, JSX.Element> = {
+    "/automatizacion-whatsapp": <AutomatizacionWhatsapp />,
+    "/turnos-por-whatsapp": <TurnosPorWhatsapp />,
+    "/asistente-virtual-whatsapp": <AsistenteVirtualWhatsapp />,
+    "/recordatorios-automaticos-whatsapp": <RecordatoriosAutomaticosWhatsapp />,
+    "/seguimiento-de-clientes": <SeguimientoDeClientes />,
+  };
+
+  if (seoRoutes[pathname]) {
+    return seoRoutes[pathname];
+  }
+
   return (
     <div className="relative min-h-screen text-ink-900 antialiased">
+      <StructuredData />
       {/* ===== Capas de fondo globales (evitan el exceso de blanco) ===== */}
       <div className="pointer-events-none fixed inset-0 -z-50">
         {/* base con tinte cálido */}
@@ -40,6 +61,7 @@ export default function App() {
       </main>
       <Footer />
       <FloatingWhatsApp />
+      <MobileStickyCTA />
     </div>
   );
 }

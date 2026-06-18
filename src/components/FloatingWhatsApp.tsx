@@ -6,7 +6,7 @@ export default function FloatingWhatsApp() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-5 right-5 z-40 sm:bottom-6 sm:right-6">
+    <div className="fixed bottom-20 right-4 z-40 sm:bottom-6 sm:right-6 md:bottom-6">
       <AnimatePresence>
         {open && (
           <motion.div
@@ -14,7 +14,7 @@ export default function FloatingWhatsApp() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="mb-3 w-80 max-w-[calc(100vw-2.5rem)] overflow-hidden rounded-3xl border border-ink-200 bg-white shadow-2xl shadow-ink-900/20"
+            className="mb-3 w-[min(22rem,calc(100vw-1.5rem))] overflow-hidden rounded-3xl border border-ink-200 bg-white shadow-2xl shadow-ink-900/20"
           >
             <div className="relative bg-[#075E54] p-4 text-white">
               <button
@@ -69,11 +69,7 @@ export default function FloatingWhatsApp() {
               </div>
 
               <div className="mt-3 flex flex-col gap-1.5">
-                {[
-                  "💰 Ver precios",
-                  "🎯 Agendar demo",
-                  "🤖 Quiero un bot",
-                ].map((t) => (
+                {["💰 Ver precios", "🎯 Agendar demo", "🤖 Quiero un bot"].map((t) => (
                   <button
                     key={t}
                     className="rounded-full border border-emerald-500/30 bg-emerald-50 px-3 py-1.5 text-left text-[12px] font-semibold text-emerald-700 transition hover:bg-emerald-100"

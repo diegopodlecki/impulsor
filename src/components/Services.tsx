@@ -5,7 +5,7 @@ const services = [
   {
     icon: Bot,
     title: "Asistentes de IA conversacional",
-    desc: "Responden como vos, pero sin pausa. Califican consultas, ordenan oportunidades y sacan trabajo repetido de encima.",
+    desc: "Responden como vos, pero sin pausa. Califican consultas, ordenan oportunidades y sacan trabajo repetido de encima para negocios de Buenos Aires, CABA, GBA y Zona Sur.",
     tag: "Más pedido",
     color: "from-emerald-500 to-teal-600",
     bg: "bg-emerald-50",
@@ -14,7 +14,7 @@ const services = [
   {
     icon: CalendarClock,
     title: "Agenda automática de turnos",
-    desc: "El cliente reserva solo, recibe confirmación y recordatorio. Menos mensajes manuales, menos ausencias.",
+    desc: "El cliente reserva solo, recibe confirmación y recordatorio. Menos mensajes manuales, menos ausencias, ideal para equipos en Buenos Aires y alrededores.",
     tag: "Anti no-show",
     color: "from-violet-500 to-indigo-600",
     bg: "bg-violet-50",
@@ -23,7 +23,7 @@ const services = [
   {
     icon: CreditCard,
     title: "Cobro de señas por WhatsApp",
-    desc: "Cobrás sin sacar al cliente del chat. Ideal para filtrar curiosos y convertir interés en compromiso.",
+    desc: "Cobrás sin sacar al cliente del chat. Ideal para filtrar curiosos y convertir interés en compromiso, tanto en CABA como en GBA y Zona Sur.",
     tag: "Convierte mejor",
     color: "from-sky-500 to-cyan-600",
     bg: "bg-sky-50",
@@ -32,7 +32,7 @@ const services = [
   {
     icon: Users,
     title: "CRM y seguimiento de leads",
-    desc: "Cada conversación queda registrada para que tu equipo sepa a quién llamar, cuándo y con qué propuesta.",
+    desc: "Cada conversación queda registrada para que tu equipo sepa a quién llamar, cuándo y con qué propuesta, con foco en profesionales y comercios argentinos.",
     tag: "Orden comercial",
     color: "from-amber-500 to-orange-600",
     bg: "bg-amber-50",
@@ -41,7 +41,7 @@ const services = [
   {
     icon: Workflow,
     title: "Automatizaciones a medida",
-    desc: "Conectamos WhatsApp con tu agenda, planillas y procesos para que la operación se mueva sola.",
+    desc: "Conectamos WhatsApp con tu agenda, planillas y procesos para que la operación se mueva sola, sin importar si trabajás en CABA, GBA o Zona Sur.",
     tag: "A medida",
     color: "from-rose-500 to-pink-600",
     bg: "bg-rose-50",
@@ -65,13 +65,13 @@ export default function Services() {
             Soluciones
           </span>
           <h2 className="font-display mt-4 text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl lg:text-5xl">
-            Soluciones que te ayudan a vender y atender mejor{" "}
+            Automatización de WhatsApp para profesionales y negocios de Argentina{" "}
             <span className="bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">
               sin fricción
             </span>
           </h2>
           <p className="mt-4 text-lg text-ink-600">
-            Elegís el punto de entrada que más te conviene. Nosotros nos encargamos de que tu WhatsApp empiece a trabajar mejor.
+            Elegís el punto de entrada que más te conviene y nosotros nos encargamos de que tu WhatsApp empiece a trabajar mejor.
           </p>
         </motion.div>
 

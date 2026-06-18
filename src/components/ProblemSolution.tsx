@@ -78,9 +78,9 @@ export default function ProblemSolution() {
                   <span className="mt-0.5 grid h-6 w-6 flex-shrink-0 place-items-center rounded-full bg-emerald-500/20 text-emerald-200">
                     <Check className="h-3.5 w-3.5" />
                   </span>
-                    <p className="text-sm leading-relaxed text-ink-100">{solution}</p>
-                  </div>
-                ))}
+                  <p className="text-sm leading-relaxed text-ink-100">{solution}</p>
+                </div>
+              ))}
             </div>
 
             <a

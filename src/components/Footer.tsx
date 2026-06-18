@@ -21,11 +21,7 @@ const cols = [
   },
 ];
 
-const socials = [
-  { label: "Instagram" },
-  { label: "LinkedIn" },
-  { label: "WhatsApp" },
-];
+const socials = [{ label: "Instagram" }, { label: "LinkedIn" }, { label: "WhatsApp" }];
 
 export default function Footer() {
   return (
@@ -45,8 +41,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-400">
-              Automatizaciones de WhatsApp y asistentes virtuales con IA para
-              profesionales de Buenos Aires. Atendé 24/7, vendé más, sin contratar más gente.
+              Automatizaciones de WhatsApp y asistentes virtuales con IA para profesionales de Buenos Aires, CABA, GBA y Zona Sur. Atendé 24/7, vendé más, sin contratar más gente.
             </p>
             <div className="mt-5 flex items-center gap-2 text-sm text-ink-400">
               <MapPin className="h-4 w-4" />
@@ -58,7 +53,7 @@ export default function Footer() {
                   key={s.label}
                   href="#"
                   aria-label={s.label}
-                  className="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/5 text-ink-300 text-xs font-bold transition hover:border-emerald-400/50 hover:bg-emerald-500/10 hover:text-emerald-400"
+                  className="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/5 text-xs font-bold text-ink-300 transition hover:border-emerald-400/50 hover:bg-emerald-500/10 hover:text-emerald-400"
                 >
                   {s.label.charAt(0)}
                 </a>
@@ -72,10 +67,7 @@ export default function Footer() {
               <ul className="mt-4 space-y-2.5">
                 {c.links.map((l) => (
                   <li key={l}>
-                    <a
-                      href="#"
-                      className="text-sm text-ink-400 transition hover:text-emerald-400"
-                    >
+                    <a href="#" className="text-sm text-ink-400 transition hover:text-emerald-400">
                       {l}
                     </a>
                   </li>
@@ -100,7 +92,7 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 sm:flex-row">
           <div className="text-xs text-ink-500">
-            © {new Date().getFullYear()} WebApp Impulsor · Hecho con 💚 en Buenos Aires.
+            © {new Date().getFullYear()} WebApp Impulsor · Hecho con 💚 en Buenos Aires, Argentina.
           </div>
           <div className="flex items-center gap-4 text-xs text-ink-500">
             <span className="flex items-center gap-1.5">

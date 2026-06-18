@@ -19,7 +19,6 @@ export default function CTA() {
 
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid items-stretch gap-8 lg:grid-cols-5">
-          {/* Left: copy + channels */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -68,7 +67,15 @@ export default function CTA() {
                   <div className="text-sm font-semibold text-ink-900">Email</div>
                   <div className="text-xs text-ink-500">hola@webappimpulsor.com.ar</div>
                 </div>
-                <svg viewBox="0 0 24 24" className="h-4 w-4 text-ink-400" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4 text-ink-400"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M7 17L17 7M8 7h9v9" />
                 </svg>
               </a>
@@ -84,7 +91,15 @@ export default function CTA() {
                   <div className="text-sm font-semibold text-ink-900">Agendar videollamada</div>
                   <div className="text-xs text-ink-500">30 min · Sin compromiso</div>
                 </div>
-                <svg viewBox="0 0 24 24" className="h-4 w-4 text-ink-400" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4 text-ink-400"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M7 17L17 7M8 7h9v9" />
                 </svg>
               </a>
@@ -94,9 +109,17 @@ export default function CTA() {
               <MapPin className="h-4 w-4" />
               Oficinas en Palermo, CABA · Atención en toda la provincia
             </div>
+
+            <div className="mt-4 rounded-2xl border border-ink-200 bg-white p-4 text-sm text-ink-600 shadow-sm">
+              <span className="font-semibold text-ink-900">Zonas atendidas:</span> Buenos Aires,
+              CABA, GBA y Zona Sur. También trabajamos de forma remota para el resto de Argentina.
+            </div>
+
+            <div className="mt-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900">
+              Respuesta humana, no automática: te devolvemos el contacto con un diagnóstico claro y un próximo paso concreto.
+            </div>
           </motion.div>
 
-          {/* Right: form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -114,6 +137,11 @@ export default function CTA() {
                 <p className="mt-2 text-sm text-ink-600">
                   En 30 minutos te decimos qué automatizar primero para recuperar la inversión rápido.
                 </p>
+                <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-semibold text-ink-500">
+                  <span className="rounded-full bg-ink-100 px-2.5 py-1">Sin spam</span>
+                  <span className="rounded-full bg-ink-100 px-2.5 py-1">Respuesta en 2 horas hábiles</span>
+                  <span className="rounded-full bg-ink-100 px-2.5 py-1">Argentina</span>
+                </div>
 
                 {submitted ? (
                   <motion.div
@@ -122,7 +150,15 @@ export default function CTA() {
                     className="mt-8 flex flex-col items-center justify-center rounded-2xl border border-emerald-200 bg-emerald-50 p-10 text-center"
                   >
                     <div className="grid h-14 w-14 place-items-center rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-500/30">
-                      <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="h-7 w-7"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                     </div>
@@ -179,7 +215,7 @@ export default function CTA() {
                         name="nombre"
                         type="text"
                         required
-                        placeholder="Tu nombre"
+                        placeholder="Tu nombre y apellido"
                         className="w-full rounded-xl border border-ink-200 bg-white px-3.5 py-2.5 text-sm text-ink-900 placeholder:text-ink-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                       />
                     </div>
@@ -189,7 +225,7 @@ export default function CTA() {
                         name="telefono"
                         type="tel"
                         required
-                        placeholder="+54 9 11 ..."
+                        placeholder="+54 9 11 1234 5678"
                         className="w-full rounded-xl border border-ink-200 bg-white px-3.5 py-2.5 text-sm text-ink-900 placeholder:text-ink-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                       />
                     </div>
@@ -211,7 +247,9 @@ export default function CTA() {
                         className="w-full rounded-xl border border-ink-200 bg-white px-3.5 py-2.5 text-sm text-ink-900 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                         defaultValue=""
                       >
-                        <option value="" disabled>Elegí una opción</option>
+                        <option value="" disabled>
+                          Elegí una opción
+                        </option>
                         <option>Salud / Odontología / Estética</option>
                         <option>Estudio jurídico</option>
                         <option>Inmobiliaria</option>
@@ -228,7 +266,7 @@ export default function CTA() {
                       <textarea
                         name="automatizacion"
                         rows={3}
-                        placeholder="Ej: Quiero que el bot agende turnos y mande recordatorios..."
+                        placeholder="Ej: Quiero que el bot agende turnos, responda consultas y mande recordatorios..."
                         className="w-full resize-none rounded-xl border border-ink-200 bg-white px-3.5 py-2.5 text-sm text-ink-900 placeholder:text-ink-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                       />
                     </div>
@@ -244,6 +282,9 @@ export default function CTA() {
                       </button>
                       {sendError ? (
                         <p className="mt-3 text-center text-sm font-medium text-rose-600">{sendError}</p>
+                      ) : null}
+                      {isSending ? (
+                        <p className="mt-3 text-center text-sm font-medium text-emerald-600">Estamos enviando tu solicitud...</p>
                       ) : null}
                       <p className="mt-3 text-center text-[11px] text-ink-500">
                         Al enviar aceptás nuestra política de privacidad. No spam, jamás.

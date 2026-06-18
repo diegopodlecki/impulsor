@@ -57,6 +57,33 @@ const cases = [
       ],
     },
   },
+  {
+    sector: "Inmobiliaria",
+    title: "Núñez Propiedades · Zona Norte",
+    image: "/images/team-meeting.jpg",
+    avatar: "/images/avatar-1.jpg",
+    stat: "+4x",
+    statLabel: "visitas coordinadas",
+    quote:
+      "Las consultas por propiedades entran, se clasifican y ya salen con la opción de visita o con datos filtrados. Nos ahorró muchísimo ida y vuelta.",
+    person: "Martina Núñez",
+    role: "Coordinación comercial",
+    points: [
+      "Respuestas automáticas a disponibilidad",
+      "Coordinación de visitas sin fricción",
+      "Mejor seguimiento de oportunidades",
+    ],
+    chat: {
+      title: "Núñez Propiedades",
+      initials: "NP",
+      messages: [
+        { from: "user" as const, text: "¿Sigue disponible el 2 ambientes?", delay: 1400 },
+        { from: "bot" as const, text: "¡Sí! Te comparto fotos, ubicación y coordinamos visita si te interesa.", delay: 1600 },
+        { from: "user" as const, text: "Perfecto, quiero verlo mañana", delay: 1200 },
+        { from: "bot" as const, text: "Te agendo a las 18 hs y te envío la dirección por acá.", delay: 1600 },
+      ],
+    },
+  },
 ];
 
 export default function UseCases() {
